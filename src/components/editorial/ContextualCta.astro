@@ -1,0 +1,40 @@
+---
+/**
+ * ContextualCta — bloco de conversão contextual para artigos/guias.
+ * Usa a mensagem de WhatsApp por página (helper existente) e mantém a linguagem
+ * de CTA padronizada. O título/texto vêm por prop para refletir a área.
+ * Uso: <ContextualCta titulo="…" texto="…" areaHref="/areas-de-atuacao/…/" />
+ */
+import { whatsappHrefForPath } from '@/lib/site.config';
+import Icon from '@/components/Icon.astro';
+interface Props { titulo?: string; texto?: string; areaHref?: string; }
+const {
+  titulo = 'Precisa avaliar a sua situação?',
+  texto = 'Apresente o caso e entenda quais podem ser os próximos passos.',
+  areaHref,
+} = Astro.props;
+const waHref = whatsappHrefForPath(Astro.url.pathname);
+---
+<aside class="ec-cta">
+  <div>
+    <p class="ec-cta-t">{titulo}</p>
+    <p class="ec-cta-d">{texto}</p>
+  </div>
+  <div class="ec-cta-actions">
+    <a class="btn btn--primary" href="/contato/" data-cta-position="artigo">Falar sobre o meu caso</a>
+    <a class="btn btn--secondary" href={waHref} target="_blank" rel="noopener noreferrer" data-cta-position="artigo">Falar pelo WhatsApp</a>
+    {areaHref && (
+      <a class="ec-area" href={areaHref}>Conhecer esta área <span class="ec-area-ic"><Icon name="arrow-right" size={15} /></span></a>
+    )}
+  </div>
+</aside>
+
+<style>
+  .ec-cta { display: grid; gap: var(--space-4); border: 1px solid var(--border-green-subtle); background: var(--color-green-tint); border-radius: var(--radius-lg); padding: var(--space-6); margin: var(--space-8) 0; }
+  @media (min-width: 720px) { .ec-cta { grid-template-columns: 1.4fr 1fr; align-items: center; } }
+  .ec-cta-t { font-family: var(--font-display); font-weight: var(--weight-bold); color: var(--color-ink); font-size: var(--text-lg); }
+  .ec-cta-d { margin-top: var(--space-2); color: var(--color-text); font-size: var(--text-sm); line-height: var(--leading-normal); }
+  .ec-cta-actions { display: flex; flex-wrap: wrap; gap: var(--space-3); align-items: center; }
+  .ec-area { display: inline-flex; align-items: center; gap: 0.35rem; color: var(--color-green-strong); font-weight: var(--weight-semibold); font-size: var(--text-sm); text-decoration: none; }
+  .ec-area-ic { display: inline-flex; }
+</style>

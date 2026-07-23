@@ -1,0 +1,21 @@
+{
+  "name": "Corrêa Lima Advocacia",
+  "short_name": "Corrêa Lima",
+  "description": "Advocacia empresarial, internacional e patrimonial.",
+  "icons": [
+    {
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "theme_color": "#0b7d45",
+  "background_color": "#06281c",
+  "display": "standalone",
+  "start_url": "/"
+}

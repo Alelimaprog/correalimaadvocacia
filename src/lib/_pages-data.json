@@ -1,0 +1,727 @@
+{
+ "/": {
+  "key": "home",
+  "head": {
+   "title": "Advocacia Empresarial, Internacional e Patrimonial | Corrêa Lima Advocacia",
+   "description": "Advocacia empresarial, contratos de importação, execuções, homologação de sentença estrangeira e questões patrimoniais conduzidas com técnica, estratégia e atendimento personalizado.",
+   "canonical": "https://correalimaadvocacia.com.br/",
+   "robots": "index, follow",
+   "author": "Alexandre Corrêa Lima",
+   "authorLink": "https://correalimaadvocacia.com.br/o-escritorio/",
+   "og": {
+    "title": "Corrêa Lima Advocacia | Advocacia Empresarial, Internacional e Patrimonial",
+    "description": "Advocacia empresarial, contratos de importação, execuções, homologação de sentença estrangeira e questões patrimoniais.",
+    "url": "https://correalimaadvocacia.com.br/",
+    "type": null,
+    "site_name": null,
+    "locale": null,
+    "image": "https://correalimaadvocacia.com.br/og-image.png"
+   },
+   "twitter": {
+    "card": "summary_large_image",
+    "title": "Corrêa Lima Advocacia",
+    "description": "Advocacia empresarial, contratos de importação, execuções, homologação de sentença estrangeira e questões patrimoniais.",
+    "image": "https://correalimaadvocacia.com.br/og-image.png"
+   }
+  },
+  "jsonld": [
+   {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "@id": "https://correalimaadvocacia.com.br/#website",
+    "name": "Corrêa Lima Advocacia",
+    "url": "https://correalimaadvocacia.com.br",
+    "inLanguage": "pt-BR",
+    "publisher": {
+     "@id": "https://correalimaadvocacia.com.br/#organization"
+    }
+   },
+   {
+    "@context": "https://schema.org",
+    "@type": "LegalService",
+    "@id": "https://correalimaadvocacia.com.br/#organization",
+    "name": "Corrêa Lima Advocacia",
+    "legalName": "Alexandre Corrêa Lima — OAB/SP 234511",
+    "url": "https://correalimaadvocacia.com.br",
+    "logo": "https://correalimaadvocacia.com.br/brand/logo-dark-bg.svg",
+    "image": "https://correalimaadvocacia.com.br/brand/logo-dark-bg.svg",
+    "telephone": "+55 11 97502-5611",
+    "email": "contato@correalimaadvocacia.com.br",
+    "areaServed": {
+     "@type": "Country",
+     "name": "Brasil"
+    },
+    "description": "Escritório de advocacia com atuação técnica em advocacia empresarial, recuperação de crédito, contratos de importação e comércio exterior, homologação de sentença estrangeira e demandas internacionais, e questões patrimoniais e sucessórias.",
+    "knowsAbout": [
+     "Advocacia empresarial",
+     "Recuperação de crédito e execução",
+     "Recuperação judicial e falência",
+     "Contratos de importação e comércio exterior",
+     "Homologação de sentença estrangeira",
+     "Direito patrimonial e sucessório"
+    ],
+    "founder": {
+     "@type": "Person",
+     "@id": "https://correalimaadvocacia.com.br/o-escritorio/#alexandre-correa-lima",
+     "name": "Alexandre Corrêa Lima",
+     "jobTitle": "Advogado",
+     "url": "https://correalimaadvocacia.com.br/o-escritorio/",
+     "identifier": "OAB/SP 234511",
+     "worksFor": {
+      "@id": "https://correalimaadvocacia.com.br/#organization"
+     },
+     "knowsAbout": [
+      "Advocacia empresarial",
+      "Recuperação de crédito e execução",
+      "Recuperação judicial e falência",
+      "Contratos de importação e comércio exterior",
+      "Homologação de sentença estrangeira",
+      "Direito patrimonial e sucessório"
+     ]
+    },
+    "employee": [
+     {
+      "@type": "Person",
+      "@id": "https://correalimaadvocacia.com.br/o-escritorio/#alexandre-correa-lima",
+      "name": "Alexandre Corrêa Lima",
+      "jobTitle": "Advogado",
+      "url": "https://correalimaadvocacia.com.br/o-escritorio/",
+      "identifier": "OAB/SP 234511",
+      "worksFor": {
+       "@id": "https://correalimaadvocacia.com.br/#organization"
+      },
+      "knowsAbout": [
+       "Advocacia empresarial",
+       "Recuperação de crédito e execução",
+       "Recuperação judicial e falência",
+       "Contratos de importação e comércio exterior",
+       "Homologação de sentença estrangeira",
+       "Direito patrimonial e sucessório"
+      ]
+     }
+    ]
+   },
+   {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+     {
+      "@type": "Question",
+      "name": "O que é homologação de sentença estrangeira e quando ela é necessária?",
+      "acceptedAnswer": {
+       "@type": "Answer",
+       "text": "É o procedimento pelo qual o Superior Tribunal de Justiça reconhece uma decisão estrangeira para que ela produza efeitos no Brasil. É necessária, em regra, quando a decisão precisa ser executada, averbada em registro público ou produzir efeitos patrimoniais no país."
+      }
+     },
+     {
+      "@type": "Question",
+      "name": "Todo divórcio realizado no exterior precisa ser homologado?",
+      "acceptedAnswer": {
+       "@type": "Answer",
+       "text": "Nem sempre. Divórcios consensuais e sem partilha de bens no Brasil podem, em certas hipóteses, ser averbados diretamente em cartório. Quando há bens ou controvérsia, a homologação perante o STJ costuma ser necessária."
+      }
+     },
+     {
+      "@type": "Question",
+      "name": "Como funciona a execução empresarial de uma dívida?",
+      "acceptedAnswer": {
+       "@type": "Answer",
+       "text": "Depende da existência de título executivo. Havendo título, a execução é a via mais direta; na ausência dele, avalia-se ação de cobrança ou monitória, conforme a documentação disponível."
+      }
+     },
+     {
+      "@type": "Question",
+      "name": "O que considerar em um contrato de importação?",
+      "acceptedAnswer": {
+       "@type": "Answer",
+       "text": "Entre os pontos centrais estão a definição de lei aplicável e foro, o Incoterm da operação, a forma de pagamento e as cláusulas de responsabilidade e rescisão."
+      }
+     },
+     {
+      "@type": "Question",
+      "name": "Quando é possível fazer inventário em cartório?",
+      "acceptedAnswer": {
+       "@type": "Answer",
+       "text": "Quando há consenso entre os herdeiros, todos são maiores e capazes e não há testamento com exigência de via judicial. Caso contrário, o inventário deve ser judicial."
+      }
+     },
+     {
+      "@type": "Question",
+      "name": "Divórcio com patrimônio precisa necessariamente ser judicial?",
+      "acceptedAnswer": {
+       "@type": "Answer",
+       "text": "Não, desde que haja consenso entre as partes, ambas sejam maiores e capazes e não existam filhos menores ou incapazes envolvidos — nesse caso, pode ser feito por escritura pública."
+      }
+     }
+    ]
+   }
+  ],
+  "main_len": 8534
+ },
+ "/o-escritorio/": {
+  "key": "o-escritorio",
+  "head": {
+   "title": "O Escritório | Corrêa Lima Advocacia",
+   "description": "Conheça a Corrêa Lima Advocacia e o advogado responsável, Alexandre Corrêa Lima (OAB/SP 234511): atuação técnica em advocacia empresarial, recuperação de crédito, comércio exterior, homologação de sentença estrangeira e questões patrimoniais.",
+   "canonical": "https://correalimaadvocacia.com.br/o-escritorio/",
+   "robots": "index, follow",
+   "author": "Alexandre Corrêa Lima",
+   "authorLink": "https://correalimaadvocacia.com.br/o-escritorio/",
+   "og": {
+    "title": "O Escritório | Corrêa Lima Advocacia",
+    "description": "Conheça a Corrêa Lima Advocacia e o advogado responsável, Alexandre Corrêa Lima (OAB/SP 234511).",
+    "url": "https://correalimaadvocacia.com.br/o-escritorio/",
+    "type": null,
+    "site_name": null,
+    "locale": null,
+    "image": "https://correalimaadvocacia.com.br/og-image.png"
+   },
+   "twitter": {
+    "card": "summary_large_image",
+    "title": "Corrêa Lima Advocacia",
+    "description": "Advocacia empresarial, contratos de importação, execuções, homologação de sentença estrangeira e questões patrimoniais.",
+    "image": "https://correalimaadvocacia.com.br/og-image.png"
+   }
+  },
+  "jsonld": [
+   {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+     {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Início",
+      "item": "https://correalimaadvocacia.com.br/"
+     },
+     {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "O Escritório",
+      "item": "https://correalimaadvocacia.com.br/o-escritorio/"
+     }
+    ]
+   },
+   {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "@id": "https://correalimaadvocacia.com.br/o-escritorio/#alexandre-correa-lima",
+    "name": "Alexandre Corrêa Lima",
+    "jobTitle": "Advogado",
+    "url": "https://correalimaadvocacia.com.br/o-escritorio/",
+    "email": "contato@correalimaadvocacia.com.br",
+    "telephone": "+55 11 97502-5611",
+    "identifier": "OAB/SP 234511",
+    "worksFor": {
+     "@id": "https://correalimaadvocacia.com.br/#organization"
+    },
+    "knowsAbout": [
+     "Advocacia empresarial",
+     "Recuperação de crédito e execução",
+     "Recuperação judicial e falência",
+     "Contratos de importação e comércio exterior",
+     "Homologação de sentença estrangeira",
+     "Direito patrimonial e sucessório"
+    ],
+    "description": "Advogado responsável pela Corrêa Lima Advocacia, com atuação técnica em advocacia empresarial, recuperação de crédito, contratos internacionais, homologação de sentença estrangeira e questões patrimoniais e sucessórias."
+   }
+  ],
+  "main_len": 4928
+ },
+ "/areas-de-atuacao/": {
+  "key": "areas-de-atuacao",
+  "head": {
+   "title": "Áreas de Atuação | Corrêa Lima Advocacia",
+   "description": "Conheça as frentes de atuação da Corrêa Lima Advocacia: empresarial e recuperação de crédito, contratos e comércio exterior, homologação de sentença estrangeira, família e sucessões, e recuperação judicial e contencioso empresarial.",
+   "canonical": "https://correalimaadvocacia.com.br/areas-de-atuacao/",
+   "robots": "index, follow",
+   "author": "Alexandre Corrêa Lima",
+   "authorLink": "https://correalimaadvocacia.com.br/o-escritorio/",
+   "og": {
+    "title": "Áreas de Atuação | Corrêa Lima Advocacia",
+    "description": "Conheça as frentes de atuação da Corrêa Lima Advocacia: empresarial, internacional, patrimonial e recuperação judicial.",
+    "url": "https://correalimaadvocacia.com.br/areas-de-atuacao/",
+    "type": null,
+    "site_name": null,
+    "locale": null,
+    "image": "https://correalimaadvocacia.com.br/og-image.png"
+   },
+   "twitter": {
+    "card": "summary_large_image",
+    "title": "Corrêa Lima Advocacia",
+    "description": "Advocacia empresarial, contratos de importação, execuções, homologação de sentença estrangeira e questões patrimoniais.",
+    "image": "https://correalimaadvocacia.com.br/og-image.png"
+   }
+  },
+  "jsonld": [
+   {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+     {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Início",
+      "item": "https://correalimaadvocacia.com.br/"
+     },
+     {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Áreas de Atuação",
+      "item": "https://correalimaadvocacia.com.br/areas-de-atuacao/"
+     }
+    ]
+   }
+  ],
+  "main_len": 7979
+ },
+ "/assuntos/": {
+  "key": "assuntos",
+  "head": {
+   "title": "Assuntos Mais Consultados | Corrêa Lima Advocacia",
+   "description": "Mapa dos assuntos jurídicos mais consultados no site da Corrêa Lima Advocacia, organizado por cluster: página principal, páginas específicas, guia e artigos de cada tema.",
+   "canonical": "https://correalimaadvocacia.com.br/assuntos/",
+   "robots": "index, follow",
+   "author": "Alexandre Corrêa Lima",
+   "authorLink": "https://correalimaadvocacia.com.br/o-escritorio/",
+   "og": {
+    "title": "Assuntos Mais Consultados | Corrêa Lima Advocacia",
+    "description": "Mapa dos assuntos jurídicos mais consultados no site, organizado por cluster: página principal, páginas específicas, guia e artigos relacionados.",
+    "url": "https://correalimaadvocacia.com.br/assuntos/",
+    "type": null,
+    "site_name": null,
+    "locale": null,
+    "image": "https://correalimaadvocacia.com.br/og-image.png"
+   },
+   "twitter": {
+    "card": "summary_large_image",
+    "title": "Corrêa Lima Advocacia",
+    "description": "Advocacia empresarial, contratos de importação, execuções, homologação de sentença estrangeira e questões patrimoniais.",
+    "image": "https://correalimaadvocacia.com.br/og-image.png"
+   }
+  },
+  "jsonld": [
+   {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+     {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Início",
+      "item": "https://correalimaadvocacia.com.br/"
+     },
+     {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Assuntos Mais Consultados",
+      "item": "https://correalimaadvocacia.com.br/assuntos/"
+     }
+    ]
+   },
+   {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "name": "Assuntos Mais Consultados",
+    "url": "https://correalimaadvocacia.com.br/assuntos/",
+    "about": {
+     "@type": "LegalService",
+     "name": "Corrêa Lima Advocacia"
+    },
+    "mainEntity": {
+     "@type": "ItemList",
+     "itemListElement": [
+      {
+       "@type": "ListItem",
+       "position": 1,
+       "name": "Homologação de Sentença Estrangeira e Decisões Internacionais — Página principal: Homologação de Sentença Estrangeira",
+       "url": "https://correalimaadvocacia.com.br/areas-de-atuacao/homologacao-de-sentenca-estrangeira/"
+      },
+      {
+       "@type": "ListItem",
+       "position": 2,
+       "name": "Homologação de Sentença Estrangeira e Decisões Internacionais — Página específica: Homologação de Divórcio Estrangeiro",
+       "url": "https://correalimaadvocacia.com.br/areas-de-atuacao/homologacao-de-divorcio-estrangeiro/"
+      },
+      {
+       "@type": "ListItem",
+       "position": 3,
+       "name": "Homologação de Sentença Estrangeira e Decisões Internacionais — Página específica: Reconhecimento de Decisões Estrangeiras no Brasil",
+       "url": "https://correalimaadvocacia.com.br/areas-de-atuacao/reconhecimento-de-decisoes-estrangeiras/"
+      },
+      {
+       "@type": "ListItem",
+       "position": 4,
+       "name": "Cobrança, Execução e Recuperação de Crédito — Página principal: Execuções, Cobrança e Recuperação de Crédito",
+       "url": "https://correalimaadvocacia.com.br/areas-de-atuacao/execucao-cobranca-recuperacao-de-credito/"
+      },
+      {
+       "@type": "ListItem",
+       "position": 5,
+       "name": "Cobrança, Execução e Recuperação de Crédito — Página específica: Cobrança Condominial e Recuperação de Inadimplência",
+       "url": "https://correalimaadvocacia.com.br/areas-de-atuacao/cobranca-condominial-recuperacao-de-inadimplencia/"
+      },
+      {
+       "@type": "ListItem",
+       "position": 6,
+       "name": "Recuperação Judicial e Medidas do Credor — Página principal: Recuperação Judicial e Falência",
+       "url": "https://correalimaadvocacia.com.br/areas-de-atuacao/recuperacao-judicial-e-falencia/"
+      },
+      {
+       "@type": "ListItem",
+       "position": 7,
+       "name": "Recuperação Judicial e Medidas do Credor — Página específica: Habilitação e Impugnação de Crédito",
+       "url": "https://correalimaadvocacia.com.br/areas-de-atuacao/habilitacao-e-impugnacao-de-credito/"
+      },
+      {
+       "@type": "ListItem",
+       "position": 8,
+       "name": "Contratos de Importação, Assessoria para Importadores e Direito Aduaneiro — Página principal: Contratos de Importação / Comércio Exterior",
+       "url": "https://correalimaadvocacia.com.br/areas-de-atuacao/contratos-de-importacao-comercio-exterior/"
+      },
+      {
+       "@type": "ListItem",
+       "position": 9,
+       "name": "Contratos de Importação, Assessoria para Importadores e Direito Aduaneiro — Página específica: Assessoria Jurídica para Importadores",
+       "url": "https://correalimaadvocacia.com.br/areas-de-atuacao/assessoria-juridica-para-importadores/"
+      },
+      {
+       "@type": "ListItem",
+       "position": 10,
+       "name": "Contratos de Importação, Assessoria para Importadores e Direito Aduaneiro — Página específica: Direito Aduaneiro e Comércio Exterior",
+       "url": "https://correalimaadvocacia.com.br/areas-de-atuacao/direito-aduaneiro-comercio-exterior/"
+      },
+      {
+       "@type": "ListItem",
+       "position": 11,
+       "name": "Inventário com Herdeiro no Exterior / Família e Sucessões Patrimoniais — Página principal: Inventário com Herdeiro no Exterior",
+       "url": "https://correalimaadvocacia.com.br/areas-de-atuacao/inventario-com-herdeiro-no-exterior/"
+      },
+      {
+       "@type": "ListItem",
+       "position": 12,
+       "name": "Inventário com Herdeiro no Exterior / Família e Sucessões Patrimoniais — Página específica: Inventário e Partilha",
+       "url": "https://correalimaadvocacia.com.br/areas-de-atuacao/inventario-e-partilha/"
+      },
+      {
+       "@type": "ListItem",
+       "position": 13,
+       "name": "Inventário com Herdeiro no Exterior / Família e Sucessões Patrimoniais — Página específica: Divórcio e Questões Patrimoniais",
+       "url": "https://correalimaadvocacia.com.br/areas-de-atuacao/divorcio-e-questoes-patrimoniais/"
+      }
+     ]
+    }
+   }
+  ],
+  "main_len": 11037
+ },
+ "/blog/": {
+  "key": "blog",
+  "head": {
+   "title": "Conteúdo Jurídico | Corrêa Lima Advocacia",
+   "description": "Artigos técnicos sobre advocacia empresarial, recuperação de crédito, contratos de importação, homologação de sentença estrangeira, família e sucessões.",
+   "canonical": "https://correalimaadvocacia.com.br/blog/",
+   "robots": "index, follow",
+   "author": "Alexandre Corrêa Lima",
+   "authorLink": "https://correalimaadvocacia.com.br/o-escritorio/",
+   "og": {
+    "title": "Conteúdo Jurídico | Corrêa Lima Advocacia",
+    "description": "Artigos técnicos sobre advocacia empresarial, recuperação de crédito, contratos de importação, homologação de sentença estrangeira, família e sucessões.",
+    "url": "https://correalimaadvocacia.com.br/blog/",
+    "type": null,
+    "site_name": null,
+    "locale": null,
+    "image": "https://correalimaadvocacia.com.br/og-image.png"
+   },
+   "twitter": {
+    "card": "summary_large_image",
+    "title": "Corrêa Lima Advocacia",
+    "description": "Advocacia empresarial, contratos de importação, execuções, homologação de sentença estrangeira e questões patrimoniais.",
+    "image": "https://correalimaadvocacia.com.br/og-image.png"
+   }
+  },
+  "jsonld": [
+   {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+     {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Início",
+      "item": "https://correalimaadvocacia.com.br/"
+     },
+     {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Conteúdo",
+      "item": "https://correalimaadvocacia.com.br/blog/"
+     }
+    ]
+   }
+  ],
+  "main_len": 18386
+ },
+ "/contato/": {
+  "key": "contato",
+  "head": {
+   "title": "Contato | Corrêa Lima Advocacia",
+   "description": "Entre em contato com a Corrêa Lima Advocacia por WhatsApp, formulário ou e-mail. Atendimento nacional e online.",
+   "canonical": "https://correalimaadvocacia.com.br/contato/",
+   "robots": "index, follow",
+   "author": "Alexandre Corrêa Lima",
+   "authorLink": "https://correalimaadvocacia.com.br/o-escritorio/",
+   "og": {
+    "title": "Contato | Corrêa Lima Advocacia",
+    "description": "Entre em contato com a Corrêa Lima Advocacia por WhatsApp, formulário ou e-mail. Atendimento nacional e online.",
+    "url": "https://correalimaadvocacia.com.br/contato/",
+    "type": null,
+    "site_name": null,
+    "locale": null,
+    "image": "https://correalimaadvocacia.com.br/og-image.png"
+   },
+   "twitter": {
+    "card": "summary_large_image",
+    "title": "Corrêa Lima Advocacia",
+    "description": "Advocacia empresarial, contratos de importação, execuções, homologação de sentença estrangeira e questões patrimoniais.",
+    "image": "https://correalimaadvocacia.com.br/og-image.png"
+   }
+  },
+  "jsonld": [
+   {
+    "@context": "https://schema.org",
+    "@type": "ContactPage",
+    "name": "Contato | Corrêa Lima Advocacia",
+    "url": "https://correalimaadvocacia.com.br/contato/",
+    "inLanguage": "pt-BR",
+    "about": {
+     "@type": "LegalService",
+     "@id": "https://correalimaadvocacia.com.br/#organization",
+     "name": "Corrêa Lima Advocacia",
+     "telephone": "+55 11 97502-5611",
+     "email": "contato@correalimaadvocacia.com.br",
+     "areaServed": {
+      "@type": "Country",
+      "name": "Brasil"
+     }
+    }
+   },
+   {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+     {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Início",
+      "item": "https://correalimaadvocacia.com.br/"
+     },
+     {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Contato",
+      "item": "https://correalimaadvocacia.com.br/contato/"
+     }
+    ]
+   }
+  ],
+  "main_len": 2397
+ },
+ "/contato/obrigado/": {
+  "key": "contato-obrigado",
+  "head": {
+   "title": "Mensagem recebida | Corrêa Lima Advocacia",
+   "description": "Recebemos sua mensagem. Veja os próximos passos e mantenha os documentos do caso disponíveis para a análise inicial.",
+   "canonical": "https://correalimaadvocacia.com.br/contato/obrigado/",
+   "robots": "noindex, follow",
+   "author": null,
+   "authorLink": null,
+   "og": {
+    "title": null,
+    "description": null,
+    "url": null,
+    "type": null,
+    "site_name": null,
+    "locale": null,
+    "image": null
+   },
+   "twitter": {
+    "card": null,
+    "title": null,
+    "description": null,
+    "image": null
+   }
+  },
+  "jsonld": [],
+  "main_len": 697
+ },
+ "/politica-de-privacidade/": {
+  "key": "politica-de-privacidade",
+  "head": {
+   "title": "Política de Privacidade | Corrêa Lima Advocacia",
+   "description": "Política de Privacidade da Corrêa Lima Advocacia sobre o tratamento de dados pessoais neste site.",
+   "canonical": "https://correalimaadvocacia.com.br/politica-de-privacidade/",
+   "robots": "index, follow",
+   "author": "Alexandre Corrêa Lima",
+   "authorLink": "https://correalimaadvocacia.com.br/o-escritorio/",
+   "og": {
+    "title": "Corrêa Lima Advocacia",
+    "description": "Advocacia empresarial, contratos de importação, execuções, homologação de sentença estrangeira e questões patrimoniais.",
+    "url": "https://correalimaadvocacia.com.br/",
+    "type": "website",
+    "site_name": "Corrêa Lima Advocacia",
+    "locale": "pt_BR",
+    "image": "https://correalimaadvocacia.com.br/og-image.png"
+   },
+   "twitter": {
+    "card": "summary_large_image",
+    "title": "Corrêa Lima Advocacia",
+    "description": "Advocacia empresarial, contratos de importação, execuções, homologação de sentença estrangeira e questões patrimoniais.",
+    "image": "https://correalimaadvocacia.com.br/og-image.png"
+   }
+  },
+  "jsonld": [
+   {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+     {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Início",
+      "item": "https://correalimaadvocacia.com.br/"
+     },
+     {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Política de Privacidade",
+      "item": "https://correalimaadvocacia.com.br/politica-de-privacidade/"
+     }
+    ]
+   }
+  ],
+  "main_len": 2699
+ },
+ "/termos-de-uso/": {
+  "key": "termos-de-uso",
+  "head": {
+   "title": "Termos de Uso | Corrêa Lima Advocacia",
+   "description": "Termos de Uso do site da Corrêa Lima Advocacia.",
+   "canonical": "https://correalimaadvocacia.com.br/termos-de-uso/",
+   "robots": "index, follow",
+   "author": "Alexandre Corrêa Lima",
+   "authorLink": "https://correalimaadvocacia.com.br/o-escritorio/",
+   "og": {
+    "title": "Corrêa Lima Advocacia",
+    "description": "Advocacia empresarial, contratos de importação, execuções, homologação de sentença estrangeira e questões patrimoniais.",
+    "url": "https://correalimaadvocacia.com.br/",
+    "type": "website",
+    "site_name": "Corrêa Lima Advocacia",
+    "locale": "pt_BR",
+    "image": "https://correalimaadvocacia.com.br/og-image.png"
+   },
+   "twitter": {
+    "card": "summary_large_image",
+    "title": "Corrêa Lima Advocacia",
+    "description": "Advocacia empresarial, contratos de importação, execuções, homologação de sentença estrangeira e questões patrimoniais.",
+    "image": "https://correalimaadvocacia.com.br/og-image.png"
+   }
+  },
+  "jsonld": [
+   {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+     {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Início",
+      "item": "https://correalimaadvocacia.com.br/"
+     },
+     {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Termos de Uso",
+      "item": "https://correalimaadvocacia.com.br/termos-de-uso/"
+     }
+    ]
+   }
+  ],
+  "main_len": 2444
+ },
+ "/lgpd/": {
+  "key": "lgpd",
+  "head": {
+   "title": "LGPD / Tratamento de Dados | Corrêa Lima Advocacia",
+   "description": "Informações sobre o tratamento de dados pessoais pela Corrêa Lima Advocacia, conforme a LGPD.",
+   "canonical": "https://correalimaadvocacia.com.br/lgpd/",
+   "robots": "index, follow",
+   "author": "Alexandre Corrêa Lima",
+   "authorLink": "https://correalimaadvocacia.com.br/o-escritorio/",
+   "og": {
+    "title": "Corrêa Lima Advocacia",
+    "description": "Advocacia empresarial, contratos de importação, execuções, homologação de sentença estrangeira e questões patrimoniais.",
+    "url": "https://correalimaadvocacia.com.br/",
+    "type": "website",
+    "site_name": "Corrêa Lima Advocacia",
+    "locale": "pt_BR",
+    "image": "https://correalimaadvocacia.com.br/og-image.png"
+   },
+   "twitter": {
+    "card": "summary_large_image",
+    "title": "Corrêa Lima Advocacia",
+    "description": "Advocacia empresarial, contratos de importação, execuções, homologação de sentença estrangeira e questões patrimoniais.",
+    "image": "https://correalimaadvocacia.com.br/og-image.png"
+   }
+  },
+  "jsonld": [
+   {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+     {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Início",
+      "item": "https://correalimaadvocacia.com.br/"
+     },
+     {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "LGPD",
+      "item": "https://correalimaadvocacia.com.br/lgpd/"
+     }
+    ]
+   }
+  ],
+  "main_len": 1680
+ },
+ "/404.html": {
+  "key": "404",
+  "head": {
+   "title": "Página não encontrada | Corrêa Lima Advocacia",
+   "description": "Advocacia empresarial, contratos de importação, execuções, homologação de sentença estrangeira e questões patrimoniais, conduzidas com técnica e estratégia.",
+   "canonical": "https://correalimaadvocacia.com.br/",
+   "robots": "noindex",
+   "author": "Alexandre Corrêa Lima",
+   "authorLink": "https://correalimaadvocacia.com.br/o-escritorio/",
+   "og": {
+    "title": "Corrêa Lima Advocacia",
+    "description": "Advocacia empresarial, contratos de importação, execuções, homologação de sentença estrangeira e questões patrimoniais.",
+    "url": "https://correalimaadvocacia.com.br/",
+    "type": "website",
+    "site_name": "Corrêa Lima Advocacia",
+    "locale": "pt_BR",
+    "image": "https://correalimaadvocacia.com.br/og-image.png"
+   },
+   "twitter": {
+    "card": "summary_large_image",
+    "title": "Corrêa Lima Advocacia",
+    "description": "Advocacia empresarial, contratos de importação, execuções, homologação de sentença estrangeira e questões patrimoniais.",
+    "image": "https://correalimaadvocacia.com.br/og-image.png"
+   }
+  },
+  "jsonld": [],
+  "main_len": 295
+ }
+}

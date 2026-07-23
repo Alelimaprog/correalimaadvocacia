@@ -1,0 +1,183 @@
+---
+/**
+ * Navigation — navegação principal do desktop (oculta abaixo de `lg`):
+ * Início · O Escritório · Áreas de Atuação (dropdown com os 6 núcleos) ·
+ * Conteúdos (dropdown) · Contato. Consome src/lib/navigation.ts (DRY).
+ */
+import { mainNav, areasMenu, conteudosMenu, contatoLink, isActive } from '@/lib/navigation';
+import Icon from '@/components/Icon.astro';
+
+const current = Astro.url.pathname;
+---
+
+<nav class="nav" aria-label="Navegação principal">
+  {
+    mainNav.map((link) => (
+      <a class="nav-link" href={link.href} aria-current={isActive(current, link.href) ? 'page' : undefined}>
+        {link.label}
+      </a>
+    ))
+  }
+
+  <div class="dropdown dropdown--mega" data-dropdown>
+    <button class="nav-link dd-trigger" type="button" aria-expanded="false" aria-controls="areas-menu">
+      {areasMenu.label}
+      <svg class="caret" aria-hidden="true" width="10" height="6" viewBox="0 0 10 6"><path d="M1 1l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.5"></path></svg>
+    </button>
+    <div class="dd-panel dd-panel--mega" id="areas-menu">
+      <div class="mega-grid">
+        {
+          areasMenu.items.map((n) => (
+            <a class="mega-item" href={n.href}>
+              <span class="mega-ic"><Icon name={n.icon} size={20} /></span>
+              <span class="mega-tx">
+                <span class="mega-title">{n.label}</span>
+                <span class="mega-desc">{n.short}</span>
+              </span>
+            </a>
+          ))
+        }
+      </div>
+      <a class="dd-viewall" href={areasMenu.viewAll.href}>{areasMenu.viewAll.label} &rarr;</a>
+    </div>
+  </div>
+
+  <div class="dropdown" data-dropdown>
+    <button class="nav-link dd-trigger" type="button" aria-expanded="false" aria-controls="conteudos-menu">
+      {conteudosMenu.label}
+      <svg class="caret" aria-hidden="true" width="10" height="6" viewBox="0 0 10 6"><path d="M1 1l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.5"></path></svg>
+    </button>
+    <div class="dd-panel" id="conteudos-menu">
+      {conteudosMenu.items.map((l) => <a class="dd-item" href={l.href}>{l.label}</a>)}
+    </div>
+  </div>
+
+  <a class="nav-link" href={contatoLink.href} aria-current={isActive(current, contatoLink.href) ? 'page' : undefined}>
+    {contatoLink.label}
+  </a>
+</nav>
+
+<style>
+  .nav { display: none; align-items: center; gap: 0.15rem; }
+  @media (min-width: 1024px) { .nav { display: flex; } }
+
+  .nav-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0.55rem 0.9rem;
+    border-radius: var(--radius-pill);
+    font-size: var(--text-sm);
+    font-weight: var(--weight-semibold);
+    color: var(--color-text);
+    text-decoration: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-family: var(--font-body);
+    transition: color var(--dur) var(--ease), background-color var(--dur) var(--ease);
+  }
+  .nav-link:hover,
+  .nav-link[aria-current='page'] { color: var(--color-green-strong); background: var(--surface-cream); }
+
+  .dropdown { position: relative; }
+  .caret { transition: transform 0.15s ease; }
+  .dropdown.is-open .caret,
+  .dropdown:hover .caret { transform: rotate(180deg); }
+
+  .dd-panel {
+    position: absolute;
+    top: calc(100% + 0.85rem);
+    left: 50%;
+    transform: translateX(-50%);
+    min-width: 15rem;
+    display: none;
+    flex-direction: column;
+    background: var(--color-paper);
+    color: var(--color-text);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-lg);
+    padding: 0.6rem;
+    z-index: 60;
+  }
+  .dd-panel--mega { min-width: 38rem; padding: 0.85rem; }
+  .dropdown.is-open .dd-panel,
+  .dropdown:hover .dd-panel,
+  .dropdown:focus-within .dd-panel { display: flex; }
+  .dropdown::after { content: ''; position: absolute; top: 100%; left: 0; right: 0; height: 0.85rem; }
+
+  .dd-item {
+    padding: 0.65rem 0.85rem;
+    border-radius: var(--radius-md);
+    font-size: var(--text-sm);
+    color: var(--color-text);
+    text-decoration: none;
+    transition: background-color var(--dur) var(--ease), color var(--dur) var(--ease);
+  }
+  .dd-item:hover { background: var(--surface-cream); color: var(--color-green-forest); }
+
+  .mega-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.3rem; }
+  .mega-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    padding: 0.75rem 0.8rem;
+    border-radius: var(--radius-md);
+    text-decoration: none;
+    transition: background-color var(--dur) var(--ease);
+  }
+  .mega-item:hover { background: var(--surface-cream); }
+  .mega-ic {
+    display: inline-flex;
+    height: 2.25rem;
+    width: 2.25rem;
+    flex: none;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--radius-md);
+    background: var(--color-green-tint);
+    color: var(--color-green-strong);
+  }
+  .mega-tx { display: flex; flex-direction: column; min-width: 0; }
+  .mega-title { font-size: var(--text-sm); font-weight: var(--weight-semibold); color: var(--color-ink); }
+  .mega-desc { font-size: var(--text-xs); color: var(--color-text-muted); line-height: 1.35; margin-top: 0.1rem; }
+  .dd-viewall {
+    margin-top: 0.4rem;
+    padding: 0.65rem 0.8rem;
+    color: var(--color-green-strong);
+    font-weight: var(--weight-semibold);
+    font-size: var(--text-sm);
+    text-decoration: none;
+    border-top: 1px solid var(--border-subtle);
+  }
+  .dd-viewall:hover { color: var(--color-green); }
+</style>
+
+<script>
+  document.querySelectorAll('[data-dropdown]').forEach((dd) => {
+    const trigger = dd.querySelector('.dd-trigger') as HTMLButtonElement | null;
+    if (!trigger) return;
+    const close = () => {
+      dd.classList.remove('is-open');
+      trigger.setAttribute('aria-expanded', 'false');
+    };
+    const toggle = () => {
+      const open = dd.classList.toggle('is-open');
+      trigger.setAttribute('aria-expanded', String(open));
+    };
+    trigger.addEventListener('click', (e) => {
+      e.preventDefault();
+      toggle();
+    });
+    document.addEventListener('click', (e) => {
+      if (!dd.contains(e.target as Node)) close();
+    });
+    dd.addEventListener('keydown', (e) => {
+      if ((e as KeyboardEvent).key === 'Escape') {
+        close();
+        trigger.focus();
+      }
+    });
+  });
+</script>

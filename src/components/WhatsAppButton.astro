@@ -1,0 +1,66 @@
+---
+/**
+ * WhatsAppButton — botão de contato por WhatsApp, com ícone e a mensagem
+ * pré-preenchida (site.config). O clique é rastreado automaticamente como
+ * `click_whatsapp` pelo Analytics global (que detecta links wa.me).
+ *
+ * variant: 'pill' (verde, como no header) | 'inline' (link discreto).
+ */
+import { whatsappHref } from '@/lib/site.config';
+
+interface Props {
+  label?: string;
+  variant?: 'pill' | 'inline';
+  class?: string;
+}
+const { label = 'Falar no WhatsApp', variant = 'pill', class: cls } = Astro.props;
+---
+
+<a
+  class:list={['wa', `wa--${variant}`, cls]}
+  href={whatsappHref}
+  target="_blank"
+  rel="noopener noreferrer"
+>
+  <svg aria-hidden="true" width="17" height="17" viewBox="0 0 24 24" fill="none">
+    <path
+      d="M17.6 6.4A8.9 8.9 0 0012 4a8.94 8.94 0 00-7.75 13.4L3 21l3.7-1.2A8.94 8.94 0 0012 21a8.94 8.94 0 006.3-15.6z"
+      stroke="currentColor"
+      stroke-width="1.6"></path>
+  </svg>
+  <span>{label}</span>
+</a>
+
+<style>
+  .wa {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: var(--text-sm);
+    text-decoration: none;
+    transition:
+      transform 0.15s ease,
+      background-color 0.15s ease,
+      color 0.15s ease;
+  }
+  .wa--pill {
+    background: var(--color-whatsapp);
+    color: #ffffff;
+    min-height: 44px; padding: 0 20px; font-size: 15px;
+    border-radius: var(--radius-pill);
+    box-shadow: var(--shadow-action);
+  }
+  .wa--pill:hover {
+    filter: brightness(1.05);
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-md), var(--shadow-action);
+  }
+  .wa--inline {
+    color: inherit;
+  }
+  .wa--inline:hover {
+    color: var(--color-green-strong);
+  }
+</style>

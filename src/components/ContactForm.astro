@@ -1,0 +1,185 @@
+---
+/**
+ * ContactForm — formulário de contato fiel ao site atual.
+ * Campos, rótulos, opções e texto de consentimento (LGPD) reproduzidos do export.
+ *
+ * Envio: mantém o Formspree atual (form id meebnnvj) via fetch. Em caso de
+ * sucesso, exibe "Mensagem enviada." — o que dispara o evento de conversão
+ * `form_submit` (tratado globalmente no Analytics) e o redirect para
+ * /contato/obrigado/. A substituição por PHP/PHPMailer é de uma fase própria.
+ *
+ * Segurança/antispam: honeypot `website` (campo oculto).
+ */
+const areas = [
+  'Advocacia Empresarial',
+  'Cobrança / Execução / Recuperação de Crédito',
+  'Contratos Empresariais / Importação',
+  'Homologação de Sentença Estrangeira',
+  'Família / Sucessões / Patrimônio',
+  'Outro assunto',
+];
+import { site } from '@/lib/site.config';
+const formspreeEndpoint = site.form.endpoint;
+---
+
+<form class="cform" data-contact-form action={formspreeEndpoint} method="POST" novalidate>
+  {/* Honeypot antispam — deve permanecer vazio */}
+  <input
+    type="text"
+    name="website"
+    tabindex="-1"
+    autocomplete="off"
+    aria-hidden="true"
+    class="cform-hp"
+  />
+
+  <div class="cform-field">
+    <label for="name">Nome *</label>
+    <input id="name" name="name" type="text" required autocomplete="name" />
+  </div>
+
+  <div class="cform-field">
+    <label for="whatsapp">WhatsApp *</label>
+    <input
+      id="whatsapp"
+      name="whatsapp"
+      type="tel"
+      required
+      placeholder="(11) 90000-0000"
+      autocomplete="tel"
+    />
+  </div>
+
+  <div class="cform-field">
+    <label for="email">E-mail *</label>
+    <input id="email" name="email" type="email" required autocomplete="email" />
+  </div>
+
+  <div class="cform-field">
+    <label for="area">Área de interesse *</label>
+    <select id="area" name="area" required>
+      <option value="">Selecione uma área</option>
+      {areas.map((a) => <option value={a}>{a}</option>)}
+    </select>
+  </div>
+
+  <div class="cform-field">
+    <label for="message">Breve descrição do caso</label>
+    <textarea id="message" name="message" rows="5"></textarea>
+  </div>
+
+  <div class="cform-consent">
+    <input id="consent" name="consent" type="checkbox" required />
+    <label for="consent">
+      Autorizo o tratamento dos meus dados pessoais para fins de contato e análise da
+      minha solicitação, conforme a Lei Geral de Proteção de Dados (LGPD) e a
+      <a href="/politica-de-privacidade/">Política de Privacidade</a>.
+    </label>
+  </div>
+
+  <button type="submit" class="cform-submit">Enviar meu caso</button>
+
+  <p class="cform-status" data-status role="status" aria-live="polite"></p>
+</form>
+
+<style>
+  .cform { display: flex; flex-direction: column; gap: var(--space-5); max-width: 34rem; }
+  .cform-hp { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; }
+  .cform-field { display: flex; flex-direction: column; gap: var(--space-2); }
+  .cform label { font-size: var(--text-sm); font-weight: var(--weight-medium); color: var(--color-ink); }
+  .cform input,
+  .cform select,
+  .cform textarea {
+    width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+    font-family: var(--font-body);
+    font-size: var(--text-base);
+    color: var(--color-ink);
+    padding: 0.8rem 1rem;
+    border: 1px solid var(--border-strong);
+    border-radius: var(--radius-md);
+    background: var(--surface);
+    transition: border-color var(--dur) var(--ease), box-shadow var(--dur) var(--ease);
+  }
+  .cform textarea { resize: vertical; min-height: 7rem; }
+  .cform input::placeholder,
+  .cform textarea::placeholder { color: var(--color-text-subtle); }
+  .cform input:hover,
+  .cform select:hover,
+  .cform textarea:hover { border-color: var(--gray-400); }
+  .cform input:focus,
+  .cform select:focus,
+  .cform textarea:focus {
+    outline: none;
+    border-color: var(--color-green-strong);
+    box-shadow: var(--ring);
+  }
+  .cform-consent { display: flex; gap: var(--space-3); align-items: flex-start; }
+  .cform-consent input { margin-top: 0.25rem; width: 1.05rem; height: 1.05rem; accent-color: var(--color-green-strong); }
+  .cform-consent label { font-weight: var(--weight-regular); color: var(--color-text-muted); line-height: var(--leading-normal); font-size: var(--text-sm); }
+  .cform-consent a { color: var(--color-green-strong); }
+  .cform-submit {
+    align-self: flex-start;
+    display: inline-flex; align-items: center; justify-content: center;
+    min-height: 2.9rem;
+    background: var(--color-green);
+    color: #ffffff;
+    border: 1px solid transparent;
+    border-radius: var(--radius-pill);
+    padding: 0.7rem 1.8rem;
+    font-family: var(--font-body);
+    font-weight: var(--weight-semibold);
+    font-size: var(--text-sm);
+    cursor: pointer;
+    box-shadow: var(--shadow-action);
+    transition: filter var(--dur) var(--ease), transform var(--dur) var(--ease), box-shadow var(--dur) var(--ease);
+  }
+  .cform-submit:hover { filter: brightness(1.05); transform: translateY(-1px); box-shadow: var(--shadow-md), var(--shadow-action); }
+  .cform-submit:disabled { opacity: 0.6; cursor: default; transform: none; }
+  .cform-status:empty { display: none; }
+  .cform-status { font-size: var(--text-sm); color: var(--color-ink); font-weight: var(--weight-medium); margin-top: var(--space-1); }
+  .cform-status[data-error] { color: var(--color-warn); }
+</style>
+
+<script>
+  document.querySelectorAll('[data-contact-form]').forEach((formEl) => {
+    const form = formEl as HTMLFormElement;
+    const status = form.querySelector('[data-status]') as HTMLElement | null;
+    const submit = form.querySelector('.cform-submit') as HTMLButtonElement | null;
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      if (!form.checkValidity()) {
+        form.reportValidity();
+        return;
+      }
+      if (status) {
+        status.textContent = 'Enviando…';
+        status.removeAttribute('data-error');
+      }
+      if (submit) submit.disabled = true;
+
+      try {
+        const res = await fetch(form.action, {
+          method: 'POST',
+          body: new FormData(form),
+          headers: { Accept: 'application/json' },
+        });
+        if (res.ok) {
+          // Dispara o fluxo de conversão do Analytics (form_submit -> /contato/obrigado/)
+          if (status) status.textContent = 'Mensagem enviada.';
+        } else {
+          throw new Error('falha no envio');
+        }
+      } catch {
+        if (status) {
+          status.textContent =
+            'Não foi possível enviar agora. Tente novamente ou fale no WhatsApp.';
+          status.setAttribute('data-error', 'true');
+        }
+        if (submit) submit.disabled = false;
+      }
+    });
+  });
+</script>

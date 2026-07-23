@@ -1,0 +1,42 @@
+---
+/**
+ * /404.html — migração fiel do export (Fase 3). Head (SEO), JSON-LD e conteúdo
+ * reproduzidos do site atual. Chrome (Header/Footer) via componentes.
+ * Conteúdo: src/partials/institucional/404.html
+ */
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import JsonLd from '@/components/JsonLd.astro';
+import Container from '@/components/Container.astro';
+import { getPage } from '@/lib/institucional';
+import body from '@/partials/institucional/404.html?raw';
+
+const page = getPage('/404.html');
+
+// ETAPA 3 — a 404 não deve ter canonical apontando para a Home nem ser
+// indexável. Sobrescreve o head capturado: robots "noindex, follow" e
+// remove qualquer canonical/URL de Open Graph herdados.
+const head404 = {
+  ...page.head,
+  robots: 'noindex, follow',
+  canonical: null,
+  og: page.head.og ? { ...page.head.og, url: null } : page.head.og,
+};
+---
+
+<BaseLayout head={head404} noCanonical={true}>
+  <Fragment slot="jsonld">
+    {page.jsonld.map((schema) => <JsonLd schema={schema} />)}
+  </Fragment>
+
+  <main id="conteudo-principal" class="inst">
+    <Container>
+      <div class="doc doc--404" set:html={body} />
+    </Container>
+  </main>
+</BaseLayout>
+
+<style>
+  .inst {
+    padding-block: var(--section-y);
+  }
+</style>

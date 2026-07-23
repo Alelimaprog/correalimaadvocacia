@@ -1,0 +1,129 @@
+---
+/**
+ * ClusterNav — navegação automática do cluster temático.
+ *
+ * Lista os demais conteúdos (guias e artigos) que pertencem ao mesmo cluster da
+ * página atual, mais o link para a página pilar. É alimentado diretamente pelas
+ * content collections: qualquer conteúdo novo entra na malha automaticamente,
+ * sem edição manual de frontmatter — o que elimina o risco de páginas órfãs e
+ * distribui autoridade interna de forma consistente.
+ */
+import { getCollection } from 'astro:content';
+import { getNucleo } from '@/lib/nucleos';
+import Icon from '@/components/Icon.astro';
+
+interface Props {
+  cluster?: string;
+  currentSlug: string;
+  currentCollection: 'blog' | 'guias';
+  limite?: number;
+}
+const { cluster, currentSlug, currentCollection, limite = 8 } = Astro.props;
+
+let itens: { titulo: string; href: string; tipo: string }[] = [];
+let nucleo: ReturnType<typeof getNucleo> | undefined;
+
+if (cluster) {
+  nucleo = getNucleo(cluster);
+  const [posts, guias] = await Promise.all([getCollection('blog'), getCollection('guias')]);
+
+  const doCluster = [
+    ...guias
+      .filter((g) => g.data.cluster === cluster && !(currentCollection === 'guias' && g.id === currentSlug))
+      .map((g) => ({ titulo: g.data.h1 ?? g.data.title, href: `/guias/${g.id}/`, tipo: 'Guia' })),
+    ...posts
+      .filter((p) => p.data.cluster === cluster && !(currentCollection === 'blog' && p.id === currentSlug))
+      .map((p) => ({ titulo: p.data.h1 ?? p.data.title, href: `/blog/${p.id}/`, tipo: 'Artigo' })),
+  ];
+
+  // Guias primeiro (hubs), depois artigos; corte no limite para não poluir.
+  itens = doCluster.slice(0, limite);
+}
+---
+
+{itens.length > 0 && (
+  <nav class="cnav" aria-label={`Mais conteúdos sobre ${nucleo?.label ?? 'este tema'}`}>
+    <p class="cnav-title">
+      Mais sobre {nucleo?.label ?? 'este tema'}
+    </p>
+    <ul>
+      {itens.map((i) => (
+        <li>
+          <a href={i.href}>
+            <span class="cnav-tag">{i.tipo}</span>
+            <span class="cnav-t">{i.titulo}</span>
+          </a>
+        </li>
+      ))}
+    </ul>
+    {nucleo && (
+      <a class="cnav-pilar" href={nucleo.href}>
+        Ver a área de {nucleo.label}
+        <span class="cnav-ic"><Icon name="arrow-right" size={15} /></span>
+      </a>
+    )}
+  </nav>
+)}
+
+<style>
+  .cnav {
+    border-top: 1px solid var(--color-border);
+    margin-top: var(--space-8);
+    padding-top: var(--space-6);
+  }
+  .cnav-title {
+    font-family: var(--font-display);
+    font-weight: var(--weight-bold);
+    color: var(--color-ink);
+    font-size: var(--text-md);
+    margin-bottom: var(--space-4);
+  }
+  .cnav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-2);
+  }
+  @media (min-width: 720px) {
+    .cnav ul { grid-template-columns: 1fr 1fr; gap: var(--space-2) var(--space-5); }
+  }
+  .cnav a {
+    display: flex;
+    align-items: baseline;
+    gap: var(--space-3);
+    padding: var(--space-2) 0;
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: border-color var(--dur) var(--ease);
+  }
+  .cnav li a:hover { border-bottom-color: var(--border-green-subtle); }
+  .cnav-tag {
+    flex: none;
+    font-size: var(--text-xs);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    font-weight: var(--weight-semibold);
+    color: var(--color-green-strong);
+    min-width: 3.4rem;
+  }
+  .cnav-t {
+    color: var(--color-text);
+    font-size: var(--text-sm);
+    line-height: var(--leading-snug);
+  }
+  .cnav li a:hover .cnav-t { color: var(--color-ink); }
+  .cnav-pilar {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    margin-top: var(--space-5);
+    color: var(--color-green-strong);
+    font-weight: var(--weight-semibold);
+    font-size: var(--text-sm);
+    text-decoration: none;
+  }
+  .cnav-pilar:hover { text-decoration: underline; }
+  .cnav-ic { display: inline-flex; }
+</style>

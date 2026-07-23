@@ -1,0 +1,78 @@
+---
+/**
+ * /guias/[slug]/ — rota dinâmica das páginas da coleção "guias" (Fase 4).
+ * Conteúdo em Markdown (Content Collection); head e JSON-LD preservados.
+ */
+import { getCollection, render } from 'astro:content';
+import EntryPage from '@/layouts/EntryPage.astro';
+import { buildChildHead } from '@/lib/child-head';
+import { getJsonLd, getBreadcrumb, buildFaqJsonLd } from '@/lib/structured-data';
+import ContextualCta from '@/components/editorial/ContextualCta.astro';
+import ClusterNav from '@/components/editorial/ClusterNav.astro';
+import RelatedContent from '@/components/editorial/RelatedContent.astro';
+import { getNucleo } from '@/lib/nucleos';
+
+export async function getStaticPaths() {
+  const entries = await getCollection('guias');
+  return entries.map((entry) => ({ params: { slug: entry.id }, props: { entry } }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+import { site } from '@/lib/site.config';
+const path = `/guias/${entry.id}/`;
+const head = buildChildHead('guias', entry.data, path);
+let jsonld = getJsonLd('guias', entry.id);
+let crumbs = getBreadcrumb('guias', entry.id);
+
+// Fallback (guias criados na Sprint 2, ainda não presentes no store):
+// gera breadcrumb + JSON-LD (BreadcrumbList + Article) a partir do frontmatter.
+if (crumbs.length === 0) {
+  crumbs = [
+    { label: 'Início', href: '/' },
+    { label: 'Guias', href: '/guias/' },
+    { label: entry.data.h1 ?? entry.data.title },
+  ];
+}
+if (jsonld.length === 0) {
+  const abs = `${site.url}${path}`;
+  jsonld = [
+    {
+      '@context': 'https://schema.org',
+      '@type': 'BreadcrumbList',
+      itemListElement: crumbs.map((c, i) => ({
+        '@type': 'ListItem',
+        position: i + 1,
+        name: c.label,
+        ...(c.href ? { item: `${site.url}${c.href}` } : {}),
+      })),
+    },
+    {
+      '@context': 'https://schema.org',
+      '@type': 'Article',
+      headline: entry.data.h1 ?? entry.data.title,
+      description: entry.data.description,
+      author: { '@type': 'Person', name: entry.data.author ?? site.attorney.name },
+      publisher: { '@type': 'LegalService', name: site.name, url: `${site.url}/` },
+      mainEntityOfPage: abs,
+      url: abs,
+    },
+  ];
+  // FAQPage espelhando a seção "Perguntas frequentes" visível no conteúdo.
+  const faqGuia = buildFaqJsonLd(entry.body ?? '');
+  if (faqGuia) jsonld = [...jsonld, faqGuia];
+}
+const nucleo = entry.data.cluster ? getNucleo(entry.data.cluster) : undefined;
+const relacionados = entry.data.relacionados ?? [];
+---
+
+<EntryPage head={head} jsonld={jsonld} crumbs={crumbs}>
+  <Content />
+  {relacionados.length > 0 && <RelatedContent itens={relacionados} />}
+  <ClusterNav cluster={entry.data.cluster} currentSlug={entry.id} currentCollection="guias" />
+  <ContextualCta
+    titulo={nucleo ? `Precisa de orientação em ${nucleo.label}?` : 'Precisa avaliar a sua situação?'}
+    texto="Apresente o caso e entenda quais podem ser os próximos passos."
+    areaHref={nucleo?.href}
+  />
+</EntryPage>

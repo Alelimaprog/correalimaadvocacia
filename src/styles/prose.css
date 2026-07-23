@@ -1,0 +1,145 @@
+/**
+ * prose.css — leitura longa premium (guias, artigos, áreas, institucional).
+ * Conteúdo injetado via set:html/Markdown → estilos globais (não escopados).
+ * Refinamento tipográfico; nenhum texto ou estrutura é alterado.
+ */
+
+.prose {
+  max-width: 46rem;           /* leitura editorial 680–760px */
+  color: var(--color-text);
+  font-size: var(--text-md);
+  line-height: var(--leading-relaxed);
+}
+.prose.prose--wide { max-width: 48rem; }
+
+/* Títulos — respiram, hierarquia clara */
+.prose h1 {
+  font-size: var(--text-3xl);
+  color: var(--color-ink);
+  line-height: var(--leading-tight);
+  letter-spacing: var(--tracking-tight);
+  margin-bottom: var(--space-5);
+  max-width: 24ch;
+}
+.prose h2 {
+  font-size: var(--text-2xl);
+  color: var(--color-ink);
+  line-height: var(--leading-snug);
+  margin-top: var(--space-7);
+  margin-bottom: var(--space-3);
+  padding-top: var(--space-3);
+  position: relative;
+}
+.prose h2::before {
+  content: '';
+  position: absolute; top: 0; left: 0;
+  width: 1.75rem; height: 3px; background: var(--color-green); border-radius: 2px;
+}
+.prose h3 {
+  font-family: var(--font-display);
+  font-size: var(--text-xl);
+  color: var(--color-ink);
+  margin-top: var(--space-5);
+  margin-bottom: var(--space-2);
+}
+.prose h4 {
+  font-size: var(--text-lg);
+  color: var(--color-ink);
+  margin-top: var(--space-6);
+  margin-bottom: var(--space-2);
+}
+
+.prose p {
+  margin-bottom: var(--space-4);
+  color: var(--color-text);
+}
+/* Primeiro parágrafo como "lead" discreto */
+.prose > p:first-of-type {
+  font-size: var(--text-lg);
+  color: var(--color-ink);
+  line-height: var(--leading-relaxed);
+}
+
+.prose ul,
+.prose ol {
+  margin: 0 0 var(--space-5);
+  padding-left: 1.35rem;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+.prose li { line-height: var(--leading-relaxed); }
+.prose li::marker { color: var(--color-green-strong); }
+
+.prose a {
+  color: var(--color-green-strong);
+  text-decoration: underline;
+  text-underline-offset: 0.18em;
+  text-decoration-color: color-mix(in srgb, var(--color-green-strong) 35%, transparent);
+  transition: color var(--dur) var(--ease), text-decoration-color var(--dur) var(--ease);
+}
+.prose a:hover {
+  color: var(--color-green);
+  text-decoration-color: currentColor;
+}
+
+.prose strong { color: var(--color-ink); font-weight: var(--weight-semibold); }
+
+.prose blockquote {
+  margin: var(--space-6) 0;
+  padding: var(--space-2) 0 var(--space-2) var(--space-5);
+  border-left: 3px solid var(--color-green);
+  color: var(--gray-700);
+  font-style: italic;
+}
+
+.prose hr {
+  border: 0;
+  height: 1px;
+  background: var(--border-subtle);
+  margin: var(--space-10) 0;
+}
+
+.prose code {
+  font-size: 0.9em;
+  background: var(--surface-muted);
+  padding: 0.15em 0.4em;
+  border-radius: var(--radius-sm);
+}
+
+.prose img { border-radius: var(--radius-lg); margin: var(--space-6) 0; }
+
+.prose table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: var(--space-6) 0;
+  font-size: var(--text-sm);
+}
+.prose th,
+.prose td {
+  text-align: left;
+  padding: var(--space-3) var(--space-4);
+  border-bottom: 1px solid var(--border-subtle);
+}
+.prose th { color: var(--color-ink); font-weight: var(--weight-semibold); background: var(--surface-subtle); }
+
+.prose section + section { margin-top: var(--space-6); }
+
+/* Breadcrumb textual eventualmente presente no conteúdo */
+.prose nav[aria-label='Trilha de navegação'] {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-6);
+}
+.prose nav[aria-label='Trilha de navegação'] a { color: var(--color-text-muted); text-decoration: none; }
+.prose nav[aria-label='Trilha de navegação'] a:hover { color: var(--color-green-strong); }
+
+/* Eyebrow preservado no conteúdo */
+.prose .eyebrow,
+.prose p.eyebrow {
+  color: var(--color-green-strong);
+  font-weight: var(--weight-semibold);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-eyebrow);
+  font-size: var(--text-xs);
+}

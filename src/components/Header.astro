@@ -1,0 +1,81 @@
+---
+/**
+ * Header — cabeçalho flutuante em "pílula" (migração visual): fixo no topo,
+ * fundo transparente até rolar; ao rolar, vira um cartão translúcido com
+ * blur, borda e sombra suave, igual ao comportamento do modelo de
+ * referência. Logo à esquerda, navegação central (desktop), CTA WhatsApp
+ * (desktop) e menu hambúrguer (mobile). Toda a lógica de navegação/menu
+ * permanece nos componentes Navigation/MobileMenu (inalterados).
+ */
+import Logo from '@/components/Logo.astro';
+import Navigation from '@/components/Navigation.astro';
+import WhatsAppButton from '@/components/WhatsAppButton.astro';
+import MobileMenu from '@/components/MobileMenu.astro';
+---
+
+<header class="site-header" data-header>
+  <div class="header-shell">
+    <div class="header-inner">
+      <Logo variant="light" />
+      <Navigation />
+      <div class="header-cta">
+        <WhatsAppButton />
+      </div>
+      <MobileMenu />
+    </div>
+  </div>
+</header>
+
+<style>
+  /* Header flutuante — transparente no topo, "pílula" translúcida ao rolar */
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    padding: 0.75rem clamp(0.75rem, 2vw, 1.25rem) 0;
+  }
+  .header-shell {
+    width: 100%;
+    max-width: var(--container-max);
+    margin-inline: auto;
+    border-radius: var(--radius-pill);
+    /* Leve profundidade e separação do hero: vidro levemente esverdeado
+       (menos branco), borda hairline e sombra praticamente imperceptível. */
+    border: 1px solid var(--border-subtle);
+    background: rgba(247, 250, 247, 0.7);
+    box-shadow: var(--shadow-sm);
+    backdrop-filter: saturate(160%) blur(10px);
+    -webkit-backdrop-filter: saturate(160%) blur(10px);
+    transition: background-color var(--dur-slow) var(--ease), border-color var(--dur-slow) var(--ease),
+      box-shadow var(--dur-slow) var(--ease), backdrop-filter var(--dur-slow) var(--ease);
+  }
+  .site-header.is-scrolled .header-shell {
+    background: rgba(244, 249, 245, 0.9);
+    border-color: var(--color-border);
+    box-shadow: var(--shadow-md);
+    backdrop-filter: saturate(180%) blur(14px);
+    -webkit-backdrop-filter: saturate(180%) blur(14px);
+  }
+  .header-inner {
+    width: 100%;
+    padding-inline: clamp(0.9rem, 2vw, 1.5rem);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-6);
+    height: 4rem;
+  }
+  .header-cta { display: none; }
+  @media (min-width: 1024px) { .header-cta { display: block; } }
+</style>
+
+<script>
+  const header = document.querySelector('[data-header]');
+  if (header) {
+    const onScroll = () => {
+      header.classList.toggle('is-scrolled', window.scrollY > 16);
+    };
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+  }
+</script>

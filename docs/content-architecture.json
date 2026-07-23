@@ -1,0 +1,77 @@
+{
+  "meta": {
+    "projeto": "Corrêa Lima Advocacia",
+    "objetivo": "Autoridade temática + geração de contatos qualificados, sem conteúdo raso ou juridicamente inventado.",
+    "regra": "Nenhuma página é publicada sem revisão jurídica do advogado responsável. As páginas planejadas abaixo são o roteiro editorial (metadados/estrutura), NÃO texto jurídico gerado por IA.",
+    "cta_padrao": { "primario": "Falar sobre o meu caso", "secundario": "Falar pelo WhatsApp", "area": "Conhecer esta área", "conteudo": "Ler o guia" }
+  },
+  "clusters": [
+    {
+      "id": "recuperacao-de-credito",
+      "nome": "Recuperação de Crédito",
+      "pilar": { "url": "/areas-de-atuacao/recuperacao-de-credito/", "status": "existe", "recomendacao": "manter e enriquecer como hub" },
+      "subclusters": ["cobrança extrajudicial", "execução de título", "recuperação judicial e falência (credor)", "localização de patrimônio/penhora"],
+      "planejadas": [
+        { "prioridade": "P1", "tipo": "satélite/problema", "slug": "como-cobrar-cliente-inadimplente-empresa", "h1": "Como cobrar um cliente inadimplente (empresa)", "kw_principal": "cobrar cliente inadimplente", "intencao": "transacional-informacional", "funil": "meio", "schema": ["Article", "FAQPage", "BreadcrumbList"], "links_saida": ["pilar", "execucao-de-titulo-extrajudicial"], "cta": "Falar sobre o meu caso" },
+        { "prioridade": "P1", "tipo": "satélite/como-funciona", "slug": "execucao-de-titulo-extrajudicial", "h1": "Execução de título extrajudicial: como funciona", "kw_principal": "execução de título extrajudicial", "intencao": "informacional", "funil": "meio", "schema": ["Article", "FAQPage"], "cta": "Solicitar atendimento" },
+        { "prioridade": "P2", "tipo": "satélite/documentos", "slug": "documentos-para-execucao-de-divida", "h1": "Quais documentos são necessários para executar uma dívida", "kw_principal": "documentos execução de dívida", "intencao": "informacional", "funil": "topo-meio", "schema": ["Article"] },
+        { "prioridade": "P3", "tipo": "cauda-longa", "slug": "prazo-prescricao-cobranca-de-divida", "h1": "Qual o prazo de prescrição para cobrar uma dívida", "kw_principal": "prescrição cobrança de dívida", "intencao": "informacional", "funil": "topo", "schema": ["Article", "FAQPage"], "obs": "Requer verificação de prazos legais na revisão jurídica." }
+      ]
+    },
+    {
+      "id": "cobranca-condominial",
+      "nome": "Cobrança Condominial",
+      "pilar": { "url": "/areas-de-atuacao/cobranca-condominial/", "status": "existe", "recomendacao": "manter; cobertura satélite ainda baixa" },
+      "subclusters": ["cobrança de cotas", "acordos", "execução de despesas", "penhora da unidade", "assessoria a síndicos/administradoras"],
+      "planejadas": [
+        { "prioridade": "P1", "tipo": "satélite/passo-a-passo", "slug": "como-cobrar-cotas-condominiais-em-atraso", "h1": "Como cobrar cotas condominiais em atraso: passo a passo", "kw_principal": "cobrar cotas condominiais em atraso", "intencao": "transacional-informacional", "funil": "meio", "schema": ["Article", "FAQPage"], "cta": "Solicitar atendimento" },
+        { "prioridade": "P2", "tipo": "satélite/quem-pode", "slug": "penhora-de-unidade-por-divida-de-condominio", "h1": "É possível penhorar a unidade por dívida de condomínio?", "kw_principal": "penhora de imóvel dívida condomínio", "intencao": "informacional", "funil": "meio", "schema": ["Article", "FAQPage"], "obs": "Tema com nuances — revisão jurídica obrigatória." },
+        { "prioridade": "P3", "tipo": "cauda-longa", "slug": "sindico-pode-restringir-acesso-a-areas-comuns", "h1": "O síndico pode restringir o acesso do inadimplente às áreas comuns?", "kw_principal": "restringir áreas comuns inadimplente", "intencao": "informacional", "funil": "topo", "schema": ["Article", "FAQPage"] }
+      ]
+    },
+    {
+      "id": "direito-ambiental",
+      "nome": "Direito Ambiental",
+      "pilar": { "url": "/areas-de-atuacao/direito-ambiental/", "status": "existe", "recomendacao": "LACUNA CRÍTICA — só 2 conteúdos no cluster; expandir com prioridade máxima" },
+      "subclusters": ["auto de infração/multa", "embargo", "APP e regularização", "licenciamento", "responsabilidade ambiental"],
+      "planejadas": [
+        { "prioridade": "P1", "tipo": "satélite/o-que-fazer", "slug": "recebi-auto-de-infracao-ambiental-o-que-fazer", "h1": "Recebi um auto de infração ambiental: o que fazer", "kw_principal": "auto de infração ambiental o que fazer", "intencao": "transacional-informacional", "funil": "fundo", "schema": ["Article", "FAQPage", "BreadcrumbList"], "cta": "Solicitar atendimento" },
+        { "prioridade": "P1", "tipo": "satélite/defesa", "slug": "defesa-em-embargo-ambiental", "h1": "Defesa em embargo ambiental: prazos e medidas", "kw_principal": "defesa embargo ambiental", "intencao": "transacional-informacional", "funil": "fundo", "schema": ["Article", "FAQPage"], "cta": "Falar sobre o meu caso" },
+        { "prioridade": "P2", "tipo": "satélite/como-regularizar", "slug": "como-regularizar-construcao-em-app", "h1": "Como regularizar uma construção em APP", "kw_principal": "regularizar construção em APP", "intencao": "informacional", "funil": "meio", "schema": ["Article", "FAQPage"], "obs": "Depende de legislação/data de ocupação — revisão jurídica obrigatória." },
+        { "prioridade": "P3", "tipo": "cauda-longa", "slug": "diferenca-entre-multa-e-embargo-ambiental", "h1": "Diferença entre multa e embargo ambiental", "kw_principal": "diferença multa e embargo ambiental", "intencao": "informacional", "funil": "topo", "schema": ["Article"] }
+      ]
+    },
+    {
+      "id": "direito-aduaneiro-tributario",
+      "nome": "Direito Aduaneiro-Tributário",
+      "pilar": { "url": "/areas-de-atuacao/direito-aduaneiro-tributario/", "status": "existe", "recomendacao": "manter; boa base" },
+      "subclusters": ["retenção de mercadoria", "pena de perdimento", "multas aduaneiras", "tributação na importação", "contratos de importação"],
+      "planejadas": [
+        { "prioridade": "P1", "tipo": "satélite/o-que-fazer", "slug": "mercadoria-retida-na-alfandega-o-que-fazer", "h1": "Mercadoria retida na alfândega: o que fazer", "kw_principal": "mercadoria retida alfândega", "intencao": "transacional-informacional", "funil": "fundo", "schema": ["Article", "FAQPage"], "cta": "Solicitar atendimento", "obs": "Consolidar com artigo existente de multa aduaneira se houver sobreposição." },
+        { "prioridade": "P2", "tipo": "satélite/defesa", "slug": "defesa-contra-pena-de-perdimento", "h1": "Defesa contra pena de perdimento", "kw_principal": "pena de perdimento defesa", "intencao": "transacional-informacional", "funil": "fundo", "schema": ["Article", "FAQPage"] },
+        { "prioridade": "P3", "tipo": "cauda-longa", "slug": "prazo-para-impugnar-auto-de-infracao-aduaneiro", "h1": "Qual o prazo para impugnar um auto de infração aduaneiro", "kw_principal": "prazo impugnar auto de infração aduaneiro", "intencao": "informacional", "funil": "meio", "schema": ["Article", "FAQPage"], "obs": "Verificar prazos — revisão jurídica." }
+      ]
+    },
+    {
+      "id": "direito-internacional",
+      "nome": "Direito Internacional / Homologação",
+      "pilar": { "url": "/areas-de-atuacao/direito-internacional/", "status": "existe", "recomendacao": "manter; cluster forte (18 itens)" },
+      "subclusters": ["homologação de sentença estrangeira", "homologação de divórcio", "reconhecimento de decisões", "apostilamento/tradução"],
+      "planejadas": [
+        { "prioridade": "P2", "tipo": "satélite/quanto-custa", "slug": "quanto-custa-homologar-sentenca-estrangeira", "h1": "Quanto custa homologar uma sentença estrangeira no Brasil", "kw_principal": "custo homologação sentença estrangeira", "intencao": "informacional", "funil": "meio", "schema": ["Article", "FAQPage"], "obs": "Falar de faixas/variáveis sem inventar valores fixos." },
+        { "prioridade": "P3", "tipo": "comparação", "slug": "diferenca-homologacao-e-reconhecimento-de-decisao-estrangeira", "h1": "Diferença entre homologação e reconhecimento de decisão estrangeira", "kw_principal": "homologação x reconhecimento decisão estrangeira", "intencao": "informacional", "funil": "topo", "schema": ["Article"] }
+      ]
+    },
+    {
+      "id": "inventario-e-patrimonio",
+      "nome": "Inventário e Patrimônio",
+      "pilar": { "url": "/areas-de-atuacao/inventario-e-patrimonio/", "status": "existe", "recomendacao": "manter; considerar subclusters de Planejamento Patrimonial e Patrimônio Empresarial" },
+      "subclusters": ["inventário judicial/extrajudicial", "partilha", "herdeiro no exterior", "planejamento patrimonial", "holding/patrimônio empresarial"],
+      "planejadas": [
+        { "prioridade": "P1", "tipo": "satélite/passo-a-passo", "slug": "inventario-extrajudicial-quando-cabe-e-como-funciona", "h1": "Inventário extrajudicial: quando cabe e como funciona", "kw_principal": "inventário extrajudicial", "intencao": "informacional", "funil": "meio", "schema": ["Article", "FAQPage"], "cta": "Falar sobre o meu caso" },
+        { "prioridade": "P2", "tipo": "satélite/documentos", "slug": "documentos-necessarios-para-inventario", "h1": "Documentos necessários para o inventário", "kw_principal": "documentos para inventário", "intencao": "informacional", "funil": "meio", "schema": ["Article"] },
+        { "prioridade": "P4", "tipo": "pilar-candidato", "slug": "planejamento-patrimonial", "h1": "Planejamento Patrimonial", "kw_principal": "planejamento patrimonial", "intencao": "informacional", "funil": "topo-meio", "schema": ["LegalService", "FAQPage"], "obs": "Candidato a novo pilar/subpágina — só criar com conteúdo real e revisão." }
+      ]
+    }
+  ]
+}

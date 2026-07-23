@@ -1,0 +1,73 @@
+---
+/**
+ * FloatingWhatsApp — botão flutuante fixo (canto inferior direito), visível em
+ * todas as telas durante a rolagem (o botão do header coexiste). Mantém href
+ * wa.me, target/rel, evento click_whatsapp (Analytics) e aria-label. Sem JS.
+ */
+import { whatsappHrefForPath } from '@/lib/site.config';
+
+// ETAPA 18 — mensagem personalizada conforme a página atual.
+const href = whatsappHrefForPath(Astro.url.pathname);
+---
+
+<a
+  class="fab-whatsapp"
+  href={href}
+  target="_blank"
+  rel="noopener noreferrer"
+  data-cta-position="floating"
+  aria-label="Falar no WhatsApp com a Corrêa Lima Advocacia"
+>
+  <span class="fab-halo" aria-hidden="true"></span>
+  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+    <path
+      d="M17.6 6.4A8.9 8.9 0 0012 4a8.94 8.94 0 00-7.75 13.4L3 21l3.7-1.2A8.94 8.94 0 0012 21a8.94 8.94 0 006.3-15.6zM12 19.3a7.3 7.3 0 01-3.73-1.02l-.27-.16-2.2.7.72-2.14-.18-.28A7.32 7.32 0 1119.3 12 7.32 7.32 0 0112 19.3z"
+      fill="#ffffff"></path>
+    <path
+      d="M15.1 13.6c-.2-.1-1.2-.6-1.4-.65-.2-.08-.34-.1-.48.1s-.55.65-.67.78-.25.15-.46.05a5.87 5.87 0 01-1.73-1.07 6.5 6.5 0 01-1.2-1.49c-.13-.2 0-.32.1-.42.1-.1.2-.25.3-.37a1.4 1.4 0 00.2-.34.38.38 0 000-.36c-.05-.1-.48-1.15-.66-1.58s-.35-.36-.48-.37h-.4a.79.79 0 00-.57.27 2.4 2.4 0 00-.75 1.78 4.17 4.17 0 00.87 2.2 9.5 9.5 0 003.63 3.2c.5.22.9.35 1.2.44a2.9 2.9 0 001.33.08c.4-.06 1.2-.5 1.38-.97s.18-.88.13-.97-.18-.14-.38-.24z"
+      fill="#ffffff"></path>
+  </svg>
+</a>
+
+<style>
+  .fab-whatsapp {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    z-index: 50;
+    display: flex;
+    height: 3.5rem;
+    width: 3.5rem;
+    align-items: center;
+    justify-content: center;
+    border-radius: 9999px;
+    background: var(--color-whatsapp);
+    box-shadow: var(--shadow-action);
+    transition: transform 0.2s ease;
+  }
+  .fab-whatsapp:hover {
+    transform: scale(1.05);
+  }
+  .fab-halo {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    border-radius: 9999px;
+    background: var(--color-whatsapp);
+    opacity: 0.55;
+    animation: fab-ping 2.6s cubic-bezier(0, 0, 0.2, 1) infinite;
+  }
+  @keyframes fab-ping {
+    0% { transform: scale(1); opacity: 0.55; }
+    75%, 100% { transform: scale(1.7); opacity: 0; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .fab-whatsapp {
+      transition: none;
+    }
+    .fab-halo {
+      animation: none;
+      display: none;
+    }
+  }
+</style>

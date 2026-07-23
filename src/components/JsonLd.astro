@@ -1,0 +1,20 @@
+---
+/**
+ * Injeta dados estruturados (JSON-LD) de forma segura.
+ * Recebe um objeto (ou array de objetos) e serializa em <script type="application/ld+json">.
+ *
+ * Os builders de cada schema (Organization, LegalService, Article, FAQPage,
+ * BreadcrumbList, Person, etc.) serão adicionados em src/lib/jsonld nas fases
+ * de migração. Este componente é o ponto único de emissão.
+ */
+interface Props {
+  schema: Record<string, unknown> | Record<string, unknown>[];
+}
+
+const { schema } = Astro.props;
+
+// Escapa "<" para evitar quebra da tag </script> a partir do conteúdo.
+const json = JSON.stringify(schema).replace(/</g, '\\u003c');
+---
+
+<script type="application/ld+json" set:html={json} is:inline />

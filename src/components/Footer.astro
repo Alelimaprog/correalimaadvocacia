@@ -1,0 +1,168 @@
+---
+/**
+ * Footer — encerramento institucional (navy). Banda de marca em destaque
+ * (logo + tagline + OAB + WhatsApp) seguida de colunas agrupadas (Navegação,
+ * Áreas de atuação, Contato) e barra inferior (copyright, legais, disclaimer).
+ * Conteúdo integral preservado. Consome navigation.ts e site.config (DRY).
+ */
+import Container from '@/components/Container.astro';
+import Logo from '@/components/Logo.astro';
+import WhatsAppButton from '@/components/WhatsAppButton.astro';
+import { site, whatsappHref } from '@/lib/site.config';
+import { footerInstitucional, footerNucleos, legalNav } from '@/lib/navigation';
+
+const year = new Date().getFullYear();
+---
+
+<footer class="site-footer">
+  <Container>
+    <div class="f-cta" data-reveal>
+      <h2>Pronto para tratar o seu caso com quem leva a sério?</h2>
+      <a class="btn btn--primary" href={whatsappHref} target="_blank" rel="noopener noreferrer">
+        Falar com o escritório
+      </a>
+    </div>
+
+    <div class="f-brand">
+      <div class="f-brand-id">
+        <Logo variant="dark" class="footer-logo" loading="lazy" />
+        <p class="oab">{site.attorney.name} — {site.attorney.oab}</p>
+      </div>
+      <div class="f-brand-cta">
+        <WhatsAppButton class="footer-wa" />
+      </div>
+    </div>
+
+    <div class="f-links">
+      <nav class="col" aria-label="Navegação do rodapé">
+        <h2 class="col-title">Navegação</h2>
+        <ul>
+          {footerInstitucional.map((l) => (
+            <li>
+              <a href={l.href}>{l.label}</a>
+            </li>
+          ))}
+        </ul>
+      </nav>
+
+      <nav class="col" aria-label="Áreas de atuação">
+        <h2 class="col-title">Áreas de atuação</h2>
+        <ul>
+          {footerNucleos.map((g) => (
+            <li>
+              <a href={g.href}>{g.label}</a>
+            </li>
+          ))}
+        </ul>
+      </nav>
+
+      <div class="col">
+        <h2 class="col-title">Contato</h2>
+        <ul class="contact">
+          <li><a href={whatsappHref} target="_blank" rel="noopener noreferrer">{site.contact.whatsapp.display}</a></li>
+          <li><a href={`mailto:${site.contact.email}`}>{site.contact.email}</a></li>
+          <li><span>Atendimento nacional e online</span></li>
+          <li class="f-address"><span>{site.contact.address.street} — {site.contact.address.detail}<br />{site.contact.address.district} · {site.contact.address.city} – {site.contact.address.state} · CEP {site.contact.address.cep}</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="bottom">
+      <p class="copy">
+        © {year} {site.name}. Todos os direitos reservados. {site.attorney.oab}
+      </p>
+      <ul class="legal">
+        {legalNav.map((l) => (
+          <li>
+            <a href={l.href}>{l.label}</a>
+          </li>
+        ))}
+        <li>
+          <button type="button" class="legal-cookies" onclick="window.clOpenConsent && window.clOpenConsent()">Preferências de cookies</button>
+        </li>
+      </ul>
+    </div>
+
+    <p class="disclaimer">
+      As informações deste site têm caráter exclusivamente informativo e não substituem
+      a análise individual do caso por advogado.
+    </p>
+  </Container>
+</footer>
+
+<style>
+  /* Footer — encerramento institucional. Ink navy como âncora; banda de CTA
+     no topo (linguagem do modelo) + banda de marca + colunas + fios. */
+  .site-footer {
+    background: var(--color-navy);
+    color: var(--color-text-on-dark-muted);
+    padding-block: var(--section-y-sm) var(--space-6);
+    font-size: var(--text-sm);
+  }
+
+  .f-cta {
+    display: flex; flex-direction: column; gap: var(--space-5);
+    padding-block: var(--space-8) var(--space-6);
+    border-bottom: 1px solid var(--border-on-dark);
+  }
+  @media (min-width: 720px) { .f-cta { flex-direction: row; align-items: center; justify-content: space-between; gap: var(--space-6); } }
+  .f-cta h2 { color: #fff; font-size: var(--text-3xl); line-height: var(--leading-snug); max-width: 26ch; margin: 0; }
+  .f-cta .btn { flex: none; align-self: flex-start; }
+  @media (min-width: 720px) { .f-cta .btn { align-self: auto; } }
+
+  /* Banda de marca — protagonismo */
+  .f-brand {
+    display: grid; gap: var(--space-6); align-items: start;
+    grid-template-columns: 1fr;
+    /* Mais respiro entre a linha horizontal superior e o logotipo. */
+    padding-top: var(--space-8);
+    padding-bottom: var(--space-6);
+    border-bottom: 1px solid var(--border-on-dark);
+  }
+  @media (min-width: 860px) { .f-brand { grid-template-columns: 1.7fr 1fr; align-items: center; } }
+  .oab { margin-top: var(--space-3); color: rgba(255, 255, 255, 0.6); }
+  /* Logo do footer exibido integralmente (override cross-component do tamanho). */
+  :global(.site-footer .footer-logo img) { height: 3rem !important; width: auto !important; max-width: 100%; }
+  .f-brand-cta { display: flex; }
+  @media (min-width: 860px) { .f-brand-cta { justify-content: flex-end; } }
+
+  /* Colunas de links — agrupamento tipográfico */
+  .f-links {
+    /* compactado */
+    display: grid; gap: var(--space-6) var(--space-10);
+    grid-template-columns: 1fr;
+    padding-block: var(--space-6);
+  }
+  @media (min-width: 560px) { .f-links { grid-template-columns: 1fr 1fr; } }
+  @media (min-width: 860px) { .f-links { grid-template-columns: 1fr 1fr 1fr; } }
+
+  .col-title {
+    font-family: var(--font-body);
+    font-size: var(--text-xs);
+    font-weight: var(--weight-semibold);
+    text-transform: uppercase;
+    letter-spacing: var(--tracking-eyebrow);
+    color: rgba(255, 255, 255, 0.5);
+    margin-bottom: var(--space-4);
+  }
+  .col ul { list-style: none; padding: 0; display: flex; flex-direction: column; gap: var(--space-3); }
+  .col a { color: rgba(255, 255, 255, 0.82); text-decoration: none; line-height: var(--leading-snug); transition: color var(--dur) var(--ease); }
+  .col a:hover { color: var(--color-green); }
+  .f-address span { display: block; margin-top: var(--space-1); color: rgba(255, 255, 255, 0.6); font-size: var(--text-xs); line-height: var(--leading-normal); }
+  .contact span { color: rgba(255, 255, 255, 0.55); }
+
+  .bottom {
+    padding-top: var(--space-6);
+    border-top: 1px solid var(--border-on-dark);
+    display: flex; flex-wrap: wrap; gap: var(--space-4);
+    justify-content: space-between; align-items: center;
+  }
+  .copy { color: rgba(255, 255, 255, 0.55); }
+  .legal { list-style: none; padding: 0; display: flex; flex-wrap: wrap; gap: var(--space-5); }
+  .legal a { color: rgba(255, 255, 255, 0.82); text-decoration: none; transition: color var(--dur) var(--ease); }
+  .legal a:hover { color: var(--color-green); }
+  .legal-cookies { background: none; border: 0; padding: 0; cursor: pointer; font: inherit; color: rgba(255, 255, 255, 0.55); text-decoration: underline; text-underline-offset: 0.15em; transition: color var(--dur) var(--ease); }
+  .legal-cookies:hover { color: rgba(255, 255, 255, 0.85); }
+  .legal-cookies:focus-visible { outline: 2px solid var(--color-green); outline-offset: 2px; border-radius: 2px; }
+  .disclaimer { margin-top: var(--space-5); color: rgba(255, 255, 255, 0.45); font-size: var(--text-xs); line-height: var(--leading-normal); max-width: 70ch; }
+</style>

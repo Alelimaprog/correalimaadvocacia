@@ -1,0 +1,32 @@
+---
+/**
+ * /lgpd/ — migração fiel do export (Fase 3). Head (SEO), JSON-LD e conteúdo
+ * reproduzidos do site atual. Chrome (Header/Footer) via componentes.
+ * Conteúdo: src/partials/institucional/lgpd.html
+ */
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import JsonLd from '@/components/JsonLd.astro';
+import Container from '@/components/Container.astro';
+import { getPage } from '@/lib/institucional';
+import body from '@/partials/institucional/lgpd.html?raw';
+
+const page = getPage('/lgpd/');
+---
+
+<BaseLayout head={page.head}>
+  <Fragment slot="jsonld">
+    {page.jsonld.map((schema) => <JsonLd schema={schema} />)}
+  </Fragment>
+
+  <main id="conteudo-principal" class="inst">
+    <Container>
+      <div class="doc doc--reading" set:html={body} />
+    </Container>
+  </main>
+</BaseLayout>
+
+<style>
+  .inst {
+    padding-block: var(--section-y);
+  }
+</style>

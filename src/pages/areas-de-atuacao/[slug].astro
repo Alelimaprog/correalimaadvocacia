@@ -1,0 +1,32 @@
+---
+/**
+ * /areas-de-atuacao/[slug]/ — rota dinâmica das páginas da coleção "areas" (Fase 4).
+ * Conteúdo em Markdown (Content Collection); head e JSON-LD preservados.
+ */
+import { getCollection, render } from 'astro:content';
+import EntryPage from '@/layouts/EntryPage.astro';
+import { buildChildHead } from '@/lib/child-head';
+import { getJsonLd, getBreadcrumb } from '@/lib/structured-data';
+
+export async function getStaticPaths() {
+  // ETAPA 5 — slugs aposentados: NÃO geram página (a URL antiga responde 301
+  // via .htaccess para o núcleo atual). Assim não aparecem em sitemap, JSON-LD,
+  // breadcrumb nem como rota indexável.
+  const RETIRED_AREA_SLUGS = ['direito-aduaneiro-comercio-exterior'];
+  const entries = await getCollection('areas');
+  return entries
+    .filter((entry) => !RETIRED_AREA_SLUGS.includes(entry.id))
+    .map((entry) => ({ params: { slug: entry.id }, props: { entry } }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+const path = `/areas-de-atuacao/${entry.id}/`;
+const head = buildChildHead('areas', entry.data, path);
+const jsonld = getJsonLd('areas', entry.id);
+const crumbs = getBreadcrumb('areas', entry.id);
+---
+
+<EntryPage head={head} jsonld={jsonld} crumbs={crumbs}>
+  <Content />
+</EntryPage>

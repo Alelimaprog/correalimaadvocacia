@@ -1,0 +1,197 @@
+---
+/**
+ * Ferramenta 2 — Checklist interativo de documentos do inventário.
+ * Marcação persistida apenas em memória (sem storage), barra de progresso e
+ * botão de impressão para levar ao cartório. Encerra com CTA.
+ */
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Container from '@/components/Container.astro';
+import Breadcrumb from '@/components/Breadcrumb.astro';
+import { site, whatsappHrefForPath } from '@/lib/site.config';
+
+const canonical = `${site.url.replace(/\/$/, '')}/ferramentas/checklist-documentos-inventario/`;
+const waHref = whatsappHrefForPath('/ferramentas/checklist-documentos-inventario/');
+
+const grupos = [
+  {
+    titulo: 'Do falecido',
+    itens: [
+      'Certidão de óbito',
+      'Documento de identificação e CPF',
+      'Certidão de casamento atualizada (ou prova de união estável)',
+      'Pacto antenupcial, se houver',
+      'Certidão sobre existência de testamento',
+      'Comprovante do último endereço',
+    ],
+  },
+  {
+    titulo: 'Dos herdeiros e do cônjuge',
+    itens: [
+      'Documento de identificação e CPF de cada herdeiro',
+      'Certidão de nascimento ou casamento atualizada',
+      'Comprovante de endereço',
+      'Procuração pública, para quem não puder comparecer',
+      'Documentos apostilados e traduzidos, para herdeiro no exterior',
+    ],
+  },
+  {
+    titulo: 'Imóveis',
+    itens: [
+      'Matrícula atualizada do Registro de Imóveis',
+      'Carnê de IPTU ou espelho com valor venal',
+      'Certidão negativa de débitos municipais do imóvel',
+      'Declaração de quitação de condomínio, se aplicável',
+      'Documentação da construção, se houver averbação pendente',
+    ],
+  },
+  {
+    titulo: 'Veículos, contas e investimentos',
+    itens: [
+      'CRLV dos veículos',
+      'Extratos e declarações de saldo de contas bancárias',
+      'Documentos de investimentos e previdência privada',
+      'Apólices de seguro',
+    ],
+  },
+  {
+    titulo: 'Empresa (se houver)',
+    itens: [
+      'Contrato social consolidado e alterações',
+      'Certidão simplificada da Junta Comercial',
+      'Balanços e demonstrações contábeis recentes',
+      'Acordo de sócios, se existir',
+    ],
+  },
+  {
+    titulo: 'Dívidas e obrigações',
+    itens: [
+      'Contratos de financiamento e empréstimo',
+      'Apólice de seguro prestamista (verifique: pode quitar o saldo)',
+      'Faturas e cobranças em aberto',
+      'Certidões de tributos em atraso',
+    ],
+  },
+];
+const total = grupos.reduce((n, g) => n + g.itens.length, 0);
+---
+
+<BaseLayout
+  title="Checklist de Documentos para o Inventário | Ferramenta | Corrêa Lima Advocacia"
+  description="Checklist interativo e gratuito com todos os documentos normalmente exigidos no inventário: do falecido, dos herdeiros, de imóveis, veículos, empresa e dívidas. Marque e imprima."
+  canonical={canonical}
+>
+  <main id="conteudo-principal" class="tool" data-tool="checklist-inventario">
+    <Container>
+      <Breadcrumb items={[{ label: 'Início', href: '/' }, { label: 'Ferramentas', href: '/ferramentas/' }, { label: 'Checklist de documentos' }]} />
+
+      <p class="eyebrow"><span class="dot"></span>Ferramenta gratuita</p>
+      <h1>Checklist de documentos para o inventário</h1>
+      <p class="lead">
+        Reunir a documentação é a etapa que mais atrasa inventários. Use esta
+        lista para organizar o que você já tem e o que ainda falta — e imprima
+        para levar ao cartório ou à primeira reunião.
+      </p>
+
+      <div class="progress" aria-live="polite">
+        <div class="progress-bar"><span id="bar"></span></div>
+        <p class="progress-text"><strong id="count">0</strong> de {total} itens reunidos</p>
+      </div>
+
+      <div class="groups">
+        {grupos.map((g) => (
+          <section class="group">
+            <h2>{g.titulo}</h2>
+            <ul>
+              {g.itens.map((i) => (
+                <li>
+                  <label>
+                    <input type="checkbox" class="chk" />
+                    <span>{i}</span>
+                  </label>
+                </li>
+              ))}
+            </ul>
+          </section>
+        ))}
+      </div>
+
+      <div class="actions">
+        <button class="btn btn--secondary" type="button" id="print">Imprimir a lista</button>
+        <button class="btn btn--ghost-light" type="button" id="reset">Limpar marcações</button>
+      </div>
+
+      <aside class="cta-box">
+        <p class="cta-t">Reuniu os documentos e quer saber qual via se aplica ao seu caso?</p>
+        <p class="cta-d">
+          Antes de iniciar, vale verificar se o inventário pode ser feito em
+          cartório e qual a situação do imposto. Apresente a situação ao
+          escritório para entender os próximos passos.
+        </p>
+        <div class="cta-actions">
+          <a class="btn btn--primary" href="/contato/">Falar sobre o meu caso</a>
+          <a class="btn btn--secondary" href={waHref} target="_blank" rel="noopener noreferrer">Falar pelo WhatsApp</a>
+          <a class="cta-link" href="/ferramentas/inventario-em-cartorio/">Verificar se posso fazer em cartório →</a>
+        </div>
+      </aside>
+
+      <aside class="note">
+        <p>
+          Lista de referência, de caráter informativo. A documentação exigida
+          varia conforme o acervo, o estado competente e a via escolhida. Veja o
+          <a href="/guias/inventario-guia-completo/">guia completo de inventário</a>.
+        </p>
+      </aside>
+    </Container>
+  </main>
+</BaseLayout>
+
+<script is:inline>
+  (function () {
+    var chks = Array.prototype.slice.call(document.querySelectorAll('.chk'));
+    var count = document.getElementById('count');
+    var bar = document.getElementById('bar');
+    function update() {
+      var n = chks.filter(function (c) { return c.checked; }).length;
+      count.textContent = n;
+      bar.style.width = (chks.length ? (n / chks.length) * 100 : 0) + '%';
+    }
+    chks.forEach(function (c) { c.addEventListener('change', update); });
+    document.getElementById('print').addEventListener('click', function () { window.print(); });
+    document.getElementById('reset').addEventListener('click', function () {
+      chks.forEach(function (c) { c.checked = false; });
+      update();
+    });
+    update();
+  })();
+</script>
+
+<style>
+  .tool { padding-block: var(--section-y); }
+  .tool h1 { font-size: var(--text-4xl); color: var(--color-ink); margin-top: var(--space-3); max-width: 22ch; line-height: 1.1; }
+  .lead { margin-top: var(--space-4); max-width: 60ch; color: var(--color-text); font-size: var(--text-md); line-height: var(--leading-normal); }
+  .progress { margin-top: var(--space-6); max-width: 46rem; }
+  .progress-bar { height: 8px; border-radius: 999px; background: var(--color-border); overflow: hidden; }
+  .progress-bar span { display: block; height: 100%; width: 0; background: var(--color-green); transition: width var(--dur) var(--ease); }
+  .progress-text { margin-top: var(--space-2); font-size: var(--text-sm); color: var(--color-text-muted); }
+  .groups { margin-top: var(--space-8); display: grid; grid-template-columns: 1fr; gap: var(--space-5); }
+  @media (min-width: 860px) { .groups { grid-template-columns: 1fr 1fr; } }
+  .group { border: 1px solid var(--color-border); border-radius: var(--radius-lg); padding: var(--space-5); background: var(--surface); }
+  .group h2 { font-size: var(--text-md); color: var(--color-ink); font-family: var(--font-display); font-weight: var(--weight-bold); }
+  .group ul { list-style: none; padding: 0; margin-top: var(--space-3); display: flex; flex-direction: column; gap: var(--space-2); }
+  .group label { display: flex; align-items: flex-start; gap: var(--space-3); font-size: var(--text-sm); color: var(--color-text); line-height: var(--leading-snug); cursor: pointer; }
+  .group input { width: 1.05rem; height: 1.05rem; accent-color: var(--color-green-strong); flex: none; margin-top: 0.15rem; }
+  .actions { margin-top: var(--space-6); display: flex; flex-wrap: wrap; gap: var(--space-3); }
+  .cta-box { margin-top: var(--space-8); max-width: 46rem; border: 1px solid var(--border-green-subtle); background: var(--color-green-tint); border-radius: var(--radius-lg); padding: var(--space-6); }
+  .cta-t { font-family: var(--font-display); font-weight: var(--weight-bold); color: var(--color-ink); font-size: var(--text-lg); }
+  .cta-d { margin-top: var(--space-2); color: var(--color-text); font-size: var(--text-sm); line-height: var(--leading-normal); }
+  .cta-actions { margin-top: var(--space-5); display: flex; flex-wrap: wrap; gap: var(--space-3); align-items: center; }
+  .cta-link { color: var(--color-green-strong); font-weight: var(--weight-semibold); font-size: var(--text-sm); text-decoration: none; }
+  .note { margin-top: var(--space-8); max-width: 46rem; border-top: 1px solid var(--color-border); padding-top: var(--space-5); }
+  .note p { color: var(--color-text-muted); font-size: var(--text-sm); line-height: var(--leading-normal); }
+  .note a { color: var(--color-green-strong); }
+  @media print {
+    .progress, .actions, .cta-box, .note { display: none; }
+    .groups { grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .group { break-inside: avoid; }
+  }
+</style>

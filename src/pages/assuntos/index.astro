@@ -1,0 +1,32 @@
+---
+/**
+ * /assuntos/ — migração fiel do export (Fase 3). Head (SEO), JSON-LD e conteúdo
+ * reproduzidos do site atual. Chrome (Header/Footer) via componentes.
+ * Conteúdo: src/partials/institucional/assuntos.html
+ */
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import JsonLd from '@/components/JsonLd.astro';
+import Container from '@/components/Container.astro';
+import { getPage } from '@/lib/institucional';
+import body from '@/partials/institucional/assuntos.html?raw';
+
+const page = getPage('/assuntos/');
+---
+
+<BaseLayout head={page.head}>
+  <Fragment slot="jsonld">
+    {page.jsonld.map((schema) => <JsonLd schema={schema} />)}
+  </Fragment>
+
+  <main id="conteudo-principal" class="inst">
+    <Container>
+      <div class="doc doc--hero doc--assuntos" set:html={body} />
+    </Container>
+  </main>
+</BaseLayout>
+
+<style>
+  .inst {
+    padding-block: var(--section-y);
+  }
+</style>

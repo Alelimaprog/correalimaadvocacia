@@ -1,0 +1,135 @@
+---
+/**
+ * ConsentBanner — banner de cookies (LGPD) integrado ao Consent Mode v2.
+ * Restaurado a pedido, com gatilho de reabertura discreto (link no rodapé).
+ * Categorias: Essenciais (sempre ativas) e Estatísticas (GA4 + Clarity).
+ * A escolha é salva em localStorage e reemitida via evento `cl:consent`, que o
+ * Analytics.astro escuta para (des)bloquear a medição. `window.clOpenConsent()`
+ * reabre as preferências.
+ */
+---
+
+<div id="cl-consent" class="cl-consent" hidden>
+  <div class="cl-card" role="dialog" aria-modal="false" aria-labelledby="cl-title" aria-describedby="cl-desc">
+    <div class="cl-main">
+      <p id="cl-title" class="cl-title">Cookies</p>
+      <p id="cl-desc" class="cl-desc">
+        Usamos cookies essenciais e, com o seu consentimento, cookies de estatísticas
+        (Google Analytics e Microsoft Clarity) para entender o uso do site.
+        <a href="/politica-de-privacidade/">Política de Privacidade</a>.
+      </p>
+    </div>
+    <div class="cl-actions">
+      <button type="button" class="cl-link" data-cl="prefs">Preferências</button>
+      <button type="button" class="cl-btn cl-btn--ghost" data-cl="deny">Recusar</button>
+      <button type="button" class="cl-btn cl-btn--solid" data-cl="accept">Aceitar</button>
+    </div>
+  </div>
+
+  <div class="cl-prefs" data-cl-prefs hidden>
+    <div class="cl-prefs-card" role="dialog" aria-modal="true" aria-labelledby="cl-prefs-title">
+      <h2 id="cl-prefs-title" class="cl-prefs-title">Preferências de cookies</h2>
+      <div class="cl-row">
+        <div>
+          <p class="cl-row-t">Essenciais</p>
+          <p class="cl-row-d">Necessários para o funcionamento do site. Sempre ativos.</p>
+        </div>
+        <span class="cl-fixed">Sempre ativo</span>
+      </div>
+      <div class="cl-row">
+        <div>
+          <p class="cl-row-t">Estatísticas</p>
+          <p class="cl-row-d">Google Analytics e Microsoft Clarity — medição de uso, anônima e agregada.</p>
+        </div>
+        <label class="cl-switch">
+          <input type="checkbox" data-cl-analytics aria-label="Ativar cookies de estatísticas" />
+          <span class="cl-slider" aria-hidden="true"></span>
+        </label>
+      </div>
+      <div class="cl-prefs-actions">
+        <button type="button" class="cl-btn cl-btn--ghost" data-cl="close">Cancelar</button>
+        <button type="button" class="cl-btn cl-btn--solid" data-cl="save">Salvar preferências</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .cl-consent { position: fixed; inset: auto 0 0 0; z-index: 1000; }
+  .cl-card {
+    max-width: 46rem; margin: 0 auto var(--space-4); margin-inline: auto;
+    width: calc(100% - 2 * var(--container-pad));
+    background: var(--surface); color: var(--color-text);
+    border: 1px solid var(--color-border); border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-lg); padding: var(--space-4) var(--space-5);
+    display: grid; gap: var(--space-3); align-items: center;
+  }
+  @media (min-width: 760px) { .cl-card { grid-template-columns: 1fr auto; } }
+  .cl-title { font-family: var(--font-display); font-weight: var(--weight-bold); color: var(--color-ink); font-size: var(--text-sm); }
+  .cl-desc { margin-top: 0.15rem; font-size: var(--text-sm); line-height: var(--leading-normal); color: var(--color-text-muted); }
+  .cl-desc a { color: var(--color-green-strong); }
+  .cl-actions { display: flex; flex-wrap: wrap; gap: var(--space-2); justify-content: flex-end; align-items: center; }
+  .cl-link { background: none; border: 0; padding: 0.4rem 0.5rem; cursor: pointer; font: inherit; font-size: var(--text-sm); color: var(--color-text-muted); text-decoration: underline; text-underline-offset: 0.15em; }
+  .cl-link:hover { color: var(--color-green-strong); }
+  .cl-btn { font-family: var(--font-body); font-size: var(--text-sm); font-weight: var(--weight-semibold); border-radius: var(--radius-pill); padding: 0.5rem 1.1rem; cursor: pointer; border: 1px solid transparent; }
+  .cl-btn--solid { background: var(--color-green); color: #fff; }
+  .cl-btn--solid:hover { filter: brightness(1.05); }
+  .cl-btn--ghost { background: transparent; color: var(--color-ink); border-color: var(--border-strong); }
+  .cl-btn--ghost:hover { background: var(--surface-warm); }
+  .cl-btn:focus-visible, .cl-link:focus-visible { outline: none; box-shadow: var(--ring); border-radius: var(--radius-pill); }
+
+  .cl-prefs { position: fixed; inset: 0; z-index: 1001; display: grid; place-items: center; padding: var(--container-pad); background: rgba(6, 40, 28, 0.45); }
+  /* Correção: a classe .cl-prefs (display:grid) anulava o atributo [hidden]
+     (mesma especificidade, regra posterior), fazendo o modal abrir sozinho no
+     primeiro acesso. Esta regra restaura o hidden — o modal só abre por ação. */
+  .cl-prefs[hidden] { display: none; }
+  .cl-prefs-card { background: var(--surface); border-radius: var(--radius-xl); box-shadow: var(--shadow-lg); max-width: 34rem; width: 100%; padding: var(--space-8); }
+  .cl-prefs-title { font-family: var(--font-display); font-weight: var(--weight-bold); color: var(--color-ink); font-size: var(--text-xl); }
+  .cl-row { display: flex; gap: var(--space-4); justify-content: space-between; align-items: center; padding: var(--space-4) 0; border-bottom: 1px solid var(--border-subtle); }
+  .cl-row-t { font-weight: var(--weight-semibold); color: var(--color-ink); font-size: var(--text-sm); }
+  .cl-row-d { margin-top: 0.15rem; color: var(--color-text-muted); font-size: var(--text-xs); line-height: var(--leading-normal); max-width: 42ch; }
+  .cl-fixed { color: var(--color-green-strong); font-size: var(--text-xs); font-weight: var(--weight-semibold); white-space: nowrap; }
+  .cl-prefs-actions { display: flex; gap: var(--space-3); justify-content: flex-end; margin-top: var(--space-6); }
+  .cl-switch { position: relative; display: inline-flex; align-items: center; cursor: pointer; }
+  .cl-switch input { position: absolute; opacity: 0; width: 44px; height: 24px; margin: 0; cursor: pointer; }
+  .cl-slider { width: 44px; height: 24px; border-radius: var(--radius-pill); background: var(--gray-300); transition: background var(--dur) var(--ease); position: relative; }
+  .cl-slider::after { content: ''; position: absolute; top: 3px; left: 3px; width: 18px; height: 18px; border-radius: 50%; background: #fff; transition: transform var(--dur) var(--ease); box-shadow: var(--shadow-xs); }
+  .cl-switch input:checked + .cl-slider { background: var(--color-green); }
+  .cl-switch input:checked + .cl-slider::after { transform: translateX(20px); }
+  .cl-switch input:focus-visible + .cl-slider { box-shadow: var(--ring); }
+  @media (prefers-reduced-motion: reduce) { .cl-btn, .cl-slider, .cl-slider::after { transition: none; } }
+</style>
+
+<script is:inline>
+  (function () {
+    var KEY = 'cl_consent';
+    var root = document.getElementById('cl-consent');
+    if (!root) return;
+    var prefs = root.querySelector('[data-cl-prefs]');
+    var toggle = root.querySelector('[data-cl-analytics]');
+    function emit(a) { window.dispatchEvent(new CustomEvent('cl:consent', { detail: { analytics: !!a } })); }
+    function store(v) { try { localStorage.setItem(KEY, v); } catch (e) {} }
+    function read() { try { return localStorage.getItem(KEY); } catch (e) { return null; } }
+    function hideBanner() { root.setAttribute('hidden', ''); }
+    function showBanner() { root.removeAttribute('hidden'); }
+    function openPrefs() { if (toggle) toggle.checked = read() === 'granted'; prefs.removeAttribute('hidden'); showBanner(); var f = prefs.querySelector('button, input'); if (f) f.focus(); }
+    function closePrefs() { prefs.setAttribute('hidden', ''); }
+    function decide(a) { store(a ? 'granted' : 'denied'); emit(a); closePrefs(); hideBanner(); }
+    root.addEventListener('click', function (e) {
+      var b = e.target.closest ? e.target.closest('[data-cl]') : null;
+      if (!b) return;
+      var act = b.getAttribute('data-cl');
+      if (act === 'accept') decide(true);
+      else if (act === 'deny') decide(false);
+      else if (act === 'prefs') openPrefs();
+      else if (act === 'close') { closePrefs(); if (!read()) showBanner(); }
+      else if (act === 'save') decide(!!(toggle && toggle.checked));
+    });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && prefs && !prefs.hasAttribute('hidden')) { closePrefs(); if (!read()) showBanner(); } });
+    window.clOpenConsent = openPrefs;
+    var saved = read();
+    if (saved === 'granted') emit(true);
+    else if (saved === 'denied') emit(false);
+    else showBanner();
+  })();
+</script>

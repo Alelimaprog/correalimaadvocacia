@@ -1,0 +1,32 @@
+---
+/**
+ * /blog/ — migração fiel do export (Fase 3). Head (SEO), JSON-LD e conteúdo
+ * reproduzidos do site atual. Chrome (Header/Footer) via componentes.
+ * Conteúdo: src/partials/institucional/blog.html
+ */
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import JsonLd from '@/components/JsonLd.astro';
+import Container from '@/components/Container.astro';
+import { getPage } from '@/lib/institucional';
+import body from '@/partials/institucional/blog.html?raw';
+
+const page = getPage('/blog/');
+---
+
+<BaseLayout head={page.head}>
+  <Fragment slot="jsonld">
+    {page.jsonld.map((schema) => <JsonLd schema={schema} />)}
+  </Fragment>
+
+  <main id="conteudo-principal" class="inst">
+    <Container>
+      <div class="doc doc--hero doc--blog" set:html={body} />
+    </Container>
+  </main>
+</BaseLayout>
+
+<style>
+  .inst {
+    padding-block: var(--section-y);
+  }
+</style>

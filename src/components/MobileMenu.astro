@@ -1,0 +1,164 @@
+---
+/**
+ * MobileMenu — botão hambúrguer (abaixo de `lg`) e painel deslizante.
+ * Reproduz a nova hierarquia: Início · O Escritório · Áreas de Atuação
+ * (6 núcleos) · Conteúdos (Artigos/Guias/Assuntos) · Contato + CTA WhatsApp.
+ * Trava scroll, fecha no Escape, no overlay e ao navegar. DRY via navigation.ts.
+ */
+import { mainNav, areasMenu, conteudosMenu, contatoLink } from '@/lib/navigation';
+import WhatsAppButton from '@/components/WhatsAppButton.astro';
+---
+
+<div class="mobile" data-mobile-menu>
+  <button class="burger" type="button" aria-label="Abrir menu" aria-expanded="false" aria-controls="mobile-panel">
+    <svg aria-hidden="true" width="22" height="16" viewBox="0 0 22 16">
+      <line x1="0" y1="1" x2="22" y2="1" stroke="currentColor" stroke-width="2"></line>
+      <line x1="0" y1="8" x2="22" y2="8" stroke="currentColor" stroke-width="2"></line>
+      <line x1="0" y1="15" x2="22" y2="15" stroke="currentColor" stroke-width="2"></line>
+    </svg>
+  </button>
+
+  <div class="overlay" data-overlay hidden></div>
+
+  <div class="panel" id="mobile-panel" aria-label="Navegação móvel" hidden>
+    <nav class="panel-nav" aria-label="Navegação móvel">
+      {mainNav.map((l) => <a class="m-link" href={l.href}>{l.label}</a>)}
+
+      <details class="m-acc">
+        <summary class="m-acc-sum">
+          <span>{areasMenu.label}</span>
+          <svg class="m-chev" aria-hidden="true" width="12" height="8" viewBox="0 0 12 8"><path d="M1 1l5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.6"></path></svg>
+        </summary>
+        <div class="m-acc-body">
+          <a class="m-sub" href={areasMenu.viewAll.href}>{areasMenu.viewAll.label}</a>
+          {areasMenu.items.map((n) => <a class="m-sub" href={n.href}>{n.label}</a>)}
+        </div>
+      </details>
+
+      <details class="m-acc">
+        <summary class="m-acc-sum">
+          <span>{conteudosMenu.label}</span>
+          <svg class="m-chev" aria-hidden="true" width="12" height="8" viewBox="0 0 12 8"><path d="M1 1l5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.6"></path></svg>
+        </summary>
+        <div class="m-acc-body">
+          {conteudosMenu.items.map((l) => <a class="m-sub" href={l.href}>{l.label}</a>)}
+        </div>
+      </details>
+
+      <a class="m-link" href={contatoLink.href}>{contatoLink.label}</a>
+    </nav>
+
+    <div class="panel-cta">
+      <WhatsAppButton />
+    </div>
+  </div>
+</div>
+
+<style>
+  .mobile { display: flex; }
+  @media (min-width: 1024px) { .mobile { display: none; } }
+
+  .burger {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.75rem;
+    height: 2.75rem;
+    color: var(--color-navy);
+    background: none;
+    border: none;
+    border-radius: var(--radius-pill);
+    cursor: pointer;
+    transition: background-color var(--dur) var(--ease);
+  }
+  .burger:hover { background: var(--surface-cream); }
+
+  .overlay { position: fixed; inset: 0; background: rgba(6, 40, 28, 0.6); backdrop-filter: blur(2px); z-index: 70; }
+
+  .panel {
+    position: fixed;
+    top: 0.6rem;
+    right: 0.6rem;
+    bottom: 0.6rem;
+    height: auto;
+    width: min(88vw, 22rem);
+    background: var(--color-navy);
+    color: #fff;
+    z-index: 80;
+    padding: 5rem 1.5rem 2rem;
+    overflow-y: auto;
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-lg);
+  }
+
+  .panel-nav { display: flex; flex-direction: column; }
+  .m-link {
+    display: block;
+    padding: var(--space-3) 0;
+    font-size: var(--text-lg);
+    font-weight: var(--weight-medium);
+    color: rgba(255, 255, 255, 0.92);
+    text-decoration: none;
+    border-bottom: 1px solid var(--border-on-dark);
+  }
+  .m-link:hover { color: var(--color-green); }
+
+  /* Grupos expansíveis nativos (<details>) — acessíveis por teclado e leitor de tela */
+  .m-acc { border-bottom: 1px solid var(--border-on-dark); }
+  .m-acc-sum {
+    list-style: none;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: var(--space-3) 0;
+    font-family: var(--font-display);
+    font-size: var(--text-lg);
+    font-weight: var(--weight-medium);
+    color: rgba(255, 255, 255, 0.92);
+    cursor: pointer;
+  }
+  .m-acc-sum::-webkit-details-marker { display: none; }
+  .m-acc-sum:hover { color: var(--color-green); }
+  .m-chev { color: rgba(255, 255, 255, 0.55); transition: transform var(--dur) var(--ease); flex: none; }
+  .m-acc[open] .m-chev { transform: rotate(180deg); }
+  .m-acc-body { display: flex; flex-direction: column; padding-bottom: var(--space-2); }
+  .m-sub {
+    display: block;
+    padding: var(--space-2) 0 var(--space-2) var(--space-3);
+    font-size: var(--text-sm);
+    color: rgba(255, 255, 255, 0.78);
+    text-decoration: none;
+    line-height: var(--leading-snug);
+  }
+  .m-sub:hover { color: var(--color-green); }
+  .panel-cta { margin-top: var(--space-6); }
+</style>
+
+<script>
+  document.querySelectorAll('[data-mobile-menu]').forEach((root) => {
+    const burger = root.querySelector('.burger') as HTMLButtonElement | null;
+    const panel = root.querySelector('.panel') as HTMLElement | null;
+    const overlay = root.querySelector('[data-overlay]') as HTMLElement | null;
+    if (!burger || !panel || !overlay) return;
+
+    const setOpen = (open: boolean) => {
+      burger.setAttribute('aria-expanded', String(open));
+      burger.setAttribute('aria-label', open ? 'Fechar menu' : 'Abrir menu');
+      panel.hidden = !open;
+      overlay.hidden = !open;
+      document.body.style.overflow = open ? 'hidden' : '';
+      if (open) {
+        const first = panel.querySelector('a') as HTMLElement | null;
+        first?.focus();
+      }
+    };
+
+    burger.addEventListener('click', () => setOpen(panel.hidden));
+    overlay.addEventListener('click', () => setOpen(false));
+    document.addEventListener('keydown', (e) => {
+      if ((e as KeyboardEvent).key === 'Escape' && !panel.hidden) {
+        setOpen(false);
+        burger.focus();
+      }
+    });
+    panel.querySelectorAll('a').forEach((a) => a.addEventListener('click', () => setOpen(false)));
+  });
+</script>

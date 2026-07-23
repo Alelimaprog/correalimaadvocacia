@@ -1,0 +1,64 @@
+---
+/**
+ * SEO — emite o <head> de cada página. Na Fase 3, reproduz FIELMENTE o head do
+ * site atual: recebe um objeto `head` (capturado do export) e emite exatamente
+ * title, description, canonical, robots, author e as tags Open Graph/Twitter
+ * que a página realmente tinha (os três padrões observados são reproduzidos:
+ * OG por-página, OG estático e ausência de OG).
+ *
+ * Sem `head`, cai no modo simples (title via template + defaults) usado por
+ * páginas utilitárias.
+ */
+import { site, buildTitle, canonicalUrl } from '@/lib/site.config';
+import type { PageHead } from '@/lib/institucional';
+
+interface Props {
+  head?: PageHead;
+  // Modo simples (fallback)
+  title?: string;
+  description?: string;
+  canonical?: string;
+  noindex?: boolean;
+  /** Quando true, NUNCA emite <link rel="canonical"> (ex.: página 404). */
+  noCanonical?: boolean;
+}
+const { head, title, description, canonical, noindex, noCanonical } = Astro.props;
+
+// Resolve valores (modo fiel via `head`, ou modo simples)
+const t = head?.title ?? buildTitle(title);
+const desc = head?.description ?? description ?? site.defaultDescription;
+const canon = noCanonical
+  ? null
+  : head?.canonical ?? canonical ?? canonicalUrl(Astro.url.pathname);
+const robots = head?.robots ?? (noindex ? 'noindex, follow' : 'index, follow');
+const author = head?.author ?? null;
+const authorLink = head?.authorLink ?? null;
+const og = head?.og;
+const tw = head?.twitter;
+const ogImage = og?.image;
+---
+
+<title>{t}</title>
+{desc && <meta name="description" content={desc} />}
+{canon && <link rel="canonical" href={canon} />}
+{robots && <meta name="robots" content={robots} />}
+{author && <meta name="author" content={author} />}
+{authorLink && <link rel="author" href={authorLink} />}
+
+{/* Open Graph — emitido conforme presente no head da página (fidelidade) */}
+{og?.title && <meta property="og:title" content={og.title} />}
+{og?.description && <meta property="og:description" content={og.description} />}
+{og?.url && <meta property="og:url" content={og.url} />}
+{og?.type && <meta property="og:type" content={og.type} />}
+{og?.site_name && <meta property="og:site_name" content={og.site_name} />}
+{og?.locale && <meta property="og:locale" content={og.locale} />}
+{ogImage && <meta property="og:image" content={ogImage} />}
+{ogImage && <meta property="og:image:width" content="1200" />}
+{ogImage && <meta property="og:image:height" content="630" />}
+{ogImage && <meta property="og:image:alt" content={site.name} />}
+
+{/* Twitter Card */}
+{tw?.card && <meta name="twitter:card" content={tw.card} />}
+{tw?.title && <meta name="twitter:title" content={tw.title} />}
+{tw?.description && <meta name="twitter:description" content={tw.description} />}
+{tw?.image && <meta name="twitter:image" content={tw.image} />}

@@ -1,0 +1,118 @@
+---
+/**
+ * /contato/ — migração fiel (Fase 3). Head + JSON-LD do export; formulário
+ * reconstruído (ContactForm) mantendo Formspree, honeypot e o fluxo de
+ * conversão para /contato/obrigado/. Textos reproduzidos verbatim do site atual.
+ */
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import JsonLd from '@/components/JsonLd.astro';
+import Container from '@/components/Container.astro';
+import Breadcrumb from '@/components/Breadcrumb.astro';
+import ContactForm from '@/components/ContactForm.astro';
+import { getPage } from '@/lib/institucional';
+import { site, whatsappHref } from '@/lib/site.config';
+
+const page = getPage('/contato/');
+---
+
+<BaseLayout head={page.head}>
+  <Fragment slot="jsonld">
+    {page.jsonld.map((schema) => <JsonLd schema={schema} />)}
+  </Fragment>
+
+  <main id="conteudo-principal" class="contato">
+    <Container>
+      <Breadcrumb items={[{ label: 'Início', href: '/' }, { label: 'Contato' }]} />
+
+      <span class="eyebrow">Contato</span>
+      <h1>Fale com o escritório</h1>
+      <p class="lead">Atendimento nacional e online, quando aplicável ao caso.</p>
+
+      <div class="contact-card">
+        <div class="grid">
+          <section class="form-col" aria-labelledby="form-title">
+            <h2 id="form-title">Envie os detalhes do seu caso</h2>
+            <p>Preencha o formulário abaixo. Retornaremos por e-mail ou WhatsApp.</p>
+
+            <ContactForm />
+
+            <p class="fineprint">
+              O envio deste formulário é apenas um primeiro contato e não cria, por si só,
+              relação de advogado e cliente entre o remetente e o escritório.
+            </p>
+          </section>
+
+          <aside class="channels">
+            <div>
+              <p class="ch-title">Outros canais</p>
+              <ul>
+                <li>
+                  <span class="ch-label">WhatsApp</span>
+                  <a href={whatsappHref} target="_blank" rel="noopener noreferrer">
+                    {site.contact.whatsapp.display}
+                  </a>
+                </li>
+                <li>
+                  <span class="ch-label">E-mail</span>
+                  <a href={`mailto:${site.contact.email}`}>{site.contact.email}</a>
+                </li>
+                <li>
+                  <span class="ch-label">Endereço</span>
+                  <span class="ch-address">{site.contact.address.street} — {site.contact.address.detail}<br />{site.contact.address.district}<br />{site.contact.address.city} – {site.contact.address.state} · CEP {site.contact.address.cep}</span>
+                </li>
+              </ul>
+            </div>
+            <div>
+              <p class="ch-title">Responsável técnico</p>
+              <p class="responsible">{site.attorney.name} — {site.attorney.oab}</p>
+            </div>
+            <p class="privacy-note">
+              As informações enviadas por este formulário são tratadas conforme nossa
+              <a href="/politica-de-privacidade/">Política de Privacidade</a> e utilizadas
+              exclusivamente para retorno ao contato realizado.
+            </p>
+          </aside>
+        </div>
+      </div>
+    </Container>
+  </main>
+</BaseLayout>
+
+<style>
+  .contato { padding-block: var(--section-y-sm); }
+  .contato .eyebrow {
+    display: inline-block; font-size: var(--text-xs); letter-spacing: var(--tracking-eyebrow);
+    text-transform: uppercase; color: var(--color-green-strong); font-weight: var(--weight-semibold);
+    margin-bottom: var(--space-2);
+  }
+  .contato h1 { font-size: var(--text-3xl); color: var(--color-ink); }
+  .lead { margin-top: var(--space-3); color: var(--color-text-muted); font-size: var(--text-lg); }
+  .contact-card {
+    margin-top: var(--space-8);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-xl);
+    background: var(--surface);
+    box-shadow: var(--shadow-lg);
+    padding: clamp(1.25rem, 1rem + 1.2vw, 2.5rem);
+  }
+  .grid { display: grid; gap: var(--space-8); grid-template-columns: minmax(0, 1fr); align-items: start; }
+  .grid > * { min-width: 0; }
+  @media (min-width: 900px) { .grid { grid-template-columns: minmax(0, 1.35fr) minmax(0, 0.85fr); gap: var(--space-10); } }
+  .form-col h2 { font-size: var(--text-xl); color: var(--color-ink); margin-bottom: var(--space-2); }
+  .form-col > p { color: var(--color-text-muted); margin-bottom: var(--space-5); }
+  .form-col :global(.cform) { max-width: none; }
+  .fineprint { margin-top: var(--space-5); font-size: var(--text-sm); color: var(--color-text-muted); max-width: 34rem; }
+  .channels {
+    display: flex; flex-direction: column; gap: var(--space-5); padding: var(--space-6);
+    background: var(--color-green-tint); border: 1px solid var(--border-green-subtle); border-radius: var(--radius-lg);
+  }
+  .ch-title { font-size: var(--text-xs); font-weight: var(--weight-semibold); text-transform: uppercase; letter-spacing: 0.06em; color: var(--color-text-muted); margin-bottom: var(--space-3); }
+  .channels ul { list-style: none; padding: 0; display: flex; flex-direction: column; gap: var(--space-3); }
+  .ch-label { display: block; font-size: var(--text-xs); color: var(--color-text-subtle); }
+  .channels a { color: var(--color-ink); text-decoration: none; font-weight: var(--weight-semibold); }
+  .channels a:hover { color: var(--color-green-strong); }
+  .ch-address { color: var(--color-ink); font-weight: var(--weight-medium); font-size: var(--text-sm); line-height: var(--leading-normal); }
+  .responsible { color: var(--color-text); }
+  .privacy-note { font-size: var(--text-sm); color: var(--color-text-muted); line-height: var(--leading-normal); }
+  .privacy-note a { color: var(--color-green-strong); }
+</style>

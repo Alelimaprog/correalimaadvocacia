@@ -1,0 +1,61 @@
+---
+/**
+ * /o-escritorio/ — migração fiel do export (Fase 3). Head (SEO), JSON-LD e conteúdo
+ * reproduzidos do site atual. Chrome (Header/Footer) via componentes.
+ * Conteúdo: src/partials/institucional/o-escritorio.html
+ */
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import JsonLd from '@/components/JsonLd.astro';
+import Container from '@/components/Container.astro';
+import { getPage } from '@/lib/institucional';
+import { site } from '@/lib/site.config';
+import body from '@/partials/institucional/o-escritorio.html?raw';
+
+const page = getPage('/o-escritorio/');
+
+const officeAddress = {
+  '@type': 'PostalAddress',
+  streetAddress: `${site.contact.address.street}, ${site.contact.address.detail}`,
+  addressLocality: site.contact.address.city,
+  addressRegion: site.contact.address.state,
+  postalCode: site.contact.address.cep,
+  addressCountry: 'BR',
+};
+
+// Aprimora (sem duplicar) o schema Person já existente: título profissional e
+// endereço. Sem award/alumniOf/memberOf/honorificSuffix (dados não confirmados).
+const jsonldEnhanced = page.jsonld.map((s: Record<string, unknown>) => {
+  if (s && s['@type'] === 'Person') {
+    return {
+      ...s,
+      jobTitle: 'Advogado de Negócios Internacionais',
+      address: officeAddress,
+      // Formação acadêmica confirmada pelo escritório (Sprint 6).
+      alumniOf: [
+        { '@type': 'CollegeOrUniversity', name: 'Universidade Católica de Santos' },
+        { '@type': 'CollegeOrUniversity', name: 'Pontifícia Universidade Católica de São Paulo' },
+        { '@type': 'CollegeOrUniversity', name: 'Universidade Paulista' },
+      ],
+    };
+  }
+  return s;
+});
+---
+
+<BaseLayout head={page.head}>
+  <Fragment slot="jsonld">
+    {jsonldEnhanced.map((schema) => <JsonLd schema={schema} />)}
+  </Fragment>
+
+  <main id="conteudo-principal" class="inst">
+    <Container>
+      <div class="doc doc--hero doc--escritorio" set:html={body} />
+    </Container>
+  </main>
+</BaseLayout>
+
+<style>
+  .inst {
+    padding-block: var(--section-y);
+  }
+</style>

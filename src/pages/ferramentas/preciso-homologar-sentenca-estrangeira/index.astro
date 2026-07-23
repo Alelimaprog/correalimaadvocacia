@@ -1,0 +1,182 @@
+---
+/**
+ * Ferramenta 3 — Verificador: preciso homologar minha decisão estrangeira?
+ * Baseado no CPC (arts. 960 a 965), com destaque para a dispensa do art. 961,
+ * §5º (divórcio consensual) e para a competência exclusiva do art. 23.
+ */
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Container from '@/components/Container.astro';
+import Breadcrumb from '@/components/Breadcrumb.astro';
+import { site, whatsappHrefForPath } from '@/lib/site.config';
+
+const canonical = `${site.url.replace(/\/$/, '')}/ferramentas/preciso-homologar-sentenca-estrangeira/`;
+const waHref = whatsappHrefForPath('/ferramentas/preciso-homologar-sentenca-estrangeira/');
+---
+
+<BaseLayout
+  title="Preciso Homologar Minha Sentença Estrangeira? | Verificador | Corrêa Lima Advocacia"
+  description="Ferramenta gratuita: descubra se a sua decisão obtida no exterior precisa de homologação no STJ, se está dispensada por lei ou se segue regime próprio."
+  canonical={canonical}
+>
+  <main id="conteudo-principal" class="tool" data-tool="preciso-homologar">
+    <Container>
+      <Breadcrumb items={[{ label: 'Início', href: '/' }, { label: 'Ferramentas', href: '/ferramentas/' }, { label: 'Preciso homologar?' }]} />
+
+      <p class="eyebrow"><span class="dot"></span>Ferramenta gratuita</p>
+      <h1>Preciso homologar minha decisão estrangeira?</h1>
+      <p class="lead">
+        Nem toda decisão obtida no exterior exige homologação no STJ — e há um
+        caso em que a lei dispensa expressamente o procedimento. Responda abaixo
+        para entender qual é a sua situação.
+      </p>
+
+      <form class="quiz" id="quiz">
+        <fieldset>
+          <legend>1. Qual é a natureza da decisão obtida no exterior?</legend>
+          <label><input type="radio" name="tipo" value="divorcio" required /> Divórcio</label>
+          <label><input type="radio" name="tipo" value="alimentos" /> Alimentos / pensão</label>
+          <label><input type="radio" name="tipo" value="guarda" /> Guarda ou visitas</label>
+          <label><input type="radio" name="tipo" value="comercial" /> Comercial (cobrança, contrato, indenização)</label>
+          <label><input type="radio" name="tipo" value="arbitral" /> Sentença arbitral</label>
+          <label><input type="radio" name="tipo" value="sucessao" /> Sucessão / herança</label>
+          <label><input type="radio" name="tipo" value="testamento" /> Testamento assinado no exterior (documento, não decisão judicial)</label>
+        </fieldset>
+
+        <fieldset id="fs-divorcio" hidden>
+          <legend>2. O divórcio foi consensual e sem outras disposições?</legend>
+          <label><input type="radio" name="consensual" value="sim" /> Sim — apenas o divórcio, de comum acordo</label>
+          <label><input type="radio" name="consensual" value="nao" /> Não — foi litigioso ou incluiu partilha, guarda ou alimentos</label>
+        </fieldset>
+
+        <fieldset id="fs-bens" hidden>
+          <legend>2. A decisão dispõe sobre bens (imóveis ou partilha) situados no Brasil?</legend>
+          <label><input type="radio" name="bens" value="sim" /> Sim</label>
+          <label><input type="radio" name="bens" value="nao" /> Não</label>
+        </fieldset>
+
+        <button class="btn btn--primary btn--lg" type="submit">Ver o resultado</button>
+      </form>
+
+      <div class="result" id="result" hidden aria-live="polite">
+        <p class="result-tag" id="rtag"></p>
+        <h2 id="rtitle"></h2>
+        <div id="rbody"></div>
+        <div class="result-cta">
+          <a class="btn btn--primary" href="/contato/">Apresentar o meu caso</a>
+          <a class="btn btn--secondary" href={waHref} target="_blank" rel="noopener noreferrer">Falar pelo WhatsApp</a>
+        </div>
+      </div>
+
+      <aside class="note">
+        <p>
+          Ferramenta informativa, que não substitui a análise individual. Ela
+          considera o regime dos arts. 960 a 965 do CPC, a dispensa do art. 961,
+          §5º, e a competência exclusiva do art. 23. Aprofunde no
+          <a href="/guias/homologacao-de-sentenca-estrangeira-no-brasil/">guia central de homologação</a>.
+        </p>
+      </aside>
+    </Container>
+  </main>
+</BaseLayout>
+
+<script is:inline>
+  (function () {
+    var form = document.getElementById('quiz');
+    var fsDiv = document.getElementById('fs-divorcio');
+    var fsBens = document.getElementById('fs-bens');
+
+    form.addEventListener('change', function (e) {
+      if (e.target.name === 'tipo') {
+        var v = e.target.value;
+        fsDiv.hidden = v !== 'divorcio';
+        fsBens.hidden = !(v === 'sucessao' || v === 'comercial');
+      }
+    });
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var f = new FormData(form);
+      var tipo = f.get('tipo'), consensual = f.get('consensual'), bens = f.get('bens');
+      var tag = document.getElementById('rtag');
+      var title = document.getElementById('rtitle');
+      var body = document.getElementById('rbody');
+      var res = document.getElementById('result');
+      var t = 'result-tag result-tag--info', h = '', b = '', label = 'Homologação necessária';
+
+      if (tipo === 'divorcio' && consensual === 'sim') {
+        label = 'Provável dispensa';
+        t = 'result-tag result-tag--ok';
+        h = 'Seu caso pode estar dispensado de homologação';
+        b = '<p>O art. 961, §5º, do CPC dispõe que a sentença estrangeira de <strong>divórcio consensual</strong> produz efeitos no Brasil independentemente de homologação pelo STJ.</p>' +
+            '<p>Na prática, isso costuma permitir a averbação diretamente no registro civil, mediante documentação apostilada e traduzida. Se houver qualquer outra disposição no mesmo ato (partilha, guarda, alimentos), essa parte exige análise própria.</p>' +
+            '<p>Veja <a href="/blog/divorcio-exterior-precisa-ser-homologado-no-brasil/">divórcio no exterior precisa ser homologado?</a></p>';
+      } else if (tipo === 'testamento') {
+        label = 'Não é caso de homologação';
+        t = 'result-tag result-tag--info';
+        h = 'Testamento não é objeto de homologação';
+        b = '<p>Homologa-se <em>decisão judicial</em> estrangeira. Um testamento é documento, não decisão — portanto não passa por homologação no STJ.</p>' +
+            '<p>Ele pode ser utilizado no procedimento sucessório brasileiro, com apostilamento e tradução, respeitados os limites do direito brasileiro (como a legítima dos herdeiros necessários — CC, arts. 1.845 e 1.846). Se houver <em>decisão judicial</em> estrangeira sobre a sucessão, aí sim pode caber homologação.</p>' +
+            '<p>Veja <a href="/blog/testamento-feito-no-exterior-vale-no-brasil/">testamento feito no exterior vale no Brasil?</a></p>';
+      } else if (tipo === 'arbitral') {
+        label = 'Regime próprio';
+        t = 'result-tag result-tag--warn';
+        h = 'Sentença arbitral estrangeira segue regime específico';
+        b = '<p>Decisões arbitrais estrangeiras também passam por reconhecimento no STJ, mas sob disciplina própria, distinta da homologação de sentenças judiciais estatais.</p>' +
+            '<p>Veja <a href="/blog/reconhecimento-decisao-arbitral-estrangeira-brasil/">reconhecimento de decisão arbitral estrangeira</a>.</p>';
+      } else if ((tipo === 'sucessao' || tipo === 'comercial') && bens === 'sim') {
+        label = 'Atenção: competência exclusiva';
+        t = 'result-tag result-tag--alert';
+        h = 'Há um limite importante quanto a bens situados no Brasil';
+        b = '<p>O art. 23 do CPC reserva à Justiça brasileira, com exclusão de qualquer outra, as ações sobre imóveis situados no Brasil (inciso I) e, em sucessão, o inventário e a partilha de bens aqui situados (inciso II). O art. 964 veda a homologação nessa matéria.</p>' +
+            '<p>Na prática: a decisão estrangeira pode ser homologável em outros capítulos, mas a parte que dispõe sobre bens no Brasil tende a esbarrar nesse limite — cabendo, inclusive, homologação parcial (art. 961, §2º).</p>' +
+            '<p>Veja <a href="/blog/bens-no-exterior-de-brasileiro-falecido-sucessao-internacional/">sucessão internacional</a> e <a href="/blog/por-que-o-stj-pode-negar-homologacao-sentenca-estrangeira/">por que o STJ nega a homologação</a>.</p>';
+      } else {
+        label = 'Homologação necessária';
+        t = 'result-tag result-tag--info';
+        h = 'Sua decisão precisa ser homologada pelo STJ';
+        b = '<p>Como regra, decisões judiciais estrangeiras dependem de homologação para produzir efeitos no Brasil. Serão examinados os requisitos do art. 963 do CPC: autoridade competente, citação regular, eficácia no país de origem, ausência de ofensa à coisa julgada brasileira, tradução oficial e ausência de manifesta ofensa à ordem pública.</p>' +
+            (tipo === 'comercial'
+              ? '<p>Para cobranças, planeje desde já a etapa seguinte: homologada a decisão, a execução tramita na Justiça Federal (art. 965). Veja <a href="/blog/sentenca-comercial-estrangeira-cobrar-divida-no-brasil/">como cobrar uma dívida no Brasil</a>.</p>'
+              : '') +
+            (tipo === 'alimentos'
+              ? '<p>Veja <a href="/blog/sentenca-estrangeira-alimentos-precisa-homologar-brasil/">sentença estrangeira de alimentos</a> — há também vias de cooperação internacional a considerar.</p>'
+              : '') +
+            (tipo === 'guarda'
+              ? '<p>Veja <a href="/blog/decisao-estrangeira-guarda-visitas-vale-no-brasil/">decisão estrangeira sobre guarda ou visitas</a>, atentando à eficácia atual da decisão no país de origem.</p>'
+              : '');
+      }
+
+      tag.textContent = label; tag.className = t;
+      title.textContent = h; body.innerHTML = b;
+      res.hidden = false;
+      res.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  })();
+</script>
+
+<style>
+  .tool { padding-block: var(--section-y); }
+  .tool h1 { font-size: var(--text-4xl); color: var(--color-ink); margin-top: var(--space-3); max-width: 22ch; line-height: 1.1; }
+  .lead { margin-top: var(--space-4); max-width: 60ch; color: var(--color-text); font-size: var(--text-md); line-height: var(--leading-normal); }
+  .quiz { margin-top: var(--space-8); max-width: 46rem; display: flex; flex-direction: column; gap: var(--space-6); }
+  .quiz fieldset { border: 1px solid var(--color-border); border-radius: var(--radius-lg); padding: var(--space-5); background: var(--surface); }
+  .quiz fieldset[hidden] { display: none; }
+  .quiz legend { font-family: var(--font-display); font-weight: var(--weight-bold); color: var(--color-ink); font-size: var(--text-md); padding-inline: var(--space-2); }
+  .quiz label { display: flex; align-items: center; gap: var(--space-3); padding: var(--space-2) 0; color: var(--color-text); font-size: var(--text-sm); cursor: pointer; }
+  .quiz input[type='radio'] { width: 1.05rem; height: 1.05rem; accent-color: var(--color-green-strong); flex: none; }
+  .quiz button { align-self: flex-start; }
+  .result { margin-top: var(--space-8); max-width: 46rem; border: 1px solid var(--border-green-subtle); background: var(--color-green-tint); border-radius: var(--radius-lg); padding: var(--space-6); }
+  .result[hidden] { display: none; }
+  .result h2 { font-size: var(--text-xl); color: var(--color-ink); margin-top: var(--space-2); }
+  .result :global(p) { margin-top: var(--space-3); color: var(--color-text); font-size: var(--text-sm); line-height: var(--leading-relaxed); }
+  .result :global(a) { color: var(--color-green-strong); font-weight: var(--weight-medium); }
+  .result-tag { display: inline-block; font-size: var(--text-xs); text-transform: uppercase; letter-spacing: 0.06em; font-weight: var(--weight-semibold); padding: 0.25rem 0.6rem; border-radius: var(--radius-sm); }
+  .result-tag--ok { background: var(--color-green-strong); color: #fff; }
+  .result-tag--warn { background: var(--color-warning); color: #fff; }
+  .result-tag--alert { background: var(--color-navy); color: #fff; }
+  .result-tag--info { background: var(--color-ink); color: #fff; }
+  .result-cta { display: flex; flex-wrap: wrap; gap: var(--space-3); margin-top: var(--space-6); }
+  .note { margin-top: var(--space-8); max-width: 46rem; border-top: 1px solid var(--color-border); padding-top: var(--space-5); }
+  .note p { color: var(--color-text-muted); font-size: var(--text-sm); line-height: var(--leading-normal); }
+  .note a { color: var(--color-green-strong); }
+</style>

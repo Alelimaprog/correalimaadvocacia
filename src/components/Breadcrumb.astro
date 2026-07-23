@@ -1,0 +1,68 @@
+---
+/**
+ * Breadcrumb — trilha de navegação. Recebe uma lista de itens; o último é a
+ * página atual (sem link). Apenas visual nesta fase — o BreadcrumbList (JSON-LD)
+ * será emitido na fase de SEO/estruturação.
+ */
+export interface Crumb {
+  label: string;
+  href?: string;
+}
+interface Props {
+  items: Crumb[];
+  class?: string;
+}
+const { items, class: cls } = Astro.props;
+---
+
+<nav class:list={['breadcrumb', cls]} aria-label="Você está em">
+  <ol>
+    {
+      items.map((item, i) => {
+        const isLast = i === items.length - 1;
+        return (
+          <li>
+            {item.href && !isLast ? (
+              <a href={item.href}>{item.label}</a>
+            ) : (
+              <span aria-current={isLast ? 'page' : undefined}>{item.label}</span>
+            )}
+            {!isLast && <span class="sep" aria-hidden="true">/</span>}
+          </li>
+        );
+      })
+    }
+  </ol>
+</nav>
+
+<style>
+  .breadcrumb ol {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.4rem;
+    list-style: none;
+    padding: 0;
+    font-size: var(--text-sm);
+    color: var(--color-text-muted);
+  }
+  .breadcrumb li {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+  }
+  .breadcrumb a {
+    color: var(--color-text-muted);
+    text-decoration: none;
+  }
+  .breadcrumb a:hover {
+    color: var(--color-green-strong);
+  }
+  .breadcrumb [aria-current='page'] {
+    color: var(--color-ink);
+    font-weight: 500;
+  }
+  .sep {
+    color: var(--gray-300);
+  }
+</style>

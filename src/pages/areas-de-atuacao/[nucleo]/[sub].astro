@@ -1,0 +1,11 @@
+---
+/** /areas-de-atuacao/<nucleo>/<sub>/ — subpáginas (Sprint 2) via SubPage + subtopics.ts. */
+import SubPage from '@/components/SubPage.astro';
+import { subtopics } from '@/lib/subtopics';
+
+export function getStaticPaths() {
+  return subtopics.map((s) => ({ params: { nucleo: s.nucleo, sub: s.slug } }));
+}
+const { nucleo, sub } = Astro.params;
+---
+<SubPage nucleo={nucleo} sub={sub} />

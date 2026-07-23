@@ -1,0 +1,84 @@
+# Corrêa Lima Advocacia — regras Apache para hospedagem compartilhada (HostGator)
+# Site 100% estático (Astro): não há Node no servidor.
+
+RewriteEngine On
+
+# 1) Canonicalização de host e protocolo (uma passada, sem loop).
+RewriteCond %{HTTPS} !=on [OR]
+RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
+RewriteRule ^ https://correalimaadvocacia.com.br%{REQUEST_URI} [R=301,L]
+
+# 2) Redirecionamentos permanentes (301).
+# 2a) URL antiga de comércio exterior -> núcleo Direito Aduaneiro-Tributário.
+#     A URL antiga não é mais gerada (ETAPA 5); o 301 preserva autoridade.
+RewriteRule ^areas-de-atuacao/direito-aduaneiro-comercio-exterior/?$ /areas-de-atuacao/direito-aduaneiro-tributario/ [R=301,L]
+
+# 3) Cabeçalhos de segurança (ETAPA 20).
+<IfModule mod_headers.c>
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set X-Frame-Options "SAMEORIGIN"
+  Header always set X-XSS-Protection "1; mode=block"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+  Header always set Permissions-Policy "geolocation=(), microphone=(), camera=(), payment=(), usb=(), interest-cohort=()"
+  Header always set Cross-Origin-Opener-Policy "same-origin"
+  Header always set Cross-Origin-Resource-Policy "same-origin"
+  Header always set Cross-Origin-Embedder-Policy "unsafe-none"
+  Header always set Strict-Transport-Security "max-age=63072000; includeSubDomains; preload"
+  Header always set Content-Security-Policy "default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'self'; form-action 'self' https://formspree.io; img-src 'self' data: https://www.google-analytics.com https://www.googletagmanager.com https://c.clarity.ms https://*.clarity.ms; font-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com https://www.clarity.ms https://*.clarity.ms; connect-src 'self' https://www.google-analytics.com https://*.google-analytics.com https://www.googletagmanager.com https://*.clarity.ms https://formspree.io; upgrade-insecure-requests"
+</IfModule>
+
+# 4) Compressão (Core Web Vitals).
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/plain text/css text/xml
+  AddOutputFilterByType DEFLATE application/javascript application/x-javascript application/json
+  AddOutputFilterByType DEFLATE application/xml application/rss+xml image/svg+xml
+  AddOutputFilterByType DEFLATE font/woff2 application/font-woff2
+</IfModule>
+<IfModule mod_brotli.c>
+  AddOutputFilterByType BROTLI_COMPRESS text/html text/css text/xml text/plain
+  AddOutputFilterByType BROTLI_COMPRESS application/javascript application/json image/svg+xml font/woff2
+</IfModule>
+
+# 5) Cache de assets estáticos (ETAPA 21).
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresDefault                          "access plus 1 month"
+  ExpiresByType text/html                 "access plus 0 seconds"
+  ExpiresByType text/css                  "access plus 1 year"
+  ExpiresByType application/javascript    "access plus 1 year"
+  ExpiresByType text/javascript           "access plus 1 year"
+  ExpiresByType font/woff2                "access plus 1 year"
+  ExpiresByType application/font-woff2    "access plus 1 year"
+  ExpiresByType image/svg+xml             "access plus 1 year"
+  ExpiresByType image/webp                "access plus 1 year"
+  ExpiresByType image/avif                "access plus 1 year"
+  ExpiresByType image/png                 "access plus 6 months"
+  ExpiresByType image/jpeg                "access plus 6 months"
+  ExpiresByType image/x-icon              "access plus 1 year"
+  ExpiresByType image/vnd.microsoft.icon  "access plus 1 year"
+  ExpiresByType application/manifest+json "access plus 1 week"
+  ExpiresByType application/xml           "access plus 1 day"
+  ExpiresByType text/xml                  "access plus 1 day"
+</IfModule>
+<IfModule mod_headers.c>
+  <FilesMatch "\.(?:woff2|css|js|svg|webp|avif|png|jpg|jpeg|ico)$">
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </FilesMatch>
+  <FilesMatch "\.(?:html|xml)$">
+    Header set Cache-Control "public, max-age=0, must-revalidate"
+  </FilesMatch>
+</IfModule>
+
+# 6) Página de erro 404 personalizada.
+ErrorDocument 404 /404.html
+
+# 7) Nunca expor arquivos sensíveis.
+<FilesMatch "^\.env">
+  Require all denied
+</FilesMatch>
+<FilesMatch "\.(config\.php|local\.php)$">
+  Require all denied
+</FilesMatch>
+<FilesMatch "^\.(htaccess|htpasswd|gitignore)$">
+  Require all denied
+</FilesMatch>

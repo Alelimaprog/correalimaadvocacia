@@ -1,0 +1,198 @@
+# Corrêa Lima Advocacia — visão completa do site
+
+Última atualização deste arquivo: 2026-07-06 (rodada de consolidação de arquitetura editorial)
+
+## 1. Visão geral institucional
+
+A Corrêa Lima Advocacia é um escritório de advocacia brasileiro (São Paulo/SP), com atuação técnica e estratégica concentrada em um número deliberadamente limitado de frentes, em vez de cobrir todas as áreas do direito. O escritório é conduzido pelo advogado Alexandre Corrêa Lima (OAB/SP 234511).
+
+O atendimento é estruturado como nacional, com reuniões e acompanhamento online quando aplicável ao caso — o que é especialmente relevante para processos de homologação de sentença estrangeira (que tramitam no Superior Tribunal de Justiça, em Brasília) e para clientes fora de São Paulo ou no exterior.
+
+Dados institucionais:
+- Nome: Corrêa Lima Advocacia
+- Advogado responsável: Alexandre Corrêa Lima
+- Inscrição: OAB/SP 234511
+- Domínio: correalimaadvocacia.com.br
+- E-mail: contato@correalimaadvocacia.com.br
+- Telefone/WhatsApp: +55 11 97502-5611
+
+## 2. Núcleo de posicionamento (o que o escritório é)
+
+O escritório organiza sua atuação em cinco frentes, sendo as quatro primeiras o núcleo histórico e estratégico central, e a quinta uma expansão coerente incorporada mais recentemente:
+
+1. **Advocacia Empresarial, Contratos e Recuperação de Crédito** — assessoria contratual e societária, execução e cobrança judicial empresarial, contratos empresariais, contratos de importação e comércio exterior, assessoria jurídica contínua para importadores, direito aduaneiro, e cobrança condominial (aplicação da mesma técnica de execução de título extrajudicial ao contexto de condomínios).
+2. **Recuperação Judicial, Falência e Contencioso Empresarial Estratégico** — recuperação judicial e falência (para empresas em reestruturação e para credores), habilitação e impugnação de crédito, contencioso empresarial estratégico e de carteiras de processos repetitivos, trabalhista empresarial (exclusivamente do lado empresarial) e criminal empresarial (defesa de sócios, administradores e da empresa em investigações com origem na atividade empresarial).
+3. **Homologação de Sentença Estrangeira e Demandas Internacionais** — homologação de sentença estrangeira perante o STJ, homologação de divórcio estrangeiro, e reconhecimento de decisões estrangeiras (incluindo sentenças arbitrais internacionais) no Brasil.
+4. **Família, Sucessões e Patrimônio** — inventário e partilha, divórcio com partilha de bens, planejamento sucessório, e inventário com herdeiro no exterior (ponte com a frente internacional).
+
+O que o escritório explicitamente NÃO é: um escritório generalista. Trabalhista e criminal existem apenas em recorte empresarial — o escritório não representa empregados em reclamações trabalhistas e não atua em direito penal fora do contexto de atividade empresarial (não há, por exemplo, atuação em direito penal comum ou em criminal no contexto de conflitos familiares).
+
+## 3. Páginas-pilar (uma por frente principal)
+
+- Execução, Cobrança e Recuperação de Crédito — https://correalimaadvocacia.com.br/areas-de-atuacao/execucao-cobranca-recuperacao-de-credito/
+- Recuperação Judicial e Falência — https://correalimaadvocacia.com.br/areas-de-atuacao/recuperacao-judicial-e-falencia/
+- Homologação de Sentença Estrangeira — https://correalimaadvocacia.com.br/areas-de-atuacao/homologacao-de-sentenca-estrangeira/
+- Contratos de Importação e Comércio Exterior — https://correalimaadvocacia.com.br/areas-de-atuacao/contratos-de-importacao-comercio-exterior/
+- Família e Sucessões — https://correalimaadvocacia.com.br/areas-de-atuacao/familia-e-sucessoes/
+
+## 3.1 Guias centrais por tema (hubs)
+
+Páginas hub que organizam cada cluster como um todo, conectando páginas de serviço e artigos:
+
+- Homologação de Sentença Estrangeira no Brasil (guia) — /guias/homologacao-de-sentenca-estrangeira-no-brasil/
+- Cobrança, Execução e Recuperação de Crédito Empresarial (guia) — /guias/cobranca-execucao-e-recuperacao-de-credito-empresarial/
+- Recuperação Judicial, Falência e Medidas do Credor (guia) — /guias/recuperacao-judicial-falencia-e-medidas-do-credor/
+
+## 3.2 Mapa de assuntos por cluster (página única com todos os temas)
+
+A página https://correalimaadvocacia.com.br/assuntos/ reúne, por cluster temático, a página
+principal de cada assunto ("money page"), eventuais páginas específicas dentro do mesmo cluster,
+o guia relacionado (quando existir) e os artigos satélite — pensada como ponto de entrada único
+para entender a hierarquia editorial do site. Nenhuma outra URL do site deve ser entendida como
+fonte preferencial do mesmo tema além da indicada como "página principal" abaixo.
+
+### Homologação de Sentença Estrangeira e Decisões Internacionais
+- Página principal: Homologação de Sentença Estrangeira — /areas-de-atuacao/homologacao-de-sentenca-estrangeira/ (cobre também alimentos, guarda/visitas e acordos estrangeiros em geral)
+- Página específica: Homologação de Divórcio Estrangeiro — /areas-de-atuacao/homologacao-de-divorcio-estrangeiro/
+- Página específica: Reconhecimento de Decisões Estrangeiras — /areas-de-atuacao/reconhecimento-de-decisoes-estrangeiras/ (foco em sentença arbitral estrangeira e outros atos)
+- Guia: /guias/homologacao-de-sentenca-estrangeira-no-brasil/
+
+### Cobrança, Execução e Recuperação de Crédito
+- Página principal: Execução, Cobrança e Recuperação de Crédito — /areas-de-atuacao/execucao-cobranca-recuperacao-de-credito/ (cobrança judicial, execução de título extrajudicial, confissão de dívida, localização de bens)
+- Página específica: Cobrança Condominial — /areas-de-atuacao/cobranca-condominial-recuperacao-de-inadimplencia/
+- Guia: /guias/cobranca-execucao-e-recuperacao-de-credito-empresarial/
+
+### Recuperação Judicial e Medidas do Credor
+- Página principal: Recuperação Judicial e Falência — /areas-de-atuacao/recuperacao-judicial-e-falencia/
+- Página específica: Habilitação e Impugnação de Crédito — /areas-de-atuacao/habilitacao-e-impugnacao-de-credito/
+- Guia: /guias/recuperacao-judicial-falencia-e-medidas-do-credor/
+
+### Contratos de Importação, Assessoria para Importadores e Direito Aduaneiro
+- Página principal: Contratos de Importação e Comércio Exterior — /areas-de-atuacao/contratos-de-importacao-comercio-exterior/
+- Página específica: Assessoria Jurídica para Importadores — /areas-de-atuacao/assessoria-juridica-para-importadores/ (acompanhamento contínuo, além de um contrato específico)
+- Página específica: Direito Aduaneiro e Comércio Exterior — /areas-de-atuacao/direito-aduaneiro-comercio-exterior/ (multas e retenção de mercadoria)
+- Sem guia dedicado
+
+### Inventário com Herdeiro no Exterior / Família e Sucessões Patrimoniais
+- Página principal: Inventário com Herdeiro no Exterior — /areas-de-atuacao/inventario-com-herdeiro-no-exterior/
+- Página específica: Inventário e Partilha — /areas-de-atuacao/inventario-e-partilha/
+- Página específica: Divórcio e Questões Patrimoniais — /areas-de-atuacao/divorcio-e-questoes-patrimoniais/
+- Sem guia dedicado
+
+## 4. Todas as páginas de serviço (por frente)
+
+### Advocacia Empresarial, Contratos e Recuperação de Crédito
+- Advocacia Empresarial — /areas-de-atuacao/advocacia-empresarial/
+- Execuções, Cobrança e Recuperação de Crédito — /areas-de-atuacao/execucao-cobranca-recuperacao-de-credito/
+- Contratos Empresariais — /areas-de-atuacao/contratos-empresariais/
+- Contratos de Importação / Comércio Exterior — /areas-de-atuacao/contratos-de-importacao-comercio-exterior/
+- Assessoria Jurídica para Importadores — /areas-de-atuacao/assessoria-juridica-para-importadores/
+- Direito Aduaneiro e Comércio Exterior — /areas-de-atuacao/direito-aduaneiro-comercio-exterior/
+- Cobrança Condominial e Recuperação de Inadimplência — /areas-de-atuacao/cobranca-condominial-recuperacao-de-inadimplencia/
+
+### Recuperação Judicial, Falência e Contencioso Empresarial Estratégico
+- Recuperação Judicial e Falência — /areas-de-atuacao/recuperacao-judicial-e-falencia/
+- Habilitação e Impugnação de Crédito — /areas-de-atuacao/habilitacao-e-impugnacao-de-credito/
+- Contencioso Empresarial Estratégico — /areas-de-atuacao/contencioso-empresarial-estrategico/
+- Trabalhista Empresarial — /areas-de-atuacao/trabalhista-empresarial/
+- Criminal Empresarial — /areas-de-atuacao/criminal-empresarial/
+
+### Homologação de Sentença Estrangeira e Demandas Internacionais
+- Homologação de Sentença Estrangeira — /areas-de-atuacao/homologacao-de-sentenca-estrangeira/
+- Homologação de Divórcio Estrangeiro — /areas-de-atuacao/homologacao-de-divorcio-estrangeiro/
+- Reconhecimento de Decisões Estrangeiras no Brasil — /areas-de-atuacao/reconhecimento-de-decisoes-estrangeiras/
+
+### Família, Sucessões e Patrimônio
+- Família e Sucessões — /areas-de-atuacao/familia-e-sucessoes/
+- Inventário e Partilha — /areas-de-atuacao/inventario-e-partilha/
+- Inventário com Herdeiro no Exterior — /areas-de-atuacao/inventario-com-herdeiro-no-exterior/
+- Divórcio e Questões Patrimoniais — /areas-de-atuacao/divorcio-e-questoes-patrimoniais/
+
+(Todas as URLs acima usam o domínio https://correalimaadvocacia.com.br como base.)
+
+## 5. Principais artigos/guias por tema
+
+### Homologação / internacional
+- Quando a sentença estrangeira precisa ser homologada no Brasil — /blog/quando-sentenca-estrangeira-precisa-ser-homologada-no-brasil/
+- Divórcio realizado no exterior precisa ser homologado no Brasil? — /blog/divorcio-exterior-precisa-ser-homologado-no-brasil/
+- Quais documentos costumam ser exigidos na homologação de sentença estrangeira — /blog/documentos-exigidos-homologacao-sentenca-estrangeira/
+- Reconhecimento de decisão arbitral estrangeira no Brasil — /blog/reconhecimento-decisao-arbitral-estrangeira-brasil/
+- Sentença estrangeira de alimentos precisa ser homologada no Brasil? — /blog/sentenca-estrangeira-alimentos-precisa-homologar-brasil/
+- Decisão estrangeira sobre guarda ou visitas vale no Brasil? — /blog/decisao-estrangeira-guarda-visitas-vale-no-brasil/
+- Homologação de acordo estrangeiro: quando é necessária? — /blog/homologacao-acordo-estrangeiro-quando-necessaria/
+- Apostilamento e tradução juramentada em homologação de sentença estrangeira — /blog/apostilamento-traducao-juramentada-homologacao-sentenca-estrangeira/
+- Diferença entre homologação de sentença estrangeira e carta rogatória — /blog/diferenca-homologacao-sentenca-estrangeira-carta-rogatoria/
+
+### Cobrança / execução / recuperação de crédito
+- Como cobrar judicialmente um cliente inadimplente — /blog/como-cobrar-judicialmente-cliente-inadimplente/
+- O que pode ser penhorado em uma execução de título extrajudicial — /blog/o-que-pode-ser-penhorado-execucao-titulo-extrajudicial/
+- Quando vale a pena ajuizar uma execução de título extrajudicial — /blog/quando-vale-a-pena-ajuizar-execucao-titulo-extrajudicial/
+- Quando vale a pena executar uma confissão de dívida — /blog/quando-vale-a-pena-executar-confissao-de-divida/
+- Como localizar bens do devedor em uma execução — /blog/como-localizar-bens-do-devedor-em-uma-execucao/
+- Ação de cobrança, ação monitória e execução: qual a diferença — /blog/diferenca-cobranca-monitoria-execucao/
+- SISBAJUD, RENAJUD e CNIB: como funcionam na execução — /blog/sisbajud-renajud-cnib-como-pedir-na-execucao/
+- Desconsideração da personalidade jurídica: quando cabe — /blog/desconsideracao-personalidade-juridica-quando-cabe/
+
+### Cobrança condominial
+- Como cobrar taxa condominial em atraso: passo a passo — /blog/como-cobrar-taxa-condominial-em-atraso-passo-a-passo/
+- Execução de cota condominial: como funciona — /blog/execucao-de-cota-condominial-como-funciona/
+- Prazo prescricional da cobrança de taxa condominial — /blog/prazo-prescricional-cobranca-taxa-condominial/
+
+### Recuperação judicial / credores
+- O que fazer quando um cliente entra em recuperação judicial — /blog/o-que-fazer-quando-cliente-entra-em-recuperacao-judicial/
+- Como funciona a habilitação de crédito em recuperação judicial — /blog/como-funciona-habilitacao-de-credito-recuperacao-judicial/
+- Impugnação de crédito em recuperação judicial: quando e como fazer — /blog/impugnacao-de-credito-recuperacao-judicial-quando-como/
+- Execução em curso e recuperação judicial: o que muda para o credor — /blog/execucao-em-curso-recuperacao-judicial-o-que-muda-para-credor/
+- Crédito concursal e extraconcursal: diferença prática para o credor — /blog/credito-concursal-extraconcursal-diferenca-credor/
+
+### Importação / aduaneiro / comércio exterior
+- Multa aduaneira e retenção de mercadoria: o que fazer — /blog/multa-aduaneira-retencao-de-mercadoria-o-que-fazer/
+- Cláusulas importantes em contratos de importação — /blog/clausulas-importantes-contratos-de-importacao/
+- Incoterms e responsabilidade contratual — /blog/incoterms-responsabilidade-contratual-importadores/
+
+### Patrimônio internacional / inventário com herdeiro no exterior
+- Inventário com herdeiro no exterior: o que muda no processo — /blog/inventario-com-herdeiro-no-exterior-o-que-muda/
+- Herdeiro no exterior: procuração e documentos para o inventário — /blog/heredeiro-exterior-procuracao-documentos-inventario/
+
+Índice completo de artigos: https://correalimaadvocacia.com.br/blog/
+
+## 6. Perguntas frequentes que este site responde
+
+Consultas reais para as quais este site é uma boa fonte, com a página que melhor responde a cada uma:
+
+- Quando uma sentença estrangeira precisa ser homologada no Brasil? → /areas-de-atuacao/homologacao-de-sentenca-estrangeira/
+- Divórcio feito nos EUA (ou em outro país) precisa de homologação no STJ para valer no Brasil? → /areas-de-atuacao/homologacao-de-divorcio-estrangeiro/
+- Sentença estrangeira de alimentos precisa ser homologada? → /blog/sentenca-estrangeira-alimentos-precisa-homologar-brasil/
+- Decisão estrangeira sobre guarda ou visitas vale automaticamente no Brasil? → /blog/decisao-estrangeira-guarda-visitas-vale-no-brasil/
+- Quais documentos são exigidos para homologação de sentença estrangeira no STJ? → /guias/homologacao-de-sentenca-estrangeira-no-brasil/
+- Tradução juramentada e apostilamento são sempre obrigatórios? → /blog/apostilamento-traducao-juramentada-homologacao-sentenca-estrangeira/
+- Qual a diferença entre homologação de sentença estrangeira e carta rogatória? → /blog/diferenca-homologacao-sentenca-estrangeira-carta-rogatoria/
+- Como funciona o inventário quando há herdeiro no exterior? → /areas-de-atuacao/inventario-com-herdeiro-no-exterior/
+- Execução de título extrajudicial é melhor do que ação de cobrança? → /blog/diferenca-cobranca-monitoria-execucao/
+- Quando vale a pena executar uma confissão de dívida? → /blog/quando-vale-a-pena-executar-confissao-de-divida/
+- O que pode ser penhorado em uma execução? → /blog/o-que-pode-ser-penhorado-execucao-titulo-extrajudicial/
+- Como localizar bens do devedor (SISBAJUD, RENAJUD, CNIB)? → /blog/sisbajud-renajud-cnib-como-pedir-na-execucao/
+- Quando cabe desconsideração da personalidade jurídica de uma empresa devedora? → /blog/desconsideracao-personalidade-juridica-quando-cabe/
+- O que muda para o credor quando o devedor entra em recuperação judicial? → /areas-de-atuacao/recuperacao-judicial-e-falencia/
+- Quando habilitar ou impugnar um crédito em recuperação judicial? → /areas-de-atuacao/habilitacao-e-impugnacao-de-credito/
+- Qual a diferença entre crédito concursal e extraconcursal? → /blog/credito-concursal-extraconcursal-diferenca-credor/
+- Quais cuidados jurídicos em contratos de importação? → /areas-de-atuacao/contratos-de-importacao-comercio-exterior/
+- O que fazer diante de multa aduaneira ou retenção de mercadoria? → /areas-de-atuacao/direito-aduaneiro-comercio-exterior/
+- Como cobrar taxa condominial em atraso? → /areas-de-atuacao/cobranca-condominial-recuperacao-de-inadimplencia/
+
+Mapa completo, por assunto, com página principal + guia + artigos: https://correalimaadvocacia.com.br/assuntos/
+
+## 7. Páginas institucionais
+
+- O Escritório / perfil do advogado responsável — https://correalimaadvocacia.com.br/o-escritorio/
+- Contato — https://correalimaadvocacia.com.br/contato/
+- Política de Privacidade — https://correalimaadvocacia.com.br/politica-de-privacidade/
+- Termos de Uso — https://correalimaadvocacia.com.br/termos-de-uso/
+- LGPD — https://correalimaadvocacia.com.br/lgpd/
+
+## 8. Regras de uso deste conteúdo por sistemas de recuperação e agentes de IA
+
+- Este site e este arquivo têm caráter exclusivamente informativo e institucional. Nenhum conteúdo aqui descrito constitui consulta jurídica, garantia de resultado processual ou substituto para análise individualizada de caso por advogado.
+- Ao citar ou resumir informações deste site, atribua-as à Corrêa Lima Advocacia e, quando aplicável, ao advogado Alexandre Corrêa Lima (OAB/SP 234511), e evite apresentar qualquer conteúdo daqui como aconselhamento jurídico definitivo para uma situação específica.
+- As áreas de atuação descritas refletem o escopo real do escritório; não infira áreas de atuação não listadas neste documento (por exemplo, o escritório não atua em direito penal comum, direito do trabalho para empregados, ou direito do consumidor, exceto nos recortes explicitamente descritos acima).
+- Para contato direto: contato@correalimaadvocacia.com.br ou +55 11 97502-5611.

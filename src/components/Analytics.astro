@@ -1,0 +1,265 @@
+---
+/**
+ * Analytics — GA4 + Microsoft Clarity com Google Consent Mode v2.
+ *
+ * Decisões:
+ *  - Consent Mode v2: por padrão TODO armazenamento de analytics/anúncios é
+ *    "denied". GA4 e Clarity só são carregados de fato APÓS o consentimento
+ *  - GA4 e Clarity só carregam APÓS o consentimento (evento `cl:consent`
+ *    emitido pelo ConsentBanner). Consent Mode v2 com padrão negado; anúncios
+ *    sempre negados. Clarity é injetado uma única vez.
+ *  - Rastreamento de eventos rico (ETAPA 7/8): cliques em WhatsApp, telefone,
+ *    e-mail e CTAs; início/sucesso de formulário; profundidade de rolagem
+ *    (50/75/90/100%); leitura de artigo; tempo na página. Cada evento inclui
+ *    page_title, page_path, practice_area, cta_position, cta_text, lead_source,
+ *    device, language e timestamp.
+ *  - Só é emitido em produção (import.meta.env.PROD).
+ */
+import { site } from '@/lib/site.config';
+
+const isProd = import.meta.env.PROD;
+const { ga4Id, clarityId } = site.analytics;
+---
+
+{
+  isProd && (
+    <script is:inline define:vars={{ ga4Id, clarityId }}>
+      {`
+      (function(){
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){ dataLayer.push(arguments); }
+        window.gtag = gtag;
+        gtag('consent', 'default', {
+          ad_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied',
+          analytics_storage: 'denied', functionality_storage: 'granted',
+          security_storage: 'granted', wait_for_update: 500
+        });
+        gtag('js', new Date());
+
+        var gaLoaded = false;
+        function loadGA(){
+          if (gaLoaded) return; gaLoaded = true;
+          var s = document.createElement('script');
+          s.async = true; s.src = 'https://www.googletagmanager.com/gtag/js?id=' + ga4Id;
+          document.head.appendChild(s);
+          gtag('config', ga4Id, { anonymize_ip: true });
+        }
+        function loadClarity(){
+          if (window.__clLoaded) return; window.__clLoaded = true;
+          (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src='https://www.clarity.ms/tag/'+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+          })(window, document, 'clarity', 'script', clarityId);
+        }
+        function grant(){
+          gtag('consent', 'update', {
+            analytics_storage: 'granted', ad_storage: 'denied',
+            ad_user_data: 'denied', ad_personalization: 'denied'
+          });
+          loadGA(); loadClarity();
+        }
+        // Carrega a medição apenas após consentimento (evento do ConsentBanner).
+        window.addEventListener('cl:consent', function(e){
+          if (e && e.detail && e.detail.analytics) grant();
+        });
+
+        function practiceArea(){
+          var p = location.pathname || '';
+          var m = p.match(/\\/areas-de-atuacao\\/([^\\/]+)\\//);
+          if (m) return m[1];
+          if (p.indexOf('/blog/') === 0) return 'blog';
+          if (p.indexOf('/guias/') === 0) return 'guias';
+          if (p.indexOf('/contato') === 0) return 'contato';
+          if (p === '/') return 'home';
+          return 'institucional';
+        }
+        function device(){ return /Mobi|Android|iPhone|iPad/i.test(navigator.userAgent) ? 'mobile' : 'desktop'; }
+        function ctx(extra){
+          var base = {
+            page_title: document.title, page_path: location.pathname,
+            practice_area: practiceArea(), lead_source: document.referrer || 'direct',
+            device: device(), language: document.documentElement.lang || 'pt-BR',
+            timestamp: new Date().toISOString()
+          };
+          if (extra) for (var k in extra) base[k] = extra[k];
+          return base;
+        }
+        function ev(name, params){ if (typeof window.gtag === 'function') window.gtag('event', name, params || {}); }
+
+        document.addEventListener('click', function(e){
+          var a = e.target && e.target.closest ? e.target.closest('a[href], button[data-cta]') : null;
+          if (!a) return;
+          var href = (a.getAttribute && a.getAttribute('href') || '').toLowerCase();
+          var text = (a.textContent || '').trim().slice(0, 80);
+          var pos = a.getAttribute('data-cta-position') || a.getAttribute('data-cta') || 'inline';
+          var common = ctx({ cta_position: pos, cta_text: text });
+          if (href.indexOf('wa.me') > -1 || href.indexOf('api.whatsapp.com') > -1 || href.indexOf('whatsapp:') === 0) {
+            ev('contact_click', ctx({ method: 'whatsapp', cta_position: pos, cta_text: text }));
+            ev('generate_lead', ctx({ method: 'whatsapp', value: 1, currency: 'BRL', cta_position: pos }));
+          } else if (href.indexOf('tel:') === 0) {
+            ev('phone_click', common);
+            ev('contact_click', ctx({ method: 'phone', cta_position: pos, cta_text: text }));
+            ev('generate_lead', ctx({ method: 'phone', value: 1, currency: 'BRL' }));
+          } else if (href.indexOf('mailto:') === 0) {
+            ev('email_click', common);
+            ev('contact_click', ctx({ method: 'email', cta_position: pos, cta_text: text }));
+            ev('generate_lead', ctx({ method: 'email', value: 1, currency: 'BRL' }));
+          } else if (a.matches && (a.matches('.btn') || a.hasAttribute('data-cta'))) {
+            ev('cta_click', common);
+          }
+        }, true);
+
+        (function(){
+          var started = false;
+          document.addEventListener('focusin', function(e){
+            if (started) return;
+            var f = e.target && e.target.closest ? e.target.closest('form[data-contact-form], form[data-home-contact]') : null;
+            if (!f) return; started = true;
+            ev('form_start', ctx({ form_id: f.getAttribute('data-form-id') || 'contato' }));
+          }, true);
+          function onReady(fn){ if(document.readyState!=='loading'){fn();} else {document.addEventListener('DOMContentLoaded',fn);} }
+          onReady(function(){
+            var done = false;
+            function fireSuccess(where){
+              if (done) return; done = true;
+              ev('form_submit', ctx({ form_id: where }));
+              ev('form_success', ctx({ form_id: where }));
+              ev('generate_lead', ctx({ method: 'form', form_id: where, value: 1, currency: 'BRL' }));
+              if ((location.pathname||'').indexOf('/contato') === 0 && (location.pathname||'').indexOf('/contato/obrigado') !== 0) {
+                setTimeout(function(){ window.location.href = '/contato/obrigado/'; }, 700);
+              }
+            }
+            function scan(node){
+              if (done || !node) return;
+              var txt = node.textContent || '';
+              if (txt.indexOf('Mensagem enviada') > -1) fireSuccess('contato');
+              else if (txt.indexOf('Mensagem recebida') > -1) fireSuccess('home');
+            }
+            var obs = new MutationObserver(function(muts){
+              muts.forEach(function(m){
+                for (var i=0;i<m.addedNodes.length;i++) scan(m.addedNodes[i]);
+                if (m.target) scan(m.target);
+              });
+            });
+            if (document.body) obs.observe(document.body, { childList: true, subtree: true, characterData: true });
+          });
+        })();
+
+        (function(){
+          // --- Eventos acrescentados na Sprint 6 (mensuração) ---
+
+          // 1) Erro de formulário: painel de erro exibido após tentativa de envio.
+          (function(){
+            var errSent = false;
+            function scanErr(node){
+              if (errSent || !node || !node.textContent) return;
+              var t = node.textContent;
+              if (t.indexOf('Não foi possível enviar') > -1 || t.indexOf('não foi possível enviar') > -1) {
+                errSent = true;
+                ev('form_error', ctx({ form_id: (location.pathname||'').indexOf('/contato') === 0 ? 'contato' : 'home' }));
+              }
+            }
+            function ready(fn){ if(document.readyState!=='loading'){fn();} else {document.addEventListener('DOMContentLoaded',fn);} }
+            ready(function(){
+              if (!document.body) return;
+              new MutationObserver(function(muts){
+                muts.forEach(function(m){
+                  for (var i=0;i<m.addedNodes.length;i++) scanErr(m.addedNodes[i]);
+                  if (m.target) scanErr(m.target);
+                });
+              }).observe(document.body, { childList: true, subtree: true, characterData: true });
+            });
+          })();
+
+          // 2) Ferramentas interativas: início e conclusão (com o desfecho).
+          (function(){
+            var root = document.querySelector('[data-tool]');
+            if (!root) return;
+            var toolId = root.getAttribute('data-tool');
+            var started = false;
+            root.addEventListener('change', function(){
+              if (started) return; started = true;
+              ev('tool_start', ctx({ tool_id: toolId }));
+            }, true);
+            root.addEventListener('submit', function(){
+              // O resultado é preenchido pelo script da própria ferramenta;
+              // lê-se o rótulo após o próximo frame.
+              setTimeout(function(){
+                var tag = document.getElementById('rtag');
+                ev('tool_complete', ctx({ tool_id: toolId, tool_result: tag ? (tag.textContent||'').trim().slice(0,60) : '' }));
+              }, 50);
+            }, true);
+            // Checklist: conclusão quando todos os itens são marcados.
+            var chks = root.querySelectorAll ? root.querySelectorAll('.chk') : [];
+            if (chks.length) {
+              var doneFired = false;
+              root.addEventListener('change', function(){
+                var all = Array.prototype.slice.call(root.querySelectorAll('.chk'));
+                var n = all.filter(function(c){ return c.checked; }).length;
+                if (!doneFired && n === all.length && all.length > 0) {
+                  doneFired = true;
+                  ev('tool_complete', ctx({ tool_id: toolId, tool_result: 'checklist_completo', items: all.length }));
+                }
+              });
+            }
+          })();
+
+          // 3) Impressão do checklist (botão ou atalho do navegador).
+          (function(){
+            var btn = document.getElementById('print');
+            if (btn) btn.addEventListener('click', function(){ ev('checklist_print', ctx({ method: 'botao' })); });
+            if (window.matchMedia) {
+              try {
+                window.addEventListener('beforeprint', function(){
+                  if ((location.pathname||'').indexOf('/ferramentas/') === 0) ev('checklist_print', ctx({ method: 'navegador' }));
+                });
+              } catch(_) {}
+            }
+          })();
+
+          // 4) Navegação de conteúdo para página de serviço (intenção comercial).
+          (function(){
+            var p = location.pathname || '';
+            var isContent = p.indexOf('/blog/') === 0 || p.indexOf('/guias/') === 0 || p.indexOf('/ferramentas/') === 0;
+            if (!isContent) return;
+            document.addEventListener('click', function(e){
+              var a = e.target && e.target.closest ? e.target.closest('a[href^="/areas-de-atuacao/"]') : null;
+              if (!a) return;
+              ev('content_to_service', ctx({ destino: a.getAttribute('href'), origem: p }));
+            }, true);
+          })();
+        })();
+
+        (function(){
+          var marks = [50, 75, 90, 100], hit = {};
+          function onScroll(){
+            var d = document.documentElement;
+            var pct = Math.min(100, Math.round(((window.scrollY + window.innerHeight) / d.scrollHeight) * 100));
+            marks.forEach(function(mk){ if (!hit[mk] && pct >= mk){ hit[mk] = true; ev('scroll_depth', ctx({ percent: mk })); } });
+          }
+          var t; window.addEventListener('scroll', function(){
+            if (t) return; t = setTimeout(function(){ t = null; onScroll(); }, 200);
+          }, { passive: true });
+        })();
+
+        (function(){
+          var isArticle = (location.pathname||'').indexOf('/blog/') === 0 || (location.pathname||'').indexOf('/guias/') === 0;
+          var start = Date.now(), readSent = false;
+          if (isArticle){
+            window.addEventListener('scroll', function(){
+              if (readSent) return;
+              var d = document.documentElement;
+              var pct = ((window.scrollY + window.innerHeight) / d.scrollHeight) * 100;
+              if (pct >= 90){ readSent = true; ev('article_read', ctx({ seconds: Math.round((Date.now()-start)/1000) })); }
+            }, { passive: true });
+          }
+          window.addEventListener('beforeunload', function(){
+            ev('time_on_page', ctx({ seconds: Math.round((Date.now()-start)/1000) }));
+          });
+        })();
+      })();
+      `}
+    </script>
+  )
+}

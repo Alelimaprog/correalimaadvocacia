@@ -1,0 +1,22 @@
+---
+/**
+ * Container — largura máxima do conteúdo (1200px), centralizado, com padding
+ * lateral. Espelha o `.container-page` do site atual. Reutilizável em toda parte.
+ */
+interface Props {
+  as?: keyof HTMLElementTagNameMap;
+  class?: string;
+}
+const { as: Tag = 'div', class: cls }: Props = Astro.props;
+---
+
+<Tag class:list={['container', cls]}><slot /></Tag>
+
+<style>
+  .container {
+    width: 100%;
+    max-width: var(--container-max);
+    margin-inline: auto;
+    padding-inline: var(--container-pad);
+  }
+</style>

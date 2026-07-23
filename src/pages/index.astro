@@ -1,0 +1,110 @@
+---
+/**
+ * / — Home (Sprint 1: novo posicionamento estratégico).
+ * Head (SEO) e JSON-LD construídos para o novo posicionamento em seis núcleos:
+ * title/description exclusivos, canonical na raiz, Open Graph/Twitter e
+ * JSON-LD (WebSite + LegalService + FAQPage coerente com a FAQ exibida).
+ * Um único h1 (no HomeHero).
+ */
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import JsonLd from '@/components/JsonLd.astro';
+import HomeHero from '@/components/home/HomeHero.astro';
+import HomeContent from '@/components/home/HomeContent.astro';
+import HomeContact from '@/components/home/HomeContact.astro';
+import { site } from '@/lib/site.config';
+import { nucleos } from '@/lib/nucleos';
+import { homeFaq } from '@/lib/home-faq';
+import type { PageHead } from '@/lib/institucional';
+
+const canonical = `${site.url}/`;
+const title = 'Advocacia Patrimonial, Empresarial e Regulatória | Corrêa Lima Advocacia';
+const description =
+  'Recuperação de crédito, cobrança condominial, direito ambiental, aduaneiro-tributário, internacional e inventário. Atuação técnica e estratégica, nacional e online.';
+const ogImage = `${site.url}${site.ogImage}`;
+
+const head: PageHead = {
+  title,
+  description,
+  canonical,
+  robots: 'index, follow',
+  og: {
+    title,
+    description,
+    url: canonical,
+    type: 'website',
+    site_name: site.name,
+    locale: site.locale,
+    image: ogImage,
+  },
+  twitter: { card: 'summary_large_image', title, description, image: ogImage },
+};
+
+const jsonld = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    '@id': `${canonical}#website`,
+    name: site.name,
+    url: canonical,
+    inLanguage: 'pt-BR',
+    publisher: { '@id': `${canonical}#organization` },
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'LegalService',
+    '@id': `${canonical}#organization`,
+    name: site.name,
+    url: canonical,
+    image: ogImage,
+    logo: `${canonical}brand/logo-light-bg.svg`,
+    email: site.contact.email,
+    telephone: site.contact.whatsapp.display,
+    areaServed: 'BR',
+    address: {
+      '@type': 'PostalAddress',
+      streetAddress: `${site.contact.address.street}, ${site.contact.address.detail}`,
+      addressLocality: site.contact.address.city,
+      addressRegion: site.contact.address.state,
+      postalCode: site.contact.address.cep,
+      addressCountry: 'BR',
+    },
+    knowsAbout: nucleos.map((n) => n.label),
+    founder: { '@id': `${canonical}#alexandre-correa-lima` },
+    employee: { '@id': `${canonical}#alexandre-correa-lima` },
+  },
+  {
+    // Entidade do advogado responsável, com @id estável reutilizável em todo o
+    // site. Sem credenciais não confirmadas (award/alumniOf/memberOf).
+    '@context': 'https://schema.org',
+    '@type': 'Attorney',
+    '@id': `${canonical}#alexandre-correa-lima`,
+    name: site.attorney.name,
+    jobTitle: 'Advogado de Negócios Internacionais',
+    url: `${canonical}o-escritorio/`,
+    worksFor: { '@id': `${canonical}#organization` },
+    knowsAbout: nucleos.map((n) => n.label),
+    areaServed: 'BR',
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: homeFaq.map((f) => ({
+      '@type': 'Question',
+      name: f.q,
+      acceptedAnswer: { '@type': 'Answer', text: f.a },
+    })),
+  },
+];
+---
+
+<BaseLayout head={head}>
+  <Fragment slot="jsonld">
+    {jsonld.map((schema) => <JsonLd schema={schema} />)}
+  </Fragment>
+
+  <main id="conteudo-principal">
+    <HomeHero />
+    <HomeContent />
+    <HomeContact />
+  </main>
+</BaseLayout>

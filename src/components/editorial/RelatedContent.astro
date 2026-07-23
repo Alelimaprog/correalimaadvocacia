@@ -1,0 +1,41 @@
+---
+/**
+ * RelatedContent — bloco de "conteúdos relacionados" para reforçar a malha
+ * interna (satélite → pilar → irmãos). Prop-driven; sem links inventados.
+ * Uso: <RelatedContent itens={[{titulo, href, tipo}]} />
+ */
+import Icon from '@/components/Icon.astro';
+interface Item { titulo: string; href: string; tipo?: string; }
+interface Props { titulo?: string; itens: Item[]; }
+const { titulo = 'Conteúdos relacionados', itens } = Astro.props;
+---
+{itens && itens.length > 0 && (
+  <nav class="rel" aria-label={titulo}>
+    <p class="rel-title">{titulo}</p>
+    <ul>
+      {itens.map((i) => (
+        <li>
+          <a href={i.href}>
+            <span class="rel-body">
+              {i.tipo && <span class="rel-tag">{i.tipo}</span>}
+              <span class="rel-t">{i.titulo}</span>
+            </span>
+            <span class="rel-arrow"><Icon name="arrow-right" size={16} /></span>
+          </a>
+        </li>
+      ))}
+    </ul>
+  </nav>
+)}
+
+<style>
+  .rel { border-top: 1px solid var(--color-border); margin-top: var(--space-8); padding-top: var(--space-6); }
+  .rel-title { font-family: var(--font-display); font-weight: var(--weight-bold); color: var(--color-ink); font-size: var(--text-md); margin-bottom: var(--space-4); }
+  .rel ul { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: 1fr; gap: var(--space-3); }
+  @media (min-width: 720px) { .rel ul { grid-template-columns: 1fr 1fr; } }
+  .rel a { display: flex; align-items: center; justify-content: space-between; gap: var(--space-3); border: 1px solid var(--color-border); border-radius: var(--radius-md); padding: var(--space-4); text-decoration: none; transition: border-color var(--dur) var(--ease), box-shadow var(--dur) var(--ease); }
+  .rel a:hover { border-color: transparent; box-shadow: var(--shadow-sm); }
+  .rel-tag { display: block; font-size: var(--text-xs); text-transform: uppercase; letter-spacing: 0.06em; color: var(--color-green-strong); font-weight: var(--weight-semibold); }
+  .rel-t { color: var(--color-ink); font-weight: var(--weight-medium); font-size: var(--text-sm); line-height: var(--leading-snug); }
+  .rel-arrow { display: inline-flex; color: var(--color-green-strong); flex: none; }
+</style>

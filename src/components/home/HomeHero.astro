@@ -1,0 +1,143 @@
+---
+/**
+ * HomeHero — capa institucional em duas colunas: à esquerda, proposta de valor e
+ * CTAs; à direita, o retrato corporativo do advogado com uma placa de
+ * identificação (nome e OAB) na base, abaixo da linha dos ombros.
+ */
+---
+
+<section class="hero">
+  <div class="hero-blob hero-blob--a" aria-hidden="true"></div>
+  <div class="hero-blob hero-blob--b" aria-hidden="true"></div>
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      <p class="eyebrow hero-badge" data-reveal><span class="dot"></span>Advocacia patrimonial, empresarial e regulatória</p>
+      <h1 class="hero-h1" data-reveal>
+        <em>Proteção patrimonial</em> e soluções jurídicas para questões empresariais e regulatórias
+      </h1>
+      <p class="hero-sub" data-reveal>
+        Atuação em recuperação de crédito, questões condominiais, ambientais, aduaneiras, internacionais e sucessórias, com análise individual dos documentos, riscos e medidas possíveis.
+      </p>
+      <p class="hero-complement" data-reveal>
+        Atendimento a empresas, condomínios, proprietários de imóveis, importadores e pessoas com demandas patrimoniais ou internacionais.
+      </p>
+      <div class="hero-cta" data-reveal>
+        <a class="btn btn--primary btn--lg" href="/contato/">Falar sobre o meu caso</a>
+        <a class="btn btn--secondary btn--lg" href="/areas-de-atuacao/">Conhecer as áreas de atuação</a>
+      </div>
+    </div>
+
+    <figure class="hero-figure" data-reveal>
+      <img
+        class="hero-portrait"
+        src="/brand/alexandre-correa-lima.webp"
+        width="760"
+        height="1207"
+        alt="Alexandre Corrêa Lima, advogado responsável pelo escritório"
+        loading="eager"
+        decoding="async"
+      />
+      <figcaption class="hero-id">
+        <p class="hero-id-name">Alexandre Corrêa Lima</p>
+        <p class="hero-id-oab">OAB/SP 234511</p>
+      </figcaption>
+    </figure>
+  </div>
+</section>
+
+<style>
+  /* Hero — dot-grid sutil + blobs verdes desfocados (linguagem do modelo). */
+  .hero {
+    position: relative;
+    background: var(--surface);
+    border-bottom: 1px solid var(--border-subtle);
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    background-image: radial-gradient(rgba(0, 168, 90, 0.15) 1px, transparent 1px);
+    background-size: 22px 22px;
+    -webkit-mask-image: radial-gradient(ellipse at top, black, transparent 78%);
+    mask-image: radial-gradient(ellipse at top, black, transparent 78%);
+    pointer-events: none;
+  }
+  .hero-blob {
+    position: absolute;
+    z-index: 0;
+    border-radius: 9999px;
+    background: var(--color-green-tint);
+    filter: blur(60px);
+    pointer-events: none;
+  }
+  .hero-blob--a { top: -10%; right: -8%; width: 26rem; height: 26rem; }
+  .hero-blob--b { bottom: -20%; left: -10%; width: 20rem; height: 20rem; opacity: 0.7; }
+  .hero-badge {
+    display: inline-flex; border: 1px solid var(--border-subtle); background: var(--surface);
+    padding: 0.4rem 0.9rem; border-radius: var(--radius-pill); box-shadow: var(--shadow-xs);
+    text-transform: none; letter-spacing: normal; font-weight: var(--weight-medium); color: var(--color-text-muted);
+  }
+  .hero-badge .dot { position: relative; }
+  .hero-grid {
+    position: relative; z-index: 1;
+    display: grid; grid-template-columns: 1fr; align-items: center;
+    gap: var(--space-4);
+    /* Compactado para caber acima da dobra: menos espaço no topo (logo abaixo
+       do menu) e um respiro menor embaixo. */
+    padding-top: clamp(0.5rem, 0.2rem + 0.9vw, 1.25rem);
+    padding-bottom: clamp(0.75rem, 0.4rem + 1vw, 1.5rem);
+  }
+  @media (min-width: 940px) { .hero-grid { grid-template-columns: 1.25fr 0.75fr; gap: var(--space-8); align-items: center; } }
+  .hero-copy { display: flex; flex-direction: column; }
+  .hero-h1 {
+    font-size: var(--text-5xl);
+    line-height: 1.06;
+    letter-spacing: var(--tracking-tight);
+    color: var(--color-ink);
+    margin-top: var(--space-2);
+    max-width: 20ch;
+    text-wrap: balance;
+  }
+  .hero-h1 em { font-style: normal; color: var(--color-green-strong); }
+  .hero-sub {
+    margin-top: var(--space-3); max-width: 52ch;
+    color: var(--color-text); font-size: var(--text-md); line-height: var(--leading-normal);
+  }
+  .hero-complement {
+    margin-top: var(--space-2); max-width: 52ch;
+    color: var(--color-text-muted); font-size: var(--text-sm); line-height: var(--leading-normal);
+  }
+  .hero-cta { margin-top: var(--space-4); display: flex; flex-wrap: wrap; gap: var(--space-3); }
+
+  /* Coluna direita — retrato institucional do advogado como peça única:
+     imagem + placa em vidro fosco sobreposta (nome, OAB e compromissos). */
+  .hero-figure { position: relative; margin: 0; width: 100%; max-width: 18.5rem; margin-inline: auto; }
+  .hero-portrait {
+    display: block; width: 100%; aspect-ratio: 314 / 499; object-fit: cover; object-position: 50% 50%;
+    border-radius: var(--radius-xl); border: 1px solid var(--color-border);
+    box-shadow: var(--shadow-lg); background: var(--surface-warm);
+  }
+  .hero-id {
+    /* Placa de identificação enxuta, em largura total, começando ABAIXO da linha
+       dos ombros — deixando cabeça, gola, gravata e parte do terno visíveis. */
+    position: absolute; left: 0; right: 0; bottom: 0;
+    background: rgba(255, 255, 255, 0.88);
+    -webkit-backdrop-filter: saturate(165%) blur(16px);
+    backdrop-filter: saturate(165%) blur(16px);
+    border: 0; border-top: 1px solid var(--border-subtle);
+    border-radius: 0 0 var(--radius-xl) var(--radius-xl);
+    box-shadow: 0 -6px 18px -12px rgba(6, 40, 28, 0.22);
+    padding: var(--space-4) var(--space-5);
+    display: flex; flex-direction: column; gap: 0.15rem;
+  }
+  .hero-id-name { font-family: var(--font-display); font-weight: var(--weight-bold); color: var(--color-ink); font-size: var(--text-lg); line-height: var(--leading-snug); }
+  .hero-id-oab { font-size: var(--text-xs); font-weight: var(--weight-semibold); letter-spacing: var(--tracking-eyebrow); text-transform: uppercase; color: var(--color-green-strong); }
+
+  @media (max-width: 640px) {
+    .hero-cta { flex-direction: column; align-items: stretch; gap: var(--space-2); }
+    .hero-cta .btn { width: 100%; }
+    .hero-figure { max-width: 15.5rem; }
+  }
+</style>

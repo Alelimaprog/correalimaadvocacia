@@ -1,0 +1,93 @@
+---
+/**
+ * Índice das ferramentas gratuitas — hub de entrada para os materiais de apoio.
+ * Serve à conversão (materiais úteis atraem contato qualificado) e evita que as
+ * ferramentas fiquem órfãs na arquitetura.
+ */
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Container from '@/components/Container.astro';
+import Breadcrumb from '@/components/Breadcrumb.astro';
+import Icon from '@/components/Icon.astro';
+import { site } from '@/lib/site.config';
+
+const canonical = `${site.url.replace(/\/$/, '')}/ferramentas/`;
+
+const ferramentas = [
+  {
+    titulo: 'Meu inventário pode ser feito em cartório?',
+    desc: 'Três perguntas para descobrir se o seu caso admite a via extrajudicial, mais rápida e barata, ou exige processo judicial.',
+    href: '/ferramentas/inventario-em-cartorio/',
+    tag: 'Verificador',
+    icon: 'scale',
+  },
+  {
+    titulo: 'Checklist de documentos para o inventário',
+    desc: 'Lista completa e interativa, com barra de progresso e versão para impressão. Organize o que já tem e o que falta.',
+    href: '/ferramentas/checklist-documentos-inventario/',
+    tag: 'Checklist',
+    icon: 'check',
+  },
+  {
+    titulo: 'Preciso homologar minha decisão estrangeira?',
+    desc: 'Descubra se a sua decisão obtida no exterior exige homologação no STJ, está dispensada por lei ou segue regime próprio.',
+    href: '/ferramentas/preciso-homologar-sentenca-estrangeira/',
+    tag: 'Verificador',
+    icon: 'globe',
+  },
+];
+---
+
+<BaseLayout
+  title="Ferramentas Gratuitas | Corrêa Lima Advocacia"
+  description="Ferramentas gratuitas para orientar decisões jurídicas: verificador de via do inventário, checklist de documentos e verificador de homologação de sentença estrangeira."
+  canonical={canonical}
+>
+  <main id="conteudo-principal" class="hub">
+    <Container>
+      <Breadcrumb items={[{ label: 'Início', href: '/' }, { label: 'Ferramentas' }]} />
+
+      <p class="eyebrow"><span class="dot"></span>Ferramentas</p>
+      <h1>Ferramentas gratuitas</h1>
+      <p class="lead">
+        Materiais de apoio para quem precisa entender rapidamente a própria
+        situação — sem cadastro e sem custo. Servem para organizar informações e
+        identificar o caminho provável; a análise do caso concreto continua
+        exigindo orientação jurídica.
+      </p>
+
+      <ul class="grid">
+        {ferramentas.map((f) => (
+          <li>
+            <a href={f.href}>
+              <span class="ic"><Icon name={f.icon} size={20} /></span>
+              <span class="tag">{f.tag}</span>
+              <span class="t">{f.titulo}</span>
+              <span class="d">{f.desc}</span>
+              <span class="go">Abrir ferramenta <Icon name="arrow-right" size={15} /></span>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </Container>
+  </main>
+</BaseLayout>
+
+<style>
+  .hub { padding-block: var(--section-y); }
+  .hub h1 { font-size: var(--text-4xl); color: var(--color-ink); margin-top: var(--space-3); line-height: 1.1; }
+  .lead { margin-top: var(--space-4); max-width: 62ch; color: var(--color-text); font-size: var(--text-md); line-height: var(--leading-normal); }
+  .grid { list-style: none; padding: 0; margin-top: var(--space-8); display: grid; grid-template-columns: 1fr; gap: var(--space-5); }
+  @media (min-width: 780px) { .grid { grid-template-columns: repeat(3, 1fr); } }
+  .grid a {
+    display: flex; flex-direction: column; height: 100%;
+    border: 1px solid var(--color-border); border-radius: var(--radius-lg);
+    padding: var(--space-6); background: var(--surface); text-decoration: none;
+    transition: box-shadow var(--dur) var(--ease), transform var(--dur) var(--ease), border-color var(--dur) var(--ease);
+  }
+  .grid a:hover { box-shadow: var(--shadow-md); transform: translateY(-2px); border-color: transparent; }
+  .ic { display: inline-flex; align-items: center; justify-content: center; width: 2.5rem; height: 2.5rem; border-radius: var(--radius-md); background: var(--color-green-tint); color: var(--color-green-strong); }
+  .tag { margin-top: var(--space-4); font-size: var(--text-xs); text-transform: uppercase; letter-spacing: 0.06em; font-weight: var(--weight-semibold); color: var(--color-green-strong); }
+  .t { margin-top: var(--space-2); font-family: var(--font-display); font-weight: var(--weight-bold); color: var(--color-ink); font-size: var(--text-lg); line-height: var(--leading-snug); }
+  .d { margin-top: var(--space-3); color: var(--color-text); font-size: var(--text-sm); line-height: var(--leading-normal); flex: 1; }
+  .go { margin-top: var(--space-5); display: inline-flex; align-items: center; gap: 0.35rem; color: var(--color-green-strong); font-weight: var(--weight-semibold); font-size: var(--text-sm); }
+</style>

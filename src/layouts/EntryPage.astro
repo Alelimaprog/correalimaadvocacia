@@ -1,0 +1,42 @@
+---
+/**
+ * EntryPage — layout único das páginas-filhas (áreas, artigos e guias).
+ * Recebe o head (SEO), o JSON-LD preservado e a trilha de breadcrumb; o corpo
+ * (Markdown renderizado) entra pelo slot. Evita HTML duplicado entre as 3 rotas.
+ */
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import JsonLd from '@/components/JsonLd.astro';
+import Container from '@/components/Container.astro';
+import Breadcrumb from '@/components/Breadcrumb.astro';
+import type { PageHead } from '@/lib/institucional';
+import type { Crumb } from '@/components/Breadcrumb.astro';
+
+interface Props {
+  head: PageHead;
+  jsonld: Record<string, unknown>[];
+  crumbs: Crumb[];
+}
+const { head, jsonld, crumbs } = Astro.props;
+---
+
+<BaseLayout head={head}>
+  <Fragment slot="jsonld">
+    {jsonld.map((schema) => <JsonLd schema={schema} />)}
+  </Fragment>
+
+  <main id="conteudo-principal" class="entry">
+    <Container>
+      {crumbs.length > 0 && <Breadcrumb items={crumbs} class="entry-crumb" />}
+      <article class="prose prose--wide">
+        <slot />
+      </article>
+    </Container>
+  </main>
+</BaseLayout>
+
+<style>
+  .entry { padding-block: var(--section-y-sm); }
+  .entry-crumb {
+    margin-bottom: var(--space-6);
+  }
+</style>

@@ -1,0 +1,119 @@
+---
+/**
+ * /guias/ — hub dos guias (Sprint 2). Corrige o link do menu "Conteúdos"
+ * (que apontava para /guias/ sem página) e reúne todos os guias de alta
+ * autoridade, eliminando páginas órfãs. Lista via getCollection('guias').
+ */
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import JsonLd from '@/components/JsonLd.astro';
+import Icon from '@/components/Icon.astro';
+import { getCollection } from 'astro:content';
+import { site } from '@/lib/site.config';
+import type { PageHead } from '@/lib/institucional';
+
+const entries = (await getCollection('guias')).sort((a, b) =>
+  (a.data.h1 ?? a.data.title).localeCompare(b.data.h1 ?? b.data.title, 'pt-BR')
+);
+
+const url = `${site.url}/guias/`;
+const title = `Guias Jurídicos | ${site.name}`;
+const description =
+  'Guias completos e de alta autoridade sobre recuperação de crédito, cobrança condominial, direito ambiental, aduaneiro-tributário, internacional e inventário.';
+const ogImage = `${site.url}${site.ogImage}`;
+
+const head: PageHead = {
+  title,
+  description,
+  canonical: url,
+  robots: 'index, follow',
+  og: { title, description, url, site_name: site.name, locale: site.locale, image: ogImage },
+  twitter: { card: 'summary_large_image', title, description, image: ogImage },
+};
+
+const jsonld = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Início', item: `${site.url}/` },
+      { '@type': 'ListItem', position: 2, name: 'Guias', item: url },
+    ],
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'CollectionPage',
+    name: title,
+    description,
+    url,
+    hasPart: entries.map((e) => ({
+      '@type': 'Article',
+      headline: e.data.h1 ?? e.data.title,
+      url: `${site.url}/guias/${e.id}/`,
+    })),
+  },
+];
+---
+
+<BaseLayout head={head}>
+  <Fragment slot="jsonld">{jsonld.map((schema) => <JsonLd schema={schema} />)}</Fragment>
+
+  <main id="conteudo-principal" class="guias-hub">
+    <section class="g-hero">
+      <div class="wrap">
+        <nav class="crumbs" aria-label="Você está em">
+          <a href="/">Início</a><span>/</span><span>Guias</span>
+        </nav>
+        <p class="eyebrow"><span class="dot"></span>Conteúdo de referência</p>
+        <h1>Guias Jurídicos</h1>
+        <p class="g-desc">
+          Materiais completos, organizados por área, para quem quer entender o tema com
+          profundidade antes de decidir os próximos passos. Conteúdo informativo geral,
+          sem promessa de resultado.
+        </p>
+      </div>
+    </section>
+
+    <section class="g-list">
+      <div class="wrap">
+        <ul class="cards">
+          {entries.map((e) => (
+            <li>
+              <a href={`/guias/${e.id}/`}>
+                <span class="tag">Guia</span>
+                <h2>{e.data.h1 ?? e.data.title}</h2>
+                <p>{e.data.description}</p>
+                <span class="more">Ler o guia<Icon name="arrow-right" size={16} /></span>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+  </main>
+</BaseLayout>
+
+<style>
+  /* Hub de guias — hero claro; cards unificados; tag via ui.css. */
+  .g-hero {
+    background: var(--surface-warm);
+    padding-block: var(--section-y-sm);
+    border-bottom: 1px solid var(--border-subtle);
+  }
+  .g-hero .crumbs { margin-bottom: var(--space-5); }
+  .g-hero h1 { font-size: var(--text-4xl); color: var(--color-ink); margin-top: var(--space-3); }
+  .g-desc { margin-top: var(--space-4); color: var(--color-text); font-size: var(--text-md); line-height: var(--leading-relaxed); max-width: var(--measure); }
+
+  .g-list { background: var(--surface-subtle); padding-block: var(--section-y); }
+  .cards { list-style: none; padding: 0; margin: 0; display: grid; gap: var(--space-5); grid-template-columns: 1fr; }
+  @media (min-width: 780px) { .cards { grid-template-columns: 1fr 1fr; } }
+  .cards a {
+    display: flex; flex-direction: column; height: 100%; background: var(--surface);
+    border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); padding: var(--space-6);
+    text-decoration: none;
+    transition: border-color var(--dur) var(--ease), box-shadow var(--dur) var(--ease), transform var(--dur) var(--ease);
+  }
+  .cards a:hover { border-color: var(--border-strong); box-shadow: var(--shadow-md); transform: translateY(-2px); }
+  .cards h2 { font-size: var(--text-lg); color: var(--color-ink); line-height: var(--leading-snug); margin-top: var(--space-4); }
+  .cards p { margin-top: var(--space-3); color: var(--color-text-muted); line-height: var(--leading-normal); font-size: var(--text-sm); }
+  .more { display: inline-flex; align-items: center; gap: 0.4rem; margin-top: var(--space-5); color: var(--color-green-strong); font-weight: var(--weight-semibold); font-size: var(--text-sm); }
+</style>

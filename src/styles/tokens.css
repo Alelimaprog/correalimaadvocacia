@@ -1,0 +1,169 @@
+/**
+ * Design Tokens — Corrêa Lima Advocacia.
+ * Migração visual: paleta e forma alinhadas ao novo modelo de referência
+ * (verde vivo como protagonista, superfícies "ink" navy profundas, mint
+ * suave para blocos de destaque, cantos mais arredondados, sombras
+ * "flutuantes"). Todos os NOMES de variáveis são preservados 1:1 em relação
+ * à versão anterior — nenhum componente precisou ser reescrito para
+ * consumir este sistema, apenas os valores mudaram.
+ */
+
+:root {
+  /* ─── Marca — verde esmeralda vivo + darks verde-floresta profundos ──── */
+  --brand-navy: #06281c;
+  --brand-green: #00a85a;
+
+  --color-navy: #06281c;
+  --color-navy-deep: #041b13;
+  --color-ink: #0c211a;
+
+  --color-brand: #00a85a;
+  --color-brand-deep: #0b7d45;
+  --color-accent: #0b7d45;
+  --color-accent-soft: #00a85a;
+
+  --color-green: #00a85a;
+  --color-green-hover: #12b869;
+  --color-green-strong: #0b7d45;
+  --color-green-forest: #0a5230;
+  --color-green-tint: #e2f4ea;
+  --border-green-subtle: #c4e7d1;
+
+  /* Verde OFICIAL do WhatsApp — deliberadamente distinto do verde do site. */
+  --color-whatsapp: #25d366;
+
+  /* ─── Escala neutra (leve tinta esverdeada) ──────────────────── */
+  --gray-50: #f7faf7;
+  --gray-100: #eef4ef;
+  --gray-150: #e7eee8;
+  --gray-200: #dfe8e1;
+  --gray-300: #c6d3ca;
+  --gray-400: #9db0a3;
+  --gray-500: #76897c;
+  --gray-600: #5c6d62;
+  --gray-700: #48564d;
+  --gray-800: #2b3730;
+  --gray-900: #131e18;
+
+  /* ─── Superfícies ─────────────────────────────────────────────── */
+  --color-paper: #ffffff;
+  --surface: #ffffff;
+  --surface-warm: #f7faf7;
+  --surface-cream: #edf7ee;
+  --surface-sage: #edf7ee;
+  --surface-sand: #f5f8f5;
+  --surface-strong: #06281c;
+  --surface-strong-alt: #0c3a29;
+  --surface-subtle: #f7faf7;
+  --surface-muted: #eef4ef;
+  --color-surface-1: #eef4ef;
+  --color-surface-2: #dfe8e1;
+
+  /* ─── Texto (AA) ──────────────────────────────────────────────── */
+  --color-text: #3b463f;
+  --color-text-muted: #61706a;
+  --color-text-subtle: #6b7a73;
+  --color-text-on-dark: #ffffff;
+  --color-text-on-dark-muted: rgba(230, 238, 233, 0.72);
+
+  /* ─── Bordas ──────────────────────────────────────────────────── */
+  --color-border: #e4ece5;
+  --border-subtle: #edf4ee;
+  --border-strong: #d3e0d6;
+  --border-on-dark: rgba(255, 255, 255, 0.12);
+
+  --color-warn: #b4611f;
+
+  /* ─── Estados funcionais ──────────────────────────────────────── */
+  --color-success: #1f9d57;
+  --color-warning: #b4611f;
+  --color-danger: #c23b3b;
+  --color-info: #1f7d6e;
+  --color-disabled: #9db0a3;
+
+  /* ─── Tipografia (Manrope + Inter) ────────────────────────────── */
+  --font-display: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+
+  --text-xs: 0.78125rem;
+  --text-sm: 0.9375rem;
+  --text-base: 1rem;
+  --text-md: 1.0625rem;
+  --text-lg: 1.25rem;
+  --text-xl: 1.375rem;
+  --text-2xl: clamp(1.125rem, 1rem + 0.6vw, 1.375rem);
+  --text-3xl: clamp(1.375rem, 1.15rem + 1.1vw, 1.75rem);
+  --text-4xl: clamp(1.5rem, 1.15rem + 1.8vw, 2.25rem);
+  --text-5xl: clamp(1.6875rem, 1.2rem + 2.4vw, 2.75rem);
+
+  --leading-tight: 1.06;
+  --leading-snug: 1.18;
+  --leading-normal: 1.5;
+  --leading-relaxed: 1.58;
+
+  --weight-regular: 400;
+  --weight-medium: 500;
+  --weight-semibold: 600;
+  --weight-bold: 700;
+  --weight-display: 700;
+
+  --tracking-tight: -0.025em;
+  --tracking-eyebrow: 0.16em;
+
+  --measure: 58ch;
+  --measure-narrow: 44ch;
+  --measure-wide: 46rem;
+
+  /* ─── Espaçamento — grid 8px ──────────────────────────────────── */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.125rem;
+  --space-6: 1.375rem;
+  --space-8: 1.75rem;
+  --space-10: 2.125rem;
+  --space-12: 2.5rem;
+  --space-16: 3.25rem;
+  --space-20: 4rem;
+  --space-24: 4.5rem;
+  --space-32: 5.5rem;
+
+  /* Ritmo vertical das seções — otimizado para melhor aproveitamento da tela
+     (reduz apenas espaçamentos; não afeta fontes, cards nem conteúdo). */
+  --section-y-lg: clamp(1.6rem, 1.3rem + 0.9vw, 2.25rem);
+  --section-y: clamp(1.3rem, 1.05rem + 0.75vw, 1.85rem);
+  --section-y-sm: clamp(1rem, 0.85rem + 0.5vw, 1.35rem);
+
+  /* ─── Layout ──────────────────────────────────────────────────── */
+  --container-max: 76rem;
+  --container-narrow: 48rem;
+  --container-pad: clamp(1.25rem, 0.8rem + 1.2vw, 2rem);
+  --header-height: 4.75rem;
+
+  /* ─── Raios — mais arredondados, linguagem "pill" do modelo ────── */
+  --radius-sm: 10px;
+  --radius-md: 14px;
+  --radius-lg: 22px;
+  --radius-xl: 28px;
+  --radius-pill: 999px;
+  --radius: 14px;
+
+  /* ─── Sombras — suaves, profundas, subtom verde-floresta (sem navy) ─── */
+  --shadow-xs: 0 1px 2px rgba(6, 40, 28, 0.05);
+  --shadow-sm: 0 1px 2px rgba(6, 40, 28, 0.05), 0 4px 10px -6px rgba(6, 40, 28, 0.08);
+  --shadow-md: 0 20px 40px -24px rgba(6, 40, 28, 0.28), 0 4px 12px -6px rgba(6, 40, 28, 0.1);
+  --shadow-lg: 0 30px 60px -30px rgba(6, 40, 28, 0.32), 0 8px 20px -8px rgba(6, 40, 28, 0.14);
+  --shadow-action: 0 12px 28px -10px rgba(0, 168, 90, 0.5);
+
+  /* ─── Movimento ───────────────────────────────────────────────── */
+  --ease: cubic-bezier(0.2, 0.6, 0.2, 1);
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --dur-fast: 120ms;
+  --dur: 220ms;
+  --dur-slow: 320ms;
+
+  /* ─── Foco (WCAG AA) ──────────────────────────────────────────── */
+  --ring: 0 0 0 3px rgba(0, 168, 90, 0.4);
+  --ring-color: #0b7d45;
+}

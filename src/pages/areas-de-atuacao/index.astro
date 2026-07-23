@@ -1,0 +1,123 @@
+---
+/**
+ * /areas-de-atuacao/ — página geral reorganizada (Sprint 1) em torno dos seis
+ * núcleos. Preserva head (SEO) e BreadcrumbList do site atual e adiciona um
+ * ItemList dos núcleos. Aponta para cada página-pilar. As páginas antigas
+ * permanecem publicadas (fora do destaque), acessíveis pelas correlatas.
+ */
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import JsonLd from '@/components/JsonLd.astro';
+import Icon from '@/components/Icon.astro';
+import { getPage } from '@/lib/institucional';
+import { site, whatsappHref } from '@/lib/site.config';
+import { nucleos } from '@/lib/nucleos';
+
+const page = getPage('/areas-de-atuacao/');
+
+const itemList = {
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  itemListElement: nucleos.map((n, i) => ({
+    '@type': 'ListItem',
+    position: i + 1,
+    name: n.label,
+    url: `${site.url}${n.href}`,
+  })),
+};
+---
+
+<BaseLayout head={page.head}>
+  <Fragment slot="jsonld">
+    {page.jsonld.map((schema) => <JsonLd schema={schema} />)}
+    <JsonLd schema={itemList} />
+  </Fragment>
+
+  <main id="conteudo-principal">
+    <section class="areas-head">
+      <div class="wrap">
+        <nav class="crumbs" aria-label="Você está em">
+          <a href="/">Início</a><span aria-hidden="true">/</span><span>Áreas de Atuação</span>
+        </nav>
+        <p class="eyebrow"><span class="dot"></span>Áreas de atuação</p>
+        <h1>Seis núcleos de atuação para problemas jurídicos concretos</h1>
+        <p class="lead">
+          O escritório concentra a atuação em seis núcleos. Encontre o que corresponde à sua
+          situação — de cobrança e execução a questões ambientais, aduaneiras, internacionais e patrimoniais.
+        </p>
+      </div>
+    </section>
+
+    <section class="areas-grid-sec">
+      <div class="wrap">
+        <div class="areas-grid">
+          {
+            nucleos.map((n) => (
+              <a class="area-card" href={n.href}>
+                <span class="area-ic"><Icon name={n.icon} size={24} /></span>
+                <h2>{n.label}</h2>
+                <p class="area-short">{n.short}</p>
+                <ul class="area-sit">
+                  {n.situations.slice(0, 3).map((s) => (
+                    <li><Icon name="check" size={16} class="sit-ic" /><span>{s}</span></li>
+                  ))}
+                </ul>
+                <span class="area-more">Ver a página do núcleo <Icon name="arrow-right" size={16} /></span>
+              </a>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <section class="areas-cta">
+      <div class="wrap cta-inner">
+        <div>
+          <h2>Não sabe por qual núcleo começar?</h2>
+          <p>Descreva a situação e os documentos disponíveis. Fazemos uma análise inicial e indicamos o caminho.</p>
+        </div>
+        <div class="cta-actions">
+          <a class="btn btn--primary" href="/contato/">Solicitar atendimento</a>
+          <a class="btn btn--ghost-light" href={whatsappHref} target="_blank" rel="noopener noreferrer">Falar no WhatsApp</a>
+        </div>
+      </div>
+    </section>
+  </main>
+</BaseLayout>
+
+<style>
+  /* Áreas de atuação — hero claro editorial; cards unificados; CTA escuro. */
+  .areas-head {
+    background: var(--surface-warm);
+    padding-block: var(--section-y-sm);
+    border-bottom: 1px solid var(--border-subtle);
+  }
+  .areas-head .crumbs { margin-bottom: var(--space-6); }
+  .areas-head h1 { font-size: var(--text-4xl); color: var(--color-ink); margin-top: var(--space-4); max-width: 18ch; }
+  .areas-head .lead { margin-top: var(--space-5); color: var(--color-text); font-size: var(--text-md); line-height: var(--leading-relaxed); max-width: var(--measure); }
+
+  .areas-grid-sec { background: var(--surface-subtle); padding-block: var(--section-y); }
+  .areas-grid { display: grid; gap: var(--space-6); grid-template-columns: 1fr; }
+  @media (min-width: 720px) { .areas-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (min-width: 1080px) { .areas-grid { grid-template-columns: repeat(3, 1fr); } }
+
+  .area-card {
+    display: flex; flex-direction: column; background: var(--surface); border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-lg); padding: var(--space-6); text-decoration: none;
+    transition: border-color var(--dur) var(--ease), box-shadow var(--dur) var(--ease), transform var(--dur) var(--ease);
+  }
+  .area-card:hover { border-color: var(--border-strong); box-shadow: var(--shadow-md); transform: translateY(-2px); }
+  .area-ic { display: inline-flex; height: 3.1rem; width: 3.1rem; align-items: center; justify-content: center; border-radius: var(--radius-md); background: var(--color-navy); color: var(--color-green); }
+  .area-card h2 { margin-top: var(--space-5); font-size: var(--text-lg); color: var(--color-ink); }
+  .area-short { margin-top: var(--space-3); color: var(--color-text-muted); font-size: var(--text-sm); line-height: var(--leading-normal); }
+  .area-sit { list-style: none; padding: 0; margin: var(--space-4) 0 0; display: flex; flex-direction: column; gap: var(--space-2); }
+  .area-sit li { display: flex; gap: var(--space-2); align-items: flex-start; color: var(--color-text); font-size: var(--text-sm); line-height: var(--leading-snug); }
+  .sit-ic { color: var(--color-green-strong); flex: none; margin-top: 2px; }
+  .area-more { margin-top: var(--space-5); display: inline-flex; align-items: center; gap: 0.4rem; color: var(--color-green-strong); font-weight: var(--weight-semibold); font-size: var(--text-sm); }
+
+  .areas-cta { background: var(--surface-strong); color: var(--color-text-on-dark); padding-block: var(--section-y-sm); }
+  .cta-inner { display: grid; gap: var(--space-6); grid-template-columns: 1fr; align-items: center; }
+  @media (min-width: 900px) { .cta-inner { grid-template-columns: 1.6fr 1fr; gap: var(--space-10); } }
+  .areas-cta h2 { color: #fff; font-size: var(--text-2xl); line-height: var(--leading-snug); }
+  .areas-cta p { margin-top: var(--space-4); color: var(--color-text-on-dark-muted); line-height: var(--leading-normal); max-width: var(--measure-narrow); }
+  .cta-actions { display: flex; flex-wrap: wrap; gap: var(--space-3); }
+</style>

@@ -1,0 +1,26 @@
+---
+/**
+ * Checklist — lista de itens (ex.: documentos necessários, passos).
+ * Prop-driven; nenhum conteúdo jurídico embutido.
+ * Uso: <Checklist titulo="Documentos" itens={["RG","CPF"]} />
+ */
+import Icon from '@/components/Icon.astro';
+interface Props { titulo?: string; itens: string[]; }
+const { titulo, itens } = Astro.props;
+---
+<div class="checklist">
+  {titulo && <p class="checklist-title">{titulo}</p>}
+  <ul>
+    {itens.map((i) => (
+      <li><span class="checklist-ic"><Icon name="check" size={16} /></span><span>{i}</span></li>
+    ))}
+  </ul>
+</div>
+
+<style>
+  .checklist { border: 1px solid var(--color-border); border-radius: var(--radius-md); padding: var(--space-4) var(--space-5); background: var(--surface); margin: var(--space-5) 0; }
+  .checklist-title { font-family: var(--font-display); font-weight: var(--weight-bold); color: var(--color-ink); font-size: var(--text-sm); margin-bottom: var(--space-3); }
+  .checklist ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: var(--space-2); }
+  .checklist li { display: flex; align-items: flex-start; gap: var(--space-3); color: var(--color-text); font-size: var(--text-sm); line-height: var(--leading-normal); }
+  .checklist-ic { flex: none; display: inline-flex; color: var(--color-green-strong); margin-top: 0.1rem; }
+</style>
