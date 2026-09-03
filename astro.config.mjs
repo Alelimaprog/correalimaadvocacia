@@ -10,6 +10,7 @@ const EXCLUDE = [
   '/contato/obrigado/',
   '/404',
   '/areas-de-atuacao/direito-aduaneiro-comercio-exterior/',
+  '/trabalhista/', // protótipo de landing paga: noindex
 ];
 
 /**

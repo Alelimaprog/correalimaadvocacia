@@ -37,8 +37,10 @@ const args = process.argv.slice(2);
 const flags = new Set(args.filter((a) => a.startsWith('--')));
 const tagIdx = args.indexOf('--tag');
 const tag = tagIdx !== -1 ? args[tagIdx + 1] : null;
-const route = args.find((a, i) => !a.startsWith('--') && args[i - 1] !== '--tag') || '/';
+const route = args.find((a, i) => !a.startsWith('--') && args[i - 1] !== '--tag' && args[i - 1] !== '--click') || '/';
 const fullPage = flags.has('--full');
+const clickIdx = args.indexOf('--click');
+const clickSel = clickIdx !== -1 ? args[clickIdx + 1] : null;
 
 const DIST = resolve('dist');
 if (!existsSync(DIST)) {
@@ -88,6 +90,11 @@ for (const vp of VIEWPORTS) {
   }
   // Fontes carregadas e animações de entrada estabilizadas antes do frame.
   await page.evaluate(() => document.fonts.ready);
+  // Estado interativo: dispara o seletor antes do frame, para capturar a resposta aberta.
+  if (clickSel) {
+    const target = page.locator(clickSel).first();
+    if (await target.count()) await target.click();
+  }
   await page.waitForTimeout(400);
 
   const file = join(outDir, `${vp.name}${fullPage ? '-full' : ''}.png`);
