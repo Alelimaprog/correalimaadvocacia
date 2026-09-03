@@ -74,6 +74,25 @@ const SITUACOES = [
   },
 ];
 
+const MATERIAL = [
+  {
+    traz: 'Holerites, extrato do FGTS, rescisão',
+    mostra: 'O que foi pago, em que parcelas, e o que ficou em aberto.',
+  },
+  {
+    traz: 'Ponto, escalas, conversas de trabalho',
+    mostra: 'A jornada que existiu de fato — que nem sempre é a que está no papel.',
+  },
+  {
+    traz: 'Contrato, mensagens, notas emitidas',
+    mostra: 'Como o trabalho acontecia no dia a dia: horário, ordens, exclusividade.',
+  },
+  {
+    traz: 'Datas, testemunhas, atendimentos',
+    mostra: 'A sequência dos fatos, que é o que sustenta qualquer análise.',
+  },
+];
+
 const WHATSAPP =
   'https://wa.me/5511975025611?text=' +
   encodeURIComponent('Olá. Queria contar uma situação de trabalho e entender o que pode ser feito.');
@@ -137,8 +156,9 @@ const WHATSAPP =
     </div>
 
     <!-- ══ Ruptura para o campo claro ════════════════════════ -->
-    <main class="dia">
-      <section class="indice" aria-label="Situações de trabalho">
+    <main>
+      <div class="campo campo--dia">
+        <section class="indice" aria-label="Situações de trabalho">
         <div class="coluna">
           <h2 class="pergunta">O que está acontecendo<br />no seu trabalho?</h2>
           <p class="instrucao">Encontre a frase mais parecida com a sua situação.</p>
@@ -170,15 +190,50 @@ const WHATSAPP =
             documentos e o que de fato aconteceu no dia a dia — por isso nada aqui substitui a
             análise da sua situação.
           </p>
-        </aside>
-      </section>
+          </aside>
+        </section>
+      </div>
 
-      <section class="fecho">
+      <!-- ══ 03 · O que decide um caso — volta ao campo escuro ══ -->
+      <div class="campo campo--noite">
+        <section class="metodo">
+          <h2 class="metodo__titulo">
+            O que decide um caso não é a versão.<br />É o que dá para demonstrar.
+          </h2>
+          <p class="metodo__lead">
+            Por isso a primeira conversa é sobre material: o que existe, o que dá para reunir e o
+            que aquilo mostra sobre a sua rotina de trabalho.
+          </p>
+
+          <dl class="pauta">
+            {
+              MATERIAL.map((m) => (
+                <div class="pauta__par">
+                  <dt class="pauta__traz">{m.traz}</dt>
+                  <dd class="pauta__mostra">{m.mostra}</dd>
+                </div>
+              ))
+            }
+          </dl>
+
+          <p class="metodo__fecho">
+            <b>
+              Nem toda situação vira processo. Olhar esse material com calma é o que permite dizer
+              do que se trata e quais medidas cabem. <span>E se você não guardou nada, isso não
+              encerra a conversa — boa parte desses documentos pode ser obtida depois.</span>
+            </b>
+          </p>
+        </section>
+      </div>
+
+      <div class="campo campo--dia">
+        <section class="fecho">
         <p class="fecho__frase">
           Você explica o que aconteceu.<br />Nós explicamos o que pode ser feito.
         </p>
-        <a class="fecho__acao" href={WHATSAPP} rel="nofollow noopener">Contar a minha situação</a>
-      </section>
+          <a class="fecho__acao" href={WHATSAPP} rel="nofollow noopener">Contar a minha situação</a>
+        </section>
+      </div>
     </main>
 
     <style>
@@ -317,10 +372,85 @@ const WHATSAPP =
       }
 
       /* ══ CAMPO CLARO ═══════════════════════════════════════ */
-      .dia {
+      .campo {
+        padding: 0 22px;
+      }
+
+      .campo--dia {
         background: var(--papel);
         color: var(--tinta);
-        padding: 0 22px 92px;
+      }
+
+      .campo--noite {
+        background: var(--preto);
+        color: var(--claro);
+      }
+
+      /* ══ 03 · O QUE DECIDE UM CASO ═════════════════════════
+         Textura deliberadamente oposta à do índice: pares em pauta,
+         sem filete por linha, separados por espaço. Mesma família
+         tipográfica, papel de cada peça trocado. */
+      .metodo {
+        padding: 76px 0 86px;
+      }
+
+      .metodo__titulo {
+        font-size: clamp(1.62rem, 6.6vw, 2.3rem);
+        line-height: 1.1;
+        letter-spacing: -0.021em;
+        font-weight: 500;
+        font-variation-settings: 'wdth' 86;
+      }
+
+      .metodo__lead {
+        margin-top: 20px;
+        max-width: 44ch;
+        font-size: 16px;
+        line-height: 1.55;
+        color: var(--claro-fraco);
+      }
+
+      .pauta {
+        margin: 46px 0 0;
+      }
+
+      .pauta__par + .pauta__par {
+        margin-top: 30px;
+      }
+
+      .pauta__traz {
+        font-size: 11.5px;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        font-weight: 600;
+        color: var(--claro);
+        font-variation-settings: 'wdth' 96;
+      }
+
+      .pauta__mostra {
+        margin: 7px 0 0;
+        font-size: 16.5px;
+        line-height: 1.5;
+        color: var(--claro-fraco);
+        max-width: 46ch;
+      }
+
+      .metodo__fecho {
+        margin-top: 54px;
+        padding-top: 22px;
+        border-top: 1px solid rgba(236, 231, 222, 0.22);
+        font-size: 16px;
+        line-height: 1.55;
+      }
+
+      .metodo__fecho b {
+        font-weight: 400;
+        display: block;
+        max-width: 52ch;
+      }
+
+      .metodo__fecho span {
+        color: var(--claro-fraco);
       }
 
       .pergunta {
@@ -424,6 +554,10 @@ const WHATSAPP =
         padding-bottom: 2px;
       }
 
+      .indice {
+        padding-bottom: 96px;
+      }
+
       .margem {
         margin-top: 38px;
         max-width: 40ch;
@@ -436,9 +570,7 @@ const WHATSAPP =
       }
 
       .fecho {
-        margin-top: 82px;
-        padding-top: 28px;
-        border-top: 1px solid var(--tinta);
+        padding: 62px 0 88px;
       }
 
       .fecho__frase {
@@ -490,8 +622,39 @@ const WHATSAPP =
           font-size: clamp(2.8rem, 5vw, 3.8rem);
         }
 
-        .dia {
-          padding: 0 40px 118px;
+        .campo {
+          padding: 0 40px;
+        }
+
+        .indice {
+          padding-bottom: 120px;
+        }
+
+        .metodo {
+          padding: 104px 0 112px;
+        }
+
+        .pauta__par {
+          display: grid;
+          grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+          gap: 0 36px;
+          align-items: baseline;
+        }
+
+        .pauta__traz {
+          text-align: right;
+        }
+
+        .pauta__par + .pauta__par {
+          margin-top: 34px;
+        }
+
+        .pauta__mostra {
+          margin-top: 0;
+        }
+
+        .fecho {
+          padding: 86px 0 112px;
         }
 
         .indice {
@@ -544,8 +707,71 @@ const WHATSAPP =
           margin-top: 40px;
         }
 
-        .dia {
-          padding: 0 clamp(48px, 5vw, 88px) 150px;
+        .campo {
+          padding: 0 clamp(48px, 5vw, 88px);
+        }
+
+        .indice {
+          padding-bottom: 148px;
+        }
+
+        .metodo {
+          padding: 132px 0 140px;
+        }
+
+        .metodo__titulo {
+          font-size: clamp(2.3rem, 3.2vw, 2.9rem);
+        }
+
+        .metodo__lead {
+          margin-top: 30px;
+          margin-left: calc((100% - 56px) * 4 / 11 + 56px);
+          font-size: 17px;
+          max-width: 46ch;
+        }
+
+        .pauta {
+          margin-top: 76px;
+        }
+
+        /* Duas colunas: material à esquerda, o que ele mostra à direita.
+           Relação, não lista — é o que separa esta seção do índice. */
+        .pauta__par {
+          display: grid;
+          grid-template-columns: minmax(0, 4fr) minmax(0, 7fr);
+          gap: 0 52px;
+          align-items: baseline;
+        }
+
+        .pauta__traz {
+          text-align: right;
+        }
+
+        .pauta__par + .pauta__par {
+          margin-top: 40px;
+        }
+
+        .pauta__traz {
+          padding-top: 4px;
+        }
+
+        .pauta__mostra {
+          margin-top: 0;
+          font-size: 18px;
+        }
+
+        .metodo__fecho {
+          margin-top: 84px;
+          padding-top: 26px;
+          font-size: 17px;
+        }
+
+        .metodo__fecho b {
+          max-width: 62ch;
+        }
+
+        .fecho {
+          padding: 104px 0 140px;
         }
 
         .pergunta {
