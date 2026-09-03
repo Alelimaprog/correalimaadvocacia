@@ -35,3 +35,6 @@ Thumbs.db
 .idea/
 *.swp
 .indexnow-cache.json
+
+# Screenshots do ciclo de crítica visual (efêmeros)
+.shots/
