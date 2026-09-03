@@ -262,6 +262,31 @@ const WHATSAPP =
         </section>
       </div>
 
+      <!-- ══ 05 · O percurso — uma frase que anda ═════════════ -->
+      <div class="campo campo--noite">
+        <section class="percurso">
+          <p class="percurso__frase">
+            Você conta o que <span class="atado">aconteceu<span
+                class="fio fio--a"
+                aria-hidden="true"
+              /></span>a gente entende a <span class="atado">situação<span
+                class="fio fio--b"
+                aria-hidden="true"
+              /></span>vê o que existe para <span class="atado">analisar<span
+                class="fio fio--c"
+                aria-hidden="true"
+              /></span>e explica quais são os próximos passos.
+          </p>
+          <p class="percurso__nota">
+            <b>
+              Holerites, mensagens, cartão de ponto, contrato ou termo de rescisão encurtam o
+              caminho. <span>Mas não são condição para começar: se você não tem tudo em mãos,
+              conte primeiro o que aconteceu — o resto se busca depois.</span>
+            </b>
+          </p>
+        </section>
+      </div>
+
       <div class="campo campo--dia">
         <section class="fecho">
         <p class="fecho__frase">
@@ -668,6 +693,58 @@ const WHATSAPP =
         color: var(--tinta-fraca);
       }
 
+      /* ══ 05 · O PERCURSO ═══════════════════════════════════
+         Banda curta e escura, quebrando o compasso das anteriores.
+         O caminho é UMA frase; os filetes de comprimentos desiguais
+         fazem o papel do conectivo, no lugar de seta, número ou card. */
+      .percurso {
+        padding: 62px 0 66px;
+      }
+
+      .percurso__frase {
+        font-size: clamp(1.42rem, 5.8vw, 2rem);
+        line-height: 1.32;
+        letter-spacing: -0.017em;
+        font-weight: 500;
+        font-variation-settings: 'wdth' 88;
+      }
+
+      /* O filete fica atado à palavra anterior: assim nunca abre linha,
+         onde seria lido como marcador de lista. */
+      .atado {
+        white-space: nowrap;
+      }
+
+      .fio {
+        display: inline-block;
+        height: 1px;
+        vertical-align: 0.3em;
+        margin: 0 12px;
+        background: rgba(236, 231, 222, 0.5);
+      }
+
+      .fio--a { width: 30px; }
+      .fio--b { width: 48px; }
+      .fio--c { width: 38px; }
+
+      .percurso__nota {
+        margin-top: 34px;
+        padding-top: 20px;
+        border-top: 1px solid rgba(236, 231, 222, 0.18);
+        font-size: 15px;
+        line-height: 1.55;
+      }
+
+      .percurso__nota b {
+        font-weight: 500;
+        display: block;
+        max-width: 64ch;
+      }
+
+      .percurso__nota span {
+        color: var(--claro-fraco);
+      }
+
       .fecho {
         padding: 62px 0 88px;
       }
@@ -758,6 +835,10 @@ const WHATSAPP =
 
         .autor__corpo {
           margin-top: 40px;
+        }
+
+        .percurso {
+          padding: 76px 0 80px;
         }
 
         .fecho {
@@ -914,6 +995,25 @@ const WHATSAPP =
 
         .autor__retrato {
           width: 84px;
+        }
+
+        .percurso {
+          padding: 92px 0 96px;
+        }
+
+        .percurso__frase {
+          font-size: clamp(1.85rem, 2.6vw, 2.35rem);
+          max-width: 64ch;
+        }
+
+        .fio--a { width: 44px; }
+        .fio--b { width: 74px; }
+        .fio--c { width: 56px; }
+
+        .percurso__nota {
+          margin-top: 44px;
+          padding-top: 22px;
+          font-size: 15.5px;
         }
 
         .fecho {
