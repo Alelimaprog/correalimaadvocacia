@@ -1,6 +1,6 @@
 ---
 title: "Advogado Trabalhista Empresarial | Corrêa Lima Advocacia"
-description: "Assessoria trabalhista para empresas: consultivo preventivo, gestão de passivo trabalhista e defesa em reclamações. Atuação exclusivamente do lado empresarial."
+description: "Assessoria trabalhista para empresas: consultivo preventivo, gestão de passivo trabalhista e defesa em reclamações."
 h1: "Trabalhista Empresarial"
 author: "Alexandre Corrêa Lima"
 ---
@@ -13,7 +13,7 @@ Assessoria consultiva e defesa contenciosa em matéria trabalhista, do ponto de 
 
 [Falar no WhatsApp](https://wa.me/5511975025611?text=Ol%C3%A1%2C%20preciso%20de%20orienta%C3%A7%C3%A3o%20jur%C3%ADdica%20trabalhista%20para%20minha%20empresa.)[Enviar meu caso](/contato/?area=Trabalhista%20Empresarial)
 
-A atuação trabalhista do escritório é voltada exclusivamente ao lado empresarial: consultivo preventivo para reduzir riscos e passivo trabalhista, e defesa contenciosa de empresas em reclamações trabalhistas. O escritório não atua representando empregados ou ex-empregados em ações contra empregadores.
+Na frente empresarial, a atuação trabalhista do escritório abrange consultivo preventivo para redução de riscos e passivo trabalhista, além da defesa de empresas em reclamações trabalhistas. O escritório também atende trabalhadores em demandas individuais, em frente própria. A aceitação de cada caso é precedida da verificação de eventual conflito de interesses.
 
 Essa frente tem relação direta com o contencioso empresarial estratégico e, em muitos casos, com processos de recuperação judicial — nos quais o passivo trabalhista costuma figurar entre as classes de crédito mais relevantes.
 
@@ -47,7 +47,7 @@ As informações desta página têm caráter informativo geral. O prazo e o desf
 
 O escritório atua para empregados ou apenas para empresas?+
 
-A atuação trabalhista do escritório é exclusivamente do lado empresarial — consultivo preventivo e defesa de empresas em reclamações trabalhistas. O escritório não representa empregados ou ex-empregados contra empregadores.
+Para ambos, em frentes distintas. Para empresas, o escritório atua no consultivo preventivo e na defesa em reclamações trabalhistas. Para trabalhadores, realiza a análise e condução de demandas individuais, sempre mediante verificação prévia de eventual conflito de interesses.
 
 O que é passivo trabalhista e por que ele importa?+
 
