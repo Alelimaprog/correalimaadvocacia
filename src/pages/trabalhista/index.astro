@@ -1,23 +1,16 @@
 ---
 /**
- * PROTÓTIPO v2 — Landing de advocacia trabalhista (tráfego pago).
- * Escopo: primeira dobra escura com o retrato, ruptura para o campo claro,
- * índice de situações e resposta inline. O resto da landing ainda não existe.
+ * Landing de advocacia trabalhista para o trabalhador — tráfego pago.
  *
- * Direção: composição B — "rosto na sombra, texto na luz". Campo preto, o
- * retrato entra pela direita sangrando a borda, o lado iluminado do rosto é a
- * única área realmente clara da tela, e a manchete ocupa o vazio à esquerda.
+ * Direção aprovada: campo preto + retrato como acontecimento no hero,
+ * ruptura para papel na leitura, alternância de campos como ritmo,
+ * tipografia Archivo (eixo de largura) como única família, verde só com
+ * função. Zero JavaScript: a interação do índice é <details> nativo.
  *
- * Fotografia: alexandre-correa-lima-trabalhista.png (640x641), tratada em
- * alexandre-trabalhista-noite.jpg apenas com recursos fotográficos —
- * monocromático, exposição -0,48 EV, contraste 1,22, compressão de altas
- * luzes e grão fino. Sem recorte de fundo: tanto a máscara por luminância
- * quanto a espacial produziram halo, então a fotografia entra inteira e são
- * as BORDAS que dissolvem no preto por máscara CSS. O terno marinho já está
- * em luminância ~1 depois do tratamento, então a base funde sozinha.
- *
- * Preservado do protótipo anterior por ter funcionado: situações em primeira
- * pessoa, índice em vez de cards, resposta inline como nota, zero JavaScript.
+ * Fotografia: alexandre-correa-lima-trabalhista.png (640x641). Tratamento
+ * exclusivamente fotográfico — monocromático, exposição, contraste, queda
+ * de luz por posição — com o ponto de preto casado ao fundo da página no
+ * hero e o ponto de branco (e a matiz) casados ao papel na assinatura.
  */
 import archivo from '@fontsource-variable/archivo/files/archivo-latin-wdth-normal.woff2?url';
 
@@ -108,6 +101,18 @@ const WHATSAPP =
       content="Você conta o que aconteceu no seu trabalho, com as suas palavras. A gente explica o que costuma ser analisado e o que pode ser feito."
     />
     <meta name="robots" content="noindex" />
+    <link rel="canonical" href="https://correalimaadvocacia.com.br/trabalhista/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="pt_BR" />
+    <meta property="og:site_name" content="Corrêa Lima Advocacia" />
+    <meta property="og:url" content="https://correalimaadvocacia.com.br/trabalhista/" />
+    <meta property="og:title" content="Advogado trabalhista para o trabalhador | Corrêa Lima Advocacia" />
+    <meta
+      property="og:description"
+      content="Você conta o que aconteceu no seu trabalho, com as suas palavras. A gente explica o que costuma ser analisado e o que pode ser feito."
+    />
+    <meta property="og:image" content="https://correalimaadvocacia.com.br/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
     <meta name="theme-color" content="#0a0a0b" />
     <link rel="preload" href={archivo} as="font" type="font/woff2" crossorigin />
     <link rel="preload" as="image" href="/brand/alexandre-trabalhista-noite.jpg" />
@@ -126,7 +131,7 @@ const WHATSAPP =
   </head>
 
   <body>
-    <!-- ══ Campo escuro ══════════════════════════════════════ -->
+    {/* Campo escuro */}
     <div class="noite">
       <header class="cabecalho">
         <span class="marca">Corrêa Lima Advocacia</span>
@@ -147,7 +152,7 @@ const WHATSAPP =
             <span class="hero__marca-verde" aria-hidden="true"></span>Advocacia trabalhista para
             quem trabalha
           </p>
-          <h1 class="hero__titulo">Antes de decidir,<br />entenda a sua situação.</h1>
+          <h1 class="hero__titulo">Antes de decidir, <br />entenda a sua situação.</h1>
           <p class="hero__assinatura">
             <b>Alexandre Corrêa Lima</b><span>Advogado · OAB/SP 234511</span>
           </p>
@@ -155,12 +160,12 @@ const WHATSAPP =
       </section>
     </div>
 
-    <!-- ══ Ruptura para o campo claro ════════════════════════ -->
+    {/* Ruptura para o campo claro */}
     <main>
       <div class="campo campo--dia">
         <section class="indice" aria-label="Situações de trabalho">
         <div class="coluna">
-          <h2 class="pergunta">O que está acontecendo<br />no seu trabalho?</h2>
+          <h2 class="pergunta">O que está acontecendo <br />no seu trabalho?</h2>
           <p class="instrucao">Encontre a frase mais parecida com a sua situação.</p>
           <ol class="lista">
             {
@@ -187,11 +192,11 @@ const WHATSAPP =
         </section>
       </div>
 
-      <!-- ══ 03 · O que decide um caso — volta ao campo escuro ══ -->
+      {/* 03 · O que decide um caso — volta ao campo escuro */}
       <div class="campo campo--noite">
         <section class="metodo">
           <h2 class="metodo__titulo">
-            O que decide um caso não é a versão.<br />É o que dá para demonstrar.
+            O que decide um caso não é a versão. <br />É o que dá para demonstrar.
           </h2>
           <p class="metodo__lead">
             Por isso a primeira conversa é sobre material: o que existe, o que dá para reunir e o
@@ -219,12 +224,12 @@ const WHATSAPP =
         </section>
       </div>
 
-      <!-- ══ 04 · Quem vai olhar — a declaração assinada ══════ -->
+      {/* 04 · Quem vai olhar — a declaração assinada */}
       <div class="campo campo--dia">
         <section class="autor">
-          <p class="autor__declaracao">
-            Antes de dizer se existe uma medida a tomar,<br />alguém precisa entender o que aconteceu.
-          </p>
+          <h2 class="autor__declaracao">
+            Antes de dizer se existe uma medida a tomar, <br />alguém precisa entender o que aconteceu.
+          </h2>
 
           <div class="autor__corpo">
             <p>
@@ -243,7 +248,7 @@ const WHATSAPP =
               class="autor__retrato"
               src="/brand/alexandre-assinatura.jpg"
               width="248"
-              height="257"
+              height="245"
               alt=""
               loading="lazy"
             />
@@ -255,10 +260,10 @@ const WHATSAPP =
         </section>
       </div>
 
-      <!-- ══ 05 · O percurso — uma frase que anda ═════════════ -->
+      {/* 05 · O percurso — uma frase que anda */}
       <div class="campo campo--noite">
         <section class="percurso">
-          <p class="percurso__frase">
+          <h2 class="percurso__frase">
             Você conta o que <span class="atado">aconteceu<span
                 class="fio fio--a"
                 aria-hidden="true"
@@ -269,7 +274,7 @@ const WHATSAPP =
                 class="fio fio--c"
                 aria-hidden="true"
               /></span>e explica quais são os próximos passos.
-          </p>
+          </h2>
           <p class="percurso__nota">
             <b>
               Holerites, mensagens, cartão de ponto, contrato ou termo de rescisão encurtam o
@@ -280,13 +285,13 @@ const WHATSAPP =
         </section>
       </div>
 
-      <!-- ══ 06 · Fecho — o díptico ═══════════════════════════ -->
+      {/* 06 · Fecho — o díptico */}
       <div class="campo campo--noite">
         <section class="saida">
-          <p class="saida__troca">
+          <h2 class="saida__troca">
             <span class="saida__voce">Você explica o que aconteceu.</span>
             <span class="saida__nos">Nós explicamos o que pode ser feito.</span>
-          </p>
+          </h2>
 
           <div class="saida__acao">
             <a class="saida__cta" href={WHATSAPP} rel="nofollow noopener">Conte o que aconteceu</a>
@@ -822,6 +827,60 @@ const WHATSAPP =
         line-height: 1.5;
         color: rgba(145, 138, 126, 0.78);
         max-width: 64ch;
+      }
+
+      /* ── Estados: foco visível nos dois campos, hover discreto, e alvo
+         de toque de 44px nos links de texto sem mover nada na tela. ── */
+      :focus-visible {
+        outline: 2px solid var(--verde);
+        outline-offset: 4px;
+      }
+
+      .campo--dia :focus-visible,
+      .campo--dia summary:focus-visible {
+        outline-color: var(--verde-tinta);
+      }
+
+      summary:focus-visible {
+        outline-offset: 2px;
+      }
+
+      /* Alvo de toque ≥ 44px sem mover o sublinhado: a área clicável é
+         estendida por um pseudo-elemento invisível, não por padding. */
+      .cabecalho__link,
+      .linha__acao,
+      .saida__cta {
+        position: relative;
+        transition: border-color 140ms ease, color 140ms ease;
+      }
+
+      .cabecalho__link::before,
+      .linha__acao::before,
+      .saida__cta::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: -12px;
+        bottom: -12px;
+      }
+
+      .cabecalho__link:hover {
+        border-bottom-color: var(--claro);
+      }
+
+      .linha__acao:hover {
+        color: var(--tinta);
+        border-bottom-color: var(--tinta);
+      }
+
+      .saida__cta:hover {
+        color: #fff;
+        border-bottom-color: var(--claro);
+      }
+
+      summary:hover .linha__fala {
+        color: var(--tinta);
       }
 
       @media (prefers-reduced-motion: reduce) {
