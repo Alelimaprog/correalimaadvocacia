@@ -184,13 +184,6 @@ const WHATSAPP =
           </ol>
         </div>
 
-        <aside class="margem">
-          <p class="margem__nota">
-            As explicações acima são orientação geral. O que muda o desfecho de um caso são os
-            documentos e o que de fato aconteceu no dia a dia — por isso nada aqui substitui a
-            análise da sua situação.
-          </p>
-          </aside>
         </section>
       </div>
 
@@ -287,13 +280,27 @@ const WHATSAPP =
         </section>
       </div>
 
-      <div class="campo campo--dia">
-        <section class="fecho">
-        <p class="fecho__frase">
-          Você explica o que aconteceu.<br />Nós explicamos o que pode ser feito.
-        </p>
-          <a class="fecho__acao" href={WHATSAPP} rel="nofollow noopener">Contar a minha situação</a>
+      <!-- ══ 06 · Fecho — o díptico ═══════════════════════════ -->
+      <div class="campo campo--noite">
+        <section class="saida">
+          <p class="saida__troca">
+            <span class="saida__voce">Você explica o que aconteceu.</span>
+            <span class="saida__nos">Nós explicamos o que pode ser feito.</span>
+          </p>
+
+          <div class="saida__acao">
+            <a class="saida__cta" href={WHATSAPP} rel="nofollow noopener">Conte o que aconteceu</a>
+            <p class="saida__canal">Pelo WhatsApp. Você escreve — não precisa ligar.</p>
+          </div>
         </section>
+
+        <footer class="rodape">
+          <p class="rodape__marca">Corrêa Lima Advocacia · Alexandre Corrêa Lima · OAB/SP 234511</p>
+          <p class="rodape__aviso">
+            Conteúdo informativo. Nada nesta página substitui a análise individual de um caso nem
+            promete resultado.
+          </p>
+        </footer>
       </div>
     </main>
 
@@ -615,20 +622,7 @@ const WHATSAPP =
         padding-bottom: 2px;
       }
 
-      .indice {
-        padding-bottom: 96px;
-      }
 
-      .margem {
-        margin-top: 38px;
-        max-width: 40ch;
-      }
-
-      .margem__nota {
-        font-size: 13.5px;
-        line-height: 1.55;
-        color: var(--tinta-fraca);
-      }
 
       /* ══ 04 · QUEM VAI OLHAR ═══════════════════════════════
          A página troca de voz: depois de dois blocos impessoais,
@@ -698,7 +692,7 @@ const WHATSAPP =
          O caminho é UMA frase; os filetes de comprimentos desiguais
          fazem o papel do conectivo, no lugar de seta, número ou card. */
       .percurso {
-        padding: 62px 0 66px;
+        padding: 62px 0 28px;
       }
 
       .percurso__frase {
@@ -745,27 +739,89 @@ const WHATSAPP =
         color: var(--claro-fraco);
       }
 
-      .fecho {
-        padding: 62px 0 88px;
+
+
+
+      /* ══ 06 · FECHO — o díptico ════════════════════════════
+         A pagina vinha comprimindo (1111 -> 1084 -> 624 -> 406).
+         Aqui ela reabre: silencio longo no topo, depois a maior massa
+         tipografica desde o hero. O filete que separa as duas sentencas
+         atravessa a largura inteira e e o fulcro da frase — o mesmo
+         vocabulario de filete do indice, da pauta e do percurso, agora
+         na sua maior escala. Sem fotografia: aqui o acontecimento e
+         tipografia e espaco. */
+      .saida {
+        padding: 118px 0 0;
       }
 
-      .fecho__frase {
-        font-size: clamp(1.3rem, 5.6vw, 1.9rem);
-        line-height: 1.16;
-        letter-spacing: -0.018em;
+      .saida__troca {
+        font-size: clamp(1.95rem, 8vw, 2.9rem);
+        line-height: 1.1;
+        letter-spacing: -0.024em;
         font-weight: 500;
-        font-variation-settings: 'wdth' 90;
+        font-variation-settings: 'wdth' 84;
       }
 
-      .fecho__acao {
+      .saida__voce,
+      .saida__nos {
+        display: block;
+      }
+
+      .saida__voce {
+        padding-bottom: 22px;
+        color: var(--claro-fraco);
+      }
+
+      .saida__nos {
+        padding-top: 22px;
+        border-top: 1px solid rgba(236, 231, 222, 0.34);
+      }
+
+      .saida__acao {
+        margin-top: 76px;
+      }
+
+      /* O CTA repete a primeira metade da frase: a acao e a frase sendo
+         executada, nao um botao pedindo clique. Link tipografico com
+         filete — nunca pilula. */
+      .saida__cta {
         display: inline-block;
-        margin-top: 24px;
-        font-size: 16px;
+        font-size: clamp(1.08rem, 4.6vw, 1.32rem);
         font-weight: 500;
-        color: var(--verde-tinta);
+        letter-spacing: -0.012em;
+        color: var(--claro);
         text-decoration: none;
-        border-bottom: 1px solid var(--verde-tinta);
-        padding-bottom: 2px;
+        border-bottom: 2px solid var(--verde);
+        padding-bottom: 5px;
+      }
+
+      .saida__canal {
+        margin-top: 20px;
+        font-size: 14.5px;
+        line-height: 1.5;
+        color: var(--claro-fraco);
+        max-width: 34ch;
+      }
+
+      .rodape {
+        margin-top: 104px;
+        padding: 22px 0 40px;
+        border-top: 1px solid rgba(236, 231, 222, 0.14);
+      }
+
+      .rodape__marca {
+        font-size: 12.5px;
+        letter-spacing: 0.055em;
+        text-transform: uppercase;
+        color: var(--claro-fraco);
+      }
+
+      .rodape__aviso {
+        margin-top: 10px;
+        font-size: 12.5px;
+        line-height: 1.5;
+        color: rgba(145, 138, 126, 0.78);
+        max-width: 64ch;
       }
 
       @media (prefers-reduced-motion: reduce) {
@@ -806,6 +862,10 @@ const WHATSAPP =
           padding-bottom: 120px;
         }
 
+        .coluna {
+          max-width: 40rem;
+        }
+
         .metodo {
           padding: 104px 0 112px;
         }
@@ -838,26 +898,22 @@ const WHATSAPP =
         }
 
         .percurso {
-          padding: 76px 0 80px;
+          padding: 76px 0 34px;
         }
 
-        .fecho {
-          padding: 86px 0 112px;
+        .saida {
+          padding: 148px 0 0;
         }
 
-        .indice {
-          display: grid;
-          grid-template-columns: minmax(0, 1fr) 15rem;
-          gap: 0 48px;
-          align-items: start;
+        .saida__acao {
+          margin-top: 92px;
         }
 
-        .margem {
-          margin-top: 190px;
-          padding-top: 15px;
-          border-top: 1px solid rgba(22, 21, 15, 0.28);
-          max-width: none;
+        .rodape {
+          margin-top: 120px;
         }
+
+
       }
 
       /* ══ 1024px+ ═══════════════════════════════════════════ */
@@ -901,6 +957,10 @@ const WHATSAPP =
 
         .indice {
           padding-bottom: 148px;
+        }
+
+        .coluna {
+          max-width: 52rem;
         }
 
         .metodo {
@@ -998,7 +1058,57 @@ const WHATSAPP =
         }
 
         .percurso {
-          padding: 92px 0 96px;
+          padding: 92px 0 40px;
+        }
+
+        /* O silencio antes da frase e o que produz a sensacao de chegada. */
+        .saida {
+          padding: 208px 0 0;
+        }
+
+        .saida__troca {
+          font-size: clamp(2.6rem, 3.9vw, 3.55rem);
+          max-width: 30ch;
+        }
+
+        .saida__voce {
+          padding-bottom: 30px;
+        }
+
+        .saida__nos {
+          padding-top: 30px;
+        }
+
+        .saida__acao {
+          display: grid;
+          grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+          gap: 0 56px;
+          align-items: baseline;
+          margin-top: 124px;
+        }
+
+        /* Sem isso o inline-block estica pela coluna do grid e o filete do
+           CTA atravessa 700px atras de um texto de 240px. */
+        .saida__cta {
+          justify-self: start;
+        }
+
+        .saida__canal {
+          margin-top: 0;
+          justify-self: start;
+        }
+
+        .rodape {
+          margin-top: 148px;
+          padding: 24px 0 54px;
+          display: grid;
+          grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+          gap: 0 56px;
+          align-items: start;
+        }
+
+        .rodape__aviso {
+          margin-top: 0;
         }
 
         .percurso__frase {
@@ -1016,9 +1126,6 @@ const WHATSAPP =
           font-size: 15.5px;
         }
 
-        .fecho {
-          padding: 104px 0 140px;
-        }
 
         .pergunta {
           padding-top: 108px;
@@ -1028,11 +1135,6 @@ const WHATSAPP =
         .instrucao {
           margin-top: 22px;
           font-size: 16px;
-        }
-
-        .indice {
-          grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
-          gap: 0 56px;
         }
 
         .linha__fala {
@@ -1056,22 +1158,8 @@ const WHATSAPP =
           margin-left: 40px;
         }
 
-        .margem {
-          margin-top: 268px;
-        }
 
-        .fecho {
-          display: grid;
-          grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
-          gap: 56px;
-          align-items: end;
-        }
 
-        .fecho__acao {
-          margin-top: 0;
-          justify-self: start;
-          padding-bottom: 0.5em;
-        }
       }
     </style>
   </body>
