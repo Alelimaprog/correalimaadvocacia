@@ -13,6 +13,7 @@
  * hero e o ponto de branco (e a matiz) casados ao papel na assinatura.
  */
 import archivo from '@fontsource-variable/archivo/files/archivo-latin-wdth-normal.woff2?url';
+import { site } from '@/lib/site.config';
 
 const SITUACOES = [
   {
@@ -89,6 +90,12 @@ const MATERIAL = [
 const WHATSAPP =
   'https://wa.me/5511975025611?text=' +
   encodeURIComponent('Olá. Queria contar uma situação de trabalho e entender o que pode ser feito.');
+
+/* Endereço, e-mail, telefone e OAB vêm de src/lib/site.config.ts — a mesma
+   fonte que alimenta o rodapé do site. Nada é redigitado aqui. */
+const { address, email, whatsapp } = site.contact;
+const MAPA =
+  'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(address.full);
 ---
 
 <html lang="pt-BR">
@@ -294,13 +301,43 @@ const WHATSAPP =
           </h2>
 
           <div class="saida__acao">
-            <a class="saida__cta" href={WHATSAPP} target="_blank" rel="nofollow noopener">Conte o que aconteceu</a>
-            <p class="saida__canal">Pelo WhatsApp. Você escreve — não precisa ligar.</p>
+            <a class="saida__cta" href={WHATSAPP} target="_blank" rel="nofollow noopener">
+              {/* Mesmo glifo do restante do site (src/components/Icon.astro),
+                  embutido porque o CSS com escopo desta página não alcança o
+                  SVG renderizado por outro componente. */}
+              <svg class="saida__zap" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M17.6 6.4A8.9 8.9 0 0 0 12 4a8.94 8.94 0 0 0-7.75 13.4L3 21l3.7-1.2A8.94 8.94 0 0 0 12 21a8.94 8.94 0 0 0 6.3-15.6zM12 19.3a7.3 7.3 0 0 1-3.73-1.02l-.27-.16-2.2.7.72-2.14-.18-.28A7.32 7.32 0 1 1 19.3 12 7.32 7.32 0 0 1 12 19.3z" />
+                <path d="M15.1 13.6c-.2-.1-1.2-.6-1.4-.65-.2-.08-.34-.1-.48.1s-.55.65-.67.78-.25.15-.46.05a5.87 5.87 0 0 1-1.73-1.07 6.5 6.5 0 0 1-1.2-1.49c-.13-.2 0-.32.1-.42.1-.1.2-.25.3-.37a1.4 1.4 0 0 0 .2-.34.38.38 0 0 0 0-.36c-.05-.1-.48-1.15-.66-1.58s-.35-.36-.48-.37h-.4a.79.79 0 0 0-.57.27 2.4 2.4 0 0 0-.75 1.78 4.17 4.17 0 0 0 .87 2.2 9.5 9.5 0 0 0 3.63 3.2c1.32.57 1.85.62 2.5.52.4-.06 1.2-.5 1.38-.97s.18-.88.13-.97-.18-.14-.38-.24z" />
+              </svg>
+              <span>Conte o que aconteceu <span class="saida__cta__canal">pelo WhatsApp</span></span>
+            </a>
+            <p class="saida__canal">Você escreve — não precisa ligar.</p>
           </div>
         </section>
 
+        {/* O contato é consequência do díptico, não um segundo fecho: mesma
+            escala do aviso legal, uma coluna, sem título de seção. */}
         <footer class="rodape">
-          <p class="rodape__marca">Corrêa Lima Advocacia · Alexandre Corrêa Lima · OAB/SP 234511</p>
+          <div class="rodape__casa">
+            <p class="rodape__marca">{site.name}</p>
+            <p class="rodape__endereco">
+              <a href={MAPA} target="_blank" rel="noopener">
+                {address.street} · {address.detail}<br />
+                {address.district} · {address.city} – {address.state}
+                <span class="rodape__ate-cep"> · </span>
+                <br class="rodape__quebra-cep" />
+                <span class="nao-quebra">CEP {address.cep}</span>
+              </a>
+            </p>
+            <p class="rodape__canais">
+              <a class="rodape__canal" href={`mailto:${email}`}>{email}</a>
+              <span class="rodape__sep" aria-hidden="true"> · </span>
+              <a class="rodape__canal nao-quebra" href={WHATSAPP} target="_blank" rel="nofollow noopener">
+                {whatsapp.display}
+              </a>
+            </p>
+            <p class="rodape__oab">{site.attorney.name} · {site.attorney.oab}</p>
+          </div>
           <p class="rodape__aviso">
             Conteúdo informativo. Nada nesta página substitui a análise individual de um caso nem
             promete resultado.
@@ -791,7 +828,7 @@ const WHATSAPP =
          filete — nunca pilula. */
       .saida__cta {
         display: inline-block;
-        font-size: clamp(1.08rem, 4.6vw, 1.32rem);
+        font-size: clamp(0.8rem, 4.1vw, 1.32rem);
         font-weight: 500;
         letter-spacing: -0.012em;
         color: var(--claro);
@@ -800,9 +837,25 @@ const WHATSAPP =
         padding-bottom: 5px;
       }
 
+      /* O símbolo identifica o canal e nada mais: monocromático, na cor do
+         texto, do tamanho de uma maiúscula. O verde da página continua sendo
+         um só — o filete sob a frase. */
+      .saida__zap {
+        width: 0.92em;
+        height: 0.92em;
+        margin-right: 10px;
+        vertical-align: -0.06em;
+      }
+
+      /* Só o canal é indivisível; a frase pode quebrar se algum aparelho
+         muito estreito exigir — melhor duas linhas do que estourar a coluna. */
+      .saida__cta__canal {
+        white-space: nowrap;
+      }
+
       .saida__canal {
         margin-top: 20px;
-        font-size: 14.5px;
+        font-size: 13.5px;
         line-height: 1.5;
         color: var(--claro-fraco);
         max-width: 34ch;
@@ -821,11 +874,68 @@ const WHATSAPP =
         color: var(--claro-fraco);
       }
 
+      /* Endereço, canais e OAB: uma coluna de linhas curtas, todas na mesma
+         escala do aviso legal. Prova de que existe uma casa — não um bloco
+         de conversão. */
+      .rodape__endereco,
+      .rodape__canais,
+      .rodape__oab {
+        margin-top: 7px;
+        font-size: 12.5px;
+        line-height: 1.55;
+        color: rgba(145, 138, 126, 0.9);
+      }
+
+      .rodape__oab {
+        margin-top: 9px;
+      }
+
+      .nao-quebra {
+        white-space: nowrap;
+      }
+
+      /* Três blocos sublinhados empilhados viram listra. O endereço fica em
+         texto limpo — abre o mapa, mas não anuncia isso o tempo todo; só
+         e-mail e telefone, que o leitor procura para acionar, trazem filete. */
+      .rodape a {
+        color: inherit;
+        text-decoration: none;
+        border-bottom: 1px solid transparent;
+        transition: color 140ms ease, border-color 140ms ease;
+      }
+
+      .rodape__canais a {
+        border-bottom-color: rgba(145, 138, 126, 0.32);
+      }
+
+      /* Mesma solução de alvo de toque usada no resto da página: a área
+         clicável cresce por pseudo-elemento, sem deslocar o filete. O espaço
+         entre os dois canais empilhados é do tamanho da área, para que uma
+         não roube o toque da outra. */
+      .rodape__canal {
+        position: relative;
+        display: inline-block;
+      }
+
+      .rodape__canal::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: -8px;
+        bottom: -8px;
+      }
+
+      .rodape a:hover {
+        color: var(--claro);
+        border-bottom-color: var(--claro-fraco);
+      }
+
       .rodape__aviso {
-        margin-top: 10px;
+        margin-top: 26px;
         font-size: 12.5px;
         line-height: 1.5;
-        color: rgba(145, 138, 126, 0.78);
+        color: rgba(145, 138, 126, 0.62);
         max-width: 64ch;
       }
 
@@ -903,8 +1013,46 @@ const WHATSAPP =
         }
       }
 
+      /* Até 768px os dois canais ocupam uma linha cada: sem separador
+         sobrando no fim da linha e sem "·" abrindo linha como marcador.
+         O filete acompanha o texto, nunca a coluna. */
+      @media (max-width: 767px) {
+        .rodape__sep {
+          display: none;
+        }
+
+        /* No celular o CEP desce para a própria linha: sem isso a linha
+           anterior termina num "·" solto, e um "·" abrindo linha vira
+           marcador de lista. */
+        .rodape__ate-cep {
+          display: none;
+        }
+
+        /* Empilhados, os dois canais precisam de 16px entre si para que as
+           áreas de toque não se sobreponham. Os grupos vizinhos afastam-se
+           mais do que isso, senão o rodapé vira quatro itens soltos em vez
+           de nome / endereço / canais / registro. */
+        .rodape__canais,
+        .rodape__oab {
+          margin-top: 22px;
+        }
+
+        .rodape__canal {
+          display: block;
+          width: fit-content;
+        }
+
+        .rodape__canal ~ .rodape__canal {
+          margin-top: 16px;
+        }
+      }
+
       /* ══ 768px ═════════════════════════════════════════════ */
       @media (min-width: 768px) {
+        .rodape__quebra-cep {
+          display: none;
+        }
+
         .cabecalho {
           padding: 22px 40px;
         }
