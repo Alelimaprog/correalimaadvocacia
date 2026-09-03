@@ -4,8 +4,8 @@
  * Pipeline: CRIAR → SERVIR → SCREENSHOT → VER → CRITICAR → CORRIGIR → REPETIR.
  * Os PNGs gerados são lidos com visão e submetidos à skill `direcao-de-arte`.
  *
- *   npm run build && npm run shots -- /landing-trabalhista/
- *   npm run shots -- /landing-trabalhista/ --full     # página inteira
+ *   npm run build && npm run shots -- /trab/
+ *   npm run shots -- /trab/ --full                    # página inteira
  *   npm run shots -- / --tag rodada-3                 # nomeia a rodada
  *
  * Viewports obrigatórios do projeto: 1440 / 1024 / 768 / 390.
