@@ -226,6 +226,42 @@ const WHATSAPP =
         </section>
       </div>
 
+      <!-- ══ 04 · Quem vai olhar — a declaração assinada ══════ -->
+      <div class="campo campo--dia">
+        <section class="autor">
+          <p class="autor__declaracao">
+            Antes de dizer se existe uma medida a tomar,<br />alguém precisa entender o que aconteceu.
+          </p>
+
+          <div class="autor__corpo">
+            <p>
+              Esse alguém sou eu. Quem lê os seus documentos, ouve a sua versão e diz do que se
+              trata é a mesma pessoa que vai conduzir o caso, se houver caso a conduzir.
+            </p>
+            <p>
+              Por isso a primeira conversa não termina com uma proposta. Termina com você
+              entendendo a sua própria situação — inclusive quando a conclusão é que não há medida
+              a tomar.
+            </p>
+          </div>
+
+          <div class="autor__assinatura">
+            <img
+              class="autor__retrato"
+              src="/brand/alexandre-assinatura.jpg"
+              width="248"
+              height="257"
+              alt=""
+              loading="lazy"
+            />
+            <p class="autor__nome">
+              <b>Alexandre Corrêa Lima</b>
+              <span>Advogado responsável pelo atendimento</span>
+            </p>
+          </div>
+        </section>
+      </div>
+
       <div class="campo campo--dia">
         <section class="fecho">
         <p class="fecho__frase">
@@ -569,6 +605,69 @@ const WHATSAPP =
         color: var(--tinta-fraca);
       }
 
+      /* ══ 04 · QUEM VAI OLHAR ═══════════════════════════════
+         A página troca de voz: depois de dois blocos impessoais,
+         a primeira pessoa entra em escala grande. O retrato volta
+         minúsculo e no campo claro — inversão total do hero — com
+         o ponto de BRANCO casado ao papel, do mesmo modo que no
+         hero o ponto de preto foi casado ao fundo escuro. */
+      .autor {
+        padding: 78px 0 56px;
+      }
+
+      .autor__declaracao {
+        font-size: clamp(1.78rem, 7.4vw, 2.6rem);
+        line-height: 1.08;
+        letter-spacing: -0.024em;
+        font-weight: 500;
+        font-variation-settings: 'wdth' 84;
+      }
+
+      .autor__corpo {
+        margin-top: 34px;
+        max-width: 46ch;
+      }
+
+      .autor__corpo p {
+        font-size: 16.5px;
+        line-height: 1.58;
+        color: var(--tinta-fraca);
+      }
+
+      .autor__corpo p + p {
+        margin-top: 18px;
+      }
+
+      .autor__assinatura {
+        display: flex;
+        align-items: center;
+        gap: 18px;
+        margin-top: 46px;
+        padding-top: 26px;
+        border-top: 1px solid rgba(22, 21, 15, 0.2);
+      }
+
+      .autor__retrato {
+        flex: none;
+        width: 76px;
+        height: auto;
+        display: block;
+      }
+
+      .autor__nome {
+        font-size: 14px;
+        line-height: 1.45;
+      }
+
+      .autor__nome b {
+        display: block;
+        font-weight: 600;
+      }
+
+      .autor__nome span {
+        color: var(--tinta-fraca);
+      }
+
       .fecho {
         padding: 62px 0 88px;
       }
@@ -651,6 +750,14 @@ const WHATSAPP =
 
         .pauta__mostra {
           margin-top: 0;
+        }
+
+        .autor {
+          padding: 108px 0 72px;
+        }
+
+        .autor__corpo {
+          margin-top: 40px;
         }
 
         .fecho {
@@ -770,6 +877,45 @@ const WHATSAPP =
           max-width: 62ch;
         }
 
+        /* Massa invertida em relação ao bloco 03: lá o texto vai para a
+           coluna da direita e a esquerda fica vazia; aqui o texto ocupa a
+           esquerda e o retrato vive na margem direita — a mesma coluna onde
+           mora a marginália do índice. Os dois blocos deixam de ter o mesmo
+           esqueleto. */
+        .autor {
+          display: grid;
+          grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+          gap: 0 56px;
+          padding: 140px 0 96px;
+        }
+
+        .autor__declaracao {
+          grid-column: 1 / -1;
+          font-size: clamp(2.2rem, 3.1vw, 2.9rem);
+        }
+
+        .autor__corpo {
+          grid-column: 1;
+          margin-top: 52px;
+          max-width: 46ch;
+        }
+
+        .autor__corpo p {
+          font-size: 17.5px;
+        }
+
+        .autor__assinatura {
+          grid-column: 2;
+          align-self: start;
+          margin-top: 58px;
+          padding-top: 26px;
+          gap: 20px;
+        }
+
+        .autor__retrato {
+          width: 84px;
+        }
+
         .fecho {
           padding: 104px 0 140px;
         }
@@ -815,7 +961,6 @@ const WHATSAPP =
         }
 
         .fecho {
-          margin-top: 132px;
           display: grid;
           grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
           gap: 56px;
