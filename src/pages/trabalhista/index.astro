@@ -1,15 +1,20 @@
 ---
 /**
- * PROTÓTIPO — Landing de advocacia trabalhista (tráfego pago).
- * Escopo desta rodada: navegação mínima, primeira dobra, mecanismo de
- * identificação e primeira resposta. O restante da página ainda não existe.
+ * PROTÓTIPO v2 — Landing de advocacia trabalhista (tráfego pago).
+ * Escopo: primeira dobra escura com o retrato, ruptura para o campo claro,
+ * índice de situações e resposta inline. O resto da landing ainda não existe.
  *
- * Direção: estrutura de "A Pergunta" + linguagem visual de "O Dossiê" +
- * situações em primeira pessoa. Página deliberadamente autônoma: não consome
- * os partials do site institucional, cujo vocabulário visual (pílulas, cards
- * arredondados, gradientes) é justamente o que esta landing não deve repetir.
+ * Direção: campo preto + retrato como placa fotográfica + Archivo condensada.
+ * A fotografia NÃO é recortada: os brilhos do sujeito (dentes, camisa, terno
+ * claro) estão na mesma faixa de luminância do fundo do estúdio, então
+ * qualquer máscara ou gera halo na silhueta ou come partes do rosto. Em vez
+ * de forjar um recorte, a foto entra como fotografia mesmo — o único campo
+ * luminoso de uma página preta.
+ *
+ * Preservado do protótipo anterior por ter funcionado: situações em primeira
+ * pessoa, índice em vez de cards, resposta inline como nota, zero JavaScript.
  */
-import piazzolla from '@fontsource-variable/piazzolla/files/piazzolla-latin-opsz-normal.woff2?url';
+import archivo from '@fontsource-variable/archivo/files/archivo-latin-wdth-normal.woff2?url';
 
 const SITUACOES = [
   {
@@ -79,14 +84,17 @@ const WHATSAPP =
       content="Você conta o que aconteceu no seu trabalho, com as suas palavras. A gente explica o que costuma ser analisado e o que pode ser feito."
     />
     <meta name="robots" content="noindex" />
-    <link rel="preload" href={piazzolla} as="font" type="font/woff2" crossorigin />
-    <style define:vars={{ piazzolla: `url(${piazzolla})` }}>
+    <meta name="theme-color" content="#0a0a0b" />
+    <link rel="preload" href={archivo} as="font" type="font/woff2" crossorigin />
+    <link rel="preload" as="image" href="/brand/alexandre-retrato-mono.jpg" />
+    <style define:vars={{ archivo: `url(${archivo})` }}>
       @font-face {
-        font-family: 'Piazzolla';
+        font-family: 'Archivo';
         font-style: normal;
         font-weight: 100 900;
+        font-stretch: 62% 125%;
         font-display: swap;
-        src: var(--piazzolla) format('woff2-variations');
+        src: var(--archivo) format('woff2-variations');
         unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
           U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215;
       }
@@ -94,41 +102,60 @@ const WHATSAPP =
   </head>
 
   <body>
-    <header class="cabecalho">
-      <div class="marca">
-        <span class="marca__nome">Corrêa Lima Advocacia</span>
-        <span class="marca__area">Direito do trabalho, para quem trabalha</span>
-      </div>
-      <a class="cabecalho__link" href={WHATSAPP} rel="nofollow noopener">Falar agora</a>
-    </header>
+    <!-- ══ Campo escuro ══════════════════════════════════════ -->
+    <div class="noite">
+      <header class="cabecalho">
+        <span class="marca">Corrêa Lima Advocacia</span>
+        <a class="cabecalho__link" href={WHATSAPP} rel="nofollow noopener">Falar agora</a>
+      </header>
 
-    <main>
-      <section class="abertura">
-        <h1 class="pergunta">O que está acontecendo<br />no seu trabalho?</h1>
+      <section class="hero">
+        <img
+          class="hero__retrato"
+          src="/brand/alexandre-retrato-mono.jpg"
+          width="760"
+          height="1207"
+          alt="Alexandre Corrêa Lima, advogado responsável pelo atendimento"
+          fetchpriority="high"
+        />
+        <div class="hero__texto">
+          <p class="hero__area">
+            <span class="hero__marca-verde" aria-hidden="true"></span>Advocacia trabalhista para
+            quem trabalha
+          </p>
+          <h1 class="hero__titulo">Antes de decidir,<br />entenda a sua situação.</h1>
+          <p class="hero__assinatura">
+            <b>Alexandre Corrêa Lima</b><span>Advogado · OAB/SP 234511</span>
+          </p>
+        </div>
       </section>
+    </div>
 
+    <!-- ══ Ruptura para o campo claro ════════════════════════ -->
+    <main class="dia">
       <section class="indice" aria-label="Situações de trabalho">
         <div class="coluna">
+          <h2 class="pergunta">O que está acontecendo<br />no seu trabalho?</h2>
           <p class="instrucao">Encontre a frase mais parecida com a sua situação.</p>
           <ol class="lista">
-          {
-            SITUACOES.map((s, i) => (
-              <li class={i === SITUACOES.length - 1 ? 'linha linha--saida' : 'linha'}>
-                <details name="situacao">
-                  <summary>
-                    <span class="linha__marca" aria-hidden="true" />
-                    <span class="linha__fala">{s.fala}</span>
-                  </summary>
-                  <div class="linha__resposta">
-                    <p>{s.resposta}</p>
-                    <a class="linha__acao" href={WHATSAPP} rel="nofollow noopener">
-                      Contar o que aconteceu comigo
-                    </a>
-                  </div>
-                </details>
-              </li>
-            ))
-          }
+            {
+              SITUACOES.map((s, i) => (
+                <li class={i === SITUACOES.length - 1 ? 'linha linha--saida' : 'linha'}>
+                  <details name="situacao">
+                    <summary>
+                      <span class="linha__marca" aria-hidden="true" />
+                      <span class="linha__fala">{s.fala}</span>
+                    </summary>
+                    <div class="linha__resposta">
+                      <p>{s.resposta}</p>
+                      <a class="linha__acao" href={WHATSAPP} rel="nofollow noopener">
+                        Contar o que aconteceu comigo
+                      </a>
+                    </div>
+                  </details>
+                </li>
+              ))
+            }
           </ol>
         </div>
 
@@ -137,10 +164,6 @@ const WHATSAPP =
             As explicações acima são orientação geral. O que muda o desfecho de um caso são os
             documentos e o que de fato aconteceu no dia a dia — por isso nada aqui substitui a
             análise da sua situação.
-          </p>
-          <p class="margem__assinatura">
-            Alexandre Corrêa Lima<br />
-            <span>OAB/SP 234511</span>
           </p>
         </aside>
       </section>
@@ -155,12 +178,14 @@ const WHATSAPP =
 
     <style>
       :root {
-        --papel: #faf8f4;
-        --tinta: #191713;
-        --tinta-fraca: #57524a;
-        --filete: #191713;
-        --verde: #0a5230;
-        --medida: 34rem;
+        --preto: #0a0a0b;
+        --claro: #ece7de;
+        --claro-fraco: #918a7e;
+        --papel: #f2efe8;
+        --tinta: #16150f;
+        --tinta-fraca: #565046;
+        --verde: #00a85a;
+        --verde-tinta: #0a5230;
       }
 
       * {
@@ -170,93 +195,162 @@ const WHATSAPP =
 
       html {
         -webkit-text-size-adjust: 100%;
+        background: var(--preto);
       }
 
       body {
-        background: var(--papel);
-        color: var(--tinta);
-        font-family: 'Piazzolla', Georgia, 'Times New Roman', serif;
-        font-variation-settings: 'opsz' 12;
+        font-family: 'Archivo', system-ui, sans-serif;
         font-size: 17px;
         line-height: 1.5;
-        text-rendering: optimizeLegibility;
         -webkit-font-smoothing: antialiased;
-        padding: 0 22px 96px;
       }
 
-      /* ── Cabeçalho ─────────────────────────────────────────── */
+      /* ══ CAMPO ESCURO ══════════════════════════════════════ */
+      .noite {
+        background: var(--preto);
+        color: var(--claro);
+      }
+
       .cabecalho {
+        position: relative;
+        z-index: 2;
         display: flex;
-        align-items: flex-start;
+        align-items: center;
         justify-content: space-between;
         gap: 16px;
-        padding: 20px 0 16px;
-        border-bottom: 1px solid var(--filete);
+        padding: 18px 22px;
       }
 
-      .marca__nome {
-        display: block;
-        font-size: 15px;
+      .marca {
+        font-size: 14px;
         font-weight: 600;
-        letter-spacing: 0.01em;
-        font-variation-settings: 'opsz' 10;
-      }
-
-      .marca__area {
-        display: block;
-        margin-top: 2px;
-        font-size: 13px;
-        color: var(--tinta-fraca);
-        font-variation-settings: 'opsz' 8;
+        font-variation-settings: 'wdth' 92;
       }
 
       .cabecalho__link {
-        flex: none;
         font-size: 13px;
-        color: var(--verde);
+        color: var(--claro);
         text-decoration: none;
-        border-bottom: 1px solid var(--verde);
-        padding-bottom: 1px;
-        font-variation-settings: 'opsz' 8;
+        border-bottom: 1px solid rgba(236, 231, 222, 0.45);
+        padding-bottom: 2px;
       }
 
-      /* ── Abertura ──────────────────────────────────────────── */
-      .abertura {
-        padding: 76px 0 40px;
+      /* Hero mobile: o retrato sangra pela borda inferior direita e o campo
+         preto envolve em L. Não é texto empilhado sobre foto. */
+      .hero {
+        position: relative;
+        min-height: calc(100svh - 58px);
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+      }
+
+      .hero__retrato {
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        width: 76%;
+        height: 64%;
+        object-fit: cover;
+        object-position: 54% 14%;
+        /* As bordas internas dissolvem no campo preto: o retrato emerge do
+           escuro em vez de ser um retângulo colado. As bordas externas
+           continuam sangrando. */
+        -webkit-mask-image: linear-gradient(to right, transparent, #000 30%),
+          linear-gradient(to bottom, transparent, #000 22%);
+        -webkit-mask-composite: source-in;
+        mask-image: linear-gradient(to right, transparent, #000 30%),
+          linear-gradient(to bottom, transparent, #000 22%);
+        mask-composite: intersect;
+      }
+
+      .hero__texto {
+        position: relative;
+        z-index: 1;
+        padding: 30px 22px 0;
+      }
+
+      .hero__area {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-size: 10.5px;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--claro-fraco);
+        white-space: nowrap;
+      }
+
+      /* Único ponto de verde do campo escuro. */
+      .hero__marca-verde {
+        flex: none;
+        width: 18px;
+        height: 2px;
+        background: var(--verde);
+      }
+
+      .hero__titulo {
+        margin-top: 22px;
+        font-size: clamp(2.1rem, 8.4vw, 3.6rem);
+        line-height: 1.04;
+        letter-spacing: -0.024em;
+        font-weight: 500;
+        font-variation-settings: 'wdth' 84;
+      }
+
+      .hero__assinatura {
+        margin-top: 22px;
+        font-size: 13px;
+        line-height: 1.45;
+      }
+
+      .hero__assinatura b {
+        display: block;
+        font-weight: 600;
+      }
+
+      .hero__assinatura span {
+        color: var(--claro-fraco);
+      }
+
+      /* ══ CAMPO CLARO ═══════════════════════════════════════ */
+      .dia {
+        background: var(--papel);
+        color: var(--tinta);
+        padding: 0 22px 92px;
       }
 
       .pergunta {
-        font-size: clamp(2.5rem, 11.6vw, 4rem);
-        line-height: 0.98;
-        letter-spacing: -0.026em;
-        font-weight: 400;
-        font-variation-settings: 'opsz' 30;
+        padding-top: 60px;
+        font-size: clamp(1.7rem, 7.2vw, 2.4rem);
+        line-height: 1.06;
+        letter-spacing: -0.021em;
+        font-weight: 500;
+        font-variation-settings: 'wdth' 88;
       }
 
-      /* Instrução da lista: ancorada ao filete do índice, não sob o H1. */
       .instrucao {
+        margin-top: 18px;
+        padding-bottom: 14px;
         color: var(--tinta-fraca);
         font-size: 15px;
-        line-height: 1.4;
-        padding-bottom: 12px;
       }
 
-      /* ── Índice de situações ───────────────────────────────── */
       .lista {
         list-style: none;
         padding: 0;
-        border-top: 1px solid var(--filete);
+        border-top: 1px solid var(--tinta);
       }
 
       .linha {
-        border-bottom: 1px solid rgba(25, 23, 19, 0.18);
+        border-bottom: 1px solid rgba(22, 21, 15, 0.16);
       }
 
       .linha summary {
         display: flex;
         align-items: baseline;
         gap: 14px;
-        padding: 17px 0;
+        padding: 16px 0;
         cursor: pointer;
         list-style: none;
       }
@@ -265,40 +359,37 @@ const WHATSAPP =
         display: none;
       }
 
-      .linha__fala {
-        font-size: 19px;
-        line-height: 1.3;
-        letter-spacing: -0.008em;
-        font-variation-settings: 'opsz' 16;
-      }
-
-      /* Marca de índice: um filete no início da linha, como entrada de sumário.
-         Cresce e ganha cor quando aberta — nunca um sinal de mais/menos. */
       .linha__marca {
         flex: none;
         width: 13px;
         height: 1px;
-        background: rgba(25, 23, 19, 0.42);
+        background: rgba(22, 21, 15, 0.4);
         translate: 0 -0.42em;
         transition: width 160ms ease, background-color 160ms ease;
       }
 
       details[open] .linha__marca {
         width: 26px;
-        background: var(--verde);
+        background: var(--verde-tinta);
+      }
+
+      .linha__fala {
+        font-size: 18px;
+        line-height: 1.32;
+        letter-spacing: -0.006em;
+        font-variation-settings: 'wdth' 96;
       }
 
       details[open] .linha__fala {
         font-weight: 600;
       }
 
-      /* "Meu caso é outro." não é uma situação: é a saída da lista. */
       .linha--saida {
         border-bottom: none;
       }
 
       .linha--saida summary {
-        padding-top: 26px;
+        padding-top: 24px;
       }
 
       .linha--saida .linha__fala {
@@ -308,72 +399,61 @@ const WHATSAPP =
 
       .linha__resposta {
         margin-left: 27px;
-        padding: 0 0 28px 15px;
-        border-left: 1px solid var(--verde);
-        max-width: var(--medida);
+        padding: 0 0 26px 15px;
+        border-left: 1px solid var(--verde-tinta);
+        max-width: 34rem;
       }
 
       .linha__resposta p {
         color: var(--tinta-fraca);
-        font-size: 16.5px;
-        line-height: 1.58;
+        font-size: 16px;
+        line-height: 1.56;
       }
 
       .linha__acao {
         display: inline-block;
-        margin-top: 18px;
+        margin-top: 16px;
         font-size: 15px;
-        color: var(--verde);
+        font-weight: 500;
+        color: var(--verde-tinta);
         text-decoration: none;
-        border-bottom: 1px solid var(--verde);
-        padding-bottom: 1px;
+        border-bottom: 1px solid var(--verde-tinta);
+        padding-bottom: 2px;
       }
 
-      /* ── Margem (marginália) ───────────────────────────────── */
       .margem {
-        margin-top: 40px;
+        margin-top: 38px;
         max-width: 40ch;
       }
 
       .margem__nota {
-        font-size: 14px;
+        font-size: 13.5px;
         line-height: 1.55;
         color: var(--tinta-fraca);
-        font-variation-settings: 'opsz' 8;
       }
 
-      .margem__assinatura {
-        margin-top: 22px;
-        font-size: 14px;
-        line-height: 1.45;
-        font-variation-settings: 'opsz' 8;
-      }
-
-      .margem__assinatura span {
-        color: var(--tinta-fraca);
-      }
-
-      /* ── Fecho ─────────────────────────────────────────────── */
       .fecho {
-        margin-top: 92px;
-        padding-top: 30px;
-        border-top: 1px solid var(--filete);
+        margin-top: 82px;
+        padding-top: 28px;
+        border-top: 1px solid var(--tinta);
       }
 
       .fecho__frase {
-        font-size: clamp(1.35rem, 5.7vw, 2rem);
+        font-size: clamp(1.3rem, 5.6vw, 1.9rem);
         line-height: 1.16;
         letter-spacing: -0.018em;
-        font-variation-settings: 'opsz' 24;
+        font-weight: 500;
+        font-variation-settings: 'wdth' 90;
       }
 
       .fecho__acao {
         display: inline-block;
-        margin-top: 28px;
-        font-size: 17px;
-        color: var(--verde);
+        margin-top: 24px;
+        font-size: 16px;
+        font-weight: 500;
+        color: var(--verde-tinta);
         text-decoration: none;
-        border-bottom: 1px solid var(--verde);
+        border-bottom: 1px solid var(--verde-tinta);
         padding-bottom: 2px;
       }
 
@@ -383,14 +463,32 @@ const WHATSAPP =
         }
       }
 
-      /* ── 768px: a margem sai do fluxo e vira marginália ────── */
+      /* ══ 768px ═════════════════════════════════════════════ */
       @media (min-width: 768px) {
-        body {
-          padding: 0 40px 120px;
+        .cabecalho {
+          padding: 22px 40px;
         }
 
-        .abertura {
-          padding: 104px 0 48px;
+        .hero {
+          min-height: calc(100svh - 64px);
+        }
+
+        .hero__retrato {
+          width: 62%;
+          height: 58%;
+          object-position: 54% 16%;
+        }
+
+        .hero__texto {
+          padding: 44px 40px 0;
+        }
+
+        .hero__titulo {
+          font-size: clamp(2.8rem, 5vw, 3.8rem);
+        }
+
+        .dia {
+          padding: 0 40px 118px;
         }
 
         .indice {
@@ -401,35 +499,56 @@ const WHATSAPP =
         }
 
         .margem {
-          margin-top: 116px;
+          margin-top: 190px;
           padding-top: 15px;
-          border-top: 1px solid rgba(25, 23, 19, 0.3);
+          border-top: 1px solid rgba(22, 21, 15, 0.28);
           max-width: none;
         }
       }
 
-      /* ── 1024px+: composição assimétrica de documento ──────── */
+      /* ══ 1024px+ ═══════════════════════════════════════════ */
       @media (min-width: 1024px) {
-        body {
-          padding: 0 clamp(48px, 6vw, 104px) 160px;
-        }
-
         .cabecalho {
-          padding: 26px 0 18px;
+          padding: 26px clamp(48px, 5vw, 88px);
         }
 
-        .abertura {
-          padding: 136px 0 56px;
+        .hero {
+          justify-content: flex-end;
+        }
+
+        .hero__retrato {
+          top: 0;
+          bottom: 0;
+          width: 37%;
+          height: 100%;
+          object-position: 54% 20%;
+        }
+
+        .hero__texto {
+          padding: 0 35% 118px clamp(48px, 5vw, 88px);
+        }
+
+        .hero__titulo {
+          font-size: clamp(3.2rem, 4.6vw, 4.3rem);
+          font-variation-settings: 'wdth' 82;
+        }
+
+        .hero__assinatura {
+          margin-top: 40px;
+        }
+
+        .dia {
+          padding: 0 clamp(48px, 5vw, 88px) 150px;
         }
 
         .pergunta {
-          font-size: clamp(4rem, 6.4vw, 6.25rem);
-          letter-spacing: -0.032em;
+          padding-top: 108px;
+          font-size: clamp(2.6rem, 3.6vw, 3.2rem);
         }
 
         .instrucao {
+          margin-top: 22px;
           font-size: 16px;
-          padding-bottom: 14px;
         }
 
         .indice {
@@ -438,12 +557,11 @@ const WHATSAPP =
         }
 
         .linha__fala {
-          font-size: 22px;
-          font-variation-settings: 'opsz' 20;
+          font-size: 21px;
         }
 
         .linha summary {
-          padding: 21px 0;
+          padding: 20px 0;
           gap: 20px;
         }
 
@@ -460,11 +578,11 @@ const WHATSAPP =
         }
 
         .margem {
-          margin-top: 132px;
+          margin-top: 268px;
         }
 
         .fecho {
-          margin-top: 140px;
+          margin-top: 132px;
           display: grid;
           grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
           gap: 56px;
@@ -474,7 +592,7 @@ const WHATSAPP =
         .fecho__acao {
           margin-top: 0;
           justify-self: start;
-          padding-bottom: 0.55em;
+          padding-bottom: 0.5em;
         }
       }
     </style>
