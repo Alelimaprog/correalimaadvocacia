@@ -23,7 +23,7 @@ const SITUACOES = [
   {
     fala: 'Estou trabalhando sem registro na carteira.',
     resposta:
-      'A falta de registro não apaga o vínculo: o que pesa é como o trabalho acontecia na prática — horário, ordens recebidas, continuidade. Conversas, escalas, comprovantes de pagamento e quem trabalhava junto costumam ser o material que sustenta essa análise.',
+      'A falta de registro não apaga o vínculo de emprego: o que pesa é como o trabalho acontecia na prática — horário, ordens recebidas, continuidade. Conversas, escalas, comprovantes de pagamento e quem trabalhava junto costumam ser o material que sustenta essa análise.',
   },
   {
     fala: 'Faço hora extra e não recebo.',
@@ -48,17 +48,17 @@ const SITUACOES = [
   {
     fala: 'Levei justa causa e acho que foi injusta.',
     resposta:
-      'A justa causa exige motivo previsto em lei e proporcionalidade entre o que aconteceu e a punição. Vale entender qual foi o motivo informado, o que veio antes e se já houve punição pelo mesmo fato.',
+      'A justa causa exige motivo previsto em lei, e a punição precisa ser compatível com o que aconteceu. Vale entender qual foi o motivo informado, o que veio antes e se já houve punição pelo mesmo fato.',
   },
   {
     fala: 'Me contrataram como PJ, mas trabalho como funcionário.',
     resposta:
-      'O que define o vínculo não é o nome do contrato, e sim a rotina: horário, ordens, exclusividade, se outra pessoa poderia fazer seu trabalho no seu lugar. Contrato, mensagens e notas emitidas ajudam a mostrar como era o dia a dia.',
+      'O que define o vínculo de emprego não é o nome do contrato, e sim a rotina: horário, ordens, exclusividade, se outra pessoa poderia fazer seu trabalho no seu lugar. Contrato, mensagens e notas emitidas ajudam a mostrar como era o dia a dia.',
   },
   {
     fala: 'Me machuquei trabalhando.',
     resposta:
-      'Acidente e doença ligados ao trabalho envolvem afastamento, estabilidade no emprego e benefício do INSS — cada frente com procedimento próprio. Documentos do atendimento, a CAT e laudos médicos são o ponto de partida.',
+      'Acidente e doença ligados ao trabalho envolvem afastamento, estabilidade no emprego e benefício do INSS — cada frente com procedimento próprio. Documentos do atendimento, a CAT (Comunicação de Acidente de Trabalho) e laudos médicos são o ponto de partida.',
   },
   {
     fala: 'Meu caso é outro.',
@@ -135,7 +135,7 @@ const WHATSAPP =
     <div class="noite">
       <header class="cabecalho">
         <span class="marca">Corrêa Lima Advocacia</span>
-        <a class="cabecalho__link" href={WHATSAPP} rel="nofollow noopener">Falar agora</a>
+        <a class="cabecalho__link" href={WHATSAPP} target="_blank" rel="nofollow noopener">Conte sua situação</a>
       </header>
 
       <section class="hero">
@@ -178,7 +178,7 @@ const WHATSAPP =
                     </summary>
                     <div class="linha__resposta">
                       <p>{s.resposta}</p>
-                      <a class="linha__acao" href={WHATSAPP} rel="nofollow noopener">
+                      <a class="linha__acao" href={WHATSAPP} target="_blank" rel="nofollow noopener">
                         Contar o que aconteceu comigo
                       </a>
                     </div>
@@ -294,7 +294,7 @@ const WHATSAPP =
           </h2>
 
           <div class="saida__acao">
-            <a class="saida__cta" href={WHATSAPP} rel="nofollow noopener">Conte o que aconteceu</a>
+            <a class="saida__cta" href={WHATSAPP} target="_blank" rel="nofollow noopener">Conte o que aconteceu</a>
             <p class="saida__canal">Pelo WhatsApp. Você escreve — não precisa ligar.</p>
           </div>
         </section>
@@ -886,6 +886,20 @@ const WHATSAPP =
       @media (prefers-reduced-motion: reduce) {
         * {
           transition: none !important;
+        }
+      }
+
+      /* ══ Abaixo de 390px ══════════════════════════════════
+         O rótulo do cabeçalho é mais longo do que a régua de 390px
+         supõe. Só aqui o compasso do topo aperta; nada muda em 390+. */
+      @media (max-width: 389px) {
+        .cabecalho {
+          padding: 18px 16px;
+          gap: 12px;
+        }
+
+        .cabecalho__link {
+          font-size: 12px;
         }
       }
 
