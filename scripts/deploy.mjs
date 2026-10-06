@@ -25,6 +25,20 @@ import { existsSync } from 'node:fs';
 import { join, relative, resolve, posix } from 'node:path';
 import { tmpdir } from 'node:os';
 
+/**
+ * Relato que sobrevive ao GitHub Actions.
+ *
+ * O log do job só é servido por um host de blobs que nem toda ferramenta
+ * alcança — e foi exatamente isso que escondeu, numa publicação, o fato de os
+ * arquivos terem ido para a pasta errada: o job ficou verde e o site, velho.
+ * As anotações, ao contrário, voltam pela API do próprio GitHub.
+ */
+const noActions = Boolean(process.env.GITHUB_ACTIONS);
+function relatar(linha) {
+  console.log(linha);
+  if (noActions) console.log(`::warning title=deploy::${linha.replace(/\n/g, ' ')}`);
+}
+
 const DIST = resolve('dist');
 const MANIFESTO = '.deploy-manifest.json';
 
@@ -81,7 +95,7 @@ const MARCAS = ['index.html', '_astro', 'blog', 'areas-de-atuacao', 'sitemap.xml
  */
 async function acharRaiz(client, pedida, explicita) {
   const inicial = await client.pwd();
-  console.log(`Login deixou em: ${inicial}`);
+  relatar(`Login deixou em: ${inicial}`);
 
   // Configuração explícita manda: nada de adivinhação.
   if (explicita) {
@@ -96,14 +110,12 @@ async function acharRaiz(client, pedida, explicita) {
       await client.cd(c);
       const nomes = (await client.list()).map((f) => f.name);
       const achadas = MARCAS.filter((m) => nomes.includes(m));
-      console.log(`  ${c} -> ${nomes.length} itens${achadas.length ? ', marcas: ' + achadas.join(', ') : ''}`);
+      relatar(`candidata ${c} -> ${nomes.length} itens${achadas.length ? ', marcas: ' + achadas.join(', ') : ''}`);
+      relatar(`   em ${c}: ${nomes.slice(0, 25).join(' | ') || '(vazia)'}`);
       if (achadas.length) return c;
-      if (!comConteudo) {
-        comConteudo = c;
-        console.log(`     primeiros nomes: ${nomes.slice(0, 40).join(' | ') || '(vazia)'}`);
-      }
+      if (!comConteudo) comConteudo = c;
     } catch (e) {
-      console.log(`  ${c} -> inacessível (${e.message})`);
+      relatar(`candidata ${c} -> inacessível (${e.message})`);
     }
   }
 
@@ -111,7 +123,7 @@ async function acharRaiz(client, pedida, explicita) {
   // nela que o login deixou. É o caso de uma primeira publicação, ou de uma
   // listagem que o servidor devolve em formato que não soubemos ler.
   if (comConteudo) {
-    console.log(`Nenhuma marca reconhecida; usando ${comConteudo}, onde o login deixou.`);
+    relatar(`Nenhuma marca reconhecida; usando ${comConteudo}, onde o login deixou.`);
     await client.cd(comConteudo);
     return comConteudo;
   }
@@ -131,7 +143,7 @@ try {
      do site (tem index.html). */
   cfg.remoteDir = await acharRaiz(client, cfg.remoteDir, Boolean(process.env.FTP_REMOTE_DIR));
   await client.cd(cfg.remoteDir);
-  console.log(`Publicando em ${cfg.host}:${cfg.remoteDir}`);
+  relatar(`Publicando em ${cfg.host}:${cfg.remoteDir}`);
 
   // Manifesto da última publicação, se houver.
   let remoto = {};
