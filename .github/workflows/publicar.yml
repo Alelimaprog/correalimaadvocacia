@@ -11,9 +11,10 @@
 # disparado à mão em Actions > Publicar site > Run workflow.
 name: Publicar site
 
+# Durante o redesign a publicacao automatica a cada push fica desligada, para
+# que o site nao va ao ar pela metade. Publica-se a mao, em Actions > Publicar
+# site > Run workflow. Para religar o automatico, reponha o bloco "push:".
 on:
-  push:
-    branches: [claude/landing-advocacia-local-audit-dkjxqc]
   workflow_dispatch:
     inputs:
       simular:
