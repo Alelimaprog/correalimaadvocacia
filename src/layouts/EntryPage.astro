@@ -110,7 +110,10 @@ const { head, jsonld, crumbs, eyebrow, titulo, lead, meta } = Astro.props;
 
   /* ── Corpo ────────────────────────────────────────────────────────── */
   .entry-corpo { padding-block: var(--section-y); }
-  .entry-grid { display: grid; grid-template-columns: 1fr; gap: var(--space-10); }
+  /* `minmax(0, 1fr)` e não `1fr`: um item de grade tem `min-width: auto` por
+     omissão, e por isso uma tabela larga empurrava a coluna de leitura para
+     além da tela em vez de rolar dentro do próprio contêiner. */
+  .entry-grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--space-10); }
   /* O sumário só ganha coluna própria onde cabe sem apertar a leitura. */
   @media (min-width: 1100px) {
     .entry-grid { grid-template-columns: 15rem minmax(0, 1fr); gap: var(--space-16); }

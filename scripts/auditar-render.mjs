@@ -321,6 +321,13 @@ for (const vp of VIEWPORTS) {
     const erros = [];
     pagina.on('console', (m) => { if (m.type() === 'error') erros.push(m.text().slice(0, 120)); });
     pagina.on('pageerror', (e) => erros.push(String(e).slice(0, 120)));
+    // "Failed to load resource" no console não diz QUAL recurso falhou.
+    pagina.on('response', (r) => {
+      if (r.status() >= 400) erros.push(`${r.status()} em ${new URL(r.url()).pathname}`);
+    });
+    pagina.on('requestfailed', (r) => {
+      erros.push(`requisição falhou: ${new URL(r.url()).pathname} (${r.failure()?.errorText ?? '?'})`);
+    });
     try {
       await pagina.goto(`http://127.0.0.1:${PORTA}${rota}`, { waitUntil: 'networkidle', timeout: 20000 });
       await pagina.evaluate(() => document.getElementById('cl-consent')?.remove());

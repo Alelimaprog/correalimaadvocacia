@@ -208,3 +208,23 @@
   display: inline-block;
   padding-block: 0.22rem;
 }
+
+/* ── Tabelas roláveis ────────────────────────────────────────────────────
+   O contêiner vem do plugin rehypeTabelas. A tabela mantém a largura que o
+   conteúdo exige e rola dentro dele; a página não rola na horizontal. */
+.prose .tabela-rolavel {
+  overflow-x: auto;
+  margin: var(--space-6) 0;
+  border: 1px solid var(--color-border);
+  -webkit-overflow-scrolling: touch;
+}
+.prose .tabela-rolavel:focus-visible {
+  outline: 3px solid var(--ring-color);
+  outline-offset: 2px;
+}
+.prose .tabela-rolavel > table {
+  margin: 0;
+  min-width: 34rem;
+}
+.prose .tabela-rolavel th,
+.prose .tabela-rolavel td { white-space: normal; }

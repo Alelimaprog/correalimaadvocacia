@@ -4,6 +4,7 @@ import mdx from '@astrojs/mdx';
 import { unified } from '@astrojs/markdown-remark';
 import { writeFileSync } from 'node:fs';
 import { remarkAbertura } from './plugins/abertura.mjs';
+import { rehypeTabelas } from './plugins/tabelas.mjs';
 
 const SITE = 'https://correalimaadvocacia.com.br';
 
@@ -73,6 +74,12 @@ export default defineConfig({
   // montada por EntryPage. Ver plugins/abertura.mjs.
   // `markdown.remarkPlugins` está depreciado no Astro 7: a extensão do
   // pipeline passa pelo processador `unified()`.
-  markdown: { processor: unified({ remarkPlugins: [remarkAbertura] }) },
+  markdown: {
+    processor: unified({
+      remarkPlugins: [remarkAbertura],
+      // Tabelas ganham rolagem própria em vez de estourar a tela no telefone.
+      rehypePlugins: [rehypeTabelas],
+    }),
+  },
   integrations: [mdx(), singleSitemap()],
 });

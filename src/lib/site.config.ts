@@ -79,7 +79,7 @@ export const site: SiteConfig = {
   defaultDescription:
     'Advocacia empresarial, contratos de importação, execuções, homologação de sentença estrangeira e questões patrimoniais conduzidas com técnica, estratégia e atendimento personalizado.',
   ogImage: '/og-image.png',
-  themeColor: '#0b7d45',
+  themeColor: '#0f2238',
   attorney: {
     name: 'Alexandre Corrêa Lima',
     oab: 'OAB/SP 234511',

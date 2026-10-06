@@ -7,7 +7,12 @@
 
 /* ── Base tipográfica ─────────────────────────────────────────────── */
 .doc { color: var(--color-text); font-size: var(--text-md); line-height: var(--leading-relaxed); }
-.doc nav[aria-label='Trilha de navegação'] { font-size: var(--text-xs); color: var(--color-text-subtle); margin-bottom: var(--space-4); }
+/* A trilha vem do export com os separadores colados ("Início/O Escritório"):
+   o espaço entra pelo layout, sem tocar no HTML preservado. */
+.doc nav[aria-label='Trilha de navegação'] { font-size: var(--text-xs); color: var(--color-text-subtle); margin-bottom: var(--space-8); }
+.doc nav[aria-label='Trilha de navegação'] > div { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-2); }
+.doc nav[aria-label='Trilha de navegação'] > div > span { display: inline-flex; align-items: center; gap: var(--space-2); }
+.doc nav[aria-label='Trilha de navegação'] [aria-hidden='true'] { color: var(--color-border); }
 /* A trilha injetada por set:html também é navegação: vale o alvo de 24px. */
 .doc nav[aria-label='Trilha de navegação'] a,
 .doc nav[aria-label='Trilha de navegação'] > span,
@@ -63,19 +68,75 @@
 .doc--escritorio > section:nth-of-type(3) p { color: var(--color-text-on-dark-muted); }
 .doc--escritorio > section:nth-of-type(3) a { color: #fff; }
 
-/* ── BLOG (hub) — lista de artigos ────────────────────────────────── */
-/* A lista de artigos é uma lista, não uma vitrine de cartões: os itens
-   dividem um filete e o título cresce, em vez de o bloco inteiro subir. */
-.doc--blog > section:nth-of-type(2) { display: grid; grid-template-columns: 1fr; border-top: 1px solid var(--color-border); }
-.doc--blog > section:nth-of-type(2) > a {
-  display: block; background: none; border: 0; border-bottom: 1px solid var(--color-border);
-  border-radius: 0; padding: var(--space-6) 0; text-decoration: none;
+/* ── BLOG (hub) — lista de artigos ──────────────────────────────────
+   Os seletores anteriores apontavam para `section > a`, um nível acima da
+   estrutura real (`section > div > div > a`), e por isso NADA do hub estava
+   sendo estilizado: os rótulos de cluster saíam colados uns nos outros
+   ("Advocacia EmpresarialCobrança, Execução…") e os artigos vinham como
+   links sublinhados em sequência. */
+.doc--blog > section:nth-of-type(2) > div { display: block; }
+
+/* Linha de clusters — rótulos, não botões: a página não filtra nada. */
+.doc--blog > section:nth-of-type(2) > div > div:first-child {
+  display: flex; flex-wrap: wrap; gap: var(--space-2) var(--space-5);
+  padding-bottom: var(--space-6);
+  border-bottom: 1px solid var(--color-border);
+}
+.doc--blog > section:nth-of-type(2) > div > div:first-child > span {
+  font-family: var(--font-body);
+  font-size: var(--text-xs);
+  font-weight: var(--weight-semibold);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--color-text-subtle);
+}
+
+/* Lista de artigos — itens dividindo um filete. */
+.doc--blog > section:nth-of-type(2) > div > div:last-child {
+  display: grid; grid-template-columns: 1fr;
+}
+.doc--blog > section:nth-of-type(2) > div > div:last-child > a {
+  display: block;
+  padding: var(--space-6) 0;
+  border-bottom: 1px solid var(--color-border);
+  text-decoration: none;
   transition: padding-inline-start var(--dur) var(--ease);
 }
-.doc--blog > section:nth-of-type(2) > a:hover { padding-inline-start: var(--space-3); }
-.doc--blog > section:nth-of-type(2) > a h2 { margin: 0; font-size: var(--text-xl); color: var(--color-ink); line-height: var(--leading-snug); transition: color var(--dur) var(--ease); }
-.doc--blog > section:nth-of-type(2) > a:hover h2 { color: var(--color-accent); }
-.doc--blog > section:nth-of-type(2) > a p { margin: var(--space-2) 0 0; max-width: 72ch; color: var(--color-text-muted); font-size: var(--text-sm); line-height: var(--leading-normal); }
+.doc--blog > section:nth-of-type(2) > div > div:last-child > a:hover { padding-inline-start: var(--space-3); }
+.doc--blog > section:nth-of-type(2) > div > div:last-child > a > span:first-child {
+  display: block;
+  font-family: var(--font-body);
+  font-size: var(--text-xs);
+  font-weight: var(--weight-semibold);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-eyebrow);
+  color: var(--color-accent);
+}
+.doc--blog > section:nth-of-type(2) > div > div:last-child > a h2 {
+  margin: var(--space-3) 0 0;
+  font-size: var(--text-xl);
+  line-height: var(--leading-snug);
+  letter-spacing: var(--tracking-tight);
+  color: var(--color-ink);
+  transition: color var(--dur) var(--ease);
+}
+.doc--blog > section:nth-of-type(2) > div > div:last-child > a:hover h2 { color: var(--color-accent); }
+.doc--blog > section:nth-of-type(2) > div > div:last-child > a p {
+  margin: var(--space-3) 0 0;
+  max-width: 72ch;
+  color: var(--color-text-muted);
+  font-size: var(--text-sm);
+  line-height: var(--leading-relaxed);
+}
+/* Data e tempo de leitura. */
+.doc--blog > section:nth-of-type(2) > div > div:last-child > a > div:last-child {
+  display: flex; flex-wrap: wrap; gap: var(--space-2) var(--space-5);
+  margin-top: var(--space-4);
+  font-family: var(--font-body);
+  font-size: var(--text-xs);
+  letter-spacing: 0.04em;
+  color: var(--color-text-subtle);
+}
 
 /* ── ASSUNTOS — grupos temáticos em duas colunas ──────────────────── */
 @media (min-width: 820px) { .doc--assuntos > section:nth-of-type(2) { columns: 2; column-gap: var(--space-12); } }
