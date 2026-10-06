@@ -148,6 +148,32 @@ try {
   relatar(`Publicando em ${cfg.host}:${cfg.remoteDir}`);
 
   if (inspecionar) {
+    // Procura a pasta que o dominio REALMENTE serve. O sinal e o CSS que o
+    // site no ar referencia: se ele estiver numa pasta, e aquela a raiz.
+    const MARCA_VIVA = 'BaseLayout.B81pT4pJ.css';
+    relatar(`procurando ${MARCA_VIVA} — o CSS que o site no ar referencia`);
+    for (const base of ['/', '/..', '/../..', '..', '../..']) {
+      try {
+        const lista = await client.list(base);
+        relatar(`${base} -> ${lista.length} itens: ${lista.filter((f) => f.isDirectory).slice(0, 20).map((f) => f.name).join(' | ')}`);
+      } catch (e) {
+        relatar(`${base} -> inacessível (${e.message})`);
+      }
+    }
+    // Varre as subpastas da raiz atrás de um _astro com a marca viva.
+    try {
+      const raiz = await client.list('/');
+      for (const d of raiz.filter((f) => f.isDirectory)) {
+        try {
+          const dentro = await client.list(posix.join('/', d.name, '_astro'));
+          const achou = dentro.some((f) => f.name === MARCA_VIVA);
+          relatar(`/${d.name}/_astro -> ${dentro.length} itens${achou ? '  <<< MARCA VIVA AQUI' : ''}`);
+        } catch { /* sem _astro: não é raiz de site */ }
+      }
+    } catch (e) {
+      relatar(`varredura falhou: ${e.message}`);
+    }
+
     const alvos = ['index.html', 'brand/alexandre-correa-lima-trabalhista.webp', '_astro', 'brand'];
     for (const alvo of alvos) {
       try {
