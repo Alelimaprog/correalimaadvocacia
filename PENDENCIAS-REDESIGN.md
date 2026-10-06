@@ -148,23 +148,31 @@ A pasta alcançada pelo FTP parece ser a raiz do **domínio principal** da conta
 (tem `cgi-bin`, `.well-known` e uma instalação antiga de WordPress), enquanto
 `correalimaadvocacia.com.br` é servido de outra pasta.
 
-### Como resolver — qualquer um dos dois caminhos
+### Os caminhos, já confirmados pelo cPanel
 
-**Caminho A (recomendado):** apontar a conta de FTP para a raiz certa.
+A raiz do documento do domínio é **`/home1/flushi99/correalimaadvocacia.com.br`**
+(cPanel → Domínios → correalimaadvocacia.com.br → Raiz do documento). A conta de
+FTP cai em `public_html`, que é a raiz do domínio principal — a pasta com o
+WordPress antigo.
 
-1. No cPanel, abra **Domínios** (ou *Domains* / *Addon Domains*).
-2. Localize `correalimaadvocacia.com.br` e **anote o Document Root** — é o
-   caminho que aparece ao lado do domínio, algo como
-   `/home/<usuario>/public_html` ou `/home/<usuario>/correalimaadvocacia.com.br`.
-3. Vá em **Arquivos → Contas FTP**, encontre `claude@correalimaadvocacia.com.br`
-   e clique em **Alterar diretório** (*Change Directory*).
-4. Cole ali o Document Root anotado no passo 2 e salve.
-5. Avise, e eu publico. Nada mais precisa mudar: as senhas e os *secrets*
-   continuam valendo.
+Também já se verificou que **a conta não alcança a raiz certa por nenhum
+caminho**: `/home1/flushi99/correalimaadvocacia.com.br`,
+`/correalimaadvocacia.com.br`, `correalimaadvocacia.com.br` e
+`../correalimaadvocacia.com.br` respondem todos `550 Can't check for file
+existence`. Ela está presa à própria pasta. Por isso configurar
+`FTP_REMOTE_DIR` não resolve: a conta precisa ser reapontada no painel.
 
-**Caminho B:** me informar o Document Root que aparece no passo 2. Se a conta
-conseguir alcançá-lo, eu configuro a variável `FTP_REMOTE_DIR` no repositório e
-publico sem mexer na conta.
+### O que fazer
+
+1. cPanel → **Arquivos → Contas de FTP**.
+2. Em `claude@correalimaadvocacia.com.br`, clique em **Alterar diretório**.
+3. Substitua o conteúdo do campo por `correalimaadvocacia.com.br` (o campo é
+   relativo a `/home1/flushi99`; se for recusado, use o caminho completo
+   `/home1/flushi99/correalimaadvocacia.com.br`).
+4. Salvar. Senhas e *secrets* continuam valendo — nada mais muda.
+
+Feito isso, a publicação funciona pelo disparo manual em
+Actions → Publicar site → Run workflow.
 
 ### O que já foi feito para isto não se repetir
 
