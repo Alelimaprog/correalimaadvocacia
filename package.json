@@ -18,7 +18,8 @@
     "deploy": "node scripts/deploy.mjs",
     "auditar": "node scripts/auditar.mjs",
     "auditar:render": "node scripts/auditar-render.mjs",
-    "auditar:tudo": "npm run build && node scripts/auditar.mjs && node scripts/auditar-render.mjs --todas --rapido"
+    "auditar:tudo": "npm run build && node scripts/auditar.mjs && node scripts/auditar-render.mjs --todas --rapido",
+    "auditar:teclado": "node scripts/auditar-teclado.mjs"
   },
   "dependencies": {
     "@astrojs/mdx": "^7.0.3",

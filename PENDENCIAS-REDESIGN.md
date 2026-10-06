@@ -54,7 +54,39 @@ retirar o `robots` da página e retirar a rota do `EXCLUDE`.
   4. O escritório quer manter esta frente no site ou tratá-la dentro de direito
      internacional?
 
-## 3. Áreas do briefing sem lastro no conteúdo atual
+## 3. Contradições entre o briefing e o texto do próprio escritório
+
+Estas não são lacunas: são lugares onde o que o briefing pede diverge do que o
+site já afirma. Nenhum dos dois foi reescrito — a decisão é do escritório.
+
+### 3.1. Trabalhista: lado do empregador ou dos dois lados?
+
+- O briefing lista "trabalhista empresarial (lado do empregador)" entre as
+  frentes comerciais.
+- A página `/areas-de-atuacao/trabalhista-empresarial/` diz, no corpo, que a
+  atuação é "do ponto de vista da empresa" — coerente com o briefing. Mas a sua
+  própria FAQ responde: *"O escritório atua para empregados ou apenas para
+  empresas? Para ambos, em frentes distintas."*
+- E a FAQ de `/areas-de-atuacao/advocacia-empresarial/` afirma: *"A atuação em
+  matéria trabalhista ocorre de forma secundária, no contexto de assessoria
+  empresarial, e não como frente principal de atuação."*
+- Há ainda a landing `/trab/`, aprovada nesta sessão, que atende **o
+  trabalhador**.
+
+Três afirmações do escritório sobre a mesma matéria, em três graus diferentes.
+O site pode sustentar as duas pontas, mas precisa dizê-lo de uma vez só.
+**O que falta:** a redação única que o escritório quer para a frente
+trabalhista, e se a landing `/trab/` permanece como operação separada.
+
+### 3.2. "Quatro eixos centrais" em /o-escritorio/
+
+O texto institucional descreve a atuação "em torno de quatro eixos centrais".
+O menu e a página de áreas agora apresentam **seis bandas**. O texto continua
+verdadeiro no conteúdo, mas a contagem não casa com a navegação.
+**O que falta:** atualizar a frase, ou confirmar que os quatro eixos são a
+leitura institucional e as seis bandas apenas a organização de navegação.
+
+## 4. Áreas do briefing sem lastro no conteúdo atual
 
 O briefing menciona "outras áreas B2B". O projeto hoje tem conteúdo consolidado
 para: advocacia empresarial, contratos empresariais, contencioso empresarial
@@ -64,7 +96,7 @@ contratos de importação, direito internacional, ambiental, recuperação de
 crédito, cobrança condominial, inventário e patrimônio, família e sucessões.
 Nada além disso foi criado.
 
-## 4. Dados factuais que o site não possui e que não foram inventados
+## 5. Dados factuais que o site não possui e que não foram inventados
 
 Nenhum destes aparece em nenhuma página, e nenhum deve ser acrescentado sem o
 dado real:
@@ -77,7 +109,16 @@ dado real:
 - endereços além do único endereço confirmado pelo escritório;
 - equipe além do advogado responsável já identificado no site.
 
-## 5. Itens técnicos pendentes de decisão do escritório
+## 6. Títulos e descrições fora do limite de exibição
+
+81 títulos passam de 65 caracteres e 28 descrições passam de 165 — os limites
+em que o Google trunca. **Nenhum foi reescrito**: são URLs indexadas, e o
+título é o ativo de SEO mais sensível que existe. A lista completa, com a
+contagem de cada um, está em `RELATORIO-SEO-TITULOS.md`. Só o título e a
+descrição da home foram atualizados, porque diziam respeito ao posicionamento
+que esta rodada mudou.
+
+## 7. Itens técnicos pendentes de decisão do escritório
 
 - **Logotipo.** O redesign passou a usar uma assinatura tipográfica
   (`src/components/Logo.astro`). O arquivo original permanece em
@@ -90,3 +131,14 @@ dado real:
   `.github/workflows/publicar.yml` está desligado durante o redesign; só o
   disparo manual (`workflow_dispatch`) permanece. Reativar quando o redesign
   estiver aprovado para o ar.
+- **Imagens de marca sem uso.** `alexandre-retrato-mono.jpg` (130 KB),
+  `alexandre-correa-lima.jpg` (106 KB), `alexandre-correa-lima.webp` (63 KB),
+  `hero-simbolo.png` (62 KB) e `hero-simbolo.webp` (10 KB) continuam em
+  `public/brand/` sem nenhuma página as referenciando. Não foram apagadas por
+  serem material do escritório; se não houver uso previsto, saem do repositório
+  e do pacote de publicação.
+- **Credencial de FTP.** A senha da conta `claude@correalimaadvocacia.com.br`
+  foi enviada por conversa numa rodada anterior. Ela nunca foi gravada em
+  arquivo nenhum deste projeto — está apenas nos *secrets* do GitHub, onde
+  deve ficar. Ainda assim, **convém trocá-la**: uma senha que trafegou por
+  chat deve ser considerada exposta.
