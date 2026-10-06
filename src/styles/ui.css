@@ -35,44 +35,42 @@
 
 .rule { border: 0; height: 1px; background: var(--border-strong); margin: 0; }
 
-/* ─── Botões — pílulas, como no modelo ───────────────────────────── */
+/* ─── Botões — retangulares, sóbrios, sem elevação ────────────────────
+   Pílula e sombra colorida saíram: a forma institucional é o retângulo de
+   canto quase reto. O estado de hover muda cor, nunca posição. */
 .btn {
-  --btn-bg: var(--color-brand); --btn-fg: #ffffff;
+  --btn-bg: var(--color-navy); --btn-fg: var(--color-text-on-dark);
   display: inline-flex; align-items: center; justify-content: center; gap: var(--space-2);
-  min-height: 2.9rem; padding: 0.65rem 1.5rem;
-  border: 1px solid transparent; border-radius: var(--radius-pill);
+  min-height: 3rem; padding: 0.8rem 1.75rem;
+  border: 1px solid transparent; border-radius: var(--radius-sm);
   background: var(--btn-bg); color: var(--btn-fg);
-  font-family: var(--font-body); font-size: var(--text-base); font-weight: var(--weight-semibold);
-  line-height: 1; text-decoration: none; cursor: pointer;
+  font-family: var(--font-body); font-size: var(--text-sm); font-weight: var(--weight-medium);
+  letter-spacing: 0.015em; line-height: 1; text-decoration: none; cursor: pointer;
   transition: background-color var(--dur) var(--ease), color var(--dur) var(--ease),
-    border-color var(--dur) var(--ease), transform var(--dur) var(--ease), box-shadow var(--dur) var(--ease), filter var(--dur) var(--ease);
+    border-color var(--dur) var(--ease);
 }
-.btn:hover { transform: translateY(-1px); }
-.btn:active { transform: translateY(0); }
-.btn:disabled, .btn[aria-disabled='true'] { opacity: 0.55; pointer-events: none; }
+.btn:disabled, .btn[aria-disabled='true'] { opacity: 0.5; pointer-events: none; }
 
-.btn--primary { --btn-bg: var(--color-brand); --btn-fg: #ffffff; box-shadow: var(--shadow-action); }
-/* Hover premium: verde discretamente mais escuro (também melhora o contraste do
-   texto branco) + leve elevação da sombra. Sem clarear nem brilho. */
-.btn--primary:hover { --btn-bg: var(--color-green-strong); box-shadow: var(--shadow-md), var(--shadow-action); }
+.btn--primary { --btn-bg: var(--color-navy); --btn-fg: var(--color-text-on-dark); }
+.btn--primary:hover { --btn-bg: var(--surface-strong-alt); }
 
-.btn--lg { min-height: 3.35rem; padding: 0.85rem 1.9rem; font-size: var(--text-md); }
+.btn--lg { min-height: 3.5rem; padding: 1rem 2.25rem; font-size: var(--text-base); }
 
-.btn--secondary { --btn-bg: var(--surface); --btn-fg: var(--color-ink); border-color: var(--border-strong); }
-.btn--secondary:hover { --btn-bg: var(--surface-warm); border-color: var(--color-green); }
+.btn--secondary { --btn-bg: transparent; --btn-fg: var(--color-ink); border-color: var(--border-strong); }
+.btn--secondary:hover { --btn-bg: var(--surface-warm); border-color: var(--color-ink); }
 
-.btn--ghost { --btn-bg: transparent; --btn-fg: var(--color-green-strong); border-color: transparent; }
-.btn--ghost:hover { --btn-bg: var(--color-green-tint); }
+.btn--ghost { --btn-bg: transparent; --btn-fg: var(--color-ink); border-color: transparent; padding-inline: 0; }
+.btn--ghost:hover { --btn-fg: var(--color-accent); }
 
-.btn--ghost-light, .btn--on-dark { --btn-bg: transparent; --btn-fg: #fff; border-color: rgba(255,255,255,0.3); }
-.btn--ghost-light:hover, .btn--on-dark:hover { --btn-bg: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.55); }
+.btn--ghost-light, .btn--on-dark { --btn-bg: transparent; --btn-fg: var(--color-text-on-dark); border-color: var(--border-on-dark); }
+.btn--ghost-light:hover, .btn--on-dark:hover { --btn-bg: rgba(247, 245, 241, 0.08); border-color: rgba(247, 245, 241, 0.45); }
 
-/* Botão branco para uso sobre fundo verde (CTA em gradiente) */
-.btn--on-green { --btn-bg: #ffffff; --btn-fg: var(--color-green-forest); box-shadow: var(--shadow-md); }
-.btn--on-green:hover { box-shadow: var(--shadow-lg); }
+/* Botão claro para uso sobre o campo navy. */
+.btn--on-green { --btn-bg: var(--surface); --btn-fg: var(--color-navy); }
+.btn--on-green:hover { --btn-bg: var(--surface-cream); }
 
 /* ─── Link com seta ───────────────────────────────────────────────── */
-.link-arrow { display: inline-flex; align-items: center; gap: 0.4rem; color: var(--color-green-strong); font-weight: var(--weight-semibold); font-size: var(--text-sm); text-decoration: none; transition: gap var(--dur) var(--ease), color var(--dur) var(--ease); }
+.link-arrow { display: inline-flex; align-items: center; gap: 0.4rem; color: var(--color-ink); font-weight: var(--weight-medium); font-size: var(--text-sm); text-decoration: none; transition: gap var(--dur) var(--ease), color var(--dur) var(--ease); }
 .link-arrow:hover { gap: 0.65rem; color: var(--color-green); }
 
 /* ─── Cards — cantos generosos, elevação suave no hover ───────────── */

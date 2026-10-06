@@ -1,4 +1,8 @@
 ---
+interface Props {
+  heroEscuro?: boolean;
+}
+const { heroEscuro } = Astro.props;
 /**
  * Header — cabeçalho flutuante em "pílula" (migração visual): fixo no topo,
  * fundo transparente até rolar; ao rolar, vira um cartão translúcido com
@@ -9,17 +13,16 @@
  */
 import Logo from '@/components/Logo.astro';
 import Navigation from '@/components/Navigation.astro';
-import WhatsAppButton from '@/components/WhatsAppButton.astro';
 import MobileMenu from '@/components/MobileMenu.astro';
 ---
 
-<header class="site-header" data-header>
+<header class:list={['site-header', heroEscuro && 'site-header--sobre-escuro']} data-header>
   <div class="header-shell">
     <div class="header-inner">
-      <Logo variant="light" />
+      <Logo variant={heroEscuro ? "light" : "dark"} />
       <Navigation />
       <div class="header-cta">
-        <WhatsAppButton />
+        <a class="btn btn--primary header-cta-link" href="/contato/">Fale com nossa equipe</a>
       </div>
       <MobileMenu />
     </div>
@@ -27,46 +30,83 @@ import MobileMenu from '@/components/MobileMenu.astro';
 </header>
 
 <style>
-  /* Header flutuante — transparente no topo, "pílula" translúcida ao rolar */
+  /* Cabeçalho institucional: uma faixa, não uma pílula flutuante. Encosta na
+     largura da página e se separa do conteúdo por um filete — a mesma régua
+     usada no resto do site. Ao rolar, ganha fundo sólido e a borda escurece;
+     nada mais se move. */
   .site-header {
+    color: var(--color-ink);
     position: sticky;
     top: 0;
     z-index: 50;
-    padding: 0.75rem clamp(0.75rem, 2vw, 1.25rem) 0;
+    background: color-mix(in srgb, var(--surface) 86%, transparent);
+    border-bottom: 1px solid transparent;
+    backdrop-filter: saturate(140%) blur(12px);
+    -webkit-backdrop-filter: saturate(140%) blur(12px);
+    transition: background-color var(--dur) var(--ease), border-color var(--dur) var(--ease);
   }
+
+  .site-header.is-scrolled {
+    background: var(--surface);
+    border-bottom-color: var(--color-border);
+  }
+
   .header-shell {
     width: 100%;
     max-width: var(--container-max);
     margin-inline: auto;
-    border-radius: var(--radius-pill);
-    /* Leve profundidade e separação do hero: vidro levemente esverdeado
-       (menos branco), borda hairline e sombra praticamente imperceptível. */
-    border: 1px solid var(--border-subtle);
-    background: rgba(247, 250, 247, 0.7);
-    box-shadow: var(--shadow-sm);
-    backdrop-filter: saturate(160%) blur(10px);
-    -webkit-backdrop-filter: saturate(160%) blur(10px);
-    transition: background-color var(--dur-slow) var(--ease), border-color var(--dur-slow) var(--ease),
-      box-shadow var(--dur-slow) var(--ease), backdrop-filter var(--dur-slow) var(--ease);
   }
-  .site-header.is-scrolled .header-shell {
-    background: rgba(244, 249, 245, 0.9);
-    border-color: var(--color-border);
-    box-shadow: var(--shadow-md);
-    backdrop-filter: saturate(180%) blur(14px);
-    -webkit-backdrop-filter: saturate(180%) blur(14px);
-  }
+
   .header-inner {
     width: 100%;
-    padding-inline: clamp(0.9rem, 2vw, 1.5rem);
+    padding-inline: var(--container-pad);
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: var(--space-6);
-    height: 4rem;
+    gap: var(--space-8);
+    height: var(--header-height);
   }
+
   .header-cta { display: none; }
-  @media (min-width: 1024px) { .header-cta { display: block; } }
+
+  /* Sobre campo escuro o cabeçalho desaparece: sem fundo, sem filete, texto
+     claro. Na primeira rolagem ele materializa — e aí volta ao tema claro. */
+  .site-header--sobre-escuro:not(.is-scrolled) {
+    background: transparent;
+    border-bottom-color: transparent;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    color: var(--color-text-on-dark);
+  }
+
+  .site-header--sobre-escuro:not(.is-scrolled) :global(.nav-link) {
+    color: var(--color-text-on-dark-muted);
+  }
+  .site-header--sobre-escuro:not(.is-scrolled) :global(.nav-link:hover),
+  .site-header--sobre-escuro:not(.is-scrolled) :global(.nav-link[aria-current='page']) {
+    color: var(--color-text-on-dark);
+  }
+  .site-header--sobre-escuro:not(.is-scrolled) .header-cta-link {
+    background: transparent;
+    color: var(--color-text-on-dark);
+    border-color: var(--border-on-dark);
+  }
+  .site-header--sobre-escuro:not(.is-scrolled) .header-cta-link:hover {
+    background: rgba(247, 245, 241, 0.1);
+    border-color: rgba(247, 245, 241, 0.5);
+  }
+
+  .header-cta-link {
+    min-height: 2.5rem;
+    padding: 0.55rem 1.25rem;
+    font-size: var(--text-xs);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  @media (min-width: 1024px) {
+    .header-cta { display: block; }
+  }
 </style>
 
 <script>

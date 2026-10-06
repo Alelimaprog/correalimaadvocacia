@@ -64,16 +64,16 @@ import WhatsAppButton from '@/components/WhatsAppButton.astro';
     justify-content: center;
     width: 2.75rem;
     height: 2.75rem;
-    color: var(--color-navy);
+    color: currentColor;
     background: none;
     border: none;
-    border-radius: var(--radius-pill);
+    border-radius: var(--radius-sm);
     cursor: pointer;
     transition: background-color var(--dur) var(--ease);
   }
-  .burger:hover { background: var(--surface-cream); }
+  .burger:hover { background: color-mix(in srgb, currentColor 10%, transparent); }
 
-  .overlay { position: fixed; inset: 0; background: rgba(6, 40, 28, 0.6); backdrop-filter: blur(2px); z-index: 70; }
+  .overlay { position: fixed; inset: 0; background: rgba(8, 21, 36, 0.62); backdrop-filter: blur(2px); z-index: 70; }
 
   .panel {
     position: fixed;

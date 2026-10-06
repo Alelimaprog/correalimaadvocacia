@@ -1,36 +1,74 @@
 ---
 /**
- * Logo — link para a home com o logotipo. Componente único usado no header e no
- * rodapé (evita HTML duplicado). Proporção do arquivo vetorial: ~371x100 (3,71:1).
- * variant 'dark' usa o logo para fundo escuro (navy) — padrão de header/footer.
+ * Logo — assinatura tipográfica do escritório, link para a home.
+ *
+ * O logotipo anterior (/brand/logo-dark-bg.svg) trazia um martelo de juiz em
+ * verde vivo. Dois motivos para sair: o martelo é o clichê mais difundido da
+ * categoria, e o verde não pertence mais ao sistema. O arquivo segue no
+ * projeto — para voltar a ele, basta reintroduzir a <img> aqui.
+ *
+ * variant 'dark' = para fundo claro (tinta navy); 'light' = para fundo escuro.
  */
 import { site } from '@/lib/site.config';
 
 interface Props {
   variant?: 'dark' | 'light';
   class?: string;
-  loading?: 'eager' | 'lazy';
 }
-const { variant = 'dark', class: cls, loading = 'eager' } = Astro.props;
-const src = variant === 'dark' ? '/brand/logo-dark-bg.svg' : '/brand/logo-light-bg.svg';
+const { variant = 'dark', class: cls } = Astro.props;
 ---
 
-<a class:list={['logo', cls]} href="/" aria-label={`${site.name} — página inicial`}>
-  <img src={src} alt={site.name} width="371" height="100" decoding="async" loading={loading} />
+<a
+  class:list={['logo', `logo--${variant}`, cls]}
+  href="/"
+  aria-label={`${site.name} — página inicial`}
+>
+  <span class="logo-nome">Corrêa&nbsp;Lima</span>
+  <span class="logo-regra" aria-hidden="true"></span>
+  <span class="logo-tipo">Advocacia</span>
 </a>
 
 <style>
   .logo {
     display: inline-flex;
-    align-items: center;
+    align-items: baseline;
+    gap: 0.6rem;
+    text-decoration: none;
+    color: var(--color-ink);
+    white-space: nowrap;
   }
-  .logo img {
-    height: 2.25rem; /* 36px */
-    width: auto;
+
+  .logo--light { color: var(--color-text-on-dark); }
+
+  .logo-nome {
+    font-family: var(--font-display);
+    font-size: clamp(1.0625rem, 0.95rem + 0.45vw, 1.375rem);
+    font-weight: var(--weight-medium);
+    letter-spacing: -0.012em;
+    font-optical-sizing: auto;
   }
-  @media (min-width: 768px) {
-    .logo img {
-      height: 2.75rem; /* 44px */
-    }
+
+  /* Um filete curto separa o nome da natureza da atividade — a mesma régua
+     que organiza o resto do site, na menor escala em que ela aparece. */
+  .logo-regra {
+    width: 1px;
+    height: 0.9em;
+    align-self: center;
+    background: currentColor;
+    opacity: 0.3;
+  }
+
+  .logo-tipo {
+    font-family: var(--font-body);
+    font-size: clamp(0.6875rem, 0.64rem + 0.18vw, 0.8125rem);
+    font-weight: var(--weight-medium);
+    letter-spacing: 0.17em;
+    text-transform: uppercase;
+    opacity: 0.72;
+  }
+
+  @media (max-width: 420px) {
+    .logo-regra,
+    .logo-tipo { display: none; }
   }
 </style>

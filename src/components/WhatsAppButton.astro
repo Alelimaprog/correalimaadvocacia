@@ -32,35 +32,30 @@ const { label = 'Falar no WhatsApp', variant = 'pill', class: cls } = Astro.prop
 </a>
 
 <style>
+  /* O verde da marca WhatsApp fica reservado ao atalho flutuante, onde é
+     identidade de canal. Aqui o botão veste a linguagem do site. */
   .wa {
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
     font-family: var(--font-body);
-    font-weight: 600;
+    font-weight: var(--weight-medium);
     font-size: var(--text-sm);
     text-decoration: none;
-    transition:
-      transform 0.15s ease,
-      background-color 0.15s ease,
-      color 0.15s ease;
+    transition: background-color var(--dur) var(--ease), color var(--dur) var(--ease),
+      border-color var(--dur) var(--ease);
   }
+
   .wa--pill {
-    background: var(--color-whatsapp);
-    color: #ffffff;
-    min-height: 44px; padding: 0 20px; font-size: 15px;
-    border-radius: var(--radius-pill);
-    box-shadow: var(--shadow-action);
+    min-height: 3rem;
+    padding: 0.8rem 1.5rem;
+    border: 1px solid var(--border-strong);
+    border-radius: var(--radius-sm);
+    background: transparent;
+    color: var(--color-ink);
   }
-  .wa--pill:hover {
-    filter: brightness(1.05);
-    transform: translateY(-1px);
-    box-shadow: var(--shadow-md), var(--shadow-action);
-  }
-  .wa--inline {
-    color: inherit;
-  }
-  .wa--inline:hover {
-    color: var(--color-green-strong);
-  }
+  .wa--pill:hover { background: var(--surface-warm); border-color: var(--color-ink); }
+
+  .wa--inline { color: inherit; }
+  .wa--inline:hover { color: var(--color-accent); }
 </style>

@@ -5,17 +5,11 @@
  * simples). Tipografia (Google Fonts), favicons, manifest, rastreamento e chrome
  * (Header/Footer via componentes). JSON-LD por página entra pelo slot "jsonld".
  */
-// ETAPA 12 — fontes auto-hospedadas (sem dependência do Google Fonts).
-// Apenas o subconjunto latino e os pesos realmente usados (400/500/600/700),
-// todos com font-display: swap. Os arquivos .woff2 são versionados no build.
-import '@fontsource/manrope/latin-400.css';
-import '@fontsource/manrope/latin-500.css';
-import '@fontsource/manrope/latin-600.css';
-import '@fontsource/manrope/latin-700.css';
-import '@fontsource/inter/latin-400.css';
-import '@fontsource/inter/latin-500.css';
-import '@fontsource/inter/latin-600.css';
-import '@fontsource/inter/latin-700.css';
+// Fontes auto-hospedadas, duas famílias variáveis no lugar dos oito arquivos
+// estáticos anteriores: um arquivo por família cobre toda a faixa de pesos.
+// Newsreader carrega o discurso (títulos e prosa); Archivo, a interface.
+import '@fontsource-variable/newsreader';
+import '@fontsource-variable/archivo';
 import '@/styles/tokens.css';
 import '@/styles/base.css';
 import '@/styles/ui.css';
@@ -37,8 +31,11 @@ interface Props {
   canonical?: string;
   noindex?: boolean;
   noCanonical?: boolean;
+  /** Página cujo primeiro bloco é campo escuro: o cabeçalho flutua por cima,
+   *  transparente e com texto claro, até a primeira rolagem. */
+  heroEscuro?: boolean;
 }
-const { head, title, description, canonical, noindex, noCanonical } = Astro.props;
+const { head, title, description, canonical, noindex, noCanonical, heroEscuro } = Astro.props;
 ---
 
 <!doctype html>
@@ -79,7 +76,7 @@ const { head, title, description, canonical, noindex, noCanonical } = Astro.prop
   </head>
   <body>
     <a href="#conteudo-principal" class="skip-link">Pular para o conteúdo</a>
-    <Header />
+    <Header heroEscuro={heroEscuro} />
     <slot />
     <Footer />
     <FloatingWhatsApp />
@@ -110,6 +107,7 @@ const { head, title, description, canonical, noindex, noCanonical } = Astro.prop
         },
         { threshold: 0.12, rootMargin: '0px 0px -8% 0px' },
       );
+      document.documentElement.classList.add('js-reveal');
       document.querySelectorAll('[data-reveal]').forEach((el, i) => {
         (el as HTMLElement).style.transitionDelay = `${Math.min(i % 6, 5) * 60}ms`;
         io.observe(el);
