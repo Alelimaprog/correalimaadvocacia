@@ -153,7 +153,7 @@ try {
     await client.downloadTo(manifestoTmp, MANIFESTO);
     remoto = JSON.parse(await readFile(manifestoTmp, 'utf8'));
   } catch {
-    console.log('Sem manifesto no servidor — tratando como primeira publicação.');
+    relatar('Sem manifesto no servidor — tratando como primeira publicação.');
   }
 
   const novos = Object.keys(local).filter((k) => !(k in remoto)).sort();
@@ -161,11 +161,12 @@ try {
   const sumidos = Object.keys(remoto).filter((k) => !(k in local)).sort();
   const enviar = [...novos, ...alterados];
 
-  console.log(`\n${total} arquivos em dist/`);
-  console.log(`  novos      ${novos.length}`);
-  console.log(`  alterados  ${alterados.length}`);
-  console.log(`  iguais     ${total - enviar.length}`);
-  console.log(`  no servidor e fora do build: ${sumidos.length}${prune ? ' (serão apagados)' : ' (mantidos; use --prune para apagar)'}`);
+  relatar(
+    `${total} arquivos em dist/ — novos ${novos.length}, alterados ${alterados.length}, ` +
+      `iguais ${total - enviar.length}, no servidor e fora do build ${sumidos.length}` +
+      `${prune ? ' (serão apagados)' : ''}`
+  );
+  if (enviar.length) relatar(`primeiros a enviar: ${enviar.slice(0, 10).join(' | ')}`);
 
   if (dryRun) {
     console.log('\n--dry-run: nada foi enviado.');
@@ -175,7 +176,7 @@ try {
   }
 
   if (!enviar.length && !(prune && sumidos.length)) {
-    console.log('\nNada a fazer: o servidor já está igual ao build.');
+    relatar('Nada a fazer: o servidor já está igual ao build.');
     process.exit(0);
   }
 
@@ -187,7 +188,8 @@ try {
     await client.cd(pasta);
     await client.uploadFrom(join(DIST, rel), posix.basename(destino));
     n += 1;
-    if (n % 20 === 0 || n === enviar.length) console.log(`  ${n}/${enviar.length} enviados`);
+    if (n === enviar.length) relatar(`${n} de ${enviar.length} arquivos enviados`);
+    else if (n % 20 === 0) console.log(`  ${n}/${enviar.length} enviados`);
   }
 
   if (prune) {
