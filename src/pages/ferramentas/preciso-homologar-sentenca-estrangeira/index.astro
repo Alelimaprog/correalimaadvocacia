@@ -163,13 +163,15 @@ const waHref = whatsappHrefForPath('/ferramentas/preciso-homologar-sentenca-estr
   .quiz fieldset[hidden] { display: none; }
   .quiz legend { font-family: var(--font-display); font-weight: var(--weight-bold); color: var(--color-ink); font-size: var(--text-md); padding-inline: var(--space-2); }
   .quiz label { display: flex; align-items: center; gap: var(--space-3); padding: var(--space-2) 0; color: var(--color-text); font-size: var(--text-sm); cursor: pointer; }
-  .quiz input[type='radio'] { width: 1.05rem; height: 1.05rem; accent-color: var(--color-green-strong); flex: none; }
+    /* Alvo de 24px da WCAG 2.2: o controle tinha 17px, e num telefone a
+     diferença entre acertar e errar a opção é essa. */
+  .quiz input[type='radio'] { width: 1.5rem; height: 1.5rem; accent-color: var(--color-navy); flex: none; }
   .quiz button { align-self: flex-start; }
-  .result { margin-top: var(--space-8); max-width: 46rem; border: 1px solid var(--border-green-subtle); background: var(--color-green-tint); border-radius: var(--radius-lg); padding: var(--space-6); }
+  .result { margin-top: var(--space-8); max-width: 46rem; border: 0; border-top: 1px solid var(--color-border); background: none; border-radius: 0; padding: var(--space-6); }
   .result[hidden] { display: none; }
   .result h2 { font-size: var(--text-xl); color: var(--color-ink); margin-top: var(--space-2); }
   .result :global(p) { margin-top: var(--space-3); color: var(--color-text); font-size: var(--text-sm); line-height: var(--leading-relaxed); }
-  .result :global(a) { color: var(--color-green-strong); font-weight: var(--weight-medium); }
+  .result :global(a) { color: var(--color-ink); font-weight: var(--weight-medium); }
   .result-tag { display: inline-block; font-size: var(--text-xs); text-transform: uppercase; letter-spacing: 0.06em; font-weight: var(--weight-semibold); padding: 0.25rem 0.6rem; border-radius: var(--radius-sm); }
   .result-tag--ok { background: var(--color-green-strong); color: #fff; }
   .result-tag--warn { background: var(--color-warning); color: #fff; }
@@ -178,5 +180,5 @@ const waHref = whatsappHrefForPath('/ferramentas/preciso-homologar-sentenca-estr
   .result-cta { display: flex; flex-wrap: wrap; gap: var(--space-3); margin-top: var(--space-6); }
   .note { margin-top: var(--space-8); max-width: 46rem; border-top: 1px solid var(--color-border); padding-top: var(--space-5); }
   .note p { color: var(--color-text-muted); font-size: var(--text-sm); line-height: var(--leading-normal); }
-  .note a { color: var(--color-green-strong); }
+  .note a { color: var(--color-ink); }
 </style>
