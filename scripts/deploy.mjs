@@ -199,7 +199,16 @@ try {
     // site no ar referencia: se ele estiver numa pasta, e aquela a raiz.
     const MARCA_VIVA = 'BaseLayout.B81pT4pJ.css';
     relatar(`procurando ${MARCA_VIVA} — o CSS que o site no ar referencia`);
-    for (const base of ['/', '/..', '/../..', '..', '../..']) {
+    // A raiz do documento do dominio, conforme o cPanel. A pergunta e se esta
+    // conta de FTP consegue alcanca-la: se sim, basta configurar o caminho; se
+    // nao, a conta precisa ser reapontada no painel.
+    for (const base of [
+      '/home1/flushi99/correalimaadvocacia.com.br',
+      '/correalimaadvocacia.com.br',
+      'correalimaadvocacia.com.br',
+      '../correalimaadvocacia.com.br',
+      '/', '/..', '..',
+    ]) {
       try {
         const lista = await client.list(base);
         relatar(`${base} -> ${lista.length} itens: ${lista.filter((f) => f.isDirectory).slice(0, 20).map((f) => f.name).join(' | ')}`);
