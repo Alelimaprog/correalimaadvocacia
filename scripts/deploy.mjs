@@ -42,6 +42,9 @@ function relatar(linha) {
 const DIST = resolve('dist');
 const MANIFESTO = '.deploy-manifest.json';
 
+/** Endereço público do site, para conferir se a publicação chegou ao ar. */
+const SITE = process.env.SITE_URL ?? 'https://correalimaadvocacia.com.br';
+
 const args = process.argv.slice(2);
 const dryRun = args.includes('--dry-run');
 /** Só olha o servidor e relata: tamanho e data do que está publicado. */
@@ -95,6 +98,50 @@ const MARCAS = ['index.html', '_astro', 'blog', 'areas-de-atuacao', 'sitemap.xml
  * isso procura em vez de exigir acerto na configuração. Relata o que encontrou
  * em cada tentativa, para que uma falha diga onde olhar.
  */
+/**
+ * Confere se o que acabou de subir está no ar.
+ *
+ * Sem isto, uma publicação pode terminar verde sem ter efeito nenhum: foi o
+ * que aconteceu quando a conta de FTP apontava para uma pasta que não era a
+ * raiz do domínio. O envio funcionava, o manifesto batia, o job ficava verde —
+ * e o site continuava no desenho antigo. Um arquivo com nome versionado é a
+ * prova mais barata: se ele não responde 200, a publicação não chegou.
+ */
+async function conferirNoAr(manifesto) {
+  const marcas = Object.keys(manifesto)
+    .filter((k) => k.startsWith('_astro/') && (k.endsWith('.css') || k.endsWith('.js')))
+    .sort()
+    .slice(0, 2);
+  if (!marcas.length) {
+    relatar('Sem arquivo versionado para conferir — pulando a verificação no ar.');
+    return;
+  }
+
+  const falhas = [];
+  for (const marca of marcas) {
+    const url = `${SITE}/${marca}`;
+    try {
+      const r = await fetch(url, { method: 'HEAD', redirect: 'follow' });
+      relatar(`no ar: ${marca} -> ${r.status}`);
+      if (!r.ok) falhas.push(`${marca} (${r.status})`);
+    } catch (e) {
+      falhas.push(`${marca} (${e.message})`);
+    }
+  }
+
+  if (falhas.length) {
+    relatar(
+      'A PUBLICAÇÃO NÃO CHEGOU AO AR. Os arquivos subiram e o servidor os aceitou, ' +
+        `mas ${SITE} não os serve: ${falhas.join(', ')}. ` +
+        'Quase sempre isto quer dizer que a conta de FTP aponta para uma pasta que ' +
+        'não é a raiz do domínio — veja a seção de publicação em PENDENCIAS-REDESIGN.md.'
+    );
+    process.exitCode = 1;
+  } else {
+    relatar('Publicação confirmada no ar.');
+  }
+}
+
 async function acharRaiz(client, pedida, explicita) {
   const inicial = await client.pwd();
   relatar(`Login deixou em: ${inicial}`);
@@ -245,6 +292,8 @@ try {
     if (n === enviar.length) relatar(`${n} de ${enviar.length} arquivos enviados`);
     else if (n % 20 === 0) console.log(`  ${n}/${enviar.length} enviados`);
   }
+
+  await conferirNoAr(local);
 
   if (prune) {
     for (const rel of sumidos) {

@@ -118,7 +118,62 @@ contagem de cada um, está em `RELATORIO-SEO-TITULOS.md`. Só o título e a
 descrição da home foram atualizados, porque diziam respeito ao posicionamento
 que esta rodada mudou.
 
-## 7. Itens técnicos pendentes de decisão do escritório
+## 7. BLOQUEIO: a conta de FTP não aponta para a raiz do domínio
+
+**Este é o único motivo pelo qual o redesign não está no ar.** Ele não depende
+de mais nenhum trabalho de código.
+
+### O que está acontecendo
+
+A conta `claude@correalimaadvocacia.com.br` publica normalmente: os 179
+arquivos do build chegam ao servidor, o manifesto confere, e o GitHub Actions
+termina verde. Só que a pasta que essa conta alcança **não é a pasta que serve
+o site**.
+
+Como foi comprovado:
+
+- Consultando a origem na HostGator **sem passar pelo Cloudflare**
+  (`216.172.161.24`), o domínio devolve a versão antiga e **404** para os
+  arquivos novos.
+- Nenhum arquivo que só existe na pasta do FTP é servido pelo domínio:
+  `testador-goaffpro.html`, `formulario-importacao.html`, `index_old2.html` e
+  `readme.html` dão **404** todos.
+- A conta está presa à própria pasta (`/`, `/..` e `/../..` devolvem a mesma
+  listagem), então ela não consegue alcançar a raiz certa por configuração.
+- A última alteração real do site é de **06/10 às 09:45**, que é quando o ZIP
+  foi extraído à mão. O último `push` publicado com sucesso foi às **10:33** e
+  não mudou nada.
+
+A pasta alcançada pelo FTP parece ser a raiz do **domínio principal** da conta
+(tem `cgi-bin`, `.well-known` e uma instalação antiga de WordPress), enquanto
+`correalimaadvocacia.com.br` é servido de outra pasta.
+
+### Como resolver — qualquer um dos dois caminhos
+
+**Caminho A (recomendado):** apontar a conta de FTP para a raiz certa.
+
+1. No cPanel, abra **Domínios** (ou *Domains* / *Addon Domains*).
+2. Localize `correalimaadvocacia.com.br` e **anote o Document Root** — é o
+   caminho que aparece ao lado do domínio, algo como
+   `/home/<usuario>/public_html` ou `/home/<usuario>/correalimaadvocacia.com.br`.
+3. Vá em **Arquivos → Contas FTP**, encontre `claude@correalimaadvocacia.com.br`
+   e clique em **Alterar diretório** (*Change Directory*).
+4. Cole ali o Document Root anotado no passo 2 e salve.
+5. Avise, e eu publico. Nada mais precisa mudar: as senhas e os *secrets*
+   continuam valendo.
+
+**Caminho B:** me informar o Document Root que aparece no passo 2. Se a conta
+conseguir alcançá-lo, eu configuro a variável `FTP_REMOTE_DIR` no repositório e
+publico sem mexer na conta.
+
+### O que já foi feito para isto não se repetir
+
+O `scripts/deploy.mjs` passa a **conferir no ar** depois de enviar: pede ao
+site um arquivo de nome versionado que acabou de subir e, se ele não responder
+200, o job **falha** e diz por quê. Uma publicação sem efeito não termina mais
+em verde.
+
+## 8. Itens técnicos pendentes de decisão do escritório
 
 - **Logotipo.** O redesign passou a usar uma assinatura tipográfica
   (`src/components/Logo.astro`). O arquivo original permanece em
