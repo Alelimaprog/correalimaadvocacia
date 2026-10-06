@@ -82,3 +82,34 @@ ErrorDocument 404 /404.html
 <FilesMatch "^\.(htaccess|htpasswd|gitignore)$">
   Require all denied
 </FilesMatch>
+
+# 7a) Arquivos que a auditoria encontrou abertos na raiz e que não são do
+# site. Bloquear a LEITURA por HTTP não impede nada de ser escrito pelo
+# servidor: nenhum serviço deixa de funcionar por causa destas linhas.
+#
+#   agora.txt      log de funil com identificadores de lead e horários —
+#                  dado operacional do escritório exposto a qualquer um
+#   LEIA-ME.txt    instruções internas, com a estrutura de pastas do sistema
+#   RELATORIO.md   relatório interno de campanhas do Google Ads
+#   .deploy-manifest.json  inventário de publicação (nome e hash de cada
+#                  arquivo) — sem risco direto, mas não é conteúdo do site
+<FilesMatch "^(agora\.txt|LEIA-ME\.txt|RELATORIO\.md)$">
+  Require all denied
+</FilesMatch>
+<FilesMatch "^\.deploy-manifest\.json$">
+  Require all denied
+</FilesMatch>
+
+# 7b) Qualquer arquivo começando por ponto (sobras de .git, .svn, backups).
+# FilesMatch compara só o nome do arquivo, não o caminho: os desafios do
+# .well-known/acme-challenge não começam por ponto e continuam acessíveis —
+# a renovação automática do certificado não é afetada.
+<FilesMatch "^\.">
+  Require all denied
+</FilesMatch>
+
+# 8) O sitemap antigo (sitemap-index.xml -> sitemap-0.xml) ficou na raiz e
+# aponta para um arquivo que não existe mais. Deixá-lo respondendo 200 faz o
+# Search Console seguir um índice vazio em vez do sitemap atual.
+RewriteRule ^sitemap-index\.xml$ /sitemap.xml [R=301,L]
+RewriteRule ^sitemap-0\.xml$ /sitemap.xml [R=301,L]
