@@ -24,6 +24,40 @@ const nota = (nivel, regra, detalhe) => achados.push({ nivel, regra, detalhe });
 
 const sha = (b) => createHash('sha1').update(b).digest('hex');
 
+/**
+ * Desfaz o que o Cloudflare injeta, para que a comparação só acuse diferença
+ * real. São duas coisas, em toda página:
+ *
+ *   1. Ofuscação de e-mail (Scrape Shield): troca cada `mailto:` por
+ *      `/cdn-cgi/l/email-protection#<hex>` e o texto por um marcador, que um
+ *      script devolve ao original no carregamento. +1211 bytes.
+ *   2. Detecção de bots (challenge-platform/jsd): um script embutido que cria
+ *      um iframe oculto. +938 bytes.
+ *
+ * Sem normalizar as duas, as 135 páginas apareceriam divergentes e uma
+ * diferença verdadeira passaria despercebida no meio delas.
+ */
+function semCloudflare(html) {
+  return html
+    .replace(/<a\b([^>]*?)href="\/cdn-cgi\/l\/email-protection#[0-9a-f]+"/gi, '<a$1href="mailto:CF"')
+    .replace(/href="\/cdn-cgi\/l\/email-protection[^"]*"/gi, 'href="mailto:CF"')
+    // O Cloudflare usa <span class="__cf_email__"> no texto solto e
+    // <a class="__cf_email__"> quando o e-mail já era um link: as duas formas
+    // aparecem no mesmo site, então a regra cobre qualquer elemento.
+    .replace(/<(span|a)\b[^>]*class="[^"]*__cf_email__[^"]*"[^>]*>[\s\S]*?<\/\1>/gi, 'CF')
+    .replace(/<script[^>]*\/cdn-cgi\/scripts\/[^<]*<\/script>/gi, '')
+    // Ancorado na assinatura exata do script do Cloudflare. Com um `[\s\S]*?`
+    // solto antes do marcador, o casamento começava no primeiro <script> da
+    // página e engolia 40 KB de conteúdo real — mascarando justamente as
+    // diferenças que esta auditoria existe para encontrar.
+    .replace(
+      /<script\b[^>]*>\(function\(\)\{function c\(\)\{var b=a\.contentDocument[\s\S]*?<\/script>/gi,
+      '',
+    )
+    .replace(/mailto:[^"]*correalimaadvocacia\.com\.br/gi, 'mailto:CF')
+    .replace(/contato@correalimaadvocacia\.com\.br/gi, 'CF');
+}
+
 async function paginas(dir = DIST, acc = []) {
   for (const e of await readdir(dir, { withFileTypes: true })) {
     const p = join(dir, e.name);
@@ -59,7 +93,9 @@ await emLotes(arquivos, async (f) => {
       return;
     }
     const remoto = Buffer.from(await r.arrayBuffer());
-    if (sha(remoto) !== sha(local)) {
+    const a = semCloudflare(local.toString('utf8'));
+    const b = semCloudflare(remoto.toString('utf8'));
+    if (sha(Buffer.from(a)) !== sha(Buffer.from(b))) {
       nota('aviso', 'divergente', `${rota} — no ar ${remoto.length}b, no build ${local.length}b`);
     } else {
       iguais += 1;
