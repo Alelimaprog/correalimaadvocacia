@@ -12,14 +12,18 @@ import HomeHero from '@/components/home/HomeHero.astro';
 import HomeContent from '@/components/home/HomeContent.astro';
 import HomeContact from '@/components/home/HomeContact.astro';
 import { site } from '@/lib/site.config';
-import { nucleos } from '@/lib/nucleos';
+import { bandas } from '@/lib/frentes';
 import { homeFaq } from '@/lib/home-faq';
 import type { PageHead } from '@/lib/institucional';
 
 const canonical = `${site.url}/`;
-const title = 'Advocacia Patrimonial, Empresarial e Regulatória | Corrêa Lima Advocacia';
+// Título e descrição acompanham o reposicionamento: o eixo é empresarial, e
+// as frentes citadas são as que o site efetivamente documenta. Os termos de
+// maior tráfego do texto anterior (recuperação de crédito, aduaneiro,
+// internacional) são preservados.
+const title = 'Advocacia Empresarial e Internacional | Corrêa Lima Advocacia';
 const description =
-  'Recuperação de crédito, cobrança condominial, direito ambiental, aduaneiro-tributário, internacional e inventário. Atuação técnica e estratégica, nacional e online.';
+  'Escritório de advocacia empresarial em São Paulo: contratos, contencioso estratégico, comércio exterior e regime aduaneiro, recuperação de crédito e demandas internacionais.';
 const ogImage = `${site.url}${site.ogImage}`;
 
 const head: PageHead = {
@@ -68,7 +72,7 @@ const jsonld = [
       postalCode: site.contact.address.cep,
       addressCountry: 'BR',
     },
-    knowsAbout: nucleos.map((n) => n.label),
+    knowsAbout: bandas.flatMap((b) => b.items.map((i) => i.label)),
     founder: { '@id': `${canonical}#alexandre-correa-lima` },
     employee: { '@id': `${canonical}#alexandre-correa-lima` },
   },
@@ -82,7 +86,7 @@ const jsonld = [
     jobTitle: 'Advogado de Negócios Internacionais',
     url: `${canonical}o-escritorio/`,
     worksFor: { '@id': `${canonical}#organization` },
-    knowsAbout: nucleos.map((n) => n.label),
+    knowsAbout: bandas.map((b) => b.label),
     areaServed: 'BR',
   },
   {
@@ -98,6 +102,19 @@ const jsonld = [
 ---
 
 <BaseLayout head={head} heroEscuro>
+  <Fragment slot="head">
+    {/* O retrato é o LCP da primeira tela: o preload casa com o `sizes` do
+        <picture> para que o navegador comece a baixá-lo junto com o CSS. */}
+    <link
+      rel="preload"
+      as="image"
+      type="image/webp"
+      imagesrcset="/brand/alexandre-correa-lima-trabalhista@480.webp 480w, /brand/alexandre-correa-lima-trabalhista.webp 640w"
+      imagesizes="(min-width: 940px) 24rem, (min-width: 641px) 7rem, 4.25rem"
+      fetchpriority="high"
+    />
+  </Fragment>
+
   <Fragment slot="jsonld">
     {jsonld.map((schema) => <JsonLd schema={schema} />)}
   </Fragment>

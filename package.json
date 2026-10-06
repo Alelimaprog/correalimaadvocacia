@@ -15,18 +15,17 @@
     "indexnow": "node scripts/indexnow.mjs",
     "indexnow:all": "node scripts/indexnow.mjs --all",
     "shots": "node scripts/shots.mjs",
-    "deploy": "node scripts/deploy.mjs"
+    "deploy": "node scripts/deploy.mjs",
+    "auditar": "node scripts/auditar.mjs",
+    "auditar:render": "node scripts/auditar-render.mjs",
+    "auditar:tudo": "npm run build && node scripts/auditar.mjs && node scripts/auditar-render.mjs --todas --rapido"
   },
   "dependencies": {
     "@astrojs/mdx": "^7.0.3",
     "@astrojs/react": "^6.0.1",
     "@astrojs/sitemap": "^3.7.3",
     "@fontsource-variable/archivo": "^5.3.0",
-    "@fontsource-variable/bricolage-grotesque": "^5.3.0",
     "@fontsource-variable/newsreader": "^5.3.0",
-    "@fontsource-variable/piazzolla": "^5.3.0",
-    "@fontsource/inter": "^5.3.0",
-    "@fontsource/manrope": "^5.3.0",
     "@plasmicapp/loader-react": "^2.0.14",
     "astro": "^7.1.0",
     "react": "^19.2.7",

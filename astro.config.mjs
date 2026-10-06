@@ -1,6 +1,7 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
 import mdx from '@astrojs/mdx';
+import { unified } from '@astrojs/markdown-remark';
 import { writeFileSync } from 'node:fs';
 import { remarkAbertura } from './plugins/abertura.mjs';
 
@@ -70,6 +71,8 @@ export default defineConfig({
   build: { format: 'directory' },
   // O H1 e o lead saem do corpo do Markdown e sobem para a faixa de abertura
   // montada por EntryPage. Ver plugins/abertura.mjs.
-  markdown: { remarkPlugins: [remarkAbertura] },
+  // `markdown.remarkPlugins` está depreciado no Astro 7: a extensão do
+  // pipeline passa pelo processador `unified()`.
+  markdown: { processor: unified({ remarkPlugins: [remarkAbertura] }) },
   integrations: [mdx(), singleSitemap()],
 });

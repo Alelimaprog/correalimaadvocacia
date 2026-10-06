@@ -17,14 +17,18 @@ import { extname, join, relative, resolve } from 'node:path';
 const DIST = resolve('dist');
 const PORTA = 4410;
 
-const VIEWPORTS = [
+/** `--rapido` reduz aos dois extremos — a varredura das 135 páginas em seis
+ *  viewports são 810 carregamentos e passa de meia hora. */
+const RAPIDO = process.argv.includes('--rapido');
+
+const VIEWPORTS = (RAPIDO ? [0, 4] : [0, 1, 2, 3, 4, 5]).map((i) => [
   { nome: 'telefone-360', largura: 360, altura: 740 },
   { nome: 'telefone-390', largura: 390, altura: 844 },
   { nome: 'tablet-768', largura: 768, altura: 1024 },
   { nome: 'laptop-1024', largura: 1024, altura: 768 },
   { nome: 'desktop-1440', largura: 1440, altura: 900 },
   { nome: 'amplo-1920', largura: 1920, altura: 1080 },
-];
+][i]);
 
 const PADRAO = [
   '/', '/o-escritorio/', '/areas-de-atuacao/', '/areas-de-atuacao/advocacia-empresarial/',
