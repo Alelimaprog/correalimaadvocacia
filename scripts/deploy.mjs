@@ -70,14 +70,42 @@ async function manifestoLocal(dir = DIST, acc = {}) {
 const local = await manifestoLocal();
 const total = Object.keys(local).length;
 
+/** Acha a pasta do site: a configurada, ou a primeira candidata com index.html. */
+async function acharRaiz(client, pedida) {
+  const candidatas = [pedida, '/public_html', 'public_html', '/'];
+  for (const c of candidatas) {
+    if (!c) continue;
+    try {
+      await client.cd(c);
+      const lista = await client.list();
+      if (lista.some((f) => f.name === 'index.html')) return c;
+      // Guarda como plausível mesmo sem index.html (primeira publicação).
+      if (c === pedida) var plausivel = c;
+    } catch {
+      /* pasta não existe nesta conta; tenta a próxima */
+    }
+  }
+  if (plausivel) return plausivel;
+  throw new Error(
+    `Não achei a pasta do site. Tentei: ${candidatas.filter(Boolean).join(', ')}. ` +
+      'Defina FTP_REMOTE_DIR com o caminho correto.'
+  );
+}
+
 const client = new Client(30_000);
 client.ftp.verbose = false;
 let tmp;
 
 try {
   await client.access({ ...cfg, secureOptions: { rejectUnauthorized: false } });
-  await client.ensureDir(cfg.remoteDir);
+
+  /* Conforme a conta de FTP esteja presa a public_html ou à raiz da conta, o
+     destino muda de nome. Em vez de exigir acerto na configuração, procura:
+     usa o que foi pedido se existir, senão a primeira pasta que pareça a raiz
+     do site (tem index.html). */
+  cfg.remoteDir = await acharRaiz(client, cfg.remoteDir);
   await client.cd(cfg.remoteDir);
+  console.log(`Publicando em ${cfg.host}:${cfg.remoteDir}`);
 
   // Manifesto da última publicação, se houver.
   let remoto = {};
