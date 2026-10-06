@@ -23,12 +23,14 @@ const cfg = {
 </aside>
 
 <style>
-  .callout { display: flex; gap: var(--space-3); border: 1px solid var(--color-border); border-left-width: 3px; border-radius: var(--radius-md); padding: var(--space-4) var(--space-5); background: var(--surface); margin: var(--space-5) 0; }
-  .callout-ic { flex: none; display: inline-flex; color: var(--color-green-strong); }
-  .callout-title { font-family: var(--font-display); font-weight: var(--weight-bold); color: var(--color-ink); font-size: var(--text-sm); }
+  /* Destaque por filete lateral, não por campo colorido: dentro da leitura,
+     o fundo tingido competia com a prosa em vez de apoiá-la. */
+  .callout { display: flex; gap: var(--space-4); border: 0; border-left: 2px solid var(--color-border); border-radius: 0; padding: var(--space-1) 0 var(--space-1) var(--space-5); background: none; margin: var(--space-6) 0; }
+  .callout-ic { flex: none; display: inline-flex; color: var(--color-accent); }
+  .callout-title { font-family: var(--font-body); font-weight: var(--weight-semibold); text-transform: uppercase; letter-spacing: var(--tracking-eyebrow); color: var(--color-text-subtle); font-size: var(--text-xs); }
   .callout-content { margin-top: 0.25rem; color: var(--color-text); font-size: var(--text-sm); line-height: var(--leading-relaxed); }
-  .callout--nota { border-left-color: var(--color-green); }
-  .callout--atencao { border-left-color: var(--color-warning); background: color-mix(in srgb, var(--color-warning) 5%, var(--surface)); }
+  .callout--nota { border-left-color: var(--color-accent); }
+  .callout--atencao { border-left-color: var(--color-warning); background: none; }
   .callout--atencao .callout-ic { color: var(--color-warning); }
-  .callout--importante { border-left-color: var(--color-green-strong); background: var(--color-green-tint); }
+  .callout--importante { border-left-color: var(--color-navy); background: none; }
 </style>

@@ -113,7 +113,7 @@ const jsonld = [
         </nav>
         <div class="p-hero-grid">
           <div>
-            <p class="eyebrow"><span class="dot"></span>{n.eyebrow}</p>
+            <p class="eyebrow">{n.eyebrow}</p>
             <h1>{n.h1}</h1>
             <p class="p-hero-desc">{n.heroDescription}</p>
             <div class="p-cta">
@@ -122,7 +122,6 @@ const jsonld = [
             </div>
           </div>
           <aside class="p-hero-card" aria-label="Resumo">
-            <span class="p-hero-ic"><Icon name={n.icon} size={28} /></span>
             <p class="p-hero-card-t">{n.short}</p>
           </aside>
         </div>
@@ -132,7 +131,7 @@ const jsonld = [
     <!-- Entenda o problema -->
     <section class="p-sec p-sec--white">
       <div class="wrap wrap--narrow">
-        <p class="eyebrow"><span class="dot"></span>O problema</p>
+        <p class="eyebrow">O problema</p>
         <h2>Entenda o problema</h2>
         <p class="p-lead">{extra?.problem}</p>
       </div>
@@ -141,7 +140,7 @@ const jsonld = [
     <!-- Problemas atendidos -->
     <section class="p-sec p-sec--white">
       <div class="wrap">
-        <p class="eyebrow"><span class="dot"></span>O que resolvemos</p>
+        <p class="eyebrow">O que resolvemos</p>
         <h2>Situações em que atuamos</h2>
         <ul class="check-grid">
           {n.situations.map((s) => (
@@ -154,7 +153,7 @@ const jsonld = [
     <!-- Serviços -->
     <section class="p-sec p-sec--paper">
       <div class="wrap">
-        <p class="eyebrow"><span class="dot"></span>Serviços</p>
+        <p class="eyebrow">Serviços</p>
         <h2>O que a atuação abrange</h2>
         <ul class="chip-grid">
           {n.services.map((s) => <li>{s}</li>)}
@@ -165,7 +164,7 @@ const jsonld = [
     <!-- Riscos -->
     <section class="p-sec p-sec--white">
       <div class="wrap">
-        <p class="eyebrow"><span class="dot"></span>Riscos de não agir</p>
+        <p class="eyebrow">Riscos de não agir</p>
         <h2>Por que o tempo importa</h2>
         <ul class="risk-grid">
           {(extra?.risks ?? []).map((r) => (<li><Icon name="shield" size={18} class="rk" /><span>{r}</span></li>))}
@@ -185,7 +184,7 @@ const jsonld = [
     {subs.length > 0 && (
       <section class="p-sec p-sec--paper">
         <div class="wrap">
-          <p class="eyebrow"><span class="dot"></span>Temas específicos</p>
+          <p class="eyebrow">Temas específicos</p>
           <h2>Explore em profundidade</h2>
           <ul class="sub-grid">
             {subs.map((x) => (
@@ -201,7 +200,7 @@ const jsonld = [
       <section class="p-sec p-guide-band">
         <div class="wrap guide-inner">
           <div>
-            <p class="eyebrow"><span class="dot"></span>Aprofunde no tema</p>
+            <p class="eyebrow">Aprofunde no tema</p>
             <h2>{guide.label}</h2>
             <p class="p-lead">Um material de referência, organizado do básico ao avançado, para entender o tema com profundidade antes de decidir os próximos passos.</p>
           </div>
@@ -214,7 +213,7 @@ const jsonld = [
     <section class="p-sec p-sec--white">
       <div class="wrap two-col">
         <div>
-          <p class="eyebrow"><span class="dot"></span>Para quem</p>
+          <p class="eyebrow">Para quem</p>
           <h2>A quem se destina</h2>
           <ul class="check-grid check-grid--single">
             {n.forWhom.map((w) => (
@@ -223,7 +222,7 @@ const jsonld = [
           </ul>
         </div>
         <div>
-          <p class="eyebrow"><span class="dot"></span>Como atuamos</p>
+          <p class="eyebrow">Como atuamos</p>
           <h2>Do contato à condução</h2>
           <ol class="steps">
             {steps.map((s) => (
@@ -237,7 +236,7 @@ const jsonld = [
     <!-- FAQ -->
     <section class="p-sec p-sec--paper">
       <div class="wrap wrap--narrow">
-        <p class="eyebrow"><span class="dot"></span>Perguntas frequentes</p>
+        <p class="eyebrow">Perguntas frequentes</p>
         <h2>Dúvidas comuns</h2>
         <div class="faq">
           {n.faq.map((f) => (
@@ -254,7 +253,7 @@ const jsonld = [
     <!-- Relacionados -->
     <section class="p-sec p-sec--white">
       <div class="wrap">
-        <p class="eyebrow"><span class="dot"></span>Conteúdos e áreas relacionadas</p>
+        <p class="eyebrow">Conteúdos e áreas relacionadas</p>
         <h2>Explore também</h2>
         <ul class="rel-grid">
           {n.related.map((r) => (
@@ -290,12 +289,13 @@ const jsonld = [
   }
 
   /* Hero claro */
+  /* Abertura igual à das demais internas: papel branco e trilha com respiro. */
   .p-hero {
-    background: var(--surface-warm);
-    padding-block: var(--section-y-sm);
-    border-bottom: 1px solid var(--border-subtle);
+    background: var(--surface);
+    padding-block: var(--section-y) var(--section-y-sm);
+    border-bottom: 1px solid var(--color-border);
   }
-  .p-hero .crumbs { margin-bottom: var(--space-4); }
+  .p-hero .crumbs { margin-bottom: var(--space-8); }
   .p-hero-grid { display: grid; gap: var(--space-6); align-items: center; }
   @media (min-width: 900px) { .p-hero-grid { grid-template-columns: 1.6fr 1fr; gap: var(--space-12); } }
   .p-hero h1 {
@@ -313,19 +313,17 @@ const jsonld = [
   }
   .p-cta { margin-top: var(--space-5); display: flex; flex-wrap: wrap; gap: var(--space-3); }
 
+  /* Apoio do hero: um filete à esquerda em vez do cartão tingido com
+     ladrilho de ícone — a mesma régua do resto do site. */
   .p-hero-card {
-    display: flex; align-items: flex-start; gap: var(--space-3);
-    background: var(--color-green-tint);
-    border: 1px solid var(--border-green-subtle);
-    border-radius: var(--radius-lg);
-    padding: var(--space-5);
+    display: flex; align-items: flex-start; gap: var(--space-4);
+    background: none;
+    border: 0;
+    border-left: 1px solid var(--color-border);
+    border-radius: 0;
+    padding: var(--space-1) 0 var(--space-1) var(--space-6);
   }
-  .p-hero-ic {
-    display: inline-flex; height: 2.5rem; width: 2.5rem; flex: none; align-items: center;
-    justify-content: center; border-radius: var(--radius-md);
-    background: var(--surface); color: var(--color-green-strong);
-  }
-  .p-hero-card-t { margin-top: var(--space-4); color: var(--color-text); line-height: var(--leading-normal); font-size: var(--text-base); }
+  .p-hero-card-t { margin: 0; color: var(--color-text-muted); line-height: var(--leading-relaxed); font-size: var(--text-sm); }
 
   /* Seções — ritmo claro/alternado */
   .p-sec { padding-block: var(--section-y); }
@@ -339,7 +337,7 @@ const jsonld = [
   @media (min-width: 720px) { .check-grid { grid-template-columns: repeat(2, 1fr); } }
   .check-grid--single { grid-template-columns: 1fr; }
   .check-grid li { display: flex; gap: var(--space-3); align-items: flex-start; color: var(--color-text); line-height: var(--leading-normal); }
-  .ck { color: var(--color-green-strong); flex: none; margin-top: 3px; }
+  .ck { color: var(--color-accent); flex: none; margin-top: 3px; }
 
   /* A abrangência deixa de ser um amontoado de pílulas e vira uma lista de
      duas colunas separadas por filete — legível, e sem o ar de nuvem de tags. */
@@ -356,32 +354,53 @@ const jsonld = [
     color: var(--color-text);
   }
 
-  .risk-grid { list-style: none; padding: 0; margin: var(--space-6) 0 0; display: grid; gap: var(--space-4); grid-template-columns: 1fr; }
+  /* Riscos: células que dividem um fio, sem cartão por item. */
+  .risk-grid {
+    list-style: none; padding: 0; margin: var(--space-8) 0 0;
+    display: grid; gap: 1px; grid-template-columns: 1fr;
+    background: var(--color-border); border: 1px solid var(--color-border);
+  }
   @media (min-width: 720px) { .risk-grid { grid-template-columns: repeat(2, 1fr); } }
   .risk-grid li {
     display: flex; gap: var(--space-3); align-items: flex-start; background: var(--surface);
-    border: 1px solid var(--border-subtle); border-radius: var(--radius-md); padding: var(--space-4) var(--space-5);
-    color: var(--color-text); font-size: var(--text-sm); line-height: var(--leading-normal);
+    border: 0; border-radius: 0; padding: var(--space-5);
+    color: var(--color-text); font-size: var(--text-sm); line-height: var(--leading-relaxed);
   }
   .rk { color: var(--color-warn); flex: none; margin-top: 2px; }
 
   /* CTA intermediário — realce de ação suave */
-  .p-cta-mid { background: var(--color-green-tint); border-block: 1px solid var(--border-green-subtle); }
+  .p-cta-mid { background: var(--surface-warm); border-block: 1px solid var(--color-border); }
   .cta-mid-inner { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: var(--space-4); padding-block: var(--space-6); }
   .cta-mid-inner p { font-family: var(--font-display); font-size: var(--text-lg); color: var(--color-ink); }
 
-  .sub-grid { list-style: none; padding: 0; margin: var(--space-6) 0 0; display: grid; gap: var(--space-4); grid-template-columns: 1fr; }
+  /* Subtópicos: linhas que dividem um fio. O hover avança o texto em vez de
+     levantar o bloco — nada levita neste sistema. */
+  .sub-grid {
+    list-style: none; padding: 0; margin: var(--space-8) 0 0;
+    display: grid; gap: 1px; grid-template-columns: 1fr;
+    background: var(--color-border); border-block: 1px solid var(--color-border);
+  }
   @media (min-width: 860px) { .sub-grid { grid-template-columns: repeat(2, 1fr); } }
+  .sub-grid li { background: var(--surface); }
   .sub-grid a {
     display: grid; grid-template-columns: 1fr auto; align-items: start; gap: var(--space-2) var(--space-3);
-    padding: var(--space-5); background: var(--surface); border: 1px solid var(--border-subtle);
-    border-radius: var(--radius-md); text-decoration: none;
-    transition: border-color var(--dur) var(--ease), box-shadow var(--dur) var(--ease), transform var(--dur) var(--ease);
+    height: 100%; padding: var(--space-5); background: none; border: 0;
+    border-radius: 0; text-decoration: none;
+    transition: background-color var(--dur) var(--ease);
   }
-  .sub-grid a:hover { border-color: var(--border-strong); box-shadow: var(--shadow-md); transform: translateY(-2px); }
-  .sub-grid strong { color: var(--color-ink); font-weight: var(--weight-semibold); }
-  .sub-grid span { grid-column: 1 / -1; color: var(--color-text-muted); font-size: var(--text-sm); line-height: var(--leading-normal); }
-  .sg-arrow { color: var(--color-green-strong); }
+  .sub-grid a:hover { background: var(--surface-warm); }
+  .sub-grid strong {
+    font-family: var(--font-display);
+    font-size: var(--text-md);
+    font-weight: var(--weight-regular);
+    letter-spacing: var(--tracking-tight);
+    color: var(--color-ink);
+    transition: color var(--dur) var(--ease);
+  }
+  .sub-grid a:hover strong { color: var(--color-accent); }
+  .sub-grid span { grid-column: 1 / -1; color: var(--color-text-muted); font-size: var(--text-sm); line-height: var(--leading-relaxed); }
+  .sg-arrow { color: var(--color-text-subtle); transition: color var(--dur) var(--ease), transform var(--dur) var(--ease); }
+  .sub-grid a:hover .sg-arrow { color: var(--color-accent); transform: translateX(3px); }
 
   /* Banda "Guia completo" — superfície distinta e clara (não escura) */
   .p-guide-band { background: var(--surface-muted); border-block: 1px solid var(--border-subtle); }
@@ -394,19 +413,25 @@ const jsonld = [
   @media (min-width: 900px) { .two-col { grid-template-columns: 1fr 1fr; gap: var(--space-16); } }
   .steps { list-style: none; padding: 0; margin: var(--space-6) 0 0; display: flex; flex-direction: column; gap: var(--space-5); }
   .steps li { display: flex; gap: var(--space-4); }
-  .s-n { font-family: var(--font-display); font-weight: var(--weight-semibold); color: var(--color-green-strong); font-size: var(--text-lg); flex: none; width: 1.75rem; }
+  .s-n { font-family: var(--font-body); font-weight: var(--weight-semibold); color: var(--color-accent); font-size: var(--text-sm); letter-spacing: 0.06em; flex: none; width: 1.75rem; padding-top: 0.2rem; }
   .steps strong { color: var(--color-ink); font-weight: var(--weight-semibold); }
   .steps p { margin-top: 2px; color: var(--color-text-muted); font-size: var(--text-sm); line-height: var(--leading-normal); }
 
-  .rel-grid { list-style: none; padding: 0; margin: var(--space-6) 0 0; display: grid; gap: var(--space-3); grid-template-columns: 1fr; }
+  .rel-grid {
+    list-style: none; padding: 0; margin: var(--space-8) 0 0;
+    display: grid; gap: 0 var(--space-10); grid-template-columns: 1fr;
+    border-top: 1px solid var(--color-border);
+  }
   @media (min-width: 720px) { .rel-grid { grid-template-columns: repeat(2, 1fr); } }
+  .rel-grid li { border-bottom: 1px solid var(--color-border); }
   .rel-grid a {
     display: flex; align-items: center; justify-content: space-between; gap: var(--space-4);
-    padding: var(--space-4) var(--space-5); background: var(--surface); border: 1px solid var(--border-subtle);
-    border-radius: var(--radius-md); text-decoration: none; color: var(--color-ink); font-weight: var(--weight-medium);
-    transition: border-color var(--dur) var(--ease), color var(--dur) var(--ease);
+    min-height: 24px;
+    padding: var(--space-4) 0; background: none; border: 0;
+    border-radius: 0; text-decoration: none; color: var(--color-ink); font-weight: var(--weight-medium);
+    transition: padding-inline-start var(--dur) var(--ease), color var(--dur) var(--ease);
   }
-  .rel-grid a:hover { border-color: var(--color-green); color: var(--color-green-strong); }
+  .rel-grid a:hover { color: var(--color-accent); padding-inline-start: var(--space-3); }
 
   /* CTA final — faixa institucional escura (a única forte da página) */
   .cta-inner { display: grid; gap: var(--space-6); grid-template-columns: 1fr; align-items: center; }
