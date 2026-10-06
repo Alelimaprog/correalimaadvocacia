@@ -1,0 +1,61 @@
+---
+/**
+ * Direito Marítimo e Portuário — frente estruturada a pedido do escritório.
+ *
+ * ATENÇÃO: não há, no material existente do projeto, nenhuma indicação de que
+ * o escritório já atue nesta matéria — a busca por "marítimo", "portuário",
+ * "armador" e "navio" em todo o conteúdo não retorna uma ocorrência. O texto
+ * abaixo descreve o ESCOPO DA MATÉRIA, não competências afirmadas. A página
+ * sai com noindex e fora do sitemap até confirmação. Ver PENDENCIAS-REDESIGN.md.
+ */
+import FrentePage from '@/components/FrentePage.astro';
+import { site } from '@/lib/site.config';
+import type { PageHead } from '@/lib/institucional';
+
+const canonical = `${site.url}/areas-de-atuacao/maritimo-e-portuario/`;
+const title = 'Direito Marítimo e Portuário | Corrêa Lima Advocacia';
+const description =
+  'Contratos de transporte marítimo, operação portuária, responsabilidade por carga e contencioso relacionado às operações. Atendimento a empresas.';
+
+const head: PageHead = {
+  title,
+  description,
+  canonical,
+  robots: 'noindex, nofollow',
+  og: { title, description, url: canonical, type: 'website', site_name: site.name, locale: site.locale },
+};
+---
+
+<FrentePage
+  head={head}
+  eyebrow="Direito marítimo e portuário"
+  h1="Direito marítimo e portuário"
+  lead="A matéria que organiza o transporte de carga por via marítima, a operação nos terminais e a responsabilidade de cada elo da cadeia."
+  intro="O transporte marítimo e a passagem pelo porto envolvem contratos encadeados — transporte, agenciamento, armazenagem, movimentação — e uma distribuição de responsabilidade que só fica clara quando se lê a documentação da operação. A maior parte das disputas nasce aí: avaria, falta, demora, sobre-estadia e divergência entre o que foi contratado e o que foi executado."
+  escopo={[
+    { t: 'Contratos de transporte e conhecimento de embarque', d: 'Leitura e negociação de contratos de transporte marítimo, cláusulas de limitação de responsabilidade, prazos e foro aplicável.' },
+    { t: 'Responsabilidade por avaria, falta e atraso', d: 'Apuração do responsável ao longo da cadeia — transportador, agente, terminal, operador — e das providências para preservar o direito de regresso.' },
+    { t: 'Sobre-estadia de contêiner', d: 'Discussão de demurrage: base contratual, prazo livre, comprovação do período e composição do valor cobrado.' },
+    { t: 'Operação portuária e terminais', d: 'Relação entre o contratante da operação, o terminal e o operador portuário; armazenagem, movimentação e custos da permanência da carga.' },
+    { t: 'Contencioso das operações', d: 'Medidas judiciais e extrajudiciais relacionadas ao transporte e à passagem pelo porto, inclusive em situações de urgência com carga retida.' },
+  ]}
+  perfis={[
+    'Importadores e exportadores',
+    'Embarcadores e contratantes de transporte',
+    'Agentes de carga e despachantes',
+    'Operadores logísticos',
+    'Terminais e operadores portuários',
+    'Seguradoras e recuperação de regresso',
+  ]}
+  confirmar={[
+    'O escritório já atua nesta matéria? O conteúdo atual do site não traz nenhuma menção a direito marítimo ou portuário.',
+    'Se atua: quais serviços efetivamente presta nesta frente, para distinguir o que é escopo da matéria do que é atuação do escritório.',
+    'Há casos, experiência ou formação específica que sustentem a apresentação desta área? Se não houver, convém apresentá-la como desdobramento do comércio exterior, não como área autônoma.',
+    'Existe parceria com escritório ou profissional especializado? Se sim, a página deve explicar isso de forma transparente.',
+  ]}
+  crumbs={[
+    { label: 'Início', href: '/' },
+    { label: 'Áreas de Atuação', href: '/areas-de-atuacao/' },
+    { label: 'Direito Marítimo e Portuário' },
+  ]}
+/>

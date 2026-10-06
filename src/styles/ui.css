@@ -167,21 +167,23 @@ a.card:hover, .card--interactive:hover { border-color: transparent; box-shadow: 
 @media (min-width: 640px) { .grid-2 { grid-template-columns: repeat(2, 1fr); } .grid-4 { grid-template-columns: repeat(2, 1fr); } }
 @media (min-width: 1000px) { .grid-3 { grid-template-columns: repeat(3, 1fr); } .grid-4 { grid-template-columns: repeat(4, 1fr); } }
 
-/* ── CTA primário sobre faixas ink: usar verde vivo com bom contraste ── */
+/* ── CTA primário sobre faixa navy: papel sobre tinta ────────────────
+   O bronze é detalhe de texto e filete; como botão cheio ele domina a
+   composição e puxa a página para o lado decorativo. */
 .hs--navy .btn--primary,
 .p-sec--navy .btn--primary,
 .s-sec--navy .btn--navy,
 .s-sec--navy .btn--primary,
 .areas-cta .btn--primary,
 .section--dark .btn--primary {
-  --btn-bg: var(--color-green);
-  --btn-fg: #0d1b12;
+  --btn-bg: var(--surface);
+  --btn-fg: var(--color-navy);
 }
 .hs--navy .btn--primary:hover,
 .p-sec--navy .btn--primary:hover,
 .s-sec--navy .btn--primary:hover,
 .areas-cta .btn--primary:hover,
 .section--dark .btn--primary:hover {
-  --btn-bg: var(--color-green-hover);
-  --btn-fg: #0d1b12;
+  --btn-bg: var(--surface-cream);
+  --btn-fg: var(--color-navy);
 }

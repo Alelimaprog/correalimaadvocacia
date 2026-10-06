@@ -341,10 +341,19 @@ const jsonld = [
   .check-grid li { display: flex; gap: var(--space-3); align-items: flex-start; color: var(--color-text); line-height: var(--leading-normal); }
   .ck { color: var(--color-green-strong); flex: none; margin-top: 3px; }
 
-  .chip-grid { list-style: none; padding: 0; margin: var(--space-6) 0 0; display: flex; flex-wrap: wrap; gap: var(--space-2); }
+  /* A abrangência deixa de ser um amontoado de pílulas e vira uma lista de
+     duas colunas separadas por filete — legível, e sem o ar de nuvem de tags. */
+  .chip-grid {
+    list-style: none; padding: 0; margin: var(--space-8) 0 0;
+    display: grid; gap: 0;
+    border-top: 1px solid var(--color-border);
+  }
+  @media (min-width: 700px) { .chip-grid { grid-template-columns: repeat(2, 1fr); column-gap: var(--space-10); } }
   .chip-grid li {
-    background: var(--surface); border: 1px solid var(--border-subtle); border-radius: var(--radius-pill);
-    padding: 0.55rem 1.05rem; font-size: var(--text-sm); color: var(--color-text);
+    padding-block: var(--space-4);
+    border-bottom: 1px solid var(--color-border);
+    font-size: var(--text-sm);
+    color: var(--color-text);
   }
 
   .risk-grid { list-style: none; padding: 0; margin: var(--space-6) 0 0; display: grid; gap: var(--space-4); grid-template-columns: 1fr; }

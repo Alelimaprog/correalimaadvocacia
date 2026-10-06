@@ -1,0 +1,62 @@
+---
+/**
+ * Imigração para os Estados Unidos — frente estruturada a pedido do escritório.
+ *
+ * ATENÇÃO JURÍDICA: advogado inscrito na OAB não exerce advocacia americana.
+ * Esta página NÃO afirma habilitação, licença ou competência para atuar
+ * perante autoridades dos Estados Unidos. Descreve o que um escritório
+ * brasileiro pode legitimamente fazer — preparação documental, estruturação
+ * societária e patrimonial no Brasil, coordenação com profissional habilitado
+ * no exterior — e deixa explícito o que depende de confirmação.
+ *
+ * Sai com noindex e fora do sitemap até confirmação. Ver PENDENCIAS-REDESIGN.md.
+ */
+import FrentePage from '@/components/FrentePage.astro';
+import { site } from '@/lib/site.config';
+import type { PageHead } from '@/lib/institucional';
+
+const canonical = `${site.url}/areas-de-atuacao/imigracao-estados-unidos/`;
+const title = 'Imigração para os Estados Unidos | Corrêa Lima Advocacia';
+const description =
+  'Apoio jurídico no Brasil a projetos de imigração e investimento nos Estados Unidos: documentação, estruturação patrimonial e coordenação com profissional habilitado no exterior.';
+
+const head: PageHead = {
+  title,
+  description,
+  canonical,
+  robots: 'noindex, nofollow',
+  og: { title, description, url: canonical, type: 'website', site_name: site.name, locale: site.locale },
+};
+---
+
+<FrentePage
+  head={head}
+  eyebrow="Atuação internacional"
+  h1="Imigração para os Estados Unidos"
+  lead="O que um escritório brasileiro faz — e o que não faz — quando a empresa ou a família leva parte da sua operação ou do seu patrimônio para os Estados Unidos."
+  intro="A petição apresentada às autoridades americanas é conduzida por profissional habilitado nos Estados Unidos. O trabalho no Brasil é outro, e é substancial: reunir e preparar a documentação de origem brasileira, organizar a situação societária e patrimonial que sustenta o pedido, e manter a coerência entre o que se declara aqui e o que se apresenta lá. É nessa parte que o escritório atua."
+  escopo={[
+    { t: 'Documentação de origem brasileira', d: 'Levantamento, obtenção, tradução juramentada e legalização ou apostilamento dos documentos que instruem o pedido no exterior.' },
+    { t: 'Estruturação societária no Brasil', d: 'Organização da participação societária, contratos e registros brasileiros quando o projeto envolve investimento ou transferência de atividade.' },
+    { t: 'Patrimônio e sucessão entre países', d: 'Efeitos patrimoniais e sucessórios de manter bens no Brasil e no exterior, inclusive para inventário com herdeiros fora do país.' },
+    { t: 'Coerência entre jurisdições', d: 'Verificação de que declarações, registros e documentos brasileiros não conflitam com o que será apresentado no exterior.' },
+    { t: 'Coordenação com profissional habilitado nos EUA', d: 'Interlocução com o advogado licenciado responsável pela petição, que conduz o procedimento perante as autoridades americanas.' },
+  ]}
+  perfis={[
+    'Empresários com projeto de investimento nos EUA',
+    'Sócios e executivos em transferência',
+    'Famílias com patrimônio nos dois países',
+    'Empresas com operação ou filial no exterior',
+  ]}
+  confirmar={[
+    'O escritório efetivamente presta esse apoio hoje? Não há nenhuma menção a imigração ou aos Estados Unidos no conteúdo atual do site.',
+    'Existe parceria formal com advogado ou escritório licenciado nos Estados Unidos? Em caso afirmativo: nome, jurisdição e natureza da parceria, para que a página possa explicá-la com transparência.',
+    'Algum profissional do escritório é habilitado em alguma jurisdição americana? Em caso negativo, a página deve manter a delimitação atual — nenhuma afirmação de habilitação americana.',
+    'Quais vistos ou situações o escritório quer mencionar? Esta versão não cita categoria de visto alguma, justamente para não sugerir aconselhamento sobre direito americano.',
+  ]}
+  crumbs={[
+    { label: 'Início', href: '/' },
+    { label: 'Áreas de Atuação', href: '/areas-de-atuacao/' },
+    { label: 'Imigração para os Estados Unidos' },
+  ]}
+/>

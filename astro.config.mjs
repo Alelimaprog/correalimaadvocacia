@@ -11,6 +11,10 @@ const EXCLUDE = [
   '/404',
   '/areas-de-atuacao/direito-aduaneiro-comercio-exterior/',
   '/trab/', // landing paga (Google/Meta Ads): noindex durante a homologação
+  // Frentes estruturadas no redesign cujo conteúdo factual aguarda confirmação
+  // do escritório. Ver PENDENCIAS-REDESIGN.md.
+  '/areas-de-atuacao/maritimo-e-portuario/',
+  '/areas-de-atuacao/imigracao-estados-unidos/',
 ];
 
 /**
