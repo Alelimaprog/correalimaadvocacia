@@ -1,0 +1,54 @@
+# Publicação do site na HostGator.
+#
+# Roda no GitHub, não no ambiente de desenvolvimento — por isso alcança a porta
+# 21 do FTP, que lá de dentro está bloqueada. O build é feito aqui e enviado
+# pelo scripts/deploy.mjs, que manda apenas os arquivos alterados.
+#
+# Credenciais ficam em Settings > Secrets and variables > Actions:
+#   FTP_HOST, FTP_USER, FTP_PASSWORD
+#
+# Dispara sozinho a cada push no branch de trabalho, e também pode ser
+# disparado à mão em Actions > Publicar site > Run workflow.
+name: Publicar site
+
+on:
+  push:
+    branches: [claude/landing-advocacia-local-audit-dkjxqc]
+  workflow_dispatch:
+    inputs:
+      simular:
+        description: 'Só listar o que subiria, sem enviar'
+        type: boolean
+        default: false
+
+concurrency:
+  group: publicar
+  cancel-in-progress: false
+
+jobs:
+  publicar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci
+
+      - run: npm run build
+
+      - name: Enviar para a hospedagem
+        env:
+          FTP_HOST: ${{ secrets.FTP_HOST }}
+          FTP_USER: ${{ secrets.FTP_USER }}
+          FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
+        run: |
+          if [ "${{ inputs.simular }}" = "true" ]; then
+            npm run deploy -- --dry-run
+          else
+            npm run deploy
+          fi
