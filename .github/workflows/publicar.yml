@@ -51,6 +51,9 @@ jobs:
           FTP_HOST: ${{ secrets.FTP_HOST }}
           FTP_USER: ${{ secrets.FTP_USER }}
           FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
+          # Raiz do documento do dominio, quando a conta de FTP nao cai nela.
+          # Definida em Settings > Secrets and variables > Actions > Variables.
+          FTP_REMOTE_DIR: ${{ vars.FTP_REMOTE_DIR }}
         run: |
           if [ "${{ inputs.inspecionar }}" = "true" ]; then
             npm run deploy -- --inspecionar
