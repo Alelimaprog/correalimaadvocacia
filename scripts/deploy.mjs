@@ -278,7 +278,12 @@ try {
 
   if (!enviar.length && !(prune && sumidos.length)) {
     relatar('Nada a fazer: o servidor já está igual ao build.');
-    process.exit(0);
+    // A conferência roda MESMO assim. "Nada a enviar" é exatamente o estado em
+    // que uma publicação que nunca chegou ao ar se esconde: o manifesto bate
+    // com a pasta errada, e sem este passo o job termina verde.
+    await conferirNoAr(local);
+    await client.close().catch(() => {});
+    process.exit(process.exitCode ?? 0);
   }
 
   let n = 0;
