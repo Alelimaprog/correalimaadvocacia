@@ -70,26 +70,34 @@ async function manifestoLocal(dir = DIST, acc = {}) {
 const local = await manifestoLocal();
 const total = Object.keys(local).length;
 
-/** Acha a pasta do site: a configurada, ou a primeira candidata com index.html. */
+/** Marcas de que uma pasta é a raiz do site publicado. */
+const MARCAS = ['index.html', '_astro', 'blog', 'areas-de-atuacao', 'sitemap.xml'];
+
+/**
+ * Acha a pasta do site. Conforme a conta de FTP esteja presa a public_html ou
+ * à raiz da conta, o destino aparece com nome diferente depois do login — por
+ * isso procura em vez de exigir acerto na configuração. Relata o que encontrou
+ * em cada tentativa, para que uma falha diga onde olhar.
+ */
 async function acharRaiz(client, pedida) {
-  const candidatas = [pedida, '/public_html', 'public_html', '/'];
+  const inicial = await client.pwd();
+  console.log(`Login deixou em: ${inicial}`);
+  const candidatas = [...new Set([pedida, inicial, '/public_html', 'public_html', '/'].filter(Boolean))];
+  let plausivel = null;
   for (const c of candidatas) {
-    if (!c) continue;
     try {
       await client.cd(c);
-      const lista = await client.list();
-      if (lista.some((f) => f.name === 'index.html')) return c;
-      // Guarda como plausível mesmo sem index.html (primeira publicação).
-      if (c === pedida) var plausivel = c;
-    } catch {
-      /* pasta não existe nesta conta; tenta a próxima */
+      const nomes = (await client.list()).map((f) => f.name);
+      const achadas = MARCAS.filter((m) => nomes.includes(m));
+      console.log(`  ${c} -> ${nomes.length} itens${achadas.length ? ', marcas: ' + achadas.join(', ') : ''}`);
+      if (achadas.length) return c;
+      if (!plausivel && nomes.length === 0) plausivel = c;
+    } catch (e) {
+      console.log(`  ${c} -> inacessível (${e.message})`);
     }
   }
   if (plausivel) return plausivel;
-  throw new Error(
-    `Não achei a pasta do site. Tentei: ${candidatas.filter(Boolean).join(', ')}. ` +
-      'Defina FTP_REMOTE_DIR com o caminho correto.'
-  );
+  throw new Error('Não reconheci a raiz do site em nenhuma das pastas acima. Defina FTP_REMOTE_DIR com o caminho correto.');
 }
 
 const client = new Client(30_000);
