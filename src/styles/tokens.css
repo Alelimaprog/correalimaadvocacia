@@ -9,6 +9,11 @@
  */
 
 :root {
+  /* Altura do cabeçalho flutuante: 0,75rem de respiro + 4rem da pílula +
+     1px de borda em cima e embaixo. Quem precisa encaixar algo sob ele
+     (o hero da home) referencia esta medida em vez de repetir o número. */
+  --altura-cabecalho: calc(0.75rem + 4rem + 2px);
+
   /* ─── Marca — verde esmeralda vivo + darks verde-floresta profundos ──── */
   --brand-navy: #06281c;
   --brand-green: #00a85a;

@@ -52,6 +52,16 @@
     background: var(--surface);
     border-bottom: 1px solid var(--border-subtle);
     overflow: hidden;
+    /* A primeira tela é um quadro só. O hero sobe para debaixo do cabeçalho
+       flutuante — que é transparente — de modo que o campo verde comece na
+       borda de cima da janela, e tem exatamente a altura da janela, para que
+       a dobra caia na emenda com a seção seguinte. O padding devolve o
+       espaço do cabeçalho para que nada passe por baixo dele. */
+    margin-top: calc(-1 * var(--altura-cabecalho));
+    padding-top: var(--altura-cabecalho);
+    min-height: 100svh;
+    display: grid;
+    align-content: center;
   }
   .hero::before {
     content: '';
@@ -139,5 +149,70 @@
     .hero-cta { flex-direction: column; align-items: stretch; gap: var(--space-2); }
     .hero-cta .btn { width: 100%; }
     .hero-figure { max-width: 15.5rem; }
+  }
+
+  /* Abaixo de 940px o hero empilha, e a soma do texto com um retrato de
+     altura fixa estoura a janela. Aqui a linha ocupa a altura toda: o texto
+     fica com o que precisa e o retrato recebe o que sobra, recortado pelo
+     topo para preservar o rosto. Assim a primeira tela fecha na dobra em
+     qualquer altura de aparelho, sem encolher a tipografia. */
+  @media (max-width: 939px) {
+    .hero { align-content: stretch; }
+    .hero-grid {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .hero-copy { flex: 0 0 auto; }
+
+  }
+
+  /* Entre 641 e 939px ainda cabe o retrato de corpo: ele fica com a altura
+     que sobra da janela depois do texto, recortado pelo topo. */
+  @media (min-width: 641px) and (max-width: 939px) {
+    .hero-figure {
+      flex: none;
+      height: clamp(10rem, calc(100svh - 42rem), 30rem);
+    }
+    .hero-portrait {
+      height: 100%;
+      aspect-ratio: auto;
+      object-position: 50% 16%;
+    }
+  }
+
+  /* Abaixo de 640px não sobra janela para o retrato de corpo: ele viraria
+     uma tarja com o alto da cabeça. Aqui ele se recolhe a uma assinatura —
+     foto pequena, nome e OAB na mesma linha — que ocupa pouco mais de 4rem
+     e mantém a pessoa presente na primeira tela. */
+  @media (max-width: 640px) {
+    .hero-figure {
+      flex: none;
+      max-width: none;
+      margin-inline: 0;
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+    }
+    .hero-portrait {
+      flex: none;
+      width: 4.25rem;
+      height: 4.25rem;
+      aspect-ratio: 1 / 1;
+      object-position: 50% 16%;
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-sm);
+    }
+    .hero-id {
+      position: static;
+      padding: 0;
+      border: 0;
+      border-radius: 0;
+      box-shadow: none;
+      background: none;
+      -webkit-backdrop-filter: none;
+      backdrop-filter: none;
+    }
   }
 </style>
