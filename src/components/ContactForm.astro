@@ -116,7 +116,14 @@ const formspreeEndpoint = site.form.endpoint;
     box-shadow: var(--ring);
   }
   .cform-consent { display: flex; gap: var(--space-3); align-items: flex-start; }
-  .cform-consent input { margin-top: 0.25rem; width: 1.05rem; height: 1.05rem; accent-color: var(--color-navy); }
+    /* Sem `flex: none` a caixa encolhia junto com o texto ao lado: em 360px
+     chegava a 4px de largura. Também passa a cumprir o alvo de 24px. */
+  .cform-consent input {
+    flex: none;
+    margin-top: 0.15rem;
+    width: 1.5rem; height: 1.5rem;
+    accent-color: var(--color-navy);
+  }
   .cform-consent label { font-weight: var(--weight-regular); color: var(--color-text-muted); line-height: var(--leading-normal); font-size: var(--text-sm); }
   .cform-consent a { color: var(--color-ink); }
   .cform-submit {

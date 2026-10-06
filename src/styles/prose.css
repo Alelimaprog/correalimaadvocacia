@@ -131,8 +131,8 @@
   color: var(--color-text-muted);
   margin-bottom: var(--space-6);
 }
-.prose nav[aria-label='Trilha de navegação'] a { color: var(--color-text-muted); text-decoration: none; }
-.prose nav[aria-label='Trilha de navegação'] a:hover { color: var(--color-green-strong); }
+.prose nav[aria-label='Trilha de navegação'] a { display: inline-flex; align-items: center; min-height: 24px; color: var(--color-text-muted); text-decoration: none; }
+.prose nav[aria-label='Trilha de navegação'] a:hover { color: var(--color-ink); text-decoration: underline; }
 
 /* Eyebrow preservado no conteúdo */
 .prose .eyebrow,
@@ -195,4 +195,16 @@
   display: inline-block;
   margin-right: var(--space-3);
   margin-bottom: var(--space-3);
+}
+
+/* ── Alvo de toque em listas de links ────────────────────────────────────
+   Um link que ocupa sozinho o item da lista é alvo de navegação, não texto
+   embutido numa frase: a isenção "em linha" da WCAG 2.2 não o alcança, e com
+   a entrelinha do corpo ele ficava com 17–20px de altura. O respiro vertical
+   resolve sem tirar o link do fluxo — `inline-flex` o impediria de quebrar
+   linha em telas estreitas. */
+.prose li > a:only-child,
+.prose p > a:only-child {
+  display: inline-block;
+  padding-block: 0.22rem;
 }

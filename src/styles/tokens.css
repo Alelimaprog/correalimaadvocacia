@@ -73,7 +73,10 @@
   /* ─── Texto ─────────────────────────────────────────────────────────── */
   --color-text: #332f2a;
   --color-text-muted: #605a52;
-  --color-text-subtle: #7d766c;
+  /* #7d766c dava 4.49:1 no branco e 3.98:1 sobre a superfície quente —
+     reprovado nos dois casos. #706963 passa com folga em todas elas
+     (5.40 / 5.13 / 4.79) sem mudar a temperatura do cinza. */
+  --color-text-subtle: #706963;
   --color-text-on-dark: #f7f5f1;
   --color-text-on-dark-muted: rgba(232, 228, 219, 0.7);
 

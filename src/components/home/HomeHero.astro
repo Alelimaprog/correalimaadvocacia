@@ -2,42 +2,69 @@
 /**
  * HomeHero — primeira tela da home.
  *
- * Campo navy de borda a borda, declaração tipográfica em serif e uma régua de
- * credenciais no pé. Sem textura, sem borrão, sem fotografia: o único material
- * fotográfico do projeto é o retrato do advogado, que tem função própria mais
- * adiante na página — usá-lo aqui o gastaria como decoração.
+ * Campo navy de borda a borda, declaração em serif à esquerda e o retrato do
+ * advogado à direita, encerrados por uma régua de credenciais. O campo começa
+ * na borda de cima da janela (o cabeçalho é transparente e fica por cima) e
+ * fecha na dobra: `100svh` com o padding devolvendo a altura do cabeçalho.
  *
- * O cabeçalho é transparente e fica por cima: o campo começa na borda de cima
- * da janela e o padding devolve o espaço dele.
+ * O retrato é a fotografia aprovada do escritório. Uma versão anterior deste
+ * hero tirou a foto da página inteira em nome do campo tipográfico puro — e
+ * com isso o único material fotográfico do projeto deixou de aparecer em
+ * qualquer tela do site. Num escritório cuja atuação é conduzida por um
+ * advogado identificado, o rosto não é decoração: é a credencial.
+ *
+ * Servida em WebP (22 KB) com o PNG original como alternativa — o PNG sozinho
+ * pesava 362 KB sendo a maior imagem da primeira tela.
  */
 import { site } from '@/lib/site.config';
 ---
 
 <section class="hero" aria-labelledby="hero-titulo">
   <div class="hero-wrap">
-    <p class="hero-eyebrow">Advocacia empresarial · São Paulo</p>
+    <div class="hero-texto">
+      <p class="hero-eyebrow">Advocacia empresarial · São Paulo</p>
 
-    <h1 class="hero-h1" id="hero-titulo">
-      Advocacia empresarial para operações complexas, no Brasil e no exterior.
-    </h1>
+      <h1 class="hero-h1" id="hero-titulo">
+        Advocacia empresarial para operações complexas, no Brasil e no exterior.
+      </h1>
 
-    <p class="hero-lead">
-      Contratos e estruturação de negócios, contencioso estratégico, comércio exterior
-      e regime aduaneiro, recuperação de crédito e relações de trabalho pelo lado do
-      empregador — com análise do caso concreto antes de qualquer recomendação.
-    </p>
+      <p class="hero-lead">
+        Contratos e estruturação de negócios, contencioso estratégico, comércio exterior
+        e regime aduaneiro, recuperação de crédito e relações de trabalho pelo lado do
+        empregador — com análise do caso concreto antes de qualquer recomendação.
+      </p>
 
-    <div class="hero-acoes">
-      <a class="btn btn--on-green btn--lg" href="/contato/">Fale com nossa equipe</a>
-      <a class="btn btn--on-dark btn--lg" href="/areas-de-atuacao/">Conheça nossa atuação</a>
+      <div class="hero-acoes">
+        <a class="btn btn--on-green btn--lg" href="/contato/">Fale com nossa equipe</a>
+        <a class="btn btn--on-dark btn--lg" href="/areas-de-atuacao/">Conheça nossa atuação</a>
+      </div>
     </div>
+
+    <figure class="hero-retrato">
+      <picture>
+        <source
+          type="image/webp"
+          srcset="/brand/alexandre-correa-lima-trabalhista@480.webp 480w, /brand/alexandre-correa-lima-trabalhista.webp 640w"
+          sizes="(min-width: 940px) 26rem, (min-width: 641px) 15rem, 11rem"
+        />
+        <img
+          src="/brand/alexandre-correa-lima-trabalhista.png"
+          width="640"
+          height="641"
+          alt={`${site.attorney.name}, advogado responsável pelo escritório`}
+          fetchpriority="high"
+          decoding="async"
+        />
+      </picture>
+      <figcaption>{site.attorney.name} · {site.attorney.oab}</figcaption>
+    </figure>
   </div>
 
   <div class="hero-regua">
     <div class="hero-regua-wrap">
-      <span>{site.attorney.name} · {site.attorney.oab}</span>
       <span>Atendimento nacional e online</span>
       <span>Demandas no Brasil e no exterior</span>
+      <span>Atuação empresarial, aduaneira e internacional</span>
     </div>
   </div>
 </section>
@@ -58,8 +85,20 @@ import { site } from '@/lib/site.config';
     width: 100%;
     max-width: var(--container-max);
     margin-inline: auto;
-    padding: var(--section-y) var(--container-pad) var(--section-y-sm);
+    /* O ritmo interno acompanha a ALTURA da janela, não só a largura: a
+       exigência é que a primeira tela feche na dobra, e um padding fixo em
+       rem estourava 330px num laptop de 768px de altura. */
+    padding: clamp(1.5rem, 4vh, 4rem) var(--container-pad);
     align-self: center;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: clamp(1.25rem, 3.5vh, 2.5rem);
+    align-items: center;
+  }
+  /* O retrato só ganha coluna quando há largura para ele sem espremer o
+     título; abaixo disso ele recolhe a uma assinatura acima do texto. */
+  @media (min-width: 940px) {
+    .hero-wrap { grid-template-columns: minmax(0, 1fr) clamp(15rem, 24vw, 24rem); gap: clamp(2.5rem, 5vw, 4rem); }
   }
 
   .hero-eyebrow {
@@ -69,40 +108,66 @@ import { site } from '@/lib/site.config';
     letter-spacing: var(--tracking-eyebrow);
     text-transform: uppercase;
     color: var(--color-accent-soft);
-    margin-bottom: var(--space-8);
+    margin-bottom: clamp(1rem, 3vh, 2rem);
   }
 
   .hero-h1 {
-    font-size: var(--text-6xl);
+    /* Em janela baixa o corpo máximo cede: o título continua sendo o maior
+       elemento da tela, mas não empurra o resto para fora da dobra. */
+    font-size: min(var(--text-6xl), 8.2vh);
     font-weight: var(--weight-regular);
     line-height: 1.02;
     letter-spacing: -0.022em;
     color: var(--color-text-on-dark);
-    max-width: 19ch;
+    max-width: 17ch;
     text-wrap: balance;
   }
 
   .hero-lead {
-    margin-top: var(--space-8);
-    max-width: 58ch;
+    margin-top: clamp(1rem, 3vh, 2rem);
+    max-width: 54ch;
     font-size: var(--text-md);
     line-height: var(--leading-relaxed);
     color: var(--color-text-on-dark-muted);
   }
 
   .hero-acoes {
-    margin-top: var(--space-10);
+    margin-top: clamp(1.25rem, 3.5vh, 2.5rem);
     display: flex;
     flex-wrap: wrap;
     gap: var(--space-3);
   }
 
-  /* Régua de credenciais: encerra a primeira tela sem virar um segundo bloco.
-     Mesma escala do rodapé, separada por um filete. */
-  .hero-regua {
+  /* ── Retrato ────────────────────────────────────────────────────────
+     Filete em vez de moldura: a foto se apoia no campo, não flutua sobre
+     ele. A proporção 4/5 é a de retrato mais próxima do arquivo quadrado;
+     em recortes mais estreitos o enquadramento comia os ombros. */
+  .hero-retrato { margin: 0; }
+  .hero-retrato img {
+    width: 100%;
+    aspect-ratio: 4 / 5;
+    /* A altura também é limitada pela janela: em 26rem de largura o retrato
+       sozinho ocupava 520px, mais que dois terços de um laptop de 768px. */
+    max-height: 56vh;
+    object-fit: cover;
+    object-position: 50% 18%;
+    border: 1px solid var(--border-on-dark);
+    border-radius: var(--radius-sm);
+    filter: saturate(0.82) contrast(1.02);
+  }
+  .hero-retrato figcaption {
+    margin-top: var(--space-4);
+    padding-top: var(--space-3);
     border-top: 1px solid var(--border-on-dark);
+    font-family: var(--font-body);
+    font-size: var(--text-xs);
+    letter-spacing: 0.04em;
+    color: var(--color-text-on-dark-muted);
   }
 
+  /* Régua de credenciais: encerra a primeira tela sem virar um segundo bloco.
+     Mesma escala do rodapé, separada por um filete. */
+  .hero-regua { border-top: 1px solid var(--border-on-dark); }
   .hero-regua-wrap {
     width: 100%;
     max-width: var(--container-max);
@@ -117,9 +182,47 @@ import { site } from '@/lib/site.config';
     color: var(--color-text-on-dark-muted);
   }
 
+  /* Entre 641 e 939px o retrato vira assinatura: some do fluxo vertical e
+     acompanha o rótulo, para que a primeira tela continue fechando na dobra. */
+  @media (max-width: 939px) {
+    .hero-wrap { gap: var(--space-8); }
+    .hero-retrato {
+      display: flex;
+      align-items: center;
+      gap: var(--space-5);
+      order: -1;
+    }
+    .hero-retrato picture { flex: none; width: clamp(4rem, 9vh, 7rem); }
+    .hero-retrato figcaption { margin-top: 0; padding-top: 0; border-top: 0; border-left: 1px solid var(--border-on-dark); padding-left: var(--space-5); }
+  }
+
+  /* No telefone a primeira tela tem de caber inteira: título, lead, as duas
+     ações e a régua. O que cede é a escala e o empilhamento — nada de
+     conteúdo sai da página. */
   @media (max-width: 767px) {
-    .hero-h1 { max-width: none; }
-    .hero-acoes .btn { width: 100%; }
-    .hero-regua-wrap { gap: var(--space-2); flex-direction: column; }
+    .hero-h1 { max-width: none; font-size: min(var(--text-5xl), 6.6vh); }
+    .hero-lead { font-size: var(--text-base); max-width: none; }
+    .hero-acoes { gap: var(--space-2); }
+    .hero-acoes .btn { flex: 1 1 10rem; min-height: 2.9rem; padding-inline: var(--space-4); }
+    .hero-regua-wrap {
+      gap: var(--space-1) var(--space-5);
+      padding-block: var(--space-3);
+      font-size: 0.75rem;
+    }
+    .hero-retrato { gap: var(--space-4); }
+    .hero-retrato picture { width: clamp(3.25rem, 7vh, 4.25rem); }
+    .hero-retrato figcaption { padding-left: var(--space-4); }
+  }
+
+  /* Telefones curtos (360×740 e similares). Sem este degrau a régua caía
+     187px abaixo da dobra: a escala precisa ceder mais um passo. */
+  @media (max-width: 767px) and (max-height: 800px) {
+    .hero-wrap { padding-block: clamp(0.75rem, 2vh, 1.5rem); gap: var(--space-4); }
+    .hero-eyebrow { margin-bottom: var(--space-3); font-size: 0.6875rem; }
+    .hero-h1 { font-size: min(var(--text-4xl), 5.6vh); line-height: 1.06; }
+    .hero-lead { margin-top: var(--space-4); font-size: var(--text-sm); }
+    .hero-acoes { margin-top: var(--space-5); }
+    .hero-retrato picture { width: 3rem; }
+    .hero-retrato figcaption { font-size: 0.6875rem; }
   }
 </style>

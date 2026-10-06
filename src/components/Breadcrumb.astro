@@ -51,12 +51,22 @@ const { items, class: cls } = Astro.props;
     align-items: center;
     gap: 0.4rem;
   }
+  /* Os links da trilha tinham 14px de altura no telefone. Não são texto
+     corrido — são alvos de navegação —, então valem os 24px da WCAG 2.2. */
+  .breadcrumb a,
+  .breadcrumb [aria-current='page'] {
+    display: inline-flex;
+    align-items: center;
+    min-height: 24px;
+  }
   .breadcrumb a {
     color: var(--color-text-muted);
     text-decoration: none;
   }
   .breadcrumb a:hover {
-    color: var(--color-green-strong);
+    color: var(--color-ink);
+    text-decoration: underline;
+    text-underline-offset: 0.16em;
   }
   .breadcrumb [aria-current='page'] {
     color: var(--color-ink);

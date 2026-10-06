@@ -954,7 +954,10 @@ const MAPA =
         margin-top: 26px;
         font-size: 12.5px;
         line-height: 1.5;
-        color: rgba(145, 138, 126, 0.62);
+        /* 0.62 dava 2.86:1 sobre o campo escuro — reprovado, e justamente no
+           aviso que a publicidade advocatícia exige que seja lido. 0.9 leva a
+           4.86:1 sem alterar o tom nem o peso do rodapé. */
+        color: rgba(145, 138, 126, 0.9);
         max-width: 64ch;
       }
 

@@ -118,7 +118,7 @@ const year = new Date().getFullYear();
     border-bottom: 1px solid var(--border-on-dark);
   }
   @media (min-width: 860px) { .f-brand { grid-template-columns: 1.7fr 1fr; align-items: center; } }
-  .oab { margin-top: var(--space-3); color: rgba(255, 255, 255, 0.6); }
+  .oab { margin-top: var(--space-3); color: rgba(255, 255, 255, 0.72); }
   /* Logo do footer exibido integralmente (override cross-component do tamanho). */
   .f-brand-cta { display: flex; }
   @media (min-width: 860px) { .f-brand-cta { justify-content: flex-end; } }
@@ -139,11 +139,12 @@ const year = new Date().getFullYear();
     font-weight: var(--weight-semibold);
     text-transform: uppercase;
     letter-spacing: var(--tracking-eyebrow);
-    color: rgba(255, 255, 255, 0.5);
+    color: rgba(255, 255, 255, 0.62);
     margin-bottom: var(--space-4);
   }
   .col ul { list-style: none; padding: 0; display: flex; flex-direction: column; gap: var(--space-3); }
-  .col a { color: rgba(255, 255, 255, 0.82); text-decoration: none; line-height: var(--leading-snug); transition: color var(--dur) var(--ease); }
+  /* Alvo de 24px: são links de navegação, não texto corrido. */
+  .col a { display: inline-flex; align-items: center; min-height: 24px; color: rgba(255, 255, 255, 0.82); text-decoration: none; line-height: var(--leading-snug); transition: color var(--dur) var(--ease); }
   .col a:hover { color: var(--color-accent-soft); }
 
   /* O botão de WhatsApp do rodapé vive sobre campo navy. */
@@ -155,8 +156,8 @@ const year = new Date().getFullYear();
     background: rgba(247, 245, 241, 0.08);
     border-color: rgba(247, 245, 241, 0.45);
   }
-  .f-address span { display: block; margin-top: var(--space-1); color: rgba(255, 255, 255, 0.6); font-size: var(--text-xs); line-height: var(--leading-normal); }
-  .contact span { color: rgba(255, 255, 255, 0.55); }
+  .f-address span { display: block; margin-top: var(--space-1); color: rgba(255, 255, 255, 0.7); font-size: var(--text-xs); line-height: var(--leading-normal); }
+  .contact span { color: rgba(255, 255, 255, 0.68); }
 
   .bottom {
     padding-top: var(--space-6);
@@ -164,12 +165,14 @@ const year = new Date().getFullYear();
     display: flex; flex-wrap: wrap; gap: var(--space-4);
     justify-content: space-between; align-items: center;
   }
-  .copy { color: rgba(255, 255, 255, 0.55); }
+  .copy { color: rgba(255, 255, 255, 0.62); }
   .legal { list-style: none; padding: 0; display: flex; flex-wrap: wrap; gap: var(--space-5); }
-  .legal a { color: rgba(255, 255, 255, 0.82); text-decoration: none; transition: color var(--dur) var(--ease); }
+  .legal a { display: inline-flex; align-items: center; min-height: 24px; color: rgba(255, 255, 255, 0.82); text-decoration: none; transition: color var(--dur) var(--ease); }
   .legal a:hover { color: var(--color-accent-soft); }
-  .legal-cookies { background: none; border: 0; padding: 0; cursor: pointer; font: inherit; color: rgba(255, 255, 255, 0.55); text-decoration: underline; text-underline-offset: 0.15em; transition: color var(--dur) var(--ease); }
+  /* Alvo de 24px na vertical: o botão tinha 23px de altura, abaixo do
+     mínimo da WCAG 2.2 para alvo que não é texto corrido. */
+  .legal-cookies { background: none; border: 0; padding: var(--space-1) 0; min-height: 24px; cursor: pointer; font: inherit; color: rgba(255, 255, 255, 0.62); text-decoration: underline; text-underline-offset: 0.15em; transition: color var(--dur) var(--ease); }
   .legal-cookies:hover { color: rgba(255, 255, 255, 0.85); }
   .legal-cookies:focus-visible { outline: 2px solid var(--color-accent-soft); outline-offset: 2px; border-radius: 2px; }
-  .disclaimer { margin-top: var(--space-5); color: rgba(255, 255, 255, 0.45); font-size: var(--text-xs); line-height: var(--leading-normal); max-width: 70ch; }
+  .disclaimer { margin-top: var(--space-5); color: rgba(255, 255, 255, 0.62); font-size: var(--text-xs); line-height: var(--leading-normal); max-width: 70ch; }
 </style>

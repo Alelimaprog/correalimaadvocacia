@@ -8,6 +8,13 @@
  *
  * Sem `head`, cai no modo simples (title via template + defaults) usado por
  * páginas utilitárias.
+ *
+ * Open Graph e Twitter Card têm um piso: toda página emite ao menos title,
+ * description, url, type, site_name, locale e imagem. Antes, páginas no modo
+ * simples — ferramentas, /contato/obrigado/, 404 — saíam sem nenhuma dessas
+ * tags, e qualquer compartilhamento delas no WhatsApp ou no LinkedIn aparecia
+ * como link cru. Onde a página traz `head.og`, o valor dela prevalece: a
+ * fidelidade ao head capturado continua intacta.
  */
 import { site, buildTitle, canonicalUrl } from '@/lib/site.config';
 import type { PageHead } from '@/lib/institucional';
@@ -35,7 +42,20 @@ const author = head?.author ?? null;
 const authorLink = head?.authorLink ?? null;
 const og = head?.og;
 const tw = head?.twitter;
-const ogImage = og?.image;
+
+/** Piso de compartilhamento: o que a página declarar vence; o resto é derivado. */
+const ogTitle = og?.title ?? t;
+const ogDescription = og?.description ?? desc;
+const ogUrl = og?.url ?? canon ?? canonicalUrl(Astro.url.pathname);
+const ogType = og?.type ?? 'website';
+const ogSiteName = og?.site_name ?? site.name;
+const ogLocale = og?.locale ?? site.locale;
+const ogImage = og?.image ?? `${site.url}${site.ogImage}`;
+
+const twCard = tw?.card ?? 'summary_large_image';
+const twTitle = tw?.title ?? ogTitle;
+const twDescription = tw?.description ?? ogDescription;
+const twImage = tw?.image ?? ogImage;
 ---
 
 <title>{t}</title>
@@ -45,20 +65,20 @@ const ogImage = og?.image;
 {author && <meta name="author" content={author} />}
 {authorLink && <link rel="author" href={authorLink} />}
 
-{/* Open Graph — emitido conforme presente no head da página (fidelidade) */}
-{og?.title && <meta property="og:title" content={og.title} />}
-{og?.description && <meta property="og:description" content={og.description} />}
-{og?.url && <meta property="og:url" content={og.url} />}
-{og?.type && <meta property="og:type" content={og.type} />}
-{og?.site_name && <meta property="og:site_name" content={og.site_name} />}
-{og?.locale && <meta property="og:locale" content={og.locale} />}
-{ogImage && <meta property="og:image" content={ogImage} />}
-{ogImage && <meta property="og:image:width" content="1200" />}
-{ogImage && <meta property="og:image:height" content="630" />}
-{ogImage && <meta property="og:image:alt" content={site.name} />}
+{/* Open Graph — valores da página quando existirem, derivados quando não */}
+<meta property="og:title" content={ogTitle} />
+<meta property="og:description" content={ogDescription} />
+<meta property="og:url" content={ogUrl} />
+<meta property="og:type" content={ogType} />
+<meta property="og:site_name" content={ogSiteName} />
+<meta property="og:locale" content={ogLocale} />
+<meta property="og:image" content={ogImage} />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content={site.name} />
 
 {/* Twitter Card */}
-{tw?.card && <meta name="twitter:card" content={tw.card} />}
-{tw?.title && <meta name="twitter:title" content={tw.title} />}
-{tw?.description && <meta name="twitter:description" content={tw.description} />}
-{tw?.image && <meta name="twitter:image" content={tw.image} />}
+<meta name="twitter:card" content={twCard} />
+<meta name="twitter:title" content={twTitle} />
+<meta name="twitter:description" content={twDescription} />
+<meta name="twitter:image" content={twImage} />
