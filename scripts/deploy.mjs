@@ -44,6 +44,8 @@ const MANIFESTO = '.deploy-manifest.json';
 
 const args = process.argv.slice(2);
 const dryRun = args.includes('--dry-run');
+/** Só olha o servidor e relata: tamanho e data do que está publicado. */
+const inspecionar = args.includes('--inspecionar');
 const prune = args.includes('--prune');
 
 const cfg = {
@@ -144,6 +146,32 @@ try {
   cfg.remoteDir = await acharRaiz(client, cfg.remoteDir, Boolean(process.env.FTP_REMOTE_DIR));
   await client.cd(cfg.remoteDir);
   relatar(`Publicando em ${cfg.host}:${cfg.remoteDir}`);
+
+  if (inspecionar) {
+    const alvos = ['index.html', 'brand/alexandre-correa-lima-trabalhista.webp', '_astro', 'brand'];
+    for (const alvo of alvos) {
+      try {
+        const lista = await client.list(posix.join(cfg.remoteDir, alvo));
+        if (lista.length === 1 && lista[0].isFile) {
+          const f = lista[0];
+          relatar(`${alvo}: ${f.size} bytes, modificado ${f.rawModifiedAt ?? f.modifiedAt}`);
+        } else {
+          relatar(`${alvo}/: ${lista.length} itens — ${lista.slice(0, 8).map((f) => f.name).join(' | ')}`);
+        }
+      } catch (e) {
+        relatar(`${alvo}: NÃO ENCONTRADO (${e.message})`);
+      }
+    }
+    // E onde o servidor realmente coloca o que subimos.
+    try {
+      const raiz = await client.list(cfg.remoteDir);
+      const html = raiz.filter((f) => f.name.endsWith('.html') || f.name === '_astro' || f.name === 'brand');
+      relatar(`na raiz: ${html.map((f) => `${f.name} (${f.size}b, ${f.rawModifiedAt ?? f.modifiedAt})`).join(' | ')}`);
+    } catch (e) {
+      relatar(`listagem da raiz falhou: ${e.message}`);
+    }
+    process.exit(0);
+  }
 
   // Manifesto da última publicação, se houver.
   let remoto = {};
