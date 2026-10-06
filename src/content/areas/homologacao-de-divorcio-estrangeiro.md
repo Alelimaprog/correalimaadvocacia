@@ -5,13 +5,14 @@ h1: "Homologação de Divórcio Estrangeiro"
 author: "Alexandre Corrêa Lima"
 ---
 
-Homologação de Sentença Estrangeira e Demandas Internacionais
 
 # Homologação de Divórcio Estrangeiro
 
 Reconhecimento no Brasil de divórcios realizados no exterior, para fins de registro civil, partilha de bens e regularização do estado civil.
 
-[Falar no WhatsApp](https://wa.me/5511975025611?text=Ol%C3%A1%2C%20gostaria%20de%20orienta%C3%A7%C3%A3o%20sobre%20homologa%C3%A7%C3%A3o%20de%20senten%C3%A7a%20estrangeira.)[Enviar meu caso](/contato/?area=Homologa%C3%A7%C3%A3o%20de%20Div%C3%B3rcio%20Estrangeiro)
+[Falar no WhatsApp](https://wa.me/5511975025611?text=Ol%C3%A1%2C%20gostaria%20de%20orienta%C3%A7%C3%A3o%20sobre%20homologa%C3%A7%C3%A3o%20de%20senten%C3%A7a%20estrangeira.)
+
+[Enviar meu caso](/contato/?area=Homologa%C3%A7%C3%A3o%20de%20Div%C3%B3rcio%20Estrangeiro)
 
 Brasileiros que se divorciam no exterior frequentemente precisam reconhecer essa decisão no Brasil, seja para atualizar o estado civil no registro civil brasileiro, seja para formalizar a partilha de bens localizados no país.
 
@@ -26,10 +27,10 @@ Em hipóteses específicas de dissolução puramente consensual do vínculo, sem
 
 ## Como o escritório atua
 
-1. 1Análise da sentença ou do ato de divórcio estrangeiro e de suas características específicas.
-2. 2Definição da via adequada: averbação direta em cartório ou homologação perante o STJ.
-3. 3Organização da documentação, incluindo tradução juramentada e apostilamento.
-4. 4Condução do procedimento até o reconhecimento definitivo e a atualização dos registros.
+1. Análise da sentença ou do ato de divórcio estrangeiro e de suas características específicas.
+2. Definição da via adequada: averbação direta em cartório ou homologação perante o STJ.
+3. Organização da documentação, incluindo tradução juramentada e apostilamento.
+4. Condução do procedimento até o reconhecimento definitivo e a atualização dos registros.
 
 ## Situações comuns
 
@@ -43,51 +44,35 @@ As informações desta página têm caráter informativo geral. O prazo e o desf
 
 ## Perguntas frequentes
 
-Todo divórcio feito no exterior precisa passar pelo STJ?+
+### Todo divórcio feito no exterior precisa passar pelo STJ?
 
 Não necessariamente. Em hipóteses específicas de divórcio puramente consensual, sem partilha de bens no Brasil e sem outros pontos controvertidos, é possível buscar a averbação diretamente em cartório de registro civil, conforme normativos do CNJ — via sujeita à análise do registrador, que pode exigir a via judicial em caso de dúvida. Quando há partilha de bens ou pontos controvertidos, a homologação perante o STJ costuma ser necessária. A definição da via correta depende da documentação e das características do caso.
 
-Quais documentos costumam ser necessários?+
+### Quais documentos costumam ser necessários?
 
-O prazo é igual para todos os casos?+
+Em geral, a certidão ou sentença de divórcio, devidamente traduzida por tradutor juramentado e apostilada (ou legalizada consularmente, conforme o país), além de documentos que comprovem a regularidade do processo no exterior. A lista definitiva varia conforme o país, o tipo de divórcio e a via escolhida, sendo confirmada após análise do caso.
 
-Fale sobre o seu caso
+### O prazo é igual para todos os casos?
+
+Não. O prazo pode variar conforme a via adotada (cartorária ou judicial no STJ), a complexidade da situação e eventual disputa sobre partilha de bens. Não é possível estimar prazo fixo sem análise do caso concreto.
+
+## Fale sobre o seu caso
 
 Atendimento nacional e online, quando aplicável.
 
 Responsável técnico: [Alexandre Corrêa Lima](/o-escritorio/#alexandre-correa-lima)
 
-[Falar no WhatsApp](https://wa.me/5511975025611?text=Ol%C3%A1%2C%20gostaria%20de%20orienta%C3%A7%C3%A3o%20sobre%20homologa%C3%A7%C3%A3o%20de%20senten%C3%A7a%20estrangeira.)[Enviar meu caso](/contato/?area=Homologa%C3%A7%C3%A3o%20de%20Div%C3%B3rcio%20Estrangeiro)
+[Falar no WhatsApp](https://wa.me/5511975025611?text=Ol%C3%A1%2C%20gostaria%20de%20orienta%C3%A7%C3%A3o%20sobre%20homologa%C3%A7%C3%A3o%20de%20senten%C3%A7a%20estrangeira.)
 
-Áreas relacionadas
+[Enviar meu caso](/contato/?area=Homologa%C3%A7%C3%A3o%20de%20Div%C3%B3rcio%20Estrangeiro)
+
+## Áreas relacionadas
 
 - [Homologação de Sentença Estrangeira](/areas-de-atuacao/homologacao-de-sentenca-estrangeira/)
 - [Divórcio e Questões Patrimoniais](/areas-de-atuacao/divorcio-e-questoes-patrimoniais/)
 
-Guia completo do tema
+## Guia completo do tema
 
 Veja o panorama completo deste cluster, com todos os conteúdos organizados.
 
 [Homologação de Sentença Estrangeira no Brasil: guia central →](/guias/homologacao-de-sentenca-estrangeira-no-brasil/)
-
-Fale com o escritório
-
-## Precisa de orientação jurídica para sua empresa, sua demanda internacional ou uma questão patrimonial?
-
-[Falar no WhatsApp](https://wa.me/5511975025611?text=Ol%C3%A1%2C%20gostaria%20de%20orienta%C3%A7%C3%A3o%20sobre%20homologa%C3%A7%C3%A3o%20de%20senten%C3%A7a%20estrangeira.)[Enviar meu caso](/contato/)
-
-[ou envie um e-mail para contato@correalimaadvocacia.com.br](mailto:contato@correalimaadvocacia.com.br)
-
-Atendimento direto
-
-Alexandre Corrêa Lima
-
-OAB/SP 234511
-
-+55 11 97502-5611
-
-Atendimento nacional e online
-
-contato@correalimaadvocacia.com.br
-
-Resposta em até 1 dia útil

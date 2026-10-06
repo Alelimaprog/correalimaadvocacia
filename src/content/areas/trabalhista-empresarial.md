@@ -5,13 +5,14 @@ h1: "Trabalhista Empresarial"
 author: "Alexandre Corrêa Lima"
 ---
 
-Recuperação Judicial, Falência e Contencioso Empresarial
 
 # Trabalhista Empresarial
 
 Assessoria consultiva e defesa contenciosa em matéria trabalhista, do ponto de vista da empresa — prevenção, passivo trabalhista e condução de reclamações.
 
-[Falar no WhatsApp](https://wa.me/5511975025611?text=Ol%C3%A1%2C%20preciso%20de%20orienta%C3%A7%C3%A3o%20jur%C3%ADdica%20trabalhista%20para%20minha%20empresa.)[Enviar meu caso](/contato/?area=Trabalhista%20Empresarial)
+[Falar no WhatsApp](https://wa.me/5511975025611?text=Ol%C3%A1%2C%20preciso%20de%20orienta%C3%A7%C3%A3o%20jur%C3%ADdica%20trabalhista%20para%20minha%20empresa.)
+
+[Enviar meu caso](/contato/?area=Trabalhista%20Empresarial)
 
 Na frente empresarial, a atuação trabalhista do escritório abrange consultivo preventivo para redução de riscos e passivo trabalhista, além da defesa de empresas em reclamações trabalhistas. O escritório também atende trabalhadores em demandas individuais, em frente própria. A aceitação de cada caso é precedida da verificação de eventual conflito de interesses.
 
@@ -26,10 +27,10 @@ Essa frente tem relação direta com o contencioso empresarial estratégico e, e
 
 ## Como o escritório atua
 
-1. 1Diagnóstico de riscos trabalhistas nas práticas e contratos vigentes da empresa.
-2. 2Orientação preventiva sobre políticas internas, com foco na redução de passivo trabalhista futuro.
-3. 3Condução da defesa técnica em reclamações trabalhistas já ajuizadas.
-4. 4Nos casos de recuperação judicial, avaliação do passivo trabalhista em conjunto com a equipe responsável pelo processo.
+1. Diagnóstico de riscos trabalhistas nas práticas e contratos vigentes da empresa.
+2. Orientação preventiva sobre políticas internas, com foco na redução de passivo trabalhista futuro.
+3. Condução da defesa técnica em reclamações trabalhistas já ajuizadas.
+4. Nos casos de recuperação judicial, avaliação do passivo trabalhista em conjunto com a equipe responsável pelo processo.
 
 ## Situações comuns
 
@@ -45,56 +46,44 @@ As informações desta página têm caráter informativo geral. O prazo e o desf
 
 ## Perguntas frequentes
 
-O escritório atua para empregados ou apenas para empresas?+
+### O escritório atua para empregados ou apenas para empresas?
 
 Para ambos, em frentes distintas. Para empresas, o escritório atua no consultivo preventivo e na defesa em reclamações trabalhistas. Para trabalhadores, realiza a análise e condução de demandas individuais, sempre mediante verificação prévia de eventual conflito de interesses.
 
-O que é passivo trabalhista e por que ele importa?+
+### O que é passivo trabalhista e por que ele importa?
 
-É possível fazer apenas um diagnóstico preventivo, sem litígio em curso?+
+É o conjunto de obrigações e riscos financeiros que uma empresa acumula em decorrência de suas relações de trabalho, exigíveis judicial ou administrativamente. Ele importa porque impacta diretamente o planejamento financeiro da empresa e, em processos de recuperação judicial, costuma representar uma das maiores classes de credores.
 
-Essa frente tem relação com a área de Recuperação Judicial e Falência?+
+### É possível fazer apenas um diagnóstico preventivo, sem litígio em curso?
 
-O escritório atua em terceirização e pejotização?+
+Sim. A atuação consultiva preventiva, voltada à revisão de práticas e à redução de riscos futuros, é uma frente independente de qualquer reclamação trabalhista já ajuizada.
 
-Fale sobre o seu caso
+### Essa frente tem relação com a área de Recuperação Judicial e Falência?
+
+Sim. O passivo trabalhista costuma ser uma das classes de crédito mais relevantes em processos de recuperação judicial, o que torna a avaliação trabalhista uma etapa importante da análise desses processos.
+
+### O escritório atua em terceirização e pejotização?
+
+A atuação inclui orientação sobre os riscos jurídicos associados a modelos de terceirização e contratação como pessoa jurídica, sempre sob a ótica da prevenção de risco para a empresa contratante.
+
+## Fale sobre o seu caso
 
 Atendimento nacional e online, quando aplicável.
 
 Responsável técnico: [Alexandre Corrêa Lima](/o-escritorio/#alexandre-correa-lima)
 
-[Falar no WhatsApp](https://wa.me/5511975025611?text=Ol%C3%A1%2C%20preciso%20de%20orienta%C3%A7%C3%A3o%20jur%C3%ADdica%20trabalhista%20para%20minha%20empresa.)[Enviar meu caso](/contato/?area=Trabalhista%20Empresarial)
+[Falar no WhatsApp](https://wa.me/5511975025611?text=Ol%C3%A1%2C%20preciso%20de%20orienta%C3%A7%C3%A3o%20jur%C3%ADdica%20trabalhista%20para%20minha%20empresa.)
 
-Áreas relacionadas
+[Enviar meu caso](/contato/?area=Trabalhista%20Empresarial)
+
+## Áreas relacionadas
 
 - [Contencioso Empresarial Estratégico](/areas-de-atuacao/contencioso-empresarial-estrategico/)
 - [Recuperação Judicial e Falência](/areas-de-atuacao/recuperacao-judicial-e-falencia/)
 - [Advocacia Empresarial](/areas-de-atuacao/advocacia-empresarial/)
 
-Guia completo do tema
+## Guia completo do tema
 
 Veja o panorama completo deste cluster, com todos os conteúdos organizados.
 
 [Recuperação Judicial, Falência e Medidas do Credor: guia central →](/guias/recuperacao-judicial-falencia-e-medidas-do-credor/)
-
-Fale com o escritório
-
-## Precisa de orientação jurídica para sua empresa, sua demanda internacional ou uma questão patrimonial?
-
-[Falar no WhatsApp](https://wa.me/5511975025611?text=Ol%C3%A1%2C%20preciso%20de%20orienta%C3%A7%C3%A3o%20jur%C3%ADdica%20trabalhista%20para%20minha%20empresa.)[Enviar meu caso](/contato/)
-
-[ou envie um e-mail para contato@correalimaadvocacia.com.br](mailto:contato@correalimaadvocacia.com.br)
-
-Atendimento direto
-
-Alexandre Corrêa Lima
-
-OAB/SP 234511
-
-+55 11 97502-5611
-
-Atendimento nacional e online
-
-contato@correalimaadvocacia.com.br
-
-Resposta em até 1 dia útil

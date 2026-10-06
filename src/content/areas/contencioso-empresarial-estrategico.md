@@ -5,13 +5,14 @@ h1: "Contencioso Empresarial Estratégico"
 author: "Alexandre Corrêa Lima"
 ---
 
-Recuperação Judicial, Falência e Contencioso Empresarial
 
 # Contencioso Empresarial Estratégico
 
 Condução de litígios empresariais de maior complexidade e de carteiras de processos repetitivos, com visão estratégica alinhada aos objetivos do negócio.
 
-[Falar no WhatsApp](https://wa.me/5511975025611?text=Ol%C3%A1%2C%20preciso%20de%20orienta%C3%A7%C3%A3o%20sobre%20recupera%C3%A7%C3%A3o%20judicial%2C%20fal%C3%AAncia%20ou%20contencioso%20empresarial.)[Enviar meu caso](/contato/?area=Contencioso%20Empresarial%20Estrat%C3%A9gico)
+[Falar no WhatsApp](https://wa.me/5511975025611?text=Ol%C3%A1%2C%20preciso%20de%20orienta%C3%A7%C3%A3o%20sobre%20recupera%C3%A7%C3%A3o%20judicial%2C%20fal%C3%AAncia%20ou%20contencioso%20empresarial.)
+
+[Enviar meu caso](/contato/?area=Contencioso%20Empresarial%20Estrat%C3%A9gico)
 
 Nem todo litígio empresarial se resolve com o mesmo tipo de abordagem. Disputas de maior complexidade — envolvendo valores relevantes, múltiplas partes ou repercussão sobre a operação da empresa — exigem uma condução mais estratégica, com visão de conjunto sobre o impacto do litígio no negócio, e não apenas sobre o processo isolado.
 
@@ -26,10 +27,10 @@ Esta frente também abrange empresas que lidam com um volume relevante de proces
 
 ## Como o escritório atua
 
-1. 1Diagnóstico do litígio ou da carteira de processos, com mapeamento de riscos, valores envolvidos e teses aplicáveis.
-2. 2Definição de estratégia processual alinhada aos objetivos de negócio da empresa, não apenas ao resultado processual isolado.
-3. 3Para carteiras de processos repetitivos: padronização de teses e peças, e acompanhamento centralizado, buscando eficiência e previsibilidade.
-4. 4Condução do litígio ou da carteira até o desfecho, com relatórios periódicos sobre andamento e riscos.
+1. Diagnóstico do litígio ou da carteira de processos, com mapeamento de riscos, valores envolvidos e teses aplicáveis.
+2. Definição de estratégia processual alinhada aos objetivos de negócio da empresa, não apenas ao resultado processual isolado.
+3. Para carteiras de processos repetitivos: padronização de teses e peças, e acompanhamento centralizado, buscando eficiência e previsibilidade.
+4. Condução do litígio ou da carteira até o desfecho, com relatórios periódicos sobre andamento e riscos.
 
 ## Situações comuns
 
@@ -45,54 +46,40 @@ As informações desta página têm caráter informativo geral. O prazo e o desf
 
 ## Perguntas frequentes
 
-O que diferencia o contencioso estratégico do contencioso comum?+
+### O que diferencia o contencioso estratégico do contencioso comum?
 
 A diferença está na abordagem: o contencioso estratégico avalia o litígio dentro do contexto mais amplo dos objetivos da empresa (reputação, relação comercial, precedente, fluxo de caixa), e não apenas como uma disputa processual isolada a ser vencida ou perdida.
 
-O que é contencioso de massa?+
+### O que é contencioso de massa?
 
-O escritório assume a carteira inteira de processos da empresa?+
+É a situação em que uma empresa enfrenta um volume relevante de processos com causas e teses semelhantes entre si — comum em empresas com grande volume de relações contratuais ou de consumo. A gestão eficiente dessa carteira costuma exigir padronização e acompanhamento centralizado, diferente da condução individualizada de um litígio isolado.
 
-Esse serviço substitui a assessoria jurídica geral da empresa (Advocacia Empresarial)?+
+### O escritório assume a carteira inteira de processos da empresa?
 
-Fale sobre o seu caso
+A forma de atuação é definida conforme a necessidade do cliente — pode envolver a condução de toda a carteira ou de um recorte específico dela, sempre avaliado caso a caso.
+
+### Esse serviço substitui a assessoria jurídica geral da empresa (Advocacia Empresarial)?
+
+Não necessariamente. Contencioso Empresarial Estratégico é focado em litígios de maior complexidade ou volume; Advocacia Empresarial trata da assessoria contratual, societária e contenciosa mais ampla do dia a dia da empresa. As duas frentes costumam se complementar.
+
+## Fale sobre o seu caso
 
 Atendimento nacional e online, quando aplicável.
 
 Responsável técnico: [Alexandre Corrêa Lima](/o-escritorio/#alexandre-correa-lima)
 
-[Falar no WhatsApp](https://wa.me/5511975025611?text=Ol%C3%A1%2C%20preciso%20de%20orienta%C3%A7%C3%A3o%20sobre%20recupera%C3%A7%C3%A3o%20judicial%2C%20fal%C3%AAncia%20ou%20contencioso%20empresarial.)[Enviar meu caso](/contato/?area=Contencioso%20Empresarial%20Estrat%C3%A9gico)
+[Falar no WhatsApp](https://wa.me/5511975025611?text=Ol%C3%A1%2C%20preciso%20de%20orienta%C3%A7%C3%A3o%20sobre%20recupera%C3%A7%C3%A3o%20judicial%2C%20fal%C3%AAncia%20ou%20contencioso%20empresarial.)
 
-Áreas relacionadas
+[Enviar meu caso](/contato/?area=Contencioso%20Empresarial%20Estrat%C3%A9gico)
+
+## Áreas relacionadas
 
 - [Recuperação Judicial e Falência](/areas-de-atuacao/recuperacao-judicial-e-falencia/)
 - [Advocacia Empresarial](/areas-de-atuacao/advocacia-empresarial/)
 - [Trabalhista Empresarial](/areas-de-atuacao/trabalhista-empresarial/)
 
-Guia completo do tema
+## Guia completo do tema
 
 Veja o panorama completo deste cluster, com todos os conteúdos organizados.
 
 [Recuperação Judicial, Falência e Medidas do Credor: guia central →](/guias/recuperacao-judicial-falencia-e-medidas-do-credor/)
-
-Fale com o escritório
-
-## Precisa de orientação jurídica para sua empresa, sua demanda internacional ou uma questão patrimonial?
-
-[Falar no WhatsApp](https://wa.me/5511975025611?text=Ol%C3%A1%2C%20preciso%20de%20orienta%C3%A7%C3%A3o%20sobre%20recupera%C3%A7%C3%A3o%20judicial%2C%20fal%C3%AAncia%20ou%20contencioso%20empresarial.)[Enviar meu caso](/contato/)
-
-[ou envie um e-mail para contato@correalimaadvocacia.com.br](mailto:contato@correalimaadvocacia.com.br)
-
-Atendimento direto
-
-Alexandre Corrêa Lima
-
-OAB/SP 234511
-
-+55 11 97502-5611
-
-Atendimento nacional e online
-
-contato@correalimaadvocacia.com.br
-
-Resposta em até 1 dia útil

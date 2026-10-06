@@ -5,13 +5,14 @@ h1: "Contratos de Importação e Comércio Exterior"
 author: "Alexandre Corrêa Lima"
 ---
 
-Empresarial, Contratos e Recuperação de Crédito
 
 # Contratos de Importação e Comércio Exterior
 
 Assessoria jurídica em contratos internacionais de compra, venda e distribuição envolvendo operações de comércio exterior.
 
-[Falar no WhatsApp](https://wa.me/5511975025611?text=Ol%C3%A1%2C%20preciso%20de%20orienta%C3%A7%C3%A3o%20sobre%20contratos%20empresariais%20ou%20contratos%20de%20importa%C3%A7%C3%A3o.)[Enviar meu caso](/contato/?area=Contratos%20de%20Importa%C3%A7%C3%A3o%20%2F%20Com%C3%A9rcio%20Exterior)
+[Falar no WhatsApp](https://wa.me/5511975025611?text=Ol%C3%A1%2C%20preciso%20de%20orienta%C3%A7%C3%A3o%20sobre%20contratos%20empresariais%20ou%20contratos%20de%20importa%C3%A7%C3%A3o.)
+
+[Enviar meu caso](/contato/?area=Contratos%20de%20Importa%C3%A7%C3%A3o%20%2F%20Com%C3%A9rcio%20Exterior)
 
 Operações de comércio exterior envolvem variáveis jurídicas adicionais em relação a contratos nacionais, como legislação aplicável, foro, câmbio e responsabilidade em transporte internacional. A atuação nesta área apoia empresas importadoras, exportadoras e operadoras do comércio internacional na estruturação desses contratos.
 
@@ -26,10 +27,10 @@ O objetivo é reduzir a exposição a riscos típicos de relações internaciona
 
 ## Como o escritório atua
 
-1. 1Análise da operação comercial internacional envolvida.
-2. 2Elaboração ou revisão de cláusulas específicas de comércio exterior.
-3. 3Avaliação de riscos relacionados a câmbio, transporte e responsabilidade entre as partes.
-4. 4Apoio em eventuais disputas com fornecedores ou parceiros estrangeiros.
+1. Análise da operação comercial internacional envolvida.
+2. Elaboração ou revisão de cláusulas específicas de comércio exterior.
+3. Avaliação de riscos relacionados a câmbio, transporte e responsabilidade entre as partes.
+4. Apoio em eventuais disputas com fornecedores ou parceiros estrangeiros.
 
 ## Situações comuns
 
@@ -43,61 +44,53 @@ As informações desta página têm caráter informativo geral. O prazo e o desf
 
 ## Perguntas frequentes
 
-O escritório atua em conjunto com despachantes aduaneiros?+
+### O escritório atua em conjunto com despachantes aduaneiros?
 
 A atuação jurídica pode ocorrer de forma complementar a profissionais especializados em desembaraço aduaneiro, com foco na estruturação contratual e nos aspectos jurídicos da operação.
 
-É possível resolver conflitos com fornecedores estrangeiros pela via judicial brasileira?+
+### É possível resolver conflitos com fornecedores estrangeiros pela via judicial brasileira?
 
-O que são Incoterms e por que devem constar do contrato?+
+Depende das cláusulas contratuais de foro e lei aplicável, além da natureza da relação. Essa avaliação é feita caso a caso.
 
-Qual lei se aplica a um contrato entre empresa brasileira e fornecedor estrangeiro?+
+### O que são Incoterms e por que devem constar do contrato?
 
-O contrato de importação precisa ser registrado em algum órgão?+
+Incoterms são termos internacionais padronizados que definem responsabilidades entre comprador e vendedor — como transporte, seguro e transferência de risco da mercadoria. Definir o Incoterm aplicável no contrato reduz divergências sobre quem responde por perdas ou atrasos durante o transporte internacional.
 
-O que fazer quando o fornecedor estrangeiro descumpre o prazo de entrega?+
+### Qual lei se aplica a um contrato entre empresa brasileira e fornecedor estrangeiro?
 
-É possível revisar um contrato de importação já assinado?+
+Em regra, prevalece o que as partes definirem no contrato (lei aplicável e foro). Na ausência de cláusula específica, aplicam-se regras de direito internacional privado para determinar a lei e o foro competentes, o que pode gerar insegurança — daí a importância de definir isso expressamente no contrato.
 
-Fale sobre o seu caso
+### O contrato de importação precisa ser registrado em algum órgão?
+
+Depende da natureza da operação. Alguns contratos e operações cambiais possuem exigências específicas de registro perante órgãos como o Banco Central, a depender do valor e da modalidade da transação — ponto avaliado em conjunto com os profissionais responsáveis pela parte cambial e aduaneira da operação.
+
+### O que fazer quando o fornecedor estrangeiro descumpre o prazo de entrega?
+
+A resposta depende do que o contrato prevê sobre atraso, penalidades e rescisão. Quando não há cláusula clara, a análise considera a legislação aplicável definida no contrato e os prejuízos efetivamente demonstráveis.
+
+### É possível revisar um contrato de importação já assinado?
+
+O contrato já assinado vincula as partes nos termos pactuados, mas é possível negociar aditivos ou ajustes para operações futuras, além de avaliar a aplicação de cláusulas de revisão, quando existentes.
+
+## Fale sobre o seu caso
 
 Atendimento nacional e online, quando aplicável.
 
 Responsável técnico: [Alexandre Corrêa Lima](/o-escritorio/#alexandre-correa-lima)
 
-[Falar no WhatsApp](https://wa.me/5511975025611?text=Ol%C3%A1%2C%20preciso%20de%20orienta%C3%A7%C3%A3o%20sobre%20contratos%20empresariais%20ou%20contratos%20de%20importa%C3%A7%C3%A3o.)[Enviar meu caso](/contato/?area=Contratos%20de%20Importa%C3%A7%C3%A3o%20%2F%20Com%C3%A9rcio%20Exterior)
+[Falar no WhatsApp](https://wa.me/5511975025611?text=Ol%C3%A1%2C%20preciso%20de%20orienta%C3%A7%C3%A3o%20sobre%20contratos%20empresariais%20ou%20contratos%20de%20importa%C3%A7%C3%A3o.)
 
-Áreas relacionadas
+[Enviar meu caso](/contato/?area=Contratos%20de%20Importa%C3%A7%C3%A3o%20%2F%20Com%C3%A9rcio%20Exterior)
+
+## Áreas relacionadas
 
 - [Contratos Empresariais](/areas-de-atuacao/contratos-empresariais/)
 - [Homologação de Sentença Estrangeira](/areas-de-atuacao/homologacao-de-sentenca-estrangeira/)
 - [Assessoria Jurídica para Importadores](/areas-de-atuacao/assessoria-juridica-para-importadores/)
 - [Direito Aduaneiro e Comércio Exterior](/areas-de-atuacao/direito-aduaneiro-tributario/)
 
-Guia completo do tema
+## Guia completo do tema
 
 Veja o panorama completo deste cluster, com todos os conteúdos organizados.
 
 [Cobrança, Execução e Recuperação de Crédito Empresarial: guia central →](/guias/cobranca-execucao-e-recuperacao-de-credito-empresarial/)
-
-Fale com o escritório
-
-## Precisa de orientação jurídica para sua empresa, sua demanda internacional ou uma questão patrimonial?
-
-[Falar no WhatsApp](https://wa.me/5511975025611?text=Ol%C3%A1%2C%20preciso%20de%20orienta%C3%A7%C3%A3o%20sobre%20contratos%20empresariais%20ou%20contratos%20de%20importa%C3%A7%C3%A3o.)[Enviar meu caso](/contato/)
-
-[ou envie um e-mail para contato@correalimaadvocacia.com.br](mailto:contato@correalimaadvocacia.com.br)
-
-Atendimento direto
-
-Alexandre Corrêa Lima
-
-OAB/SP 234511
-
-+55 11 97502-5611
-
-Atendimento nacional e online
-
-contato@correalimaadvocacia.com.br
-
-Resposta em até 1 dia útil

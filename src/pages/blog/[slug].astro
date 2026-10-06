@@ -18,7 +18,8 @@ export async function getStaticPaths() {
 }
 
 const { entry } = Astro.props;
-const { Content } = await render(entry);
+const { Content, remarkPluginFrontmatter } = await render(entry);
+const abertura = (remarkPluginFrontmatter as { abertura?: { titulo: string; lead: string } }).abertura;
 const path = `/blog/${entry.id}/`;
 const head = buildChildHead('blog', entry.data, path);
 const preserved = getJsonLd('blog', entry.id);
@@ -49,7 +50,14 @@ const nucleo = entry.data.cluster ? getNucleo(entry.data.cluster) : undefined;
 const relacionados = entry.data.relacionados ?? [];
 ---
 
-<EntryPage head={head} jsonld={jsonld} crumbs={crumbs}>
+<EntryPage
+  head={head}
+  jsonld={jsonld}
+  crumbs={crumbs}
+  eyebrow={nucleo?.label ?? 'Artigo'}
+  titulo={abertura?.titulo ?? entry.data.h1}
+  lead={abertura?.lead}
+>
   <Content />
   {relacionados.length > 0 && <RelatedContent itens={relacionados} />}
   <ClusterNav cluster={entry.data.cluster} currentSlug={entry.id} currentCollection="blog" />

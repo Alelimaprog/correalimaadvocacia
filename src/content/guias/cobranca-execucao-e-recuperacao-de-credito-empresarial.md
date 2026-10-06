@@ -53,15 +53,21 @@ Este conteúdo tem caráter exclusivamente informativo e institucional. O proced
 
 ## Perguntas frequentes
 
-Qual a diferença entre execução e ação de cobrança?+
+### Qual a diferença entre execução e ação de cobrança?
 
 A execução parte de um título executivo (judicial ou extrajudicial) já pronto e permite atos de constrição patrimonial mais diretos. A ação de cobrança (ou monitória) é usada quando não há título executivo, exigindo primeiro o reconhecimento judicial do direito ao crédito.
 
-Este guia substitui a página de Execução, Cobrança e Recuperação de Crédito?+
+### Este guia substitui a página de Execução, Cobrança e Recuperação de Crédito?
 
-O que fazer se o devedor entrar em recuperação judicial durante a cobrança?+
+Não. Este guia organiza o tema como um todo e conecta os diferentes conteúdos do cluster. A página de serviço detalha o atendimento em si, com FAQ e estrutura própria.
 
-Cobrança condominial segue as mesmas regras da cobrança empresarial?+
+### O que fazer se o devedor entrar em recuperação judicial durante a cobrança?
+
+A cobrança direta costuma ficar suspensa, e o crédito passa a ser tratado dentro do processo de recuperação judicial, por meio de habilitação de crédito — ver o guia de Recuperação Judicial, Falência e Medidas do Credor para mais detalhes.
+
+### Cobrança condominial segue as mesmas regras da cobrança empresarial?
+
+A lógica processual é semelhante (execução de título extrajudicial), mas a documentação de base é distinta — convenção de condomínio e ata de assembleia, em vez de contratos e notas fiscais empresariais.
 
 Fale sobre o seu caso
 

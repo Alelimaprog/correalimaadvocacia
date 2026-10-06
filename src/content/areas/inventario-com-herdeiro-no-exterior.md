@@ -5,13 +5,14 @@ h1: "Inventário com Herdeiro no Exterior"
 author: "Alexandre Corrêa Lima"
 ---
 
-Família, Sucessões e Patrimônio
 
 # Inventário com Herdeiro no Exterior
 
 Condução de inventários em que um ou mais herdeiros residem fora do Brasil, com atenção à procuração, documentação internacional e prazos do processo.
 
-[Falar no WhatsApp](https://wa.me/5511975025611?text=Ol%C3%A1%2C%20preciso%20de%20orienta%C3%A7%C3%A3o%20sobre%20fam%C3%ADlia%2C%20sucess%C3%B5es%20ou%20quest%C3%A3o%20patrimonial.)[Enviar meu caso](/contato/?area=Invent%C3%A1rio%20com%20Herdeiro%20no%20Exterior)
+[Falar no WhatsApp](https://wa.me/5511975025611?text=Ol%C3%A1%2C%20preciso%20de%20orienta%C3%A7%C3%A3o%20sobre%20fam%C3%ADlia%2C%20sucess%C3%B5es%20ou%20quest%C3%A3o%20patrimonial.)
+
+[Enviar meu caso](/contato/?area=Invent%C3%A1rio%20com%20Herdeiro%20no%20Exterior)
 
 É cada vez mais comum que uma família tenha herdeiros residindo em diferentes países. Quando um inventário se abre no Brasil e um dos herdeiros mora no exterior, o processo continua seguindo as regras brasileiras, mas exige atenção adicional a procurações, tradução e legalização de documentos e, muitas vezes, à condução de parte do processo à distância.
 
@@ -26,10 +27,10 @@ O escritório conduz inventários com herdeiros no exterior tanto na via extraju
 
 ## Como o escritório atua
 
-1. 1Levantamento do patrimônio do espólio e identificação da situação de cada herdeiro, inclusive os residentes no exterior.
-2. 2Orientação sobre a procuração específica que o herdeiro no exterior deve outorgar, incluindo reconhecimento de firma e, quando necessário, apostilamento ou legalização consular.
-3. 3Organização da tradução juramentada de documentos estrangeiros relevantes para o inventário.
-4. 4Condução do inventário (extrajudicial ou judicial) com estruturação do acompanhamento remoto do herdeiro fora do Brasil, por videochamada e troca eletrônica de documentos.
+1. Levantamento do patrimônio do espólio e identificação da situação de cada herdeiro, inclusive os residentes no exterior.
+2. Orientação sobre a procuração específica que o herdeiro no exterior deve outorgar, incluindo reconhecimento de firma e, quando necessário, apostilamento ou legalização consular.
+3. Organização da tradução juramentada de documentos estrangeiros relevantes para o inventário.
+4. Condução do inventário (extrajudicial ou judicial) com estruturação do acompanhamento remoto do herdeiro fora do Brasil, por videochamada e troca eletrônica de documentos.
 
 ## Situações comuns
 
@@ -45,56 +46,50 @@ As informações desta página têm caráter informativo geral. O prazo e o desf
 
 ## Perguntas frequentes
 
-O herdeiro no exterior precisa vir ao Brasil para o inventário?+
+### O herdeiro no exterior precisa vir ao Brasil para o inventário?
 
 Em regra, não. Por meio de procuração específica, devidamente formalizada e, quando exigido, apostilada ou legalizada consularmente, o herdeiro pode ser representado no processo sem necessidade de viagem ao Brasil.
 
-O que é a Apostila de Haia e quando ela é necessária?+
+### O que é a Apostila de Haia e quando ela é necessária?
 
-O inventário pode ser feito em cartório quando há herdeiro no exterior?+
+É um selo de autenticação simplificada, previsto na Convenção de Haia, reconhecido entre os países signatários, que dispensa a legalização consular tradicional. Documentos assinados no exterior (como a procuração do herdeiro) costumam precisar de apostilamento quando o país de origem é signatário da Convenção, ou de legalização consular quando não é.
 
-Bens do falecido localizados no exterior entram neste mesmo inventário?+
+### O inventário pode ser feito em cartório quando há herdeiro no exterior?
 
-Quanto tempo a documentação do herdeiro no exterior costuma atrasar o processo?+
+Pode, desde que presentes os demais requisitos do inventário extrajudicial (consenso entre herdeiros, maioridade e capacidade civil, ausência de testamento que exija via judicial) e que a procuração do herdeiro no exterior esteja corretamente formalizada.
 
-É necessário tradutor juramentado para todos os documentos do herdeiro estrangeiro?+
+### Bens do falecido localizados no exterior entram neste mesmo inventário?
 
-O herdeiro no exterior tem os mesmos direitos que os herdeiros no Brasil?+
+Bens móveis e imóveis situados no exterior costumam seguir as regras sucessórias e o processo de inventário do país onde estão localizados, ainda que o inventário principal tramite no Brasil. A situação exige análise específica conforme o país e o tipo de bem.
 
-Este serviço tem relação com a homologação de sentença estrangeira?+
+### Quanto tempo a documentação do herdeiro no exterior costuma atrasar o processo?
 
-Fale sobre o seu caso
+Depende do país, do tipo de documento exigido e da agilidade do herdeiro em providenciar a tradução e o apostilamento. Organizar essa documentação o quanto antes, em paralelo ao levantamento patrimonial no Brasil, é a forma mais eficaz de evitar atrasos.
+
+### É necessário tradutor juramentado para todos os documentos do herdeiro estrangeiro?
+
+Documentos em língua estrangeira que precisem produzir efeitos oficiais no Brasil (como certidões de casamento, nascimento ou passaporte, quando exigidos) em regra devem ser traduzidos por tradutor juramentado brasileiro.
+
+### O herdeiro no exterior tem os mesmos direitos que os herdeiros no Brasil?
+
+Sim. A residência no exterior não altera, por si só, os direitos sucessórios do herdeiro sobre o patrimônio inventariado no Brasil, que seguem as regras normais da sucessão.
+
+### Este serviço tem relação com a homologação de sentença estrangeira?
+
+Pode ter, em situações específicas — por exemplo, quando há uma decisão estrangeira relacionada à sucessão (como um testamento processado no exterior) que precise ser reconhecida no Brasil. Nesses casos, o inventário é conduzido em conjunto com a avaliação sobre a necessidade de homologação.
+
+## Fale sobre o seu caso
 
 Atendimento nacional e online, quando aplicável.
 
 Responsável técnico: [Alexandre Corrêa Lima](/o-escritorio/#alexandre-correa-lima)
 
-[Falar no WhatsApp](https://wa.me/5511975025611?text=Ol%C3%A1%2C%20preciso%20de%20orienta%C3%A7%C3%A3o%20sobre%20fam%C3%ADlia%2C%20sucess%C3%B5es%20ou%20quest%C3%A3o%20patrimonial.)[Enviar meu caso](/contato/?area=Invent%C3%A1rio%20com%20Herdeiro%20no%20Exterior)
+[Falar no WhatsApp](https://wa.me/5511975025611?text=Ol%C3%A1%2C%20preciso%20de%20orienta%C3%A7%C3%A3o%20sobre%20fam%C3%ADlia%2C%20sucess%C3%B5es%20ou%20quest%C3%A3o%20patrimonial.)
 
-Áreas relacionadas
+[Enviar meu caso](/contato/?area=Invent%C3%A1rio%20com%20Herdeiro%20no%20Exterior)
+
+## Áreas relacionadas
 
 - [Inventário e Partilha](/areas-de-atuacao/inventario-e-partilha/)
 - [Família e Sucessões](/areas-de-atuacao/familia-e-sucessoes/)
 - [Homologação de Sentença Estrangeira](/areas-de-atuacao/homologacao-de-sentenca-estrangeira/)
-
-Fale com o escritório
-
-## Precisa de orientação jurídica para sua empresa, sua demanda internacional ou uma questão patrimonial?
-
-[Falar no WhatsApp](https://wa.me/5511975025611?text=Ol%C3%A1%2C%20preciso%20de%20orienta%C3%A7%C3%A3o%20sobre%20fam%C3%ADlia%2C%20sucess%C3%B5es%20ou%20quest%C3%A3o%20patrimonial.)[Enviar meu caso](/contato/)
-
-[ou envie um e-mail para contato@correalimaadvocacia.com.br](mailto:contato@correalimaadvocacia.com.br)
-
-Atendimento direto
-
-Alexandre Corrêa Lima
-
-OAB/SP 234511
-
-+55 11 97502-5611
-
-Atendimento nacional e online
-
-contato@correalimaadvocacia.com.br
-
-Resposta em até 1 dia útil

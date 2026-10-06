@@ -42,13 +42,17 @@ A definição da via correta depende da análise da documentação disponível: 
 
 ## Perguntas frequentes
 
-Execução é sempre mais rápida que ação de cobrança?+
+### Execução é sempre mais rápida que ação de cobrança?
 
 Em regra sim, por dispensar a discussão inicial do mérito, mas o tempo real depende também da localização de bens do devedor e do andamento em cada comarca.
 
-Um contrato sem testemunhas pode ser executado?+
+### Um contrato sem testemunhas pode ser executado?
 
-É possível migrar de ação de cobrança para execução?+
+Em regra, não como título executivo extrajudicial, já que a lei exige assinatura de duas testemunhas para essa qualidade. Nesse caso, a ação monitória costuma ser a via mais adequada.
+
+### É possível migrar de ação de cobrança para execução?
+
+Não diretamente. É preciso primeiro obter sentença de procedência na ação de cobrança; a partir daí, o processo segue para cumprimento de sentença, que segue lógica semelhante à execução.
 
 Este conteúdo tem caráter exclusivamente informativo e não substitui a análise individual do seu caso por advogado.
 

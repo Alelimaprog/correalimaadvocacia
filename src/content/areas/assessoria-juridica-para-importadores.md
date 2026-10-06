@@ -5,13 +5,14 @@ h1: "Assessoria Jurídica para Importadores"
 author: "Alexandre Corrêa Lima"
 ---
 
-Empresarial, Contratos e Recuperação de Crédito
 
 # Assessoria Jurídica para Importadores
 
 Acompanhamento jurídico contínuo para empresas importadoras, para além de um contrato específico — da relação com fornecedores estrangeiros à cobrança de valores e riscos cambiais da operação.
 
-[Falar no WhatsApp](https://wa.me/5511975025611?text=Ol%C3%A1%2C%20preciso%20de%20orienta%C3%A7%C3%A3o%20sobre%20contratos%20empresariais%20ou%20contratos%20de%20importa%C3%A7%C3%A3o.)[Enviar meu caso](/contato/?area=Assessoria%20Jur%C3%ADdica%20para%20Importadores)
+[Falar no WhatsApp](https://wa.me/5511975025611?text=Ol%C3%A1%2C%20preciso%20de%20orienta%C3%A7%C3%A3o%20sobre%20contratos%20empresariais%20ou%20contratos%20de%20importa%C3%A7%C3%A3o.)
+
+[Enviar meu caso](/contato/?area=Assessoria%20Jur%C3%ADdica%20para%20Importadores)
 
 Empresas importadoras convivem com uma camada extra de risco jurídico em relação a negócios puramente nacionais: fornecedores em outra jurisdição, contratos em outro idioma, câmbio, prazos de importação e, eventualmente, a necessidade de cobrar ou ser cobrado no exterior. Um contrato bem redigido é essencial, mas nem sempre é suficiente.
 
@@ -26,10 +27,10 @@ A assessoria jurídica para importadores vai além da revisão pontual de um con
 
 ## Como o escritório atua
 
-1. 1Diagnóstico jurídico da operação de importação e dos contratos e relações já existentes.
-2. 2Apoio contínuo na negociação e formalização de novos contratos com fornecedores estrangeiros.
-3. 3Orientação sobre riscos cambiais, cláusulas de responsabilidade e Incoterms aplicáveis a cada operação.
-4. 4Condução de eventuais medidas de cobrança ou disputa relacionadas à operação de importação, em conjunto com a área de contratos e recuperação de crédito do escritório.
+1. Diagnóstico jurídico da operação de importação e dos contratos e relações já existentes.
+2. Apoio contínuo na negociação e formalização de novos contratos com fornecedores estrangeiros.
+3. Orientação sobre riscos cambiais, cláusulas de responsabilidade e Incoterms aplicáveis a cada operação.
+4. Condução de eventuais medidas de cobrança ou disputa relacionadas à operação de importação, em conjunto com a área de contratos e recuperação de crédito do escritório.
 
 ## Situações comuns
 
@@ -43,62 +44,56 @@ As informações desta página têm caráter informativo geral. O prazo e o desf
 
 ## Perguntas frequentes
 
-Qual a diferença entre esta assessoria e a página de Contratos de Importação?+
+### Qual a diferença entre esta assessoria e a página de Contratos de Importação?
 
 Contratos de Importação é o serviço voltado à elaboração e revisão de um instrumento contratual específico. Assessoria Jurídica para Importadores é um acompanhamento mais amplo e contínuo da operação de importação como um todo, que pode incluir a elaboração de contratos, mas não se limita a isso.
 
-A assessoria é indicada para empresas que importam esporadicamente?+
+### A assessoria é indicada para empresas que importam esporadicamente?
 
-O escritório atua diretamente com despachantes aduaneiros e outros profissionais da operação?+
+Pode ser útil também nesses casos, mas o formato de acompanhamento contínuo tende a fazer mais sentido para empresas com operação de importação recorrente ou em fase de estruturação dessa frente de negócio.
 
-É possível incluir cobrança de fornecedores ou clientes internacionais nesta assessoria?+
+### O escritório atua diretamente com despachantes aduaneiros e outros profissionais da operação?
 
-O que são Incoterms e por que eles importam juridicamente?+
+A atuação jurídica pode ocorrer de forma complementar a despachantes aduaneiros, agentes de carga e demais profissionais da cadeia de importação, com foco nos aspectos contratuais e jurídicos da operação.
 
-A assessoria cobre riscos cambiais da operação?+
+### É possível incluir cobrança de fornecedores ou clientes internacionais nesta assessoria?
 
-É necessário ter um contrato formal com todos os fornecedores estrangeiros?+
+Sim. Quando a operação exige medidas de cobrança relacionadas a valores devidos por ou para parceiros internacionais, esse trabalho é conduzido em conjunto com a área de execução e recuperação de crédito do escritório.
 
-O atendimento é presencial ou pode ser online?+
+### O que são Incoterms e por que eles importam juridicamente?
 
-Fale sobre o seu caso
+Incoterms são termos internacionais padronizados que definem responsabilidades entre comprador e vendedor em uma operação de comércio exterior — como transporte, seguro e transferência de risco. A escolha do Incoterm correto tem efeitos diretos sobre quem responde por perdas, atrasos ou danos durante o transporte, sendo um dos pontos avaliados na assessoria.
+
+### A assessoria cobre riscos cambiais da operação?
+
+A avaliação jurídica pode incluir a análise de cláusulas contratuais relacionadas a variação cambial e forma de pagamento, sempre em conjunto com os profissionais financeiros e contábeis responsáveis pela operação — a assessoria jurídica não substitui a consultoria financeira ou tributária especializada.
+
+### É necessário ter um contrato formal com todos os fornecedores estrangeiros?
+
+É altamente recomendável. A ausência de contrato formal dificulta a cobrança e a comprovação de responsabilidade em caso de problemas na operação. Parte do trabalho de assessoria é justamente identificar relações comerciais relevantes que ainda não estão formalizadas.
+
+### O atendimento é presencial ou pode ser online?
+
+O atendimento é estruturado para ocorrer de forma online sempre que aplicável, o que é especialmente útil para empresas importadoras com operação distribuída ou fora de São Paulo.
+
+## Fale sobre o seu caso
 
 Atendimento nacional e online, quando aplicável.
 
 Responsável técnico: [Alexandre Corrêa Lima](/o-escritorio/#alexandre-correa-lima)
 
-[Falar no WhatsApp](https://wa.me/5511975025611?text=Ol%C3%A1%2C%20preciso%20de%20orienta%C3%A7%C3%A3o%20sobre%20contratos%20empresariais%20ou%20contratos%20de%20importa%C3%A7%C3%A3o.)[Enviar meu caso](/contato/?area=Assessoria%20Jur%C3%ADdica%20para%20Importadores)
+[Falar no WhatsApp](https://wa.me/5511975025611?text=Ol%C3%A1%2C%20preciso%20de%20orienta%C3%A7%C3%A3o%20sobre%20contratos%20empresariais%20ou%20contratos%20de%20importa%C3%A7%C3%A3o.)
 
-Áreas relacionadas
+[Enviar meu caso](/contato/?area=Assessoria%20Jur%C3%ADdica%20para%20Importadores)
+
+## Áreas relacionadas
 
 - [Contratos de Importação / Comércio Exterior](/areas-de-atuacao/contratos-de-importacao-comercio-exterior/)
 - [Advocacia Empresarial](/areas-de-atuacao/advocacia-empresarial/)
 - [Execuções, Cobrança e Recuperação de Crédito](/areas-de-atuacao/execucao-cobranca-recuperacao-de-credito/)
 
-Guia completo do tema
+## Guia completo do tema
 
 Veja o panorama completo deste cluster, com todos os conteúdos organizados.
 
 [Cobrança, Execução e Recuperação de Crédito Empresarial: guia central →](/guias/cobranca-execucao-e-recuperacao-de-credito-empresarial/)
-
-Fale com o escritório
-
-## Precisa de orientação jurídica para sua empresa, sua demanda internacional ou uma questão patrimonial?
-
-[Falar no WhatsApp](https://wa.me/5511975025611?text=Ol%C3%A1%2C%20preciso%20de%20orienta%C3%A7%C3%A3o%20sobre%20contratos%20empresariais%20ou%20contratos%20de%20importa%C3%A7%C3%A3o.)[Enviar meu caso](/contato/)
-
-[ou envie um e-mail para contato@correalimaadvocacia.com.br](mailto:contato@correalimaadvocacia.com.br)
-
-Atendimento direto
-
-Alexandre Corrêa Lima
-
-OAB/SP 234511
-
-+55 11 97502-5611
-
-Atendimento nacional e online
-
-contato@correalimaadvocacia.com.br
-
-Resposta em até 1 dia útil

@@ -34,13 +34,17 @@ O pedido de desconsideração deve demonstrar, com elementos concretos, os indí
 
 ## Perguntas frequentes
 
-Desconsideração da personalidade jurídica atinge automaticamente todos os sócios?+
+### Desconsideração da personalidade jurídica atinge automaticamente todos os sócios?
 
 Não. A medida deve ser fundamentada e, em regra, direcionada a quem efetivamente se beneficiou do abuso ou da confusão patrimonial identificada, não a todo e qualquer sócio de forma automática.
 
-É preciso abrir um novo processo para pedir a desconsideração?+
+### É preciso abrir um novo processo para pedir a desconsideração?
 
-Empresa devedora sem nenhum bem já justifica o pedido?+
+Em regra, não. O pedido costuma ser feito dentro da própria execução ou do cumprimento de sentença já em curso, mediante incidente processual próprio.
+
+### Empresa devedora sem nenhum bem já justifica o pedido?
+
+Não isoladamente. É preciso indício de abuso da personalidade jurídica ou confusão patrimonial — a simples inexistência de bens, por si só, não caracteriza automaticamente essas hipóteses.
 
 Este conteúdo tem caráter exclusivamente informativo e não substitui a análise individual do seu caso por advogado.
 

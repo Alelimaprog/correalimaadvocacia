@@ -36,13 +36,17 @@ A data de constituição do crédito — não a data do vencimento ou do inadimp
 
 ## Perguntas frequentes
 
-O que conta para definir a data do crédito: o vencimento ou a origem da obrigação?+
+### O que conta para definir a data do crédito: o vencimento ou a origem da obrigação?
 
 A origem da obrigação (data do fato gerador do crédito, como a entrega da mercadoria ou a prestação do serviço), não a data de vencimento do título ou do inadimplemento.
 
-Crédito extraconcursal pode ser executado normalmente mesmo com a empresa em recuperação?+
+### Crédito extraconcursal pode ser executado normalmente mesmo com a empresa em recuperação?
 
-Um crédito concursal pode virar extraconcursal?+
+Em regra sim, já que não se submete aos efeitos do plano de recuperação, mas a viabilidade prática da execução ainda depende da existência de bens livres para satisfazer o crédito.
+
+### Um crédito concursal pode virar extraconcursal?
+
+Não. A classificação é definida pela data de constituição do crédito em relação à data do pedido de recuperação judicial, e não muda posteriormente.
 
 Este conteúdo tem caráter exclusivamente informativo e não substitui a análise individual do seu caso por advogado.
 

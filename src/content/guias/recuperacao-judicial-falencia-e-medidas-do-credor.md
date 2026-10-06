@@ -48,15 +48,21 @@ Este conteúdo tem caráter exclusivamente informativo e institucional. O proced
 
 ## Perguntas frequentes
 
-Este guia substitui a página de Recuperação Judicial e Falência?+
+### Este guia substitui a página de Recuperação Judicial e Falência?
 
 Não. Este guia organiza o tema como um todo — para empresas em crise e para credores — e conecta os diferentes conteúdos do cluster. A página de serviço detalha o atendimento em si.
 
-Sou credor de uma empresa que entrou em recuperação judicial. Por onde começo?+
+### Sou credor de uma empresa que entrou em recuperação judicial. Por onde começo?
 
-O escritório atua para empresas em recuperação ou para credores?+
+Pelo levantamento da documentação que comprova o crédito e pela verificação do prazo do edital para habilitação — ver o artigo 'O que fazer quando um cliente entra em recuperação judicial' para o passo a passo.
 
-O que acontece com uma execução que eu já tinha em andamento?+
+### O escritório atua para empresas em recuperação ou para credores?
+
+Ambos, em processos distintos, conforme o interesse do cliente em cada caso — sem conflito de interesses entre atuações simultâneas no mesmo processo.
+
+### O que acontece com uma execução que eu já tinha em andamento?
+
+Em regra, ela é suspensa, e o crédito nela discutido deve ser habilitado dentro do processo de recuperação judicial para continuar sendo buscado.
 
 Fale sobre o seu caso
 

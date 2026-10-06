@@ -30,11 +30,21 @@ const waHref = whatsappHrefForPath(Astro.url.pathname);
 </aside>
 
 <style>
-  .ec-cta { display: grid; gap: var(--space-4); border: 1px solid var(--border-green-subtle); background: var(--color-green-tint); border-radius: var(--radius-lg); padding: var(--space-6); margin: var(--space-8) 0; }
-  @media (min-width: 720px) { .ec-cta { grid-template-columns: 1.4fr 1fr; align-items: center; } }
-  .ec-cta-t { font-family: var(--font-display); font-weight: var(--weight-bold); color: var(--color-ink); font-size: var(--text-lg); }
-  .ec-cta-d { margin-top: var(--space-2); color: var(--color-text); font-size: var(--text-sm); line-height: var(--leading-normal); }
+  /* Fecho do texto: uma faixa delimitada por filetes, na largura da leitura.
+     O cartão de fundo colorido competia com a prosa e destoava do resto do
+     sistema — aqui o bloco se separa pelo espaço e pela régua, não pela cor. */
+  .ec-cta {
+    display: grid; gap: var(--space-5);
+    border: 0; border-block: 1px solid var(--color-border);
+    background: none; border-radius: 0;
+    padding-block: var(--space-8);
+    margin: var(--space-12) 0 var(--space-8);
+  }
+  @media (min-width: 720px) { .ec-cta { grid-template-columns: 1.3fr 1fr; align-items: center; gap: var(--space-8); } }
+  .ec-cta-t { font-family: var(--font-display); font-weight: var(--weight-regular); letter-spacing: var(--tracking-tight); color: var(--color-ink); font-size: var(--text-2xl); line-height: var(--leading-snug); max-width: 24ch; }
+  .ec-cta-d { margin-top: var(--space-3); color: var(--color-text-muted); font-size: var(--text-sm); line-height: var(--leading-relaxed); }
   .ec-cta-actions { display: flex; flex-wrap: wrap; gap: var(--space-3); align-items: center; }
-  .ec-area { display: inline-flex; align-items: center; gap: 0.35rem; color: var(--color-green-strong); font-weight: var(--weight-semibold); font-size: var(--text-sm); text-decoration: none; }
+  .ec-area { display: inline-flex; align-items: center; gap: 0.35rem; color: var(--color-ink); font-weight: var(--weight-medium); font-size: var(--text-sm); text-decoration: none; border-bottom: 1px solid var(--color-accent); padding-bottom: 2px; transition: color var(--dur) var(--ease); }
+  .ec-area:hover { color: var(--color-accent); }
   .ec-area-ic { display: inline-flex; }
 </style>

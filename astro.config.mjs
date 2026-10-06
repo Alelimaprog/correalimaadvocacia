@@ -2,6 +2,7 @@
 import { defineConfig } from 'astro/config';
 import mdx from '@astrojs/mdx';
 import { writeFileSync } from 'node:fs';
+import { remarkAbertura } from './plugins/abertura.mjs';
 
 const SITE = 'https://correalimaadvocacia.com.br';
 
@@ -67,5 +68,8 @@ export default defineConfig({
   trailingSlash: 'always',
   output: 'static',
   build: { format: 'directory' },
+  // O H1 e o lead saem do corpo do Markdown e sobem para a faixa de abertura
+  // montada por EntryPage. Ver plugins/abertura.mjs.
+  markdown: { remarkPlugins: [remarkAbertura] },
   integrations: [mdx(), singleSitemap()],
 });

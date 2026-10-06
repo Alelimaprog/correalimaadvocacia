@@ -143,3 +143,56 @@
   letter-spacing: var(--tracking-eyebrow);
   font-size: var(--text-xs);
 }
+
+/* ── Ações dentro da prosa ───────────────────────────────────────────────
+   O conteúdo importado traz linhas de CTA como parágrafos que contêm só um
+   link ("Falar no WhatsApp", "Enviar meu caso"). Renderizados como link de
+   texto, ficavam indistinguíveis de uma referência no meio da leitura — e,
+   quando vinham em par, colados um no outro. Aqui eles assumem a forma de
+   ação do sistema, sem que o Markdown precise saber disso. */
+.prose p > a:only-child[href^='https://wa.me'],
+.prose p > a:only-child[href^='/contato/'],
+.prose p > a:only-child[href^='mailto:'] {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2.75rem;
+  padding: 0.7rem 1.5rem;
+  border: 1px solid var(--color-navy);
+  border-radius: var(--radius-sm);
+  background: var(--color-navy);
+  color: var(--color-text-on-dark);
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  font-weight: var(--weight-medium);
+  line-height: 1.2;
+  text-decoration: none;
+  transition: background-color var(--dur) var(--ease), border-color var(--dur) var(--ease);
+}
+.prose p > a:only-child[href^='https://wa.me']:hover,
+.prose p > a:only-child[href^='/contato/']:hover,
+.prose p > a:only-child[href^='mailto:']:hover {
+  background: var(--color-navy-deep);
+  border-color: var(--color-navy-deep);
+  color: var(--color-text-on-dark);
+}
+/* O segundo de um par de ações é secundário: contorno, não campo cheio. */
+.prose p:has(> a:only-child[href^='/contato/']) + p > a:only-child[href^='https://wa.me'],
+.prose p:has(> a:only-child[href^='https://wa.me']) + p > a:only-child[href^='/contato/'] {
+  background: transparent;
+  color: var(--color-ink);
+  border-color: var(--border-strong);
+}
+.prose p:has(> a:only-child[href^='/contato/']) + p > a:only-child[href^='https://wa.me']:hover,
+.prose p:has(> a:only-child[href^='https://wa.me']) + p > a:only-child[href^='/contato/']:hover {
+  background: var(--surface-warm);
+  color: var(--color-ink);
+  border-color: var(--color-ink);
+}
+/* Em par, as duas ações ficam lado a lado em vez de empilhadas. */
+.prose p:has(> a:only-child[href^='https://wa.me']),
+.prose p:has(> a:only-child[href^='/contato/']) {
+  display: inline-block;
+  margin-right: var(--space-3);
+  margin-bottom: var(--space-3);
+}

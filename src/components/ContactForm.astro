@@ -96,9 +96,9 @@ const formspreeEndpoint = site.form.endpoint;
     font-family: var(--font-body);
     font-size: var(--text-base);
     color: var(--color-ink);
-    padding: 0.8rem 1rem;
+    padding: 0.85rem 1rem;
     border: 1px solid var(--border-strong);
-    border-radius: var(--radius-md);
+    border-radius: var(--radius-sm);
     background: var(--surface);
     transition: border-color var(--dur) var(--ease), box-shadow var(--dur) var(--ease);
   }
@@ -112,31 +112,30 @@ const formspreeEndpoint = site.form.endpoint;
   .cform select:focus,
   .cform textarea:focus {
     outline: none;
-    border-color: var(--color-green-strong);
+    border-color: var(--color-navy);
     box-shadow: var(--ring);
   }
   .cform-consent { display: flex; gap: var(--space-3); align-items: flex-start; }
-  .cform-consent input { margin-top: 0.25rem; width: 1.05rem; height: 1.05rem; accent-color: var(--color-green-strong); }
+  .cform-consent input { margin-top: 0.25rem; width: 1.05rem; height: 1.05rem; accent-color: var(--color-navy); }
   .cform-consent label { font-weight: var(--weight-regular); color: var(--color-text-muted); line-height: var(--leading-normal); font-size: var(--text-sm); }
-  .cform-consent a { color: var(--color-green-strong); }
+  .cform-consent a { color: var(--color-ink); }
   .cform-submit {
     align-self: flex-start;
     display: inline-flex; align-items: center; justify-content: center;
     min-height: 2.9rem;
-    background: var(--color-green);
-    color: #ffffff;
-    border: 1px solid transparent;
-    border-radius: var(--radius-pill);
-    padding: 0.7rem 1.8rem;
+    background: var(--color-navy);
+    color: var(--color-text-on-dark);
+    border: 1px solid var(--color-navy);
+    border-radius: var(--radius-sm);
+    padding: 0.75rem 1.8rem;
     font-family: var(--font-body);
-    font-weight: var(--weight-semibold);
+    font-weight: var(--weight-medium);
     font-size: var(--text-sm);
     cursor: pointer;
-    box-shadow: var(--shadow-action);
-    transition: filter var(--dur) var(--ease), transform var(--dur) var(--ease), box-shadow var(--dur) var(--ease);
+    transition: background-color var(--dur) var(--ease), border-color var(--dur) var(--ease);
   }
-  .cform-submit:hover { filter: brightness(1.05); transform: translateY(-1px); box-shadow: var(--shadow-md), var(--shadow-action); }
-  .cform-submit:disabled { opacity: 0.6; cursor: default; transform: none; }
+  .cform-submit:hover { background: var(--color-navy-deep); border-color: var(--color-navy-deep); }
+  .cform-submit:disabled { opacity: 0.55; cursor: default; }
   .cform-status:empty { display: none; }
   .cform-status { font-size: var(--text-sm); color: var(--color-ink); font-weight: var(--weight-medium); margin-top: var(--space-1); }
   .cform-status[data-error] { color: var(--color-warn); }

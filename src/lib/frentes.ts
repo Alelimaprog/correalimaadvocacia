@@ -91,9 +91,14 @@ export const bandas: Banda[] = [
         short: 'Retenção de mercadoria, perdimento, classificação fiscal e revisão de tributos na importação.',
       },
       {
-        label: 'Direito Aduaneiro e Comércio Exterior',
-        href: `${A}/direito-aduaneiro-comercio-exterior/`,
-        short: 'Multas aduaneiras, exigências alfandegárias e liberação de carga.',
+        label: 'Retenção de Mercadorias',
+        href: `${A}/direito-aduaneiro-tributario/retencao-de-mercadorias/`,
+        short: 'Carga parada na Receita Federal: resposta às exigências e custo da armazenagem.',
+      },
+      {
+        label: 'Pena de Perdimento',
+        href: `${A}/direito-aduaneiro-tributario/pena-de-perdimento/`,
+        short: 'Defesa administrativa e discussão da conversão em multa.',
       },
       {
         label: 'Contratos de Importação',

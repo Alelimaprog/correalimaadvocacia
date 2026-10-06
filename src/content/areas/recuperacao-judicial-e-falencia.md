@@ -5,13 +5,14 @@ h1: "Recuperação Judicial e Falência"
 author: "Alexandre Corrêa Lima"
 ---
 
-Recuperação Judicial, Falência e Contencioso Empresarial
 
 # Recuperação Judicial e Falência
 
 Atuação técnica em processos de recuperação judicial e falência, tanto para empresas em reestruturação quanto para credores com interesses nesses processos.
 
-[Falar no WhatsApp](https://wa.me/5511975025611?text=Ol%C3%A1%2C%20preciso%20de%20orienta%C3%A7%C3%A3o%20sobre%20recupera%C3%A7%C3%A3o%20judicial%2C%20fal%C3%AAncia%20ou%20contencioso%20empresarial.)[Enviar meu caso](/contato/?area=Recupera%C3%A7%C3%A3o%20Judicial%20e%20Fal%C3%AAncia)
+[Falar no WhatsApp](https://wa.me/5511975025611?text=Ol%C3%A1%2C%20preciso%20de%20orienta%C3%A7%C3%A3o%20sobre%20recupera%C3%A7%C3%A3o%20judicial%2C%20fal%C3%AAncia%20ou%20contencioso%20empresarial.)
+
+[Enviar meu caso](/contato/?area=Recupera%C3%A7%C3%A3o%20Judicial%20e%20Fal%C3%AAncia)
 
 Processos de recuperação judicial e falência envolvem prazos rígidos, múltiplos credores e uma dinâmica processual distinta do contencioso cível comum. A atuação nesta frente abrange tanto empresas que avaliam ou já iniciaram um processo de reestruturação quanto credores — fornecedores, prestadores de serviço, parceiros comerciais — que precisam proteger seus créditos dentro de um processo já em curso.
 
@@ -26,10 +27,10 @@ O escritório atua com foco técnico nesses processos, em conexão direta com a 
 
 ## Como o escritório atua
 
-1. 1Análise da situação financeira e jurídica da empresa ou do crédito envolvido.
-2. 2Para empresas: avaliação técnica da viabilidade e dos requisitos legais da recuperação judicial, em conjunto com os profissionais contábeis e financeiros responsáveis pelo plano.
-3. 3Para credores: habilitação, verificação e acompanhamento do crédito dentro do processo, incluindo eventual impugnação de créditos de terceiros quando cabível.
-4. 4Acompanhamento processual até a fase correspondente à natureza da atuação (aprovação do plano, encerramento da recuperação, ou desfecho da falência).
+1. Análise da situação financeira e jurídica da empresa ou do crédito envolvido.
+2. Para empresas: avaliação técnica da viabilidade e dos requisitos legais da recuperação judicial, em conjunto com os profissionais contábeis e financeiros responsáveis pelo plano.
+3. Para credores: habilitação, verificação e acompanhamento do crédito dentro do processo, incluindo eventual impugnação de créditos de terceiros quando cabível.
+4. Acompanhamento processual até a fase correspondente à natureza da atuação (aprovação do plano, encerramento da recuperação, ou desfecho da falência).
 
 ## Situações comuns
 
@@ -45,60 +46,52 @@ As informações desta página têm caráter informativo geral. O prazo e o desf
 
 ## Perguntas frequentes
 
-Qual a diferença entre recuperação judicial e falência?+
+### Qual a diferença entre recuperação judicial e falência?
 
 A recuperação judicial é um procedimento voltado a viabilizar a superação da crise econômico-financeira da empresa, preservando a atividade quando possível. A falência é o processo de liquidação do patrimônio da empresa, decretado quando a reestruturação não é viável ou não é bem-sucedida.
 
-Meu cliente entrou em recuperação judicial. Eu ainda posso cobrar o que me deve?+
+### Meu cliente entrou em recuperação judicial. Eu ainda posso cobrar o que me deve?
 
-O que é habilitação de crédito?+
+A cobrança direta costuma ficar suspensa temporariamente (o chamado stay period), e o crédito, em regra, passa a ser cobrado dentro do próprio processo de recuperação judicial, por meio de habilitação de crédito — e não mais por execução ou cobrança avulsa fora do processo.
 
-Toda empresa em dificuldade financeira deve pedir recuperação judicial?+
+### O que é habilitação de crédito?
 
-É possível negociar diretamente com uma empresa em recuperação judicial, fora do processo?+
+É o procedimento pelo qual o credor apresenta e comprova seu crédito dentro do processo de recuperação judicial ou falência, para que ele seja reconhecido e incluído na lista de credores, com o valor e a classificação corretos. Veja mais na página específica sobre habilitação e impugnação de crédito.
 
-Quanto tempo dura um processo de recuperação judicial?+
+### Toda empresa em dificuldade financeira deve pedir recuperação judicial?
 
-O escritório atua para a empresa em crise ou para os credores?+
+Não necessariamente. A recuperação judicial é um instrumento específico, com requisitos legais e custos próprios, e nem sempre é a alternativa mais adequada. A avaliação deve considerar o porte da empresa, a natureza do passivo e outras alternativas de reestruturação, inclusive extrajudiciais.
 
-Fale sobre o seu caso
+### É possível negociar diretamente com uma empresa em recuperação judicial, fora do processo?
+
+Determinadas negociações continuam possíveis, sobretudo quanto a obrigações posteriores ao pedido de recuperação judicial, mas créditos anteriores ao pedido, em regra, seguem a lógica do plano de recuperação aprovado no processo.
+
+### Quanto tempo dura um processo de recuperação judicial?
+
+Varia consideravelmente conforme a complexidade do caso, o número de credores e o andamento do plano aprovado. Não é possível estimar prazo fixo sem análise da situação concreta.
+
+### O escritório atua para a empresa em crise ou para os credores?
+
+Ambos, em processos distintos — a atuação é definida conforme o interesse do cliente em cada caso específico, sem conflito de interesses entre atuações simultâneas no mesmo processo.
+
+## Fale sobre o seu caso
 
 Atendimento nacional e online, quando aplicável.
 
 Responsável técnico: [Alexandre Corrêa Lima](/o-escritorio/#alexandre-correa-lima)
 
-[Falar no WhatsApp](https://wa.me/5511975025611?text=Ol%C3%A1%2C%20preciso%20de%20orienta%C3%A7%C3%A3o%20sobre%20recupera%C3%A7%C3%A3o%20judicial%2C%20fal%C3%AAncia%20ou%20contencioso%20empresarial.)[Enviar meu caso](/contato/?area=Recupera%C3%A7%C3%A3o%20Judicial%20e%20Fal%C3%AAncia)
+[Falar no WhatsApp](https://wa.me/5511975025611?text=Ol%C3%A1%2C%20preciso%20de%20orienta%C3%A7%C3%A3o%20sobre%20recupera%C3%A7%C3%A3o%20judicial%2C%20fal%C3%AAncia%20ou%20contencioso%20empresarial.)
 
-Áreas relacionadas
+[Enviar meu caso](/contato/?area=Recupera%C3%A7%C3%A3o%20Judicial%20e%20Fal%C3%AAncia)
+
+## Áreas relacionadas
 
 - [Habilitação e Impugnação de Crédito](/areas-de-atuacao/habilitacao-e-impugnacao-de-credito/)
 - [Contencioso Empresarial Estratégico](/areas-de-atuacao/contencioso-empresarial-estrategico/)
 - [Execuções, Cobrança e Recuperação de Crédito](/areas-de-atuacao/execucao-cobranca-recuperacao-de-credito/)
 
-Guia completo do tema
+## Guia completo do tema
 
 Veja o panorama completo deste cluster, com todos os conteúdos organizados.
 
 [Recuperação Judicial, Falência e Medidas do Credor: guia central →](/guias/recuperacao-judicial-falencia-e-medidas-do-credor/)
-
-Fale com o escritório
-
-## Precisa de orientação jurídica para sua empresa, sua demanda internacional ou uma questão patrimonial?
-
-[Falar no WhatsApp](https://wa.me/5511975025611?text=Ol%C3%A1%2C%20preciso%20de%20orienta%C3%A7%C3%A3o%20sobre%20recupera%C3%A7%C3%A3o%20judicial%2C%20fal%C3%AAncia%20ou%20contencioso%20empresarial.)[Enviar meu caso](/contato/)
-
-[ou envie um e-mail para contato@correalimaadvocacia.com.br](mailto:contato@correalimaadvocacia.com.br)
-
-Atendimento direto
-
-Alexandre Corrêa Lima
-
-OAB/SP 234511
-
-+55 11 97502-5611
-
-Atendimento nacional e online
-
-contato@correalimaadvocacia.com.br
-
-Resposta em até 1 dia útil

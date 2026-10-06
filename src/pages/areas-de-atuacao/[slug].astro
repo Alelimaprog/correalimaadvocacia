@@ -7,6 +7,7 @@ import { getCollection, render } from 'astro:content';
 import EntryPage from '@/layouts/EntryPage.astro';
 import { buildChildHead } from '@/lib/child-head';
 import { getJsonLd, getBreadcrumb } from '@/lib/structured-data';
+import { bandaDe } from '@/lib/frentes';
 
 export async function getStaticPaths() {
   // ETAPA 5 — slugs aposentados: NÃO geram página (a URL antiga responde 301
@@ -20,13 +21,25 @@ export async function getStaticPaths() {
 }
 
 const { entry } = Astro.props;
-const { Content } = await render(entry);
+// `remarkPluginFrontmatter.abertura` traz o H1 e o lead que o plugin
+// remarkAbertura retirou do corpo — ver plugins/abertura.mjs.
+const { Content, remarkPluginFrontmatter } = await render(entry);
+const abertura = (remarkPluginFrontmatter as { abertura?: { titulo: string; lead: string } }).abertura;
 const path = `/areas-de-atuacao/${entry.id}/`;
 const head = buildChildHead('areas', entry.data, path);
 const jsonld = getJsonLd('areas', entry.id);
 const crumbs = getBreadcrumb('areas', entry.id);
+// O rótulo acima do título é a banda a que a área pertence.
+const banda = bandaDe(path);
 ---
 
-<EntryPage head={head} jsonld={jsonld} crumbs={crumbs}>
+<EntryPage
+  head={head}
+  jsonld={jsonld}
+  crumbs={crumbs}
+  eyebrow={banda?.label}
+  titulo={abertura?.titulo ?? entry.data.h1}
+  lead={abertura?.lead}
+>
   <Content />
 </EntryPage>
