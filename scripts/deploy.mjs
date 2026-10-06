@@ -79,11 +79,18 @@ const MARCAS = ['index.html', '_astro', 'blog', 'areas-de-atuacao', 'sitemap.xml
  * isso procura em vez de exigir acerto na configuração. Relata o que encontrou
  * em cada tentativa, para que uma falha diga onde olhar.
  */
-async function acharRaiz(client, pedida) {
+async function acharRaiz(client, pedida, explicita) {
   const inicial = await client.pwd();
   console.log(`Login deixou em: ${inicial}`);
-  const candidatas = [...new Set([pedida, inicial, '/public_html', 'public_html', '/'].filter(Boolean))];
-  let plausivel = null;
+
+  // Configuração explícita manda: nada de adivinhação.
+  if (explicita) {
+    await client.cd(pedida);
+    return pedida;
+  }
+
+  const candidatas = [...new Set([inicial, '/public_html', 'public_html', '/'].filter(Boolean))];
+  let comConteudo = null;
   for (const c of candidatas) {
     try {
       await client.cd(c);
@@ -91,13 +98,24 @@ async function acharRaiz(client, pedida) {
       const achadas = MARCAS.filter((m) => nomes.includes(m));
       console.log(`  ${c} -> ${nomes.length} itens${achadas.length ? ', marcas: ' + achadas.join(', ') : ''}`);
       if (achadas.length) return c;
-      if (!plausivel && nomes.length === 0) plausivel = c;
+      if (!comConteudo) {
+        comConteudo = c;
+        console.log(`     primeiros nomes: ${nomes.slice(0, 40).join(' | ') || '(vazia)'}`);
+      }
     } catch (e) {
       console.log(`  ${c} -> inacessível (${e.message})`);
     }
   }
-  if (plausivel) return plausivel;
-  throw new Error('Não reconheci a raiz do site em nenhuma das pastas acima. Defina FTP_REMOTE_DIR com o caminho correto.');
+
+  // Sem marcas reconhecidas: a conta de FTP está presa à pasta do site, e é
+  // nela que o login deixou. É o caso de uma primeira publicação, ou de uma
+  // listagem que o servidor devolve em formato que não soubemos ler.
+  if (comConteudo) {
+    console.log(`Nenhuma marca reconhecida; usando ${comConteudo}, onde o login deixou.`);
+    await client.cd(comConteudo);
+    return comConteudo;
+  }
+  throw new Error('Não consegui listar nenhuma pasta. Defina FTP_REMOTE_DIR com o caminho correto.');
 }
 
 const client = new Client(30_000);
@@ -111,7 +129,7 @@ try {
      destino muda de nome. Em vez de exigir acerto na configuração, procura:
      usa o que foi pedido se existir, senão a primeira pasta que pareça a raiz
      do site (tem index.html). */
-  cfg.remoteDir = await acharRaiz(client, cfg.remoteDir);
+  cfg.remoteDir = await acharRaiz(client, cfg.remoteDir, Boolean(process.env.FTP_REMOTE_DIR));
   await client.cd(cfg.remoteDir);
   console.log(`Publicando em ${cfg.host}:${cfg.remoteDir}`);
 
