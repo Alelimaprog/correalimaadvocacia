@@ -1,8 +1,8 @@
 ---
 /**
  * MobileMenu — botão hambúrguer (abaixo de `lg`) e painel deslizante.
- * Reproduz a nova hierarquia: Início · O Escritório · Áreas de Atuação
- * (6 núcleos) · Conteúdos (Artigos/Guias/Assuntos) · Contato + CTA WhatsApp.
+ * Reproduz a hierarquia do desktop: Início · O Escritório · Áreas de Atuação
+ * (bandas, empresarial à frente) · Conteúdos · Contato + CTA WhatsApp.
  * Trava scroll, fecha no Escape, no overlay e ao navegar. DRY via navigation.ts.
  */
 import { mainNav, areasMenu, conteudosMenu, contatoLink } from '@/lib/navigation';
@@ -30,8 +30,15 @@ import WhatsAppButton from '@/components/WhatsAppButton.astro';
           <svg class="m-chev" aria-hidden="true" width="12" height="8" viewBox="0 0 12 8"><path d="M1 1l5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.6"></path></svg>
         </summary>
         <div class="m-acc-body">
-          <a class="m-sub" href={areasMenu.viewAll.href}>{areasMenu.viewAll.label}</a>
-          {areasMenu.items.map((n) => <a class="m-sub" href={n.href}>{n.label}</a>)}
+          <a class="m-sub m-sub--all" href={areasMenu.viewAll.href}>{areasMenu.viewAll.label}</a>
+          {
+            areasMenu.bandas.map((b) => (
+              <div class="m-grupo">
+                <p class="m-grupo-t">{b.label}</p>
+                {b.items.map((i) => <a class="m-sub" href={i.href}>{i.label}</a>)}
+              </div>
+            ))
+          }
         </div>
       </details>
 
@@ -77,17 +84,18 @@ import WhatsAppButton from '@/components/WhatsAppButton.astro';
 
   .panel {
     position: fixed;
-    top: 0.6rem;
-    right: 0.6rem;
-    bottom: 0.6rem;
+    top: 0;
+    right: 0;
+    bottom: 0;
     height: auto;
-    width: min(88vw, 22rem);
+    width: min(92vw, 23rem);
     background: var(--color-navy);
     color: #fff;
     z-index: 80;
-    padding: 5rem 1.5rem 2rem;
+    padding: calc(var(--altura-cabecalho) + var(--space-4)) var(--space-6)
+      calc(var(--space-8) + env(safe-area-inset-bottom, 0px));
     overflow-y: auto;
-    border-radius: var(--radius-xl);
+    border-radius: var(--radius-sm);
     box-shadow: var(--shadow-lg);
   }
 
@@ -101,7 +109,7 @@ import WhatsAppButton from '@/components/WhatsAppButton.astro';
     text-decoration: none;
     border-bottom: 1px solid var(--border-on-dark);
   }
-  .m-link:hover { color: var(--color-green); }
+  .m-link:hover { color: var(--color-accent-soft); }
 
   /* Grupos expansíveis nativos (<details>) — acessíveis por teclado e leitor de tela */
   .m-acc { border-bottom: 1px solid var(--border-on-dark); }
@@ -116,10 +124,21 @@ import WhatsAppButton from '@/components/WhatsAppButton.astro';
     cursor: pointer;
   }
   .m-acc-sum::-webkit-details-marker { display: none; }
-  .m-acc-sum:hover { color: var(--color-green); }
+  .m-acc-sum:hover { color: var(--color-accent-soft); }
   .m-chev { color: rgba(255, 255, 255, 0.55); transition: transform var(--dur) var(--ease); flex: none; }
   .m-acc[open] .m-chev { transform: rotate(180deg); }
-  .m-acc-body { display: flex; flex-direction: column; padding-bottom: var(--space-2); }
+  .m-acc-body { display: flex; flex-direction: column; padding-bottom: var(--space-4); }
+  .m-sub--all { color: #fff; text-decoration: underline; text-underline-offset: 0.18em; padding-left: 0; }
+  .m-grupo { margin-top: var(--space-4); }
+  .m-grupo-t {
+    font-family: var(--font-body);
+    font-size: 0.6875rem;
+    font-weight: var(--weight-semibold);
+    text-transform: uppercase;
+    letter-spacing: var(--tracking-eyebrow);
+    color: rgba(255, 255, 255, 0.45);
+    margin-bottom: var(--space-1);
+  }
   .m-sub {
     display: block;
     padding: var(--space-2) 0 var(--space-2) var(--space-3);
@@ -128,7 +147,7 @@ import WhatsAppButton from '@/components/WhatsAppButton.astro';
     text-decoration: none;
     line-height: var(--leading-snug);
   }
-  .m-sub:hover { color: var(--color-green); }
+  .m-sub:hover { color: var(--color-accent-soft); }
   .panel-cta { margin-top: var(--space-6); }
 </style>
 

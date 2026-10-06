@@ -1,8 +1,13 @@
 ---
 /**
  * Navigation — navegação principal do desktop (oculta abaixo de `lg`):
- * Início · O Escritório · Áreas de Atuação (dropdown com os 6 núcleos) ·
+ * Início · O Escritório · Áreas de Atuação (mega-menu em colunas por banda) ·
  * Conteúdos (dropdown) · Contato. Consome src/lib/navigation.ts (DRY).
+ *
+ * O mega-menu abre em colunas — uma por banda de atuação, a empresarial
+ * primeiro. É a estrutura que escritório empresarial usa porque é a que
+ * funciona: quem procura contrato, contencioso ou aduaneiro vê a frente certa
+ * sem precisar deduzi-la de um rótulo genérico.
  */
 import { mainNav, areasMenu, conteudosMenu, contatoLink, isActive } from '@/lib/navigation';
 
@@ -24,13 +29,21 @@ const current = Astro.url.pathname;
       <svg class="caret" aria-hidden="true" width="10" height="6" viewBox="0 0 10 6"><path d="M1 1l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.5"></path></svg>
     </button>
     <div class="dd-panel dd-panel--mega" id="areas-menu">
-      <div class="mega-grid">
+      <div class="mega-cols">
         {
-          areasMenu.items.map((n) => (
-            <a class="mega-item" href={n.href}>
-              <span class="mega-title">{n.label}</span>
-              <span class="mega-desc">{n.short}</span>
-            </a>
+          areasMenu.bandas.map((b) => (
+            <div class="mega-col">
+              <a class="mega-col-title" href={b.href}>{b.label}</a>
+              <ul class="mega-list">
+                {b.items.map((i) => (
+                  <li>
+                    <a class="mega-link" href={i.href} aria-current={current === i.href ? 'page' : undefined}>
+                      {i.label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
           ))
         }
       </div>
@@ -56,8 +69,9 @@ const current = Astro.url.pathname;
 <style>
   /* Navegação tipográfica: sem pílulas, sem fundo. O estado ativo e o hover
      se marcam por um filete sob a palavra — a mesma régua do resto do site. */
-  .nav { display: none; align-items: center; gap: var(--space-6); }
+  .nav { display: none; align-items: center; gap: var(--space-5); }
   @media (min-width: 1024px) { .nav { display: flex; } }
+  @media (min-width: 1200px) { .nav { gap: var(--space-6); } }
 
   .nav-link {
     position: relative;
@@ -74,6 +88,7 @@ const current = Astro.url.pathname;
     background: none;
     border: none;
     cursor: pointer;
+    white-space: nowrap;
     transition: color var(--dur) var(--ease);
   }
 
@@ -116,11 +131,35 @@ const current = Astro.url.pathname;
     z-index: 60;
   }
 
-  .dd-panel--mega { min-width: 42rem; padding: var(--space-4); }
+  .dd-panel--mega {
+    min-width: 54rem;
+    max-width: min(66rem, calc(100vw - 2 * var(--container-pad)));
+    padding: var(--space-6);
+  }
+  /* O painel largo não cabe ancorado no gatilho: em 1440 a terceira coluna
+     saía pela direita da tela. Ele passa a ser posicionado pela viewport,
+     alinhado à mesma coluna do conteúdo do site, logo abaixo do cabeçalho. */
+  @media (min-width: 1024px) {
+    .dropdown--mega .dd-panel--mega {
+      position: fixed;
+      top: var(--altura-cabecalho);
+      left: 50%;
+      transform: translateX(-50%);
+      width: min(var(--container-max), calc(100vw - 2 * var(--container-pad)));
+      max-width: none;
+      max-height: calc(100vh - var(--altura-cabecalho) - var(--space-6));
+      overflow-y: auto;
+    }
+  }
   .dropdown.is-open .dd-panel,
   .dropdown:hover .dd-panel,
   .dropdown:focus-within .dd-panel { display: flex; }
   .dropdown::after { content: ''; position: absolute; top: 100%; left: 0; right: 0; height: 1.15rem; }
+  /* Com o painel ancorado na viewport, a ponte de hover precisa alcançar a
+     borda do cabeçalho, não apenas 1.15rem abaixo do gatilho. */
+  @media (min-width: 1024px) {
+    .dropdown--mega::after { height: calc(var(--altura-cabecalho) / 2); }
+  }
 
   .dd-item {
     padding: 0.6rem 0.75rem;
@@ -132,28 +171,46 @@ const current = Astro.url.pathname;
   }
   .dd-item:hover { background: var(--surface-warm); color: var(--color-ink); }
 
-  .mega-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--border-subtle); }
+  /* Colunas por banda. Os filetes verticais separam os grupos; nada flutua. */
+  .mega-cols {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    column-gap: var(--space-8);
+    row-gap: var(--space-8);
+  }
+  @media (min-width: 1200px) {
+    .mega-cols { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  }
 
-  /* As entradas dividem um filete em vez de flutuarem soltas: a grade do
-     menu repete a grade das áreas de atuação na página. */
-  .mega-item {
-    display: flex;
-    flex-direction: column;
-    gap: 0.2rem;
-    padding: var(--space-4);
-    background: var(--color-paper);
+  .mega-col-title {
+    display: block;
+    font-family: var(--font-body);
+    font-size: var(--text-xs);
+    font-weight: var(--weight-semibold);
+    text-transform: uppercase;
+    letter-spacing: var(--tracking-eyebrow);
+    color: var(--color-text-subtle);
     text-decoration: none;
-    transition: background-color var(--dur) var(--ease);
+    padding-bottom: var(--space-3);
+    border-bottom: 1px solid var(--color-border);
+    transition: color var(--dur) var(--ease), border-color var(--dur) var(--ease);
   }
-  .mega-item:hover { background: var(--surface-warm); }
-  .mega-title {
+  .mega-col-title:hover { color: var(--color-ink); border-color: var(--border-strong); }
+
+  .mega-list { list-style: none; padding: 0; margin: var(--space-3) 0 0; display: flex; flex-direction: column; }
+  .mega-link {
+    display: block;
+    padding: 0.42rem 0;
     font-family: var(--font-display);
-    font-size: var(--text-md);
-    font-weight: var(--weight-medium);
-    color: var(--color-ink);
+    font-size: var(--text-base);
+    line-height: var(--leading-snug);
     letter-spacing: var(--tracking-tight);
+    color: var(--color-text);
+    text-decoration: none;
+    transition: color var(--dur) var(--ease);
   }
-  .mega-desc { font-size: var(--text-xs); color: var(--color-text-muted); line-height: 1.45; }
+  .mega-link:hover { color: var(--color-accent); }
+  .mega-link[aria-current='page'] { color: var(--color-ink); font-weight: var(--weight-medium); }
 
   .dd-viewall {
     margin-top: var(--space-4);

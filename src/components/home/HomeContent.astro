@@ -13,7 +13,8 @@
  * Nenhum dado foi inventado: números, prêmios, rankings e depoimentos não
  * existem aqui porque não existem no material do escritório.
  */
-import { nucleos, getNucleo } from '@/lib/nucleos';
+import { getNucleo } from '@/lib/nucleos';
+import { bandas } from '@/lib/frentes';
 import { site } from '@/lib/site.config';
 import { homeFaq as faq } from '@/lib/home-faq';
 
@@ -128,22 +129,26 @@ const conteudos = [
       <p class="eyebrow">Áreas de atuação</p>
       <h2 class="sec-h2" id="areas">Em que o escritório atua</h2>
       <p class="sec-intro">
-        Seis frentes, cada uma com página própria, onde constam as situações tratadas,
-        os documentos que costumam ser analisados e as medidas cabíveis.
+        A atuação se organiza em frentes, cada uma com página própria, onde constam as
+        situações tratadas, os documentos que costumam ser analisados e as medidas cabíveis.
       </p>
     </header>
 
     <ul class="grade grade--3">
-      {nucleos.map((n) => (
+      {bandas.map((b) => (
         <li class="grade-item">
-          <a class="area" href={n.href}>
-            <h3 class="area-t">{n.label}</h3>
-            <p class="area-d">{n.short}</p>
-            <span class="area-mais">Conhecer esta área <span aria-hidden="true">&rarr;</span></span>
+          <a class="area" href={b.href}>
+            <h3 class="area-t">{b.label}</h3>
+            <p class="area-d">{b.short}</p>
+            <span class="area-mais">Conhecer esta frente <span aria-hidden="true">&rarr;</span></span>
           </a>
         </li>
       ))}
     </ul>
+
+    <p class="sec-rodape">
+      <a class="link-arrow" href="/areas-de-atuacao/">Ver todas as áreas de atuação <span aria-hidden="true">&rarr;</span></a>
+    </p>
   </div>
 </section>
 
@@ -347,6 +352,8 @@ const conteudos = [
     color: var(--color-text-muted);
   }
   .posicionamento-corpo .link-arrow { margin-top: var(--space-6); }
+
+  .sec-rodape { margin-top: var(--space-8); }
 
   /* ── Grade de filetes ───────────────────────────────────────────────
      Os itens não flutuam: dividem um fio. A grade ganha o fio por fora

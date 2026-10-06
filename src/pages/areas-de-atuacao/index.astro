@@ -1,27 +1,35 @@
 ---
 /**
- * /areas-de-atuacao/ — página geral reorganizada (Sprint 1) em torno dos seis
- * núcleos. Preserva head (SEO) e BreadcrumbList do site atual e adiciona um
- * ItemList dos núcleos. Aponta para cada página-pilar. As páginas antigas
- * permanecem publicadas (fora do destaque), acessíveis pelas correlatas.
+ * /areas-de-atuacao/ — índice das áreas, reorganizado no reposicionamento
+ * empresarial.
+ *
+ * O que mudou: a página mostrava só os seis núcleos e deixava invisíveis as
+ * dezenove páginas de área já publicadas — entre elas todo o conteúdo
+ * empresarial. Agora a leitura é por bandas (src/lib/frentes.ts), empresarial
+ * à frente, e cada frente aparece com a sua própria página. Nenhuma URL mudou;
+ * head (SEO) e BreadcrumbList do site são preservados.
+ *
+ * Linguagem visual: grade de filetes, sem cartões flutuantes e sem ladrilhos
+ * de ícone — a mesma régua da home.
  */
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import JsonLd from '@/components/JsonLd.astro';
-import Icon from '@/components/Icon.astro';
 import { getPage } from '@/lib/institucional';
 import { site, whatsappHref } from '@/lib/site.config';
-import { nucleos } from '@/lib/nucleos';
+import { bandas } from '@/lib/frentes';
 
 const page = getPage('/areas-de-atuacao/');
 
+/** ItemList das frentes, na ordem em que aparecem na página. */
+const todas = bandas.flatMap((b) => b.items);
 const itemList = {
   '@context': 'https://schema.org',
   '@type': 'ItemList',
-  itemListElement: nucleos.map((n, i) => ({
+  itemListElement: todas.map((i, n) => ({
     '@type': 'ListItem',
-    position: i + 1,
-    name: n.label,
-    url: `${site.url}${n.href}`,
+    position: n + 1,
+    name: i.label,
+    url: `${site.url}${i.href}`,
   })),
 };
 ---
@@ -33,51 +41,68 @@ const itemList = {
   </Fragment>
 
   <main id="conteudo-principal">
-    <section class="areas-head">
+    <header class="ar-topo">
       <div class="wrap">
         <nav class="crumbs" aria-label="Você está em">
           <a href="/">Início</a><span aria-hidden="true">/</span><span>Áreas de Atuação</span>
         </nav>
-        <p class="eyebrow"><span class="dot"></span>Áreas de atuação</p>
-        <h1>Seis núcleos de atuação para problemas jurídicos concretos</h1>
-        <p class="lead">
-          O escritório concentra a atuação em seis núcleos. Encontre o que corresponde à sua
-          situação — de cobrança e execução a questões ambientais, aduaneiras, internacionais e patrimoniais.
+        <p class="eyebrow">Áreas de atuação</p>
+        <h1>Onde o escritório atua</h1>
+        <p class="ar-lead">
+          A atuação se organiza em frentes que correspondem a problemas concretos de quem
+          dirige um negócio — do contrato que precisa ser revisto antes de ser assinado à
+          mercadoria retida na aduana, do crédito que não entra à decisão estrangeira que
+          precisa valer no Brasil.
         </p>
       </div>
-    </section>
+    </header>
 
-    <section class="areas-grid-sec">
+    <nav class="ar-sumario" aria-label="Frentes de atuação">
       <div class="wrap">
-        <div class="areas-grid">
-          {
-            nucleos.map((n) => (
-              <a class="area-card" href={n.href}>
-                <span class="area-ic"><Icon name={n.icon} size={24} /></span>
-                <h2>{n.label}</h2>
-                <p class="area-short">{n.short}</p>
-                <ul class="area-sit">
-                  {n.situations.slice(0, 3).map((s) => (
-                    <li><Icon name="check" size={16} class="sit-ic" /><span>{s}</span></li>
-                  ))}
-                </ul>
-                <span class="area-more">Ver a página do núcleo <Icon name="arrow-right" size={16} /></span>
-              </a>
-            ))
-          }
-        </div>
+        <ul>
+          {bandas.map((b) => <li><a href={`#${b.id}`}>{b.label}</a></li>)}
+        </ul>
       </div>
-    </section>
+    </nav>
 
-    <section class="areas-cta">
-      <div class="wrap cta-inner">
+    {
+      bandas.map((b, idx) => (
+        <section class="ar-banda" id={b.id} aria-labelledby={`t-${b.id}`} data-par={idx % 2 === 0 ? 'claro' : 'quente'}>
+          <div class="wrap ar-banda-grid">
+            <div class="ar-banda-cab">
+              <p class="ar-num">{String(idx + 1).padStart(2, '0')}</p>
+              <h2 id={`t-${b.id}`}>{b.label}</h2>
+              <p class="ar-banda-txt">{b.short}</p>
+              <a class="ar-banda-link" href={b.href}>Ver a frente principal</a>
+            </div>
+
+            <ul class="ar-frentes">
+              {b.items.map((i) => (
+                <li>
+                  <a href={i.href}>
+                    <span class="ar-frente-t">{i.label}</span>
+                    <span class="ar-frente-d">{i.short}</span>
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </section>
+      ))
+    }
+
+    <section class="ar-cta" aria-labelledby="ar-cta-t">
+      <div class="wrap ar-cta-grid">
         <div>
-          <h2>Não sabe por qual núcleo começar?</h2>
-          <p>Descreva a situação e os documentos disponíveis. Fazemos uma análise inicial e indicamos o caminho.</p>
+          <h2 id="ar-cta-t">Não sabe por qual frente começar?</h2>
+          <p>
+            Descreva a situação e os documentos disponíveis. A análise inicial indica o
+            caminho — e, quando não há caminho que valha o custo, isso também é dito.
+          </p>
         </div>
-        <div class="cta-actions">
-          <a class="btn btn--primary" href="/contato/">Solicitar atendimento</a>
-          <a class="btn btn--ghost-light" href={whatsappHref} target="_blank" rel="noopener noreferrer">Falar no WhatsApp</a>
+        <div class="ar-cta-acoes">
+          <a class="btn btn--on-green" href="/contato/">Fale com nossa equipe</a>
+          <a class="btn btn--ghost-light" href={whatsappHref} target="_blank" rel="nofollow noopener noreferrer">Falar no WhatsApp</a>
         </div>
       </div>
     </section>
@@ -85,39 +110,112 @@ const itemList = {
 </BaseLayout>
 
 <style>
-  /* Áreas de atuação — hero claro editorial; cards unificados; CTA escuro. */
-  .areas-head {
-    background: var(--surface-warm);
-    padding-block: var(--section-y-sm);
-    border-bottom: 1px solid var(--border-subtle);
+  .wrap { width: 100%; max-width: var(--container-max); margin-inline: auto; padding-inline: var(--container-pad); }
+
+  /* ─── Abertura ───────────────────────────────────────────────────────── */
+  .ar-topo {
+    padding-block: var(--section-y) var(--section-y-sm);
+    border-bottom: 1px solid var(--color-border);
   }
-  .areas-head .crumbs { margin-bottom: var(--space-6); }
-  .areas-head h1 { font-size: var(--text-4xl); color: var(--color-ink); margin-top: var(--space-4); max-width: 18ch; }
-  .areas-head .lead { margin-top: var(--space-5); color: var(--color-text); font-size: var(--text-md); line-height: var(--leading-relaxed); max-width: var(--measure); }
-
-  .areas-grid-sec { background: var(--surface-subtle); padding-block: var(--section-y); }
-  .areas-grid { display: grid; gap: var(--space-6); grid-template-columns: 1fr; }
-  @media (min-width: 720px) { .areas-grid { grid-template-columns: repeat(2, 1fr); } }
-  @media (min-width: 1080px) { .areas-grid { grid-template-columns: repeat(3, 1fr); } }
-
-  .area-card {
-    display: flex; flex-direction: column; background: var(--surface); border: 1px solid var(--border-subtle);
-    border-radius: var(--radius-lg); padding: var(--space-6); text-decoration: none;
-    transition: border-color var(--dur) var(--ease), box-shadow var(--dur) var(--ease), transform var(--dur) var(--ease);
+  .crumbs { font-size: var(--text-xs); color: var(--color-text-subtle); display: flex; gap: var(--space-2); flex-wrap: wrap; }
+  .crumbs a { color: var(--color-text-muted); text-decoration: none; }
+  .crumbs a:hover { color: var(--color-ink); text-decoration: underline; }
+  .eyebrow {
+    margin-top: var(--space-8);
+    font-family: var(--font-body);
+    font-size: var(--text-xs);
+    font-weight: var(--weight-semibold);
+    text-transform: uppercase;
+    letter-spacing: var(--tracking-eyebrow);
+    color: var(--color-text-subtle);
   }
-  .area-card:hover { border-color: var(--border-strong); box-shadow: var(--shadow-md); transform: translateY(-2px); }
-  .area-ic { display: inline-flex; height: 3.1rem; width: 3.1rem; align-items: center; justify-content: center; border-radius: var(--radius-md); background: var(--color-navy); color: var(--color-green); }
-  .area-card h2 { margin-top: var(--space-5); font-size: var(--text-lg); color: var(--color-ink); }
-  .area-short { margin-top: var(--space-3); color: var(--color-text-muted); font-size: var(--text-sm); line-height: var(--leading-normal); }
-  .area-sit { list-style: none; padding: 0; margin: var(--space-4) 0 0; display: flex; flex-direction: column; gap: var(--space-2); }
-  .area-sit li { display: flex; gap: var(--space-2); align-items: flex-start; color: var(--color-text); font-size: var(--text-sm); line-height: var(--leading-snug); }
-  .sit-ic { color: var(--color-green-strong); flex: none; margin-top: 2px; }
-  .area-more { margin-top: var(--space-5); display: inline-flex; align-items: center; gap: 0.4rem; color: var(--color-green-strong); font-weight: var(--weight-semibold); font-size: var(--text-sm); }
+  .ar-topo h1 { margin-top: var(--space-4); font-size: var(--text-5xl); color: var(--color-ink); max-width: 20ch; }
+  .ar-lead {
+    margin-top: var(--space-6);
+    max-width: 56ch;
+    font-size: var(--text-md);
+    line-height: var(--leading-relaxed);
+    color: var(--color-text-muted);
+  }
 
-  .areas-cta { background: var(--surface-strong); color: var(--color-text-on-dark); padding-block: var(--section-y-sm); }
-  .cta-inner { display: grid; gap: var(--space-6); grid-template-columns: 1fr; align-items: center; }
-  @media (min-width: 900px) { .cta-inner { grid-template-columns: 1.6fr 1fr; gap: var(--space-10); } }
-  .areas-cta h2 { color: #fff; font-size: var(--text-2xl); line-height: var(--leading-snug); }
-  .areas-cta p { margin-top: var(--space-4); color: var(--color-text-on-dark-muted); line-height: var(--leading-normal); max-width: var(--measure-narrow); }
-  .cta-actions { display: flex; flex-wrap: wrap; gap: var(--space-3); }
+  /* ─── Sumário das bandas ─────────────────────────────────────────────── */
+  .ar-sumario { border-bottom: 1px solid var(--color-border); background: var(--surface-warm); }
+  .ar-sumario ul {
+    list-style: none; padding: 0; margin: 0;
+    display: flex; flex-wrap: wrap; gap: var(--space-5) var(--space-8);
+    padding-block: var(--space-5);
+  }
+  .ar-sumario a {
+    font-family: var(--font-body);
+    font-size: var(--text-xs);
+    font-weight: var(--weight-medium);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--color-text-muted);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    padding-bottom: 2px;
+    transition: color var(--dur) var(--ease), border-color var(--dur) var(--ease);
+  }
+  .ar-sumario a:hover { color: var(--color-ink); border-color: var(--color-accent); }
+
+  /* ─── Bandas ─────────────────────────────────────────────────────────── */
+  .ar-banda { padding-block: var(--section-y); border-bottom: 1px solid var(--color-border); scroll-margin-top: var(--altura-cabecalho); }
+  .ar-banda[data-par='quente'] { background: var(--surface-warm); }
+
+  .ar-banda-grid { display: grid; gap: var(--space-8); grid-template-columns: 1fr; }
+  @media (min-width: 900px) { .ar-banda-grid { grid-template-columns: 22rem 1fr; gap: var(--space-12); } }
+
+  .ar-num {
+    font-family: var(--font-body);
+    font-size: var(--text-xs);
+    font-weight: var(--weight-semibold);
+    letter-spacing: var(--tracking-eyebrow);
+    color: var(--color-accent);
+  }
+  .ar-banda-cab h2 { margin-top: var(--space-3); font-size: var(--text-3xl); color: var(--color-ink); }
+  .ar-banda-txt { margin-top: var(--space-4); color: var(--color-text-muted); line-height: var(--leading-relaxed); font-size: var(--text-sm); }
+  .ar-banda-link {
+    display: inline-block;
+    margin-top: var(--space-5);
+    font-family: var(--font-body);
+    font-size: var(--text-sm);
+    font-weight: var(--weight-medium);
+    color: var(--color-ink);
+    text-decoration: none;
+    border-bottom: 1px solid var(--color-accent);
+    padding-bottom: 2px;
+    transition: color var(--dur) var(--ease);
+  }
+  .ar-banda-link:hover { color: var(--color-accent); }
+
+  /* Lista de frentes — filetes dividindo as linhas, nada flutuando. */
+  .ar-frentes { list-style: none; padding: 0; margin: 0; border-top: 1px solid var(--color-border); }
+  .ar-frentes li { border-bottom: 1px solid var(--color-border); }
+  .ar-frentes a {
+    display: block;
+    padding: var(--space-5) 0;
+    text-decoration: none;
+    transition: padding-inline-start var(--dur) var(--ease);
+  }
+  .ar-frentes a:hover { padding-inline-start: var(--space-3); }
+  .ar-frente-t {
+    display: block;
+    font-family: var(--font-display);
+    font-size: var(--text-xl);
+    line-height: var(--leading-snug);
+    letter-spacing: var(--tracking-tight);
+    color: var(--color-ink);
+  }
+  .ar-frentes a:hover .ar-frente-t { color: var(--color-accent); }
+  .ar-frente-d { display: block; margin-top: var(--space-2); max-width: 64ch; font-size: var(--text-sm); line-height: var(--leading-normal); color: var(--color-text-muted); }
+
+  /* ─── Fecho ──────────────────────────────────────────────────────────── */
+  .ar-cta { background: var(--color-navy); color: var(--color-text-on-dark); padding-block: var(--section-y); }
+  .ar-cta-grid { display: grid; gap: var(--space-8); grid-template-columns: 1fr; align-items: center; }
+  @media (min-width: 900px) { .ar-cta-grid { grid-template-columns: 1.5fr 1fr; gap: var(--space-12); } }
+  .ar-cta h2 { color: #fff; font-size: var(--text-3xl); max-width: 24ch; }
+  .ar-cta p { margin-top: var(--space-5); max-width: 52ch; color: var(--color-text-on-dark-muted); line-height: var(--leading-relaxed); }
+  .ar-cta-acoes { display: flex; flex-wrap: wrap; gap: var(--space-4); }
+  @media (min-width: 900px) { .ar-cta-acoes { justify-content: flex-end; } }
 </style>

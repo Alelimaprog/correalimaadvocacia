@@ -4,12 +4,11 @@ interface Props {
 }
 const { heroEscuro } = Astro.props;
 /**
- * Header — cabeçalho flutuante em "pílula" (migração visual): fixo no topo,
- * fundo transparente até rolar; ao rolar, vira um cartão translúcido com
- * blur, borda e sombra suave, igual ao comportamento do modelo de
- * referência. Logo à esquerda, navegação central (desktop), CTA WhatsApp
- * (desktop) e menu hambúrguer (mobile). Toda a lógica de navegação/menu
- * permanece nos componentes Navigation/MobileMenu (inalterados).
+ * Header — faixa institucional fixa no topo. Fundo translúcido até a primeira
+ * rolagem; ao rolar, fundo sólido e filete inferior — nada se move de lugar.
+ * Logo à esquerda, navegação ao centro (desktop), CTA à direita e hambúrguer
+ * abaixo de `lg`. Sobre hero escuro (`heroEscuro`), a faixa fica transparente
+ * com texto claro até rolar.
  */
 import Logo from '@/components/Logo.astro';
 import Navigation from '@/components/Navigation.astro';
@@ -97,12 +96,14 @@ import MobileMenu from '@/components/MobileMenu.astro';
   }
 
   .header-cta-link {
-    min-height: 2.5rem;
-    padding: 0.55rem 1.25rem;
+    min-height: 2.75rem;
+    padding: 0.55rem 1.1rem;
     font-size: var(--text-xs);
     letter-spacing: 0.04em;
     text-transform: uppercase;
+    white-space: nowrap;
   }
+  @media (min-width: 1200px) { .header-cta-link { padding-inline: 1.5rem; } }
 
   @media (min-width: 1024px) {
     .header-cta { display: block; }

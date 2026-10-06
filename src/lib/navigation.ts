@@ -1,10 +1,13 @@
 /**
  * navigation.ts — Fonte única de navegação (DRY), consumida por Navigation,
- * MobileMenu e Footer. Reflete o novo posicionamento (Sprint 1): menu enxuto
- * com o dropdown "Áreas de Atuação" apresentando os seis núcleos e "Conteúdos"
- * agrupando Artigos, Guias e Assuntos.
+ * MobileMenu e Footer.
+ *
+ * No reposicionamento empresarial, o dropdown "Áreas de Atuação" passou a
+ * apresentar as BANDAS de src/lib/frentes.ts, e não mais os seis núcleos
+ * isolados: era a única forma de o menu mostrar o conteúdo empresarial que o
+ * site já tinha publicado e mantinha invisível. Nenhuma URL mudou.
  */
-import { nucleos } from './nucleos';
+import { bandas } from './frentes';
 
 export interface NavLink {
   label: string;
@@ -17,11 +20,11 @@ export const mainNav: NavLink[] = [
   { label: 'O Escritório', href: '/o-escritorio/' },
 ];
 
-/** Dropdown "Áreas de Atuação" — os seis núcleos. */
+/** Dropdown "Áreas de Atuação" — bandas, empresarial à frente. */
 export const areasMenu = {
   label: 'Áreas de Atuação',
   href: '/areas-de-atuacao/',
-  items: nucleos.map((n) => ({ label: n.label, href: n.href, short: n.short, icon: n.icon })),
+  bandas,
   viewAll: { label: 'Ver todas as áreas', href: '/areas-de-atuacao/' } as NavLink,
 };
 
@@ -39,8 +42,8 @@ export const conteudosMenu = {
 /** Link de contato (fim do menu). */
 export const contatoLink: NavLink = { label: 'Contato', href: '/contato/' };
 
-/** Rodapé — coluna dos seis núcleos. */
-export const footerNucleos: NavLink[] = nucleos.map((n) => ({ label: n.label, href: n.href }));
+/** Rodapé — uma entrada por banda, apontando para a página que a ancora. */
+export const footerNucleos: NavLink[] = bandas.map((b) => ({ label: b.label, href: b.href }));
 
 /** Rodapé — coluna institucional. */
 export const footerInstitucional: NavLink[] = [
