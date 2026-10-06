@@ -30,7 +30,7 @@
     <figure class="hero-figure" data-reveal>
       <img
         class="hero-portrait"
-        src="/brand/alexandre-correa-lima.webp"
+        src="/brand/alexandre-correa-lima-trabalhista.png"
         width="760"
         height="1207"
         alt="Alexandre Corrêa Lima, advogado responsável pelo escritório"
@@ -125,7 +125,7 @@
      imagem + placa em vidro fosco sobreposta (nome, OAB e compromissos). */
   .hero-figure { position: relative; margin: 0; width: 100%; max-width: 18.5rem; margin-inline: auto; }
   .hero-portrait {
-    display: block; width: 100%; aspect-ratio: 314 / 499; object-fit: cover; object-position: 50% 50%;
+    display: block; width: 100%; aspect-ratio: 4 / 5; object-fit: cover; object-position: 50% 42%;
     border-radius: var(--radius-xl); border: 1px solid var(--color-border);
     box-shadow: var(--shadow-lg); background: var(--surface-warm);
   }
@@ -168,4 +168,51 @@
 
   }
 
+  /* Entre 641 e 939px ainda cabe o retrato de corpo: ele fica com a altura
+     que sobra da janela depois do texto, recortado pelo topo. */
+  @media (min-width: 641px) and (max-width: 939px) {
+    .hero-figure {
+      flex: none;
+      height: clamp(10rem, calc(100svh - 42rem), 30rem);
+    }
+    .hero-portrait {
+      height: 100%;
+      aspect-ratio: auto;
+      object-position: 50% 16%;
+    }
+  }
+
+  /* Abaixo de 640px não sobra janela para o retrato de corpo: ele viraria
+     uma tarja com o alto da cabeça. Aqui ele se recolhe a uma assinatura —
+     foto pequena, nome e OAB na mesma linha — que ocupa pouco mais de 4rem
+     e mantém a pessoa presente na primeira tela. */
+  @media (max-width: 640px) {
+    .hero-figure {
+      flex: none;
+      max-width: none;
+      margin-inline: 0;
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+    }
+    .hero-portrait {
+      flex: none;
+      width: 4.25rem;
+      height: 4.25rem;
+      aspect-ratio: 1 / 1;
+      object-position: 50% 16%;
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-sm);
+    }
+    .hero-id {
+      position: static;
+      padding: 0;
+      border: 0;
+      border-radius: 0;
+      box-shadow: none;
+      background: none;
+      -webkit-backdrop-filter: none;
+      backdrop-filter: none;
+    }
+  }
 </style>
