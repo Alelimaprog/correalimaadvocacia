@@ -1,0 +1,65 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "h1": {
+      "type": "string"
+    },
+    "author": {
+      "default": "Alexandre Corrêa Lima",
+      "type": "string"
+    },
+    "cluster": {
+      "type": "string",
+      "enum": [
+        "recuperacao-de-credito",
+        "cobranca-condominial",
+        "direito-ambiental",
+        "direito-aduaneiro-tributario",
+        "direito-internacional",
+        "inventario-e-patrimonio"
+      ]
+    },
+    "relacionados": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "titulo": {
+            "type": "string"
+          },
+          "href": {
+            "type": "string"
+          },
+          "tipo": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "titulo",
+          "href"
+        ]
+      }
+    },
+    "revisor": {
+      "type": "string"
+    },
+    "readingMinutes": {
+      "type": "number"
+    },
+    "$schema": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "title",
+    "description",
+    "h1"
+  ]
+}
