@@ -68,7 +68,6 @@ Responsável técnico: [Alexandre Corrêa Lima](/o-escritorio/#alexandre-correa-
 - [Homologação de Sentença Estrangeira no STJ](/areas-de-atuacao/homologacao-de-sentenca-estrangeira/)
 - [Homologação de Divórcio Estrangeiro](/areas-de-atuacao/homologacao-de-divorcio-estrangeiro/)
 - [Averbação de Divórcio Estrangeiro](/areas-de-atuacao/averbacao-de-divorcio-estrangeiro/)
-- [Reconhecimento de Decisões Estrangeiras](/areas-de-atuacao/homologacao-de-sentenca-estrangeira/)
 
 Guia completo do tema
 

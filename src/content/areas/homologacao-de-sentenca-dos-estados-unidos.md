@@ -11,7 +11,7 @@ Homologação de Sentença Estrangeira · Estados Unidos
 
 Decisões judiciais proferidas nos Estados Unidos — como sentenças de divórcio, guarda ou alimentos — não produzem efeitos automáticos no Brasil. Para valerem em cartórios e órgãos brasileiros, precisam, em regra, ser homologadas pelo Superior Tribunal de Justiça (STJ).
 
-[Falar no WhatsApp](https://wa.me/5511975025611?text=Ol%C3%A1%2C%20gostaria%20de%20orienta%C3%A7%C3%A3o%20sobre%20homologa%C3%A7%C3%A3o%20de%20senten%C3%A7a%20dos%20Estados%20Unidos.)[Enviar meu caso](/contato/?area=Homologa%C3%A7%C3%A3o%20de%20Senten%C3%A7a%20dos%20Estados%20Unidos)
+[Falar no WhatsApp](https://wa.me/5511975025611?text=Ol%C3%A1%21%20Vim%20pelo%20site.%20Tenho%20um%20div%C3%B3rcio%2Fdecis%C3%A3o%20feito%20no%20exterior.%0APa%C3%ADs%2Festado%3A%20%0ATrata%20de%20guarda%2C%20pens%C3%A3o%20ou%20bens%3F%20%0AMoro%20hoje%20em%3A%20)[Enviar meu caso](/contato/?area=Homologa%C3%A7%C3%A3o%20de%20Senten%C3%A7a%20dos%20Estados%20Unidos)
 
 O escritório conduz o procedimento de homologação de sentenças norte-americanas para brasileiros e estrangeiros, com atendimento estruturado de forma online — especialmente voltado à comunidade brasileira que reside nos Estados Unidos.
 
@@ -87,7 +87,7 @@ Atendimento nacional e online, quando aplicável.
 
 Responsável técnico: [Alexandre Corrêa Lima](/o-escritorio/#alexandre-correa-lima)
 
-[Falar no WhatsApp](https://wa.me/5511975025611?text=Ol%C3%A1%2C%20gostaria%20de%20orienta%C3%A7%C3%A3o%20sobre%20homologa%C3%A7%C3%A3o%20de%20senten%C3%A7a%20dos%20Estados%20Unidos.)[Enviar meu caso](/contato/?area=Homologa%C3%A7%C3%A3o%20de%20Senten%C3%A7a%20dos%20Estados%20Unidos)
+[Falar no WhatsApp](https://wa.me/5511975025611?text=Ol%C3%A1%21%20Vim%20pelo%20site.%20Tenho%20um%20div%C3%B3rcio%2Fdecis%C3%A3o%20feito%20no%20exterior.%0APa%C3%ADs%2Festado%3A%20%0ATrata%20de%20guarda%2C%20pens%C3%A3o%20ou%20bens%3F%20%0AMoro%20hoje%20em%3A%20)[Enviar meu caso](/contato/?area=Homologa%C3%A7%C3%A3o%20de%20Senten%C3%A7a%20dos%20Estados%20Unidos)
 
 Áreas relacionadas
 

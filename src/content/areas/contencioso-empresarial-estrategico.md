@@ -72,9 +72,8 @@ Responsável técnico: [Alexandre Corrêa Lima](/o-escritorio/#alexandre-correa-
 Áreas relacionadas
 
 - [Recuperação Judicial e Falência](/areas-de-atuacao/recuperacao-judicial-e-falencia/)
-- [Advocacia Empresarial](/areas-de-atuacao/direito-empresarial/)
+- [Direito Empresarial e Contratos](/areas-de-atuacao/direito-empresarial/)
 - [Trabalhista Empresarial](/areas-de-atuacao/trabalhista-empresarial/)
-
 
 Fale com o escritório
 

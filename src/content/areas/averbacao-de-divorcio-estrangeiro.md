@@ -11,7 +11,7 @@ Homologação de Sentença Estrangeira · Averbação direta
 
 Nem todo divórcio realizado no exterior precisa passar pela homologação do STJ. Quando o divórcio é consensual simples — a decisão estrangeira trata apenas do fim do casamento, sem dispor sobre guarda, alimentos ou partilha de bens —, é possível averbá-lo diretamente no cartório de registro civil no Brasil, sem processo no STJ e sem necessidade de advogado.
 
-[Falar no WhatsApp](https://wa.me/5511975025611?text=Ol%C3%A1%2C%20gostaria%20de%20orienta%C3%A7%C3%A3o%20sobre%20averba%C3%A7%C3%A3o%20de%20div%C3%B3rcio%20estrangeiro%20em%20cart%C3%B3rio.)[Enviar meu caso](/contato/?area=Averba%C3%A7%C3%A3o%20de%20Div%C3%B3rcio%20Estrangeiro)
+[Falar no WhatsApp](https://wa.me/5511975025611?text=Ol%C3%A1%21%20Vim%20pelo%20site.%20Tenho%20um%20div%C3%B3rcio%2Fdecis%C3%A3o%20feito%20no%20exterior.%0APa%C3%ADs%2Festado%3A%20%0ATrata%20de%20guarda%2C%20pens%C3%A3o%20ou%20bens%3F%20%0AMoro%20hoje%20em%3A%20)[Enviar meu caso](/contato/?area=Averba%C3%A7%C3%A3o%20de%20Div%C3%B3rcio%20Estrangeiro)
 
 Essa possibilidade decorre do Código de Processo Civil (art. 961, § 5º) e do Provimento CNJ nº 53/2016, cujas regras foram consolidadas no Código Nacional de Normas do Foro Extrajudicial (Provimento CNJ nº 149/2023). O escritório analisa a decisão estrangeira e indica se o caso se enquadra nessa via ou se depende de homologação.
 
@@ -59,7 +59,7 @@ Atendimento nacional e online, quando aplicável.
 
 Responsável técnico: [Alexandre Corrêa Lima](/o-escritorio/#alexandre-correa-lima)
 
-[Falar no WhatsApp](https://wa.me/5511975025611?text=Ol%C3%A1%2C%20gostaria%20de%20orienta%C3%A7%C3%A3o%20sobre%20averba%C3%A7%C3%A3o%20de%20div%C3%B3rcio%20estrangeiro%20em%20cart%C3%B3rio.)[Enviar meu caso](/contato/?area=Averba%C3%A7%C3%A3o%20de%20Div%C3%B3rcio%20Estrangeiro)
+[Falar no WhatsApp](https://wa.me/5511975025611?text=Ol%C3%A1%21%20Vim%20pelo%20site.%20Tenho%20um%20div%C3%B3rcio%2Fdecis%C3%A3o%20feito%20no%20exterior.%0APa%C3%ADs%2Festado%3A%20%0ATrata%20de%20guarda%2C%20pens%C3%A3o%20ou%20bens%3F%20%0AMoro%20hoje%20em%3A%20)[Enviar meu caso](/contato/?area=Averba%C3%A7%C3%A3o%20de%20Div%C3%B3rcio%20Estrangeiro)
 
 Áreas relacionadas
 

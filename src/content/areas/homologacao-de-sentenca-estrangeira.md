@@ -7,9 +7,9 @@ author: "Alexandre Corrêa Lima"
 
 Decisões estrangeiras
 
-# Homologação de Sentença Estrangeira no STJ
+# Advogado para homologação de sentença e divórcio estrangeiro no STJ
 
-Condução do procedimento de reconhecimento de decisões estrangeiras perante o Superior Tribunal de Justiça, para que produzam efeitos no Brasil.
+Uma sentença estrangeira só produz efeitos no Brasil depois de homologada pelo Superior Tribunal de Justiça (CPC, arts. 960 a 965). O pedido exige a decisão definitiva, apostilada e com tradução juramentada. A exceção é o divórcio consensual simples, que pode ser averbado direto no cartório (CPC, art. 961, § 5º).
 
 [Falar no WhatsApp](https://wa.me/5511975025611?text=Ol%C3%A1%2C%20gostaria%20de%20orienta%C3%A7%C3%A3o%20sobre%20homologa%C3%A7%C3%A3o%20de%20senten%C3%A7a%20estrangeira.)[Enviar meu caso](/contato/?area=Homologa%C3%A7%C3%A3o%20de%20Senten%C3%A7a%20Estrangeira)
 
@@ -79,7 +79,7 @@ O prazo pode variar conforme a complexidade do caso, a completude da documentaç
 
 É necessário viajar ao Brasil para dar andamento ao processo?+
 
-Não necessariamente. O atendimento pode ocorrer de forma online, com procuração específica para representação no processo.
+Não necessariamente. O atendimento pode ocorrer de forma online, com procuração específica para representação no processo. Veja quando a [homologação de sentença estrangeira precisa de advogado](/blog/homologacao-sentenca-estrangeira-precisa-de-advogado/) e quando não precisa.
 
 Homologação de sentença estrangeira e homologação de divórcio estrangeiro são a mesma coisa?+
 
@@ -120,7 +120,6 @@ Responsável técnico: [Alexandre Corrêa Lima](/o-escritorio/#alexandre-correa-
 - [Casamento Realizado no Exterior: registro no Brasil](/areas-de-atuacao/homologacao-de-casamento-realizado-no-exterior/)
 - [Execução de Sentença Estrangeira](/areas-de-atuacao/execucao-de-sentenca-estrangeira/)
 - [Advogado para Homologação de Sentença Estrangeira](/areas-de-atuacao/homologacao-de-sentenca-estrangeira/)
-- [Reconhecimento de Decisões Estrangeiras no Brasil](/areas-de-atuacao/homologacao-de-sentenca-estrangeira/)
 - [Inventário com Herdeiro no Exterior](/areas-de-atuacao/inventario-com-herdeiro-no-exterior/)
 
 Guia completo do tema
