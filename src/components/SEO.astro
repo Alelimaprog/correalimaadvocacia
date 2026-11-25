@@ -25,7 +25,44 @@ interface Props {
 const { head, title, description, canonical, noindex, noCanonical } = Astro.props;
 
 // Resolve valores (modo fiel via `head`, ou modo simples)
-const t = head?.title ?? buildTitle(title);
+const tituloBruto = head?.title ?? buildTitle(title);
+
+/**
+ * Sufixo de marca no <title> — três degraus.
+ *
+ * Diagnóstico desta rodada: 105 das 168 páginas passavam de 65 caracteres, e
+ * três (as de /ferramentas/) traziam o nome do escritório DUAS vezes, porque o
+ * `title` já vinha com a marca e ainda passava pelo template que a acrescenta.
+ *
+ * O Google corta o título por largura; acima de ~60 caracteres o que se perde
+ * é justamente o final — ou seja, a marca. Então:
+ *   base curta  -> " | Corrêa Lima Advocacia"
+ *   base média  -> " | Corrêa Lima"
+ *   base longa  -> sem sufixo, porque um "| Corrêa Lim…" cortado é pior do que
+ *                  nenhum sufixo (e o Google costuma acrescentar o nome do site
+ *                  por conta própria).
+ *
+ * Nenhum título editorial é reescrito aqui: só o sufixo é negociado.
+ */
+const MARCA_LONGA = ` | ${site.name}`;
+const MARCA_CURTA = ' | Corrêa Lima';
+
+function tituloComMarca(bruto: string): string {
+  // Remove toda repetição do sufixo já presente (inclusive a duplicada).
+  let base = bruto;
+  while (base.endsWith(MARCA_LONGA)) base = base.slice(0, -MARCA_LONGA.length);
+  while (base.endsWith(MARCA_CURTA)) base = base.slice(0, -MARCA_CURTA.length);
+  base = base.trim();
+
+  if (base.length + MARCA_LONGA.length <= 62) return base + MARCA_LONGA;
+  // Até 68 caracteres a perda na SERP é de um ou dois caracteres do sufixo —
+  // preferível a abrir mão da marca. Acima disso, o sufixo não sobreviveria.
+  if (base.length + MARCA_CURTA.length <= 65) return base + MARCA_CURTA;
+  return base;
+}
+
+const t = tituloComMarca(tituloBruto);
+
 const desc = head?.description ?? description ?? site.defaultDescription;
 const canon = noCanonical
   ? null
@@ -35,7 +72,18 @@ const author = head?.author ?? null;
 const authorLink = head?.authorLink ?? null;
 const og = head?.og;
 const tw = head?.twitter;
-const ogImage = og?.image;
+// Rodada 2 (11/2026): OG/Twitter SEMPRE coerentes com a página. Valores
+// genéricos herdados (título = nome do site, og:url = home) são substituídos
+// pelos da própria página; páginas no modo simples ganham OG/Twitter.
+const homeUrl = `${site.url}/`;
+const ogTitle = og?.title ?? t;
+const ogDesc = og?.description ?? desc;
+const ogUrl = og?.url && !(og.url === homeUrl && canon && canon !== homeUrl) ? og.url : canon;
+const ogType = og?.type ?? 'website';
+const ogImage = og?.image ?? `${site.url}${site.ogImage}`;
+const twTitle = tw?.title && tw.title !== site.name ? tw.title : ogTitle;
+const twDesc = tw?.description && tw.description !== site.defaultDescription ? tw.description : ogDesc;
+const twImage = tw?.image ?? ogImage;
 ---
 
 <title>{t}</title>
@@ -45,20 +93,20 @@ const ogImage = og?.image;
 {author && <meta name="author" content={author} />}
 {authorLink && <link rel="author" href={authorLink} />}
 
-{/* Open Graph — emitido conforme presente no head da página (fidelidade) */}
-{og?.title && <meta property="og:title" content={og.title} />}
-{og?.description && <meta property="og:description" content={og.description} />}
-{og?.url && <meta property="og:url" content={og.url} />}
-{og?.type && <meta property="og:type" content={og.type} />}
-{og?.site_name && <meta property="og:site_name" content={og.site_name} />}
-{og?.locale && <meta property="og:locale" content={og.locale} />}
+{/* Open Graph */}
+{ogTitle && <meta property="og:title" content={ogTitle} />}
+{ogDesc && <meta property="og:description" content={ogDesc} />}
+{ogUrl && <meta property="og:url" content={ogUrl} />}
+<meta property="og:type" content={ogType} />
+<meta property="og:site_name" content={site.name} />
+<meta property="og:locale" content="pt_BR" />
 {ogImage && <meta property="og:image" content={ogImage} />}
 {ogImage && <meta property="og:image:width" content="1200" />}
 {ogImage && <meta property="og:image:height" content="630" />}
 {ogImage && <meta property="og:image:alt" content={site.name} />}
 
 {/* Twitter Card */}
-{tw?.card && <meta name="twitter:card" content={tw.card} />}
-{tw?.title && <meta name="twitter:title" content={tw.title} />}
-{tw?.description && <meta name="twitter:description" content={tw.description} />}
-{tw?.image && <meta name="twitter:image" content={tw.image} />}
+<meta name="twitter:card" content="summary_large_image" />
+{twTitle && <meta name="twitter:title" content={twTitle} />}
+{twDesc && <meta name="twitter:description" content={twDesc} />}
+{twImage && <meta name="twitter:image" content={twImage} />}

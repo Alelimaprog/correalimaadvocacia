@@ -1,0 +1,62 @@
+---
+/**
+ * TopicClusterCard — bloco independente de um assunto (núcleo) para /assuntos/.
+ * Cabeçalho com ícone + nome + descrição, e uma lista organizada de links:
+ * página principal, guia (se houver) e artigos relacionados (limitados),
+ * com rótulos. Rodapé com "ver todos os conteúdos do assunto".
+ */
+import Icon from '@/components/Icon.astro';
+
+interface Props {
+  title: string;
+  icon: string;
+  desc: string;
+  mainHref: string;
+  guia?: { label: string; href: string };
+  articles?: { label: string; href: string }[];
+  allHref: string;
+  maxArticles?: number;
+}
+const { title, icon, desc, mainHref, guia, articles = [], allHref, maxArticles = 4 } = Astro.props;
+const shown = articles.slice(0, maxArticles);
+const rest = articles.length - shown.length;
+---
+<li class="cluster-card">
+  <div class="cluster-head">
+    <span class="cluster-ic"><Icon name={icon} size={22} /></span>
+    <h2>{title}</h2>
+  </div>
+  <p class="cluster-desc">{desc}</p>
+
+  <ul class="cluster-links">
+    <li>
+      <a href={mainHref}>
+        <span>Página principal</span>
+        <span class="cluster-badge cluster-badge--main">Área</span>
+      </a>
+    </li>
+    {guia && (
+      <li>
+        <a href={guia.href}>
+          <span>{guia.label}</span>
+          <span class="cluster-badge cluster-badge--guia">Guia</span>
+        </a>
+      </li>
+    )}
+    {shown.map((a) => (
+      <li>
+        <a href={a.href}>
+          <span>{a.label}</span>
+          <span class="cluster-badge cluster-badge--art">Artigo</span>
+        </a>
+      </li>
+    ))}
+  </ul>
+
+  <div class="cluster-foot">
+    <a class="cluster-all" href={allHref}>
+      {rest > 0 ? `Ver todos os ${articles.length} conteúdos` : 'Ver o assunto'}
+      <Icon name="arrow-right" size={15} />
+    </a>
+  </div>
+</li>

@@ -1,11 +1,11 @@
 ---
-title: "Inventário com Herdeiro no Exterior | Corrêa Lima Advocacia"
+title: "Inventário com Herdeiro no Exterior: Procuração e Apostila | Corrêa Lima Advocacia"
 description: "Advogado para inventário com herdeiro morando fora do Brasil: procuração, documentos, apostilamento e condução do processo à distância."
 h1: "Inventário com Herdeiro no Exterior"
 author: "Alexandre Corrêa Lima"
 ---
 
-Família, Sucessões e Patrimônio
+Inventário e sucessões
 
 # Inventário com Herdeiro no Exterior
 
@@ -26,10 +26,10 @@ O escritório conduz inventários com herdeiros no exterior tanto na via extraju
 
 ## Como o escritório atua
 
-1. 1Levantamento do patrimônio do espólio e identificação da situação de cada herdeiro, inclusive os residentes no exterior.
-2. 2Orientação sobre a procuração específica que o herdeiro no exterior deve outorgar, incluindo reconhecimento de firma e, quando necessário, apostilamento ou legalização consular.
-3. 3Organização da tradução juramentada de documentos estrangeiros relevantes para o inventário.
-4. 4Condução do inventário (extrajudicial ou judicial) com estruturação do acompanhamento remoto do herdeiro fora do Brasil, por videochamada e troca eletrônica de documentos.
+1. Levantamento do patrimônio do espólio e identificação da situação de cada herdeiro, inclusive os residentes no exterior.
+2. Orientação sobre a procuração específica que o herdeiro no exterior deve outorgar, incluindo reconhecimento de firma e, quando necessário, apostilamento ou legalização consular.
+3. Organização da tradução juramentada de documentos estrangeiros relevantes para o inventário.
+4. Condução do inventário (extrajudicial ou judicial) com estruturação do acompanhamento remoto do herdeiro fora do Brasil, por videochamada e troca eletrônica de documentos.
 
 ## Situações comuns
 
@@ -43,6 +43,23 @@ Inventários que combinam bens no Brasil com bens ou contas no exterior de titul
 
 As informações desta página têm caráter informativo geral. O prazo e o desfecho de cada procedimento podem variar conforme as particularidades do caso concreto, sendo necessária análise individual antes de qualquer conclusão.
 
+## Imposto (ITCMD) quando há elemento no exterior
+
+O ITCMD é estadual. Para bens no Brasil de falecido que morava aqui, em São Paulo aplica-se a alíquota de 4% (Lei 10.705/2000). Quando o falecido **morava no exterior** ou deixou **bens no exterior**, a cobrança depende de lei complementar (CF, art. 155, §1º, III). O STF declarou inválida a cobrança sem essa lei (Tema 825). A Lei Complementar 227/2026 passou a definir qual estado cobra nesses casos, mas cada estado ainda precisa adaptar sua lei, o que, pelas regras de anterioridade, tende a produzir efeitos só a partir de 2027. O enquadramento depende da data do óbito e do tipo de bem, e é um dos primeiros pontos da análise.
+
+## Herdeiro morando nos Estados Unidos ou em outro país
+
+O herdeiro que vive no exterior não precisa vir ao Brasil: participa por procuração, que pode ser lavrada no consulado brasileiro ou em notário local, com apostila. Também é preciso CPF ativo para cada herdeiro. Se houver bens fora do Brasil, a partilha desses bens segue, em regra, as regras do país onde estão, e pode ser preciso coordenar com um profissional habilitado lá.
+
+## O que o herdeiro no exterior deve providenciar agora
+
+1. **CPF ativo** (pode ser regularizado pelo consulado ou pela Receita Federal on-line).
+2. **Procuração pública** com poderes para o inventário e a partilha, lavrada no consulado brasileiro (dispensa apostila) ou em notário local com **apostila** e **tradução juramentada** no Brasil.
+3. **Certidão de casamento atualizada**, e do regime de bens, se casou fora.
+4. Se houver **bens no exterior**, extratos e documentos desses bens, porque eles seguem o procedimento do país onde estão.
+
+O prazo de 60 dias da multa do ITCMD em São Paulo conta do óbito, não da chegada da procuração.
+
 ## Perguntas frequentes
 
 O herdeiro no exterior precisa vir ao Brasil para o inventário?+
@@ -51,17 +68,31 @@ Em regra, não. Por meio de procuração específica, devidamente formalizada e,
 
 O que é a Apostila de Haia e quando ela é necessária?+
 
+É um selo de autenticação simplificada, previsto na Convenção de Haia, reconhecido entre os países signatários, que dispensa a legalização consular tradicional. Documentos assinados no exterior (como a procuração do herdeiro) costumam precisar de apostilamento quando o país de origem é signatário da Convenção, ou de legalização consular quando não é.
+
 O inventário pode ser feito em cartório quando há herdeiro no exterior?+
+
+Pode. O herdeiro que mora fora participa por procuração pública, lavrada no consulado brasileiro ou em notário local com apostila e tradução juramentada. O requisito central é o acordo entre os herdeiros. Desde a Res. CNJ 571/2024, a via em cartório também é admitida com herdeiro menor ou testamento, em condições específicas. Cada herdeiro precisa de CPF.
 
 Bens do falecido localizados no exterior entram neste mesmo inventário?+
 
+Bens móveis e imóveis situados no exterior costumam seguir as regras sucessórias e o processo de inventário do país onde estão localizados, ainda que o inventário principal tramite no Brasil. A situação exige análise específica conforme o país e o tipo de bem.
+
 Quanto tempo a documentação do herdeiro no exterior costuma atrasar o processo?+
+
+Depende do país, do tipo de documento exigido e da agilidade do herdeiro em providenciar a tradução e o apostilamento. Organizar essa documentação o quanto antes, em paralelo ao levantamento patrimonial no Brasil, é a forma mais eficaz de evitar atrasos.
 
 É necessário tradutor juramentado para todos os documentos do herdeiro estrangeiro?+
 
+Documentos em língua estrangeira que precisem produzir efeitos oficiais no Brasil (como certidões de casamento, nascimento ou passaporte, quando exigidos) em regra devem ser traduzidos por tradutor juramentado brasileiro.
+
 O herdeiro no exterior tem os mesmos direitos que os herdeiros no Brasil?+
 
+Sim. A residência no exterior não altera, por si só, os direitos sucessórios do herdeiro sobre o patrimônio inventariado no Brasil, que seguem as regras normais da sucessão.
+
 Este serviço tem relação com a homologação de sentença estrangeira?+
+
+Pode ter, em situações específicas — por exemplo, quando há uma decisão estrangeira relacionada à sucessão (como um testamento processado no exterior) que precise ser reconhecida no Brasil. Nesses casos, o inventário é conduzido em conjunto com a avaliação sobre a necessidade de homologação.
 
 Fale sobre o seu caso
 
@@ -73,7 +104,7 @@ Responsável técnico: [Alexandre Corrêa Lima](/o-escritorio/#alexandre-correa-
 
 Áreas relacionadas
 
-- [Inventário e Partilha](/areas-de-atuacao/inventario-e-partilha/)
+- [Inventário e Partilha](/areas-de-atuacao/inventario-e-patrimonio/)
 - [Família e Sucessões](/areas-de-atuacao/familia-e-sucessoes/)
 - [Homologação de Sentença Estrangeira](/areas-de-atuacao/homologacao-de-sentenca-estrangeira/)
 

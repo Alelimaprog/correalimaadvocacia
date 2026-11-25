@@ -1,0 +1,23 @@
+---
+/**
+ * AuthorNote — "Quem conduz o seu caso": credenciais verificáveis do advogado
+ * responsável (Prov. OAB 205/2021: informação objetiva, sem promessa de
+ * resultado, sem depoimentos). Dados confirmados em /o-escritorio/.
+ */
+import { site } from '@/lib/site.config';
+---
+<aside class="author-note" aria-label="Advogado responsável">
+  <img src="/brand/alexandre-correa-lima.webp" width="72" height="72" alt="" loading="lazy" decoding="async" />
+  <p>
+    <strong>Quem conduz o seu caso:</strong> {site.attorney.name}, {site.attorney.oab}, advogado desde 2006.
+    Pós-graduado em Direito Processual Civil (PUC-SP) e em Direito Marítimo e Portuário
+    (Universidade Católica de Santos). <a href="/o-escritorio/#alexandre-correa-lima">Conheça a trajetória</a>.
+  </p>
+</aside>
+<style>
+  .author-note { display: flex; gap: 1rem; align-items: center; margin: 1.5rem 0; padding: 1rem 1.1rem; border: 1px solid var(--border, #d9dee5); background: var(--surface, #fff); }
+  .author-note img { width: 72px; height: 72px; object-fit: cover; object-position: top; flex: none; }
+  .author-note p { margin: 0; font-size: 0.95rem; line-height: 1.55; color: var(--color-ink, #10233b); }
+  .author-note a { color: inherit; text-decoration: underline; }
+  @media (max-width: 520px) { .author-note { align-items: flex-start; } .author-note img { width: 56px; height: 56px; } }
+</style>

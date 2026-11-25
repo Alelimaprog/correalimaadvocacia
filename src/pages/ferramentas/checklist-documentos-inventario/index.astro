@@ -76,15 +76,15 @@ const total = grupos.reduce((n, g) => n + g.itens.length, 0);
 ---
 
 <BaseLayout
-  title="Checklist de Documentos para o Inventário | Ferramenta | Corrêa Lima Advocacia"
-  description="Checklist interativo e gratuito com todos os documentos normalmente exigidos no inventário: do falecido, dos herdeiros, de imóveis, veículos, empresa e dívidas. Marque e imprima."
+  title="Checklist de Documentos para o Inventário"
+  description="Checklist dos documentos do inventário: do falecido, dos herdeiros, de imóveis, veículos, empresas e dívidas. Marque o que já tem e imprima."
   canonical={canonical}
 >
   <main id="conteudo-principal" class="tool" data-tool="checklist-inventario">
     <Container>
       <Breadcrumb items={[{ label: 'Início', href: '/' }, { label: 'Ferramentas', href: '/ferramentas/' }, { label: 'Checklist de documentos' }]} />
 
-      <p class="eyebrow"><span class="dot"></span>Ferramenta gratuita</p>
+      <p class="eyebrow"><span class="dot"></span>Ferramenta de orientação</p>
       <h1>Checklist de documentos para o inventário</h1>
       <p class="lead">
         Reunir a documentação é a etapa que mais atrasa inventários. Use esta
@@ -129,7 +129,7 @@ const total = grupos.reduce((n, g) => n + g.itens.length, 0);
         </p>
         <div class="cta-actions">
           <a class="btn btn--primary" href="/contato/">Falar sobre o meu caso</a>
-          <a class="btn btn--secondary" href={waHref} target="_blank" rel="noopener noreferrer">Falar pelo WhatsApp</a>
+          <a class="btn btn--secondary" href={waHref} target="_blank" rel="noopener noreferrer">Falar no WhatsApp</a>
           <a class="cta-link" href="/ferramentas/inventario-em-cartorio/">Verificar se posso fazer em cartório →</a>
         </div>
       </aside>
@@ -137,7 +137,7 @@ const total = grupos.reduce((n, g) => n + g.itens.length, 0);
       <aside class="note">
         <p>
           Lista de referência, de caráter informativo. A documentação exigida
-          varia conforme o acervo, o estado competente e a via escolhida. Veja o
+          varia conforme o acervo, o estado competente e a via escolhida. Veja o{' '}
           <a href="/guias/inventario-guia-completo/">guia completo de inventário</a>.
         </p>
       </aside>
@@ -181,7 +181,7 @@ const total = grupos.reduce((n, g) => n + g.itens.length, 0);
   .group label { display: flex; align-items: flex-start; gap: var(--space-3); font-size: var(--text-sm); color: var(--color-text); line-height: var(--leading-snug); cursor: pointer; }
   .group input { width: 1.05rem; height: 1.05rem; accent-color: var(--color-green-strong); flex: none; margin-top: 0.15rem; }
   .actions { margin-top: var(--space-6); display: flex; flex-wrap: wrap; gap: var(--space-3); }
-  .cta-box { margin-top: var(--space-8); max-width: 46rem; border: 1px solid var(--border-green-subtle); background: var(--color-green-tint); border-radius: var(--radius-lg); padding: var(--space-6); }
+  .cta-box { margin-top: var(--space-8); max-width: 46rem; border: 1px solid var(--color-border); border-left: 2px solid var(--color-accent); background: var(--surface-cream); border-radius: 0; padding: var(--space-6); }
   .cta-t { font-family: var(--font-display); font-weight: var(--weight-bold); color: var(--color-ink); font-size: var(--text-lg); }
   .cta-d { margin-top: var(--space-2); color: var(--color-text); font-size: var(--text-sm); line-height: var(--leading-normal); }
   .cta-actions { margin-top: var(--space-5); display: flex; flex-wrap: wrap; gap: var(--space-3); align-items: center; }

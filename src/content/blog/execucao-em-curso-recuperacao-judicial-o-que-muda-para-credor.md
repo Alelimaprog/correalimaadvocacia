@@ -1,5 +1,5 @@
 ---
-title: "Execução em Curso e Recuperação Judicial: O Que Muda para o Credor | Corrêa Lima Advocacia"
+title: "Execução em Curso e Recuperação Judicial: O Que Muda | Corrêa Lima Advocacia"
 description: "Seu devedor entrou em recuperação judicial enquanto você já tinha uma execução em andamento? Entenda o que acontece com esse processo."
 h1: "Execução em curso e recuperação judicial: o que muda para o credor"
 author: "Alexandre Corrêa Lima"

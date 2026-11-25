@@ -26,10 +26,10 @@ A assessoria jurídica para importadores vai além da revisão pontual de um con
 
 ## Como o escritório atua
 
-1. 1Diagnóstico jurídico da operação de importação e dos contratos e relações já existentes.
-2. 2Apoio contínuo na negociação e formalização de novos contratos com fornecedores estrangeiros.
-3. 3Orientação sobre riscos cambiais, cláusulas de responsabilidade e Incoterms aplicáveis a cada operação.
-4. 4Condução de eventuais medidas de cobrança ou disputa relacionadas à operação de importação, em conjunto com a área de contratos e recuperação de crédito do escritório.
+1. Diagnóstico jurídico da operação de importação e dos contratos e relações já existentes.
+2. Apoio contínuo na negociação e formalização de novos contratos com fornecedores estrangeiros.
+3. Orientação sobre riscos cambiais, cláusulas de responsabilidade e Incoterms aplicáveis a cada operação.
+4. Condução de eventuais medidas de cobrança ou disputa relacionadas à operação de importação, em conjunto com a área de contratos e recuperação de crédito do escritório.
 
 ## Situações comuns
 
@@ -49,17 +49,31 @@ Contratos de Importação é o serviço voltado à elaboração e revisão de um
 
 A assessoria é indicada para empresas que importam esporadicamente?+
 
+Pode ser útil também nesses casos, mas o formato de acompanhamento contínuo tende a fazer mais sentido para empresas com operação de importação recorrente ou em fase de estruturação dessa frente de negócio.
+
 O escritório atua diretamente com despachantes aduaneiros e outros profissionais da operação?+
+
+A atuação jurídica pode ocorrer de forma complementar a despachantes aduaneiros, agentes de carga e demais profissionais da cadeia de importação, com foco nos aspectos contratuais e jurídicos da operação.
 
 É possível incluir cobrança de fornecedores ou clientes internacionais nesta assessoria?+
 
+Sim. Quando a operação exige medidas de cobrança relacionadas a valores devidos por ou para parceiros internacionais, esse trabalho é conduzido em conjunto com a área de execução e recuperação de crédito do escritório.
+
 O que são Incoterms e por que eles importam juridicamente?+
+
+Incoterms são termos internacionais padronizados que definem responsabilidades entre comprador e vendedor em uma operação de comércio exterior — como transporte, seguro e transferência de risco. A escolha do Incoterm correto tem efeitos diretos sobre quem responde por perdas, atrasos ou danos durante o transporte, sendo um dos pontos avaliados na assessoria.
 
 A assessoria cobre riscos cambiais da operação?+
 
+A avaliação jurídica pode incluir a análise de cláusulas contratuais relacionadas a variação cambial e forma de pagamento, sempre em conjunto com os profissionais financeiros e contábeis responsáveis pela operação — a assessoria jurídica não substitui a consultoria financeira ou tributária especializada.
+
 É necessário ter um contrato formal com todos os fornecedores estrangeiros?+
 
+É altamente recomendável. A ausência de contrato formal dificulta a cobrança e a comprovação de responsabilidade em caso de problemas na operação. Parte do trabalho de assessoria é justamente identificar relações comerciais relevantes que ainda não estão formalizadas.
+
 O atendimento é presencial ou pode ser online?+
+
+O atendimento é estruturado para ocorrer de forma online sempre que aplicável, o que é especialmente útil para empresas importadoras com operação distribuída ou fora de São Paulo.
 
 Fale sobre o seu caso
 
@@ -73,13 +87,13 @@ Responsável técnico: [Alexandre Corrêa Lima](/o-escritorio/#alexandre-correa-
 
 - [Contratos de Importação / Comércio Exterior](/areas-de-atuacao/contratos-de-importacao-comercio-exterior/)
 - [Advocacia Empresarial](/areas-de-atuacao/advocacia-empresarial/)
-- [Execuções, Cobrança e Recuperação de Crédito](/areas-de-atuacao/execucao-cobranca-recuperacao-de-credito/)
+- [Execuções, Cobrança e Recuperação de Crédito](/areas-de-atuacao/recuperacao-de-credito/)
 
 Guia completo do tema
 
 Veja o panorama completo deste cluster, com todos os conteúdos organizados.
 
-[Cobrança, Execução e Recuperação de Crédito Empresarial: guia central →](/guias/cobranca-execucao-e-recuperacao-de-credito-empresarial/)
+[Direito Aduaneiro-Tributário: guia completo →](/guias/direito-aduaneiro-tributario-guia-completo/)
 
 Fale com o escritório
 

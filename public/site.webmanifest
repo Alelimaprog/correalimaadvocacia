@@ -1,7 +1,7 @@
 {
   "name": "Corrêa Lima Advocacia",
   "short_name": "Corrêa Lima",
-  "description": "Advocacia empresarial, internacional e patrimonial.",
+  "description": "Advocacia aduaneira, inventário e homologação de sentença estrangeira em São Paulo.",
   "icons": [
     {
       "src": "/icon-192.png",
@@ -14,8 +14,8 @@
       "type": "image/png"
     }
   ],
-  "theme_color": "#0b7d45",
-  "background_color": "#06281c",
+  "theme_color": "#10233b",
+  "background_color": "#ffffff",
   "display": "standalone",
   "start_url": "/"
 }

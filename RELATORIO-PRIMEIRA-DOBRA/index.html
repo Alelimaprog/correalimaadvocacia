@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Relatório — Primeira dobra das páginas internas · Corrêa Lima Advocacia</title>
+<style>
+  :root{--g:#00a85a;--gd:#0b7d45;--ink:#0c211a;--txt:#3b463f;--muted:#61706a;--bd:#e4ece5;--bg:#f7faf7;--warn:#b4611f}
+  *{box-sizing:border-box}
+  body{margin:0;font:16px/1.6 -apple-system,BlinkMacSystemFont,'Segoe UI',Inter,sans-serif;color:var(--txt);background:#fff}
+  .wrap{max-width:960px;margin:0 auto;padding:2.5rem 1.25rem 4rem}
+  h1{font-size:1.9rem;color:var(--ink);line-height:1.15;margin:0 0 .5rem}
+  h2{font-size:1.3rem;color:var(--ink);margin:2.5rem 0 .75rem;padding-top:1rem;border-top:1px solid var(--bd)}
+  h3{font-size:1.05rem;color:var(--ink);margin:1.5rem 0 .5rem}
+  .lead{color:var(--muted);font-size:1.05rem;margin:0 0 1rem}
+  code{background:var(--bg);border:1px solid var(--bd);border-radius:6px;padding:.1rem .4rem;font-size:.9em}
+  pre{background:var(--ink);color:#e6efe9;padding:1rem 1.1rem;border-radius:12px;overflow:auto;font-size:.86rem;line-height:1.5}
+  table{border-collapse:collapse;width:100%;margin:1rem 0;font-size:.92rem}
+  th,td{border:1px solid var(--bd);padding:.5rem .7rem;text-align:left;vertical-align:top}
+  th{background:var(--bg);color:var(--ink)}
+  td.n,th.n{text-align:right}
+  .ok{color:var(--gd);font-weight:700}
+  .warnv{color:var(--warn);font-weight:700}
+  .badge{display:inline-block;background:var(--bg);border:1px solid var(--bd);border-radius:999px;padding:.15rem .7rem;font-size:.8rem;color:var(--gd);font-weight:600}
+  .grid{display:grid;gap:1.25rem;grid-template-columns:1fr 1fr;margin:1rem 0}
+  @media(max-width:680px){.grid{grid-template-columns:1fr}}
+  figure{margin:0}
+  figure img{width:100%;height:auto;border:1px solid var(--bd);border-radius:10px;display:block}
+  figcaption{font-size:.82rem;color:var(--muted);margin-top:.4rem}
+  .tag{font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.05em;padding:.1rem .5rem;border-radius:6px}
+  .tag-before{background:#fbeee6;color:var(--warn)}
+  .tag-after{background:#e2f4ea;color:var(--gd)}
+  ul li{margin:.25rem 0}
+  .kpi{display:flex;gap:1rem;flex-wrap:wrap;margin:1rem 0}
+  .kpi div{flex:1;min-width:150px;background:var(--bg);border:1px solid var(--bd);border-radius:12px;padding:1rem}
+  .kpi b{display:block;font-size:1.6rem;color:var(--ink);line-height:1}
+  .kpi span{font-size:.82rem;color:var(--muted)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <span class="badge">Correção estrutural · primeira dobra</span>
+  <h1>Padronização da primeira dobra das páginas internas</h1>
+  <p class="lead">A transição herói → seção seguinte passou de <b>142–541&nbsp;px acima da dobra (média 302&nbsp;px)</b> para <b>0&nbsp;px em todas as resoluções de desktop</b>. Home idêntica pixel a pixel. Build limpo, zero overflow horizontal.</p>
+
+  <div class="kpi">
+    <div><b>0 px</b><span>foldGap no desktop (114 amostras, tolerância ≤ 8 px)</span></div>
+    <div><b>48</b><span>páginas com a regra (7 pilar + 41 sub)</span></div>
+    <div><b>5</b><span>arquivos alterados (4 + 1 novo)</span></div>
+    <div><b>0</b><span>diferenças na Home / overflow / páginas sem H1</span></div>
+  </div>
+
+  <h2>1. Causa técnica</h2>
+  <p>A altura do herói de <code>PillarPage</code> (<code>.p-hero</code>) e <code>SubPage</code> (<code>.s-hero</code>) vinha <b>só de padding</b>, variando com título, descrição, card lateral e largura — a transição nunca caía na dobra. Uma tentativa anterior esticou o herói à viewport mas deixou o conteúdo colado ao topo, gerando ~380&nbsp;px de faixa vazia (documentado em <code>areas-hero.css</code>). O cabeçalho é <code>position: sticky</code> (no fluxo) e sua borda inferior fica a <b>78&nbsp;px</b> do topo em qualquer largura; o token <code>--header-height</code> dizia 76&nbsp;px — corrigido para <code>4.875rem</code> (78&nbsp;px).</p>
+
+  <h2>2. Solução — uma regra única e reutilizável</h2>
+  <pre>.internal-first-fold { box-sizing: border-box; }
+
+@media (min-width: 900px) {
+  .internal-first-fold {
+    display: flex; flex-direction: column;
+    justify-content: center;                      /* distribui — sem faixa vazia */
+    min-height: calc(100vh  - var(--header-height));  /* fallback */
+    min-height: calc(100svh - var(--header-height));  /* atual   */
+  }
+}</pre>
+  <ul>
+    <li><b>min-height</b> (não height): conteúdo maior que a dobra faz a seção crescer — nada é cortado.</li>
+    <li><b>justify-content: center</b>: conteúdo distribuído — sem a faixa vazia da tentativa anterior; pilar (com card) e sub (sem card) terminam no mesmo ponto.</li>
+    <li><b>≥ 900px</b>: no mobile/tablet-retrato o herói cresce pelo conteúdo, respeitando barras dinâmicas, sem cortes.</li>
+  </ul>
+
+  <h2>3. Arquivos alterados</h2>
+  <table>
+    <tr><th>Arquivo</th><th>Mudança</th></tr>
+    <tr><td><code>src/styles/first-fold.css</code></td><td><b>NOVO</b> — regra <code>.internal-first-fold</code>.</td></tr>
+    <tr><td><code>src/styles/tokens.css</code></td><td><code>--header-height</code>: 4.75rem → <b>4.875rem</b> (real).</td></tr>
+    <tr><td><code>src/layouts/BaseLayout.astro</code></td><td>import de <code>first-fold.css</code>.</td></tr>
+    <tr><td><code>src/components/PillarPage.astro</code></td><td>classe no <code>.p-hero</code> + padding simétrico.</td></tr>
+    <tr><td><code>src/components/SubPage.astro</code></td><td>classe no <code>.s-hero</code> + padding simétrico.</td></tr>
+  </table>
+  <p>Sem <code>!important</code>, sem JavaScript, sem CSS por URL, sem editar o <code>dist</code> como fonte.</p>
+
+  <h2>4. Inventário — página × template × decisão</h2>
+  <table>
+    <tr><th>Template</th><th>1ª seção</th><th class="n">Páginas</th><th>Regra da dobra</th></tr>
+    <tr><td>PillarPage.astro</td><td><code>.p-hero</code></td><td class="n">7</td><td class="ok">Aplicada ✅</td></tr>
+    <tr><td>SubPage.astro</td><td><code>.s-hero</code></td><td class="n">41</td><td class="ok">Aplicada ✅</td></tr>
+    <tr><td>ContentIndex (blog/guias/assuntos/ferramentas + LP)</td><td><code>.cx-hero</code></td><td class="n">5</td><td>Não forçada*</td></tr>
+    <tr><td>AreasIndex</td><td><code>.areas-head</code></td><td class="n">1</td><td>Não forçada*</td></tr>
+    <tr><td>EntryPage (blog, guias, áreas secundárias)</td><td><code>.entry</code></td><td class="n">94</td><td>Não se aplica*</td></tr>
+    <tr><td>Institucional</td><td><code>.inst</code></td><td class="n">5</td><td>Não se aplica*</td></tr>
+    <tr><td>Ferramentas</td><td><code>.tool</code></td><td class="n">3</td><td>Não se aplica*</td></tr>
+    <tr><td>Contato</td><td><code>.contato</code></td><td class="n">1</td><td>Não se aplica*</td></tr>
+    <tr><td><b>Home</b></td><td>—</td><td class="n">1</td><td class="ok">Excluída — intocada 🔒</td></tr>
+  </table>
+  <p style="font-size:.9rem;color:var(--muted)">* Listagens têm grade de cards logo abaixo do herói: esticá-lo esconderia os cards (regressão). Artigos/prosa/ferramenta/contato não têm a transição herói-claro → seção. Aplicou-se a regra aos 48 heróis-banda (pilar + sub, que incluem 100% das páginas do teste obrigatório) e respeitou-se o mesmo princípio, sem esconder conteúdo, nos demais.</p>
+
+  <h2>5. Resultados por resolução (páginas-alvo)</h2>
+  <table>
+    <tr><th>Resolução</th><th class="n">Amostras</th><th class="n">foldGap mín</th><th class="n">máx</th><th class="n">média</th><th class="n">Overflow X</th></tr>
+    <tr><td>1920 × 1080</td><td class="n">19</td><td class="n">0,00</td><td class="n">0,00</td><td class="n ok">0,00</td><td class="n">0</td></tr>
+    <tr><td>1600 × 900</td><td class="n">19</td><td class="n">0,00</td><td class="n">0,00</td><td class="n ok">0,00</td><td class="n">0</td></tr>
+    <tr><td>1440 × 900</td><td class="n">19</td><td class="n">0,00</td><td class="n">0,00</td><td class="n ok">0,00</td><td class="n">0</td></tr>
+    <tr><td>1366 × 768</td><td class="n">19</td><td class="n">0,00</td><td class="n">0,00</td><td class="n ok">0,00</td><td class="n">0</td></tr>
+    <tr><td>1280 × 720</td><td class="n">19</td><td class="n">0,00</td><td class="n">0,00</td><td class="n ok">0,00</td><td class="n">0</td></tr>
+    <tr><td>1024 × 768</td><td class="n">19</td><td class="n">0,00</td><td class="n">0,00</td><td class="n ok">0,00</td><td class="n">0</td></tr>
+    <tr><td>768 × 1024 <span class="badge">mobile</span></td><td class="n">19</td><td class="n">416</td><td class="n">594</td><td class="n">524</td><td class="n">0</td></tr>
+    <tr><td>390 × 844 <span class="badge">mobile</span></td><td class="n">19</td><td class="n">104</td><td class="n">324</td><td class="n">247</td><td class="n">0</td></tr>
+    <tr><td>360 × 800 <span class="badge">mobile</span></td><td class="n">19</td><td class="n">38</td><td class="n">282</td><td class="n">190</td><td class="n">0</td></tr>
+  </table>
+  <p>Desktop: transição na dobra (0&nbsp;px). Mobile/tablet-retrato: herói cresce naturalmente (foldGap positivo), sem cortes nem overflow.</p>
+
+  <h2>6. Home — confirmação (pixel a pixel)</h2>
+  <p>Fonte antes × depois das alterações, com animações neutralizadas: <b class="ok">0 pixels de diferença</b> em 1366×768, 1920×1080 e 390×844.</p>
+  <div class="grid">
+    <figure><span class="tag tag-before">antes</span><img src="prints/home_1366_before.png" alt="Home antes"><figcaption>Home — build da fonte original.</figcaption></figure>
+    <figure><span class="tag tag-after">depois</span><img src="prints/home_1366_after.png" alt="Home depois"><figcaption>Home — build com as alterações. Idêntica.</figcaption></figure>
+  </div>
+
+  <h2>7. Antes × Depois (linha vermelha = base da viewport)</h2>
+  <h3>Página-pilar — Direito do Trabalho (1366 × 768)</h3>
+  <div class="grid">
+    <figure><span class="tag tag-before">antes</span><img src="prints/pilar-trabalho__1366x768__before.png" alt="Pilar antes"><figcaption>Fundo claro termina no meio; a seção branca invade a dobra.</figcaption></figure>
+    <figure><span class="tag tag-after">depois</span><img src="prints/pilar-trabalho__1366x768__after.png" alt="Pilar depois"><figcaption>Herói preenche até a linha; transição na dobra.</figcaption></figure>
+  </div>
+  <h3>Subpágina — Verbas Rescisórias (1366 × 768)</h3>
+  <div class="grid">
+    <figure><span class="tag tag-before">antes</span><img src="prints/sub-verbas__1366x768__before.png" alt="Sub antes"><figcaption>Herói curto (sem card), muito branco abaixo.</figcaption></figure>
+    <figure><span class="tag tag-after">depois</span><img src="prints/sub-verbas__1366x768__after.png" alt="Sub depois"><figcaption>Termina na mesma linha do pilar.</figcaption></figure>
+  </div>
+  <h3>Subpágina — Horas Extras (1366 × 768)</h3>
+  <div class="grid">
+    <figure><span class="tag tag-before">antes</span><img src="prints/sub-horas__1366x768__before.png" alt="Horas antes"><figcaption>Transição bem acima da dobra.</figcaption></figure>
+    <figure><span class="tag tag-after">depois</span><img src="prints/sub-horas__1366x768__after.png" alt="Horas depois"><figcaption>Transição na dobra.</figcaption></figure>
+  </div>
+  <h3>Tela alta — 1920 × 1080 (depois)</h3>
+  <div class="grid">
+    <figure><span class="tag tag-after">depois</span><img src="prints/pilar-trabalho__1920x1080__after.png" alt="Pilar 1920 depois"><figcaption>Conteúdo centralizado e equilibrado — sem faixa vazia embaixo, preenche até a dobra.</figcaption></figure>
+  </div>
+
+  <h2>8. Publicação</h2>
+  <p>Faça backup do <code>public_html</code>, envie o conteúdo de <code>correalima-public_html.zip</code> para a raiz do <code>public_html</code> e limpe o cache. Para recompilar: <code>npm install</code> + <code>npm run build</code>.</p>
+</div>
+</body>
+</html>

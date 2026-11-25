@@ -26,10 +26,10 @@ O escritório conduz esse procedimento para credores (fornecedores, prestadores 
 
 ## Como o escritório atua
 
-1. 1Levantamento e organização da documentação que comprova o crédito (contratos, notas fiscais, títulos, correspondências).
-2. 2Elaboração e protocolo da habilitação de crédito dentro do prazo processual aplicável.
-3. 3Análise da lista de credores para identificar eventual necessidade de impugnação de créditos de terceiros.
-4. 4Acompanhamento do crédito habilitado até a definição final no processo.
+1. Levantamento e organização da documentação que comprova o crédito (contratos, notas fiscais, títulos, correspondências).
+2. Elaboração e protocolo da habilitação de crédito dentro do prazo processual aplicável.
+3. Análise da lista de credores para identificar eventual necessidade de impugnação de créditos de terceiros.
+4. Acompanhamento do crédito habilitado até a definição final no processo.
 
 ## Situações comuns
 
@@ -51,13 +51,23 @@ O prazo é definido no edital do processo e costuma ser contado a partir da publ
 
 O que acontece se eu não habilitar meu crédito?+
 
+O crédito não habilitado não é reconhecido dentro do processo e, em regra, não participa dos efeitos do plano de recuperação aprovado, o que pode comprometer a possibilidade de recebimento.
+
 Qual documentação costuma ser necessária para habilitar um crédito?+
+
+Em geral, os documentos que comprovam a origem e o valor do crédito — contratos, notas fiscais, títulos de crédito, e-mails e demais registros da relação comercial. A lista específica depende da natureza do crédito e é confirmada após análise do caso.
 
 O que é impugnação de crédito?+
 
+É o procedimento pelo qual um credor, o administrador judicial, o Ministério Público ou a própria empresa em recuperação contestam a existência, o valor ou a classificação de um crédito habilitado por outro credor.
+
 A classificação do crédito (trabalhista, com garantia real, quirografário etc.) faz diferença?+
 
+Sim, e é um dos pontos mais relevantes da habilitação: a classificação determina a ordem e, muitas vezes, a proporção de recebimento dentro do plano de recuperação ou da falência, o que reforça a importância de uma habilitação tecnicamente correta desde o início.
+
 É possível habilitar um crédito depois do prazo do edital?+
+
+Em determinadas hipóteses, sim, por meio da chamada habilitação retardatária, sujeita a rito e, conforme o caso, a custas próprias. A viabilidade depende da fase em que se encontra o processo.
 
 Fale sobre o seu caso
 
@@ -70,7 +80,7 @@ Responsável técnico: [Alexandre Corrêa Lima](/o-escritorio/#alexandre-correa-
 Áreas relacionadas
 
 - [Recuperação Judicial e Falência](/areas-de-atuacao/recuperacao-judicial-e-falencia/)
-- [Execuções, Cobrança e Recuperação de Crédito](/areas-de-atuacao/execucao-cobranca-recuperacao-de-credito/)
+- [Execuções, Cobrança e Recuperação de Crédito](/areas-de-atuacao/recuperacao-de-credito/)
 - [Contencioso Empresarial Estratégico](/areas-de-atuacao/contencioso-empresarial-estrategico/)
 
 Guia completo do tema

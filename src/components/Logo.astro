@@ -1,36 +1,108 @@
 ---
 /**
- * Logo — link para a home com o logotipo. Componente único usado no header e no
- * rodapé (evita HTML duplicado). Proporção do arquivo vetorial: ~371x100 (3,71:1).
- * variant 'dark' usa o logo para fundo escuro (navy) — padrão de header/footer.
+ * Logo — assinatura do escritório, usada no header e no rodapé.
+ *
+ * Antes era um SVG com um MARTELO DE JUIZ ao lado do nome. O martelo (como a
+ * balança) é o clichê mais datado da comunicação jurídica, e o briefing o veta
+ * explicitamente. Além disso o martelo não é sequer símbolo do judiciário
+ * brasileiro — é importado do direito anglo-saxão.
+ *
+ * O que entra no lugar não é outro desenho: é tipografia. Escritórios de
+ * advocacia empresarial se assinam pelo nome, não por um pictograma. A marca
+ * passa a ser um lockup — um fio vertical de bronze, o nome na serifa de
+ * display e a palavra "Advocacia" em caixa alta espaçada abaixo.
+ *
+ * Em texto real, e não em imagem: renderiza nítido em qualquer densidade de
+ * tela, herda as fontes já carregadas pelo site (zero requisição nova), é
+ * selecionável e lido por leitor de tela sem depender de alt.
+ *
+ * Os SVGs antigos continuam em public/brand/ — nada foi apagado.
+ *
+ * variant 'dark'  = para fundo escuro (rodapé): tinta branca.
+ * variant 'light' = para fundo claro  (header): tinta navy.
  */
 import { site } from '@/lib/site.config';
 
 interface Props {
   variant?: 'dark' | 'light';
   class?: string;
+  /** Mantido por compatibilidade com as chamadas existentes; sem efeito em texto. */
   loading?: 'eager' | 'lazy';
 }
-const { variant = 'dark', class: cls, loading = 'eager' } = Astro.props;
-const src = variant === 'dark' ? '/brand/logo-dark-bg.svg' : '/brand/logo-light-bg.svg';
+const { variant = 'dark', class: cls } = Astro.props;
 ---
 
-<a class:list={['logo', cls]} href="/" aria-label={`${site.name} — página inicial`}>
-  <img src={src} alt={site.name} width="371" height="100" decoding="async" loading={loading} />
+<a
+  class:list={['logo', `logo--${variant}`, cls]}
+  href="/"
+  aria-label={`${site.name} — página inicial`}
+>
+  <span class="logo-rule" aria-hidden="true"></span>
+  <span class="logo-text">
+    <span class="logo-name">Corrêa Lima</span>
+    <span class="logo-kicker">Advocacia</span>
+  </span>
 </a>
 
 <style>
   .logo {
     display: inline-flex;
-    align-items: center;
-  }
-  .logo img {
-    height: 2.25rem; /* 36px */
-    width: auto;
+    align-items: stretch;
+    gap: 0.7rem;
+    text-decoration: none;
+    /* O alvo acompanha a altura da antiga imagem, para não mexer no header. */
+    min-height: 2.25rem;
   }
   @media (min-width: 768px) {
-    .logo img {
-      height: 2.75rem; /* 44px */
-    }
+    .logo { min-height: 2.75rem; }
+  }
+
+  .logo-rule {
+    flex: none;
+    width: 2px;
+    background: var(--color-accent);
+  }
+
+  .logo-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0.12rem;
+  }
+
+  .logo-name {
+    font-family: var(--font-display);
+    font-weight: var(--weight-display);
+    font-size: 1.0625rem;
+    line-height: 1.05;
+    letter-spacing: var(--tracking-tight);
+    white-space: nowrap;
+  }
+  @media (min-width: 768px) {
+    .logo-name { font-size: 1.1875rem; }
+  }
+
+  .logo-kicker {
+    font-family: var(--font-ui);
+    font-size: 0.5625rem;
+    font-weight: var(--weight-semibold);
+    text-transform: uppercase;
+    letter-spacing: 0.22em;
+    line-height: 1;
+    white-space: nowrap;
+  }
+  @media (min-width: 768px) {
+    .logo-kicker { font-size: 0.625rem; }
+  }
+
+  .logo--light .logo-name { color: var(--color-ink); }
+  .logo--light .logo-kicker { color: var(--color-text-muted); }
+
+  .logo--dark .logo-name { color: #fff; }
+  .logo--dark .logo-kicker { color: var(--color-accent-soft); }
+
+  .logo:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 4px;
   }
 </style>

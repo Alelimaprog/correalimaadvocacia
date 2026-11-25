@@ -1,5 +1,5 @@
 ---
-title: "Defesa de Sócio em Investigação Criminal Empresarial | Corrêa Lima Advocacia"
+title: "Sócio Investigado em Crime Empresarial: Como se Defender | Corrêa Lima Advocacia"
 description: "Sócio ou administrador notificado em investigação relacionada à empresa? Entenda por que a atuação na fase investigativa faz diferença."
 h1: "Defesa de sócio em investigação criminal empresarial: por que agir cedo"
 author: "Alexandre Corrêa Lima"

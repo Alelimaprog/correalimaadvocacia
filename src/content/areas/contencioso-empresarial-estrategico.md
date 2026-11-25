@@ -26,10 +26,10 @@ Esta frente também abrange empresas que lidam com um volume relevante de proces
 
 ## Como o escritório atua
 
-1. 1Diagnóstico do litígio ou da carteira de processos, com mapeamento de riscos, valores envolvidos e teses aplicáveis.
-2. 2Definição de estratégia processual alinhada aos objetivos de negócio da empresa, não apenas ao resultado processual isolado.
-3. 3Para carteiras de processos repetitivos: padronização de teses e peças, e acompanhamento centralizado, buscando eficiência e previsibilidade.
-4. 4Condução do litígio ou da carteira até o desfecho, com relatórios periódicos sobre andamento e riscos.
+1. Diagnóstico do litígio ou da carteira de processos, com mapeamento de riscos, valores envolvidos e teses aplicáveis.
+2. Definição de estratégia processual alinhada aos objetivos de negócio da empresa, não apenas ao resultado processual isolado.
+3. Para carteiras de processos repetitivos: padronização de teses e peças, e acompanhamento centralizado, buscando eficiência e previsibilidade.
+4. Condução do litígio ou da carteira até o desfecho, com relatórios periódicos sobre andamento e riscos.
 
 ## Situações comuns
 
@@ -51,9 +51,15 @@ A diferença está na abordagem: o contencioso estratégico avalia o litígio de
 
 O que é contencioso de massa?+
 
+É a situação em que uma empresa enfrenta um volume relevante de processos com causas e teses semelhantes entre si — comum em empresas com grande volume de relações contratuais ou de consumo. A gestão eficiente dessa carteira costuma exigir padronização e acompanhamento centralizado, diferente da condução individualizada de um litígio isolado.
+
 O escritório assume a carteira inteira de processos da empresa?+
 
+A forma de atuação é definida conforme a necessidade do cliente — pode envolver a condução de toda a carteira ou de um recorte específico dela, sempre avaliado caso a caso.
+
 Esse serviço substitui a assessoria jurídica geral da empresa (Advocacia Empresarial)?+
+
+Não necessariamente. Contencioso Empresarial Estratégico é focado em litígios de maior complexidade ou volume; Advocacia Empresarial trata da assessoria contratual, societária e contenciosa mais ampla do dia a dia da empresa. As duas frentes costumam se complementar.
 
 Fale sobre o seu caso
 
@@ -69,11 +75,6 @@ Responsável técnico: [Alexandre Corrêa Lima](/o-escritorio/#alexandre-correa-
 - [Advocacia Empresarial](/areas-de-atuacao/advocacia-empresarial/)
 - [Trabalhista Empresarial](/areas-de-atuacao/trabalhista-empresarial/)
 
-Guia completo do tema
-
-Veja o panorama completo deste cluster, com todos os conteúdos organizados.
-
-[Recuperação Judicial, Falência e Medidas do Credor: guia central →](/guias/recuperacao-judicial-falencia-e-medidas-do-credor/)
 
 Fale com o escritório
 

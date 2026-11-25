@@ -1,10 +1,10 @@
 ---
 /**
  * HomeContact — seção de contato exibida na Home, imediatamente antes do
- * rodapé. Réplica visual fiel do modelo de referência: cartão único em duas
- * colunas (painel "mint" à esquerda com o convite e os dados de contato;
- * painel branco à direita com o formulário em grade). Construído com os
- * tokens do design system do próprio site (cores, raios, sombras, tipografia).
+ * rodapé. Duas colunas: à esquerda o convite e os canais; à direita o
+ * formulário. A moldura deixou de ser um cartão flutuante de cantos muito
+ * arredondados e virou um bloco de contorno reto, dividido por um fio — que é
+ * a gramática do resto do site.
  *
  * Envio: reutiliza o mesmo endpoint (Formspree) e o honeypot antispam já
  * usados pelo ContactForm da página /contato/. Em caso de sucesso, o painel
@@ -12,19 +12,9 @@
  * modelo). Sem números nem promessas de resultado inventados.
  */
 import Icon from '@/components/Icon.astro';
-import { site, whatsappHref } from '@/lib/site.config';
+import { site, whatsappHrefForPath, contactAreas } from '@/lib/site.config';
 
-const areas = [
-  'Recuperação de Crédito',
-  'Execuções',
-  'Direito Empresarial',
-  'Contratos',
-  'Direito Internacional',
-  'Direito Ambiental',
-  'Direito Aduaneiro',
-  'Patrimônio',
-  'Consultoria Estratégica',
-];
+
 
 const formspreeEndpoint = site.form.endpoint;
 ---
@@ -34,8 +24,8 @@ const formspreeEndpoint = site.form.endpoint;
     <div class="hcx-card" data-reveal>
       <!-- Painel de informações (mint) -->
       <div class="hcx-info">
-        <p class="hcx-eyebrow">/ Contato</p>
-        <h2 class="hcx-title">Conte brevemente o que aconteceu.</h2>
+        <p class="hcx-eyebrow"><span class="hcx-eyebrow-rule"></span>Contato</p>
+        <h2 class="hcx-title">Apresente a situação ao escritório</h2>
         <p class="hcx-lead">
           Informe os dados principais da situação. O envio do formulário não representa
           contratação e as informações são analisadas para o direcionamento inicial do
@@ -49,10 +39,10 @@ const formspreeEndpoint = site.form.endpoint;
           </li>
           <li>
             <span class="hcx-ic"><Icon name="whatsapp" size={20} /></span>
-            <a href={whatsappHref} target="_blank" rel="noopener noreferrer">{site.contact.whatsapp.display} · WhatsApp</a>
+            <a href={whatsappHrefForPath(Astro.url.pathname)} target="_blank" rel="noopener noreferrer">{site.contact.whatsapp.display} · WhatsApp</a>
           </li>
           <li>
-            <span class="hcx-ic"><Icon name="scale" size={20} /></span>
+            <span class="hcx-ic"><Icon name="file" size={20} /></span>
             <span>Alexandre Corrêa Lima — {site.attorney.oab}</span>
           </li>
           <li>
@@ -113,8 +103,8 @@ const formspreeEndpoint = site.form.endpoint;
             <label for="hcx-area">Área de interesse <span class="hcx-req">*</span></label>
             <div class="hcx-select">
               <select id="hcx-area" name="area" required>
-                <option value="" disabled selected>Selecione uma área</option>
-                {areas.map((a) => <option value={a}>{a}</option>)}
+                <option value="" disabled selected>Selecione o assunto</option>
+                {contactAreas.map((a) => <option value={a.label} data-slug={a.slug}>{a.label}</option>)}
               </select>
             </div>
           </div>
@@ -131,6 +121,9 @@ const formspreeEndpoint = site.form.endpoint;
           </div>
 
           <div class="hcx-col-2 hcx-actions">
+            <input type="hidden" name="pagina_origem" data-origin="page" />
+            <input type="hidden" name="pagina_entrada" data-origin="landing" />
+            <input type="hidden" name="utm" data-origin="utm" />
             <button type="submit" class="hcx-submit">
               Enviar solicitação de atendimento
               <span class="hcx-submit-arrow"><Icon name="arrow-right" size={16} /></span>
@@ -173,36 +166,53 @@ const formspreeEndpoint = site.form.endpoint;
   .hcx-card {
     overflow: hidden;
     border: 1px solid var(--color-border);
-    border-radius: 2rem;
+    border-radius: var(--radius-sm);
     background: var(--surface);
-    box-shadow: 0 30px 60px -40px rgba(6, 40, 28, 0.35);
     display: grid;
-    grid-template-columns: 1fr;
+    /* minmax(0, …) e não 1fr: o item da grade tem min-width auto, e o e-mail
+       do escritório (34 caracteres, sem ponto de quebra) empurrava a trilha
+       para 390px dentro de um cartão de 328px. Como o cartão tem
+       overflow: hidden, o excesso não virava barra de rolagem — virava texto
+       cortado no celular. */
+    grid-template-columns: minmax(0, 1fr);
   }
   @media (min-width: 900px) {
-    .hcx-card { grid-template-columns: 5fr 7fr; }
+    .hcx-card { grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); }
   }
 
   /* ─── Painel de informações (mint) ─────────────────────────────── */
   .hcx-info {
-    background: var(--surface-sage);
-    padding: var(--space-8);
+    min-width: 0;
+    background: var(--surface-cream);
+    border-bottom: 1px solid var(--color-border);
+    /* Em tela estreita o respiro cede espaço ao conteúdo: com 32px de cada
+       lado, o e-mail do escritório não cabia numa linha e quebrava no meio da
+       palavra. */
+    padding: var(--space-6) var(--space-5);
+  }
+  @media (min-width: 560px) { .hcx-info { padding: var(--space-8); } }
+  @media (min-width: 900px) {
+    .hcx-info { border-bottom: 0; border-right: 1px solid var(--color-border); }
   }
   @media (min-width: 900px) { .hcx-info { padding: var(--space-12); } }
 
   .hcx-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
     font-family: var(--font-body);
     font-size: var(--text-xs);
     text-transform: uppercase;
-    letter-spacing: 0.18em;
-    color: var(--color-green-strong);
+    letter-spacing: var(--tracking-eyebrow);
+    color: var(--color-accent);
     font-weight: var(--weight-semibold);
   }
+  .hcx-eyebrow-rule { height: 1px; width: 24px; background: currentColor; }
   .hcx-title {
-    margin-top: var(--space-5);
+    margin-top: var(--space-4);
     font-family: var(--font-display);
-    font-size: var(--text-4xl);
-    font-weight: var(--weight-bold);
+    font-size: var(--text-3xl);
+    font-weight: var(--weight-semibold);
     line-height: 1.1;
     letter-spacing: var(--tracking-tight);
     color: var(--color-ink);
@@ -241,17 +251,22 @@ const formspreeEndpoint = site.form.endpoint;
     justify-content: center;
     width: 2.5rem;
     height: 2.5rem;
-    border-radius: var(--radius-md);
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--color-border);
     background: var(--surface);
-    color: var(--color-green-strong);
-    box-shadow: var(--shadow-xs);
+    color: var(--color-accent);
   }
   .hcx-channels a {
+    display: inline-block;
+    padding-block: 0.15rem;
     color: var(--color-text-muted);
     text-decoration: none;
+    /* O e-mail é uma palavra só; sem isto ele define a largura mínima da
+       coluna inteira. */
+    overflow-wrap: anywhere;
     transition: color var(--dur) var(--ease);
   }
-  .hcx-channels a:hover { color: var(--color-green-strong); }
+  .hcx-channels a:hover { color: var(--color-navy); }
 
   /* ─── Painel do formulário (branco) ────────────────────────────── */
   .hcx-form-panel {
@@ -289,8 +304,8 @@ const formspreeEndpoint = site.form.endpoint;
     font-size: var(--text-base);
     color: var(--color-ink);
     padding: 0.75rem 1rem;
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-md);
+    border: 1px solid var(--border-strong);
+    border-radius: var(--radius-sm);
     background: var(--surface);
     outline: none;
     transition: border-color var(--dur) var(--ease), box-shadow var(--dur) var(--ease);
@@ -301,8 +316,8 @@ const formspreeEndpoint = site.form.endpoint;
   .hcx-field input:focus,
   .hcx-field select:focus,
   .hcx-field textarea:focus {
-    border-color: var(--color-green);
-    box-shadow: 0 0 0 3px rgba(0, 168, 90, 0.2);
+    border-color: var(--color-accent);
+    box-shadow: var(--ring);
   }
 
   /* Select com chevron desenhado em CSS (evita ícone solto/desalinhado) */
@@ -323,23 +338,22 @@ const formspreeEndpoint = site.form.endpoint;
     align-items: center;
     justify-content: center;
     gap: var(--space-2);
-    background: var(--color-green);
+    background: var(--color-navy);
     color: #ffffff;
     border: 1px solid transparent;
-    border-radius: var(--radius-pill);
-    padding: 1rem 2rem;
-    font-family: var(--font-body);
+    border-radius: var(--radius-sm);
+    min-height: 3.5rem;
+    padding: 1rem 2.25rem;
+    font-family: var(--font-ui);
     font-size: var(--text-base);
     font-weight: var(--weight-semibold);
     cursor: pointer;
-    transition: filter var(--dur) var(--ease), transform var(--dur) var(--ease), box-shadow var(--dur) var(--ease);
+    transition: background-color var(--dur) var(--ease);
   }
   @media (min-width: 560px) { .hcx-submit { align-self: flex-start; } }
-  .hcx-submit:hover {
-    filter: brightness(1.05);
-    box-shadow: 0 12px 30px -8px rgba(0, 168, 90, 0.55);
-  }
-  .hcx-submit:disabled { opacity: 0.6; cursor: default; filter: none; box-shadow: none; }
+  .hcx-submit:hover { background: var(--color-green-hover); }
+  .hcx-submit:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 3px; }
+  .hcx-submit:disabled { opacity: 0.5; cursor: default; }
   .hcx-submit-arrow { display: inline-flex; transition: transform var(--dur) var(--ease); }
   .hcx-submit:hover .hcx-submit-arrow { transform: translateX(3px); }
 
@@ -365,27 +379,28 @@ const formspreeEndpoint = site.form.endpoint;
   .hcx-success[hidden] { display: none; }
   .hcx-error { margin-top: var(--space-3); font-size: var(--text-sm); font-weight: var(--weight-medium); color: var(--color-danger); }
   .hcx-error:empty { display: none; }
-  .hcx-req { color: var(--color-green-strong); }
+  .hcx-req { color: var(--color-accent); }
   .hcx-opt { color: var(--color-text-subtle); font-weight: var(--weight-regular); font-size: var(--text-xs); }
   .hcx-hint { margin-top: -0.35rem; color: var(--color-text-muted); font-size: var(--text-xs); line-height: var(--leading-normal); }
   .hcx-trust { list-style: none; margin: var(--space-8) 0 0; padding: 0; display: flex; flex-direction: column; gap: 0.4rem; }
   .hcx-trust li { position: relative; padding-left: 1.1rem; color: var(--color-text-muted); font-size: var(--text-xs); line-height: var(--leading-normal); }
-  .hcx-trust li::before { content: ''; position: absolute; left: 0; top: 0.45em; width: 6px; height: 6px; border-radius: 50%; background: var(--color-green); }
+  .hcx-trust li::before { content: ''; position: absolute; left: 0; top: 0.62em; width: 8px; height: 1px; background: var(--color-accent); }
   .hcx-success-ic {
     display: inline-flex;
     align-items: center;
     justify-content: center;
     width: 4rem;
     height: 4rem;
-    border-radius: var(--radius-pill);
-    background: var(--surface-sage);
-    color: var(--color-green-strong);
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--border-accent);
+    background: var(--surface-cream);
+    color: var(--color-accent);
   }
   .hcx-success h3 {
     margin-top: var(--space-6);
     font-family: var(--font-display);
     font-size: var(--text-2xl);
-    font-weight: var(--weight-bold);
+    font-weight: var(--weight-semibold);
     color: var(--color-ink);
   }
   .hcx-success p {
@@ -398,8 +413,10 @@ const formspreeEndpoint = site.form.endpoint;
 </style>
 
 <script>
+  import { fillOriginFields } from '@/lib/contact-origin';
   document.querySelectorAll('[data-home-contact]').forEach((formEl) => {
     const form = formEl as HTMLFormElement;
+    fillOriginFields(form);
     const panel = form.parentElement as HTMLElement | null;
     const success = panel?.querySelector('[data-home-contact-success]') as HTMLElement | null;
     const errorEl = form.querySelector('[data-home-contact-error]') as HTMLElement | null;

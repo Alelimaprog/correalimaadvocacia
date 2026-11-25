@@ -5,7 +5,7 @@ h1: "Reconhecimento de Decisões Estrangeiras no Brasil"
 author: "Alexandre Corrêa Lima"
 ---
 
-Homologação de Sentença Estrangeira e Demandas Internacionais
+Decisões estrangeiras
 
 # Reconhecimento de Decisões Estrangeiras no Brasil
 
@@ -25,10 +25,10 @@ O escritório presta apoio jurídico a brasileiros e estrangeiros com relações
 
 ## Como o escritório atua
 
-1. 1Análise da natureza da decisão ou do ato estrangeiro envolvido.
-2. 2Avaliação da necessidade de homologação, averbação ou outro procedimento de reconhecimento.
-3. 3Condução do procedimento adequado perante o órgão competente.
-4. 4Orientação sobre desdobramentos práticos do reconhecimento no Brasil.
+1. Análise da natureza da decisão ou do ato estrangeiro envolvido.
+2. Avaliação da necessidade de homologação, averbação ou outro procedimento de reconhecimento.
+3. Condução do procedimento adequado perante o órgão competente.
+4. Orientação sobre desdobramentos práticos do reconhecimento no Brasil.
 
 ## Situações comuns
 
@@ -47,6 +47,8 @@ Qual a diferença entre este serviço e a homologação de sentença estrangeira
 A homologação de sentença estrangeira é o procedimento específico perante o STJ. O reconhecimento de decisões estrangeiras é um conceito mais amplo, que pode envolver também outras formas de eficácia de atos praticados no exterior, avaliadas conforme a situação.
 
 O escritório atua também para estrangeiros com interesses no Brasil?+
+
+Sim. A atuação abrange tanto brasileiros com decisões obtidas no exterior quanto estrangeiros com relações jurídicas ou patrimoniais no Brasil.
 
 Fale sobre o seu caso
 

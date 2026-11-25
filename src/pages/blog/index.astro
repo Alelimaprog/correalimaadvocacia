@@ -1,32 +1,163 @@
 ---
 /**
- * /blog/ — migração fiel do export (Fase 3). Head (SEO), JSON-LD e conteúdo
- * reproduzidos do site atual. Chrome (Header/Footer) via componentes.
- * Conteúdo: src/partials/institucional/blog.html
+ * /blog/ — índice editorial de artigos (Sprint Conteúdos).
+ * Head (SEO) e JSON-LD preservados de institucional (getPage). O corpo passa a
+ * ser gerado a partir da coleção 'blog': categorias em chips (com filtro leve),
+ * artigo em destaque e grade de cards. URLs inalteradas.
  */
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import JsonLd from '@/components/JsonLd.astro';
 import Container from '@/components/Container.astro';
+import ContentCard from '@/components/content/ContentCard.astro';
+import Icon from '@/components/Icon.astro';
+import { getCollection } from 'astro:content';
 import { getPage } from '@/lib/institucional';
-import body from '@/partials/institucional/blog.html?raw';
+import { nucleos } from '@/lib/nucleos';
+import { whatsappHrefForPath } from '@/lib/site.config';
 
 const page = getPage('/blog/');
+
+const clusterLabel: Record<string, string> = Object.fromEntries(
+  nucleos.map((n) => [n.slug, n.label]),
+);
+
+const fmtDate = (d?: Date) =>
+  d ? new Intl.DateTimeFormat('pt-BR', { day: '2-digit', month: 'short', year: 'numeric' }).format(d).replace('.', '') : undefined;
+
+const posts = (await getCollection('blog'))
+  .sort((a, b) => (b.data.pubDate?.getTime() ?? 0) - (a.data.pubDate?.getTime() ?? 0))
+  .map((e) => ({
+    href: `/blog/${e.id}/`,
+    title: e.data.h1 ?? e.data.title,
+    desc: e.data.description,
+    cluster: e.data.cluster,
+    tag: e.data.cluster ? clusterLabel[e.data.cluster] : 'Artigo',
+    date: fmtDate(e.data.pubDate),
+    minutes: e.data.readingMinutes,
+  }));
+
+const counts = posts.reduce<Record<string, number>>((acc, p) => {
+  if (p.cluster) acc[p.cluster] = (acc[p.cluster] ?? 0) + 1;
+  return acc;
+}, {});
+const chips = nucleos
+  .filter((n) => counts[n.slug])
+  .map((n) => ({ slug: n.slug, label: n.label, n: counts[n.slug] }));
+
+const featured = posts[0];
+const rest = posts.slice(1);
+const waHref = whatsappHrefForPath('/blog/');
 ---
 
 <BaseLayout head={page.head}>
-  <Fragment slot="jsonld">
-    {page.jsonld.map((schema) => <JsonLd schema={schema} />)}
-  </Fragment>
+  <Fragment slot="jsonld">{page.jsonld.map((schema) => <JsonLd schema={schema} />)}</Fragment>
 
-  <main id="conteudo-principal" class="inst">
-    <Container>
-      <div class="doc doc--hero doc--blog" set:html={body} />
-    </Container>
+  <main id="conteudo-principal" class="cx">
+    <section class="cx-hero">
+      <Container>
+        <nav class="crumbs" aria-label="Você está em">
+          <a href="/">Início</a><span aria-hidden="true">/</span><span>Artigos</span>
+        </nav>
+        <p class="eyebrow"><span class="dot"></span>Conteúdo</p>
+        <h1>Artigos jurídicos</h1>
+        <p class="cx-hero-desc">
+          Análises objetivas sobre inventário, recuperação de crédito, direito internacional,
+          ambiental, aduaneiro-tributário e cobrança condominial. Conteúdo informativo geral,
+          escrito e revisado pelo escritório.
+        </p>
+
+        <div class="cx-chips" role="group" aria-label="Filtrar por categoria">
+          <button type="button" class="cx-chip" data-filter="all" aria-pressed="true">Todos<span class="cx-chip-n">{posts.length}</span></button>
+          {chips.map((c) => (
+            <button type="button" class="cx-chip" data-filter={c.slug} aria-pressed="false">
+              {c.label}<span class="cx-chip-n">{c.n}</span>
+            </button>
+          ))}
+        </div>
+      </Container>
+    </section>
+
+    {featured && (
+      <section class="cx-section">
+        <Container>
+          <article class="cx-featured" data-cluster={featured.cluster}>
+            <div>
+              <div class="cx-card-top"><span class="cx-card-tag">{featured.tag}</span></div>
+              <h2 class="cx-card-title"><a href={featured.href}>{featured.title}</a></h2>
+              <p class="cx-card-desc">{featured.desc}</p>
+              <div class="cx-card-foot" style="justify-content:flex-start;gap:var(--space-4)">
+                <span class="cx-card-meta">
+                  {featured.date && <span>{featured.date}</span>}
+                  {featured.date && featured.minutes && <span class="sep"></span>}
+                  {featured.minutes && <span>{featured.minutes} min de leitura</span>}
+                </span>
+              </div>
+            </div>
+            <aside class="cx-featured-aside">
+              <span class="cx-featured-label">Em destaque</span>
+              <span class="cx-card-more">Ler artigo<Icon name="arrow-right" size={16} /></span>
+            </aside>
+          </article>
+        </Container>
+      </section>
+    )}
+
+    <section class="cx-section cx-section--muted">
+      <Container>
+        <div class="cx-section-head"><h2>Todos os artigos</h2></div>
+        <ul class="cx-grid cx-grid--3" id="blog-grid">
+          {rest.map((p) => (
+            <ContentCard href={p.href} title={p.title} tag={p.tag} desc={p.desc}
+              date={p.date} minutes={p.minutes} cluster={p.cluster} moreLabel="Ler artigo" />
+          ))}
+        </ul>
+        <p class="cx-empty" id="blog-empty">Nenhum artigo nesta categoria por enquanto.</p>
+      </Container>
+    </section>
+
+    <section class="cx-cta">
+      <Container>
+        <div class="cx-cta-inner">
+          <h2>Precisa de orientação sobre o seu caso?</h2>
+          <p>Fale com o escritório e receba um direcionamento inicial.</p>
+          <div class="cx-cta-actions">
+            <a class="btn btn--primary" href={waHref} target="_blank" rel="noopener noreferrer">Falar no WhatsApp</a>
+            <a class="btn btn--secondary" href="/contato/">Enviar meu caso</a>
+          </div>
+        </div>
+      </Container>
+    </section>
   </main>
-</BaseLayout>
 
-<style>
-  .inst {
-    padding-block: var(--section-y);
-  }
-</style>
+  <script is:inline>
+    (function () {
+      var chips = Array.prototype.slice.call(document.querySelectorAll('.cx-chip'));
+      var featured = document.querySelector('.cx-featured');
+      var grid = document.getElementById('blog-grid');
+      var empty = document.getElementById('blog-empty');
+      if (!chips.length || !grid) return;
+      function apply(filter) {
+        var cards = grid.querySelectorAll('.cx-card');
+        var visible = 0;
+        cards.forEach(function (c) {
+          var show = filter === 'all' || c.getAttribute('data-cluster') === filter;
+          c.style.display = show ? '' : 'none';
+          if (show) visible++;
+        });
+        if (featured) {
+          var fc = featured.getAttribute('data-cluster');
+          var sec = featured.closest('.cx-section');
+          if (sec) sec.style.display = filter === 'all' || fc === filter ? '' : 'none';
+        }
+        if (empty) empty.classList.toggle('is-on', visible === 0);
+      }
+      chips.forEach(function (chip) {
+        chip.addEventListener('click', function () {
+          chips.forEach(function (c) { c.setAttribute('aria-pressed', 'false'); });
+          chip.setAttribute('aria-pressed', 'true');
+          apply(chip.getAttribute('data-filter'));
+        });
+      });
+    })();
+  </script>
+</BaseLayout>

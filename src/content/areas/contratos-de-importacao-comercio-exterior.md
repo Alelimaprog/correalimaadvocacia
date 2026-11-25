@@ -26,10 +26,10 @@ O objetivo é reduzir a exposição a riscos típicos de relações internaciona
 
 ## Como o escritório atua
 
-1. 1Análise da operação comercial internacional envolvida.
-2. 2Elaboração ou revisão de cláusulas específicas de comércio exterior.
-3. 3Avaliação de riscos relacionados a câmbio, transporte e responsabilidade entre as partes.
-4. 4Apoio em eventuais disputas com fornecedores ou parceiros estrangeiros.
+1. Análise da operação comercial internacional envolvida.
+2. Elaboração ou revisão de cláusulas específicas de comércio exterior.
+3. Avaliação de riscos relacionados a câmbio, transporte e responsabilidade entre as partes.
+4. Apoio em eventuais disputas com fornecedores ou parceiros estrangeiros.
 
 ## Situações comuns
 
@@ -49,15 +49,27 @@ A atuação jurídica pode ocorrer de forma complementar a profissionais especia
 
 É possível resolver conflitos com fornecedores estrangeiros pela via judicial brasileira?+
 
+Depende das cláusulas contratuais de foro e lei aplicável, além da natureza da relação. Essa avaliação é feita caso a caso.
+
 O que são Incoterms e por que devem constar do contrato?+
+
+Incoterms são termos internacionais padronizados que definem responsabilidades entre comprador e vendedor — como transporte, seguro e transferência de risco da mercadoria. Definir o Incoterm aplicável no contrato reduz divergências sobre quem responde por perdas ou atrasos durante o transporte internacional.
 
 Qual lei se aplica a um contrato entre empresa brasileira e fornecedor estrangeiro?+
 
+Em regra, prevalece o que as partes definirem no contrato (lei aplicável e foro). Na ausência de cláusula específica, aplicam-se regras de direito internacional privado para determinar a lei e o foro competentes, o que pode gerar insegurança — daí a importância de definir isso expressamente no contrato.
+
 O contrato de importação precisa ser registrado em algum órgão?+
+
+Em regra, o contrato comercial não precisa de registro. As operações de câmbio seguem as regras do Banco Central (Lei 14.286/2021), e a importação é registrada na DI ou na DUIMP.
 
 O que fazer quando o fornecedor estrangeiro descumpre o prazo de entrega?+
 
+A resposta depende do que o contrato prevê sobre atraso, penalidades e rescisão. Quando não há cláusula clara, a análise considera a legislação aplicável definida no contrato e os prejuízos efetivamente demonstráveis.
+
 É possível revisar um contrato de importação já assinado?+
+
+O contrato já assinado vincula as partes nos termos pactuados, mas é possível negociar aditivos ou ajustes para operações futuras, além de avaliar a aplicação de cláusulas de revisão, quando existentes.
 
 Fale sobre o seu caso
 
@@ -78,7 +90,7 @@ Guia completo do tema
 
 Veja o panorama completo deste cluster, com todos os conteúdos organizados.
 
-[Cobrança, Execução e Recuperação de Crédito Empresarial: guia central →](/guias/cobranca-execucao-e-recuperacao-de-credito-empresarial/)
+[Direito Aduaneiro-Tributário: guia completo →](/guias/direito-aduaneiro-tributario-guia-completo/)
 
 Fale com o escritório
 

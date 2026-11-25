@@ -5,7 +5,7 @@ h1: "Crédito concursal e extraconcursal: diferença para o credor"
 author: "Alexandre Corrêa Lima"
 pubDate: 2026-07-05
 updatedDate: 2026-07-05
-cluster: "direito-aduaneiro-tributario"
+cluster: "recuperacao-de-credito"
 ---
 
 Recuperação Judicial e Contencioso Empresarial
@@ -41,6 +41,8 @@ O que conta para definir a data do crédito: o vencimento ou a origem da obriga�
 A origem da obrigação (data do fato gerador do crédito, como a entrega da mercadoria ou a prestação do serviço), não a data de vencimento do título ou do inadimplemento.
 
 Crédito extraconcursal pode ser executado normalmente mesmo com a empresa em recuperação?+
+
+Em regra sim, já que não se submete aos efeitos do plano de recuperação, mas a viabilidade prática da execução ainda depende da existência de bens livres para satisfazer o crédito.
 
 Um crédito concursal pode virar extraconcursal?+
 

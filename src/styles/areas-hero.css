@@ -1,0 +1,13 @@
+/**
+ * areas-hero.css — primeira dobra das páginas de Áreas de Atuação (HeroLanding).
+ *
+ * Decisão de design (refinamento visual): o Hero NÃO é mais esticado à altura da
+ * viewport. Em telas altas isso deixava ~380px de espaço vazio abaixo do card e
+ * ainda fazia a faixa da seção seguinte aparecer (por causa do limite superior).
+ *
+ * Agora a altura é definida por PADDING proporcional, com o conteúdo alinhado ao
+ * topo — um Hero elegante e "cheio" em qualquer altura de tela, sem depender de
+ * unidades de viewport. O padding real fica nos componentes PillarPage/SubPage
+ * (fonte única do .p-hero/.s-hero); este arquivo permanece como documentação da
+ * variante e ponto de ajuste fino compartilhado, se necessário no futuro.
+ */

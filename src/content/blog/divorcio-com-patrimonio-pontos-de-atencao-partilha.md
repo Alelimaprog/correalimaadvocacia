@@ -1,5 +1,5 @@
 ---
-title: "Divórcio com Patrimônio: Pontos de Atenção na Partilha | Corrêa Lima Advocacia"
+title: "Divórcio com Patrimônio: Cuidados na Partilha de Bens | Corrêa Lima Advocacia"
 description: "Veja os principais pontos de atenção jurídica na partilha de bens em divórcios que envolvem patrimônio relevante."
 h1: "Divórcio com patrimônio: pontos de atenção na definição da partilha"
 author: "Alexandre Corrêa Lima"
@@ -28,7 +28,7 @@ Bens particulares, adquiridos antes do casamento ou por herança/doação durant
 
 ## Formalização da partilha
 
-Uma vez definidos os termos, a partilha deve ser formalizada de maneira adequada — por escritura pública, quando consensual e sem filhos menores envolvidos, ou por meio de decisão judicial, nos demais casos —, com a devida regularização dos bens perante os registros competentes.
+Uma vez definidos os termos, a partilha deve ser formalizada de maneira adequada — por escritura pública, quando o divórcio é consensual (havendo filhos menores ou incapazes, a escritura só é possível depois que guarda, convivência e alimentos forem resolvidos na Justiça, conforme a Resolução CNJ 571/2024), ou por meio de decisão judicial, nos demais casos —, com a devida regularização dos bens perante os registros competentes.
 
 Este conteúdo tem caráter exclusivamente informativo e não substitui a análise individual do seu caso por advogado.
 
@@ -40,7 +40,7 @@ Mais sobre Família, Sucessões e Patrimônio
 
 - [Inventário e partilha: quando buscar orientação jurídica](/blog/inventario-e-partilha-quando-buscar-orientacao-juridica/)
 - [Inventário com herdeiro no exterior: o que muda no processo](/blog/inventario-com-herdeiro-no-exterior-o-que-muda/)
-- [Herdeiro no exterior: procuração e documentos para participar do inventário](/blog/heredeiro-exterior-procuracao-documentos-inventario/)
+- [Herdeiro no exterior: procuração e documentos para participar do inventário](/blog/herdeiro-exterior-procuracao-documentos-inventario/)
 
 Fale com o escritório
 

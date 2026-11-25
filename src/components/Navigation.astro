@@ -58,27 +58,48 @@ const current = Astro.url.pathname;
 </nav>
 
 <style>
-  .nav { display: none; align-items: center; gap: 0.15rem; }
+  .nav { display: none; align-items: center; gap: 0.35rem; }
   @media (min-width: 1024px) { .nav { display: flex; } }
 
+  /* `white-space: nowrap` é o ponto: sem ele, "O Escritório" e "Áreas de
+     Atuação" quebravam em duas linhas e desalinhavam a faixa inteira. O item
+     ativo deixou de ser uma pílula preenchida — agora é uma régua bronze sob o
+     rótulo, que é como um índice impresso marca a página corrente. */
   .nav-link {
+    position: relative;
     display: inline-flex;
     align-items: center;
     gap: 0.35rem;
-    padding: 0.55rem 0.9rem;
-    border-radius: var(--radius-pill);
+    padding: 0.5rem 0.7rem;
+    border-radius: 0;
     font-size: var(--text-sm);
-    font-weight: var(--weight-semibold);
+    font-weight: var(--weight-medium);
     color: var(--color-text);
     text-decoration: none;
+    white-space: nowrap;
     background: none;
     border: none;
     cursor: pointer;
-    font-family: var(--font-body);
-    transition: color var(--dur) var(--ease), background-color var(--dur) var(--ease);
+    font-family: var(--font-ui);
+    transition: color var(--dur) var(--ease);
   }
-  .nav-link:hover,
-  .nav-link[aria-current='page'] { color: var(--color-green-strong); background: var(--surface-cream); }
+  .nav-link::after {
+    content: '';
+    position: absolute;
+    left: 0.7rem;
+    right: 0.7rem;
+    bottom: 0.1rem;
+    height: 1.5px;
+    background: var(--color-accent);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform var(--dur) var(--ease);
+  }
+  .nav-link:hover { color: var(--color-navy); }
+  .nav-link:hover::after { transform: scaleX(1); }
+  .nav-link[aria-current='page'] { color: var(--color-navy); font-weight: var(--weight-semibold); }
+  .nav-link[aria-current='page']::after { transform: scaleX(1); }
+  .nav-link:focus-visible { outline: 2px solid var(--ring-color); outline-offset: 2px; }
 
   .dropdown { position: relative; }
   .caret { transition: transform 0.15s ease; }
@@ -96,9 +117,9 @@ const current = Astro.url.pathname;
     background: var(--color-paper);
     color: var(--color-text);
     border: 1px solid var(--border-subtle);
-    border-radius: var(--radius-lg);
+    border-radius: var(--radius-sm);
     box-shadow: var(--shadow-lg);
-    padding: 0.6rem;
+    padding: 0.5rem;
     z-index: 60;
   }
   .dd-panel--mega { min-width: 38rem; padding: 0.85rem; }
@@ -109,13 +130,13 @@ const current = Astro.url.pathname;
 
   .dd-item {
     padding: 0.65rem 0.85rem;
-    border-radius: var(--radius-md);
+    border-radius: var(--radius-sm);
     font-size: var(--text-sm);
     color: var(--color-text);
     text-decoration: none;
     transition: background-color var(--dur) var(--ease), color var(--dur) var(--ease);
   }
-  .dd-item:hover { background: var(--surface-cream); color: var(--color-green-forest); }
+  .dd-item:hover { background: var(--surface-warm); color: var(--color-navy); }
 
   .mega-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.3rem; }
   .mega-item {
@@ -123,7 +144,7 @@ const current = Astro.url.pathname;
     align-items: flex-start;
     gap: 0.75rem;
     padding: 0.75rem 0.8rem;
-    border-radius: var(--radius-md);
+    border-radius: var(--radius-sm);
     text-decoration: none;
     transition: background-color var(--dur) var(--ease);
   }
@@ -135,9 +156,10 @@ const current = Astro.url.pathname;
     flex: none;
     align-items: center;
     justify-content: center;
-    border-radius: var(--radius-md);
-    background: var(--color-green-tint);
-    color: var(--color-green-strong);
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--color-border);
+    background: transparent;
+    color: var(--color-accent);
   }
   .mega-tx { display: flex; flex-direction: column; min-width: 0; }
   .mega-title { font-size: var(--text-sm); font-weight: var(--weight-semibold); color: var(--color-ink); }
@@ -145,13 +167,13 @@ const current = Astro.url.pathname;
   .dd-viewall {
     margin-top: 0.4rem;
     padding: 0.65rem 0.8rem;
-    color: var(--color-green-strong);
+    color: var(--color-navy);
     font-weight: var(--weight-semibold);
     font-size: var(--text-sm);
     text-decoration: none;
-    border-top: 1px solid var(--border-subtle);
+    border-top: 1px solid var(--color-border);
   }
-  .dd-viewall:hover { color: var(--color-green); }
+  .dd-viewall:hover { color: var(--color-accent); }
 </style>
 
 <script>

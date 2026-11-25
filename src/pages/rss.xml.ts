@@ -32,7 +32,7 @@ export const GET: APIRoute = async () => {
     })),
   ]
     .sort((a, b) => (b.data ? b.data.getTime() : 0) - (a.data ? a.data.getTime() : 0))
-    .slice(0, 50);
+    .slice(0, 200);
 
   const body = itens
     .map(
@@ -53,7 +53,7 @@ export const GET: APIRoute = async () => {
   <channel>
     <title>${esc(site.name)} — Conteúdos</title>
     <link>${base}/</link>
-    <description>Artigos e guias jurídicos sobre recuperação de crédito, cobrança condominial, direito ambiental, aduaneiro, internacional e sucessões.</description>
+    <description>Artigos e guias sobre direito aduaneiro na importação, inventário em São Paulo, homologação de sentença e divórcio estrangeiro e advocacia empresarial.</description>
     <language>pt-BR</language>
     <atom:link href="${base}/rss.xml" rel="self" type="application/rss+xml" />
 ${body}

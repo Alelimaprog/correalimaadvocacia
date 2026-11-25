@@ -26,10 +26,10 @@ A atuação costuma ocorrer em conexão direta com o contencioso empresarial est
 
 ## Como o escritório atua
 
-1. 1Análise técnica da investigação ou acusação e do contexto empresarial em que ela se originou.
-2. 2Acompanhamento em fase investigativa, com atuação voltada à proteção dos direitos do investigado desde o início da apuração.
-3. 3Condução da defesa técnica em eventual ação penal.
-4. 4Articulação com a atuação em contencioso empresarial e, quando aplicável, em processos de recuperação judicial relacionados ao mesmo contexto.
+1. Análise técnica da investigação ou acusação e do contexto empresarial em que ela se originou.
+2. Acompanhamento em fase investigativa, com atuação voltada à proteção dos direitos do investigado desde o início da apuração.
+3. Condução da defesa técnica em eventual ação penal.
+4. Articulação com a atuação em contencioso empresarial e, quando aplicável, em processos de recuperação judicial relacionados ao mesmo contexto.
 
 ## Situações comuns
 
@@ -49,9 +49,15 @@ Não. A atuação é focada especificamente em direito penal empresarial — cas
 
 Em que momento devo procurar orientação jurídica?+
 
+O quanto antes, idealmente ainda na fase de investigação, antes do oferecimento de eventual ação penal — a atuação preventiva nessa fase costuma ser mais eficaz do que a reação após o início de um processo.
+
 Sócios e administradores respondem pessoalmente por decisões da empresa?+
 
+Depende das circunstâncias específicas de cada caso — a responsabilidade penal é sempre pessoal e exige comprovação de conduta e elemento subjetivo próprios, não decorrendo automaticamente de decisões tomadas em nome da empresa.
+
 Esse serviço tem relação com processos de recuperação judicial?+
+
+Em determinados casos, sim — decisões de gestão tomadas em contexto de crise financeira podem ser objeto de questionamento, o que aproxima essa frente da atuação em recuperação judicial e contencioso empresarial estratégico.
 
 Fale sobre o seu caso
 
@@ -66,11 +72,6 @@ Responsável técnico: [Alexandre Corrêa Lima](/o-escritorio/#alexandre-correa-
 - [Contencioso Empresarial Estratégico](/areas-de-atuacao/contencioso-empresarial-estrategico/)
 - [Recuperação Judicial e Falência](/areas-de-atuacao/recuperacao-judicial-e-falencia/)
 
-Guia completo do tema
-
-Veja o panorama completo deste cluster, com todos os conteúdos organizados.
-
-[Recuperação Judicial, Falência e Medidas do Credor: guia central →](/guias/recuperacao-judicial-falencia-e-medidas-do-credor/)
 
 Fale com o escritório
 

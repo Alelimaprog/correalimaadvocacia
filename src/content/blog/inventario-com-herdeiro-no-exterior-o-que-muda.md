@@ -40,7 +40,7 @@ Mais sobre Família, Sucessões e Patrimônio
 
 - [Inventário e partilha: quando buscar orientação jurídica](/blog/inventario-e-partilha-quando-buscar-orientacao-juridica/)
 - [Divórcio com patrimônio: pontos de atenção na definição da partilha](/blog/divorcio-com-patrimonio-pontos-de-atencao-partilha/)
-- [Herdeiro no exterior: procuração e documentos para participar do inventário](/blog/heredeiro-exterior-procuracao-documentos-inventario/)
+- [Herdeiro no exterior: procuração e documentos para participar do inventário](/blog/herdeiro-exterior-procuracao-documentos-inventario/)
 
 Fale com o escritório
 

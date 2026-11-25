@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Relatório — Sprint de Polimento (SEO interno, CRO, mobile) · Corrêa Lima Advocacia</title>
+<style>
+  :root{--ink:#12201a;--txt:#33403a;--mut:#6b7a72;--green:#1f7a4d;--greenD:#155c39;--tint:#e9f3ec;--bd:#e2e8e3;--bg:#fbfcfb;--warn:#b4690e}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--txt);font:16px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+  .wrap{max-width:960px;margin:0 auto;padding:48px 22px 90px}
+  h1{color:var(--ink);font-size:30px;line-height:1.2;margin:0 0 6px;letter-spacing:-.02em}
+  h2{color:var(--ink);font-size:22px;margin:50px 0 14px;padding-top:22px;border-top:1px solid var(--bd)}
+  h3{color:var(--ink);font-size:17px;margin:26px 0 8px}
+  h4{color:var(--greenD);font-size:13px;text-transform:uppercase;letter-spacing:.05em;margin:18px 0 6px}
+  p{margin:0 0 14px}ul{margin:0 0 14px;padding-left:20px}li{margin:5px 0}
+  code{background:#eef2ef;padding:.12em .4em;border-radius:5px;font-size:.9em}
+  .sub{color:var(--mut);font-size:15px;margin-bottom:26px}
+  .kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px;margin:24px 0}
+  .kpi{background:#fff;border:1px solid var(--bd);border-radius:12px;padding:14px 16px}
+  .kpi b{display:block;color:var(--ink);font-size:20px}.kpi span{color:var(--mut);font-size:12.5px}
+  .note{background:var(--tint);border:1px solid #cfe6d6;border-left:3px solid var(--green);border-radius:10px;padding:14px 18px;margin:20px 0}
+  .warn{background:#fdf4e7;border:1px solid #f0dcbb;border-left:3px solid var(--warn);border-radius:10px;padding:14px 18px;margin:20px 0}
+  .block{background:#fff;border:1px solid var(--bd);border-radius:14px;padding:22px 24px;margin:22px 0}
+  .block h3{margin-top:0}
+  .cols{display:grid;gap:8px 26px}@media(min-width:620px){.cols{grid-template-columns:1fr 1fr}}
+  .shots{display:grid;grid-template-columns:1fr;gap:16px;margin:16px 0 4px}
+  @media(min-width:680px){.shots{grid-template-columns:2fr 1fr}}
+  figure{margin:0}.frame{border:1px solid var(--bd);border-radius:10px;overflow:hidden;background:#fff;max-height:520px;overflow-y:auto}
+  .frame img{width:100%;display:block}figcaption{color:var(--mut);font-size:12.5px;margin-top:6px;text-align:center}
+  .files code{display:block;background:transparent;padding:0;font-size:13px;color:var(--txt)}
+  footer{margin-top:60px;color:var(--mut);font-size:13px;border-top:1px solid var(--bd);padding-top:18px}
+  a{color:var(--greenD)}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<h1>Sprint de polimento — SEO interno, CRO e integridade mobile</h1>
+<p class="sub">Corrêa Lima Advocacia · foco em <strong>maximizar a malha de links internos, o tempo de permanência e a conversão</strong>, sem alterar conteúdo jurídico, URLs, SEO, schema ou a Home.</p>
+
+<div class="kpis">
+  <div class="kpi"><b>132</b><span>páginas (idêntico)</span></div>
+  <div class="kpi"><b>130</b><span>URLs no sitemap (idêntico)</span></div>
+  <div class="kpi"><b>0/0/0</b><span>astro check</span></div>
+  <div class="kpi"><b>16–18</b><span>links relacionados/página (era 2–3)</span></div>
+  <div class="kpi"><b>0</b><span>páginas com scroll horizontal</span></div>
+</div>
+
+<div class="note"><strong>Escopo desta sprint (transparência):</strong> o briefing pede uma revisão total. Priorizei o item de maior impacto e explicitamente exigido no critério de aceitação — transformar o bloco de <em>Conteúdos Relacionados</em> (que tinha só 2–3 links) na maior ferramenta de <strong>SEO interno</strong> do site — e corrigi problemas reais de integridade <strong>mobile</strong> que encontrei na auditoria. Os demais itens (novas caixas de destaque, timelines, índice sticky em todas as páginas etc.) estão detalhados como <a href="#roadmap">roadmap priorizado</a> ao final, com base fundacional já entregue.</p>
+
+<h2>1. Auditoria — problemas encontrados</h2>
+<div class="block">
+  <ul>
+    <li><strong>Bloco "Conteúdos e áreas relacionadas" pobre:</strong> as páginas-pilar e subpáginas mostravam apenas 2–3 links fixos (campo <code>related</code> de <code>nucleos.ts</code>), subaproveitando a malha interna.</li>
+    <li><strong>Related fragmentado:</strong> artigos/guias usavam três componentes distintos (<code>RelatedContent</code> + <code>ClusterNav</code> + curados), sem ferramenta nem subáreas — inconsistente com as páginas de área.</li>
+    <li><strong>Scroll horizontal no mobile</strong> (pré-existente) em páginas com formulário: o <em>honeypot</em> antispam usava <code>left:-9999px</code> e era sobreposto por <code>.cform input{width:100%}</code>, ficando com 390&nbsp;px; e o <strong>e-mail longo</strong> do bloco de contato não quebrava, esticando a coluna. Resultado: 9–41&nbsp;px de overflow em <code>/contato/</code>, artigos e guias.</li>
+    <li><strong>Ferramentas desconectadas:</strong> não havia link natural das áreas/artigos para as ferramentas gratuitas relacionadas.</li>
+  </ul>
+</div>
+
+<h2>2. Melhoria principal — RelatedHub (malha interna rica)</h2>
+<div class="block">
+  <p>Criei um único componente <code>RelatedHub</code>, alimentado por dados reais (núcleos, subtopics e coleções <code>blog</code>/<code>guias</code> + um mapa cluster→ferramenta). Ele substitui os blocos fracos e passa a exibir, quando existe conteúdo:</p>
+  <div class="cols">
+    <ul>
+      <li><strong>Área principal</strong> do assunto (card de destaque);</li>
+      <li><strong>Guia completo</strong> do cluster (card de destaque);</li>
+      <li><strong>Ferramenta</strong> relacionada (card de destaque);</li>
+      <li><strong>Subáreas</strong> (chips clicáveis);</li>
+    </ul>
+    <ul>
+      <li><strong>6–8 artigos</strong> do mesmo cluster;</li>
+      <li><strong>Links curados</strong> (cross-cluster, do frontmatter);</li>
+      <li><strong>"Ver a área"</strong> e <strong>"Ver todos os assuntos"</strong>.</li>
+    </ul>
+  </div>
+  <p>Resultado medido: cada página de conteúdo passou de <strong>2–3</strong> para <strong>16–18 links internos</strong> relevantes, sem nenhum link inventado (tudo aponta para páginas já existentes). Aplicado de forma compartilhada em <code>PillarPage</code>, <code>SubPage</code> e nas rotas de artigo e guia — um só componente, sem HTML repetido.</p>
+  <div class="shots">
+    <figure><div class="frame"><img src="prints/artigo-desktop.jpg" alt="Artigo desktop com RelatedHub"></div><figcaption>Artigo · desktop (RelatedHub ao final)</figcaption></figure>
+    <figure><div class="frame"><img src="prints/artigo-mobile.jpg" alt="Artigo mobile"></div><figcaption>Mobile</figcaption></figure>
+  </div>
+</div>
+
+<h2>3. Correções de integridade mobile</h2>
+<div class="block">
+  <ul>
+    <li><strong>Honeypot antispam:</strong> trocado para o padrão acessível <em>screen-reader-only</em> com especificidade correta (<code>.cform input.cform-hp</code>), eliminando o campo de 390&nbsp;px fora da tela.</li>
+    <li><strong>Bloco de contato:</strong> <code>min-width:0</code> nas colunas do grid e <code>overflow-wrap:anywhere</code> no e-mail, permitindo a quebra e o encolhimento da coluna.</li>
+    <li><strong>Verificação:</strong> varredura em 12 páginas × 2 larguras (390 e 360&nbsp;px) → <strong>zero scroll horizontal</strong>.</li>
+  </ul>
+</div>
+
+<h2>4. Prints — desktop e mobile</h2>
+<div class="block">
+  <h3>Home <span style="font-weight:400;color:var(--mut);font-size:13px">(inalterada — comprovação)</span></h3>
+  <div class="shots">
+    <figure><div class="frame"><img src="prints/home-desktop.jpg" alt="Home desktop"></div><figcaption>Desktop</figcaption></figure>
+    <figure><div class="frame"><img src="prints/home-mobile.jpg" alt="Home mobile"></div><figcaption>Mobile</figcaption></figure>
+  </div>
+  <h3>Blog · Assuntos · Guias · Ferramentas</h3>
+  <div class="shots">
+    <figure><div class="frame"><img src="prints/blog-desktop.jpg" alt="Blog"></div><figcaption>Blog</figcaption></figure>
+    <figure><div class="frame"><img src="prints/assuntos-desktop.jpg" alt="Assuntos"></div><figcaption>Assuntos</figcaption></figure>
+  </div>
+  <div class="shots">
+    <figure><div class="frame"><img src="prints/guias-desktop.jpg" alt="Guias"></div><figcaption>Guias</figcaption></figure>
+    <figure><div class="frame"><img src="prints/ferramentas-desktop.jpg" alt="Ferramentas"></div><figcaption>Ferramentas</figcaption></figure>
+  </div>
+  <h3>Área · Subárea · Guia · Ferramenta</h3>
+  <div class="shots">
+    <figure><div class="frame"><img src="prints/area-desktop.jpg" alt="Área"></div><figcaption>Área de atuação</figcaption></figure>
+    <figure><div class="frame"><img src="prints/subarea-mobile.jpg" alt="Subárea mobile"></div><figcaption>Subárea · mobile</figcaption></figure>
+  </div>
+  <div class="shots">
+    <figure><div class="frame"><img src="prints/guia-desktop.jpg" alt="Guia"></div><figcaption>Guia</figcaption></figure>
+    <figure><div class="frame"><img src="prints/ferramenta-desktop.jpg" alt="Ferramenta"></div><figcaption>Ferramenta</figcaption></figure>
+  </div>
+</div>
+
+<h2>5. Arquivos</h2>
+<h4>Criados</h4>
+<div class="files">
+  <code>src/lib/related.ts</code> — monta a malha de relacionados (área, subáreas, guia, ferramenta, 6–8 artigos, curados)
+  <code>src/components/content/RelatedHub.astro</code> — bloco único e rico de relacionados
+</div>
+<h4>Modificados</h4>
+<div class="files">
+  <code>src/components/PillarPage.astro</code> — substitui o bloco de 3 links pelo RelatedHub
+  <code>src/components/SubPage.astro</code> — idem
+  <code>src/pages/blog/[slug].astro</code> — RelatedHub no lugar de ClusterNav + RelatedContent
+  <code>src/pages/guias/[slug].astro</code> — idem
+  <code>src/components/ContactForm.astro</code> — honeypot acessível (fim do overflow)
+  <code>src/components/ContactCTA.astro</code> — colunas encolhíveis + quebra do e-mail
+</div>
+<h4>Reutilizados</h4><p><code>Icon</code>, <code>Container</code>, tokens do site, <code>nucleos.ts</code>, <code>subtopics.ts</code>, coleções <code>blog</code>/<code>guias</code>, <code>ContextualCta</code>.</p>
+
+<h2>6. Ganhos por categoria</h2>
+<div class="cols">
+  <div>
+    <h4>SEO</h4>
+    <ul><li>Malha interna 5–8× mais densa (2–3 → 16–18 links/página).</li><li>Ligação sistemática área ↔ subárea ↔ guia ↔ ferramenta ↔ artigos.</li><li>Fim de páginas semi-órfãs: todo conteúdo do cluster é alcançável.</li></ul>
+    <h4>CRO</h4>
+    <ul><li>Ferramentas gratuitas agora expostas no contexto certo (geram lead qualificado).</li><li>Percursos naturais “continue explorando” aumentam profundidade de sessão.</li></ul>
+  </div>
+  <div>
+    <h4>UX / acessibilidade</h4>
+    <ul><li>Um só padrão de relacionados em todo o site (consistência).</li><li>Zero scroll horizontal (390/360&nbsp;px).</li><li>Honeypot agora <em>screen-reader-only</em> correto; foco e semântica preservados.</li></ul>
+    <h4>Performance</h4>
+    <ul><li>Componentes 100% Astro/estáticos; nenhuma biblioteca nova; JS praticamente inexistente.</li></ul>
+  </div>
+</div>
+
+<h2 id="roadmap">7. Oportunidades futuras (roadmap priorizado)</h2>
+<div class="block">
+  <p>Com a base de componentes e a malha interna já estabelecidas, os próximos incrementos de maior retorno são:</p>
+  <ul>
+    <li><strong>Caixas de destaque no conteúdo</strong> (<code>Importante</code>, <code>Na prática</code>, <code>Erro comum</code>, <code>Atenção</code>): estender o plugin editorial para converter blocos <code>&gt; [!IMPORTANTE]</code> em callouts — quebra as paredes de texto restantes sem tocar no texto.</li>
+    <li><strong>Índice "Nesta página" sticky</strong> nas páginas longas (guias e artigos extensos): gerar a partir dos <code>&lt;h2&gt;</code> já existentes, no build.</li>
+    <li><strong>Timelines/ProcessSteps</strong> reaproveitando o padrão já criado, aplicados a seções com sequência lógica (ex.: etapas do inventário).</li>
+    <li><strong>FAQ ampliado</strong> onde houver perguntas reais disponíveis (sem inventar conteúdo).</li>
+    <li><strong>Primeira dobra</strong> nas páginas institucionais (o padrão compartilhado já existe em <code>areas-hero.css</code>; estender a <code>/o-escritorio/</code>, <code>/contato/</code>).</li>
+    <li><strong>Imagens/thumbnails</strong> nos cards de artigo quando houver arte (hoje os cards são tipográficos — ótimos para escala, e prontos para receber imagem).</li>
+  </ul>
+</div>
+
+<footer>Build validado: <code>astro check</code> 0/0/0 · 132 páginas · 130 URLs · sem scroll horizontal em 390/360&nbsp;px · Home inalterada. Prints em <code>./prints/</code>.</footer>
+
+</div>
+</body>
+</html>

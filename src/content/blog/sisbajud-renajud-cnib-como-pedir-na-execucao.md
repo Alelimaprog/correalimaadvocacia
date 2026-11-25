@@ -1,5 +1,5 @@
 ---
-title: "SISBAJUD, RENAJUD e CNIB na Execução: Como Funcionam | Corrêa Lima Advocacia"
+title: "SISBAJUD, RENAJUD e CNIB: Como Pedir na Execução | Corrêa Lima Advocacia"
 description: "Entenda para que servem SISBAJUD, RENAJUD e CNIB na busca de bens do devedor durante a execução de título extrajudicial."
 h1: "SISBAJUD, RENAJUD e CNIB: como funcionam na execução"
 author: "Alexandre Corrêa Lima"
@@ -42,13 +42,15 @@ Não. O sistema consulta as instituições financeiras integradas de forma centr
 
 Esses pedidos têm custo para o credor?+
 
+Podem estar sujeitos a custas processuais específicas, conforme a tabela do tribunal e o número de consultas realizadas — ponto a confirmar caso a caso com o andamento processual.
+
 Se nada for encontrado, o processo é arquivado?+
 
 Este conteúdo tem caráter exclusivamente informativo e não substitui a análise individual do seu caso por advogado.
 
 Assunto relacionado a este artigo:
 
-[Execuções, Cobrança e Recuperação de Crédito →](/areas-de-atuacao/execucao-cobranca-recuperacao-de-credito/)
+[Execuções, Cobrança e Recuperação de Crédito →](/areas-de-atuacao/recuperacao-de-credito/)
 
 Quer ver o panorama completo do tema?
 

@@ -1,8 +1,9 @@
 ---
 title: "Recuperação Judicial e Medidas do Credor | Guia | Corrêa Lima Advocacia"
-description: "Guia central sobre recuperação judicial, falência e os caminhos do credor: habilitação de crédito, impugnação de crédito e o que muda para quem já tinha uma execução em curso."
+description: "Guia de recuperação judicial e falência para o credor: habilitação e impugnação de crédito e o que muda para quem já tinha execução em curso."
 h1: "Recuperação Judicial, Falência e Medidas do Credor: guia central"
 author: "Alexandre Corrêa Lima"
+updatedDate: 2026-11-07
 cluster: "recuperacao-de-credito"
 ---
 
@@ -32,7 +33,7 @@ Um cenário frequente é o credor que já tinha uma execução em andamento cont
 
 ## Páginas deste cluster
 
-[Recuperação Judicial e Falência →](/areas-de-atuacao/recuperacao-judicial-e-falencia/)[Habilitação e Impugnação de Crédito →](/areas-de-atuacao/habilitacao-e-impugnacao-de-credito/)[Contencioso Empresarial Estratégico →](/areas-de-atuacao/contencioso-empresarial-estrategico/)[Execuções, Cobrança e Recuperação de Crédito →](/areas-de-atuacao/execucao-cobranca-recuperacao-de-credito/)[Trabalhista Empresarial →](/areas-de-atuacao/trabalhista-empresarial/)
+[Recuperação Judicial e Falência →](/areas-de-atuacao/recuperacao-judicial-e-falencia/)[Habilitação e Impugnação de Crédito →](/areas-de-atuacao/habilitacao-e-impugnacao-de-credito/)[Contencioso Empresarial Estratégico →](/areas-de-atuacao/contencioso-empresarial-estrategico/)[Execuções, Cobrança e Recuperação de Crédito →](/areas-de-atuacao/recuperacao-de-credito/)[Trabalhista Empresarial →](/areas-de-atuacao/trabalhista-empresarial/)
 
 ## Artigos relacionados
 
@@ -54,9 +55,15 @@ Não. Este guia organiza o tema como um todo — para empresas em crise e para c
 
 Sou credor de uma empresa que entrou em recuperação judicial. Por onde começo?+
 
+Pelo levantamento da documentação que comprova o crédito e pela verificação do prazo do edital para habilitação — ver o artigo 'O que fazer quando um cliente entra em recuperação judicial' para o passo a passo.
+
 O escritório atua para empresas em recuperação ou para credores?+
 
+Ambos, em processos distintos, conforme o interesse do cliente em cada caso — sem conflito de interesses entre atuações simultâneas no mesmo processo.
+
 O que acontece com uma execução que eu já tinha em andamento?+
+
+Em regra, ela é suspensa, e o crédito nela discutido deve ser habilitado dentro do processo de recuperação judicial para continuar sendo buscado.
 
 Fale sobre o seu caso
 
@@ -71,7 +78,7 @@ Responsável técnico: [Alexandre Corrêa Lima](/o-escritorio/#alexandre-correa-
 - [Recuperação Judicial e Falência](/areas-de-atuacao/recuperacao-judicial-e-falencia/)
 - [Habilitação e Impugnação de Crédito](/areas-de-atuacao/habilitacao-e-impugnacao-de-credito/)
 - [Contencioso Empresarial Estratégico](/areas-de-atuacao/contencioso-empresarial-estrategico/)
-- [Execuções, Cobrança e Recuperação de Crédito](/areas-de-atuacao/execucao-cobranca-recuperacao-de-credito/)
+- [Execuções, Cobrança e Recuperação de Crédito](/areas-de-atuacao/recuperacao-de-credito/)
 - [Trabalhista Empresarial](/areas-de-atuacao/trabalhista-empresarial/)
 
 Fale com o escritório

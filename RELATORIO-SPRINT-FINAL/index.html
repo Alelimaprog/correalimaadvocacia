@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Relatório — Sprint Final · Reorganização das páginas internas · Corrêa Lima Advocacia</title>
+<style>
+  :root{--ink:#12201a;--txt:#33403a;--mut:#6b7a72;--green:#1f7a4d;--greenD:#155c39;
+        --tint:#e9f3ec;--bd:#e2e8e3;--bg:#fbfcfb;--warn:#b4690e}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--txt);
+       font:16px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+  .wrap{max-width:940px;margin:0 auto;padding:48px 22px 90px}
+  h1{color:var(--ink);font-size:31px;line-height:1.2;margin:0 0 6px;letter-spacing:-.02em}
+  h2{color:var(--ink);font-size:23px;margin:52px 0 14px;padding-top:22px;border-top:1px solid var(--bd);letter-spacing:-.01em}
+  h3{color:var(--ink);font-size:18px;margin:30px 0 8px}
+  h4{color:var(--greenD);font-size:14px;text-transform:uppercase;letter-spacing:.05em;margin:20px 0 6px}
+  p{margin:0 0 14px}
+  ul{margin:0 0 14px;padding-left:20px}li{margin:5px 0}
+  code{background:#eef2ef;padding:.12em .4em;border-radius:5px;font-size:.9em}
+  .sub{color:var(--mut);font-size:15px;margin-bottom:26px}
+  .kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin:24px 0}
+  .kpi{background:#fff;border:1px solid var(--bd);border-radius:12px;padding:14px 16px}
+  .kpi b{display:block;color:var(--ink);font-size:21px}
+  .kpi span{color:var(--mut);font-size:13px}
+  .note{background:var(--tint);border:1px solid #cfe6d6;border-left:3px solid var(--green);
+        border-radius:10px;padding:14px 18px;margin:20px 0}
+  .warn{background:#fdf4e7;border:1px solid #f0dcbb;border-left:3px solid var(--warn);
+        border-radius:10px;padding:14px 18px;margin:20px 0}
+  .page{background:#fff;border:1px solid var(--bd);border-radius:14px;padding:22px 24px;margin:22px 0}
+  .page h3{margin-top:0}
+  .tag{display:inline-block;font-size:12px;font-weight:600;padding:3px 10px;border-radius:999px;
+       background:var(--tint);color:var(--greenD);margin-left:8px;vertical-align:middle}
+  .tag.grey{background:#eef2ef;color:#57635c}
+  .shots{display:grid;grid-template-columns:1fr;gap:16px;margin:18px 0 4px}
+  @media(min-width:680px){.shots{grid-template-columns:2fr 1fr}}
+  figure{margin:0}
+  .frame{border:1px solid var(--bd);border-radius:10px;overflow:hidden;background:#fff;max-height:560px;overflow-y:auto}
+  .frame img{width:100%;display:block}
+  figcaption{color:var(--mut);font-size:12.5px;margin-top:6px;text-align:center}
+  .grid2{display:grid;gap:8px 26px}
+  @media(min-width:620px){.grid2{grid-template-columns:1fr 1fr}}
+  .files code{display:block;background:transparent;padding:0;font-size:13px;color:var(--txt)}
+  footer{margin-top:60px;color:var(--mut);font-size:13px;border-top:1px solid var(--bd);padding-top:18px}
+  a{color:var(--greenD)}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<h1>Sprint Final — Reorganização visual das páginas internas</h1>
+<p class="sub">Corrêa Lima Advocacia · site Astro (estático, HostGator) · reorganização orientada a leitura e conversão, <strong>sem alterar conteúdo jurídico, URLs, slugs, SEO ou schema</strong>.</p>
+
+<div class="kpis">
+  <div class="kpi"><b>132</b><span>páginas compiladas (idêntico)</span></div>
+  <div class="kpi"><b>130</b><span>URLs no sitemap (idêntico)</span></div>
+  <div class="kpi"><b>0 / 0 / 0</b><span>astro check (erros/avisos/hints)</span></div>
+  <div class="kpi"><b>~60</b><span>páginas "flat" reestruturadas</span></div>
+  <div class="kpi"><b>0</b><span>conteúdo jurídico alterado ou oculto</span></div>
+  <div class="kpi"><b>0</b><span>links internos ocultados</span></div>
+</div>
+
+<h2>1. Abordagem</h2>
+<p>O diagnóstico mostrou <strong>dois tipos de página</strong>:</p>
+<ul>
+  <li><strong>Páginas já estruturadas</strong> — as subpáginas de núcleo (componente <code>SubPage</code>, orientado a dados) e os artigos/guias em <code>.mdx</code> (que já usam <code>Callout</code>, <code>Checklist</code>, sumário e tabelas). Já eram, na prática, landing pages. Foram <strong>preservadas</strong>.</li>
+  <li><strong>Páginas "flat"</strong> — as 19 áreas em <code>.md</code> e ~41 artigos/guias em <code>.md</code>. Eram paredes de texto: FAQ como parágrafos soltos terminando em "+", passos com número duplicado (<code>1. 1Levantamento</code>), "áreas relacionadas" como lista solta e uma cauda de CTA/contato repetida em toda página.</li>
+</ul>
+<p>A solução foi um <strong>plugin de build (rehype)</strong> que reorganiza esses padrões <em>no momento da compilação</em>, sem editar nenhum arquivo de conteúdo, mais uma folha de estilo editorial. Assim o mesmo tratamento se aplica de forma consistente a todas as páginas, sem duplicação de código e sem risco de reescrever texto jurídico.</p>
+
+<div class="note"><strong>Princípio inegociável:</strong> o plugin só age em padrões reconhecidos e <strong>nunca altera o texto</strong>. Ele apenas re-agrupa elementos que já existiam (transformar uma pergunta+resposta num acordeão, uma lista em cartões, uma tabela em tabela rolável). O sentido jurídico permanece exatamente o mesmo.</p>
+
+<h2>2. O que muda visualmente</h2>
+<div class="grid2">
+  <div>
+    <h4>Estrutura</h4>
+    <ul>
+      <li><strong>FAQ → acordeão</strong> acessível (<code>&lt;details&gt;</code>), removendo o "+" herdado do export.</li>
+      <li><strong>Etapas → passos numerados</strong> em cartões, com o número duplicado corrigido.</li>
+      <li><strong>Tabelas → roláveis</strong> no mobile (sem quebra de layout).</li>
+      <li><strong>Relacionados → cartões</strong> clicáveis (preservando os links internos).</li>
+    </ul>
+  </div>
+  <div>
+    <h4>Leitura &amp; conversão</h4>
+    <ul>
+      <li><strong>Eyebrow</strong> (categoria) + <strong>resumo inicial</strong> destacado.</li>
+      <li><strong>CTA em botões</strong> (WhatsApp primário / enviar caso secundário).</li>
+      <li><strong>Separadores</strong> entre seções e ritmo tipográfico — fim da "parede de texto".</li>
+      <li><strong>Cauda de contato duplicada consolidada</strong> no bloco de contato padrão (ver §4).</li>
+    </ul>
+  </div>
+</div>
+
+<h2>3. Componentes e blocos</h2>
+<p><strong>Criados nesta sprint</strong> (reutilizáveis, via plugin + CSS): bloco <code>FAQ</code> (acordeão), <code>ProcessSteps</code> (passos), <code>RelatedCards</code> (cartões de relacionados), <code>table-wrap</code> (tabela responsiva), <code>cta-inline</code> (botões), <code>eyebrow</code>/<code>lead</code> (categoria e resumo). Reaproveitam <code>ContactCTA</code> (criado na sprint anterior) para a conversão ao final.</p>
+<p><strong>Preservados</strong>: <code>Callout</code>, <code>Checklist</code>, <code>ClusterNav</code>, <code>RelatedContent</code> e o componente <code>SubPage</code> — que já entregavam páginas estruturadas.</p>
+
+<h2>4. Garantias (o que NÃO mudou)</h2>
+<ul>
+  <li><strong>Conteúdo jurídico, URLs, slugs, títulos, meta, canonical, JSON-LD e sitemap</strong>: idênticos. Auditoria confirmou <strong>0 sentenças de conteúdo</strong> e <strong>0 links internos</strong> ocultados em todo o site.</li>
+  <li>A "cauda" de contato repetida (WhatsApp/e-mail/OAB/"Precisa de orientação…") foi apenas <strong>ocultada visualmente</strong> por ser 100% duplicada — os mesmos dados continuam no rodapé e no bloco de contato padronizado. Nada foi apagado do código-fonte.</li>
+  <li>Correção de artefatos de export (o "+" da FAQ e o número duplicado dos passos) é <strong>ajuste de renderização</strong>, não alteração de texto.</li>
+</ul>
+
+<h2>5. Páginas prioritárias</h2>
+<p>As sete páginas indicadas. Observação importante: <strong>seis já eram estruturadas</strong> (subpáginas e <code>.mdx</code>); a reestruturação profunda incide sobre a página de área em <code>.md</code> e, sobretudo, sobre as ~60 páginas "flat" equivalentes em todo o site.</p>
+
+<!-- 1 -->
+<div class="page">
+  <h3>Inventário e Partilha <span class="tag">área · .md · reestruturada</span></h3>
+  <p><em>/areas-de-atuacao/inventario-e-partilha/</em></p>
+  <div class="shots">
+    <figure><div class="frame"><img src="prints/inventario-e-partilha-desktop.jpg" alt="Desktop"></div><figcaption>Desktop</figcaption></figure>
+    <figure><div class="frame"><img src="prints/inventario-e-partilha-mobile.jpg" alt="Mobile"></div><figcaption>Mobile</figcaption></figure>
+  </div>
+  <h4>Problemas encontrados</h4>
+  <ul><li>FAQ como parágrafos soltos terminando em "?+".</li><li>Passos "Como o escritório atua" com número duplicado (<code>1. 1Levantamento</code>).</li><li>"Áreas relacionadas" como lista solta; cauda de CTA/contato repetida.</li></ul>
+  <h4>Melhorias de UX / organização / leitura / conversão</h4>
+  <ul>
+    <li><strong>UX/organização:</strong> 3 perguntas viraram acordeão; 4 etapas viraram passos numerados em cartões; 3 relacionados viraram cartões.</li>
+    <li><strong>Leitura:</strong> categoria + resumo destacados, separadores entre seções, sem parede de texto.</li>
+    <li><strong>Conversão:</strong> CTA em botões no topo + bloco de contato padronizado ao final (formulário + WhatsApp).</li>
+  </ul>
+  <h4>Componentes</h4>
+  <p>Usados: FAQ (acordeão), ProcessSteps, RelatedCards, cta-inline, eyebrow/lead, ContactCTA. Criados: os blocos de FAQ/Passos/Relacionados (via plugin).</p>
+</div>
+
+<!-- 2,3,4 subpages -->
+<div class="page">
+  <h3>Inventário Extrajudicial · Inventário Judicial · Planejamento Sucessório <span class="tag grey">subpáginas · já estruturadas</span></h3>
+  <p><em>/areas-de-atuacao/inventario-e-patrimonio/{inventario-extrajudicial · inventario-judicial · planejamento-sucessorio}/</em></p>
+  <div class="shots">
+    <figure><div class="frame"><img src="prints/inventario-extrajudicial-desktop.jpg" alt="Extrajudicial desktop"></div><figcaption>Extrajudicial · desktop</figcaption></figure>
+    <figure><div class="frame"><img src="prints/inventario-extrajudicial-mobile.jpg" alt="Extrajudicial mobile"></div><figcaption>Mobile</figcaption></figure>
+  </div>
+  <div class="shots">
+    <figure><div class="frame"><img src="prints/inventario-judicial-desktop.jpg" alt="Judicial desktop"></div><figcaption>Judicial · desktop</figcaption></figure>
+    <figure><div class="frame"><img src="prints/planejamento-sucessorio-desktop.jpg" alt="Planejamento desktop"></div><figcaption>Planejamento · desktop</figcaption></figure>
+  </div>
+  <h4>Situação</h4>
+  <p>Geradas pelo componente <code>SubPage</code> (orientado a dados). Já apresentam hero, breadcrumb, seções claras ("Entenda o problema", "Quando procurar", "Como atuamos", "Por que o tempo importa"), <strong>dúvidas comuns, checklists, cartões de navegação e CTA</strong>. Não são paredes de texto.</p>
+  <h4>Melhorias</h4>
+  <ul><li>Verificadas quanto a hierarquia, espaçamento, legibilidade mobile, tamanho de botões, FAQ e formulário. Mantida a estrutura; herdaram os refinamentos globais de tipografia/espaçamento.</li></ul>
+  <h4>Componentes</h4><p>Usados (já existentes): SubPage, Checklist, cartões, CTA, ContactForm. Nenhuma alteração de conteúdo.</p>
+</div>
+
+<!-- 5,6 mdx blog -->
+<div class="page">
+  <h3>Quanto custa um inventário · Testamento no exterior <span class="tag grey">artigos .mdx · já estruturados</span></h3>
+  <p><em>/blog/quanto-custa-um-inventario/ · /blog/testamento-feito-no-exterior-vale-no-brasil/</em></p>
+  <div class="shots">
+    <figure><div class="frame"><img src="prints/quanto-custa-um-inventario-desktop.jpg" alt="Quanto custa desktop"></div><figcaption>Quanto custa · desktop</figcaption></figure>
+    <figure><div class="frame"><img src="prints/quanto-custa-um-inventario-mobile.jpg" alt="Quanto custa mobile"></div><figcaption>Mobile</figcaption></figure>
+  </div>
+  <div class="shots">
+    <figure><div class="frame"><img src="prints/testamento-exterior-desktop.jpg" alt="Testamento desktop"></div><figcaption>Testamento no exterior · desktop</figcaption></figure>
+    <figure><div class="frame"><img src="prints/testamento-exterior-mobile.jpg" alt="Testamento mobile"></div><figcaption>Mobile</figcaption></figure>
+  </div>
+  <h4>Situação e melhorias</h4>
+  <ul>
+    <li>Já usam <strong>sumário com âncoras, tabelas, caixas <code>Callout</code> e <code>Checklist</code></strong>. Preservados integralmente (conteúdo-chave verificado: ITCMD, componentes de custo etc.).</li>
+    <li>Ganho desta sprint: <strong>tabelas agora roláveis no mobile</strong> (invólucro responsivo) e refinamento de ritmo tipográfico. Nenhum texto alterado.</li>
+  </ul>
+  <h4>Componentes</h4><p>Usados: Callout, Checklist, tabela responsiva, sumário. Sem alteração de conteúdo.</p>
+</div>
+
+<!-- 7 guia -->
+<div class="page">
+  <h3>Inventário: guia completo <span class="tag grey">guia .mdx · já estruturado</span></h3>
+  <p><em>/guias/inventario-guia-completo/</em></p>
+  <div class="shots">
+    <figure><div class="frame"><img src="prints/inventario-guia-completo-desktop.jpg" alt="Guia desktop"></div><figcaption>Desktop</figcaption></figure>
+    <figure><div class="frame"><img src="prints/inventario-guia-completo-mobile.jpg" alt="Guia mobile"></div><figcaption>Mobile</figcaption></figure>
+  </div>
+  <h4>Situação e melhorias</h4>
+  <ul><li>Guia longo já bem estruturado (sumário, seções, caixas, checklists). Preservado; herdou os refinamentos globais e tabelas responsivas.</li></ul>
+</div>
+
+<h2>6. Arquivos</h2>
+<h4>Criados</h4>
+<div class="files">
+  <code>scripts/rehype-editorial.mjs</code> — plugin de build (reorganização visual, conservador)
+  <code>src/styles/content-editorial.css</code> — estilos dos novos blocos (FAQ, passos, cartões, tabelas, CTA)
+</div>
+<h4>Modificados</h4>
+<div class="files">
+  <code>astro.config.mjs</code> — registro do rehype plugin em <code>markdown.rehypePlugins</code>
+  <code>src/layouts/BaseLayout.astro</code> — import de <code>content-editorial.css</code>
+</div>
+<p style="color:var(--mut);font-size:14px;margin-top:10px">Nenhum arquivo de conteúdo (<code>src/content/**</code>) foi alterado. A reorganização é 100% em tempo de build.</p>
+
+<h2>7. Acessibilidade e performance</h2>
+<ul>
+  <li><strong>Acessibilidade:</strong> FAQ usa <code>&lt;details&gt;/&lt;summary&gt;</code> nativos (teclado + leitor de tela); hierarquia de headings preservada; foco visível; ícones com <code>aria-hidden</code>; contraste mantido.</li>
+  <li><strong>Performance:</strong> transformação em build (zero JavaScript adicional em runtime); apenas uma folha CSS enxuta. Sem impacto de bundle ou tempo de carregamento; sem <code>layout shift</code> (estrutura já vem pronta do HTML).</li>
+</ul>
+
+<h2>8. Publicação</h2>
+<p>A pasta <code>dist/</code> incluída na entrega está pronta para a HostGator: envie o <strong>conteúdo</strong> de <code>dist/</code> para <code>public_html</code> (ou a pasta do domínio). As imagens do advogado já estão em <code>dist/brand/</code>.</p>
+
+<footer>
+  Relatório gerado ao final da Sprint. Build validado: <code>astro check</code> 0/0/0 · 132 páginas · 130 URLs. Prints em <code>./prints/</code>.
+</footer>
+
+</div>
+</body>
+</html>

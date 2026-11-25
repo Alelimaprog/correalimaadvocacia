@@ -1,58 +1,68 @@
 # Corrêa Lima Advocacia
 
-> Escritório de advocacia brasileiro com atuação técnica e estratégica em advocacia empresarial e recuperação de crédito, contratos de importação e comércio exterior, recuperação judicial e contencioso empresarial, homologação de sentença estrangeira e demandas internacionais, e questões de família, sucessões e patrimônio.
+> Escritório de advocacia em São Paulo (SP), conduzido pelo advogado Alexandre Corrêa Lima (OAB/SP 234511), advogado desde 2006. Frentes prioritárias: direito aduaneiro na importação (mercadoria retida, canal vermelho ou cinza, pena de perdimento, autuações), inventário em São Paulo (em cartório ou judicial, inclusive com herdeiros ou bens no exterior) e homologação de sentenças e divórcios estrangeiros no STJ ou averbação direta em cartório (inclusive para brasileiros que moram nos Estados Unidos). Também atua para empresas em contratos, recuperação de crédito, defesa trabalhista do empregador, cobrança condominial e direito ambiental.
 
-Advogado responsável: Alexandre Corrêa Lima — OAB/SP 234511.
+Atendimento presencial em São Paulo e online para todo o Brasil e para brasileiros no exterior. A atuação é sempre sob o direito brasileiro; o escritório não presta consultoria em direito estrangeiro nem representa clientes perante autoridades de imigração de outros países.
 
-O escritório não atua de forma genérica em todas as áreas do direito. As frentes trabalhista e criminal existem apenas no recorte empresarial (trabalhista empresarial e criminal empresarial), conectadas ao contexto de recuperação judicial e contencioso empresarial — o escritório não atua em direito do trabalho para empregados nem em direito penal fora do contexto empresarial.
+## Frentes prioritárias
 
-## Áreas principais
+- Direito aduaneiro na importação: https://correalimaadvocacia.com.br/areas-de-atuacao/direito-aduaneiro-tributario/
+  - Mercadoria retida (canal vermelho, cinza, procedimento especial): https://correalimaadvocacia.com.br/areas-de-atuacao/direito-aduaneiro-tributario/retencao-de-mercadorias/
+  - Pena de perdimento: https://correalimaadvocacia.com.br/areas-de-atuacao/direito-aduaneiro-tributario/pena-de-perdimento/
+  - Defesa em autuação aduaneira: https://correalimaadvocacia.com.br/areas-de-atuacao/direito-aduaneiro-tributario/defesa-administrativa-aduaneira/
+- Inventário em São Paulo: https://correalimaadvocacia.com.br/areas-de-atuacao/inventario-e-patrimonio/
+  - Inventário em cartório: https://correalimaadvocacia.com.br/areas-de-atuacao/inventario-e-patrimonio/inventario-extrajudicial/
+  - Inventário judicial: https://correalimaadvocacia.com.br/areas-de-atuacao/inventario-e-patrimonio/inventario-judicial/
+  - Inventário com herdeiro no exterior: https://correalimaadvocacia.com.br/areas-de-atuacao/inventario-com-herdeiro-no-exterior/
+- Homologação de sentença estrangeira: https://correalimaadvocacia.com.br/areas-de-atuacao/homologacao-de-sentenca-estrangeira/
+  - Divórcio feito no exterior (averbação ou homologação): https://correalimaadvocacia.com.br/areas-de-atuacao/homologacao-de-divorcio-estrangeiro/
+  - Averbação direta de divórcio estrangeiro em cartório: https://correalimaadvocacia.com.br/areas-de-atuacao/averbacao-de-divorcio-estrangeiro/
+  - Sentença dos Estados Unidos: https://correalimaadvocacia.com.br/areas-de-atuacao/homologacao-de-sentenca-dos-estados-unidos/
 
-- Advocacia Empresarial e Recuperação de Crédito: https://correalimaadvocacia.com.br/areas-de-atuacao/execucao-cobranca-recuperacao-de-credito/
-- Recuperação Judicial e Falência: https://correalimaadvocacia.com.br/areas-de-atuacao/recuperacao-judicial-e-falencia/
-- Contratos de Importação e Comércio Exterior: https://correalimaadvocacia.com.br/areas-de-atuacao/contratos-de-importacao-comercio-exterior/
-- Homologação de Sentença Estrangeira e Demandas Internacionais: https://correalimaadvocacia.com.br/areas-de-atuacao/homologacao-de-sentenca-estrangeira/
-- Família, Sucessões e Patrimônio: https://correalimaadvocacia.com.br/areas-de-atuacao/familia-e-sucessoes/
-- Índice completo de áreas de atuação: https://correalimaadvocacia.com.br/areas-de-atuacao/
-- Mapa de todos os assuntos (página principal + guia + artigos por tema): https://correalimaadvocacia.com.br/assuntos/
+## Outras áreas (empresas)
 
-## Guias centrais por tema (hubs)
+- Recuperação de crédito e execução: https://correalimaadvocacia.com.br/areas-de-atuacao/recuperacao-de-credito/
+- Direito empresarial e contratos: https://correalimaadvocacia.com.br/areas-de-atuacao/direito-empresarial/
+- Trabalhista do empregador: https://correalimaadvocacia.com.br/areas-de-atuacao/trabalhista-empresarial/
+- Recuperação judicial e falência (credor): https://correalimaadvocacia.com.br/areas-de-atuacao/recuperacao-judicial-e-falencia/
+- Cobrança condominial: https://correalimaadvocacia.com.br/areas-de-atuacao/cobranca-condominial/
+- Direito ambiental: https://correalimaadvocacia.com.br/areas-de-atuacao/direito-ambiental/
+- Índice de áreas: https://correalimaadvocacia.com.br/areas-de-atuacao/
 
-- Homologação de Sentença Estrangeira no Brasil: https://correalimaadvocacia.com.br/guias/homologacao-de-sentenca-estrangeira-no-brasil/
-- Cobrança, Execução e Recuperação de Crédito Empresarial: https://correalimaadvocacia.com.br/guias/cobranca-execucao-e-recuperacao-de-credito-empresarial/
-- Recuperação Judicial, Falência e Medidas do Credor: https://correalimaadvocacia.com.br/guias/recuperacao-judicial-falencia-e-medidas-do-credor/
+## Guias
 
-## Perguntas frequentes que este site responde
+- Direito aduaneiro-tributário: https://correalimaadvocacia.com.br/guias/direito-aduaneiro-tributario-guia-completo/
+- Inventário: https://correalimaadvocacia.com.br/guias/inventario-guia-completo/
+- Homologação de sentença estrangeira no Brasil: https://correalimaadvocacia.com.br/guias/homologacao-de-sentenca-estrangeira-no-brasil/
+- Cobrança, execução e recuperação de crédito: https://correalimaadvocacia.com.br/guias/cobranca-execucao-e-recuperacao-de-credito-empresarial/
+- Recuperação judicial e falência — medidas do credor: https://correalimaadvocacia.com.br/guias/recuperacao-judicial-falencia-e-medidas-do-credor/
 
-- Quando uma sentença estrangeira precisa ser homologada no Brasil? → /areas-de-atuacao/homologacao-de-sentenca-estrangeira/
-- Divórcio realizado no exterior precisa ser homologado no Brasil? → /areas-de-atuacao/homologacao-de-divorcio-estrangeiro/
-- Sentença estrangeira de alimentos precisa de homologação? → /areas-de-atuacao/reconhecimento-de-decisoes-estrangeiras/
-- Quais documentos são exigidos para homologação de sentença estrangeira no STJ? → /guias/homologacao-de-sentenca-estrangeira-no-brasil/
-- Quanto tempo leva um processo de homologação de sentença estrangeira? → /areas-de-atuacao/homologacao-de-sentenca-estrangeira/
+## Perguntas que este site responde
+
+- O que fazer quando a mercadoria importada fica retida pela Receita Federal? → /areas-de-atuacao/direito-aduaneiro-tributario/retencao-de-mercadorias/
+- Como se defender da pena de perdimento? → /areas-de-atuacao/direito-aduaneiro-tributario/pena-de-perdimento/
+- Meu inventário pode ser feito em cartório? → /ferramentas/inventario-em-cartorio/
 - Como funciona o inventário quando há herdeiro no exterior? → /areas-de-atuacao/inventario-com-herdeiro-no-exterior/
-- Execução de título extrajudicial é melhor do que ação de cobrança? → /areas-de-atuacao/execucao-cobranca-recuperacao-de-credito/
-- Como localizar bens do devedor em uma execução (SISBAJUD, RENAJUD, CNIB)? → /areas-de-atuacao/execucao-cobranca-recuperacao-de-credito/
-- Vale a pena executar uma confissão de dívida? → /areas-de-atuacao/execucao-cobranca-recuperacao-de-credito/
-- O que muda para o credor quando o devedor entra em recuperação judicial? → /areas-de-atuacao/recuperacao-judicial-e-falencia/
-- Quando habilitar ou impugnar um crédito em recuperação judicial? → /areas-de-atuacao/habilitacao-e-impugnacao-de-credito/
-- Quais cuidados jurídicos em contratos de importação e comércio exterior? → /areas-de-atuacao/contratos-de-importacao-comercio-exterior/
-- O que fazer diante de multa aduaneira ou retenção de mercadoria? → /areas-de-atuacao/direito-aduaneiro-comercio-exterior/
-
-## Páginas principais
-
-- Home: https://correalimaadvocacia.com.br/
-- O Escritório / advogado responsável: https://correalimaadvocacia.com.br/o-escritorio/
-- Conteúdo / blog: https://correalimaadvocacia.com.br/blog/
-- Contato: https://correalimaadvocacia.com.br/contato/
+- Divórcio feito no exterior precisa ser homologado no STJ ou basta averbar em cartório? → /areas-de-atuacao/homologacao-de-divorcio-estrangeiro/
+- Divórcio feito nos Estados Unidos vale no Brasil? → /areas-de-atuacao/homologacao-de-sentenca-dos-estados-unidos/
+- Preciso homologar minha decisão estrangeira? → /ferramentas/preciso-homologar-sentenca-estrangeira/
+- Qual o prazo do canal vermelho e do canal cinza na importação? → /blog/canal-vermelho-canal-cinza-importacao-prazo/
+- Mandado de segurança para liberar mercadoria importada → /blog/mandado-de-seguranca-liberacao-mercadoria-importada/
+- Interposição fraudulenta na importação: como se defender → /blog/interposicao-fraudulenta-importacao-defesa/
+- Como calcular o ITCMD no inventário em São Paulo? → /blog/itcmd-sp-inventario-como-calcular/
+- Inventário em cartório com herdeiro menor ou testamento (Res. CNJ 571/2024) → /blog/inventario-extrajudicial-com-menor-ou-testamento/
+- Quanto tempo demora um inventário? → /blog/quanto-tempo-demora-inventario/
+- O que acontece se não homologar o divórcio estrangeiro? → /blog/o-que-acontece-se-nao-homologar-divorcio-estrangeiro/
+- Pensão alimentícia quando o pai mora nos Estados Unidos → /blog/pensao-alimenticia-pai-mora-no-exterior-eua/
+- Como localizar bens do devedor (SISBAJUD, RENAJUD, CNIB)? → /blog/sisbajud-renajud-cnib-como-pedir-na-execucao/
 
 ## Contato
 
+- Contato: https://correalimaadvocacia.com.br/contato/
 - E-mail: contato@correalimaadvocacia.com.br
-- Telefone/WhatsApp: +55 11 97502-5611
-- Atendimento: nacional, com acompanhamento online quando aplicável
+- WhatsApp: +55 11 97502-5611
+- Endereço: R. Verbo Divino, 2001, Bloco B, Conj. 902, Chácara Santo Antônio, São Paulo – SP, CEP 04719-002
 
 ## Observação
 
-O conteúdo deste site tem caráter exclusivamente informativo e institucional. Não constitui consulta jurídica, não substitui a análise individual de um caso por advogado e não deve ser interpretado como promessa de resultado. Para orientação sobre uma situação específica, é necessário contato direto com o escritório.
-
-Para uma descrição mais completa das páginas e do conteúdo do site, ver /llms-full.txt.
+Conteúdo informativo e institucional. Não constitui consulta jurídica, não substitui a análise individual do caso e não é promessa de resultado. Descrição mais completa: /llms-full.txt

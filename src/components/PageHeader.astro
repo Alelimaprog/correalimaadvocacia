@@ -38,11 +38,14 @@ const { title, description, eyebrow, breadcrumb, class: cls } = Astro.props;
   }
   .eyebrow {
     display: inline-block;
-    font-size: var(--text-sm);
-    letter-spacing: 0.08em;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: var(--text-xs);
+    letter-spacing: var(--tracking-eyebrow);
     text-transform: uppercase;
-    color: var(--color-green-strong);
-    font-weight: 600;
+    color: var(--color-accent);
+    font-weight: var(--weight-semibold);
     margin-bottom: 0.75rem;
   }
   .ph-desc {

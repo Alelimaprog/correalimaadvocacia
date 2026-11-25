@@ -26,10 +26,10 @@ O trabalho considera tanto a via consensual, quando há acordo entre as partes, 
 
 ## Como o escritório atua
 
-1. 1Análise do regime de bens e do patrimônio do casal.
-2. 2Definição da via mais adequada: divórcio consensual (cartório ou judicial) ou litigioso.
-3. 3Condução das tratativas de partilha e, quando necessário, do processo judicial.
-4. 4Acompanhamento até a formalização final e regularização dos bens partilhados.
+1. Análise do regime de bens e do patrimônio do casal.
+2. Definição da via mais adequada: divórcio consensual (cartório ou judicial) ou litigioso.
+3. Condução das tratativas de partilha e, quando necessário, do processo judicial.
+4. Acompanhamento até a formalização final e regularização dos bens partilhados.
 
 ## Situações comuns
 
@@ -38,6 +38,19 @@ Divórcios com imóveis, participações societárias ou investimentos a partilh
 Casais com patrimônio adquirido antes e durante o casamento.
 
 Divergências sobre valoração ou destinação de bens específicos.
+
+## Documentos para começar
+
+- Certidão de casamento atualizada.
+- Pacto antenupcial, se houver.
+- Matrículas atualizadas dos imóveis.
+- Extratos de contas, investimentos e previdência.
+- Contrato social e alterações, se houver participação em empresa.
+- Documentos de veículos e de dívidas do casal.
+
+## Quanto custa
+
+No divórcio em cartório, pagam-se os emolumentos da escritura, pela tabela oficial do estado, e os honorários. No judicial, as custas do processo e os honorários. Se a partilha for desigual, a diferença pode gerar imposto: ITBI, quando há reposição em dinheiro por imóvel, ou ITCMD, quando há doação. Esse ponto é examinado antes de fechar o acordo.
 
 As informações desta página têm caráter informativo geral. O prazo e o desfecho de cada procedimento podem variar conforme as particularidades do caso concreto, sendo necessária análise individual antes de qualquer conclusão.
 
@@ -48,6 +61,8 @@ O regime de bens interfere na partilha?+
 Sim. O regime de bens do casamento (comunhão parcial, comunhão universal, separação de bens, entre outros) define quais bens integram a partilha e em que proporção, sendo o ponto de partida da análise patrimonial.
 
 É possível fazer o divórcio em cartório quando há bens a partilhar?+
+
+Sim, havendo acordo e assistência de advogado, a partilha consta da própria escritura de divórcio. Se houver filhos menores ou incapazes, a escritura só é possível depois que guarda, convivência e alimentos forem definidos em juízo (Res. CNJ 35/2007, art. 34, §2º).
 
 Fale sobre o seu caso
 
@@ -60,7 +75,7 @@ Responsável técnico: [Alexandre Corrêa Lima](/o-escritorio/#alexandre-correa-
 Áreas relacionadas
 
 - [Família e Sucessões](/areas-de-atuacao/familia-e-sucessoes/)
-- [Inventário e Partilha](/areas-de-atuacao/inventario-e-partilha/)
+- [Inventário e Partilha](/areas-de-atuacao/inventario-e-patrimonio/)
 - [Homologação de Divórcio Estrangeiro](/areas-de-atuacao/homologacao-de-divorcio-estrangeiro/)
 
 Fale com o escritório

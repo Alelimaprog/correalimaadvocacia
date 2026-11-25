@@ -21,6 +21,9 @@ import WhatsAppButton from '@/components/WhatsAppButton.astro';
   <div class="overlay" data-overlay hidden></div>
 
   <div class="panel" id="mobile-panel" aria-label="Navegação móvel" hidden>
+    <button class="panel-close" type="button" aria-label="Fechar menu" data-close>
+      <svg aria-hidden="true" width="18" height="18" viewBox="0 0 18 18"><path d="M2 2l14 14M16 2L2 16" stroke="currentColor" stroke-width="2" fill="none"></path></svg>
+    </button>
     <nav class="panel-nav" aria-label="Navegação móvel">
       {mainNav.map((l) => <a class="m-link" href={l.href}>{l.label}</a>)}
 
@@ -49,6 +52,7 @@ import WhatsAppButton from '@/components/WhatsAppButton.astro';
     </nav>
 
     <div class="panel-cta">
+      <a class="btn btn--on-dark panel-form" href="/contato/" data-cta-position="menu">Enviar meu caso</a>
       <WhatsAppButton />
     </div>
   </div>
@@ -73,21 +77,39 @@ import WhatsAppButton from '@/components/WhatsAppButton.astro';
   }
   .burger:hover { background: var(--surface-cream); }
 
-  .overlay { position: fixed; inset: 0; background: rgba(6, 40, 28, 0.6); backdrop-filter: blur(2px); z-index: 70; }
+  /* z-index acima do banner de consentimento (1001) e do FAB do WhatsApp (50).
+     O overlay e o painel são movidos para <body> via JS (ver script) para
+     escapar do contexto de empilhamento e do containing-block criado pelo
+     backdrop-filter do cabeçalho — sem isso o painel fixo colapsa para a
+     altura do header. */
+  .overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(6, 40, 28, 0.6);
+    -webkit-backdrop-filter: blur(2px);
+    backdrop-filter: blur(2px);
+    z-index: 1090;
+    overscroll-behavior: contain;
+  }
 
   .panel {
     position: fixed;
-    top: 0.6rem;
-    right: 0.6rem;
-    bottom: 0.6rem;
-    height: auto;
+    /* Insets seguros (com suporte a notch do iPhone) — a altura é a distância
+       entre top e bottom, então o painel nunca ultrapassa a tela e rola por
+       dentro (overflow-y: auto). */
+    top: max(0.6rem, env(safe-area-inset-top));
+    right: max(0.6rem, env(safe-area-inset-right));
+    bottom: max(0.6rem, env(safe-area-inset-bottom));
     width: min(88vw, 22rem);
+    max-width: calc(100vw - 1.2rem);
     background: var(--color-navy);
     color: #fff;
-    z-index: 80;
+    z-index: 1100;
     padding: 5rem 1.5rem 2rem;
     overflow-y: auto;
-    border-radius: var(--radius-xl);
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior: contain;
+    border-radius: var(--radius-sm);
     box-shadow: var(--shadow-lg);
   }
 
@@ -101,7 +123,7 @@ import WhatsAppButton from '@/components/WhatsAppButton.astro';
     text-decoration: none;
     border-bottom: 1px solid var(--border-on-dark);
   }
-  .m-link:hover { color: var(--color-green); }
+  .m-link:hover { color: var(--color-accent); }
 
   /* Grupos expansíveis nativos (<details>) — acessíveis por teclado e leitor de tela */
   .m-acc { border-bottom: 1px solid var(--border-on-dark); }
@@ -116,7 +138,7 @@ import WhatsAppButton from '@/components/WhatsAppButton.astro';
     cursor: pointer;
   }
   .m-acc-sum::-webkit-details-marker { display: none; }
-  .m-acc-sum:hover { color: var(--color-green); }
+  .m-acc-sum:hover { color: var(--color-accent); }
   .m-chev { color: rgba(255, 255, 255, 0.55); transition: transform var(--dur) var(--ease); flex: none; }
   .m-acc[open] .m-chev { transform: rotate(180deg); }
   .m-acc-body { display: flex; flex-direction: column; padding-bottom: var(--space-2); }
@@ -128,8 +150,15 @@ import WhatsAppButton from '@/components/WhatsAppButton.astro';
     text-decoration: none;
     line-height: var(--leading-snug);
   }
-  .m-sub:hover { color: var(--color-green); }
-  .panel-cta { margin-top: var(--space-6); }
+  .m-sub:hover { color: var(--color-accent); }
+  .panel-cta { margin-top: var(--space-6); display: grid; gap: var(--space-3); }
+  .panel-form { justify-content: center; }
+  .panel-close {
+    position: absolute; top: 1rem; right: 1rem; width: 2.75rem; height: 2.75rem;
+    display: inline-flex; align-items: center; justify-content: center;
+    background: none; border: 0; border-radius: var(--radius-pill); color: #fff; cursor: pointer;
+  }
+  .panel-close:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 2px; }
 </style>
 
 <script>
@@ -139,26 +168,57 @@ import WhatsAppButton from '@/components/WhatsAppButton.astro';
     const overlay = root.querySelector('[data-overlay]') as HTMLElement | null;
     if (!burger || !panel || !overlay) return;
 
+    // CORREÇÃO DO BUG DO MENU MOBILE
+    // ------------------------------------------------------------------
+    // O cabeçalho (.header-shell) usa backdrop-filter, o que o torna o
+    // "containing block" de qualquer descendente position:fixed. Como o
+    // painel e o overlay ficavam dentro do header, o painel fixo era
+    // dimensionado em relação à pílula do cabeçalho (~64px) e colapsava,
+    // exibindo só o primeiro item ("Início"); o overlay cobria apenas a
+    // área do header. A correção definitiva é mover overlay e painel para
+    // o final do <body>, fora do backdrop-filter e do stacking context do
+    // header — assim o fixed passa a se referir à viewport (tela cheia).
+    if (overlay.parentElement !== document.body) document.body.appendChild(overlay);
+    if (panel.parentElement !== document.body) document.body.appendChild(panel);
+
+    // Trava de rolagem sem "pulo" de layout (compensa a barra de rolagem).
+    const lockScroll = (lock: boolean) => {
+      if (lock) {
+        const sbw = window.innerWidth - document.documentElement.clientWidth;
+        document.body.style.overflow = 'hidden';
+        if (sbw > 0) document.body.style.paddingRight = sbw + 'px';
+      } else {
+        document.body.style.overflow = '';
+        document.body.style.paddingRight = '';
+      }
+    };
+
     const setOpen = (open: boolean) => {
       burger.setAttribute('aria-expanded', String(open));
       burger.setAttribute('aria-label', open ? 'Fechar menu' : 'Abrir menu');
       panel.hidden = !open;
       overlay.hidden = !open;
-      document.body.style.overflow = open ? 'hidden' : '';
+      lockScroll(open);
       if (open) {
-        const first = panel.querySelector('a') as HTMLElement | null;
-        first?.focus();
+        panel.scrollTop = 0;
+        const first = panel.querySelector('a, button') as HTMLElement | null;
+        first?.focus({ preventScroll: true });
       }
     };
 
     burger.addEventListener('click', () => setOpen(panel.hidden));
     overlay.addEventListener('click', () => setOpen(false));
+    panel.querySelector('[data-close]')?.addEventListener('click', () => setOpen(false));
     document.addEventListener('keydown', (e) => {
       if ((e as KeyboardEvent).key === 'Escape' && !panel.hidden) {
         setOpen(false);
         burger.focus();
       }
     });
+    // Fecha ao seguir qualquer link do menu (inclui submenus <details>).
     panel.querySelectorAll('a').forEach((a) => a.addEventListener('click', () => setOpen(false)));
+
+    // Garante estado inicial fechado (após o portal).
+    setOpen(false);
   });
 </script>

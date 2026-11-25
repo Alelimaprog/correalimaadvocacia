@@ -1,5 +1,5 @@
 ---
-title: "Diferença Entre Homologação de Sentença Estrangeira e Carta Rogatória | Corrêa Lima Advocacia"
+title: "Homologação de Sentença Estrangeira x Carta Rogatória | Corrêa Lima Advocacia"
 description: "Entenda a diferença entre homologação de sentença estrangeira e carta rogatória — dois procedimentos distintos de cooperação jurídica internacional no Brasil."
 h1: "Diferença entre homologação de sentença estrangeira e carta rogatória"
 author: "Alexandre Corrêa Lima"

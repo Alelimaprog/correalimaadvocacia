@@ -1,8 +1,9 @@
 ---
-title: "Cobrança e Recuperação de Crédito Empresarial | Guia | Corrêa Lima Advocacia"
-description: "Guia central sobre cobrança, execução e recuperação de crédito empresarial: quando executar, como cobrar judicialmente, o que pode ser penhorado e o que muda se o devedor entrar em recuperação judicial."
+title: "Recuperação de Crédito Empresarial: Guia Completo | Corrêa Lima Advocacia"
+description: "Guia de cobrança e recuperação de crédito empresarial: quando executar, o que pode ser penhorado e o que muda se o devedor pedir recuperação judicial."
 h1: "Cobrança, Execução e Recuperação de Crédito Empresarial: guia central"
 author: "Alexandre Corrêa Lima"
+updatedDate: 2026-11-07
 cluster: "recuperacao-de-credito"
 ---
 
@@ -32,7 +33,7 @@ A cobrança de cotas condominiais em atraso segue, na prática, a mesma lógica 
 
 ## Páginas deste cluster
 
-[Execuções, Cobrança e Recuperação de Crédito →](/areas-de-atuacao/execucao-cobranca-recuperacao-de-credito/)[Advocacia Empresarial →](/areas-de-atuacao/advocacia-empresarial/)[Contratos Empresariais →](/areas-de-atuacao/contratos-empresariais/)[Cobrança Condominial e Recuperação de Inadimplência →](/areas-de-atuacao/cobranca-condominial-recuperacao-de-inadimplencia/)[Habilitação e Impugnação de Crédito →](/areas-de-atuacao/habilitacao-e-impugnacao-de-credito/)
+[Execuções, Cobrança e Recuperação de Crédito →](/areas-de-atuacao/recuperacao-de-credito/)[Advocacia Empresarial →](/areas-de-atuacao/advocacia-empresarial/)[Contratos Empresariais →](/areas-de-atuacao/contratos-empresariais/)[Cobrança Condominial e Recuperação de Inadimplência →](/areas-de-atuacao/cobranca-condominial/)[Habilitação e Impugnação de Crédito →](/areas-de-atuacao/habilitacao-e-impugnacao-de-credito/)
 
 ## Artigos relacionados
 
@@ -59,9 +60,15 @@ A execução parte de um título executivo (judicial ou extrajudicial) já pront
 
 Este guia substitui a página de Execução, Cobrança e Recuperação de Crédito?+
 
+Não. Este guia organiza o tema como um todo e conecta os diferentes conteúdos do cluster. A página de serviço detalha o atendimento em si, com FAQ e estrutura própria.
+
 O que fazer se o devedor entrar em recuperação judicial durante a cobrança?+
 
+A cobrança direta costuma ficar suspensa, e o crédito passa a ser tratado dentro do processo de recuperação judicial, por meio de habilitação de crédito — ver o guia de Recuperação Judicial, Falência e Medidas do Credor para mais detalhes.
+
 Cobrança condominial segue as mesmas regras da cobrança empresarial?+
+
+A lógica processual é semelhante (execução de título extrajudicial), mas a documentação de base é distinta — convenção de condomínio e ata de assembleia, em vez de contratos e notas fiscais empresariais.
 
 Fale sobre o seu caso
 
@@ -73,10 +80,10 @@ Responsável técnico: [Alexandre Corrêa Lima](/o-escritorio/#alexandre-correa-
 
 Áreas relacionadas
 
-- [Execuções, Cobrança e Recuperação de Crédito](/areas-de-atuacao/execucao-cobranca-recuperacao-de-credito/)
+- [Execuções, Cobrança e Recuperação de Crédito](/areas-de-atuacao/recuperacao-de-credito/)
 - [Advocacia Empresarial](/areas-de-atuacao/advocacia-empresarial/)
 - [Contratos Empresariais](/areas-de-atuacao/contratos-empresariais/)
-- [Cobrança Condominial e Recuperação de Inadimplência](/areas-de-atuacao/cobranca-condominial-recuperacao-de-inadimplencia/)
+- [Cobrança Condominial e Recuperação de Inadimplência](/areas-de-atuacao/cobranca-condominial/)
 - [Habilitação e Impugnação de Crédito](/areas-de-atuacao/habilitacao-e-impugnacao-de-credito/)
 
 Fale com o escritório

@@ -1,11 +1,11 @@
 ---
-title: "Cheque, Nota Promissória ou Duplicata: Qual Título Usar na Cobrança | Corrêa Lima Advocacia"
+title: "Cheque, Promissória ou Duplicata: Qual Título Executar | Corrêa Lima Advocacia"
 description: "Entenda as diferenças entre cheque, nota promissória e duplicata como títulos executivos extrajudiciais e o que cada um exige para embasar uma execução."
 h1: "Cheque, nota promissória ou duplicata: qual título executivo usar na cobrança"
 author: "Alexandre Corrêa Lima"
 pubDate: 2026-06-28
 updatedDate: 2026-06-28
-cluster: "direito-aduaneiro-tributario"
+cluster: "recuperacao-de-credito"
 ---
 
 Cobrança, Execução e Recuperação de Crédito
@@ -40,7 +40,7 @@ Este conteúdo tem caráter exclusivamente informativo e não substitui a análi
 
 Assunto relacionado a este artigo:
 
-[Execuções, Cobrança e Recuperação de Crédito →](/areas-de-atuacao/execucao-cobranca-recuperacao-de-credito/)
+[Execuções, Cobrança e Recuperação de Crédito →](/areas-de-atuacao/recuperacao-de-credito/)
 
 Quer ver o panorama completo do tema?
 

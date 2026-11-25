@@ -1,73 +1,145 @@
 ---
 /**
- * FloatingWhatsApp — botão flutuante fixo (canto inferior direito), visível em
- * todas as telas durante a rolagem (o botão do header coexiste). Mantém href
- * wa.me, target/rel, evento click_whatsapp (Analytics) e aria-label. Sem JS.
+ * FloatingWhatsApp — atalho fixo no canto inferior direito.
+ *
+ * O canal continua existindo: para uma parte real dos clientes, o WhatsApp é
+ * como o primeiro contato acontece, e tirá-lo custaria conversas. O que mudou é
+ * o tom. Antes: círculo verde WhatsApp com halo pulsando em laço infinito —
+ * vocabulário de página de captação, e um elemento que pisca sem parar no canto
+ * da tela de um site institucional.
+ *
+ * Agora: uma pastilha navy discreta, com rótulo escrito e sem animação de laço.
+ * O ícone sozinho obriga a decifrar; o rótulo diz o que acontece ao clicar. Em
+ * telas estreitas o rótulo some e sobra só o ícone, para não cobrir o conteúdo.
  */
 import { whatsappHrefForPath } from '@/lib/site.config';
 
-// ETAPA 18 — mensagem personalizada conforme a página atual.
 const href = whatsappHrefForPath(Astro.url.pathname);
+// Rodada 3 (A7): barra fixa no celular com os dois canais. O assunto do formulário
+// é deduzido do caminho (preselectArea casa o slug com as palavras-chave de cada assunto).
+const segs = Astro.url.pathname.split('/').filter(Boolean);
+const isContato = segs[0] === 'contato';
+const areaSlug = segs.length > 1 ? segs[segs.length - 1] : '';
+const contatoHref = areaSlug ? `/contato/?area=${areaSlug}` : '/contato/';
 ---
 
 <a
-  class="fab-whatsapp"
+  class="fab"
   href={href}
   target="_blank"
   rel="noopener noreferrer"
   data-cta-position="floating"
   aria-label="Falar no WhatsApp com a Corrêa Lima Advocacia"
 >
-  <span class="fab-halo" aria-hidden="true"></span>
-  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
     <path
       d="M17.6 6.4A8.9 8.9 0 0012 4a8.94 8.94 0 00-7.75 13.4L3 21l3.7-1.2A8.94 8.94 0 0012 21a8.94 8.94 0 006.3-15.6zM12 19.3a7.3 7.3 0 01-3.73-1.02l-.27-.16-2.2.7.72-2.14-.18-.28A7.32 7.32 0 1119.3 12 7.32 7.32 0 0112 19.3z"
-      fill="#ffffff"></path>
+      fill="currentColor"></path>
     <path
       d="M15.1 13.6c-.2-.1-1.2-.6-1.4-.65-.2-.08-.34-.1-.48.1s-.55.65-.67.78-.25.15-.46.05a5.87 5.87 0 01-1.73-1.07 6.5 6.5 0 01-1.2-1.49c-.13-.2 0-.32.1-.42.1-.1.2-.25.3-.37a1.4 1.4 0 00.2-.34.38.38 0 000-.36c-.05-.1-.48-1.15-.66-1.58s-.35-.36-.48-.37h-.4a.79.79 0 00-.57.27 2.4 2.4 0 00-.75 1.78 4.17 4.17 0 00.87 2.2 9.5 9.5 0 003.63 3.2c.5.22.9.35 1.2.44a2.9 2.9 0 001.33.08c.4-.06 1.2-.5 1.38-.97s.18-.88.13-.97-.18-.14-.38-.24z"
-      fill="#ffffff"></path>
+      fill="currentColor"></path>
   </svg>
+  <span class="fab-label">WhatsApp</span>
 </a>
 
+{!isContato && (
+  <nav class="mbar" aria-label="Contato rápido" data-mbar>
+    <a href={href} target="_blank" rel="noopener noreferrer" data-cta-position="sticky-bar">Falar no WhatsApp</a>
+    <a href={contatoHref} data-cta-position="sticky-bar">Enviar meu caso</a>
+  </nav>
+)}
+
 <style>
-  .fab-whatsapp {
+  .fab {
     position: fixed;
     bottom: 1.5rem;
     right: 1.5rem;
     z-index: 50;
-    display: flex;
-    height: 3.5rem;
-    width: 3.5rem;
+    display: inline-flex;
     align-items: center;
-    justify-content: center;
-    border-radius: 9999px;
-    background: var(--color-whatsapp);
-    box-shadow: var(--shadow-action);
-    transition: transform 0.2s ease;
+    gap: 0.5rem;
+    height: 2.9rem;
+    padding-inline: 1rem;
+    border-radius: var(--radius-sm);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    background: var(--color-navy);
+    color: #fff;
+    font-family: var(--font-ui);
+    font-size: var(--text-sm);
+    font-weight: var(--weight-semibold);
+    text-decoration: none;
+    box-shadow: var(--shadow-md);
+    transition: background-color var(--dur) var(--ease);
   }
-  .fab-whatsapp:hover {
-    transform: scale(1.05);
+  .fab:hover { background: var(--color-green-hover); }
+  .fab:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 3px; }
+
+  /* O alvo mantém ~46px de lado mesmo sem o rótulo. */
+  @media (max-width: 520px) {
+    .fab { padding-inline: 0; width: 2.9rem; justify-content: center; }
+    .fab-label { display: none; }
   }
-  .fab-halo {
-    position: absolute;
-    inset: 0;
-    z-index: -1;
-    border-radius: 9999px;
-    background: var(--color-whatsapp);
-    opacity: 0.55;
-    animation: fab-ping 2.6s cubic-bezier(0, 0, 0.2, 1) infinite;
-  }
-  @keyframes fab-ping {
-    0% { transform: scale(1); opacity: 0.55; }
-    75%, 100% { transform: scale(1.7); opacity: 0; }
-  }
-  @media (prefers-reduced-motion: reduce) {
-    .fab-whatsapp {
-      transition: none;
+
+  .mbar { display: none; }
+  @media (max-width: 520px) {
+    .fab { display: none; }
+    .mbar {
+      position: fixed; inset: auto 0 0 0; z-index: 50;
+      display: grid; grid-template-columns: 1fr 1fr;
+      background: var(--color-navy); border-top: 1px solid rgba(255, 255, 255, 0.14);
+      padding-bottom: env(safe-area-inset-bottom);
+      transform: translateY(110%); transition: transform 0.25s var(--ease);
     }
-    .fab-halo {
-      animation: none;
-      display: none;
+    .mbar.is-on { transform: none; }
+    .mbar a {
+      color: #fff; text-align: center; padding: 0.9rem 0.5rem; text-decoration: none;
+      font-family: var(--font-ui); font-size: var(--text-sm); font-weight: var(--weight-semibold); line-height: 1;
     }
+    .mbar a + a { background: #fff; color: var(--color-navy); }
+    .mbar a:focus-visible { outline: 2px solid var(--color-accent); outline-offset: -3px; }
+    :global(body) { padding-bottom: 3.2rem; }
   }
+  @media (prefers-reduced-motion: reduce) { .mbar { transition: none; } }
 </style>
+
+<script>
+  import { rememberLanding } from '@/lib/contact-origin';
+  // Memoriza a página de entrada da sessão (atribuição sem cookies).
+  rememberLanding();
+  // Links de WhatsApp escritos no conteúdo (markdown) ganham a referência da página.
+  (function () {
+    const segs = location.pathname.split('/').filter(Boolean);
+    const ref = segs.length ? segs[segs.length - 1].slice(0, 60) : 'home';
+    document.querySelectorAll<HTMLAnchorElement>('a[href*="wa.me/"]').forEach((a) => {
+      try {
+        const u = new URL(a.href);
+        const t = u.searchParams.get('text') || '';
+        if (t.indexOf('(ref.:') === -1) {
+          u.searchParams.set('text', `${t} (ref.: ${ref})`.trim());
+          a.href = u.toString();
+        }
+      } catch { /* noop */ }
+    });
+  })();
+
+  // Barra do celular: aparece depois de rolar ~70% da primeira tela e some
+  // quando um formulário de contato está visível (não compete com ele).
+  (function () {
+    const bar = document.querySelector<HTMLElement>('[data-mbar]');
+    if (!bar) return;
+    let formVisible = false;
+    const update = () => bar.classList.toggle('is-on', !formVisible && window.scrollY > window.innerHeight * 0.7);
+    window.addEventListener('scroll', update, { passive: true });
+    const forms = document.querySelectorAll('form[data-contact-form], form[data-home-contact], #contato');
+    if ('IntersectionObserver' in window && forms.length) {
+      const seen = new Set<Element>();
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach((e) => (e.isIntersecting ? seen.add(e.target) : seen.delete(e.target)));
+        formVisible = seen.size > 0;
+        update();
+      });
+      forms.forEach((f) => io.observe(f));
+    }
+    update();
+  })();
+</script>

@@ -26,10 +26,10 @@ A atuação abrange tanto a orientação preventiva sobre exigências aduaneiras
 
 ## Como o escritório atua
 
-1. 1Análise da autuação, retenção ou exigência aduaneira e da documentação da operação envolvida.
-2. 2Elaboração de defesa administrativa perante a autoridade aduaneira competente, quando cabível.
-3. 3Avaliação de medidas judiciais quando a via administrativa não for suficiente ou adequada.
-4. 4Orientação preventiva sobre exigências aduaneiras aplicáveis a operações futuras, em conjunto com despachantes aduaneiros e demais profissionais da operação.
+1. Análise da autuação, retenção ou exigência aduaneira e da documentação da operação envolvida.
+2. Elaboração de defesa administrativa perante a autoridade aduaneira competente, quando cabível.
+3. Avaliação de medidas judiciais quando a via administrativa não for suficiente ou adequada.
+4. Orientação preventiva sobre exigências aduaneiras aplicáveis a operações futuras, em conjunto com despachantes aduaneiros e demais profissionais da operação.
 
 ## Situações comuns
 
@@ -49,9 +49,15 @@ Contratos de Importação trata da relação contratual entre a empresa e seus f
 
 O escritório atua em conjunto com despachantes aduaneiros?+
 
+Sim. A atuação jurídica ocorre de forma complementar ao trabalho de despachantes aduaneiros, com foco nos aspectos jurídicos e contenciosos da operação, e não no desembaraço aduaneiro em si.
+
 É possível reverter uma multa aduaneira?+
 
+Depende dos fundamentos da autuação e da documentação disponível. A análise do caso concreto é o que permite avaliar a viabilidade de defesa administrativa ou judicial.
+
 O que fazer quando a mercadoria fica retida na alfândega?+
+
+O primeiro passo é identificar o motivo formal da retenção junto à autoridade aduaneira, para então avaliar se a exigência pode ser cumprida diretamente ou se há necessidade de defesa administrativa ou medida judicial para liberação da mercadoria.
 
 Fale sobre o seu caso
 

@@ -26,10 +26,10 @@ O escritório atua com foco técnico nesses processos, em conexão direta com a 
 
 ## Como o escritório atua
 
-1. 1Análise da situação financeira e jurídica da empresa ou do crédito envolvido.
-2. 2Para empresas: avaliação técnica da viabilidade e dos requisitos legais da recuperação judicial, em conjunto com os profissionais contábeis e financeiros responsáveis pelo plano.
-3. 3Para credores: habilitação, verificação e acompanhamento do crédito dentro do processo, incluindo eventual impugnação de créditos de terceiros quando cabível.
-4. 4Acompanhamento processual até a fase correspondente à natureza da atuação (aprovação do plano, encerramento da recuperação, ou desfecho da falência).
+1. Análise da situação financeira e jurídica da empresa ou do crédito envolvido.
+2. Para empresas: avaliação técnica da viabilidade e dos requisitos legais da recuperação judicial, em conjunto com os profissionais contábeis e financeiros responsáveis pelo plano.
+3. Para credores: habilitação, verificação e acompanhamento do crédito dentro do processo, incluindo eventual impugnação de créditos de terceiros quando cabível.
+4. Acompanhamento processual até a fase correspondente à natureza da atuação (aprovação do plano, encerramento da recuperação, ou desfecho da falência).
 
 ## Situações comuns
 
@@ -51,15 +51,27 @@ A recuperação judicial é um procedimento voltado a viabilizar a superação d
 
 Meu cliente entrou em recuperação judicial. Eu ainda posso cobrar o que me deve?+
 
+A cobrança direta costuma ficar suspensa temporariamente (o chamado stay period), e o crédito, em regra, passa a ser cobrado dentro do próprio processo de recuperação judicial, por meio de habilitação de crédito — e não mais por execução ou cobrança avulsa fora do processo.
+
 O que é habilitação de crédito?+
+
+É o procedimento pelo qual o credor apresenta e comprova seu crédito dentro do processo de recuperação judicial ou falência, para que ele seja reconhecido e incluído na lista de credores, com o valor e a classificação corretos. Veja mais na página específica sobre habilitação e impugnação de crédito.
 
 Toda empresa em dificuldade financeira deve pedir recuperação judicial?+
 
+Não necessariamente. A recuperação judicial é um instrumento específico, com requisitos legais e custos próprios, e nem sempre é a alternativa mais adequada. A avaliação deve considerar o porte da empresa, a natureza do passivo e outras alternativas de reestruturação, inclusive extrajudiciais.
+
 É possível negociar diretamente com uma empresa em recuperação judicial, fora do processo?+
+
+Determinadas negociações continuam possíveis, sobretudo quanto a obrigações posteriores ao pedido de recuperação judicial, mas créditos anteriores ao pedido, em regra, seguem a lógica do plano de recuperação aprovado no processo.
 
 Quanto tempo dura um processo de recuperação judicial?+
 
+Varia consideravelmente conforme a complexidade do caso, o número de credores e o andamento do plano aprovado. Não é possível estimar prazo fixo sem análise da situação concreta.
+
 O escritório atua para a empresa em crise ou para os credores?+
+
+Ambos, em processos distintos — a atuação é definida conforme o interesse do cliente em cada caso específico, sem conflito de interesses entre atuações simultâneas no mesmo processo.
 
 Fale sobre o seu caso
 
@@ -73,7 +85,7 @@ Responsável técnico: [Alexandre Corrêa Lima](/o-escritorio/#alexandre-correa-
 
 - [Habilitação e Impugnação de Crédito](/areas-de-atuacao/habilitacao-e-impugnacao-de-credito/)
 - [Contencioso Empresarial Estratégico](/areas-de-atuacao/contencioso-empresarial-estrategico/)
-- [Execuções, Cobrança e Recuperação de Crédito](/areas-de-atuacao/execucao-cobranca-recuperacao-de-credito/)
+- [Execuções, Cobrança e Recuperação de Crédito](/areas-de-atuacao/recuperacao-de-credito/)
 
 Guia completo do tema
 

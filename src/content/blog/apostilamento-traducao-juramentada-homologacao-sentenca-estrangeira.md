@@ -1,5 +1,5 @@
 ---
-title: "Apostilamento e Tradução Juramentada na Homologação de Sentença Estrangeira | Corrêa Lima Advocacia"
+title: "Apostila e Tradução Juramentada na Homologação no STJ | Corrêa Lima Advocacia"
 description: "Entenda o papel do apostilamento (Convenção de Haia) e da tradução juramentada nos documentos exigidos para homologar uma sentença estrangeira no STJ."
 h1: "Apostilamento e tradução juramentada em homologação de sentença estrangeira"
 author: "Alexandre Corrêa Lima"

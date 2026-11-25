@@ -8,19 +8,36 @@
 // ETAPA 12 — fontes auto-hospedadas (sem dependência do Google Fonts).
 // Apenas o subconjunto latino e os pesos realmente usados (400/500/600/700),
 // todos com font-display: swap. Os arquivos .woff2 são versionados no build.
-import '@fontsource/manrope/latin-400.css';
-import '@fontsource/manrope/latin-500.css';
-import '@fontsource/manrope/latin-600.css';
-import '@fontsource/manrope/latin-700.css';
+// Serif institucional para títulos. Substitui a Manrope (grotesca), que dava ao
+// site a leitura de produto de tecnologia.
+//
+// O peso 700 da serifa foi acrescentado nesta rodada: 42 regras pediam
+// font-weight 700 com font-family de display, e a família só trazia 400 e 600.
+// O navegador cobria a lacuna SINTETIZANDO o negrito — engrossa o traço por
+// software, borra as serifas e é um dos sinais mais reconhecíveis de tipografia
+// mal montada. Agora o peso existe de verdade.
+//
+// Em compensação, a Inter 700 saiu: fora dos títulos, o 700 era usado só em
+// rótulos e etiquetas, que passam a 600 — peso que já estava sendo baixado.
+// Saldo de rede: praticamente neutro.
+import '@fontsource/source-serif-4/latin-400.css';
+import '@fontsource/source-serif-4/latin-600.css';
+import '@fontsource/source-serif-4/latin-700.css';
 import '@fontsource/inter/latin-400.css';
 import '@fontsource/inter/latin-500.css';
 import '@fontsource/inter/latin-600.css';
-import '@fontsource/inter/latin-700.css';
+// URLs com hash dos arquivos de fonte, para a pré-carga no <head>.
+import serif600 from '@fontsource/source-serif-4/files/source-serif-4-latin-600-normal.woff2?url';
+import inter400 from '@fontsource/inter/files/inter-latin-400-normal.woff2?url';
 import '@/styles/tokens.css';
 import '@/styles/base.css';
 import '@/styles/ui.css';
 import '@/styles/prose.css';
+import '@/styles/content-editorial.css';
+import '@/styles/content-index.css';
+import '@/styles/areas-hero.css';
 import '@/styles/institucional.css';
+import '@/styles/first-fold.css';
 import SEO from '@/components/SEO.astro';
 import Analytics from '@/components/Analytics.astro';
 import Header from '@/components/Header.astro';
@@ -37,13 +54,20 @@ interface Props {
   canonical?: string;
   noindex?: boolean;
   noCanonical?: boolean;
+  /** Rodada 3 (A5): oculta a faixa de CTA do rodapé onde a página já termina em contato. */
+  footerCta?: boolean;
 }
-const { head, title, description, canonical, noindex, noCanonical } = Astro.props;
+const { head, title, description, canonical, noindex, noCanonical, footerCta = true } = Astro.props;
 ---
 
 <!doctype html>
 <html lang={site.locale}>
   <head>
+    <!-- Marca que o JavaScript está vivo ANTES da primeira pintura. O estado
+         escondido da animação de entrada (.js [data-reveal]) depende desta
+         classe: sem ela, o conteúdo aparece normalmente em vez de ficar
+         invisível esperando um script que pode nunca rodar. -->
+    <script is:inline>document.documentElement.classList.add('js');</script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content={site.themeColor} />
@@ -64,6 +88,17 @@ const { head, title, description, canonical, noindex, noCanonical } = Astro.prop
         requisição externa ao Google Fonts). font-display: swap embutido. */}
 
     {/* Favicons e manifest (martelo verde) — ?v= força atualização de cache */}
+    {/*
+      Pré-carga das duas faces que a primeira tela usa: a serifa 600 do h1 e a
+      Inter 400 do corpo. Sem isto o navegador só descobre as fontes depois de
+      baixar e interpretar o CSS, e o texto pisca na troca da fonte de sistema
+      pela definitiva. As demais faces continuam em carga normal.
+    */}
+    <link rel="preload" as="font" type="font/woff2" crossorigin
+          href={serif600} />
+    <link rel="preload" as="font" type="font/woff2" crossorigin
+          href={inter400} />
+
     <link rel="icon" href="/favicon.ico?v=2" sizes="32x32" />
     <link rel="icon" href="/favicon.svg?v=2" type="image/svg+xml" />
     <link rel="icon" href="/favicon-16x16.png?v=2" type="image/png" sizes="16x16" />
@@ -81,7 +116,7 @@ const { head, title, description, canonical, noindex, noCanonical } = Astro.prop
     <a href="#conteudo-principal" class="skip-link">Pular para o conteúdo</a>
     <Header />
     <slot />
-    <Footer />
+    <Footer showCta={footerCta} />
     <FloatingWhatsApp />
     <ConsentBanner />
     <script>

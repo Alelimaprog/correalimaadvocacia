@@ -1,79 +1,108 @@
 ---
 /**
- * Header — cabeçalho flutuante em "pílula" (migração visual): fixo no topo,
- * fundo transparente até rolar; ao rolar, vira um cartão translúcido com
- * blur, borda e sombra suave, igual ao comportamento do modelo de
- * referência. Logo à esquerda, navegação central (desktop), CTA WhatsApp
- * (desktop) e menu hambúrguer (mobile). Toda a lógica de navegação/menu
- * permanece nos componentes Navigation/MobileMenu (inalterados).
+ * Header — faixa institucional de largura total.
+ *
+ * Substitui a "pílula" flutuante translúcida da versão anterior. Pílula com
+ * blur é linguagem de aplicativo; um escritório que atende diretoria precisa de
+ * uma faixa que se comporte como papel timbrado: alinhada ao grid, com uma
+ * régua fina embaixo e nada boiando.
+ *
+ * Ao rolar, a faixa não muda de forma — só perde a transparência e a régua
+ * escurece um grau. Movimento que o olho percebe sem registrar.
+ *
+ * O CTA deixou de ser o botão verde de WhatsApp. O canal continua existindo (no
+ * rodapé e no botão flutuante), mas o convite principal do cabeçalho é
+ * institucional: "Fale com a equipe" leva ao formulário, que é onde uma demanda
+ * empresarial chega com contexto — área, empresa, descrição.
  */
 import Logo from '@/components/Logo.astro';
 import Navigation from '@/components/Navigation.astro';
-import WhatsAppButton from '@/components/WhatsAppButton.astro';
 import MobileMenu from '@/components/MobileMenu.astro';
+import { site } from '@/lib/site.config';
+
+const telHref = `tel:+${site.contact.whatsapp.number}`;
 ---
 
 <header class="site-header" data-header>
-  <div class="header-shell">
-    <div class="header-inner">
-      <Logo variant="light" />
-      <Navigation />
-      <div class="header-cta">
-        <WhatsAppButton />
-      </div>
-      <MobileMenu />
+  <div class="header-inner">
+    <Logo variant="light" />
+    <Navigation />
+    <div class="header-cta">
+      <a class="header-phone" href={telHref}>{site.contact.whatsapp.display}</a>
+      <a class="btn btn--primary btn--sm" href="/contato/" data-cta-position="header">Enviar meu caso</a>
     </div>
+    <MobileMenu />
   </div>
 </header>
 
 <style>
-  /* Header flutuante — transparente no topo, "pílula" translúcida ao rolar */
   .site-header {
     position: sticky;
     top: 0;
     z-index: 50;
-    padding: 0.75rem clamp(0.75rem, 2vw, 1.25rem) 0;
+    background: rgba(255, 255, 255, 0.92);
+    border-bottom: 1px solid var(--border-subtle);
+    backdrop-filter: saturate(140%) blur(8px);
+    -webkit-backdrop-filter: saturate(140%) blur(8px);
+    transition: background-color var(--dur-slow) var(--ease),
+      border-color var(--dur-slow) var(--ease);
   }
-  .header-shell {
+  .site-header.is-scrolled {
+    background: #fff;
+    border-bottom-color: var(--color-border);
+  }
+
+  .header-inner {
     width: 100%;
     max-width: var(--container-max);
     margin-inline: auto;
-    border-radius: var(--radius-pill);
-    /* Leve profundidade e separação do hero: vidro levemente esverdeado
-       (menos branco), borda hairline e sombra praticamente imperceptível. */
-    border: 1px solid var(--border-subtle);
-    background: rgba(247, 250, 247, 0.7);
-    box-shadow: var(--shadow-sm);
-    backdrop-filter: saturate(160%) blur(10px);
-    -webkit-backdrop-filter: saturate(160%) blur(10px);
-    transition: background-color var(--dur-slow) var(--ease), border-color var(--dur-slow) var(--ease),
-      box-shadow var(--dur-slow) var(--ease), backdrop-filter var(--dur-slow) var(--ease);
-  }
-  .site-header.is-scrolled .header-shell {
-    background: rgba(244, 249, 245, 0.9);
-    border-color: var(--color-border);
-    box-shadow: var(--shadow-md);
-    backdrop-filter: saturate(180%) blur(14px);
-    -webkit-backdrop-filter: saturate(180%) blur(14px);
-  }
-  .header-inner {
-    width: 100%;
-    padding-inline: clamp(0.9rem, 2vw, 1.5rem);
+    padding-inline: var(--container-pad);
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: var(--space-6);
-    height: 4rem;
+    gap: var(--space-8);
+    height: 4.875rem;
   }
-  .header-cta { display: none; }
-  @media (min-width: 1024px) { .header-cta { display: block; } }
+
+  .header-cta .btn { white-space: nowrap; }
+  .header-cta {
+    display: none;
+    align-items: center;
+    gap: var(--space-6);
+  }
+  @media (min-width: 1024px) {
+    .header-cta { display: flex; }
+  }
+
+  /* O telefone no cabeçalho é deliberado: quem decide contratar assessoria
+     recorrente costuma ligar, não preencher formulário. */
+  /* min-height para alvo de ponteiro >= 24px (WCAG 2.2, 2.5.8). */
+  .header-phone {
+    min-height: 2.5rem;
+    display: inline-flex;
+    align-items: center;
+    font-family: var(--font-ui);
+    font-size: var(--text-sm);
+    font-weight: var(--weight-medium);
+    color: var(--color-text-muted);
+    text-decoration: none;
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+    transition: color var(--dur) var(--ease);
+  }
+  .header-phone:hover { color: var(--color-navy); }
+  .header-phone:focus-visible {
+    outline: 2px solid var(--ring-color);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
 </style>
 
 <script>
   const header = document.querySelector('[data-header]');
   if (header) {
     const onScroll = () => {
-      header.classList.toggle('is-scrolled', window.scrollY > 16);
+      header.classList.toggle('is-scrolled', window.scrollY > 8);
     };
     onScroll();
     window.addEventListener('scroll', onScroll, { passive: true });

@@ -1,32 +1,105 @@
 ---
 /**
- * /assuntos/ — migração fiel do export (Fase 3). Head (SEO), JSON-LD e conteúdo
- * reproduzidos do site atual. Chrome (Header/Footer) via componentes.
- * Conteúdo: src/partials/institucional/assuntos.html
+ * /assuntos/ — mapa visual de temas jurídicos (Sprint Conteúdos).
+ * Head (SEO) e JSON-LD preservados de institucional (getPage). O corpo passa a
+ * ser um grid de cards de cluster (um bloco por núcleo), cada um com página
+ * principal, guia e artigos relacionados. URLs inalteradas.
  */
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import JsonLd from '@/components/JsonLd.astro';
 import Container from '@/components/Container.astro';
+import TopicClusterCard from '@/components/content/TopicClusterCard.astro';
+import { getCollection } from 'astro:content';
 import { getPage } from '@/lib/institucional';
-import body from '@/partials/institucional/assuntos.html?raw';
+import { nucleos } from '@/lib/nucleos';
+import { whatsappHrefForPath } from '@/lib/site.config';
 
 const page = getPage('/assuntos/');
+
+const blog = await getCollection('blog');
+const guias = await getCollection('guias');
+
+const guiaFor = (slug: string) => {
+  const matches = guias.filter((g) => g.data.cluster === slug);
+  const pref = matches.find((g) => /guia-completo/.test(g.id)) ?? matches[0];
+  return pref ? { label: pref.data.h1 ?? pref.data.title, href: `/guias/${pref.id}/` } : undefined;
+};
+
+const clusters = nucleos.map((n) => ({
+  title: n.label,
+  icon: n.icon,
+  desc: n.short,
+  mainHref: n.href,
+  guia: guiaFor(n.slug),
+  articles: blog
+    .filter((b) => b.data.cluster === n.slug)
+    .sort((a, b) => (b.data.pubDate?.getTime() ?? 0) - (a.data.pubDate?.getTime() ?? 0))
+    .map((b) => ({ label: b.data.h1 ?? b.data.title, href: `/blog/${b.id}/` })),
+  allHref: n.href,
+}));
+
+const waHref = whatsappHrefForPath('/assuntos/');
+
+// Rodada 3: ItemList do JSON-LD gerado dos núcleos atuais (o legado listava silos antigos).
+const jsonld = page.jsonld.map((sch: Record<string, unknown>) =>
+  sch['@type'] === 'CollectionPage'
+    ? {
+        ...sch,
+        mainEntity: {
+          '@type': 'ItemList',
+          itemListElement: nucleos.map((n, i) => ({
+            '@type': 'ListItem',
+            position: i + 1,
+            name: n.label,
+            url: `https://correalimaadvocacia.com.br${n.href}`,
+          })),
+        },
+      }
+    : sch,
+);
 ---
 
 <BaseLayout head={page.head}>
-  <Fragment slot="jsonld">
-    {page.jsonld.map((schema) => <JsonLd schema={schema} />)}
-  </Fragment>
+  <Fragment slot="jsonld">{jsonld.map((schema) => <JsonLd schema={schema} />)}</Fragment>
 
-  <main id="conteudo-principal" class="inst">
-    <Container>
-      <div class="doc doc--hero doc--assuntos" set:html={body} />
-    </Container>
+  <main id="conteudo-principal" class="cx">
+    <section class="cx-hero">
+      <Container>
+        <nav class="crumbs" aria-label="Você está em">
+          <a href="/">Início</a><span aria-hidden="true">/</span><span>Assuntos</span>
+        </nav>
+        <p class="eyebrow"><span class="dot"></span>Conteúdo</p>
+        <h1>Assuntos mais consultados</h1>
+        <p class="cx-hero-desc">
+          Um mapa dos temas em que o escritório atua. Cada bloco reúne a página principal do
+          assunto, o guia completo e os artigos relacionados — para você navegar do panorama
+          ao detalhe.
+        </p>
+      </Container>
+    </section>
+
+    <section class="cx-section cx-section--muted">
+      <Container>
+        <ul class="cluster-grid">
+          {clusters.map((c) => (
+            <TopicClusterCard title={c.title} icon={c.icon} desc={c.desc} mainHref={c.mainHref}
+              guia={c.guia} articles={c.articles} allHref={c.allHref} maxArticles={4} />
+          ))}
+        </ul>
+      </Container>
+    </section>
+
+    <section class="cx-cta">
+      <Container>
+        <div class="cx-cta-inner">
+          <h2>Não encontrou o seu tema?</h2>
+          <p>Descreva a sua situação e o escritório indica o melhor caminho.</p>
+          <div class="cx-cta-actions">
+            <a class="btn btn--primary" href={waHref} target="_blank" rel="noopener noreferrer">Falar no WhatsApp</a>
+            <a class="btn btn--secondary" href="/contato/">Enviar meu caso</a>
+          </div>
+        </div>
+      </Container>
+    </section>
   </main>
 </BaseLayout>
-
-<style>
-  .inst {
-    padding-block: var(--section-y);
-  }
-</style>

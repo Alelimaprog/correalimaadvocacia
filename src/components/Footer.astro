@@ -8,20 +8,22 @@
 import Container from '@/components/Container.astro';
 import Logo from '@/components/Logo.astro';
 import WhatsAppButton from '@/components/WhatsAppButton.astro';
-import { site, whatsappHref } from '@/lib/site.config';
+import { site, whatsappHrefForPath } from '@/lib/site.config';
 import { footerInstitucional, footerNucleos, legalNav } from '@/lib/navigation';
 
+interface Props { showCta?: boolean }
+const { showCta = true } = Astro.props;
 const year = new Date().getFullYear();
 ---
 
 <footer class="site-footer">
   <Container>
-    <div class="f-cta" data-reveal>
-      <h2>Pronto para tratar o seu caso com quem leva a sério?</h2>
-      <a class="btn btn--primary" href={whatsappHref} target="_blank" rel="noopener noreferrer">
-        Falar com o escritório
-      </a>
-    </div>
+    {showCta && (
+      <div class="f-cta" data-reveal>
+        <h2>Apresente a demanda e entenda o caminho jurídico possível</h2>
+        <a class="btn btn--on-dark" href="/contato/" data-cta-position="rodape">Enviar meu caso</a>
+      </div>
+    )}
 
     <div class="f-brand">
       <div class="f-brand-id">
@@ -59,7 +61,7 @@ const year = new Date().getFullYear();
       <div class="col">
         <h2 class="col-title">Contato</h2>
         <ul class="contact">
-          <li><a href={whatsappHref} target="_blank" rel="noopener noreferrer">{site.contact.whatsapp.display}</a></li>
+          <li><a href={whatsappHrefForPath(Astro.url.pathname)} target="_blank" rel="noopener noreferrer">{site.contact.whatsapp.display}</a></li>
           <li><a href={`mailto:${site.contact.email}`}>{site.contact.email}</a></li>
           <li><span>Atendimento nacional e online</span></li>
           <li class="f-address"><span>{site.contact.address.street} — {site.contact.address.detail}<br />{site.contact.address.district} · {site.contact.address.city} – {site.contact.address.state} · CEP {site.contact.address.cep}</span></li>
@@ -106,7 +108,7 @@ const year = new Date().getFullYear();
     border-bottom: 1px solid var(--border-on-dark);
   }
   @media (min-width: 720px) { .f-cta { flex-direction: row; align-items: center; justify-content: space-between; gap: var(--space-6); } }
-  .f-cta h2 { color: #fff; font-size: var(--text-3xl); line-height: var(--leading-snug); max-width: 26ch; margin: 0; }
+  .f-cta h2 { color: #fff; font-family: var(--font-display); font-weight: var(--weight-bold); font-size: var(--text-2xl); line-height: var(--leading-snug); max-width: 26ch; margin: 0; text-wrap: balance; }
   .f-cta .btn { flex: none; align-self: flex-start; }
   @media (min-width: 720px) { .f-cta .btn { align-self: auto; } }
 
@@ -120,9 +122,9 @@ const year = new Date().getFullYear();
     border-bottom: 1px solid var(--border-on-dark);
   }
   @media (min-width: 860px) { .f-brand { grid-template-columns: 1.7fr 1fr; align-items: center; } }
-  .oab { margin-top: var(--space-3); color: rgba(255, 255, 255, 0.6); }
-  /* Logo do footer exibido integralmente (override cross-component do tamanho). */
-  :global(.site-footer .footer-logo img) { height: 3rem !important; width: auto !important; max-width: 100%; }
+  .oab { margin-top: var(--space-3); color: rgba(255, 255, 255, 0.72); }
+  /* O logotipo do rodapé é um pouco maior que o do header. */
+  :global(.site-footer .footer-logo) { min-height: 3rem; }
   .f-brand-cta { display: flex; }
   @media (min-width: 860px) { .f-brand-cta { justify-content: flex-end; } }
 
@@ -142,14 +144,16 @@ const year = new Date().getFullYear();
     font-weight: var(--weight-semibold);
     text-transform: uppercase;
     letter-spacing: var(--tracking-eyebrow);
-    color: rgba(255, 255, 255, 0.5);
+    color: var(--color-accent-soft);
     margin-bottom: var(--space-4);
   }
   .col ul { list-style: none; padding: 0; display: flex; flex-direction: column; gap: var(--space-3); }
-  .col a { color: rgba(255, 255, 255, 0.82); text-decoration: none; line-height: var(--leading-snug); transition: color var(--dur) var(--ease); }
-  .col a:hover { color: var(--color-green); }
-  .f-address span { display: block; margin-top: var(--space-1); color: rgba(255, 255, 255, 0.6); font-size: var(--text-xs); line-height: var(--leading-normal); }
-  .contact span { color: rgba(255, 255, 255, 0.55); }
+  .col a { display: inline-block; padding-block: 0.2rem; color: rgba(255, 255, 255, 0.82); text-decoration: none; line-height: var(--leading-snug); transition: color var(--dur) var(--ease); }
+  .col a:hover { color: var(--color-accent-soft); }
+  .f-address span { display: block; margin-top: var(--space-1); color: rgba(255, 255, 255, 0.68); font-size: var(--text-xs); line-height: var(--leading-normal); }
+  .contact span { color: rgba(255, 255, 255, 0.68); }
+  /* O e-mail é longo e indivisível; em telas estreitas precisa poder quebrar. */
+  .contact a { overflow-wrap: anywhere; }
 
   .bottom {
     padding-top: var(--space-6);
@@ -157,12 +161,12 @@ const year = new Date().getFullYear();
     display: flex; flex-wrap: wrap; gap: var(--space-4);
     justify-content: space-between; align-items: center;
   }
-  .copy { color: rgba(255, 255, 255, 0.55); }
+  .copy { color: rgba(255, 255, 255, 0.68); }
   .legal { list-style: none; padding: 0; display: flex; flex-wrap: wrap; gap: var(--space-5); }
-  .legal a { color: rgba(255, 255, 255, 0.82); text-decoration: none; transition: color var(--dur) var(--ease); }
-  .legal a:hover { color: var(--color-green); }
-  .legal-cookies { background: none; border: 0; padding: 0; cursor: pointer; font: inherit; color: rgba(255, 255, 255, 0.55); text-decoration: underline; text-underline-offset: 0.15em; transition: color var(--dur) var(--ease); }
+  .legal a { display: inline-block; padding-block: 0.25rem; color: rgba(255, 255, 255, 0.82); text-decoration: none; transition: color var(--dur) var(--ease); }
+  .legal a:hover { color: var(--color-accent-soft); }
+  .legal-cookies { background: none; border: 0; padding-block: 0.25rem; padding-inline: 0; cursor: pointer; font: inherit; color: rgba(255, 255, 255, 0.72); text-decoration: underline; text-underline-offset: 0.15em; transition: color var(--dur) var(--ease); }
   .legal-cookies:hover { color: rgba(255, 255, 255, 0.85); }
-  .legal-cookies:focus-visible { outline: 2px solid var(--color-green); outline-offset: 2px; border-radius: 2px; }
-  .disclaimer { margin-top: var(--space-5); color: rgba(255, 255, 255, 0.45); font-size: var(--text-xs); line-height: var(--leading-normal); max-width: 70ch; }
+  .legal-cookies:focus-visible { outline: 2px solid var(--color-accent-soft); outline-offset: 2px; border-radius: 2px; }
+  .disclaimer { margin-top: var(--space-5); color: rgba(255, 255, 255, 0.62); font-size: var(--text-xs); line-height: var(--leading-normal); max-width: 70ch; }
 </style>

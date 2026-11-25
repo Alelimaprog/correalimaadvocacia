@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Relatório — Auditoria técnica e otimização · Corrêa Lima Advocacia</title>
+<style>
+  :root{--ink:#12201a;--txt:#33403a;--mut:#6b7a72;--green:#1f7a4d;--greenD:#155c39;--tint:#e9f3ec;--bd:#e2e8e3;--bg:#fbfcfb}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--txt);font:16px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+  .wrap{max-width:940px;margin:0 auto;padding:48px 22px 90px}
+  h1{color:var(--ink);font-size:29px;line-height:1.2;margin:0 0 6px;letter-spacing:-.02em}
+  h2{color:var(--ink);font-size:21px;margin:46px 0 12px;padding-top:22px;border-top:1px solid var(--bd)}
+  h3{color:var(--ink);font-size:16px;margin:22px 0 8px}
+  p{margin:0 0 14px}ul{margin:0 0 14px;padding-left:20px}li{margin:5px 0}
+  code{background:#eef2ef;padding:.12em .4em;border-radius:5px;font-size:.87em}
+  .sub{color:var(--mut);font-size:15px;margin-bottom:26px}
+  table{border-collapse:collapse;width:100%;font-size:13.5px;margin:12px 0}th,td{border:1px solid var(--bd);padding:8px 10px;text-align:left;vertical-align:top}
+  th{background:#f2f6f3;color:var(--ink);font-size:12px;text-transform:uppercase;letter-spacing:.03em}
+  .ok{color:var(--greenD);font-weight:600}
+  .note{background:var(--tint);border:1px solid #cfe6d6;border-left:3px solid var(--green);border-radius:10px;padding:14px 18px;margin:18px 0}
+  .block{background:#fff;border:1px solid var(--bd);border-radius:14px;padding:22px 24px;margin:20px 0}.block h3{margin-top:0}
+  .files code{display:block;background:transparent;padding:0;font-size:13px}
+  pre{background:#0f1a14;color:#dbe8df;padding:14px 16px;border-radius:10px;overflow:auto;font-size:12.5px;line-height:1.5}
+  footer{margin-top:52px;color:var(--mut);font-size:13px;border-top:1px solid var(--bd);padding-top:18px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<h1>Auditoria técnica e otimização — sem alterar a identidade visual</h1>
+<p class="sub">Corrêa Lima Advocacia · três passagens de auditoria (SEO técnico, Schema, CWV, a11y, linkagem, performance). Uma melhoria de alto valor implementada; o restante do projeto foi confirmado já em conformidade.</p>
+
+<div class="note"><strong>Postura de engenharia sênior — honestidade técnica:</strong> o projeto já passou por várias sprints de otimização e está em excelente estado. A auditoria buscou <em>ganhos reais e verificáveis</em>, não churn. Encontrei <strong>uma</strong> lacuna de alto impacto (schema de artigos incompleto) e a corrigi para todo o site; as demais verificações confirmaram que a base já está correta. Nada foi alterado apenas para “constar como alterado”, e o design visual permaneceu intacto.</p>
+
+<h2>1. Melhoria implementada — Schema de artigos (sitewide)</h2>
+<div class="block">
+  <p>O <code>buildArticleJsonLd</code> (usado por <strong>todos</strong> os artigos do blog e guias) emitia um <code>Article</code> sem alguns campos recomendados pelo Google. Enriquecido para:</p>
+  <table>
+    <tr><th>Campo</th><th>Antes</th><th>Depois</th></tr>
+    <tr><td><code>@type</code></td><td>Article</td><td class="ok">BlogPosting (blog) / Article (guias) — mais preciso</td></tr>
+    <tr><td><code>image</code></td><td>ausente</td><td class="ok">og-image absoluta (campo recomendado)</td></tr>
+    <tr><td><code>dateModified</code></td><td>só quando havia updatedDate</td><td class="ok">sempre presente (cai para pubDate) — sinal de frescor</td></tr>
+    <tr><td><code>author.url</code></td><td>ausente</td><td class="ok">→ <code>/o-escritorio/</code> (vincula autor ao perfil — EEAT)</td></tr>
+    <tr><td><code>publisher.logo</code></td><td>ausente</td><td class="ok">ImageObject 512×512 (exigência do Google para Article)</td></tr>
+  </table>
+  <p><strong>Arquivo:</strong> <code>src/lib/structured-data.ts</code>. <strong>Ganho:</strong> elegibilidade a rich results de artigo, melhor atribuição de autoria/publisher (E-E-A-T) e sinal de atualização — aplicado a <strong>todo o site</strong>, não só ao núcleo trabalhista. Sem qualquer mudança visual.</p>
+  <pre>"@type": "BlogPosting",
+"image": "https://correalimaadvocacia.com.br/og-image.png",
+"datePublished": "2026-01-18", "dateModified": "2026-01-18",
+"author": { "@type": "Person", "name": "Alexandre Corrêa Lima",
+            "url": "https://correalimaadvocacia.com.br/o-escritorio/" },
+"publisher": { "@type": "Organization", "name": "Corrêa Lima Advocacia",
+   "logo": { "@type": "ImageObject", "url": ".../icon-512.png", "width":512, "height":512 } }</pre>
+</div>
+
+<h2>2. Auditoria — o que foi verificado e já estava correto</h2>
+<div class="block">
+  <table>
+    <tr><th>Item</th><th>Resultado</th></tr>
+    <tr><td>Links internos (1.896 verificados no cluster)</td><td class="ok">0 quebrados</td></tr>
+    <tr><td>Páginas órfãs</td><td class="ok">Nenhuma — as 14 subpáginas são linkadas do pilar (cards) e do RelatedHub</td></tr>
+    <tr><td>robots.txt</td><td class="ok">Allow /, Disallow /api/, diretiva Sitemap presente</td></tr>
+    <tr><td>Página 404</td><td class="ok">Existe</td></tr>
+    <tr><td>Sitemap</td><td class="ok">157 URLs; cobre todas as 27 páginas novas</td></tr>
+    <tr><td>Imagens (CLS)</td><td class="ok">Todas com width/height; decoding="async"; lazy onde aplicável</td></tr>
+    <tr><td>Canonical / robots / OG / Twitter</td><td class="ok">Presentes em todas as páginas do cluster (landing corrigida na sprint anterior)</td></tr>
+    <tr><td>Schema por página</td><td class="ok">Breadcrumb, FAQ, Article/BlogPosting, LegalService, Attorney, Organization conforme o tipo</td></tr>
+    <tr><td>Acessibilidade</td><td class="ok">Skip link, landmarks (header/nav/main/footer), formulário com labels/aria-live/foco, FAQ em details/summary</td></tr>
+    <tr><td>GA4 / eventos</td><td class="ok">WhatsApp, tel, mailto, form_start/submit/success, generate_lead — cobrem o novo cluster</td></tr>
+    <tr><td>Fontes</td><td class="ok">Auto-hospedadas (sem requisição ao Google Fonts), font-display embutido</td></tr>
+    <tr><td>Sem scroll horizontal</td><td class="ok">390 e 360 px em todas as páginas</td></tr>
+  </table>
+</div>
+
+<h2>3. Considerado e deliberadamente NÃO alterado (com justificativa)</h2>
+<div class="block">
+  <ul>
+    <li><strong>Schema global Attorney/WebSite</strong> (em <code>_pages-data.json</code>): é a reprodução fiel do <code>&lt;head&gt;</code> aprovado do site. Adicionar <code>sameAs</code> exigiria perfis sociais reais (não inventar) e mexer no SEO já aprovado — mantido.</li>
+    <li><strong>SearchAction (sitelinks searchbox)</strong>: o site não possui busca interna; declarar a ação seria schema inválido — corretamente ausente.</li>
+    <li><strong>hreflang</strong>: site monolíngue (pt-BR) — não se aplica.</li>
+    <li><strong>preconnect/dns-prefetch para GA/Clarity</strong>: analytics é carregado após consentimento e de forma diferida; pré-conectar a domínios que podem nunca ser usados (consentimento negado) não é claramente superior — mantido como está.</li>
+    <li><strong>OG image por página</strong>: exigiria geração de imagens; fora do escopo de “não alterar a identidade visual”. Fica como sugestão futura.</li>
+  </ul>
+</div>
+
+<h2>4. Validação</h2>
+<div class="block">
+  <p><code>npx astro check</code> → <strong>0 erros / 0 warnings / 0 hints</strong>. <code>npm run build</code> → <strong>159 páginas, 157 URLs</strong> (idêntico à sprint anterior; nenhuma URL alterada). Schema de artigo verificado no HTML compilado.</p>
+</div>
+
+<h2>5. Ganhos esperados</h2>
+<div class="block">
+  <ul>
+    <li><strong>SEO / Rich Results:</strong> artigos agora elegíveis a rich results de <code>BlogPosting</code> com imagem, datas e publisher completos.</li>
+    <li><strong>EEAT:</strong> autoria vinculada ao perfil do advogado (<code>/o-escritorio/</code>) e publisher com logo reforçam confiança/atribuição.</li>
+    <li><strong>Frescor:</strong> <code>dateModified</code> sempre presente é um sinal usado na avaliação de conteúdo.</li>
+    <li><strong>CWV / Ads:</strong> sem regressões — o projeto já era estático, leve e sem CLS; a mudança é apenas de metadados (peso desprezível).</li>
+  </ul>
+</div>
+
+<h2>6. Sugestões para uma terceira rodada</h2>
+<div class="block">
+  <ul>
+    <li><strong>Imagens Open Graph por página</strong> (geração automática no build) para melhor CTR em compartilhamentos e Ads.</li>
+    <li><strong>Datas visíveis de publicação/atualização</strong> nos artigos (hoje no schema; exibi-las reforça EEAT ao leitor) — pequena adição visual, a validar com você.</li>
+    <li><strong>Perfil do autor</strong> em <code>/o-escritorio/</code> com <code>Person</code> + <code>knowsAbout</code> + foto (ImageObject) — aprofunda a autoria.</li>
+    <li><strong>Busca interna</strong> (habilitaria SearchAction/sitelinks searchbox).</li>
+    <li><strong>Medição real de PageSpeed em produção</strong> após o deploy, para calibrar preloads finos se necessário.</li>
+  </ul>
+</div>
+
+<footer>Arquivo alterado nesta rodada: <code>src/lib/structured-data.ts</code>. Build 0/0/0 · 159 páginas · 157 URLs · identidade visual e URLs inalteradas.</footer>
+
+</div>
+</body>
+</html>

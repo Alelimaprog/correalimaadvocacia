@@ -1,0 +1,159 @@
+---
+/**
+ * RelatedHub — bloco unificado e rico de "conteúdos relacionados" (SEO interno
+ * + CRO). Reúne, quando existem: área principal, guia, ferramenta, subáreas,
+ * 6–8 artigos do mesmo cluster, links curados (cross-cluster) e "ver todos".
+ * Self-fetching: recebe apenas o cluster e o caminho atual.
+ */
+import Icon from '@/components/Icon.astro';
+import { getRelated } from '@/lib/related';
+
+interface Props {
+  cluster?: string;
+  currentPath: string;
+  curated?: { titulo: string; href: string; tipo?: string }[];
+}
+const { cluster, currentPath, curated = [] } = Astro.props;
+const data = await getRelated(cluster, currentPath, curated);
+
+const highlights = data ? [data.area, data.guia, data.tool].filter(Boolean) : [];
+const iconFor = (tipo?: string) =>
+  tipo === 'Guia' ? 'file' : tipo === 'Ferramenta' ? 'set' : tipo === 'Área' ? 'scale' : 'route';
+---
+{data && (highlights.length > 0 || data.articles.length > 0 || data.subareas.length > 0) && (
+  <section class="rhub" aria-label={`Mais conteúdos sobre ${data.clusterLabel ?? 'este tema'}`}>
+    <div class="rhub-head">
+      <p class="eyebrow"><span class="dot"></span>Continue explorando</p>
+      <h2>Mais sobre {data.clusterLabel ?? 'este tema'}</h2>
+    </div>
+
+    {highlights.length > 0 && (
+      <ul class="rhub-hl-grid">
+        {highlights.map((h) => (
+          <li>
+            <a class="rhub-hl" href={h!.href}>
+              <span class="rhub-hl-ic"><Icon name={iconFor(h!.tipo)} size={20} /></span>
+              <span class="rhub-hl-body">
+                <span class="rhub-hl-tag">{h!.tipo}</span>
+                <span class="rhub-hl-t">{h!.label}</span>
+                {h!.desc && <span class="rhub-hl-d">{h!.desc}</span>}
+              </span>
+              <Icon name="arrow-right" size={16} class="rhub-hl-ar" />
+            </a>
+          </li>
+        ))}
+      </ul>
+    )}
+
+    {data.subareas.length > 0 && (
+      <div class="rhub-block">
+        <h3 class="rhub-h3">Temas específicos</h3>
+        <ul class="rhub-chips">
+          {data.subareas.map((s) => (
+            <li><a href={s.href}>{s.label}</a></li>
+          ))}
+        </ul>
+      </div>
+    )}
+
+    {data.articles.length > 0 && (
+      <div class="rhub-block">
+        <h3 class="rhub-h3">Artigos sobre {data.clusterLabel ?? 'o tema'}</h3>
+        <ul class="rhub-arts">
+          {data.articles.map((a) => (
+            <li>
+              <a href={a.href}>
+                <span class="rhub-art-tag">Artigo</span>
+                <span class="rhub-art-t">{a.label}</span>
+                <Icon name="arrow-right" size={15} class="rhub-art-ar" />
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+    )}
+
+    {data.curated.length > 0 && (
+      <div class="rhub-block">
+        <h3 class="rhub-h3">Você também pode gostar</h3>
+        <ul class="rhub-chips rhub-chips--links">
+          {data.curated.map((c) => (
+            <li><a href={c.href}>{c.tipo ? `${c.tipo}: ` : ''}{c.label}</a></li>
+          ))}
+        </ul>
+      </div>
+    )}
+
+    <div class="rhub-foot">
+      {data.allHref && (
+        <a class="rhub-all" href={data.allHref}>
+          Ver a área de {data.clusterLabel}
+          <Icon name="arrow-right" size={15} />
+        </a>
+      )}
+      <a class="rhub-all rhub-all--ghost" href="/assuntos/">Ver todos os assuntos</a>
+    </div>
+  </section>
+)}
+
+<style>
+  .rhub {
+    margin-top: var(--space-9);
+    padding-top: var(--space-7);
+    border-top: 1px solid var(--border-subtle);
+  }
+  .rhub-head { margin-bottom: var(--space-5); }
+  .rhub-head h2 { font-size: var(--text-xl); color: var(--color-ink); letter-spacing: var(--tracking-tight); margin-top: var(--space-2); }
+  .rhub-h3 { font-family: var(--font-display); font-weight: var(--weight-bold); color: var(--color-ink); font-size: var(--text-base); margin: 0 0 var(--space-3); }
+  .rhub-block { margin-top: var(--space-6); }
+
+  /* Destaques (área / guia / ferramenta) */
+  .rhub-hl-grid { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--space-3); grid-template-columns: 1fr; }
+  @media (min-width: 720px) { .rhub-hl-grid { grid-template-columns: repeat(3, 1fr); } }
+  .rhub-hl {
+    display: flex; align-items: flex-start; gap: var(--space-3); height: 100%;
+    padding: var(--space-4) var(--space-5);
+    background: var(--surface); border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-lg); text-decoration: none;
+    transition: border-color var(--dur) var(--ease), box-shadow var(--dur) var(--ease), transform var(--dur) var(--ease);
+  }
+  .rhub-hl:hover { border-color: var(--border-strong); box-shadow: var(--shadow-sm); transform: translateY(-2px); }
+  .rhub-hl-ic { flex: none; display: inline-flex; align-items: center; justify-content: center; width: 2.3rem; height: 2.3rem; border-radius: var(--radius-sm); border: 1px solid var(--color-border); background: transparent; color: var(--color-accent); }
+  .rhub-hl-body { display: flex; flex-direction: column; gap: 0.15rem; min-width: 0; }
+  .rhub-hl-tag { font-size: var(--text-xs); text-transform: uppercase; letter-spacing: var(--tracking-eyebrow); font-weight: var(--weight-semibold); color: var(--color-accent); }
+  .rhub-hl-t { color: var(--color-ink); font-weight: var(--weight-semibold); font-size: var(--text-sm); line-height: var(--leading-snug); }
+  .rhub-hl-d { color: var(--color-text-muted); font-size: var(--text-xs); line-height: var(--leading-normal); }
+  .rhub-hl-ar { color: var(--color-accent); flex: none; margin-left: auto; align-self: center; }
+
+  /* Chips (subáreas / curados) */
+  .rhub-chips { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: var(--space-2); }
+  .rhub-chips a {
+    display: inline-flex; align-items: center; padding: 0.45rem 0.85rem;
+    border: 1px solid var(--border-strong); border-radius: var(--radius-sm);
+    background: var(--surface); color: var(--color-ink); text-decoration: none;
+    font-size: var(--text-sm); line-height: 1;
+    transition: border-color var(--dur) var(--ease), background-color var(--dur) var(--ease), color var(--dur) var(--ease);
+  }
+  .rhub-chips a:hover { border-color: var(--color-accent); background: var(--surface-warm); color: var(--color-navy); }
+
+  /* Artigos */
+  .rhub-arts { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--space-1) var(--space-6); grid-template-columns: 1fr; }
+  @media (min-width: 720px) { .rhub-arts { grid-template-columns: 1fr 1fr; } }
+  .rhub-arts a { display: flex; align-items: baseline; gap: var(--space-3); padding: var(--space-2) 0; text-decoration: none; border-bottom: 1px solid transparent; }
+  .rhub-arts a:hover { border-bottom-color: var(--color-accent); }
+  .rhub-art-tag { flex: none; font-size: var(--text-xs); text-transform: uppercase; letter-spacing: var(--tracking-eyebrow); font-weight: var(--weight-semibold); color: var(--color-accent); min-width: 3.2rem; }
+  .rhub-art-t { color: var(--color-text); font-size: var(--text-sm); line-height: var(--leading-snug); }
+  .rhub-arts a:hover .rhub-art-t { color: var(--color-ink); }
+  .rhub-art-ar { color: var(--color-accent); margin-left: auto; flex: none; align-self: center; opacity: 0; transition: opacity var(--dur) var(--ease); }
+  .rhub-arts a:hover .rhub-art-ar { opacity: 1; }
+
+  /* Rodapé */
+  .rhub-foot { margin-top: var(--space-7); display: flex; flex-wrap: wrap; gap: var(--space-3) var(--space-5); }
+  .rhub-all { display: inline-flex; align-items: center; gap: 0.4rem; min-height: 2.5rem; color: var(--color-navy); font-weight: var(--weight-semibold); font-size: var(--text-sm); text-decoration: none; }
+  .rhub-all:hover { text-decoration: underline; }
+  .rhub-all--ghost { color: var(--color-text-muted); }
+
+  @media (prefers-reduced-motion: reduce) {
+    .rhub-hl, .rhub-chips a, .rhub-art-ar { transition: none; }
+  }
+</style>

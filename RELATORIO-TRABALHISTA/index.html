@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Relatório — Núcleo de Direito do Trabalho · Corrêa Lima Advocacia</title>
+<style>
+  :root{--ink:#12201a;--txt:#33403a;--mut:#6b7a72;--green:#1f7a4d;--greenD:#155c39;--tint:#e9f3ec;--bd:#e2e8e3;--bg:#fbfcfb}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--txt);font:16px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+  .wrap{max-width:980px;margin:0 auto;padding:48px 22px 90px}
+  h1{color:var(--ink);font-size:30px;line-height:1.2;margin:0 0 6px;letter-spacing:-.02em}
+  h2{color:var(--ink);font-size:22px;margin:50px 0 12px;padding-top:22px;border-top:1px solid var(--bd)}
+  h3{color:var(--ink);font-size:17px;margin:24px 0 8px}
+  p{margin:0 0 14px}ul{margin:0 0 14px;padding-left:20px}li{margin:5px 0}
+  code{background:#eef2ef;padding:.12em .4em;border-radius:5px;font-size:.88em}
+  .sub{color:var(--mut);font-size:15px;margin-bottom:26px}
+  .kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:12px;margin:24px 0}
+  .kpi{background:#fff;border:1px solid var(--bd);border-radius:12px;padding:14px 16px}.kpi b{display:block;color:var(--ink);font-size:20px}.kpi span{color:var(--mut);font-size:12px}
+  table{border-collapse:collapse;width:100%;font-size:13.5px;margin:12px 0}th,td{border:1px solid var(--bd);padding:8px 10px;text-align:left;vertical-align:top}
+  th{background:#f2f6f3;color:var(--ink);font-size:12px;text-transform:uppercase;letter-spacing:.03em}
+  .ok{color:var(--greenD);font-weight:600}
+  .note{background:var(--tint);border:1px solid #cfe6d6;border-left:3px solid var(--green);border-radius:10px;padding:14px 18px;margin:18px 0}
+  .block{background:#fff;border:1px solid var(--bd);border-radius:14px;padding:22px 24px;margin:20px 0}.block h3{margin-top:0}
+  .shots{display:grid;grid-template-columns:1fr;gap:16px;margin:14px 0}@media(min-width:680px){.shots{grid-template-columns:2fr 1fr}}
+  figure{margin:0}.frame{border:1px solid var(--bd);border-radius:10px;overflow:hidden;background:#fff;max-height:520px;overflow-y:auto}.frame img{width:100%;display:block}
+  figcaption{color:var(--mut);font-size:12.5px;margin-top:6px;text-align:center}
+  .cols{display:grid;gap:6px 26px}@media(min-width:640px){.cols{grid-template-columns:1fr 1fr}}
+  .files code{display:block;background:transparent;padding:0;font-size:13px}
+  footer{margin-top:52px;color:var(--mut);font-size:13px;border-top:1px solid var(--bd);padding-top:18px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<h1>Núcleo de Direito do Trabalho — implementação e otimização</h1>
+<p class="sub">Corrêa Lima Advocacia · cluster completo (área, 14 subpáginas, guia, landing e 10 artigos) integrado à arquitetura existente, sem alterar Home, componentes, cores ou SEO das demais páginas.</p>
+
+<div class="kpis">
+  <div class="kpi"><b>+27</b><span>páginas novas</span></div>
+  <div class="kpi"><b>159 / 157</b><span>páginas / URLs</span></div>
+  <div class="kpi"><b>0/0/0</b><span>astro check</span></div>
+  <div class="kpi"><b>0</b><span>scroll horizontal</span></div>
+  <div class="kpi"><b>0</b><span>componentes novos de UI</span></div>
+</div>
+
+<div class="note"><strong>Integração nativa:</strong> a arquitetura do site é orientada a dados. Ao adicionar o núcleo em <code>nucleos.ts</code> e as subpáginas em <code>subtopics.ts</code>, o novo cluster passou a aparecer <em>automaticamente</em> no menu “Áreas de Atuação”, no rodapé, na Home, em <code>/areas-de-atuacao/</code>, em <code>/assuntos/</code>, na listagem do blog e no <code>RelatedHub</code> — usando exatamente os mesmos componentes (<code>PillarPage</code>, <code>SubPage</code>, <code>EntryPage</code>, <code>RelatedHub</code>, <code>ContactForm</code>). Nenhum componente visual novo foi criado.</p>
+
+<h2>1. Páginas criadas</h2>
+<div class="block">
+  <h3>Área principal (1)</h3>
+  <p><code>/areas-de-atuacao/direito-do-trabalho/</code> — via <code>PillarPage</code> + <code>nucleos.ts</code>.</p>
+  <h3>Subpáginas do cluster (14)</h3>
+  <div class="cols">
+    <ul>
+      <li>/rescisao-do-contrato/</li>
+      <li>/demissao-sem-justa-causa/</li>
+      <li>/verbas-rescisorias/</li>
+      <li>/rescisao-indireta/</li>
+      <li>/horas-extras/</li>
+      <li>/calculo-de-horas-extras/</li>
+      <li>/trabalho-sem-registro/</li>
+    </ul>
+    <ul>
+      <li>/carteira-assinada/</li>
+      <li>/reconhecimento-de-vinculo/</li>
+      <li>/justa-causa/</li>
+      <li>/fgts/</li>
+      <li>/assedio-moral/</li>
+      <li>/acidente-de-trabalho/</li>
+      <li>/consulta-trabalhista/</li>
+    </ul>
+  </div>
+  <p>Todas via <code>SubPage</code> + <code>subtopics.ts</code>, cobrindo as 14 páginas obrigatórias da seção 9.</p>
+  <h3>Guia pilar (1)</h3>
+  <p><code>/guias/direito-do-trabalho/</code> — conteúdo abrangente (conceitos, contrato, jornada, banco de horas, férias, 13º, aviso prévio, rescisão com tabela comparativa, FGTS, justa causa, estabilidade, acidente, assédio, prazos e FAQ).</p>
+  <h3>Landing de conversão (1)</h3>
+  <p><code>/advogado-trabalhista/</code> — hero com CTA acima da dobra, situações, como funciona, por que procurar orientação, formulário e FAQ. Usa os componentes existentes.</p>
+  <h3>Artigos de blog (10)</h3>
+  <p>Categoria “Direito do Trabalho” com 10 artigos, cada um com H1, FAQ (schema), <code>RelatedHub</code>, breadcrumb, tempo de leitura, meta e links internos.</p>
+</div>
+
+<h2>2. Prints — indistinguível das demais áreas</h2>
+<div class="block">
+  <div class="shots">
+    <figure><div class="frame"><img src="prints/area-desktop.jpg" alt="Área"></div><figcaption>Área principal · desktop</figcaption></figure>
+    <figure><div class="frame"><img src="prints/area-mobile.jpg" alt="Área mobile"></div><figcaption>Mobile</figcaption></figure>
+  </div>
+  <div class="shots">
+    <figure><div class="frame"><img src="prints/landing-desktop.jpg" alt="Landing"></div><figcaption>Landing /advogado-trabalhista/</figcaption></figure>
+    <figure><div class="frame"><img src="prints/landing-mobile.jpg" alt="Landing mobile"></div><figcaption>Mobile</figcaption></figure>
+  </div>
+  <div class="shots">
+    <figure><div class="frame"><img src="prints/guia-desktop.jpg" alt="Guia"></div><figcaption>Guia completo</figcaption></figure>
+    <figure><div class="frame"><img src="prints/sub-desktop.jpg" alt="Subpágina"></div><figcaption>Subpágina (FGTS)</figcaption></figure>
+  </div>
+  <div class="shots">
+    <figure><div class="frame"><img src="prints/artigo-desktop.jpg" alt="Artigo"></div><figcaption>Artigo</figcaption></figure>
+    <figure><div class="frame"><img src="prints/blog-desktop.jpg" alt="Blog"></div><figcaption>Blog com a categoria</figcaption></figure>
+  </div>
+</div>
+
+<h2>3. SEO e Schema</h2>
+<div class="block">
+  <table>
+    <tr><th>Página</th><th>Schemas emitidos</th></tr>
+    <tr><td>Área principal</td><td>BreadcrumbList · FAQPage · LegalService</td></tr>
+    <tr><td>Subpáginas (14)</td><td>BreadcrumbList · FAQPage · LegalService</td></tr>
+    <tr><td>Artigos (10)</td><td>BreadcrumbList · FAQPage · Article · Organization</td></tr>
+    <tr><td>Guia</td><td>BreadcrumbList · FAQPage · Article · LegalService</td></tr>
+    <tr><td>Landing</td><td>BreadcrumbList · FAQPage · LegalService · Attorney</td></tr>
+  </table>
+  <p>Cada página tem <strong>title</strong>, <strong>meta description</strong>, <strong>canonical</strong>, <strong>Open Graph</strong> e <strong>Twitter Card</strong> (a landing passou a usar o mesmo <code>head</code> completo do restante do site — corrigido título duplicado e adicionadas as tags OG/Twitter). Hierarquia de headings com <strong>um H1</strong> por página, breadcrumb visível e no schema, e URLs coerentes com Title/H1/H2. Sitemap e robots atualizados automaticamente (157 URLs).</p>
+</div>
+
+<h2>4. Linkagem interna (SILO)</h2>
+<div class="block">
+  <p>Malha verificada — 20 a 33 links do cluster por página, todos com contexto útil:</p>
+  <ul>
+    <li><strong>Área →</strong> guia, landing e todas as subpáginas (via <code>related</code> + cards de situações + <code>RelatedHub</code>).</li>
+    <li><strong>Guia →</strong> todas as subpáginas, artigos e landing (links contextuais no texto + <code>RelatedHub</code>).</li>
+    <li><strong>Artigos →</strong> guia, área, subpáginas relacionadas, contato e landing (frontmatter <code>relacionados</code> + links no corpo + <code>RelatedHub</code>).</li>
+    <li><strong>Landing →</strong> área, guia e contato (sem excesso de links, foco na conversão).</li>
+  </ul>
+</div>
+
+<h2>5. EEAT e conteúdo</h2>
+<div class="block">
+  <p>Conteúdo redigido em tom técnico, institucional e acessível, com base na legislação vigente e no entendimento consolidado, sempre com a ressalva de que se trata de material informativo e que cada caso exige análise individual — <strong>sem promessa de resultado</strong> (conforme as normas da OAB). Referências corretas: verbas rescisórias e prazo do art. 477; aviso prévio proporcional (Lei 12.506/2011); horas extras (art. 7º, XVI, da CF); vínculo (arts. 2º e 3º da CLT); justa causa (art. 482) e rescisão indireta (art. 483); FGTS (Lei 8.036/1990); acidente e estabilidade (Lei 8.213/1991, art. 118); estabilidade da gestante (ADCT, art. 10); prescrição (art. 7º, XXIX, da CF).</p>
+</div>
+
+<h2>6. CRO, Google Ads e GA4</h2>
+<div class="block">
+  <ul>
+    <li><strong>CRO:</strong> CTA acima da dobra na landing (WhatsApp + “Enviar meu caso”) e distribuídos (situações, formulário e canais); cards escaneáveis; hierarquia clara.</li>
+    <li><strong>Landing Experience / Quality Score:</strong> HTML/CSS estáticos, sem bibliotecas pesadas; mobile sem scroll horizontal; coerência URL ↔ Title ↔ H1 ↔ H2 ↔ conteúdo; sem elementos distrativos.</li>
+    <li><strong>GA4 (preparado, sem configurar contas):</strong> o rastreamento existente já cobre o novo cluster — clique em <strong>WhatsApp</strong>, <strong>telefone</strong> e <strong>e-mail</strong> (listener delegado em links <code>wa.me</code>/<code>tel:</code>/<code>mailto:</code>) e <strong>envio de formulário</strong> (<code>form_start</code>, <code>form_submit</code>, <code>form_success</code>, <code>generate_lead</code>) via o <code>ContactForm</code> com <code>data-contact-form</code>.</li>
+  </ul>
+</div>
+
+<h2>7. Acessibilidade e performance</h2>
+<div class="block">
+  <ul>
+    <li>HTML semântico, um H1 por página, FAQ em <code>&lt;details&gt;/&lt;summary&gt;</code>, formulário com labels, <code>aria-live</code> e foco (herdados do <code>ContactForm</code>).</li>
+    <li>Sem imagens novas (cards tipográficos) — nenhum <code>alt</code> ausente; nenhum recurso pesado adicionado.</li>
+    <li><strong>Sem scroll horizontal</strong> em 390 e 360&nbsp;px em todas as páginas do cluster.</li>
+  </ul>
+</div>
+
+<h2>8. Problemas encontrados e corrigidos (2ª etapa)</h2>
+<div class="block">
+  <table>
+    <tr><th>Problema</th><th>Correção</th></tr>
+    <tr><td>Artigos e guia sem <code>&lt;h1&gt;</code> (faltava o heading <code>#</code> no corpo, conforme a convenção do site)</td><td class="ok">H1 inserido nos 11 arquivos; também eliminou um leve scroll horizontal derivado da estrutura</td></tr>
+    <tr><td>FAQ schema não gerava (parser exige pergunta em negrito)</td><td class="ok">26 perguntas convertidas para <code>**negrito**</code>; FAQPage passou a ser emitido</td></tr>
+    <tr><td>Landing com <code>&lt;title&gt;</code> duplicado e sem OG/Twitter</td><td class="ok">Passou a usar o <code>head</code> completo (buildChildHead): título correto + OG + Twitter</td></tr>
+    <tr><td>6 subpáginas obrigatórias ainda inexistentes</td><td class="ok">Criadas (calculo-de-horas-extras, rescisao-indireta, verbas-rescisorias, carteira-assinada, consulta-trabalhista, demissao-sem-justa-causa)</td></tr>
+  </table>
+</div>
+
+<h2>9. Arquivos</h2>
+<div class="files">
+  <p><strong>Criados:</strong></p>
+  <code>src/pages/areas-de-atuacao/direito-do-trabalho.astro</code>
+  <code>src/pages/advogado-trabalhista/index.astro</code>
+  <code>src/content/guias/direito-do-trabalho.md</code>
+  <code>src/content/blog/*.md</code> (10 artigos)
+  <p style="margin-top:10px"><strong>Modificados (apenas dados/config):</strong></p>
+  <code>src/lib/nucleos.ts</code> (7º núcleo) · <code>src/lib/subtopics.ts</code> (14 subpáginas) · <code>src/content.config.ts</code> (cluster no enum)
+  <p style="margin-top:10px"><strong>Componentes reutilizados (0 novos):</strong> PillarPage, SubPage, EntryPage, RelatedHub, ContactForm, Container, Breadcrumb, Icon, JsonLd, cards e botões existentes. Menu, rodapé, Home, Assuntos e blog atualizaram-se sozinhos a partir dos dados.</p>
+</div>
+
+<h2>10. Publicação na HostGator</h2>
+<div class="block">
+  <ol>
+    <li>Envie <strong>todo o conteúdo de dentro de <code>dist/</code></strong> para <code>public_html/</code> (cPanel &gt; Gerenciador de Arquivos), substituindo os arquivos.</li>
+    <li>Confira <code>/areas-de-atuacao/direito-do-trabalho/</code> e <code>/advogado-trabalhista/</code>.</li>
+    <li>Para recompilar: <code>npm install</code> → <code>npm run build</code>.</li>
+  </ol>
+</div>
+
+<footer>Validação: <code>astro check</code> 0/0/0 · 159 páginas · 157 URLs · FAQ/Article/Service/Breadcrumb schema presentes · sem scroll horizontal (390/360&nbsp;px) · Home e componentes inalterados. Prints em <code>./prints/</code>.</footer>
+
+</div>
+</body>
+</html>

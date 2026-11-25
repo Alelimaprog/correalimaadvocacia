@@ -43,18 +43,26 @@ export function buildArticleJsonLd(opts: {
   const secao = opts.collection === 'blog' ? 'Conteúdos' : 'Guias';
   const secaoHref = opts.collection === 'blog' ? '/blog/' : '/guias/';
   const url = `${base}/${opts.collection}/${opts.slug}/`;
+  const image = `${base}${site.ogImage}`;
   const article: Schema = {
     '@context': 'https://schema.org',
-    '@type': 'Article',
+    '@type': opts.collection === 'blog' ? 'BlogPosting' : 'Article',
     headline: opts.h1,
     description: opts.description,
+    image,
     mainEntityOfPage: { '@type': 'WebPage', '@id': url },
-    author: { '@type': 'Person', name: opts.author },
-    publisher: { '@type': 'Organization', name: site.name, url: base + '/' },
+    author: { '@type': 'Person', name: opts.author, url: `${base}/o-escritorio/` },
+    publisher: {
+      '@type': 'Organization',
+      name: site.name,
+      url: base + '/',
+      logo: { '@type': 'ImageObject', url: `${base}/icon-512.png`, width: 512, height: 512 },
+    },
     inLanguage: 'pt-BR',
   };
   if (opts.pubDate) article.datePublished = opts.pubDate.toISOString().slice(0, 10);
-  if (opts.updatedDate) article.dateModified = opts.updatedDate.toISOString().slice(0, 10);
+  // dateModified sempre presente (sinal de atualização): usa updatedDate ou cai para pubDate.
+  article.dateModified = (opts.updatedDate ?? opts.pubDate)?.toISOString().slice(0, 10);
 
   const breadcrumb: Schema = {
     '@context': 'https://schema.org',
@@ -66,6 +74,55 @@ export function buildArticleJsonLd(opts: {
     ],
   };
   return [article, breadcrumb];
+}
+
+/**
+ * Fallback de dados estruturados para páginas de ÁREA novas (não presentes em
+ * _child-data.json): monta LegalService + BreadcrumbList a partir do frontmatter.
+ * O FAQPage é adicionado à parte por buildFaqJsonLd() a partir do corpo visível.
+ */
+export function buildAreaJsonLd(opts: {
+  slug: string;
+  title: string;
+  description: string;
+  h1: string;
+  path: string;
+}): Schema[] {
+  const base = site.url.replace(/\/$/, '');
+  const url = `${base}${opts.path}`;
+  const legalService: Schema = {
+    '@context': 'https://schema.org',
+    '@type': 'LegalService',
+    name: `${opts.h1} — ${site.name}`,
+    description: opts.description,
+    url,
+    areaServed: 'BR',
+    provider: {
+      '@type': 'Attorney',
+      '@id': `${base}/o-escritorio/#alexandre-correa-lima`,
+      name: site.attorney.name,
+      url: `${base}/o-escritorio/`,
+    },
+  };
+  const breadcrumb: Schema = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Início', item: base + '/' },
+      { '@type': 'ListItem', position: 2, name: 'Áreas de Atuação', item: `${base}/areas-de-atuacao/` },
+      { '@type': 'ListItem', position: 3, name: opts.h1, item: url },
+    ],
+  };
+  return [legalService, breadcrumb];
+}
+
+/** Breadcrumb visível de fallback para páginas de área novas. */
+export function buildAreaCrumbs(h1: string): Crumb[] {
+  return [
+    { label: 'Início', href: '/' },
+    { label: 'Áreas de Atuação', href: '/areas-de-atuacao/' },
+    { label: h1 },
+  ];
 }
 
 /**

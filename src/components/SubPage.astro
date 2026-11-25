@@ -11,7 +11,8 @@ import JsonLd from '@/components/JsonLd.astro';
 import Icon from '@/components/Icon.astro';
 import { site, whatsappHrefForPath } from '@/lib/site.config';
 import { getNucleo } from '@/lib/nucleos';
-import { getSubtopic, getSubtopicsByNucleo } from '@/lib/subtopics';
+import RelatedHub from '@/components/content/RelatedHub.astro';
+import { getSubtopic } from '@/lib/subtopics';
 import type { PageHead } from '@/lib/institucional';
 
 interface Props { nucleo: string; sub: string }
@@ -19,7 +20,6 @@ const { nucleo, sub } = Astro.props;
 const n = getNucleo(nucleo)!;
 const s = getSubtopic(nucleo, sub)!;
 const waHref = whatsappHrefForPath(`/areas-de-atuacao/${nucleo}/`); // ETAPA 18
-const siblings = getSubtopicsByNucleo(nucleo).filter((x) => x.slug !== sub);
 
 const url = `${site.url}/areas-de-atuacao/${nucleo}/${sub}/`;
 const title = `${s.seoTitle} | ${site.name}`;
@@ -61,13 +61,15 @@ const jsonld = [
     mainEntity: s.faq.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })),
   },
 ];
+import AuthorNote from '@/components/AuthorNote.astro';
 ---
 
-<BaseLayout head={head}>
+<BaseLayout head={head} footerCta={false}>
   <Fragment slot="jsonld">{jsonld.map((schema) => <JsonLd schema={schema} />)}</Fragment>
 
   <main id="conteudo-principal" class="sub">
-    <section class="s-hero">
+    <!-- Hero — primeira dobra padronizada (ver src/styles/first-fold.css) -->
+    <section class="s-hero internal-first-fold">
       <div class="wrap">
         <nav class="crumbs" aria-label="Você está em">
           <a href="/">Início</a><span>/</span>
@@ -79,8 +81,8 @@ const jsonld = [
         <h1>{s.h1}</h1>
         <p class="s-hero-desc">{s.heroDescription}</p>
         <div class="cta-row">
-          <a class="btn btn--primary" href={waHref} target="_blank" rel="noopener noreferrer">Falar com um advogado</a>
-          <a class="btn btn--secondary" href="/contato/">Solicitar análise inicial</a>
+          <a class="btn btn--primary" href={waHref} target="_blank" rel="noopener noreferrer" data-cta-position="hero">Falar no WhatsApp</a>
+          <a class="btn btn--secondary" href={`/contato/?area=${nucleo}`} data-cta-position="hero">Enviar meu caso</a>
         </div>
       </div>
     </section>
@@ -125,9 +127,10 @@ const jsonld = [
     <section class="s-cta-mid">
       <div class="wrap cta-mid-inner">
         <p>Quer saber como isso se aplica ao seu caso?</p>
-        <a class="btn btn--primary" href="/contato/">Solicitar análise inicial</a>
+        <a class="btn btn--primary" href={`/contato/?area=${nucleo}`} data-cta-position="meio">Enviar meu caso</a>
       </div>
     </section>
+    <div class="wrap"><AuthorNote /></div>
 
     <section class="s-sec s-sec--paper">
       <div class="wrap wrap--narrow">
@@ -146,24 +149,8 @@ const jsonld = [
     </section>
 
     <section class="s-sec s-sec--white">
-      <div class="wrap rel-cols">
-        <div>
-          <p class="eyebrow"><span class="dot"></span>Serviços relacionados</p>
-          <h2>Explore em {n.label}</h2>
-          <ul class="rel">
-            <li><a href={n.href}><strong>Visão geral: {n.label}</strong><Icon name="arrow-right" size={16} /></a></li>
-            {siblings.map((x) => (
-              <li><a href={`/areas-de-atuacao/${x.nucleo}/${x.slug}/`}>{x.label}<Icon name="arrow-right" size={16} /></a></li>
-            ))}
-          </ul>
-        </div>
-        <div>
-          <p class="eyebrow"><span class="dot"></span>Conteúdos relacionados</p>
-          <h2>Aprofunde</h2>
-          <ul class="rel">
-            {n.related.map((r) => <li><a href={r.href}>{r.label}<Icon name="arrow-right" size={16} /></a></li>)}
-          </ul>
-        </div>
+      <div class="wrap">
+        <RelatedHub cluster={nucleo} currentPath={`/areas-de-atuacao/${nucleo}/${sub}/`} />
       </div>
     </section>
 
@@ -174,7 +161,7 @@ const jsonld = [
           <p class="cta-text">Entre em contato para uma análise inicial da situação e dos documentos disponíveis.</p>
         </div>
         <div class="cta-actions">
-          <a class="btn btn--primary" href="/contato/">Solicitar atendimento</a>
+          <a class="btn btn--primary" href={`/contato/?area=${nucleo}`} data-cta-position="final">Enviar meu caso</a>
           <a class="btn btn--ghost-light" href={waHref} target="_blank" rel="noopener noreferrer">Falar no WhatsApp</a>
         </div>
       </div>
@@ -186,9 +173,11 @@ const jsonld = [
   /* SubPage — identidade própria (hero compacto claro), sistema compartilhado. */
   .sub :where(h2) { font-size: var(--text-2xl); color: var(--color-ink); margin-top: var(--space-2); }
 
+  /* Altura: regra da primeira dobra (.internal-first-fold) em desktop; padding
+     simétrico abaixo é respiro mínimo e define a altura natural no mobile. */
   .s-hero {
     background: var(--surface-warm);
-    padding-block: var(--section-y-sm);
+    padding-block: clamp(2rem, 1.5rem + 2.4vw, 3.25rem);
     border-bottom: 1px solid var(--border-subtle);
   }
   .s-hero .crumbs { margin-bottom: var(--space-5); }
@@ -218,7 +207,7 @@ const jsonld = [
   }
   .rk { color: var(--color-warn); flex: none; margin-top: 2px; }
 
-  .s-cta-mid { background: var(--color-green-tint); border-block: 1px solid var(--border-green-subtle); }
+  .s-cta-mid { background: var(--surface-cream); border-block: 1px solid var(--color-border); }
   .cta-mid-inner { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: var(--space-4); padding-block: var(--space-6); }
   .cta-mid-inner p { font-family: var(--font-display); font-size: var(--text-lg); color: var(--color-ink); }
 

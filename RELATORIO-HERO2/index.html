@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Relatório — Refinamento visual do Hero (Áreas de Atuação) · Corrêa Lima Advocacia</title>
+<style>
+  :root{--ink:#12201a;--txt:#33403a;--mut:#6b7a72;--green:#1f7a4d;--greenD:#155c39;--tint:#e9f3ec;--bd:#e2e8e3;--bg:#fbfcfb;--warn:#b4690e}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--txt);font:16px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+  .wrap{max-width:920px;margin:0 auto;padding:48px 22px 90px}
+  h1{color:var(--ink);font-size:28px;line-height:1.2;margin:0 0 6px;letter-spacing:-.02em}
+  h2{color:var(--ink);font-size:21px;margin:46px 0 12px;padding-top:22px;border-top:1px solid var(--bd)}
+  h3{color:var(--ink);font-size:16px;margin:22px 0 8px}
+  p{margin:0 0 14px}ul{margin:0 0 14px;padding-left:20px}li{margin:5px 0}
+  code{background:#eef2ef;padding:.12em .4em;border-radius:5px;font-size:.9em}
+  .sub{color:var(--mut);font-size:15px;margin-bottom:26px}
+  table{border-collapse:collapse;width:100%;font-size:13.5px;margin:14px 0}
+  th,td{border:1px solid var(--bd);padding:8px 10px;text-align:left}
+  th{background:#f2f6f3;color:var(--ink);font-size:12px;text-transform:uppercase;letter-spacing:.03em}
+  .note{background:var(--tint);border:1px solid #cfe6d6;border-left:3px solid var(--green);border-radius:10px;padding:14px 18px;margin:20px 0}
+  .warn{background:#fdf4e7;border:1px solid #f0dcbb;border-left:3px solid var(--warn);border-radius:10px;padding:14px 18px;margin:20px 0}
+  .block{background:#fff;border:1px solid var(--bd);border-radius:14px;padding:22px 24px;margin:22px 0}
+  .shots{display:grid;grid-template-columns:1fr;gap:16px;margin:14px 0}@media(min-width:680px){.shots{grid-template-columns:2fr 1fr}}
+  figure{margin:0}.frame{border:1px solid var(--bd);border-radius:10px;overflow:hidden;background:#fff}.frame img{width:100%;display:block}
+  figcaption{color:var(--mut);font-size:12.5px;margin-top:6px;text-align:center}
+  .files code{display:block;background:transparent;padding:0;font-size:13px}
+  footer{margin-top:52px;color:var(--mut);font-size:13px;border-top:1px solid var(--bd);padding-top:18px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<h1>Refinamento visual do Hero — Áreas de Atuação</h1>
+<p class="sub">Corrêa Lima Advocacia · abandono da altura por viewport em favor de uma altura editorial por proporção. Sem tocar na Home, no conteúdo, em URLs ou SEO.</p>
+
+<h2>1. Diagnóstico (o que a medição revelou)</h2>
+<div class="block">
+  <p>Medi <code>/areas-de-atuacao/direito-ambiental/</code> em várias alturas de tela. A causa real dos dois incômodos:</p>
+  <table>
+    <tr><th>Tela</th><th>Hero (antes)</th><th>Vazio abaixo do card</th><th>Faixa da 2ª seção</th></tr>
+    <tr><td>1366×768</td><td>770&nbsp;px</td><td>—</td><td>oculta</td></tr>
+    <tr><td>1536×864</td><td>866&nbsp;px</td><td>—</td><td>oculta</td></tr>
+    <tr><td><strong>1920×1080</strong></td><td>960&nbsp;px (limitado)</td><td><strong>~388&nbsp;px</strong></td><td><strong>aparece +42&nbsp;px</strong></td></tr>
+  </table>
+  <p>Ou seja: a altura era amarrada à viewport (<code>min-height: calc(100dvh − cabeçalho)</code>, com teto de 60&nbsp;rem) e o conteúdo era <em>centralizado verticalmente</em>. Em telas altas isso deixava um grande vazio abaixo do card e ainda deixava escapar a faixa da seção seguinte — exatamente o "alto demais / vazio" que você apontou.</p>
+</div>
+
+<h2>2. A mudança</h2>
+<div class="block">
+  <p>Conforme solicitado, <strong>abandonei a altura por viewport</strong>. O Hero das áreas (e subáreas) agora tem <strong>altura editorial definida por padding</strong>, com o conteúdo <strong>alinhado ao topo</strong>:</p>
+  <ul>
+    <li>Removidos <code>min-height</code>, <code>100svh/dvh</code>, o <code>calc()</code> e a centralização vertical.</li>
+    <li><strong>Padding proporcional:</strong> topo <code>clamp(2rem, 1.5rem + 1.7vw, 3.25rem)</code>, base <code>clamp(2.75rem, 2rem + 2.6vw, 4.5rem)</code> — um pouco mais embaixo para "assentar" o bloco.</li>
+    <li>Resultado: um Hero de <strong>~490&nbsp;px</strong>, constante em qualquer altura de tela — <strong>elegante, cheio e sem espaço vazio</strong>, nunca "gigante para preencher a tela".</li>
+  </ul>
+  <p>Aplicado de forma compartilhada nos dois componentes-base das áreas (<code>PillarPage</code> = <code>.p-hero</code> e <code>SubPage</code> = <code>.s-hero</code>), sem regra fixa de altura.</p>
+  <div class="shots">
+    <figure><div class="frame"><img src="prints/area-desktop.jpg" alt="Hero de área — desktop"></div><figcaption>Área · desktop (Hero proporcional, sem vazio)</figcaption></figure>
+    <figure><div class="frame"><img src="prints/area-mobile.jpg" alt="Hero de área — mobile"></div><figcaption>Mobile</figcaption></figure>
+  </div>
+</div>
+
+<h2>3. Um ponto honesto sobre a segunda seção</h2>
+<div class="warn">
+  <p>Você pediu duas coisas ao mesmo tempo: (a) um Hero <strong>menor e elegante, sem esticar para a viewport</strong>; e (b) que a <strong>seção seguinte não apareça</strong> na primeira tela.</p>
+  <p>Como o conteúdo do Hero é naturalmente curto (~350&nbsp;px), essas duas metas se opõem em telas altas: para <em>esconder</em> a próxima seção seria preciso esticar o Hero até a altura da viewport — que foi justamente o que gerava o vazio e a faixa que você reprovou. Um Hero <strong>proporcional ao conteúdo</strong> (a opção que você pediu) fica elegante em todas as telas, mas, em monitores altos, o topo da próxima seção passa a ser visível logo abaixo.</p>
+  <p>Priorizei o que você enfatizou — <strong>"layout elegante, não Heroes gigantes só para preencher a tela"</strong>. Se preferir o contrário (esconder totalmente a próxima seção, aceitando o Hero mais alto em telas grandes), reponho a altura por viewport — porém <strong>sem o teto de 60&nbsp;rem</strong> que causava a faixa e distribuindo o conteúdo para não ficar vazio. É um ajuste de uma linha; basta dizer qual dos dois comportamentos você prefere.</p>
+</div>
+
+<h2>4. Páginas revisadas / mantidas</h2>
+<div class="block">
+  <table>
+    <tr><th>Página</th><th>Ação</th></tr>
+    <tr><td>Áreas de Atuação (pilar) e Subáreas</td><td>Hero ajustado para altura editorial por padding</td></tr>
+    <tr><td>Home</td><td>Não alterada</td></tr>
+    <tr><td>Blog / Assuntos / Guias / Ferramentas</td><td>Já compactadas na sprint anterior — mantidas</td></tr>
+    <tr><td>Artigos / Guias (individuais)</td><td>Sem Hero dedicado — mantidas</td></tr>
+    <tr><td>O Escritório / Contato / LGPD / Termos / Privacidade</td><td>Já equilibradas — mantidas</td></tr>
+  </table>
+</div>
+
+<h2>5. Arquivos e validação</h2>
+<div class="files">
+  <p><strong>Modificados:</strong></p>
+  <code>src/components/PillarPage.astro</code> — <code>.p-hero</code>: padding editorial (sem viewport)
+  <code>src/components/SubPage.astro</code> — <code>.s-hero</code>: idem
+  <code>src/styles/areas-hero.css</code> — removida a lógica de <code>min-height</code>/viewport (agora documentação da variante)
+</div>
+<p><strong>Validação:</strong> <code>npx astro check</code> → 0 erros / 0 avisos / 0 hints. <code>npm run build</code> → 132 páginas, 130 URLs. Sem scroll horizontal (390&nbsp;px). Medido em 1366, 1440, 1536 e 1920&nbsp;px de largura.</p>
+
+<footer>Home inalterada. As páginas de listagem seguem compactas; as institucionais e de artigo já estavam equilibradas. O Hero das áreas passou a ter altura proporcional ao conteúdo, sem depender da viewport.</footer>
+
+</div>
+</body>
+</html>

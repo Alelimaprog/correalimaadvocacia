@@ -36,7 +36,7 @@ Este conteúdo tem caráter exclusivamente informativo e não substitui a análi
 
 Assunto relacionado a este artigo:
 
-[Cobrança Condominial e Recuperação de Inadimplência →](/areas-de-atuacao/cobranca-condominial-recuperacao-de-inadimplencia/)
+[Cobrança Condominial e Recuperação de Inadimplência →](/areas-de-atuacao/cobranca-condominial/)
 
 Quer ver o panorama completo do tema?
 

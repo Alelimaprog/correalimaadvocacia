@@ -8,8 +8,7 @@ import EntryPage from '@/layouts/EntryPage.astro';
 import { buildChildHead } from '@/lib/child-head';
 import { getJsonLd, getBreadcrumb, buildArticleJsonLd, buildFaqJsonLd, buildBreadcrumbCrumbs } from '@/lib/structured-data';
 import ContextualCta from '@/components/editorial/ContextualCta.astro';
-import ClusterNav from '@/components/editorial/ClusterNav.astro';
-import RelatedContent from '@/components/editorial/RelatedContent.astro';
+import RelatedHub from '@/components/content/RelatedHub.astro';
 import { getNucleo } from '@/lib/nucleos';
 
 export async function getStaticPaths() {
@@ -51,8 +50,7 @@ const relacionados = entry.data.relacionados ?? [];
 
 <EntryPage head={head} jsonld={jsonld} crumbs={crumbs}>
   <Content />
-  {relacionados.length > 0 && <RelatedContent itens={relacionados} />}
-  <ClusterNav cluster={entry.data.cluster} currentSlug={entry.id} currentCollection="blog" />
+  <RelatedHub cluster={entry.data.cluster} currentPath={path} curated={relacionados} />
   <ContextualCta
     titulo={nucleo ? `Precisa de orientação em ${nucleo.label}?` : 'Precisa avaliar a sua situação?'}
     texto="Apresente o caso e entenda quais podem ser os próximos passos."

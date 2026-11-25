@@ -14,15 +14,15 @@ const waHref = whatsappHrefForPath('/ferramentas/preciso-homologar-sentenca-estr
 ---
 
 <BaseLayout
-  title="Preciso Homologar Minha Sentença Estrangeira? | Verificador | Corrêa Lima Advocacia"
-  description="Ferramenta gratuita: descubra se a sua decisão obtida no exterior precisa de homologação no STJ, se está dispensada por lei ou se segue regime próprio."
+  title="Preciso homologar sentença ou divórcio estrangeiro? Teste rápido"
+  description="Descubra se a sua decisão estrangeira (divórcio, pensão, guarda, sentença comercial) precisa de homologação no STJ ou se basta averbar no cartório."
   canonical={canonical}
 >
   <main id="conteudo-principal" class="tool" data-tool="preciso-homologar">
     <Container>
       <Breadcrumb items={[{ label: 'Início', href: '/' }, { label: 'Ferramentas', href: '/ferramentas/' }, { label: 'Preciso homologar?' }]} />
 
-      <p class="eyebrow"><span class="dot"></span>Ferramenta gratuita</p>
+      <p class="eyebrow"><span class="dot"></span>Ferramenta de orientação</p>
       <h1>Preciso homologar minha decisão estrangeira?</h1>
       <p class="lead">
         Nem toda decisão obtida no exterior exige homologação no STJ — e há um
@@ -62,8 +62,8 @@ const waHref = whatsappHrefForPath('/ferramentas/preciso-homologar-sentenca-estr
         <h2 id="rtitle"></h2>
         <div id="rbody"></div>
         <div class="result-cta">
-          <a class="btn btn--primary" href="/contato/">Apresentar o meu caso</a>
-          <a class="btn btn--secondary" href={waHref} target="_blank" rel="noopener noreferrer">Falar pelo WhatsApp</a>
+          <a class="btn btn--primary" href="/contato/?area=homologacao" data-cta-position="ferramenta">Enviar meu caso</a>
+          <a class="btn btn--secondary" href={waHref} target="_blank" rel="noopener noreferrer">Falar no WhatsApp</a>
         </div>
       </div>
 
@@ -71,10 +71,24 @@ const waHref = whatsappHrefForPath('/ferramentas/preciso-homologar-sentenca-estr
         <p>
           Ferramenta informativa, que não substitui a análise individual. Ela
           considera o regime dos arts. 960 a 965 do CPC, a dispensa do art. 961,
-          §5º, e a competência exclusiva do art. 23. Aprofunde no
+          §5º, e a competência exclusiva do art. 23. Aprofunde no{' '}
           <a href="/guias/homologacao-de-sentenca-estrangeira-no-brasil/">guia central de homologação</a>.
         </p>
       </aside>
+
+      <section class="tool-explain" aria-labelledby="tx-title">
+        <h2 id="tx-title">Homologação de decisão estrangeira: dúvidas comuns</h2>
+        <h3>O que acontece se eu não homologar?</h3>
+        <p>A decisão estrangeira não produz efeitos no Brasil. Na prática: quem se divorciou no exterior continua casado nos registros brasileiros, não pode se casar de novo aqui e pode ter problemas para vender imóvel, fazer inventário ou partilhar bens. Uma condenação ou pensão fixada fora também não pode ser cobrada no Brasil antes da homologação.</p>
+        <h3>Quem homologa: STF ou STJ?</h3>
+        <p>Desde a Emenda Constitucional 45/2004, é o Superior Tribunal de Justiça (art. 105, I, "i", da Constituição). O procedimento segue os arts. 960 a 965 do CPC e o Regimento Interno do STJ.</p>
+        <h3>Quanto tempo demora?</h3>
+        <p>Depende principalmente de a outra parte concordar ou ser localizada para citação. Pedidos com a concordância expressa do ex-cônjuge tendem a andar mais rápido; quando é preciso citar alguém no exterior, o prazo se alonga. Uma estimativa só é possível depois de ver os documentos.</p>
+        <h3>Quais documentos são necessários?</h3>
+        <p>Cópia integral da decisão, prova de que ela é definitiva no país de origem, apostila de Haia (ou legalização consular, se o país não aderiu à Convenção) e tradução juramentada no Brasil. Veja <a href="/blog/documentos-exigidos-homologacao-sentenca-estrangeira/">documentos para a homologação</a>.</p>
+        <h3>Homologação e exequatur são a mesma coisa?</h3>
+        <p>Não. A homologação reconhece uma sentença estrangeira. O exequatur autoriza o cumprimento no Brasil de uma carta rogatória, ou seja, um pedido de diligência feito por juiz estrangeiro, como uma citação ou a coleta de provas.</p>
+      </section>
     </Container>
   </main>
 </BaseLayout>
@@ -108,8 +122,15 @@ const waHref = whatsappHrefForPath('/ferramentas/preciso-homologar-sentenca-estr
         t = 'result-tag result-tag--ok';
         h = 'Seu caso pode estar dispensado de homologação';
         b = '<p>O art. 961, §5º, do CPC dispõe que a sentença estrangeira de <strong>divórcio consensual</strong> produz efeitos no Brasil independentemente de homologação pelo STJ.</p>' +
-            '<p>Na prática, isso costuma permitir a averbação diretamente no registro civil, mediante documentação apostilada e traduzida. Se houver qualquer outra disposição no mesmo ato (partilha, guarda, alimentos), essa parte exige análise própria.</p>' +
+            '<p>Na prática, o Provimento CNJ 149/2023 permite averbar o divórcio consensual <strong>simples</strong> (só o fim do casamento, sem guarda, alimentos ou partilha) diretamente no cartório de registro civil, com a sentença apostilada e traduzida e a comprovação do trânsito em julgado. Esse pedido dispensa advogado. Se o mesmo ato trata de partilha, guarda ou alimentos, a homologação no STJ continua necessária.</p>' +
             '<p>Veja <a href="/blog/divorcio-exterior-precisa-ser-homologado-no-brasil/">divórcio no exterior precisa ser homologado?</a></p>';
+      } else if (tipo === 'divorcio' && consensual === 'nao') {
+        label = 'Homologação necessária';
+        t = 'result-tag result-tag--info';
+        h = 'Esse divórcio precisa ser homologado pelo STJ';
+        b = '<p>A averbação direta em cartório vale só para o divórcio consensual simples. Divórcio litigioso, ou consensual que também decide partilha de bens, guarda de filhos ou alimentos, depende de homologação no Superior Tribunal de Justiça (arts. 960 a 965 do CPC).</p>' +
+            '<p>Depois de homologada, a decisão é averbada no registro civil e passa a valer no Brasil, inclusive para um novo casamento e para a partilha de bens aqui situados, respeitado o art. 23 do CPC.</p>' +
+            '<p>Veja <a href="/areas-de-atuacao/homologacao-de-divorcio-estrangeiro/">homologação de divórcio estrangeiro</a>.</p>';
       } else if (tipo === 'testamento') {
         label = 'Não é caso de homologação';
         t = 'result-tag result-tag--info';
@@ -155,6 +176,10 @@ const waHref = whatsappHrefForPath('/ferramentas/preciso-homologar-sentenca-estr
 </script>
 
 <style>
+  .tool-explain { margin-top: var(--space-10); max-width: 46rem; }
+  .tool-explain h2 { font-family: var(--font-display); font-size: var(--text-2xl); color: var(--color-ink); }
+  .tool-explain h3 { margin-top: var(--space-6); font-size: var(--text-lg); color: var(--color-ink); }
+  .tool-explain p { margin-top: var(--space-2); line-height: var(--leading-relaxed, 1.7); }
   .tool { padding-block: var(--section-y); }
   .tool h1 { font-size: var(--text-4xl); color: var(--color-ink); margin-top: var(--space-3); max-width: 22ch; line-height: 1.1; }
   .lead { margin-top: var(--space-4); max-width: 60ch; color: var(--color-text); font-size: var(--text-md); line-height: var(--leading-normal); }
@@ -165,7 +190,7 @@ const waHref = whatsappHrefForPath('/ferramentas/preciso-homologar-sentenca-estr
   .quiz label { display: flex; align-items: center; gap: var(--space-3); padding: var(--space-2) 0; color: var(--color-text); font-size: var(--text-sm); cursor: pointer; }
   .quiz input[type='radio'] { width: 1.05rem; height: 1.05rem; accent-color: var(--color-green-strong); flex: none; }
   .quiz button { align-self: flex-start; }
-  .result { margin-top: var(--space-8); max-width: 46rem; border: 1px solid var(--border-green-subtle); background: var(--color-green-tint); border-radius: var(--radius-lg); padding: var(--space-6); }
+  .result { margin-top: var(--space-8); max-width: 46rem; border: 1px solid var(--color-border); border-left: 2px solid var(--color-accent); background: var(--surface-cream); border-radius: 0; padding: var(--space-6); }
   .result[hidden] { display: none; }
   .result h2 { font-size: var(--text-xl); color: var(--color-ink); margin-top: var(--space-2); }
   .result :global(p) { margin-top: var(--space-3); color: var(--color-text); font-size: var(--text-sm); line-height: var(--leading-relaxed); }

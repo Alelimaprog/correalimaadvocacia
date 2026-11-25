@@ -79,7 +79,7 @@ export const site: SiteConfig = {
   defaultDescription:
     'Advocacia empresarial, contratos de importação, execuções, homologação de sentença estrangeira e questões patrimoniais conduzidas com técnica, estratégia e atendimento personalizado.',
   ogImage: '/og-image.png',
-  themeColor: '#0b7d45',
+  themeColor: '#10233b',
   attorney: {
     name: 'Alexandre Corrêa Lima',
     oab: 'OAB/SP 234511',
@@ -146,21 +146,36 @@ const WA_MESSAGES: Record<string, string> = {
   'inventario-e-partilha': `${WA_INTRO}inventário e partilha de bens.`,
   'inventario-com-herdeiro-no-exterior': `${WA_INTRO}inventário com herdeiro no exterior.`,
   'divorcio-e-questoes-patrimoniais': `${WA_INTRO}divórcio e partilha de patrimônio.`,
+  'retencao-de-mercadorias': `${WA_INTRO}mercadoria retida na importação.`,
+  'pena-de-perdimento': `${WA_INTRO}pena de perdimento de mercadoria importada.`,
+  'defesa-administrativa-aduaneira': `${WA_INTRO}defesa em autuação aduaneira.`,
+  'classificacao-fiscal-ncm': `${WA_INTRO}classificação fiscal (NCM) e tributação na importação.`,
+  'inventario-extrajudicial': `${WA_INTRO}inventário em cartório.`,
+  'inventario-judicial': `${WA_INTRO}inventário judicial.`,
+  'planejamento-sucessorio': `${WA_INTRO}planejamento sucessório.`,
 };
 
-/** Mensagem de WhatsApp adequada a um caminho (pathname com barra final). */
+/**
+ * Código curto de referência da página (atribuição no atendimento).
+ * Ex.: /areas-de-atuacao/homologacao-de-divorcio-estrangeiro/ -> "homologacao-de-divorcio-estrangeiro".
+ */
+export function pageRef(pathname: string): string {
+  const segs = (pathname || '').split('/').filter(Boolean);
+  if (segs.length === 0) return 'home';
+  return segs[segs.length - 1].slice(0, 60);
+}
+
+/** Mensagem de WhatsApp adequada a um caminho (pathname com barra final), com referência da página. */
 export function whatsappMessageForPath(pathname: string): string {
   const segments = (pathname || '').split('/').filter(Boolean);
-  for (const seg of segments) {
-    if (WA_MESSAGES[seg]) return WA_MESSAGES[seg];
+  let msg = site.contact.whatsapp.message;
+  let found = false;
+  for (let i = segments.length - 1; i >= 0; i--) {
+    if (WA_MESSAGES[segments[i]]) { msg = WA_MESSAGES[segments[i]]; found = true; break; }
   }
-  if (pathname.startsWith('/blog/')) {
-    return `${WA_INTRO}um assunto que li no blog do escritório.`;
-  }
-  if (pathname.startsWith('/guias/')) {
-    return `${WA_INTRO}um tema de um dos guias do escritório.`;
-  }
-  return site.contact.whatsapp.message;
+  if (!found && pathname.startsWith('/blog/')) msg = `${WA_INTRO}um assunto que li no blog do escritório.`;
+  else if (!found && pathname.startsWith('/guias/')) msg = `${WA_INTRO}um tema de um dos guias do escritório.`;
+  return `${msg} (ref.: ${pageRef(pathname)})`;
 }
 
 /** Link wa.me contextual para um caminho. */
@@ -181,3 +196,19 @@ export function canonicalUrl(pathname: string): string {
   const path = pathname.endsWith('/') || pathname.includes('.') ? pathname : `${pathname}/`;
   return new URL(path, `${site.url}/`).href;
 }
+
+/**
+ * Lista ÚNICA de assuntos dos formulários (home e /contato/).
+ * `slug` é usado em /contato/?area=<slug>; `keys` permite pré-selecionar a
+ * partir de links antigos que passam o nome da área por extenso.
+ */
+export interface ContactArea { slug: string; label: string; keys: string[] }
+export const contactAreas: ContactArea[] = [
+  { slug: 'aduaneiro', label: 'Mercadoria retida, perdimento ou outra questão aduaneira', keys: ['aduane', 'importa', 'mercadoria', 'perdimento', 'comercio exterior', 'ncm'] },
+  { slug: 'inventario', label: 'Inventário, herança e sucessões', keys: ['invent', 'sucess', 'heranca', 'herdeiro', 'patrimon', 'planejamento'] },
+  { slug: 'homologacao', label: 'Homologação de sentença ou divórcio estrangeiro', keys: ['homolog', 'estrangeir', 'divorcio', 'internacional', 'reconhecimento'] },
+  { slug: 'credito', label: 'Cobrança, execução, crédito e condomínio', keys: ['credito', 'cobranca', 'execu', 'condomin', 'habilita', 'falencia', 'recuperacao judicial'] },
+  { slug: 'empresarial', label: 'Contratos, contencioso e trabalhista (empresas)', keys: ['empresar', 'contrato', 'societ', 'contencioso', 'criminal', 'trabalhista'] },
+  { slug: 'ambiental', label: 'Direito ambiental', keys: ['ambiental'] },
+  { slug: 'outro', label: 'Outro assunto', keys: [] },
+];

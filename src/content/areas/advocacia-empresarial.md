@@ -26,10 +26,10 @@ O trabalho é conduzido com foco na prevenção de riscos e na condução técni
 
 ## Como o escritório atua
 
-1. 1Levantamento e análise da situação jurídica e documental da empresa.
-2. 2Definição de estratégia jurídica alinhada aos objetivos do negócio.
-3. 3Condução de tratativas, contratos e, quando necessário, medidas judiciais.
-4. 4Acompanhamento contínuo das demandas relevantes para a atividade empresarial.
+1. Levantamento e análise da situação jurídica e documental da empresa.
+2. Definição de estratégia jurídica alinhada aos objetivos do negócio.
+3. Condução de tratativas, contratos e, quando necessário, medidas judiciais.
+4. Acompanhamento contínuo das demandas relevantes para a atividade empresarial.
 
 ## Situações comuns
 
@@ -49,7 +49,11 @@ A atuação abrange tanto a prevenção de riscos, por meio da estruturação co
 
 É possível atendimento para empresas fora de São Paulo?+
 
+Sim. O atendimento é nacional, com reuniões e acompanhamento online quando aplicável ao caso.
+
 O escritório atua em questões trabalhistas?+
+
+A atuação em matéria trabalhista ocorre de forma secundária, no contexto de assessoria empresarial, e não como frente principal de atuação.
 
 Fale sobre o seu caso
 
@@ -62,7 +66,7 @@ Responsável técnico: [Alexandre Corrêa Lima](/o-escritorio/#alexandre-correa-
 Áreas relacionadas
 
 - [Contratos Empresariais](/areas-de-atuacao/contratos-empresariais/)
-- [Execuções, Cobrança e Recuperação de Crédito](/areas-de-atuacao/execucao-cobranca-recuperacao-de-credito/)
+- [Execuções, Cobrança e Recuperação de Crédito](/areas-de-atuacao/recuperacao-de-credito/)
 - [Assessoria Jurídica para Importadores](/areas-de-atuacao/assessoria-juridica-para-importadores/)
 - [Recuperação Judicial e Falência](/areas-de-atuacao/recuperacao-judicial-e-falencia/)
 - [Trabalhista Empresarial](/areas-de-atuacao/trabalhista-empresarial/)

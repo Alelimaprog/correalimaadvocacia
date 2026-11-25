@@ -69,17 +69,21 @@
   gap: var(--space-2);
 }
 .prose li { line-height: var(--leading-relaxed); }
-.prose li::marker { color: var(--color-green-strong); }
+.prose li::marker { color: var(--color-accent); }
 
-.prose a {
-  color: var(--color-green-strong);
+/* `:not(.btn)` não é detalhe de estilo: sem ele, esta regra sobrescrevia a cor
+   de QUALQUER botão colocado dentro do conteúdo editorial — mesma
+   especificidade que `.btn`, e depois na cascata. O CTA "Falar sobre o meu
+   caso" ficava com texto navy sobre fundo navy, 1,14:1. */
+.prose a:not(.btn) {
+  color: var(--color-navy);
   text-decoration: underline;
   text-underline-offset: 0.18em;
-  text-decoration-color: color-mix(in srgb, var(--color-green-strong) 35%, transparent);
+  text-decoration-color: var(--border-accent);
   transition: color var(--dur) var(--ease), text-decoration-color var(--dur) var(--ease);
 }
-.prose a:hover {
-  color: var(--color-green);
+.prose a:not(.btn):hover {
+  color: var(--color-accent);
   text-decoration-color: currentColor;
 }
 
@@ -100,14 +104,19 @@
   margin: var(--space-10) 0;
 }
 
-.prose code {
+/* Só para código EM LINHA. Dentro de <pre> (blocos realçados, fundo escuro,
+   texto claro) este fundo claro cobria o bloco e deixava o texto a 1,14:1. */
+.prose :not(pre) > code {
   font-size: 0.9em;
   background: var(--surface-muted);
+  border: 1px solid var(--color-border);
   padding: 0.15em 0.4em;
   border-radius: var(--radius-sm);
 }
+.prose pre > code { background: transparent; border: 0; padding: 0; }
+.prose pre { overflow-x: auto; border-radius: var(--radius-sm); }
 
-.prose img { border-radius: var(--radius-lg); margin: var(--space-6) 0; }
+.prose img { border-radius: var(--radius-sm); margin: var(--space-6) 0; }
 
 .prose table {
   width: 100%;

@@ -1,164 +1,209 @@
 ---
 /**
- * ContactForm — formulário de contato fiel ao site atual.
- * Campos, rótulos, opções e texto de consentimento (LGPD) reproduzidos do export.
- *
- * Envio: mantém o Formspree atual (form id meebnnvj) via fetch. Em caso de
- * sucesso, exibe "Mensagem enviada." — o que dispara o evento de conversão
- * `form_submit` (tratado globalmente no Analytics) e o redirect para
- * /contato/obrigado/. A substituição por PHP/PHPMailer é de uma fase própria.
- *
- * Segurança/antispam: honeypot `website` (campo oculto).
+ * ContactForm — formulário de contato (campos e LGPD fiéis ao site atual).
+ * Estados: carregamento, ERRO (mantém dados, oferece WhatsApp) e SUCESSO
+ * (card substitui o formulário). Acessível: labels associados, aria-live,
+ * foco direcionado, checkbox e teclado; previne envio duplicado.
+ * Envio: Formspree (fetch) — mantém o fluxo de conversão do Analytics.
+ * Antispam: honeypot `website`.
  */
-const areas = [
-  'Advocacia Empresarial',
-  'Cobrança / Execução / Recuperação de Crédito',
-  'Contratos Empresariais / Importação',
-  'Homologação de Sentença Estrangeira',
-  'Família / Sucessões / Patrimônio',
-  'Outro assunto',
-];
-import { site } from '@/lib/site.config';
+import Icon from '@/components/Icon.astro';
+import { site, whatsappHrefForPath, contactAreas } from '@/lib/site.config';
+const areaKeys = JSON.stringify(Object.fromEntries(contactAreas.map((a) => [a.slug, a.keys])));
 const formspreeEndpoint = site.form.endpoint;
 ---
 
-<form class="cform" data-contact-form action={formspreeEndpoint} method="POST" novalidate>
-  {/* Honeypot antispam — deve permanecer vazio */}
-  <input
-    type="text"
-    name="website"
-    tabindex="-1"
-    autocomplete="off"
-    aria-hidden="true"
-    class="cform-hp"
-  />
+<div class="cform-wrap" data-contact>
+  <form class="cform" data-contact-form action={formspreeEndpoint} method="POST" novalidate>
+    <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" class="cform-hp" />
 
-  <div class="cform-field">
-    <label for="name">Nome *</label>
-    <input id="name" name="name" type="text" required autocomplete="name" />
+    <div class="cform-grid">
+      <div class="cform-field">
+        <label for="name">Nome *</label>
+        <input id="name" name="name" type="text" required autocomplete="name" />
+      </div>
+      <div class="cform-field">
+        <label for="whatsapp">WhatsApp ou telefone</label>
+        <input id="whatsapp" name="whatsapp" type="tel" placeholder="(11) 90000-0000 ou +1 ..." autocomplete="tel" aria-describedby="cform-canal" />
+      </div>
+      <div class="cform-field">
+        <label for="email">E-mail</label>
+        <input id="email" name="email" type="email" autocomplete="email" aria-describedby="cform-canal" />
+      </div>
+      <p id="cform-canal" class="cform-field--full cform-hint">Informe ao menos um canal de retorno: WhatsApp/telefone ou e-mail.</p>
+      <div class="cform-field cform-field--full">
+        <label for="area">Assunto *</label>
+        <select id="area" name="area" required data-keys={areaKeys}>
+          <option value="">Selecione o assunto</option>
+          {contactAreas.map((a) => <option value={a.label} data-slug={a.slug}>{a.label}</option>)}
+        </select>
+      </div>
+      <input type="hidden" name="pagina_origem" data-origin="page" />
+      <input type="hidden" name="pagina_entrada" data-origin="landing" />
+      <input type="hidden" name="utm" data-origin="utm" />
+      <div class="cform-field cform-field--full">
+        <label for="message">Breve descrição do caso</label>
+        <textarea id="message" name="message" rows="3"></textarea>
+      </div>
+    </div>
+
+    <div class="cform-consent">
+      <input id="consent" name="consent" type="checkbox" required />
+      <label for="consent">
+        Autorizo o tratamento dos meus dados pessoais para fins de contato e análise da minha
+        solicitação, conforme a Lei Geral de Proteção de Dados (LGPD) e a{' '}
+        <a href="/politica-de-privacidade/">Política de Privacidade</a>.
+      </label>
+    </div>
+
+    <div class="cform-error" data-error hidden role="alert" aria-live="assertive">
+      <span class="cform-error-ic" aria-hidden="true"><Icon name="message" size={16} /></span>
+      <span>
+        Não foi possível enviar sua mensagem. Tente novamente ou fale conosco pelo{' '}
+        <a href={whatsappHrefForPath(Astro.url.pathname)} target="_blank" rel="noopener noreferrer">WhatsApp</a>.
+      </span>
+    </div>
+
+    <button type="submit" class="cform-submit" data-submit>
+      <span class="cform-submit-t">Enviar meu caso</span>
+    </button>
+  </form>
+
+  <div class="cform-success" data-success hidden role="status" aria-live="polite" tabindex="-1">
+    <span class="cform-success-ic" aria-hidden="true"><Icon name="check" size={30} /></span>
+    <h3>Mensagem enviada com sucesso</h3>
+    <p>Recebemos a sua solicitação. O escritório analisará as informações enviadas e entrará em contato pelos dados informados.</p>
+    <div class="cform-success-actions">
+      <a class="btn btn--primary" href={whatsappHrefForPath(Astro.url.pathname)} target="_blank" rel="noopener noreferrer">Falar no WhatsApp</a>
+      <a class="btn btn--secondary" href="/">Voltar ao início</a>
+    </div>
+    <button type="button" class="cform-again" data-again>Enviar nova mensagem</button>
   </div>
-
-  <div class="cform-field">
-    <label for="whatsapp">WhatsApp *</label>
-    <input
-      id="whatsapp"
-      name="whatsapp"
-      type="tel"
-      required
-      placeholder="(11) 90000-0000"
-      autocomplete="tel"
-    />
-  </div>
-
-  <div class="cform-field">
-    <label for="email">E-mail *</label>
-    <input id="email" name="email" type="email" required autocomplete="email" />
-  </div>
-
-  <div class="cform-field">
-    <label for="area">Área de interesse *</label>
-    <select id="area" name="area" required>
-      <option value="">Selecione uma área</option>
-      {areas.map((a) => <option value={a}>{a}</option>)}
-    </select>
-  </div>
-
-  <div class="cform-field">
-    <label for="message">Breve descrição do caso</label>
-    <textarea id="message" name="message" rows="5"></textarea>
-  </div>
-
-  <div class="cform-consent">
-    <input id="consent" name="consent" type="checkbox" required />
-    <label for="consent">
-      Autorizo o tratamento dos meus dados pessoais para fins de contato e análise da
-      minha solicitação, conforme a Lei Geral de Proteção de Dados (LGPD) e a
-      <a href="/politica-de-privacidade/">Política de Privacidade</a>.
-    </label>
-  </div>
-
-  <button type="submit" class="cform-submit">Enviar meu caso</button>
-
-  <p class="cform-status" data-status role="status" aria-live="polite"></p>
-</form>
+</div>
 
 <style>
-  .cform { display: flex; flex-direction: column; gap: var(--space-5); max-width: 34rem; }
-  .cform-hp { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; }
-  .cform-field { display: flex; flex-direction: column; gap: var(--space-2); }
+  .cform-hint { margin: 0; font-size: 0.85rem; color: var(--color-text-muted, #5b6472); }
+  .cform-hint--alert { color: #a3341b; font-weight: 600; }
+  .cform-wrap { max-width: 40rem; }
+  .cform { display: flex; flex-direction: column; gap: var(--space-5); }
+  .cform input.cform-hp { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); clip-path: inset(50%); white-space: nowrap; border: 0; min-width: 0; }
+
+  /* Grid de campos: 2 colunas no desktop, 1 no mobile (cresce naturalmente). */
+  .cform-grid { display: grid; grid-template-columns: 1fr; gap: var(--space-4); }
+  @media (min-width: 560px) { .cform-grid { grid-template-columns: 1fr 1fr; } }
+  .cform-field { display: flex; flex-direction: column; gap: var(--space-2); min-width: 0; }
+  .cform-field--full { grid-column: 1 / -1; }
   .cform label { font-size: var(--text-sm); font-weight: var(--weight-medium); color: var(--color-ink); }
-  .cform input,
-  .cform select,
-  .cform textarea {
-    width: 100%;
-    min-width: 0;
-    box-sizing: border-box;
-    font-family: var(--font-body);
-    font-size: var(--text-base);
-    color: var(--color-ink);
-    padding: 0.8rem 1rem;
-    border: 1px solid var(--border-strong);
-    border-radius: var(--radius-md);
+  .cform input, .cform select, .cform textarea {
+    width: 100%; min-width: 0; box-sizing: border-box;
+    font-family: var(--font-body); font-size: var(--text-base); color: var(--color-ink);
+    padding: 0.8rem 0.95rem; border: 1px solid var(--border-strong); border-radius: var(--radius-sm);
     background: var(--surface);
     transition: border-color var(--dur) var(--ease), box-shadow var(--dur) var(--ease);
   }
-  .cform textarea { resize: vertical; min-height: 7rem; }
-  .cform input::placeholder,
-  .cform textarea::placeholder { color: var(--color-text-subtle); }
-  .cform input:hover,
-  .cform select:hover,
-  .cform textarea:hover { border-color: var(--gray-400); }
-  .cform input:focus,
-  .cform select:focus,
-  .cform textarea:focus {
-    outline: none;
-    border-color: var(--color-green-strong);
-    box-shadow: var(--ring);
-  }
+  .cform textarea { resize: vertical; min-height: 4.5rem; }
+  .cform input::placeholder, .cform textarea::placeholder { color: var(--color-text-subtle); }
+  .cform input:hover, .cform select:hover, .cform textarea:hover { border-color: var(--gray-400); }
+  .cform input:focus, .cform select:focus, .cform textarea:focus { outline: none; border-color: var(--color-accent); box-shadow: var(--ring); }
+  .cform input:user-invalid, .cform select:user-invalid { border-color: var(--color-warn); }
+
   .cform-consent { display: flex; gap: var(--space-3); align-items: flex-start; }
-  .cform-consent input { margin-top: 0.25rem; width: 1.05rem; height: 1.05rem; accent-color: var(--color-green-strong); }
+    /* 1,5rem = 24px: mínimo de alvo de ponteiro da WCAG 2.2 (2.5.8). */
+  .cform-consent input { margin-top: 0.1rem; width: 1.5rem; height: 1.5rem; flex: none; accent-color: var(--color-navy); }
   .cform-consent label { font-weight: var(--weight-regular); color: var(--color-text-muted); line-height: var(--leading-normal); font-size: var(--text-sm); }
-  .cform-consent a { color: var(--color-green-strong); }
+  .cform-consent a { color: var(--color-navy); }
+
   .cform-submit {
-    align-self: flex-start;
-    display: inline-flex; align-items: center; justify-content: center;
-    min-height: 2.9rem;
-    background: var(--color-green);
-    color: #ffffff;
-    border: 1px solid transparent;
-    border-radius: var(--radius-pill);
-    padding: 0.7rem 1.8rem;
-    font-family: var(--font-body);
-    font-weight: var(--weight-semibold);
-    font-size: var(--text-sm);
-    cursor: pointer;
-    box-shadow: var(--shadow-action);
-    transition: filter var(--dur) var(--ease), transform var(--dur) var(--ease), box-shadow var(--dur) var(--ease);
+    align-self: flex-start; display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem;
+    min-height: 3rem; background: var(--color-navy); color: #fff; border: 1px solid transparent;
+    border-radius: var(--radius-sm); padding: 0.8rem 1.75rem; font-family: var(--font-ui);
+    font-weight: var(--weight-semibold); font-size: var(--text-sm); cursor: pointer;
+    transition: background-color var(--dur) var(--ease);
   }
-  .cform-submit:hover { filter: brightness(1.05); transform: translateY(-1px); box-shadow: var(--shadow-md), var(--shadow-action); }
-  .cform-submit:disabled { opacity: 0.6; cursor: default; transform: none; }
-  .cform-status:empty { display: none; }
-  .cform-status { font-size: var(--text-sm); color: var(--color-ink); font-weight: var(--weight-medium); margin-top: var(--space-1); }
-  .cform-status[data-error] { color: var(--color-warn); }
+  .cform-submit:hover { background: var(--color-green-hover); }
+  .cform-submit:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 3px; }
+  .cform-submit:disabled { opacity: 0.5; cursor: default; }
+  .cform-submit.is-loading { position: relative; }
+  .cform-submit.is-loading .cform-submit-t { opacity: 0.85; }
+
+  .cform-error {
+    display: flex; gap: var(--space-3); align-items: flex-start;
+    padding: var(--space-3) var(--space-4); border-radius: var(--radius-sm);
+    background: color-mix(in srgb, var(--color-warn) 8%, var(--surface));
+    border: 1px solid color-mix(in srgb, var(--color-warn) 35%, transparent);
+    color: var(--color-ink); font-size: var(--text-sm); line-height: var(--leading-normal);
+  }
+  .cform-error[hidden] { display: none; }
+  .cform-error-ic { color: var(--color-warn); flex: none; margin-top: 0.1rem; }
+  .cform-error a { color: var(--color-navy); font-weight: var(--weight-semibold); }
+
+  /* Card de sucesso — substitui o formulário */
+  .cform-success {
+    display: flex; flex-direction: column; align-items: flex-start; gap: var(--space-3);
+    padding: clamp(1.5rem, 1rem + 2vw, 2.5rem);
+    border: 1px solid var(--color-border); border-left: 2px solid var(--color-accent);
+    border-radius: 0; background: var(--surface-cream);
+  }
+  .cform-success[hidden] { display: none; }
+  .cform-success:focus-visible { outline: none; box-shadow: var(--ring); }
+  .cform-success-ic {
+    display: inline-flex; align-items: center; justify-content: center; width: 3rem; height: 3rem;
+    border-radius: var(--radius-sm); border: 1px solid var(--border-accent);
+    background: transparent; color: var(--color-accent);
+  }
+  .cform-success h3 { font-family: var(--font-display); font-weight: var(--weight-bold); color: var(--color-ink); font-size: var(--text-xl); margin: var(--space-2) 0 0; }
+  .cform-success p { color: var(--color-text); font-size: var(--text-base); line-height: var(--leading-normal); max-width: 40ch; margin: 0; }
+  .cform-success-actions { display: flex; flex-wrap: wrap; gap: var(--space-3); margin-top: var(--space-3); }
+  .cform-again {
+    margin-top: var(--space-1); background: none; border: 0; padding: 0; cursor: pointer;
+    color: var(--color-navy); font-weight: var(--weight-semibold); font-size: var(--text-sm);
+    text-decoration: underline; text-underline-offset: 2px;
+  }
+  .cform-again:hover { color: var(--color-ink); }
 </style>
 
 <script>
-  document.querySelectorAll('[data-contact-form]').forEach((formEl) => {
-    const form = formEl as HTMLFormElement;
-    const status = form.querySelector('[data-status]') as HTMLElement | null;
-    const submit = form.querySelector('.cform-submit') as HTMLButtonElement | null;
+  import { fillOriginFields, preselectArea } from '@/lib/contact-origin';
+  document.querySelectorAll('[data-contact]').forEach((wrap) => {
+    const form = wrap.querySelector('[data-contact-form]') as HTMLFormElement | null;
+    const submit = wrap.querySelector('[data-submit]') as HTMLButtonElement | null;
+    const submitText = wrap.querySelector('.cform-submit-t') as HTMLElement | null;
+    const errorBox = wrap.querySelector('[data-error]') as HTMLElement | null;
+    const success = wrap.querySelector('[data-success]') as HTMLElement | null;
+    const again = wrap.querySelector('[data-again]') as HTMLButtonElement | null;
+    if (!form || !submit) return;
+    fillOriginFields(form);
+    preselectArea(form.querySelector('select[name="area"]') as HTMLSelectElement | null);
+    const defaultLabel = submitText ? submitText.textContent : 'Enviar';
+    let sending = false;
+    let done = false;
+
+    const showError = () => {
+      if (errorBox) {
+        errorBox.hidden = false;
+        errorBox.focus?.();
+      }
+    };
+    const clearError = () => { if (errorBox) errorBox.hidden = true; };
 
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
-      if (!form.checkValidity()) {
-        form.reportValidity();
+      if (sending || done) return; // previne envio duplicado
+      clearError();
+      const wa = (form.querySelector('#whatsapp') as HTMLInputElement | null)?.value.trim();
+      const em = (form.querySelector('#email') as HTMLInputElement | null)?.value.trim();
+      if (!wa && !em) {
+        const hint = form.querySelector('#cform-canal') as HTMLElement | null;
+        if (hint) hint.classList.add('cform-hint--alert');
+        (form.querySelector('#whatsapp') as HTMLInputElement | null)?.focus();
         return;
       }
-      if (status) {
-        status.textContent = 'Enviando…';
-        status.removeAttribute('data-error');
-      }
-      if (submit) submit.disabled = true;
+      if (!form.checkValidity()) { form.reportValidity(); return; }
+
+      sending = true;
+      submit.disabled = true;
+      submit.classList.add('is-loading');
+      if (submitText) submitText.textContent = 'Enviando…';
 
       try {
         const res = await fetch(form.action, {
@@ -166,20 +211,36 @@ const formspreeEndpoint = site.form.endpoint;
           body: new FormData(form),
           headers: { Accept: 'application/json' },
         });
-        if (res.ok) {
-          // Dispara o fluxo de conversão do Analytics (form_submit -> /contato/obrigado/)
-          if (status) status.textContent = 'Mensagem enviada.';
-        } else {
-          throw new Error('falha no envio');
+        if (!res.ok) throw new Error('falha');
+        // SUCESSO
+        done = true;
+        form.hidden = true;
+        form.reset();
+        if (success) {
+          success.hidden = false;
+          success.focus();
+          success.scrollIntoView({ behavior: 'smooth', block: 'center' });
         }
       } catch {
-        if (status) {
-          status.textContent =
-            'Não foi possível enviar agora. Tente novamente ou fale no WhatsApp.';
-          status.setAttribute('data-error', 'true');
-        }
-        if (submit) submit.disabled = false;
+        showError();
+        submit.disabled = false;
+        submit.classList.remove('is-loading');
+        if (submitText) submitText.textContent = defaultLabel;
+      } finally {
+        sending = false;
       }
+    });
+
+    // "Enviar nova mensagem": volta ao formulário limpo
+    again?.addEventListener('click', () => {
+      done = false;
+      if (success) success.hidden = true;
+      form.hidden = false;
+      submit.disabled = false;
+      submit.classList.remove('is-loading');
+      if (submitText) submitText.textContent = defaultLabel;
+      const first = form.querySelector('input:not([type=hidden]):not(.cform-hp)') as HTMLElement | null;
+      first?.focus();
     });
   });
 </script>

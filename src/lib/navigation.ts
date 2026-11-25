@@ -1,7 +1,7 @@
 /**
  * navigation.ts — Fonte única de navegação (DRY), consumida por Navigation,
  * MobileMenu e Footer. Reflete o novo posicionamento (Sprint 1): menu enxuto
- * com o dropdown "Áreas de Atuação" apresentando os seis núcleos e "Conteúdos"
+ * com o dropdown "Áreas de Atuação" apresentando os núcleos e "Conteúdos"
  * agrupando Artigos, Guias e Assuntos.
  */
 import { nucleos } from './nucleos';
@@ -17,7 +17,7 @@ export const mainNav: NavLink[] = [
   { label: 'O Escritório', href: '/o-escritorio/' },
 ];
 
-/** Dropdown "Áreas de Atuação" — os seis núcleos. */
+/** Dropdown "Áreas de Atuação" — os núcleos. */
 export const areasMenu = {
   label: 'Áreas de Atuação',
   href: '/areas-de-atuacao/',
@@ -31,15 +31,16 @@ export const conteudosMenu = {
   href: '/blog/',
   items: [
     { label: 'Artigos', href: '/blog/' },
-    { label: 'Guias', href: '/guias/' },
     { label: 'Assuntos', href: '/assuntos/' },
+    { label: 'Guias', href: '/guias/' },
+    { label: 'Ferramentas', href: '/ferramentas/' },
   ] as NavLink[],
 };
 
 /** Link de contato (fim do menu). */
 export const contatoLink: NavLink = { label: 'Contato', href: '/contato/' };
 
-/** Rodapé — coluna dos seis núcleos. */
+/** Rodapé — coluna dos núcleos. */
 export const footerNucleos: NavLink[] = nucleos.map((n) => ({ label: n.label, href: n.href }));
 
 /** Rodapé — coluna institucional. */

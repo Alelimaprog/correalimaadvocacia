@@ -15,15 +15,15 @@ const waHref = whatsappHrefForPath('/ferramentas/inventario-em-cartorio/');
 ---
 
 <BaseLayout
-  title="Meu inventário pode ser feito em cartório? | Verificador | Corrêa Lima Advocacia"
-  description="Ferramenta gratuita: responda três perguntas e descubra se o seu inventário pode seguir pela via extrajudicial (cartório) ou se exige processo judicial."
+  title="Inventário em cartório: o meu caso pode? Teste em 3 perguntas"
+  description="Responda 3 perguntas e veja se o inventário pode ser feito em cartório, inclusive com herdeiro menor ou testamento (Res. CNJ 571/2024), ou se precisa ser judicial."
   canonical={canonical}
 >
   <main id="conteudo-principal" class="tool" data-tool="inventario-em-cartorio">
     <Container>
       <Breadcrumb items={[{ label: 'Início', href: '/' }, { label: 'Ferramentas', href: '/ferramentas/' }, { label: 'Inventário em cartório' }]} />
 
-      <p class="eyebrow"><span class="dot"></span>Ferramenta gratuita</p>
+      <p class="eyebrow"><span class="dot"></span>Ferramenta de orientação</p>
       <h1>Meu inventário pode ser feito em cartório?</h1>
       <p class="lead">
         O inventário extrajudicial costuma ser bem mais rápido e barato que o
@@ -60,25 +60,39 @@ const waHref = whatsappHrefForPath('/ferramentas/inventario-em-cartorio/');
         <div id="rbody"></div>
 
         <div class="result-cta">
-          <a class="btn btn--primary" href="/contato/">Falar sobre o meu caso</a>
-          <a class="btn btn--secondary" href={waHref} target="_blank" rel="noopener noreferrer">Falar pelo WhatsApp</a>
+          <a class="btn btn--primary" href="/contato/?area=inventario" data-cta-position="ferramenta">Enviar meu caso</a>
+          <a class="btn btn--secondary" href={waHref} target="_blank" rel="noopener noreferrer" data-cta-position="ferramenta">Falar no WhatsApp</a>
         </div>
       </div>
 
       <aside class="note">
         <p>
           Esta ferramenta tem caráter informativo e não substitui a análise
-          individual do caso. Ela considera os requisitos do art. 610, §§ 1º e 2º,
-          do Código de Processo Civil. Em qualquer das vias, a assistência de
+          individual do caso. Ela considera o art. 610, §§ 1º e 2º, do Código de
+          Processo Civil e a Resolução CNJ 35/2007, com as alterações da
+          Resolução CNJ 571/2024. Em qualquer das vias, a assistência de
           advogado é obrigatória.
         </p>
         <p>
-          Para entender o procedimento completo, veja o
+          Para entender o procedimento completo, veja o{' '}
           <a href="/guias/inventario-guia-completo/">guia completo de inventário</a>
-          e o artigo sobre
+          {' '}e o artigo sobre{' '}
           <a href="/blog/inventario-extrajudicial-quando-cabe-e-como-funciona/">inventário extrajudicial</a>.
         </p>
       </aside>
+
+      <section class="tool-explain" aria-labelledby="tx-title">
+        <h2 id="tx-title">Inventário em cartório: o que você precisa saber</h2>
+        <h3>Quais são os requisitos?</h3>
+        <p>A regra básica do art. 610 do CPC é: todos os herdeiros de acordo, todos capazes, sem testamento, e um advogado acompanhando a escritura. A Resolução CNJ 571/2024 ampliou a via do cartório para dois casos que antes iam obrigatoriamente ao juiz: herdeiro menor ou incapaz (com manifestação favorável do Ministério Público e partilha em fração ideal) e testamento já processado judicialmente, quando o juiz autoriza a via extrajudicial.</p>
+        <h3>Quanto tempo leva?</h3>
+        <p>Depende sobretudo de documentos e do ITCMD. Com a documentação completa e o imposto recolhido, a escritura pode ser lavrada em pouco tempo; o que costuma atrasar são certidões, avaliação de imóveis, pendências de registro e herdeiros que moram fora do Brasil e precisam enviar procuração.</p>
+        <h3>Quanto custa?</h3>
+        <p>Há três custos principais: o ITCMD (em São Paulo, regido pela Lei estadual 10.705/2000), os emolumentos do cartório, que seguem a tabela oficial do estado conforme o valor dos bens, e os honorários do advogado. O valor de cada um depende do patrimônio e é informado após a análise dos documentos.</p>
+        <h3>E se um herdeiro mora no exterior?</h3>
+        <p>O inventário em cartório continua possível. O herdeiro assina por procuração pública feita no consulado brasileiro ou em notário local com apostila. Veja <a href="/areas-de-atuacao/inventario-com-herdeiro-no-exterior/">inventário com herdeiro no exterior</a>.</p>
+        <p>Mais detalhes em <a href="/areas-de-atuacao/inventario-e-patrimonio/inventario-extrajudicial/">inventário extrajudicial em São Paulo</a> e <a href="/areas-de-atuacao/inventario-e-patrimonio/inventario-judicial/">inventário judicial</a>.</p>
+      </section>
     </Container>
   </main>
 </BaseLayout>
@@ -93,38 +107,40 @@ const waHref = whatsappHrefForPath('/ferramentas/inventario-em-cartorio/');
     var body = document.getElementById('rbody');
     var res = document.getElementById('result');
 
-    if (q1 === 'nao') {
-      tag.textContent = 'Via judicial';
-      tag.className = 'result-tag result-tag--alert';
-      title.textContent = 'O inventário precisará ser judicial';
-      body.innerHTML =
-        '<p>Havendo herdeiro menor ou incapaz, a via extrajudicial fica afastada: o interesse do herdeiro protegido exige a participação do juiz e a manifestação do Ministério Público.</p>' +
-        '<p>Isso não torna o procedimento inviável — apenas muda o rito e o cronograma. Entenda o que muda em <a href="/blog/herdeiro-menor-ou-incapaz-o-que-muda-no-inventario/">herdeiro menor ou incapaz no inventário</a>.</p>';
-    } else if (q2 === 'nao') {
+    var extra = '';
+    if (q2 === 'nao') {
       tag.textContent = 'Via judicial';
       tag.className = 'result-tag result-tag--alert';
       title.textContent = 'Sem consenso, o caminho é o inventário judicial';
       body.innerHTML =
         '<p>A escritura pública exige acordo integral entre os herdeiros. Havendo divergência, a partilha será decidida judicialmente.</p>' +
         '<p>Importante: <strong>um herdeiro sozinho pode requerer a abertura</strong> — não é preciso esperar que todos concordem. Veja <a href="/blog/herdeiros-em-conflito-inventario-travado/">o que fazer quando o inventário trava</a>.</p>';
-    } else if (q3 === 'sim' || q3 === 'naosei') {
-      tag.textContent = 'Depende de verificação';
+    } else if (q1 === 'nao' || q3 === 'sim' || q3 === 'naosei') {
+      tag.textContent = 'Cartório possível, com requisitos adicionais';
       tag.className = 'result-tag result-tag--warn';
-      title.textContent = 'Há indícios favoráveis, mas o testamento exige análise';
-      body.innerHTML =
-        '<p>Seus herdeiros são capazes e há consenso — os dois requisitos centrais do art. 610, §1º, do CPC. Resta o testamento.</p>' +
-        '<p>A existência de testamento historicamente levava o inventário à via judicial, e esse ponto evoluiu nos últimos anos. A regra aplicável depende da norma vigente e da orientação do cartório e do tribunal do seu estado — por isso a verificação é indispensável antes de escolher o caminho.</p>' +
-        (q3 === 'naosei'
-          ? '<p>Se você não sabe se há testamento, essa é a primeira providência: existe certidão específica para essa consulta.</p>'
-          : '');
+      title.textContent = 'O cartório pode ser possível, mas há condições a cumprir';
+      if (q1 === 'nao') {
+        extra +=
+          '<p><strong>Herdeiro menor ou incapaz:</strong> desde a Resolução CNJ 571/2024, o inventário pode ser feito em cartório se houver consenso, se a parte do incapaz for paga em fração ideal de cada bem (sem bens escolhidos para ele) e se o Ministério Público se manifestar favoravelmente. O incapaz não pode renunciar à herança nem ceder direitos. Havendo impugnação, o caso vai ao juiz.</p>';
+      }
+      if (q3 === 'sim') {
+        extra +=
+          '<p><strong>Testamento:</strong> a escritura é admitida depois que o testamento é aberto e registrado judicialmente, com autorização do juiz para o inventário seguir em cartório. Se o testamento reconhece filho ou contém outra declaração irrevogável, o inventário deve ser judicial.</p>';
+      }
+      if (q3 === 'naosei') {
+        extra +=
+          '<p><strong>Não sabe se há testamento?</strong> Essa é a primeira providência: o cartório exige a certidão de buscas na Central de Testamentos (CENSEC) antes da escritura.</p>';
+      }
+      body.innerHTML = extra +
+        '<p>O consenso entre os herdeiros, com assistência de advogado, continua sendo o ponto de partida. Cada uma das condições acima precisa ser conferida antes de escolher o caminho. Veja o que muda em <a href="/blog/herdeiro-menor-ou-incapaz-o-que-muda-no-inventario/">herdeiro menor ou incapaz no inventário</a>.</p>';
     } else {
       tag.textContent = 'Via extrajudicial';
       tag.className = 'result-tag result-tag--ok';
       title.textContent = 'Seu inventário provavelmente pode ser feito em cartório';
       body.innerHTML =
-        '<p>Pelos requisitos do art. 610, §1º, do CPC — herdeiros capazes, consenso e ausência de testamento —, o caso reúne condições para a via extrajudicial, normalmente concluída em semanas.</p>' +
+        '<p>Consenso entre os herdeiros, com assistência de advogado, e ausência de testamento: o caso reúne as condições do art. 610, §1º, do CPC para a via extrajudicial, que costuma ser bem mais rápida que a judicial.</p>' +
         '<p>Próximos passos: reunir a documentação, apurar o ITCMD e elaborar a minuta da escritura. Use o <a href="/ferramentas/checklist-documentos-inventario/">checklist de documentos</a> para organizar.</p>' +
-        '<p>Atenção ao prazo: o art. 611 do CPC prevê a instauração em até 2 meses do óbito, e o atraso pode gerar multa sobre o imposto.</p>';
+        '<p>Atenção ao prazo: o art. 611 do CPC prevê a abertura em até 2 meses do óbito. Em SP, a multa é de 10% do ITCMD após 60 dias e de 20% após 180 dias do óbito (Lei 10.705/2000, art. 21, I).</p>';
     }
     res.hidden = false;
     res.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -132,6 +148,10 @@ const waHref = whatsappHrefForPath('/ferramentas/inventario-em-cartorio/');
 </script>
 
 <style>
+  .tool-explain { margin-top: var(--space-10); max-width: 46rem; }
+  .tool-explain h2 { font-family: var(--font-display); font-size: var(--text-2xl); color: var(--color-ink); }
+  .tool-explain h3 { margin-top: var(--space-6); font-size: var(--text-lg); color: var(--color-ink); }
+  .tool-explain p { margin-top: var(--space-2); line-height: var(--leading-relaxed, 1.7); }
   .tool { padding-block: var(--section-y); }
   .tool h1 { font-size: var(--text-4xl); color: var(--color-ink); margin-top: var(--space-3); max-width: 20ch; line-height: 1.1; }
   .lead { margin-top: var(--space-4); max-width: 60ch; color: var(--color-text); font-size: var(--text-md); line-height: var(--leading-normal); }
@@ -141,7 +161,7 @@ const waHref = whatsappHrefForPath('/ferramentas/inventario-em-cartorio/');
   .quiz label { display: flex; align-items: center; gap: var(--space-3); padding: var(--space-2) 0; color: var(--color-text); font-size: var(--text-sm); cursor: pointer; }
   .quiz input[type='radio'] { width: 1.05rem; height: 1.05rem; accent-color: var(--color-green-strong); flex: none; }
   .quiz button { align-self: flex-start; }
-  .result { margin-top: var(--space-8); max-width: 46rem; border: 1px solid var(--border-green-subtle); background: var(--color-green-tint); border-radius: var(--radius-lg); padding: var(--space-6); }
+  .result { margin-top: var(--space-8); max-width: 46rem; border: 1px solid var(--color-border); border-left: 2px solid var(--color-accent); background: var(--surface-cream); border-radius: 0; padding: var(--space-6); }
   .result[hidden] { display: none; }
   .result h2 { font-size: var(--text-xl); color: var(--color-ink); margin-top: var(--space-2); }
   .result :global(p) { margin-top: var(--space-3); color: var(--color-text); font-size: var(--text-sm); line-height: var(--leading-relaxed); }

@@ -26,10 +26,10 @@ Essa frente tem relação direta com o contencioso empresarial estratégico e, e
 
 ## Como o escritório atua
 
-1. 1Diagnóstico de riscos trabalhistas nas práticas e contratos vigentes da empresa.
-2. 2Orientação preventiva sobre políticas internas, com foco na redução de passivo trabalhista futuro.
-3. 3Condução da defesa técnica em reclamações trabalhistas já ajuizadas.
-4. 4Nos casos de recuperação judicial, avaliação do passivo trabalhista em conjunto com a equipe responsável pelo processo.
+1. Diagnóstico de riscos trabalhistas nas práticas e contratos vigentes da empresa.
+2. Orientação preventiva sobre políticas internas, com foco na redução de passivo trabalhista futuro.
+3. Condução da defesa técnica em reclamações trabalhistas já ajuizadas.
+4. Nos casos de recuperação judicial, avaliação do passivo trabalhista em conjunto com a equipe responsável pelo processo.
 
 ## Situações comuns
 
@@ -47,15 +47,23 @@ As informações desta página têm caráter informativo geral. O prazo e o desf
 
 O escritório atua para empregados ou apenas para empresas?+
 
-A atuação trabalhista do escritório é exclusivamente do lado empresarial — consultivo preventivo e defesa de empresas em reclamações trabalhistas. O escritório não representa empregados ou ex-empregados contra empregadores.
+Esta página trata da atuação para empresas — consultivo preventivo e defesa em reclamações trabalhistas. Antes de aceitar qualquer caso, o escritório verifica conflito de interesses e nunca atua para as duas partes de um mesmo conflito.
 
 O que é passivo trabalhista e por que ele importa?+
 
+É o conjunto de obrigações e riscos financeiros que uma empresa acumula em decorrência de suas relações de trabalho, exigíveis judicial ou administrativamente. Ele importa porque impacta diretamente o planejamento financeiro da empresa e, em processos de recuperação judicial, costuma representar uma das maiores classes de credores.
+
 É possível fazer apenas um diagnóstico preventivo, sem litígio em curso?+
+
+Sim. A atuação consultiva preventiva, voltada à revisão de práticas e à redução de riscos futuros, é uma frente independente de qualquer reclamação trabalhista já ajuizada.
 
 Essa frente tem relação com a área de Recuperação Judicial e Falência?+
 
+Sim. O passivo trabalhista costuma ser uma das classes de crédito mais relevantes em processos de recuperação judicial, o que torna a avaliação trabalhista uma etapa importante da análise desses processos.
+
 O escritório atua em terceirização e pejotização?+
+
+A atuação inclui orientação sobre os riscos jurídicos associados a modelos de terceirização e contratação como pessoa jurídica, sempre sob a ótica da prevenção de risco para a empresa contratante.
 
 Fale sobre o seu caso
 

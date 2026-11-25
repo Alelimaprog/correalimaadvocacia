@@ -8,6 +8,7 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
 import JsonLd from '@/components/JsonLd.astro';
 import Container from '@/components/Container.astro';
 import Breadcrumb from '@/components/Breadcrumb.astro';
+import ContactCTA from '@/components/ContactCTA.astro';
 import type { PageHead } from '@/lib/institucional';
 import type { Crumb } from '@/components/Breadcrumb.astro';
 
@@ -15,21 +16,26 @@ interface Props {
   head: PageHead;
   jsonld: Record<string, unknown>[];
   crumbs: Crumb[];
+  /** Permite ocultar o bloco de conversão em casos específicos (padrão: exibir). */
+  showContact?: boolean;
+  /** Rodada 3 (A2): variante visual para páginas de serviço em Markdown. */
+  variant?: 'area';
 }
-const { head, jsonld, crumbs } = Astro.props;
+const { head, jsonld, crumbs, showContact = true, variant } = Astro.props;
 ---
 
-<BaseLayout head={head}>
+<BaseLayout head={head} footerCta={!showContact}>
   <Fragment slot="jsonld">
     {jsonld.map((schema) => <JsonLd schema={schema} />)}
   </Fragment>
 
-  <main id="conteudo-principal" class="entry">
+  <main id="conteudo-principal" class:list={['entry', variant && `entry--${variant}`]}>
     <Container>
       {crumbs.length > 0 && <Breadcrumb items={crumbs} class="entry-crumb" />}
       <article class="prose prose--wide">
         <slot />
       </article>
+      {showContact && <ContactCTA />}
     </Container>
   </main>
 </BaseLayout>
@@ -39,4 +45,9 @@ const { head, jsonld, crumbs } = Astro.props;
   .entry-crumb {
     margin-bottom: var(--space-6);
   }
+  /* Rodada 3 (A2): hero das páginas de serviço em Markdown alinhado ao SubPage */
+  .entry--area :global(.prose > p.eyebrow) { margin-top: var(--space-4); font-size: var(--text-xs); }
+  .entry--area :global(.prose > h1) { font-size: var(--text-3xl); line-height: var(--leading-tight); margin-top: var(--space-3); }
+  .entry--area :global(.prose > h1 + p) { font-size: var(--text-md); color: var(--color-text); }
+  @media (max-width: 520px) { .entry--area :global(.prose > p.eyebrow) { letter-spacing: .06em; } }
 </style>

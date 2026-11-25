@@ -24,7 +24,7 @@ const { ga4Id, clarityId } = site.analytics;
 {
   isProd && (
     <script is:inline define:vars={{ ga4Id, clarityId }}>
-      {`
+      
       (function(){
         window.dataLayer = window.dataLayer || [];
         function gtag(){ dataLayer.push(arguments); }
@@ -36,12 +36,23 @@ const { ga4Id, clarityId } = site.analytics;
         });
         gtag('js', new Date());
 
+        // --- Consent Mode v2 (modo AVANÇADO) --------------------------------
+        // A tag do GA4 é carregada IMEDIATAMENTE, porém com analytics_storage e
+        // ad_storage NEGADOS por padrão (acima). Nesse estado o GA4 envia pings
+        // SEM cookies (modelagem de consentimento) para TODO o tráfego —
+        // inclusive cliques vindos do Google Ads — e só passa à medição
+        // completa (com cookies) após o opt-in no banner. Nenhum cookie de
+        // análise é gravado antes do consentimento, preservando a LGPD.
+        // Antes, o gtag.js só era injetado após o consentimento; como poucos
+        // visitantes clicam em "Aceitar", o GA4 praticamente não recebia dados
+        // — daí a impressão de "Analytics não está funcionando".
         var gaLoaded = false;
         function loadGA(){
           if (gaLoaded) return; gaLoaded = true;
           var s = document.createElement('script');
           s.async = true; s.src = 'https://www.googletagmanager.com/gtag/js?id=' + ga4Id;
           document.head.appendChild(s);
+          // config uma única vez -> um único page_view por carregamento (sem duplicidade).
           gtag('config', ga4Id, { anonymize_ip: true });
         }
         function loadClarity(){
@@ -52,21 +63,29 @@ const { ga4Id, clarityId } = site.analytics;
             y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
           })(window, document, 'clarity', 'script', clarityId);
         }
-        function grant(){
-          gtag('consent', 'update', {
-            analytics_storage: 'granted', ad_storage: 'denied',
-            ad_user_data: 'denied', ad_personalization: 'denied'
-          });
-          loadGA(); loadClarity();
+        function grantAnalytics(){
+          // Consentimento concedido: habilita cookies de análise. Anúncios
+          // permanecem negados (sem personalização de anúncios).
+          gtag('consent', 'update', { analytics_storage: 'granted' });
+          // Microsoft Clarity (gravação de sessão) só carrega após opt-in.
+          loadClarity();
         }
-        // Carrega a medição apenas após consentimento (evento do ConsentBanner).
+        function denyAnalytics(){
+          gtag('consent', 'update', { analytics_storage: 'denied' });
+        }
+
+        // GA4 sobe já (cookieless); o consentimento apenas atualiza o estado.
+        loadGA();
+        // Se já houver escolha salva, o ConsentBanner reemite este evento a cada
+        // carregamento — então a atualização de consentimento vale em todas as páginas.
         window.addEventListener('cl:consent', function(e){
-          if (e && e.detail && e.detail.analytics) grant();
+          if (e && e.detail && e.detail.analytics) grantAnalytics();
+          else denyAnalytics();
         });
 
         function practiceArea(){
           var p = location.pathname || '';
-          var m = p.match(/\\/areas-de-atuacao\\/([^\\/]+)\\//);
+          var m = p.match(/\/areas-de-atuacao\/([^\/]+)\//);
           if (m) return m[1];
           if (p.indexOf('/blog/') === 0) return 'blog';
           if (p.indexOf('/guias/') === 0) return 'guias';
@@ -96,15 +115,14 @@ const { ga4Id, clarityId } = site.analytics;
           var common = ctx({ cta_position: pos, cta_text: text });
           if (href.indexOf('wa.me') > -1 || href.indexOf('api.whatsapp.com') > -1 || href.indexOf('whatsapp:') === 0) {
             ev('contact_click', ctx({ method: 'whatsapp', cta_position: pos, cta_text: text }));
-            ev('generate_lead', ctx({ method: 'whatsapp', value: 1, currency: 'BRL', cta_position: pos }));
+            // Clique no WhatsApp NÃO é lead confirmado: evento próprio, para não inflar generate_lead.
+            ev('whatsapp_click', ctx({ cta_position: pos, cta_text: text }));
           } else if (href.indexOf('tel:') === 0) {
             ev('phone_click', common);
             ev('contact_click', ctx({ method: 'phone', cta_position: pos, cta_text: text }));
-            ev('generate_lead', ctx({ method: 'phone', value: 1, currency: 'BRL' }));
           } else if (href.indexOf('mailto:') === 0) {
             ev('email_click', common);
             ev('contact_click', ctx({ method: 'email', cta_position: pos, cta_text: text }));
-            ev('generate_lead', ctx({ method: 'email', value: 1, currency: 'BRL' }));
           } else if (a.matches && (a.matches('.btn') || a.hasAttribute('data-cta'))) {
             ev('cta_click', common);
           }
@@ -259,7 +277,7 @@ const { ga4Id, clarityId } = site.analytics;
           });
         })();
       })();
-      `}
+      
     </script>
   )
 }

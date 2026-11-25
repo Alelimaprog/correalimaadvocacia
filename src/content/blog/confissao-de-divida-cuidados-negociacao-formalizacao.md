@@ -5,7 +5,7 @@ h1: "Confissão de dívida: cuidados na negociação e formalização"
 author: "Alexandre Corrêa Lima"
 pubDate: 2026-06-05
 updatedDate: 2026-06-05
-cluster: "direito-aduaneiro-tributario"
+cluster: "recuperacao-de-credito"
 ---
 
 Cobrança, Execução e Recuperação de Crédito
@@ -30,7 +30,7 @@ Este conteúdo tem caráter exclusivamente informativo e não substitui a análi
 
 Assunto relacionado a este artigo:
 
-[Execuções, Cobrança e Recuperação de Crédito →](/areas-de-atuacao/execucao-cobranca-recuperacao-de-credito/)
+[Execuções, Cobrança e Recuperação de Crédito →](/areas-de-atuacao/recuperacao-de-credito/)
 
 Quer ver o panorama completo do tema?
 

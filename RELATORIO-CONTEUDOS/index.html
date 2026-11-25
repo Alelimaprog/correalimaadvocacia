@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Relatório — Páginas de Conteúdos + Primeira Dobra das Áreas · Corrêa Lima Advocacia</title>
+<style>
+  :root{--ink:#12201a;--txt:#33403a;--mut:#6b7a72;--green:#1f7a4d;--greenD:#155c39;--tint:#e9f3ec;--bd:#e2e8e3;--bg:#fbfcfb}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--txt);font:16px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+  .wrap{max-width:960px;margin:0 auto;padding:48px 22px 90px}
+  h1{color:var(--ink);font-size:31px;line-height:1.2;margin:0 0 6px;letter-spacing:-.02em}
+  h2{color:var(--ink);font-size:23px;margin:52px 0 14px;padding-top:22px;border-top:1px solid var(--bd)}
+  h3{color:var(--ink);font-size:18px;margin:26px 0 8px}
+  h4{color:var(--greenD);font-size:13px;text-transform:uppercase;letter-spacing:.05em;margin:18px 0 6px}
+  p{margin:0 0 14px}ul{margin:0 0 14px;padding-left:20px}li{margin:5px 0}
+  code{background:#eef2ef;padding:.12em .4em;border-radius:5px;font-size:.9em}
+  .sub{color:var(--mut);font-size:15px;margin-bottom:26px}
+  .kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px;margin:24px 0}
+  .kpi{background:#fff;border:1px solid var(--bd);border-radius:12px;padding:14px 16px}
+  .kpi b{display:block;color:var(--ink);font-size:20px}.kpi span{color:var(--mut);font-size:12.5px}
+  .note{background:var(--tint);border:1px solid #cfe6d6;border-left:3px solid var(--green);border-radius:10px;padding:14px 18px;margin:20px 0}
+  .block{background:#fff;border:1px solid var(--bd);border-radius:14px;padding:22px 24px;margin:22px 0}
+  .block h3{margin-top:0}
+  .shots{display:grid;grid-template-columns:1fr;gap:16px;margin:16px 0 4px}
+  @media(min-width:680px){.shots{grid-template-columns:2fr 1fr}}
+  figure{margin:0}.frame{border:1px solid var(--bd);border-radius:10px;overflow:hidden;background:#fff;max-height:540px;overflow-y:auto}
+  .frame img{width:100%;display:block}figcaption{color:var(--mut);font-size:12.5px;margin-top:6px;text-align:center}
+  .files code{display:block;background:transparent;padding:0;font-size:13px;color:var(--txt)}
+  footer{margin-top:60px;color:var(--mut);font-size:13px;border-top:1px solid var(--bd);padding-top:18px}
+  a{color:var(--greenD)}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<h1>Páginas do menu “Conteúdos” + primeira dobra das “Áreas de Atuação”</h1>
+<p class="sub">Corrêa Lima Advocacia · duas correções visuais/UX, <strong>sem alterar conteúdo jurídico, URLs, slugs, SEO, schema, Analytics ou a Home</strong>.</p>
+
+<div class="kpis">
+  <div class="kpi"><b>132</b><span>páginas (idêntico)</span></div>
+  <div class="kpi"><b>130</b><span>URLs no sitemap (idêntico)</span></div>
+  <div class="kpi"><b>0/0/0</b><span>astro check</span></div>
+  <div class="kpi"><b>~2 px</b><span>2ª seção visível na dobra (laptop)</span></div>
+  <div class="kpi"><b>0</b><span>scroll horizontal (390/360 px)</span></div>
+</div>
+
+<div class="note"><strong>SEO preservado:</strong> as páginas <code>/blog/</code> e <code>/assuntos/</code> tiveram apenas o <em>corpo</em> reconstruído; o <code>&lt;head&gt;</code> (title, description, canonical) e o JSON-LD continuam vindo exatamente da mesma fonte (<code>getPage</code>). Nenhuma URL foi criada ou alterada.</p>
+
+<h2>Blog — /blog/</h2>
+<div class="block">
+  <div class="shots">
+    <figure><div class="frame"><img src="prints/blog-desktop.jpg" alt="Blog desktop"></div><figcaption>Desktop</figcaption></figure>
+    <figure><div class="frame"><img src="prints/blog-mobile.jpg" alt="Blog mobile"></div><figcaption>Mobile</figcaption></figure>
+  </div>
+  <h4>Como era</h4>
+  <p>Um bloco de HTML exportado, injetado via <code>set:html</code>: artigos como sequência de links, categorias coladas, data e tempo de leitura sem espaçamento, muito espaço vazio à direita.</p>
+  <h4>Problema identificado</h4>
+  <p>A página não era gerada a partir dos dados — era um dump estático sem grid, cards nem hierarquia.</p>
+  <h4>Como foi reorganizado</h4>
+  <ul>
+    <li>Página passou a ser gerada da coleção <code>blog</code> (58 artigos).</li>
+    <li><strong>Hero editorial</strong> (breadcrumb + eyebrow + título + descrição) e <strong>chips de categoria</strong> com espaçamento correto e contagem por tema.</li>
+    <li><strong>Filtro funcional</strong> por categoria (JavaScript nativo, sem dependências): clicar num chip filtra os cards e atualiza <code>aria-pressed</code>; sem JS, todos aparecem. Verificado: 57 → 11 → 57.</li>
+    <li><strong>Artigo em destaque</strong> (card maior) + <strong>grade de 3/2/1 colunas</strong> de cards com categoria, título, resumo, data e tempo de leitura. Card inteiro clicável (link do título cobre a área), com foco acessível.</li>
+  </ul>
+  <h4>Componentes usados</h4><p><code>ContentCard</code>, <code>content-index.css</code> (hero, chips, grid, featured), <code>Container</code>.</p>
+</div>
+
+<h2>Assuntos — /assuntos/</h2>
+<div class="block">
+  <div class="shots">
+    <figure><div class="frame"><img src="prints/assuntos-desktop.jpg" alt="Assuntos desktop"></div><figcaption>Desktop</figcaption></figure>
+    <figure><div class="frame"><img src="prints/assuntos-mobile.jpg" alt="Assuntos mobile"></div><figcaption>Mobile</figcaption></figure>
+  </div>
+  <h4>Como os clusters foram transformados</h4>
+  <p>Antes: títulos e links soltos em colunas sem coerência, assuntos misturados. Agora cada um dos <strong>seis núcleos</strong> é um <strong>card independente</strong> (grid 3/2/1), com cabeçalho (ícone + nome), descrição e uma lista organizada de links.</p>
+  <h4>Como os links foram organizados</h4>
+  <ul>
+    <li>Cada card reúne: <strong>página principal</strong> do assunto (badge “Área”), <strong>guia completo</strong> (badge “Guia”, quando existe) e os <strong>artigos relacionados</strong> daquele tema (badge “Artigo”), limitados a 4 por card.</li>
+    <li>Rodapé com “Ver todos os N conteúdos”. Nenhum assunto se mistura com outro — cada bloco é fechado.</li>
+  </ul>
+  <h4>Como foi resolvido o desalinhamento</h4>
+  <p>Trocamos o HTML exportado por um <code>grid</code> centralizado no container padrão do site (mesma largura das Áreas de Atuação), com cards de altura equilibrada — acabou o conteúdo concentrado à esquerda e o vazio à direita.</p>
+  <h4>Componentes usados</h4><p><code>TopicClusterCard</code>, <code>content-index.css</code> (cluster-grid/cluster-card), dados de <code>nucleos.ts</code> + coleções <code>blog</code>/<code>guias</code>.</p>
+</div>
+
+<h2>Guias — /guias/</h2>
+<div class="block">
+  <div class="shots">
+    <figure><div class="frame"><img src="prints/guias-desktop.jpg" alt="Guias desktop"></div><figcaption>Desktop</figcaption></figure>
+    <figure><div class="frame"><img src="prints/guias-mobile.jpg" alt="Guias mobile"></div><figcaption>Mobile</figcaption></figure>
+  </div>
+  <h4>Ajustes necessários</h4>
+  <p>Já estava boa; foi <strong>alinhada ao mesmo sistema visual</strong> (hero, grid e cards compartilhados) para ficar consistente com Blog e Assuntos, e ganhou um CTA final padronizado.</p>
+  <h4>O que foi preservado</h4>
+  <p>Head, canonical e JSON-LD (BreadcrumbList + CollectionPage) intactos; a listagem continua vindo de <code>getCollection('guias')</code>.</p>
+</div>
+
+<h2>Ferramentas — /ferramentas/</h2>
+<div class="block">
+  <div class="shots">
+    <figure><div class="frame"><img src="prints/ferramentas-desktop.jpg" alt="Ferramentas desktop"></div><figcaption>Desktop</figcaption></figure>
+    <figure><div class="frame"><img src="prints/ferramentas-mobile.jpg" alt="Ferramentas mobile"></div><figcaption>Mobile</figcaption></figure>
+  </div>
+  <h4>Como as ferramentas foram agrupadas</h4>
+  <p>As três ferramentas existentes (verificador de via do inventário, checklist de documentos, verificador de homologação) foram organizadas em <strong>cards com ícone, rótulo, título, descrição e botão “Abrir ferramenta”</strong>, no mesmo padrão visual das demais páginas. Nenhuma ferramenta inexistente foi criada.</p>
+</div>
+
+<h2>Menu “Conteúdos”</h2>
+<div class="block">
+  <h4>Nova estrutura</h4>
+  <p>Dropdown reorganizado para <strong>Artigos · Assuntos · Guias · Ferramentas</strong> (antes faltava “Ferramentas”, que só existia no rodapé). Todos apontam para URLs já existentes — nenhuma rota nova.</p>
+  <h4>Comportamento e acessibilidade</h4>
+  <ul>
+    <li>Desktop e mobile: usa o mesmo componente de Header já existente (não foi quebrado). Itens como lista de links, com foco visível e navegação por teclado.</li>
+    <li>Os chips de filtro do Blog são <code>&lt;button&gt;</code> com <code>aria-pressed</code>; o filtro é progressivo (funciona sem JS mostrando tudo).</li>
+  </ul>
+</div>
+
+<h2>Áreas de Atuação — primeira dobra</h2>
+<div class="block">
+  <div class="shots">
+    <figure><div class="frame"><img src="prints/area-fold-desktop.jpg" alt="Primeira dobra desktop"></div><figcaption>Primeira dobra · laptop 1440×820</figcaption></figure>
+    <figure><div class="frame"><img src="prints/area-fold-mobile.jpg" alt="Primeira dobra mobile"></div><figcaption>Mobile (altura natural)</figcaption></figure>
+  </div>
+  <h4>Qual componente foi alterado</h4>
+  <p>De forma <strong>compartilhada</strong> pelos dois componentes-base das Áreas: <code>PillarPage</code> (<code>.p-hero</code>) e <code>SubPage</code> (<code>.s-hero</code>), via a folha <code>src/styles/areas-hero.css</code> — não foi corrigido página por página.</p>
+  <h4>Como a altura foi calculada</h4>
+  <p>A primeira seção passou a ter <code>min-height: clamp(30rem, calc(100dvh − var(--header-height)), 60rem)</code> (com <code>svh</code> de reforço), conteúdo centrado verticalmente. Assim o hero preenche a altura útil (viewport menos o cabeçalho fixo de 4,75 rem) e a próxima seção só aparece após rolagem.</p>
+  <h4>Comportamento medido</h4>
+  <ul>
+    <li><strong>Laptop 1440×820:</strong> hero termina em 822 px → 2ª seção começa em 822 px (~2 px abaixo da dobra).</li>
+    <li><strong>Desktop 1280×900:</strong> 2ª seção em 902 px (abaixo da dobra).</li>
+    <li><strong>Mobile 390×844:</strong> altura NÃO forçada — o hero cresce conforme o conteúdo (sem espaço vazio artificial).</li>
+    <li><strong>Notebooks de pouca altura</strong> (≤640 px): o hero volta a crescer naturalmente, para nunca cortar o conteúdo.</li>
+  </ul>
+</div>
+
+<h2>Arquivos</h2>
+<h4>Criados</h4>
+<div class="files">
+  <code>src/styles/content-index.css</code> — sistema visual das páginas de Conteúdos
+  <code>src/styles/areas-hero.css</code> — primeira dobra compartilhada das Áreas
+  <code>src/components/content/ContentCard.astro</code> — card de artigo/guia
+  <code>src/components/content/TopicClusterCard.astro</code> — card de cluster (Assuntos)
+</div>
+<h4>Modificados</h4>
+<div class="files">
+  <code>src/pages/blog/index.astro</code> — hero + chips + destaque + grid (da coleção)
+  <code>src/pages/assuntos/index.astro</code> — grid de cards de cluster
+  <code>src/pages/guias/index.astro</code> — alinhado ao sistema compartilhado
+  <code>src/pages/ferramentas/index.astro</code> — cards no padrão compartilhado
+  <code>src/lib/navigation.ts</code> — menu Conteúdos + Ferramentas
+  <code>src/layouts/BaseLayout.astro</code> — imports das novas folhas
+</div>
+<h4>Reutilizados</h4><p><code>Container</code>, <code>Breadcrumb</code>, <code>Icon</code>, <code>JsonLd</code>, tokens do site, <code>nucleos.ts</code>, coleções <code>blog</code>/<code>guias</code>.</p>
+<h4>Não alterado</h4><p>Conteúdo jurídico, artigos e guias individuais, URLs, slugs, títulos SEO, meta, canonical, sitemap, JSON-LD, Analytics/Consent/IndexNow, formulário, WhatsApp, logo, cores e a Home.</p>
+
+<h2>Acessibilidade e performance</h2>
+<ul>
+  <li>Um único <code>&lt;h1&gt;</code> por página; hierarquia de headings correta; listas em <code>ul/li</code>; botões como <code>&lt;button&gt;</code> e links como <code>&lt;a&gt;</code>; foco visível; cards clicáveis sem depender de sublinhado.</li>
+  <li>Sem bibliotecas novas: apenas Astro + CSS + um script mínimo (~30 linhas) para o filtro. Sem React hidratado, sem carrossel, sem grid externo.</li>
+</ul>
+
+<footer>Build validado: <code>astro check</code> 0/0/0 · 132 páginas · 130 URLs · sem scroll horizontal em 390/360 px. Prints em <code>./prints/</code>.</footer>
+
+</div>
+</body>
+</html>

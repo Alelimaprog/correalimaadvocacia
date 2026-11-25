@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Relatório — Refinamento da primeira dobra (Heroes) · Corrêa Lima Advocacia</title>
+<style>
+  :root{--ink:#12201a;--txt:#33403a;--mut:#6b7a72;--green:#1f7a4d;--greenD:#155c39;--tint:#e9f3ec;--bd:#e2e8e3;--bg:#fbfcfb}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--txt);font:16px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+  .wrap{max-width:940px;margin:0 auto;padding:48px 22px 90px}
+  h1{color:var(--ink);font-size:29px;line-height:1.2;margin:0 0 6px;letter-spacing:-.02em}
+  h2{color:var(--ink);font-size:22px;margin:48px 0 14px;padding-top:22px;border-top:1px solid var(--bd)}
+  h3{color:var(--ink);font-size:17px;margin:24px 0 8px}
+  p{margin:0 0 14px}ul{margin:0 0 14px;padding-left:20px}li{margin:5px 0}
+  code{background:#eef2ef;padding:.12em .4em;border-radius:5px;font-size:.9em}
+  .sub{color:var(--mut);font-size:15px;margin-bottom:26px}
+  table{border-collapse:collapse;width:100%;font-size:14px;margin:14px 0}
+  th,td{border:1px solid var(--bd);padding:8px 10px;text-align:left;vertical-align:top}
+  th{background:#f2f6f3;color:var(--ink);font-size:12.5px;text-transform:uppercase;letter-spacing:.03em}
+  .ok{color:var(--greenD);font-weight:600}.chg{color:#9a5b00;font-weight:600}
+  .note{background:var(--tint);border:1px solid #cfe6d6;border-left:3px solid var(--green);border-radius:10px;padding:14px 18px;margin:20px 0}
+  .block{background:#fff;border:1px solid var(--bd);border-radius:14px;padding:22px 24px;margin:22px 0}
+  .shots{display:grid;grid-template-columns:1fr;gap:16px;margin:14px 0}
+  @media(min-width:680px){.shots{grid-template-columns:2fr 1fr}}
+  figure{margin:0}.frame{border:1px solid var(--bd);border-radius:10px;overflow:hidden;background:#fff}
+  .frame img{width:100%;display:block}figcaption{color:var(--mut);font-size:12.5px;margin-top:6px;text-align:center}
+  .files code{display:block;background:transparent;padding:0;font-size:13px}
+  footer{margin-top:56px;color:var(--mut);font-size:13px;border-top:1px solid var(--bd);padding-top:18px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<h1>Refinamento da primeira dobra — densidade dos Heroes por tipo de página</h1>
+<p class="sub">Corrêa Lima Advocacia · ajuste de altura/densidade do Hero <strong>por finalidade de página</strong>, sem altura fixa única, sem tocar na Home, no conteúdo jurídico, em URLs ou SEO.</p>
+
+<div class="note"><strong>Método:</strong> antes de alterar qualquer coisa, medi (navegador headless) a altura do Hero e a posição do primeiro conteúdo em 13 páginas × 3 resoluções. Só ajustei as que apresentavam excesso real de espaço. As demais foram mantidas.</p>
+
+<h2>1. Auditoria — o que foi medido</h2>
+<div class="block">
+<table>
+  <tr><th>Página</th><th>Comportamento medido</th><th>Decisão</th></tr>
+  <tr><td><strong>Home</strong></td><td>Aprovada</td><td class="ok">Não alterada</td></tr>
+  <tr><td><strong>Áreas de Atuação</strong> (pilar)</td><td>Hero preenche a dobra; 2ª seção começa 2&nbsp;px <em>abaixo</em> do fim da tela</td><td class="ok">Já correta — mantida (HeroLanding)</td></tr>
+  <tr><td><strong>Subáreas</strong></td><td>Idem pilar (2&nbsp;px)</td><td class="ok">Já correta — mantida</td></tr>
+  <tr><td><strong>Áreas (índice)</strong></td><td>Hero já usa o token compacto <code>--section-y-sm</code>; cards começam cedo</td><td class="ok">Equilibrada — mantida</td></tr>
+  <tr><td><strong>Blog</strong></td><td>Hero airado; destaque começava a ~515&nbsp;px</td><td class="chg">Compactada (HeroIndex)</td></tr>
+  <tr><td><strong>Assuntos</strong></td><td>Hero airado; cards a ~419&nbsp;px</td><td class="chg">Compactada (HeroIndex)</td></tr>
+  <tr><td><strong>Guias</strong></td><td>Espaço excessivo entre a descrição e os cards (~419&nbsp;px)</td><td class="chg">Compactada (HeroIndex)</td></tr>
+  <tr><td><strong>Ferramentas</strong></td><td>Hero airado; cards a ~432&nbsp;px</td><td class="chg">Compactada (HeroIndex)</td></tr>
+  <tr><td><strong>Artigos</strong></td><td>Sem hero dedicado; conteúdo flui após o breadcrumb</td><td class="ok">Equilibrada — mantida (HeroArticle)</td></tr>
+  <tr><td><strong>Guia (individual)</strong></td><td>Idem artigo</td><td class="ok">Mantida</td></tr>
+  <tr><td><strong>Ferramenta (individual)</strong></td><td>Ferramenta interativa aparece logo abaixo do título</td><td class="ok">Mantida</td></tr>
+  <tr><td><strong>O Escritório</strong></td><td>Conteúdo (H2) começa a ~233&nbsp;px</td><td class="ok">Equilibrada — mantida (HeroInstitutional)</td></tr>
+  <tr><td><strong>Contato / LGPD / Termos / Privacidade</strong></td><td>Conteúdo começa cedo (~150–290&nbsp;px)</td><td class="ok">Equilibradas — mantidas</td></tr>
+</table>
+</div>
+
+<h2>2. Ajuste aplicado (somente às listagens)</h2>
+<div class="block">
+  <p>As quatro páginas de listagem compartilham o mesmo Hero (<code>.cx-hero</code> = <strong>HeroIndex</strong>). Numa sprint anterior, ao unificá-las nesse componente, o <em>padding</em> vertical ficou maior que o padrão compacto anterior — origem do espaço excessivo que se via em <code>/guias/</code>. A correção:</p>
+  <ul>
+    <li><strong>Padding do Hero assimétrico e menor:</strong> de <code>clamp(2rem, …, 3.4rem)</code> simétrico para <code>clamp(1.5rem,…,2.25rem)</code> no topo e <code>clamp(1rem,…,1.4rem)</code> embaixo.</li>
+    <li><strong>Gap até os cards reduzido:</strong> a primeira seção após o Hero (<code>.cx-hero + .cx-section</code>) passou a ter <em>padding-top</em> pequeno (<code>clamp(0.85rem,…,1.4rem)</code>).</li>
+  </ul>
+  <p><strong>Resultado medido</strong> (desktop): o primeiro card/destaque subiu cerca de <strong>60&nbsp;px</strong> — em <code>/guias/</code> e <code>/assuntos/</code>, de ~419&nbsp;px para ~360&nbsp;px; no Blog, o destaque de ~515&nbsp;px para ~455&nbsp;px; em Ferramentas, de ~432&nbsp;px para ~371&nbsp;px. Em uma tela de 900&nbsp;px, isso deixa <strong>~450–540&nbsp;px de conteúdo</strong> visível já na primeira dobra.</p>
+</div>
+
+<h2>3. Primeira dobra depois do ajuste</h2>
+<div class="block">
+  <h3>Guias (exemplo citado no briefing)</h3>
+  <div class="shots">
+    <figure><div class="frame"><img src="prints/guias-desktop.jpg" alt="Guias primeira dobra desktop"></div><figcaption>Desktop 1440×820 — cards logo abaixo da descrição</figcaption></figure>
+    <figure><div class="frame"><img src="prints/guias-mobile.jpg" alt="Guias mobile"></div><figcaption>Mobile</figcaption></figure>
+  </div>
+  <h3>Assuntos · Ferramentas</h3>
+  <div class="shots">
+    <figure><div class="frame"><img src="prints/assuntos-desktop.jpg" alt="Assuntos"></div><figcaption>Assuntos · desktop</figcaption></figure>
+    <figure><div class="frame"><img src="prints/ferramentas-desktop.jpg" alt="Ferramentas"></div><figcaption>Ferramentas · desktop</figcaption></figure>
+  </div>
+  <h3>Blog · Área (mantida como referência de HeroLanding)</h3>
+  <div class="shots">
+    <figure><div class="frame"><img src="prints/blog-desktop.jpg" alt="Blog"></div><figcaption>Blog · desktop</figcaption></figure>
+    <figure><div class="frame"><img src="prints/area-desktop.jpg" alt="Área"></div><figcaption>Área — Hero robusto (inalterado)</figcaption></figure>
+  </div>
+</div>
+
+<h2>4. Arquitetura de Heroes (variantes reutilizáveis)</h2>
+<div class="block">
+  <ul>
+    <li><strong>HeroLanding</strong> — <code>.p-hero</code> / <code>.s-hero</code> (áreas e subáreas): preenche a dobra útil (<code>min-height: clamp(30rem, calc(100dvh − header), 60rem)</code>), conteúdo centrado; a 2ª seção só aparece após rolagem. <em>Inalterado nesta sprint.</em></li>
+    <li><strong>HeroIndex</strong> — <code>.cx-hero</code> (blog, assuntos, guias, ferramentas): compacto, prioriza a exibição rápida dos cards. <em>Ajustado nesta sprint.</em></li>
+    <li><strong>HeroArticle</strong> — <code>.entry</code> (artigos e guias): apenas breadcrumb + título; o conteúdo flui imediatamente. <em>Já adequado.</em></li>
+    <li><strong>HeroInstitutional</strong> — <code>.inst</code> / índice de áreas (institucionais): usa o token compacto <code>--section-y-sm</code>. <em>Já adequado.</em></li>
+  </ul>
+  <p>Cada categoria usa o comportamento proporcional ao seu objetivo — <strong>sem uma altura fixa única</strong>.</p>
+</div>
+
+<h2>5. Arquivos e validação</h2>
+<div class="files">
+  <p><strong>Modificado:</strong></p>
+  <code>src/styles/content-index.css</code> — Hero das listagens (HeroIndex) compacto + gap reduzido até a 1ª seção
+  <p style="margin-top:10px"><strong>Não alterado:</strong> <code>areas-hero.css</code> (HeroLanding), componentes de área/artigo/institucional, conteúdo, URLs, SEO, schema, Analytics, Home.</p>
+</div>
+<p><strong>Validação:</strong> <code>npx astro check</code> → 0 erros / 0 avisos / 0 hints. <code>npm run build</code> → 132 páginas, 130 URLs (idênticas). Sem scroll horizontal em 390/360&nbsp;px. Medições confirmadas em 1440, 1280 e 1024&nbsp;px (desktop/notebook/tablet) e 390&nbsp;px (mobile).</p>
+
+<footer>As páginas de conversão (Áreas) mantêm o Hero robusto; as de listagem priorizam o conteúdo; as institucionais e de artigo já estavam equilibradas e foram preservadas. Home inalterada. Prints em <code>./prints/</code>.</footer>
+
+</div>
+</body>
+</html>

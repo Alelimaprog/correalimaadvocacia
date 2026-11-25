@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Relatório — Formulário, /contato/, /o-escritorio/ e quebras de seção · Corrêa Lima Advocacia</title>
+<style>
+  :root{--ink:#12201a;--txt:#33403a;--mut:#6b7a72;--green:#1f7a4d;--greenD:#155c39;--tint:#e9f3ec;--bd:#e2e8e3;--bg:#fbfcfb;--warn:#b4690e}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--txt);font:16px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+  .wrap{max-width:960px;margin:0 auto;padding:48px 22px 90px}
+  h1{color:var(--ink);font-size:29px;line-height:1.2;margin:0 0 6px;letter-spacing:-.02em}
+  h2{color:var(--ink);font-size:22px;margin:48px 0 12px;padding-top:22px;border-top:1px solid var(--bd)}
+  h3{color:var(--ink);font-size:17px;margin:24px 0 8px}
+  p{margin:0 0 14px}ul{margin:0 0 14px;padding-left:20px}li{margin:5px 0}
+  code{background:#eef2ef;padding:.12em .4em;border-radius:5px;font-size:.9em}
+  .sub{color:var(--mut);font-size:15px;margin-bottom:26px}
+  .kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin:24px 0}
+  .kpi{background:#fff;border:1px solid var(--bd);border-radius:12px;padding:14px 16px}.kpi b{display:block;color:var(--ink);font-size:19px}.kpi span{color:var(--mut);font-size:12.5px}
+  table{border-collapse:collapse;width:100%;font-size:13.5px;margin:12px 0}th,td{border:1px solid var(--bd);padding:8px 10px;text-align:left;vertical-align:top}
+  th{background:#f2f6f3;color:var(--ink);font-size:12px;text-transform:uppercase;letter-spacing:.03em}
+  .ok{color:var(--greenD);font-weight:600}
+  .note{background:var(--tint);border:1px solid #cfe6d6;border-left:3px solid var(--green);border-radius:10px;padding:14px 18px;margin:18px 0}
+  .block{background:#fff;border:1px solid var(--bd);border-radius:14px;padding:22px 24px;margin:20px 0}.block h3{margin-top:0}
+  .shots{display:grid;grid-template-columns:1fr;gap:16px;margin:14px 0}@media(min-width:680px){.shots{grid-template-columns:2fr 1fr}}
+  figure{margin:0}.frame{border:1px solid var(--bd);border-radius:10px;overflow:hidden;background:#fff;max-height:520px;overflow-y:auto}.frame img{width:100%;display:block}
+  figcaption{color:var(--mut);font-size:12.5px;margin-top:6px;text-align:center}
+  .files code{display:block;background:transparent;padding:0;font-size:13px}
+  .pass{color:var(--greenD);font-weight:600}
+  footer{margin-top:52px;color:var(--mut);font-size:13px;border-top:1px solid var(--bd);padding-top:18px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<h1>Formulário de contato, página /contato/, /o-escritorio/ e quebras de seção</h1>
+<p class="sub">Corrêa Lima Advocacia · estados de sucesso/erro do formulário, contato compacto em uma seção, realce institucional e ajuste das transições de seção. Home, conteúdo, URLs e SEO preservados.</p>
+
+<div class="kpis">
+  <div class="kpi"><b>132 / 130</b><span>páginas / URLs (idêntico)</span></div>
+  <div class="kpi"><b>0/0/0</b><span>astro check</span></div>
+  <div class="kpi"><b>0</b><span>scroll horizontal (390/360)</span></div>
+  <div class="kpi"><b>9/9</b><span>testes do formulário aprovados</span></div>
+</div>
+
+<h2>1. Formulário de contato — sucesso, erro, carregamento</h2>
+<div class="block">
+  <p>Antes, o retorno era o texto simples <code>"Mensagem enviada."</code> abaixo do botão. Agora o <code>ContactForm</code> tem estados completos:</p>
+  <ul>
+    <li><strong>Sucesso:</strong> um <strong>card substitui o formulário</strong> — ícone de confirmação, título "Mensagem enviada com sucesso", mensagem curta e próximo passo (sem prometer prazo, pois não há prazo definido no projeto), botões <em>Falar no WhatsApp</em> e <em>Voltar ao início</em>, e <em>Enviar nova mensagem</em> (volta ao formulário limpo). O formulário é <strong>ocultado e resetado</strong>.</li>
+    <li><strong>Erro:</strong> painel de alerta <strong>junto ao formulário</strong> (<code>role="alert"</code>, <code>aria-live="assertive"</code>), <strong>mantém os dados digitados</strong>, reabilita o botão e oferece o WhatsApp como alternativa.</li>
+    <li><strong>Carregamento:</strong> botão desabilitado, texto "Enviando…", <strong>envio duplicado bloqueado</strong> por travas (<code>sending</code>/<code>done</code>).</li>
+  </ul>
+  <h3>Acessibilidade</h3>
+  <ul>
+    <li>Labels associados a todos os campos; checkbox LGPD acessível; navegação por teclado.</li>
+    <li>Sucesso anunciado por <code>aria-live="polite"</code> e recebe <strong>foco</strong> (<code>tabindex="-1"</code>); erro por <code>aria-live="assertive"</code>.</li>
+    <li>Validação nativa (<code>required</code>, <code>type=email</code>) com <code>reportValidity()</code>; contraste dentro do padrão do site.</li>
+  </ul>
+  <div class="shots">
+    <figure><div class="frame"><img src="prints/contato-sucesso-desktop.jpg" alt="Sucesso do formulário"></div><figcaption>Estado de sucesso (card) · desktop</figcaption></figure>
+    <figure><div class="frame"><img src="prints/contato-sucesso-mobile.jpg" alt="Sucesso mobile"></div><figcaption>Mobile</figcaption></figure>
+  </div>
+  <h3>Evidência de teste (headless, Formspree interceptado)</h3>
+  <table>
+    <tr><th>Cenário</th><th>Resultado</th></tr>
+    <tr><td>Preenchimento válido + envio → sucesso</td><td class="pass">form ocultado ✓ · card de sucesso exibido ✓</td></tr>
+    <tr><td>Enviar nova mensagem</td><td class="pass">formulário volta ✓ · campos limpos ✓</td></tr>
+    <tr><td>Erro de rede</td><td class="pass">painel de erro ✓ · dados mantidos ✓ · botão reabilitado ✓</td></tr>
+    <tr><td>LGPD não marcado</td><td class="pass">envio bloqueado ✓</td></tr>
+    <tr><td>Envio duplicado</td><td class="pass">travado por <code>sending/done</code> ✓</td></tr>
+  </table>
+</div>
+
+<h2>2. Página /contato/ — formulário em uma única seção</h2>
+<div class="block">
+  <p>O formulário era uma pilha vertical de campos (exigia rolar). Agora usa <strong>grade de 2 colunas</strong>: Nome + E-mail numa linha, WhatsApp + Área noutra, mensagem em linha cheia, LGPD e botão. Reduzi o espaçamento do topo, do cartão e entre campos, e a altura do <code>textarea</code>.</p>
+  <p><strong>Medição:</strong> em <strong>1440×900</strong>, o cartão inteiro (título, campos, LGPD, botão e canais) termina exatamente na dobra — <strong>sem rolar entre os campos</strong>. No mobile, o formulário vira uma coluna e cresce naturalmente (conforme pedido). A coluna lateral mantém WhatsApp, e-mail, endereço e responsável técnico.</p>
+  <div class="shots">
+    <figure><div class="frame"><img src="prints/contato-desktop.jpg" alt="Contato desktop"></div><figcaption>Desktop — formulário completo em uma seção</figcaption></figure>
+    <figure><div class="frame"><img src="prints/contato-mobile.jpg" alt="Contato mobile"></div><figcaption>Mobile</figcaption></figure>
+  </div>
+</div>
+
+<h2>3. Página /o-escritorio/ — realce institucional</h2>
+<div class="block">
+  <p>Era um bloco de texto corrido. Sem reescrever nada, apliquei realce visual sobre o conteúdo existente:</p>
+  <ul>
+    <li>Hierarquia e <strong>separadores entre seções</strong> (Como o escritório atua · Sobre o advogado · Áreas de atuação · Guias por tema · CTA final).</li>
+    <li>Sub-blocos do advogado (Formação, Inscrição, Atividade, Atuação internacional) com <strong>borda-acento</strong> à esquerda, em formato de "ficha".</li>
+    <li>Listas de <strong>Áreas de atuação</strong> e <strong>Guias por tema</strong> convertidas em <strong>grade de cards</strong> clicáveis (mesmos tokens/bordas/hover do restante do site).</li>
+  </ul>
+  <p>Nenhum fato, número, prêmio ou credencial foi inventado — apenas reorganização visual do que já existia.</p>
+  <div class="shots">
+    <figure><div class="frame"><img src="prints/escritorio-desktop.jpg" alt="O Escritório desktop"></div><figcaption>Desktop</figcaption></figure>
+    <figure><div class="frame"><img src="prints/escritorio-mobile.jpg" alt="O Escritório mobile"></div><figcaption>Mobile</figcaption></figure>
+  </div>
+</div>
+
+<h2>4. Quebra entre seções (heroes das Áreas)</h2>
+<div class="block">
+  <p><strong>Causa:</strong> na sprint anterior o hero das áreas ficou mais baixo (~427&nbsp;px) que o hero <em>aprovado</em> da Home (~508&nbsp;px), fazendo o "O PROBLEMA / Entenda o problema" aparecer alto e parecer cortado.</p>
+  <p><strong>Solução:</strong> igualei a altura do hero das áreas à da Home usando <strong>padding proporcional</strong> (não viewport, sem <code>100vh</code>/<code>calc</code>). Agora o <code>heroBottom</code> das áreas fica em ~568–579&nbsp;px, em linha com a Home (~585–593&nbsp;px) — a mesma transição limpa da referência aprovada.</p>
+  <table>
+    <tr><th>Página</th><th>heroBottom (após)</th><th>Referência Home</th></tr>
+    <tr><td>Área (1440×900)</td><td>573&nbsp;px</td><td>586&nbsp;px</td></tr>
+    <tr><td>Área (1920×1080)</td><td>579&nbsp;px</td><td>593&nbsp;px</td></tr>
+    <tr><td>Área (1366×768)</td><td>568&nbsp;px</td><td>585&nbsp;px</td></tr>
+  </table>
+  <p>Variantes de hero em uso: <code>hero--landing</code> (áreas, padding proporcional ~igual à Home), <code>hero--index</code> (listagens, compacto), <code>hero--article</code> (artigos/guias), <code>hero--institutional</code> (institucionais), <code>hero--contact</code> (contato compacto).</p>
+  <div class="shots">
+    <figure><div class="frame"><img src="prints/area-desktop.jpg" alt="Área"></div><figcaption>Área de atuação · transição</figcaption></figure>
+    <figure><div class="frame"><img src="prints/subarea-desktop.jpg" alt="Subárea"></div><figcaption>Subárea</figcaption></figure>
+  </div>
+  <div class="note"><strong>Nota honesta:</strong> como a Home aprovada tem hero de altura fixa por padding, a seção seguinte também assoma um pouco na Home. Igualei as áreas a esse mesmo comportamento (a referência que você aprovou). Se preferir esconder <em>completamente</em> a próxima seção, isso exige esticar o hero à viewport — o que reintroduz o vazio das telas altas; posso alternar caso deseje.</p>
+</div>
+
+<h2>5. Auditoria — alteradas × mantidas</h2>
+<div class="block">
+  <table>
+    <tr><th>Página</th><th>Ação</th></tr>
+    <tr><td>/contato/ + ContactForm</td><td>Reorganizado (2 colunas) + estados de sucesso/erro/carregamento</td></tr>
+    <tr><td>/o-escritorio/</td><td>Realce institucional (cards, fichas, separadores)</td></tr>
+    <tr><td>Áreas de Atuação + Subáreas</td><td>Hero igualado à Home (transição de seção)</td></tr>
+    <tr><td>Home</td><td class="ok">Não alterada</td></tr>
+    <tr><td>Blog / Assuntos / Guias / Ferramentas</td><td class="ok">Já com cards/grid — mantidas</td></tr>
+    <tr><td>Artigos / Guias individuais</td><td class="ok">Já editoriais (índice, callouts, RelatedHub) — mantidas</td></tr>
+    <tr><td>LGPD / Termos / Privacidade / Áreas (índice)</td><td class="ok">Já equilibradas — mantidas</td></tr>
+  </table>
+</div>
+
+<h2>6. Arquivos alterados</h2>
+<div class="files">
+  <p><strong>Modificados:</strong></p>
+  <code>src/components/ContactForm.astro</code> — reescrito: grade 2 colunas + sucesso/erro/carregamento + a11y + antiduplicidade
+  <code>src/pages/contato/index.astro</code> — espaçamentos compactados (form em uma seção)
+  <code>src/pages/o-escritorio/index.astro</code> — realce (classes em blocos conhecidos) + CSS institucional
+  <code>src/components/PillarPage.astro</code> — <code>.p-hero</code>: padding igual à Home
+  <code>src/components/SubPage.astro</code> — <code>.s-hero</code>: idem
+  <p style="margin-top:10px"><strong>Criados:</strong> nenhum arquivo novo (reaproveitados <code>Icon</code>, <code>Container</code>, <code>Breadcrumb</code>, tokens e botões existentes).</p>
+  <p><strong>Removidos:</strong> nenhum.</p>
+  <p><strong>Não alterado:</strong> conteúdo jurídico/institucional (só reorganização visual), URLs, slugs, canonical, meta, JSON-LD, sitemap, Analytics/Consent/IndexNow, WhatsApp, logo, cores, Home, informações de contato.</p>
+</div>
+
+<h2>7. Publicação na HostGator</h2>
+<div class="block">
+  <ol>
+    <li>No ZIP, abra a pasta <code>dist/</code> (site já compilado).</li>
+    <li>No cPanel &gt; <strong>Gerenciador de Arquivos</strong>, entre em <code>public_html/</code> (ou a pasta do domínio).</li>
+    <li>Envie <strong>todo o conteúdo de dentro de <code>dist/</code></strong> (não a pasta <code>dist</code> em si) para <code>public_html/</code>, substituindo os arquivos existentes. Inclui <code>index.html</code>, as pastas de rotas, <code>brand/</code>, <code>sitemap.xml</code>, <code>robots.txt</code> etc.</li>
+    <li>Confira <code>https://correalimaadvocacia.com.br/contato/</code> e envie um teste real para validar o Formspree e o card de sucesso.</li>
+  </ol>
+  <p>Para editar e recompilar no futuro: <code>npm install</code> → <code>npm run build</code> (gera novamente <code>dist/</code>).</p>
+</div>
+
+<footer>Validação: <code>astro check</code> 0/0/0 · 132 páginas · 130 URLs · sem scroll horizontal (390/360&nbsp;px) · formulário testado (sucesso, erro, LGPD, duplicidade). Home inalterada. Prints em <code>./prints/</code>.</footer>
+
+</div>
+</body>
+</html>

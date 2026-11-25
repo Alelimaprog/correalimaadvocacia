@@ -5,7 +5,7 @@ h1: "Quando a sentença estrangeira precisa ser homologada no Brasil"
 author: "Alexandre Corrêa Lima"
 pubDate: 2026-05-12
 updatedDate: 2026-05-12
-cluster: "direito-aduaneiro-tributario"
+cluster: "direito-internacional"
 ---
 
 Homologação de Sentença Estrangeira

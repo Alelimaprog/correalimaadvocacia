@@ -13,6 +13,18 @@ import body from '@/partials/institucional/o-escritorio.html?raw';
 
 const page = getPage('/o-escritorio/');
 
+// Realce visual (sem reescrever conteúdo): marca as listas de links de "Áreas de
+// atuação" e "Guias por tema" como grades de cards. Apenas insere classes.
+function classAfterHeading(html: string, headingText: string, cls: string) {
+  const idx = html.indexOf(headingText);
+  if (idx === -1) return html;
+  const ulIdx = html.indexOf('<ul', idx);
+  if (ulIdx === -1) return html;
+  return html.slice(0, ulIdx) + `<ul class="${cls}"` + html.slice(ulIdx + 3);
+}
+let bodyEnhanced = classAfterHeading(body, 'Áreas de atuação', 'oe-cards');
+bodyEnhanced = classAfterHeading(bodyEnhanced, 'Guias por tema', 'oe-cards');
+
 const officeAddress = {
   '@type': 'PostalAddress',
   streetAddress: `${site.contact.address.street}, ${site.contact.address.detail}`,
@@ -49,7 +61,7 @@ const jsonldEnhanced = page.jsonld.map((s: Record<string, unknown>) => {
 
   <main id="conteudo-principal" class="inst">
     <Container>
-      <div class="doc doc--hero doc--escritorio" set:html={body} />
+      <div class="doc doc--hero doc--escritorio" set:html={bodyEnhanced} />
     </Container>
   </main>
 </BaseLayout>
@@ -57,5 +69,86 @@ const jsonldEnhanced = page.jsonld.map((s: Record<string, unknown>) => {
 <style>
   .inst {
     padding-block: var(--section-y);
+  }
+</style>
+
+<style is:global>
+  /* Realce institucional da página O Escritório (conteúdo via set:html). */
+  .doc--escritorio { --oe-measure: 46rem; }
+  .doc--escritorio > nav > div, .doc--escritorio > nav > div > span { display: flex; flex-wrap: wrap; gap: .4rem; }
+  .doc--escritorio a.btn { text-decoration: none; margin-top: var(--space-2); }
+  .doc--escritorio > section > div > p:first-child,
+  .doc--escritorio p { max-width: var(--oe-measure); }
+
+  /* Hero institucional: título + linha introdutória */
+  .doc--escritorio h1 {
+    font-size: var(--text-4xl);
+    line-height: var(--leading-tight);
+    letter-spacing: var(--tracking-tight);
+    color: var(--color-ink);
+  }
+
+  /* Ritmo e separação entre seções */
+  .doc--escritorio h2 {
+    font-size: var(--text-2xl);
+    color: var(--color-ink);
+    letter-spacing: var(--tracking-tight);
+    margin-top: var(--space-9);
+    padding-top: var(--space-6);
+    border-top: 1px solid var(--border-subtle);
+  }
+  .doc--escritorio h3 {
+    font-size: var(--text-base);
+    color: var(--color-green-strong);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-top: var(--space-6);
+    margin-bottom: var(--space-2);
+  }
+
+  /* Sub-blocos do advogado (Formação, Inscrição, Atividade, Atuação internacional)
+     ganham uma borda-acento à esquerda para leitura em "ficha". */
+  .doc--escritorio h3 + p,
+  .doc--escritorio h3 + ul {
+    border-left: 2px solid var(--color-accent);
+    padding-left: var(--space-4);
+    margin-left: 0;
+  }
+
+  /* Listas de links de Áreas e Guias → grade de cards */
+  .doc--escritorio ul.oe-cards {
+    list-style: none;
+    padding: 0;
+    margin: var(--space-5) 0 0;
+    display: grid;
+    gap: var(--space-3);
+    grid-template-columns: 1fr;
+  }
+  @media (min-width: 640px) { .doc--escritorio ul.oe-cards { grid-template-columns: 1fr 1fr; } }
+  .doc--escritorio ul.oe-cards li { margin: 0; }
+  .doc--escritorio ul.oe-cards a {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-3);
+    padding: var(--space-4) var(--space-5);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-lg);
+    background: var(--surface);
+    color: var(--color-ink);
+    font-weight: var(--weight-semibold);
+    font-size: var(--text-sm);
+    text-decoration: none;
+    transition: border-color var(--dur) var(--ease), background-color var(--dur) var(--ease), transform var(--dur) var(--ease);
+  }
+  .doc--escritorio ul.oe-cards a::after {
+    content: '→';
+    color: var(--color-green-strong);
+    flex: none;
+  }
+  .doc--escritorio ul.oe-cards a:hover {
+    border-color: var(--color-green);
+    background: var(--surface-warm);
+    transform: translateY(-1px);
   }
 </style>

@@ -26,10 +26,10 @@ O escritório atua em demandas que exigem organização documental, negociação
 
 ## Como o escritório atua
 
-1. 1Levantamento da situação patrimonial e familiar envolvida.
-2. 2Definição da via mais adequada: extrajudicial (cartório) ou judicial.
-3. 3Condução das tratativas e, quando necessário, do processo judicial.
-4. 4Acompanhamento até a formalização final e regularização registral.
+1. Levantamento da situação patrimonial e familiar envolvida.
+2. Definição da via mais adequada: extrajudicial (cartório) ou judicial.
+3. Condução das tratativas e, quando necessário, do processo judicial.
+4. Acompanhamento até a formalização final e regularização registral.
 
 ## Situações comuns
 
@@ -45,19 +45,31 @@ As informações desta página têm caráter informativo geral. O prazo e o desf
 
 Divórcio e inventário sempre precisam ser judiciais?+
 
-Não. Quando há consenso entre as partes e não há filhos menores ou incapazes envolvidos, é possível realizar divórcio e inventário diretamente em cartório, por meio de escritura pública. A via adequada é avaliada conforme o caso.
+Não. Havendo consenso e herdeiros ou partes capazes, divórcio e inventário podem ser feitos em cartório, por escritura pública. Desde a Resolução CNJ 571/2024, o cartório também pode ser usado, sob condições, com herdeiro menor ou incapaz (com manifestação favorável do Ministério Público) e, no divórcio com filhos menores, depois que guarda e alimentos forem resolvidos na Justiça. A via adequada é avaliada conforme o caso.
 
 O escritório atua em disputas patrimoniais mais complexas?+
 
+Sim. A atuação inclui a condução de disputas patrimoniais familiares que exigem estratégia processual mais elaborada.
+
 Qual a diferença entre esta página e as páginas de Inventário e Partilha e Divórcio e Questões Patrimoniais?+
+
+Esta página apresenta a atuação geral do escritório em família e sucessões. Inventário e Partilha e Divórcio e Questões Patrimoniais detalham, cada uma, o procedimento específico correspondente, incluindo prazos, documentos e perguntas próprias de cada situação.
 
 O escritório atua em planejamento sucessório preventivo?+
 
+Sim. Além da condução de inventários e divórcios já em curso, o escritório orienta famílias interessadas em planejamento sucessório preventivo, como forma de organizar a sucessão patrimonial e reduzir conflitos futuros entre herdeiros.
+
 É possível atuar em casos com herdeiros ou ex-cônjuge morando fora do Brasil?+
+
+Sim. O escritório atua em inventários e divórcios com partes residentes no exterior, incluindo a orientação sobre procuração, tradução juramentada e apostilamento de documentos, quando aplicável.
 
 Questões de guarda e pensão alimentícia são tratadas pelo escritório?+
 
+A atuação do escritório em família tem foco no recorte patrimonial e sucessório (divórcio com partilha de bens, inventário e planejamento sucessório). Questões isoladas de guarda ou pensão alimentícia, sem componente patrimonial relevante, podem ser encaminhadas a colegas especializados nesse recorte específico.
+
 O que acontece com o patrimônio de um casal em união estável em caso de separação ou falecimento?+
+
+Em regra, aplicam-se regras patrimoniais semelhantes às do casamento, conforme o regime de bens que rege a união estável, embora com particularidades próprias. A análise deve considerar a comprovação da união e o regime patrimonial aplicável ao caso.
 
 Fale sobre o seu caso
 
@@ -69,7 +81,7 @@ Responsável técnico: [Alexandre Corrêa Lima](/o-escritorio/#alexandre-correa-
 
 Áreas relacionadas
 
-- [Inventário e Partilha](/areas-de-atuacao/inventario-e-partilha/)
+- [Inventário e Partilha](/areas-de-atuacao/inventario-e-patrimonio/)
 - [Divórcio e Questões Patrimoniais](/areas-de-atuacao/divorcio-e-questoes-patrimoniais/)
 - [Inventário com Herdeiro no Exterior](/areas-de-atuacao/inventario-com-herdeiro-no-exterior/)
 

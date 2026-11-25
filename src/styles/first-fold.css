@@ -1,0 +1,48 @@
+/**
+ * first-fold.css — ritmo vertical da primeira dobra das páginas internas.
+ * ---------------------------------------------------------------------------
+ * Histórico (mantido porque explica por que a regra existe)
+ *   A altura do herói interno variava conforme título, descrição e presença de
+ *   card lateral, então a transição herói -> próxima seção terminava em pontos
+ *   diferentes em cada página. A solução adotada na época foi esticar o herói
+ *   até `calc(100svh - var(--header-height))`, centralizando o conteúdo.
+ *
+ * Por que isso mudou agora
+ *   Herói de altura de viewport é gramática de landing page: a página abre com
+ *   uma tela inteira ocupada por título, duas linhas de apoio e dois botões, e
+ *   o leitor precisa rolar para encontrar o primeiro conteúdo. Num site de
+ *   escritório empresarial o efeito é o contrário do pretendido — em vez de
+ *   densidade e autoridade, o que se lê é espaço vazio. Medido nesta rodada em
+ *   /areas-de-atuacao/direito-empresarial/: ~200px de faixa morta abaixo dos
+ *   botões, em tela de 1567x611.
+ *
+ *   Além disso, a regra resolvia um problema de uniformidade entre páginas que
+ *   ninguém compara lado a lado: nenhum leitor abre duas áreas em abas vizinhas
+ *   para conferir se o herói termina na mesma altura.
+ *
+ * O que vale agora
+ *   A altura do herói é dada pelo próprio conteúdo mais um padding generoso e
+ *   proporcional, definido nos componentes (.p-hero / .s-hero). A classe
+ *   permanece — ela ainda normaliza o box-sizing e dá um piso de altura bem
+ *   abaixo da dobra, o bastante para que heróis de título curto não fiquem
+ *   apertados, sem nunca forçar uma tela inteira.
+ */
+
+.internal-first-fold {
+  box-sizing: border-box;
+}
+
+@media (min-width: 900px) {
+  .internal-first-fold {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* Piso, não dobra: garante respiro mínimo em títulos curtos e some assim
+       que o conteúdo pede mais espaço. */
+    min-height: 26rem;
+  }
+
+  .internal-first-fold > .wrap {
+    width: 100%;
+  }
+}

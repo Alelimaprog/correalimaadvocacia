@@ -40,13 +40,15 @@ Não. A medida deve ser fundamentada e, em regra, direcionada a quem efetivament
 
 É preciso abrir um novo processo para pedir a desconsideração?+
 
+Em regra, não. O pedido costuma ser feito dentro da própria execução ou do cumprimento de sentença já em curso, mediante incidente processual próprio.
+
 Empresa devedora sem nenhum bem já justifica o pedido?+
 
 Este conteúdo tem caráter exclusivamente informativo e não substitui a análise individual do seu caso por advogado.
 
 Assunto relacionado a este artigo:
 
-[Execuções, Cobrança e Recuperação de Crédito →](/areas-de-atuacao/execucao-cobranca-recuperacao-de-credito/)
+[Execuções, Cobrança e Recuperação de Crédito →](/areas-de-atuacao/recuperacao-de-credito/)
 
 Quer ver o panorama completo do tema?
 

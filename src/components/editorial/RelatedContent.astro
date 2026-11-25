@@ -35,7 +35,7 @@ const { titulo = 'Conteúdos relacionados', itens } = Astro.props;
   @media (min-width: 720px) { .rel ul { grid-template-columns: 1fr 1fr; } }
   .rel a { display: flex; align-items: center; justify-content: space-between; gap: var(--space-3); border: 1px solid var(--color-border); border-radius: var(--radius-md); padding: var(--space-4); text-decoration: none; transition: border-color var(--dur) var(--ease), box-shadow var(--dur) var(--ease); }
   .rel a:hover { border-color: transparent; box-shadow: var(--shadow-sm); }
-  .rel-tag { display: block; font-size: var(--text-xs); text-transform: uppercase; letter-spacing: 0.06em; color: var(--color-green-strong); font-weight: var(--weight-semibold); }
+  .rel-tag { display: block; font-size: var(--text-xs); text-transform: uppercase; letter-spacing: var(--tracking-eyebrow); color: var(--color-accent); font-weight: var(--weight-semibold); }
   .rel-t { color: var(--color-ink); font-weight: var(--weight-medium); font-size: var(--text-sm); line-height: var(--leading-snug); }
-  .rel-arrow { display: inline-flex; color: var(--color-green-strong); flex: none; }
+  .rel-arrow { display: inline-flex; color: var(--color-accent); flex: none; }
 </style>

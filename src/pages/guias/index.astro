@@ -6,8 +6,11 @@
  */
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import JsonLd from '@/components/JsonLd.astro';
-import Icon from '@/components/Icon.astro';
 import { getCollection } from 'astro:content';
+import Container from '@/components/Container.astro';
+import ContentCard from '@/components/content/ContentCard.astro';
+import { nucleos } from '@/lib/nucleos';
+import { whatsappHrefForPath } from '@/lib/site.config';
 import { site } from '@/lib/site.config';
 import type { PageHead } from '@/lib/institucional';
 
@@ -18,7 +21,7 @@ const entries = (await getCollection('guias')).sort((a, b) =>
 const url = `${site.url}/guias/`;
 const title = `Guias Jurídicos | ${site.name}`;
 const description =
-  'Guias completos e de alta autoridade sobre recuperação de crédito, cobrança condominial, direito ambiental, aduaneiro-tributário, internacional e inventário.';
+  'Guias informativos sobre recuperação de crédito, cobrança condominial, direito ambiental, aduaneiro-tributário, internacional e inventário.';
 const ogImage = `${site.url}${site.ogImage}`;
 
 const head: PageHead = {
@@ -52,68 +55,57 @@ const jsonld = [
     })),
   },
 ];
+
+const clusterLabel = Object.fromEntries(nucleos.map((n) => [n.slug, n.label]));
+const guiaWaHref = whatsappHrefForPath('/guias/');
 ---
 
 <BaseLayout head={head}>
   <Fragment slot="jsonld">{jsonld.map((schema) => <JsonLd schema={schema} />)}</Fragment>
 
-  <main id="conteudo-principal" class="guias-hub">
-    <section class="g-hero">
-      <div class="wrap">
+  <main id="conteudo-principal" class="cx">
+    <section class="cx-hero">
+      <Container>
         <nav class="crumbs" aria-label="Você está em">
-          <a href="/">Início</a><span>/</span><span>Guias</span>
+          <a href="/">Início</a><span aria-hidden="true">/</span><span>Guias</span>
         </nav>
         <p class="eyebrow"><span class="dot"></span>Conteúdo de referência</p>
-        <h1>Guias Jurídicos</h1>
-        <p class="g-desc">
+        <h1>Guias completos</h1>
+        <p class="cx-hero-desc">
           Materiais completos, organizados por área, para quem quer entender o tema com
           profundidade antes de decidir os próximos passos. Conteúdo informativo geral,
           sem promessa de resultado.
         </p>
-      </div>
+      </Container>
     </section>
 
-    <section class="g-list">
-      <div class="wrap">
-        <ul class="cards">
+    <section class="cx-section cx-section--muted">
+      <Container>
+        <ul class="cx-grid">
           {entries.map((e) => (
-            <li>
-              <a href={`/guias/${e.id}/`}>
-                <span class="tag">Guia</span>
-                <h2>{e.data.h1 ?? e.data.title}</h2>
-                <p>{e.data.description}</p>
-                <span class="more">Ler o guia<Icon name="arrow-right" size={16} /></span>
-              </a>
-            </li>
+            <ContentCard
+              href={`/guias/${e.id}/`}
+              title={e.data.h1 ?? e.data.title}
+              tag={e.data.cluster ? clusterLabel[e.data.cluster] : 'Guia'}
+              desc={e.data.description}
+              moreLabel="Ler o guia"
+            />
           ))}
         </ul>
-      </div>
+      </Container>
+    </section>
+
+    <section class="cx-cta">
+      <Container>
+        <div class="cx-cta-inner">
+          <h2>Tem um caso concreto sobre um desses temas?</h2>
+          <p>Fale com o escritório para uma orientação sobre a sua situação.</p>
+          <div class="cx-cta-actions">
+            <a class="btn btn--primary" href={guiaWaHref} target="_blank" rel="noopener noreferrer">Falar no WhatsApp</a>
+            <a class="btn btn--secondary" href="/contato/">Enviar meu caso</a>
+          </div>
+        </div>
+      </Container>
     </section>
   </main>
 </BaseLayout>
-
-<style>
-  /* Hub de guias — hero claro; cards unificados; tag via ui.css. */
-  .g-hero {
-    background: var(--surface-warm);
-    padding-block: var(--section-y-sm);
-    border-bottom: 1px solid var(--border-subtle);
-  }
-  .g-hero .crumbs { margin-bottom: var(--space-5); }
-  .g-hero h1 { font-size: var(--text-4xl); color: var(--color-ink); margin-top: var(--space-3); }
-  .g-desc { margin-top: var(--space-4); color: var(--color-text); font-size: var(--text-md); line-height: var(--leading-relaxed); max-width: var(--measure); }
-
-  .g-list { background: var(--surface-subtle); padding-block: var(--section-y); }
-  .cards { list-style: none; padding: 0; margin: 0; display: grid; gap: var(--space-5); grid-template-columns: 1fr; }
-  @media (min-width: 780px) { .cards { grid-template-columns: 1fr 1fr; } }
-  .cards a {
-    display: flex; flex-direction: column; height: 100%; background: var(--surface);
-    border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); padding: var(--space-6);
-    text-decoration: none;
-    transition: border-color var(--dur) var(--ease), box-shadow var(--dur) var(--ease), transform var(--dur) var(--ease);
-  }
-  .cards a:hover { border-color: var(--border-strong); box-shadow: var(--shadow-md); transform: translateY(-2px); }
-  .cards h2 { font-size: var(--text-lg); color: var(--color-ink); line-height: var(--leading-snug); margin-top: var(--space-4); }
-  .cards p { margin-top: var(--space-3); color: var(--color-text-muted); line-height: var(--leading-normal); font-size: var(--text-sm); }
-  .more { display: inline-flex; align-items: center; gap: 0.4rem; margin-top: var(--space-5); color: var(--color-green-strong); font-weight: var(--weight-semibold); font-size: var(--text-sm); }
-</style>

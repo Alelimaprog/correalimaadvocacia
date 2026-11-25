@@ -52,17 +52,22 @@ const { items, class: cls } = Astro.props;
     gap: 0.4rem;
   }
   .breadcrumb a {
+    display: inline-block;
+    padding-block: 0.3rem;
     color: var(--color-text-muted);
     text-decoration: none;
   }
   .breadcrumb a:hover {
-    color: var(--color-green-strong);
+    color: var(--color-navy);
   }
   .breadcrumb [aria-current='page'] {
     color: var(--color-ink);
     font-weight: 500;
   }
+  /* Separador decorativo, mas visível: em --gray-300 ficava a 1,5:1 e
+     praticamente sumia do papel. */
   .sep {
-    color: var(--gray-300);
+    color: var(--color-text-subtle);
+    opacity: 0.6;
   }
 </style>

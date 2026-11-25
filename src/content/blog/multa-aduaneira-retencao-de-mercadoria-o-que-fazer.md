@@ -1,36 +1,64 @@
 ---
-title: "Multa Aduaneira e Retenção de Mercadoria: O Que Fazer | Corrêa Lima Advocacia"
-description: "Sua mercadoria foi retida na alfândega ou sua empresa recebeu uma multa aduaneira? Veja os primeiros passos para lidar com a situação."
+title: "Mercadoria Retida ou Multa Aduaneira: O Que Fazer Já | Corrêa Lima Advocacia"
+description: "Mercadoria retida na alfândega, canal vermelho ou multa aduaneira? Primeiros passos, prazos de resposta e quando cabe medida judicial."
 h1: "Multa aduaneira e retenção de mercadoria: o que fazer"
 author: "Alexandre Corrêa Lima"
 pubDate: 2026-07-03
-updatedDate: 2026-07-03
+updatedDate: 2026-11-07
 cluster: "direito-aduaneiro-tributario"
 ---
 
-Contratos Empresariais e Importação
+Direito Aduaneiro-Tributário
 
 # Multa aduaneira e retenção de mercadoria: o que fazer
 
-03/07/2026•5 min de leitura•Por [Alexandre Corrêa Lima](/o-escritorio/#alexandre-correa-lima)
+03/07/2026•8 min de leitura•Por [Alexandre Corrêa Lima](/o-escritorio/#alexandre-correa-lima)
 
 ## Primeiro passo: identificar o motivo formal
 
-Diante de uma multa aduaneira ou retenção de mercadoria, o primeiro passo é identificar o fundamento formal da exigência junto à autoridade aduaneira, para então avaliar se ela pode ser cumprida diretamente ou se exige defesa administrativa ou judicial.
+Diante de uma multa aduaneira ou retenção de mercadoria, o primeiro passo é identificar o fundamento formal da exigência e o prazo para responder. Só então dá para avaliar se ela pode ser cumprida diretamente ou se exige defesa administrativa ou judicial.
 
-Toda retenção ou autuação aduaneira tem um fundamento formal — divergência de classificação fiscal, documentação incompleta, suspeita de subfaturamento, entre outros. Identificar com precisão esse fundamento é o que permite avaliar se a exigência pode ser cumprida diretamente ou se exige defesa.
+Toda retenção ou autuação aduaneira tem um fundamento formal: divergência de classificação fiscal, documentação incompleta, suspeita de subfaturamento, entre outros. A exigência aparece no Siscomex/Portal Único (DI ou DUIMP).
+
+## Primeiras 48 horas com a carga retida
+
+1. Leia a exigência e anote o **prazo** e o **fundamento**.
+2. Identifique o canal. Pelo art. 21 da IN SRF 680/2006, o **vermelho** é exame documental e verificação física; o **cinza** acrescenta um procedimento especial de controle aduaneiro, para apurar indícios de fraude.
+3. Reúna fatura comercial, *packing list*, conhecimento de transporte, comprovantes de pagamento ao exterior e ficha técnica do produto.
+4. Se a exigência é **diferença de tributo**, avalie pagar e discutir depois, ou oferecer garantia para liberar (IN SRF 680/2006, art. 48, §1º).
+5. Se há **termo de retenção** ou **auto de perdimento**, o prazo é curto (20 dias no perdimento): não espere a próxima exigência para envolver o advogado.
+6. Peça ao terminal o extrato de **armazenagem** e ao armador as condições de **demurrage**, porque esse custo entra na decisão de garantir ou litigar.
+
+## Quanto tempo a mercadoria pode ficar retida?
+
+A norma não fixa um prazo geral para a conferência no canal vermelho. Ele depende da fila da unidade, da necessidade de laudo e das exigências feitas. No procedimento especial de controle aduaneiro (IN RFB 1.986/2020), a retenção pode durar até 60 dias, prorrogáveis por mais 60. A contagem para quando o importador atende integralmente às intimações.
+
+## A Receita pode reter só para cobrar?
+
+Depende. A Súmula 323 do STF proíbe usar a apreensão como meio coercitivo de cobrança. Mas o próprio STF decidiu (Tema 1042) que é válido condicionar o desembaraço ao pagamento de diferença de tributo apurada por arbitramento no despacho. Quando a exigência fiscal é discutida, a mercadoria pode ser liberada mediante garantia (IN SRF 680/2006, art. 48, §1º). Se a retenção persiste sem essa base, por exemplo para exigir multa já lançada, cabe discutir administrativamente e, se necessário, por mandado de segurança.
 
 ## Nem toda exigência precisa virar litígio
 
-Em muitos casos, a retenção decorre de uma pendência documental que pode ser regularizada diretamente junto à autoridade aduaneira, sem necessidade de defesa formal. A análise inicial deve distinguir esses casos das autuações que, de fato, exigem contestação.
+Em muitos casos, a retenção decorre de uma pendência documental que pode ser regularizada diretamente com a autoridade aduaneira, sem defesa formal. A análise inicial deve distinguir esses casos das autuações que, de fato, exigem contestação.
 
-## Quando a defesa administrativa é necessária
+## Quando a defesa administrativa é necessária: ritos e prazos
 
-Quando a autuação envolve uma multa ou uma exigência que a empresa entende incorreta, a defesa administrativa perante a autoridade aduaneira costuma ser o primeiro caminho, com possibilidade de medida judicial nos casos em que a via administrativa não for suficiente ou adequada.
+O rito depende do tipo de auto:
+
+- **Tributo e multa** (diferença de II, IPI, PIS/COFINS, multa por classificação errada): segue o Decreto 70.235/1972. Impugnação em 20 dias úteis à Delegacia de Julgamento e recurso, também em 20 dias úteis, ao CARF (Decreto 70.235/1972, com a redação da Lei Complementar 227/2026).
+- **Perdimento:** segue rito próprio (Decreto-Lei 1.455/1976, arts. 27-A e seguintes, incluídos pela Lei 14.651/2023). São 20 dias para impugnar e 20 dias para recorrer.
+
+O prazo conta da ciência, que pode ser eletrônica (e-CAC/DTE). Errar o rito ou o prazo pode tornar a autuação definitiva.
+
+**Perdimento e multa substitutiva.** Se a mercadoria não for localizada ou já tiver sido consumida ou revendida, o perdimento é substituído por multa igual ao valor aduaneiro (DL 1.455/1976, art. 23, §3º). Não é uma alternativa mais branda: o valor equivale ao da mercadoria.
+
+Perder na esfera administrativa não encerra a discussão: o caso pode ir ao Judiciário. No perdimento, porém, a mercadoria pode ser destinada após a decisão de primeira instância, mesmo com ação judicial em curso, salvo ordem judicial em contrário (DL 1.455/1976, art. 29, §1º). Por isso, a medida judicial às vezes precisa ser simultânea.
 
 ## Prevenção para operações futuras
 
-Empresas que enfrentam retenções ou multas recorrentes costumam se beneficiar de uma revisão preventiva de seus processos de classificação fiscal e documentação, para reduzir a exposição a esse tipo de problema em novas operações.
+Empresas que enfrentam retenções ou multas recorrentes costumam se beneficiar de uma revisão preventiva da classificação fiscal e da documentação. A classificação incorreta na NCM gera, além da diferença de tributo, multa de 1% do valor aduaneiro, com mínimo legal (MP 2.158-35/2001, art. 84).
+
+Para o quadro completo, veja o [guia de direito aduaneiro-tributário](/guias/direito-aduaneiro-tributario-guia-completo/).
 
 Este conteúdo tem caráter exclusivamente informativo e não substitui a análise individual do seu caso por advogado.
 
@@ -38,11 +66,12 @@ Assunto relacionado a este artigo:
 
 [Direito Aduaneiro e Comércio Exterior →](/areas-de-atuacao/direito-aduaneiro-tributario/)
 
-Mais sobre Contratos Empresariais e Importação
+Mais sobre Direito Aduaneiro-Tributário
 
-- [Cláusulas importantes em contratos de importação](/blog/clausulas-importantes-contratos-de-importacao/)
-- [Riscos jurídicos em operações internacionais e como reduzi-los](/blog/riscos-juridicos-operacoes-internacionais-como-reduzir/)
-- [Assessoria jurídica para importadores: quando faz diferença ter um advogado no time](/blog/assessoria-juridica-importadores-quando-faz-diferenca/)
+- [Direito Aduaneiro-Tributário: guia completo](/guias/direito-aduaneiro-tributario-guia-completo/)
+- [Retenção de mercadorias](/areas-de-atuacao/direito-aduaneiro-tributario/retencao-de-mercadorias/)
+- [Pena de perdimento](/areas-de-atuacao/direito-aduaneiro-tributario/pena-de-perdimento/)
+- [Defesa administrativa aduaneira](/areas-de-atuacao/direito-aduaneiro-tributario/defesa-administrativa-aduaneira/)
 
 Fale com o escritório
 

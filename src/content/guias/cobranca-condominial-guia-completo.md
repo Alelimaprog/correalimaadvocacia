@@ -3,6 +3,7 @@ title: "Cobrança Condominial: Guia Completo | Guia | Corrêa Lima Advocacia"
 description: "Guia completo da cobrança condominial: cobrança de cotas, acordos, execução de despesas, penhora da unidade e assessoria a síndicos e administradoras."
 h1: "Cobrança Condominial: guia completo"
 author: "Alexandre Corrêa Lima"
+updatedDate: 2026-11-07
 cluster: "cobranca-condominial"
 ---
 

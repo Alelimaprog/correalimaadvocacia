@@ -23,6 +23,7 @@ const base = z.object({
       'direito-aduaneiro-tributario',
       'direito-internacional',
       'inventario-e-patrimonio',
+      'direito-do-trabalho',
     ])
     .optional(),
   relacionados: z

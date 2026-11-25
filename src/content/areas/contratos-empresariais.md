@@ -26,10 +26,10 @@ O trabalho considera o contexto operacional de cada relação comercial, buscand
 
 ## Como o escritório atua
 
-1. 1Levantamento das necessidades e riscos específicos da relação contratual.
-2. 2Elaboração ou revisão de cláusulas, com atenção a obrigações, prazos, garantias e penalidades.
-3. 3Apoio na negociação de pontos sensíveis com a contraparte.
-4. 4Orientação sobre formalização e validade do instrumento.
+1. Levantamento das necessidades e riscos específicos da relação contratual.
+2. Elaboração ou revisão de cláusulas, com atenção a obrigações, prazos, garantias e penalidades.
+3. Apoio na negociação de pontos sensíveis com a contraparte.
+4. Orientação sobre formalização e validade do instrumento.
 
 ## Situações comuns
 
@@ -51,6 +51,8 @@ Ambos. A atuação inclui tanto a elaboração de novos instrumentos quanto a re
 
 É possível revisar um contrato antes da assinatura?+
 
+Sim, essa é uma das formas mais eficazes de reduzir riscos futuros, permitindo ajustes antes da formalização.
+
 Fale sobre o seu caso
 
 Atendimento nacional e online, quando aplicável.
@@ -64,11 +66,6 @@ Responsável técnico: [Alexandre Corrêa Lima](/o-escritorio/#alexandre-correa-
 - [Contratos de Importação / Comércio Exterior](/areas-de-atuacao/contratos-de-importacao-comercio-exterior/)
 - [Advocacia Empresarial](/areas-de-atuacao/advocacia-empresarial/)
 
-Guia completo do tema
-
-Veja o panorama completo deste cluster, com todos os conteúdos organizados.
-
-[Cobrança, Execução e Recuperação de Crédito Empresarial: guia central →](/guias/cobranca-execucao-e-recuperacao-de-credito-empresarial/)
 
 Fale com o escritório
 

@@ -10,6 +10,26 @@ export interface PillarExtra {
 }
 
 export const pillarExtra: Record<string, PillarExtra> = {
+  'direito-empresarial': {
+    problem:
+      'A maior parte dos problemas jurídicos de uma empresa nasce de decisões tomadas antes de existir conflito: um contrato assinado sem revisão, uma cláusula de rescisão genérica, uma relação societária sem regra de saída, uma operação fechada sem avaliação de risco. Quando a disputa aparece, a discussão passa a ser sobre o que os documentos já dizem. A assessoria empresarial atua nos dois tempos — na redação e na negociação, enquanto há margem, e na condução técnica da disputa, quando ela se torna inevitável.',
+    risks: [
+      'Contratos padronizados sem revisão, que repetem a mesma falha em toda a carteira.',
+      'Cláusulas de rescisão, garantia ou foro que só são lidas depois do conflito instalado.',
+      'Relação societária sem regra de saída, apuração de haveres ou solução de impasse.',
+      'Decisões de administradores tomadas sem avaliação prévia de responsabilidade pessoal.',
+    ],
+  },
+  'trabalhista-empresarial': {
+    problem:
+      'O passivo trabalhista raramente aparece de uma vez: ele se acumula em práticas de jornada, enquadramento, pagamento de verbas e documentação de rotina que seguem iguais por anos. A primeira reclamação costuma ser apenas a parte visível. Atuar do lado do empregador significa medir esse passivo antes que ele se converta em ações, corrigir o que ainda dá para corrigir e conduzir tecnicamente as defesas das ações já ajuizadas.',
+    risks: [
+      'Prazo de contestação em curso desde a notificação, mais curto do que a empresa costuma supor.',
+      'Documentação de jornada, admissão e desligamento incompleta na hora de produzir prova.',
+      'Prática irregular repetida em toda a operação, multiplicando o risco por número de empregados.',
+      'Acordos firmados sem quitação adequada, que não encerram a discussão.',
+    ],
+  },
   'recuperacao-de-credito': {
     problem:
       'Inadimplência não resolvida corrói o caixa e, com o tempo, reduz a chance de recuperar o valor. Quanto mais uma dívida envelhece, maior o risco de o devedor se desfazer de bens ou de o crédito prescrever. A recuperação de crédito reúne as medidas — extrajudiciais e judiciais — para transformar um valor em aberto em recebimento efetivo, escolhendo a via adequada a cada documento e a cada devedor.',
@@ -42,7 +62,7 @@ export const pillarExtra: Record<string, PillarExtra> = {
   },
   'direito-aduaneiro-tributario': {
     problem:
-      'Na importação, uma retenção de mercadoria ou uma autuação paralisa a operação e gera custos que crescem a cada dia. Divergências de classificação fiscal, valoração ou documentação podem levar a multas e até à pena de perdimento. A atuação aduaneira-tributária busca responder às exigências no prazo, discutir a autuação e revisar a tributação incidente.',
+      'Na importação, uma retenção de mercadoria ou uma autuação paralisa a operação e gera custos que crescem a cada dia. Divergências de classificação fiscal, valoração ou documentação podem levar a multas e até à pena de perdimento. A atuação aduaneira-tributária busca responder às exigências no prazo, discutir a autuação e revisar a tributação incidente. No perdimento, o prazo de impugnação é de 20 dias (Lei 14.651/2023).',
     risks: [
       'Custos crescentes de armazenagem e demurrage enquanto a carga fica retida.',
       'Pena de perdimento, com perda da mercadoria, em casos não enfrentados a tempo.',

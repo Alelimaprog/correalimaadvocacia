@@ -1,7 +1,7 @@
 ---
 /**
  * / — Home (Sprint 1: novo posicionamento estratégico).
- * Head (SEO) e JSON-LD construídos para o novo posicionamento em seis núcleos:
+ * Head (SEO) e JSON-LD construídos para o novo posicionamento empresarial:
  * title/description exclusivos, canonical na raiz, Open Graph/Twitter e
  * JSON-LD (WebSite + LegalService + FAQPage coerente com a FAQ exibida).
  * Um único h1 (no HomeHero).
@@ -17,9 +17,9 @@ import { homeFaq } from '@/lib/home-faq';
 import type { PageHead } from '@/lib/institucional';
 
 const canonical = `${site.url}/`;
-const title = 'Advocacia Patrimonial, Empresarial e Regulatória | Corrêa Lima Advocacia';
+const title = 'Advogado em São Paulo: Aduaneiro, Inventário e Homologação | Corrêa Lima';
 const description =
-  'Recuperação de crédito, cobrança condominial, direito ambiental, aduaneiro-tributário, internacional e inventário. Atuação técnica e estratégica, nacional e online.';
+  'Advogado em São Paulo: mercadoria retida e pena de perdimento, inventário (inclusive com herdeiro no exterior) e homologação de sentença e divórcio estrangeiro.';
 const ogImage = `${site.url}${site.ogImage}`;
 
 const head: PageHead = {
@@ -56,7 +56,7 @@ const jsonld = [
     name: site.name,
     url: canonical,
     image: ogImage,
-    logo: `${canonical}brand/logo-light-bg.svg`,
+    logo: `${canonical}brand/logo-wordmark.svg`,
     email: site.contact.email,
     telephone: site.contact.whatsapp.display,
     areaServed: 'BR',
@@ -69,16 +69,18 @@ const jsonld = [
       addressCountry: 'BR',
     },
     knowsAbout: nucleos.map((n) => n.label),
-    founder: { '@id': `${canonical}#alexandre-correa-lima` },
-    employee: { '@id': `${canonical}#alexandre-correa-lima` },
+    founder: { '@id': `${site.url}/o-escritorio/#alexandre-correa-lima` },
+    employee: { '@id': `${site.url}/o-escritorio/#alexandre-correa-lima` },
   },
   {
     // Entidade do advogado responsável, com @id estável reutilizável em todo o
     // site. Sem credenciais não confirmadas (award/alumniOf/memberOf).
     '@context': 'https://schema.org',
     '@type': 'Attorney',
-    '@id': `${canonical}#alexandre-correa-lima`,
+    '@id': `${site.url}/o-escritorio/#alexandre-correa-lima`,
     name: site.attorney.name,
+    image: `${site.url}/brand/alexandre-correa-lima.jpg`,
+    identifier: site.attorney.oab,
     jobTitle: 'Advogado de Negócios Internacionais',
     url: `${canonical}o-escritorio/`,
     worksFor: { '@id': `${canonical}#organization` },
@@ -97,7 +99,7 @@ const jsonld = [
 ];
 ---
 
-<BaseLayout head={head}>
+<BaseLayout head={head} footerCta={false}>
   <Fragment slot="jsonld">
     {jsonld.map((schema) => <JsonLd schema={schema} />)}
   </Fragment>

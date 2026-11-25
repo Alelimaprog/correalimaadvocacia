@@ -1,0 +1,180 @@
+---
+/**
+ * AreaRascunho — esqueleto de uma página de área que o projeto AINDA NÃO pode
+ * publicar, porque o acervo não comprova a atuação.
+ *
+ * Por que isto existe
+ *   O briefing pede destaque para duas matérias — Direito Marítimo e Portuário
+ *   e Imigração para os Estados Unidos — que não têm UMA linha de conteúdo em
+ *   src/content/, nem menção em nucleos.ts, nem no texto institucional. Escrever
+ *   "o escritório atua em direito marítimo" seria inventar competência, o que o
+ *   próprio briefing veta, e no caso da imigração americana implicaria afirmar
+ *   habilitação para exercer advocacia nos EUA — matéria de responsabilidade
+ *   disciplinar, não de redação de site.
+ *
+ *   Então a estrutura fica pronta e o conteúdo fica marcado. Cada lacuna aparece
+ *   como [A CONFIRMAR], na tela e no código, para que seja impossível publicar
+ *   sem perceber.
+ *
+ * Como esta página se comporta até ser liberada
+ *   - robots: noindex, nofollow;
+ *   - fora do sitemap (EXCLUDE em astro.config.mjs);
+ *   - fora do menu, do rodapé e da grade de áreas — nenhum link do site aponta
+ *     para cá, então nenhum visitante chega por navegação;
+ *   - faixa de aviso no topo, visível, dizendo que é rascunho.
+ *
+ * Como liberar (quando o escritório confirmar a atuação)
+ *   1. preencher as lacunas [A CONFIRMAR] com informação verificada;
+ *   2. remover a faixa de aviso e o `rascunho` do head;
+ *   3. mover o conteúdo para um objeto em src/lib/nucleos.ts e trocar esta
+ *      página por `<PillarPage slug="..." />`, como as demais;
+ *   4. tirar a rota do EXCLUDE do sitemap.
+ */
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Icon from '@/components/Icon.astro';
+import { site } from '@/lib/site.config';
+import type { PageHead } from '@/lib/institucional';
+
+export interface Lacuna {
+  pergunta: string;
+  porque: string;
+}
+
+interface Props {
+  eyebrow: string;
+  h1: string;
+  resumo: string;
+  /** Pontos que o escritório precisa confirmar antes de esta página existir. */
+  lacunas: Lacuna[];
+  /** Base factual que JÁ existe no projeto e é adjacente a esta matéria. */
+  adjacente: { texto: string; links: { label: string; href: string }[] };
+  /** Aviso específico desta matéria, quando houver (ex.: advocacia estrangeira). */
+  alerta?: string;
+}
+
+const { eyebrow, h1, resumo, lacunas, adjacente, alerta } = Astro.props;
+
+const head: PageHead = {
+  title: `${h1} — rascunho interno`,
+  description: 'Página em preparação. Não indexada e não divulgada.',
+  canonical: `${site.url}${Astro.url.pathname}`,
+  robots: 'noindex, nofollow',
+};
+---
+
+<BaseLayout head={head}>
+  <main id="conteudo-principal" class="rasc">
+    <div class="wrap">
+      <p class="rasc-flag">
+        <Icon name="shield" size={16} />
+        <span>
+          <strong>Rascunho interno — não publicado.</strong> Esta página não está indexada, não
+          aparece no sitemap e nenhum link do site aponta para ela. O conteúdo só pode ser escrito
+          depois que o escritório confirmar os pontos listados abaixo.
+        </span>
+      </p>
+
+      <p class="eyebrow"><span class="dot"></span>{eyebrow}</p>
+      <h1>{h1}</h1>
+      <p class="rasc-lead">{resumo}</p>
+
+      {alerta && <p class="rasc-alerta">{alerta}</p>}
+
+      <section class="rasc-sec">
+        <h2>O que precisa ser confirmado</h2>
+        <ol class="rasc-lacunas">
+          {lacunas.map((l) => (
+            <li>
+              <strong>{l.pergunta}</strong>
+              <span>{l.porque}</span>
+            </li>
+          ))}
+        </ol>
+      </section>
+
+      <section class="rasc-sec">
+        <h2>Base que já existe no projeto</h2>
+        <p class="rasc-p">{adjacente.texto}</p>
+        <ul class="rasc-links">
+          {adjacente.links.map((l) => (
+            <li><a href={l.href}>{l.label}</a></li>
+          ))}
+        </ul>
+      </section>
+
+      <section class="rasc-sec">
+        <h2>Esqueleto da página, pronto para receber o conteúdo</h2>
+        <ol class="rasc-esqueleto">
+          <li>Hero: sobrancelha, H1, parágrafo de abertura, dois botões e o card de resumo.</li>
+          <li>Entenda o problema: um parágrafo sobre a situação típica do cliente.</li>
+          <li>Situações em que atuamos: quatro a seis itens concretos.</li>
+          <li>O que a atuação abrange: lista de serviços.</li>
+          <li>Riscos de não agir: quatro itens, sem alarmismo e sem promessa.</li>
+          <li>A quem se destina: perfis de cliente.</li>
+          <li>Do contato à condução: as quatro etapas padrão do site.</li>
+          <li>Perguntas frequentes: três perguntas com resposta informativa.</li>
+          <li>Conteúdos e áreas relacionadas.</li>
+          <li>CTA final.</li>
+        </ol>
+        <p class="rasc-p">
+          É exatamente a estrutura de <code>PillarPage.astro</code>. Preenchido o objeto em{' '}
+          <code>src/lib/nucleos.ts</code>, a página passa a existir com uma linha de código.
+        </p>
+      </section>
+    </div>
+  </main>
+</BaseLayout>
+
+<style>
+  .rasc { padding-block: var(--section-y-sm) var(--section-y-lg); }
+  .rasc-flag {
+    display: flex; gap: var(--space-3); align-items: flex-start;
+    margin-bottom: var(--space-8);
+    padding: var(--space-4) var(--space-5);
+    border: 1px solid var(--border-strong);
+    border-left: 3px solid var(--color-accent);
+    background: var(--surface-cream);
+    color: var(--color-text);
+    font-size: var(--text-sm);
+    line-height: var(--leading-normal);
+  }
+  .rasc-flag :global(svg) { flex: none; margin-top: 0.15rem; color: var(--color-accent); }
+  .rasc-flag strong { color: var(--color-ink); }
+
+  .rasc h1 {
+    font-family: var(--font-display);
+    font-size: var(--text-4xl);
+    color: var(--color-ink);
+    margin-top: var(--space-3);
+    max-width: 20ch;
+  }
+  .rasc-lead { margin-top: var(--space-4); max-width: var(--measure); color: var(--color-text); font-size: var(--text-md); line-height: var(--leading-relaxed); }
+  .rasc-alerta {
+    margin-top: var(--space-5); max-width: var(--measure);
+    padding: var(--space-4) var(--space-5);
+    border: 1px solid var(--color-border);
+    border-left: 3px solid var(--color-warn);
+    color: var(--color-text); font-size: var(--text-sm); line-height: var(--leading-normal);
+  }
+
+  .rasc-sec { margin-top: var(--space-12); }
+  .rasc-sec h2 {
+    font-family: var(--font-display);
+    font-size: var(--text-2xl);
+    color: var(--color-ink);
+    padding-bottom: var(--space-3);
+    border-bottom: 1px solid var(--color-border);
+  }
+  .rasc-p { margin-top: var(--space-4); max-width: var(--measure); color: var(--color-text); line-height: var(--leading-relaxed); }
+
+  .rasc-lacunas, .rasc-esqueleto { margin: var(--space-5) 0 0; padding-left: 1.3rem; display: flex; flex-direction: column; gap: var(--space-4); max-width: var(--measure); }
+  .rasc-lacunas li::marker, .rasc-esqueleto li::marker { color: var(--color-accent); font-variant-numeric: tabular-nums; }
+  .rasc-lacunas strong { display: block; color: var(--color-ink); }
+  .rasc-lacunas span { display: block; margin-top: 0.25rem; color: var(--color-text-muted); font-size: var(--text-sm); line-height: var(--leading-normal); }
+  .rasc-esqueleto li { color: var(--color-text); line-height: var(--leading-normal); }
+
+  .rasc-links { margin: var(--space-4) 0 0; padding-left: 1.3rem; display: flex; flex-direction: column; gap: var(--space-2); }
+  .rasc-links a { color: var(--color-navy); }
+
+  .rasc code { font-size: 0.92em; background: var(--surface-cream); border: 1px solid var(--color-border); padding: 0.1rem 0.35rem; }
+</style>

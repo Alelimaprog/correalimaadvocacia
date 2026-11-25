@@ -113,19 +113,29 @@ video {
 .u-measure { max-width: var(--measure); }
 .u-measure-narrow { max-width: var(--measure-narrow); }
 
-/* Textura sutil de pontos — usada em heros e faixas de destaque */
+/* Textura de pontos — utilitário sem uso atual no site. A versão anterior era
+   verde (rgba(0,168,90)), cor que saiu da paleta; aqui fica em tom mineral
+   neutro para não reintroduzir o verde se alguém reutilizar a classe. */
 .bg-dot-grid {
-  background-image: radial-gradient(rgba(0, 168, 90, 0.22) 1px, transparent 1px);
+  background-image: radial-gradient(rgba(16, 35, 59, 0.12) 1px, transparent 1px);
   background-size: 22px 22px;
 }
 
-/* Revelação sutil ao rolar (ativada via data-reveal + script global em BaseLayout) */
-[data-reveal] {
+/* Revelação sutil ao rolar (data-reveal + script global em BaseLayout).
+ *
+ * O estado escondido é condicionado a `.js` no <html>, marcado por um script
+ * inline no <head>. Sem isso, `opacity: 0` valia SEMPRE: se o JavaScript
+ * falhasse, fosse bloqueado ou o IntersectionObserver não disparasse, o
+ * conteúdo ficava invisível para sempre — e num site institucional estático o
+ * texto não pode depender de script para existir na tela.
+ *
+ * Com a condição, a animação vira enfeite: sem JS, tudo aparece normalmente. */
+.js [data-reveal] {
   opacity: 0;
   transform: translateY(18px);
   transition: opacity 700ms var(--ease-out), transform 700ms var(--ease-out);
 }
-[data-reveal].is-visible {
+.js [data-reveal].is-visible {
   opacity: 1;
   transform: translateY(0);
 }
@@ -140,7 +150,7 @@ video {
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
-  [data-reveal] {
+  .js [data-reveal] {
     opacity: 1;
     transform: none;
   }

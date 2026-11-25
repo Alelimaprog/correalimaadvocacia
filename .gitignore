@@ -35,3 +35,7 @@ Thumbs.db
 .idea/
 *.swp
 .indexnow-cache.json
+
+# Pacotes de deploy (nunca versionar)
+*.zip
+*.tgz
