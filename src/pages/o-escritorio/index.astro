@@ -51,6 +51,7 @@ const jsonldEnhanced = page.jsonld.map((s: Record<string, unknown>) => {
         recognizedBy: { '@type': 'Organization', name: 'Ordem dos Advogados do Brasil, Seção de São Paulo' },
       },
       worksFor: { '@id': `${site.url}/#organization` },
+      sameAs: ['https://www.linkedin.com/in/alexandre-corr%C3%AAa-lima-3611623a3/'],
       // Formação acadêmica confirmada pelo escritório (Sprint 6).
       alumniOf: [
         { '@type': 'CollegeOrUniversity', name: 'Universidade Católica de Santos' },

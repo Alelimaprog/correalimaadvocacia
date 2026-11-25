@@ -90,7 +90,11 @@ const jsonld = [
         closes: '18:00',
       },
     ],
-    sameAs: ['https://www.instagram.com/correalima.adv/', 'https://www.facebook.com/profile.php?id=61588715113459'],
+    sameAs: [
+      'https://www.instagram.com/correalima.adv/',
+      'https://www.facebook.com/profile.php?id=61588715113459',
+      'https://www.linkedin.com/company/correalimaadvocacia/',
+    ],
     hasMap: 'https://www.google.com/maps/search/?api=1&query=R.+Verbo+Divino,+2001,+S%C3%A3o+Paulo+-+SP,+04719-002',
     founder: { '@id': `${site.url}/o-escritorio/#alexandre-correa-lima` },
     employee: { '@id': `${site.url}/o-escritorio/#alexandre-correa-lima` },
@@ -115,6 +119,7 @@ const jsonld = [
     worksFor: { '@id': `${canonical}#organization` },
     knowsAbout: nucleos.map((n) => n.label),
     areaServed: 'BR',
+    sameAs: ['https://www.linkedin.com/in/alexandre-corr%C3%AAa-lima-3611623a3/'],
   },
   {
     '@context': 'https://schema.org',
