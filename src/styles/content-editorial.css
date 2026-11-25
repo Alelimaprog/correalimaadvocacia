@@ -18,6 +18,8 @@
 .prose h2.faq-h { margin-top: var(--space-9); }
 /* O primeiro h2 não precisa de linha superior */
 .prose > h2:first-of-type { border-top: 0; padding-top: var(--space-3); }
+.prose h2::before { top: -2px; height: 3px; }
+.prose h3 { line-height: var(--leading-snug); }
 
 /* Eyebrow (categoria antes do H1) */
 .prose > p.eyebrow {
@@ -83,17 +85,19 @@
 .prose ol.proc-steps > li {
   counter-increment: step;
   position: relative;
-  display: flex;
-  gap: var(--space-4);
-  align-items: flex-start;
-  padding: var(--space-4) var(--space-5);
+  display: block;
+  min-width: 0;
+  overflow-wrap: anywhere;
+  padding: var(--space-4) var(--space-5) var(--space-4) calc(var(--space-5) + 2.75rem);
   background: var(--surface);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-sm);
 }
 .prose ol.proc-steps > li::before {
   content: counter(step);
-  flex: none;
+  position: absolute;
+  left: var(--space-5);
+  top: var(--space-4);
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -113,45 +117,51 @@
 .prose .faq {
   display: flex;
   flex-direction: column;
-  gap: var(--space-3);
+  gap: 0;
   margin: var(--space-5) 0 var(--space-6);
+  border-top: 1px solid var(--border-strong);
 }
 .prose .faq-item {
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-sm);
-  background: var(--surface);
-  overflow: hidden;
+  border: 0;
+  border-bottom: 1px solid var(--color-border);
+  border-radius: 0;
+  background: transparent;
 }
-.prose .faq-item[open] { border-color: var(--border-accent); }
 .prose .faq-q {
   list-style: none;
   cursor: pointer;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: space-between;
-  gap: var(--space-4);
-  padding: var(--space-4) var(--space-5);
-  font-family: var(--font-display);
+  gap: var(--space-5);
+  padding: 1.05rem 0;
+  min-height: 3.5rem;
+  font-family: var(--font-ui);
   font-weight: var(--weight-semibold);
   font-size: var(--text-base);
+  line-height: 1.4;
   color: var(--color-ink);
+  transition: color var(--dur) var(--ease);
 }
 .prose .faq-q::-webkit-details-marker { display: none; }
-.prose .faq-q:hover { color: var(--color-accent); }
-.prose .faq-q:focus-visible { outline: none; box-shadow: var(--ring); border-radius: var(--radius-sm); }
-.prose .faq-ic { position: relative; flex: none; width: 1rem; height: 1rem; }
+.prose .faq-q:hover { color: var(--color-green-hover); }
+.prose .faq-item[open] .faq-q { color: var(--color-navy); }
+.prose .faq-q:focus-visible { outline: 2px solid var(--ring-color); outline-offset: 2px; border-radius: 2px; }
+.prose .faq-ic { position: relative; flex: none; width: 1rem; height: 1.4em; }
 .prose .faq-ic::before,
 .prose .faq-ic::after {
   content: '';
   position: absolute;
   background: var(--color-accent);
+  border-radius: 1px;
   transition: transform var(--dur) var(--ease), opacity var(--dur) var(--ease);
 }
-.prose .faq-ic::before { top: 50%; left: 0; width: 100%; height: 2px; transform: translateY(-50%); }
-.prose .faq-ic::after { left: 50%; top: 0; width: 2px; height: 100%; transform: translateX(-50%); }
-.prose .faq-item[open] .faq-ic::after { transform: translateX(-50%) scaleY(0); opacity: 0; }
+.prose .faq-ic::before { top: 50%; left: 50%; width: 12px; height: 1.5px; transform: translate(-50%, -50%); }
+.prose .faq-ic::after { top: 50%; left: 50%; width: 1.5px; height: 12px; transform: translate(-50%, -50%); }
+.prose .faq-item[open] .faq-ic::after { transform: translate(-50%, -50%) rotate(90deg); opacity: 0; }
 .prose .faq-a {
-  padding: 0 var(--space-5) var(--space-4);
+  margin-top: -0.25rem;
+  padding: 0 2.5rem 1.25rem 0;
   color: var(--color-text);
   font-size: var(--text-base);
   line-height: var(--leading-relaxed);
@@ -193,9 +203,48 @@
   -webkit-overflow-scrolling: touch;
   border: 1px solid var(--color-border);
   border-radius: var(--radius-sm);
+  /* Sombra nas bordas indica que a tabela rola para o lado no celular. */
+  background:
+    linear-gradient(to right, var(--surface) 30%, rgba(255,255,255,0)) left / 2rem 100% no-repeat local,
+    linear-gradient(to left, var(--surface) 30%, rgba(255,255,255,0)) right / 2rem 100% no-repeat local,
+    radial-gradient(farthest-side at 0 50%, rgba(16,35,59,0.14), transparent) left / 0.6rem 100% no-repeat scroll,
+    radial-gradient(farthest-side at 100% 50%, rgba(16,35,59,0.14), transparent) right / 0.6rem 100% no-repeat scroll,
+    var(--surface);
 }
-.prose .table-wrap > table { margin: 0; min-width: 34rem; }
-.prose .table-wrap th { position: sticky; top: 0; }
+.prose .table-wrap > table { margin: 0; min-width: 34rem; font-size: var(--text-sm); line-height: var(--leading-normal); }
+.prose .table-wrap th, .prose .table-wrap td { padding: 0.85rem 1rem; vertical-align: top; border-bottom: 1px solid var(--border-subtle); }
+.prose .table-wrap thead th {
+  position: sticky; top: 0;
+  background: var(--surface-cream);
+  border-bottom: 1px solid var(--border-strong);
+  font-size: var(--text-xs);
+  letter-spacing: 0.02em;
+  color: var(--color-ink);
+}
+.prose .table-wrap tbody td:first-child { color: var(--color-ink); font-weight: var(--weight-semibold); }
+.prose .table-wrap tbody tr:last-child > * { border-bottom: 0; }
+/* Celular: tabela vira lista de cartões (script marca .is-stacked e data-label). */
+@media (max-width: 639.98px) {
+  .prose .table-wrap.is-stacked { overflow: visible; background: var(--surface); }
+  .prose .table-wrap.is-stacked > table { min-width: 0; }
+  .is-stacked .tbl-stack thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+  .is-stacked .tbl-stack, .is-stacked .tbl-stack tbody, .is-stacked .tbl-stack tr, .is-stacked .tbl-stack th, .is-stacked .tbl-stack td { display: block; width: 100%; }
+  .is-stacked .tbl-stack tbody tr { padding: 0.9rem 1rem 0.75rem; border-bottom: 1px solid var(--color-border); }
+  .is-stacked .tbl-stack tbody tr:last-child { border-bottom: 0; }
+  .is-stacked .tbl-stack tbody tr > * { border: 0 !important; padding: 0; }
+  .is-stacked .tbl-stack tbody tr > :first-child {
+    font-family: var(--font-display); font-size: var(--text-base); font-weight: var(--weight-semibold);
+    line-height: var(--leading-snug); color: var(--color-ink); margin-bottom: 0.4rem;
+  }
+  .is-stacked .tbl-stack tbody tr > :not(:first-child) {
+    display: grid; grid-template-columns: minmax(6.5rem, 38%) minmax(0, 1fr); gap: 0.75rem;
+    padding-block: 0.3rem; color: var(--color-text);
+  }
+  .is-stacked .tbl-stack tbody tr > :not(:first-child)::before {
+    content: attr(data-label); color: var(--color-text-muted); font-size: var(--text-xs);
+    font-weight: var(--weight-semibold); line-height: 1.6;
+  }
+}
 
 /* ---------- Boilerplate de CTA duplicado (consolidado no ContactCTA) ---------- */
 .prose .legacy-cta[hidden] { display: none !important; }
@@ -236,3 +285,65 @@
 @media (prefers-reduced-motion: reduce) {
   .prose .rel-card, .prose p.cta-inline a, .prose .faq-ic::before, .prose .faq-ic::after { transition: none; }
 }
+
+/* ---------- CTA logo após o lead (artigos) ---------- */
+.prose .early-cta {
+  margin: var(--space-6) 0;
+  padding: var(--space-4) var(--space-5);
+  border: 1px solid var(--color-border);
+  border-left: 2px solid var(--color-accent);
+  background: var(--surface-warm, var(--surface));
+  border-radius: var(--radius-sm);
+}
+.prose .early-cta-t { margin: 0; font-weight: var(--weight-semibold); color: var(--color-ink); }
+.prose .early-cta-d { margin: 0.25rem 0 0; font-size: var(--text-sm); color: var(--color-text-muted); }
+.prose .early-cta-a { margin: var(--space-3) 0 0; display: flex; flex-wrap: wrap; gap: var(--space-2); }
+.prose .early-cta-a .btn { text-decoration: none; }
+@media (max-width: 519.98px) {
+  .prose .early-cta { padding: var(--space-4); }
+  .prose .early-cta-a { flex-direction: column; }
+  .prose .early-cta-a .btn { width: 100%; }
+  .prose p.cta-inline { flex-direction: column; }
+  .prose p.cta-inline a { width: 100%; }
+}
+
+/* ---------- Linha de data e autor do artigo ---------- */
+.prose p.entry-meta {
+  margin: var(--space-3) 0 var(--space-6);
+  padding-bottom: var(--space-4);
+  border-bottom: 1px solid var(--border-subtle);
+  font-family: var(--font-ui);
+  font-size: var(--text-sm);
+  line-height: var(--leading-normal);
+  color: var(--color-text-muted);
+  max-width: none;
+}
+.prose p.entry-meta a:not(.btn) { color: var(--color-ink); font-weight: var(--weight-medium); white-space: nowrap; }
+@media (max-width: 639.98px) { .prose p.lead { font-size: var(--text-md); } }
+
+/* ---------- Tabela de componentes (fora da prosa) ---------- */
+.x-table-wrap {
+  margin-top: var(--space-5);
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  background: var(--surface);
+}
+.x-table-wrap:focus-visible { outline: 2px solid var(--ring-color); outline-offset: 2px; }
+.x-table { width: 100%; min-width: 34rem; border-collapse: collapse; font-size: var(--text-sm); line-height: var(--leading-normal); }
+.x-table th, .x-table td { text-align: left; vertical-align: top; padding: 0.85rem 1rem; border-bottom: 1px solid var(--border-subtle); color: var(--color-text); }
+.x-table thead th {
+  background: var(--surface-cream); color: var(--color-ink); font-weight: var(--weight-semibold);
+  font-size: var(--text-xs); letter-spacing: 0.02em; border-bottom: 1px solid var(--border-strong);
+}
+.x-table tbody th { color: var(--color-ink); font-weight: var(--weight-semibold); }
+.x-table tbody tr:last-child > * { border-bottom: 0; }
+@media (max-width: 639.98px) {
+  .x-table-wrap.is-stacked { overflow: visible; }
+  .x-table.tbl-stack { min-width: 0; }
+}
+
+/* Relacionados dentro da prosa: sem sublinhado e sem recuo de lista. */
+.prose .rhub a:not(.btn) { text-decoration: none; }
+.prose .rhub ul { padding-left: 0; }

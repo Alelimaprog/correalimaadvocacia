@@ -77,7 +77,7 @@ Responsável técnico: [Alexandre Corrêa Lima](/o-escritorio/#alexandre-correa-
 
 - [Contencioso Empresarial Estratégico](/areas-de-atuacao/contencioso-empresarial-estrategico/)
 - [Recuperação Judicial e Falência](/areas-de-atuacao/recuperacao-judicial-e-falencia/)
-- [Advocacia Empresarial](/areas-de-atuacao/advocacia-empresarial/)
+- [Advocacia Empresarial](/areas-de-atuacao/direito-empresarial/)
 
 Guia completo do tema
 

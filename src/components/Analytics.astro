@@ -74,8 +74,14 @@ const { ga4Id, clarityId } = site.analytics;
           gtag('consent', 'update', { analytics_storage: 'denied' });
         }
 
-        // GA4 sobe já (cookieless); o consentimento apenas atualiza o estado.
-        loadGA();
+        // GA4 (cookieless até o consentimento) carrega depois da página pronta ou na
+        // primeira interação — não disputa banda com o conteúdo (Rodada 3, desempenho).
+        // A fila do gtag (dataLayer) guarda os eventos anteriores, então nada se perde.
+        (function(){
+          function idle(){ (window.requestIdleCallback || function(f){ setTimeout(f, 1500); })(loadGA, { timeout: 3000 }); }
+          if (document.readyState === 'complete') idle(); else window.addEventListener('load', idle, { once: true });
+          ['pointerdown', 'keydown', 'scroll', 'touchstart'].forEach(function(t){ window.addEventListener(t, loadGA, { once: true, passive: true }); });
+        })();
         // Se já houver escolha salva, o ConsentBanner reemite este evento a cada
         // carregamento — então a atualização de consentimento vale em todas as páginas.
         window.addEventListener('cl:consent', function(e){
@@ -148,19 +154,16 @@ const { ga4Id, clarityId } = site.analytics;
                 setTimeout(function(){ window.location.href = '/contato/obrigado/'; }, 700);
               }
             }
-            function scan(node){
-              if (done || !node) return;
-              var txt = node.textContent || '';
-              if (txt.indexOf('Mensagem enviada') > -1) fireSuccess('contato');
-              else if (txt.indexOf('Mensagem recebida') > -1) fireSuccess('home');
+            // Rodada 3 (correção): antes, qualquer mutação no <body> lia o texto OCULTO
+            // de sucesso do formulário e disparava lead falso + redirecionamento.
+            // Agora só conta quando o bloco de sucesso está realmente visível.
+            function scan(){
+              if (done) return;
+              if (document.querySelector('[data-success]:not([hidden])')) fireSuccess('contato');
+              else if (document.querySelector('[data-home-contact-success]:not([hidden])')) fireSuccess('home');
             }
-            var obs = new MutationObserver(function(muts){
-              muts.forEach(function(m){
-                for (var i=0;i<m.addedNodes.length;i++) scan(m.addedNodes[i]);
-                if (m.target) scan(m.target);
-              });
-            });
-            if (document.body) obs.observe(document.body, { childList: true, subtree: true, characterData: true });
+            var obs = new MutationObserver(function(){ scan(); });
+            if (document.body) obs.observe(document.body, { childList: true, subtree: true, attributes: true, attributeFilter: ['hidden'] });
           });
         })();
 
@@ -181,12 +184,10 @@ const { ga4Id, clarityId } = site.analytics;
             function ready(fn){ if(document.readyState!=='loading'){fn();} else {document.addEventListener('DOMContentLoaded',fn);} }
             ready(function(){
               if (!document.body) return;
-              new MutationObserver(function(muts){
-                muts.forEach(function(m){
-                  for (var i=0;i<m.addedNodes.length;i++) scanErr(m.addedNodes[i]);
-                  if (m.target) scanErr(m.target);
-                });
-              }).observe(document.body, { childList: true, subtree: true, characterData: true });
+              new MutationObserver(function(){
+                var box = document.querySelector('[data-error]:not([hidden])');
+                if (box) scanErr(box);
+              }).observe(document.body, { childList: true, subtree: true, characterData: true, attributes: true, attributeFilter: ['hidden'] });
             });
           })();
 

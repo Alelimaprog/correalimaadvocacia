@@ -70,7 +70,7 @@ Responsável técnico: [Alexandre Corrêa Lima](/o-escritorio/#alexandre-correa-
 Áreas relacionadas
 
 - [Homologação de Sentença Estrangeira no STJ](/areas-de-atuacao/homologacao-de-sentenca-estrangeira/)
-- [Reconhecimento de Decisões Estrangeiras](/areas-de-atuacao/reconhecimento-de-decisoes-estrangeiras/)
+- [Reconhecimento de Decisões Estrangeiras](/areas-de-atuacao/homologacao-de-sentenca-estrangeira/)
 - [Como executar no Brasil a sentença estrangeira homologada](/blog/como-executar-sentenca-estrangeira-homologada-no-brasil/)
 - [Sentença comercial estrangeira: como cobrar uma dívida no Brasil](/blog/sentenca-comercial-estrangeira-cobrar-divida-no-brasil/)
 

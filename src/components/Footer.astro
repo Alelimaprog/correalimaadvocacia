@@ -29,6 +29,7 @@ const year = new Date().getFullYear();
       <div class="f-brand-id">
         <Logo variant="dark" class="footer-logo" loading="lazy" />
         <p class="oab">{site.attorney.name} — {site.attorney.oab}</p>
+        <p class="f-social"><a href="https://www.instagram.com/correalima.adv/" target="_blank" rel="noopener noreferrer me">Instagram @correalima.adv</a></p>
       </div>
       <div class="f-brand-cta">
         <WhatsAppButton class="footer-wa" />
@@ -64,6 +65,7 @@ const year = new Date().getFullYear();
           <li><a href={whatsappHrefForPath(Astro.url.pathname)} target="_blank" rel="noopener noreferrer">{site.contact.whatsapp.display}</a></li>
           <li><a href={`mailto:${site.contact.email}`}>{site.contact.email}</a></li>
           <li><span>Atendimento nacional e online</span></li>
+          <li><a href="https://correalimaadv.com.br/">Atendimento trabalhista ao trabalhador: correalimaadv.com.br</a></li>
           <li class="f-address"><span>{site.contact.address.street} — {site.contact.address.detail}<br />{site.contact.address.district} · {site.contact.address.city} – {site.contact.address.state} · CEP {site.contact.address.cep}</span></li>
         </ul>
       </div>
@@ -126,6 +128,8 @@ const year = new Date().getFullYear();
   /* O logotipo do rodapé é um pouco maior que o do header. */
   :global(.site-footer .footer-logo) { min-height: 3rem; }
   .f-brand-cta { display: flex; }
+  .f-social { margin-top: var(--space-2); font-size: var(--text-sm); }
+  .f-social a { color: rgba(255,255,255,0.8); }
   @media (min-width: 860px) { .f-brand-cta { justify-content: flex-end; } }
 
   /* Colunas de links — agrupamento tipográfico */

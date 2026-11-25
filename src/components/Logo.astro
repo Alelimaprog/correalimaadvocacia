@@ -32,15 +32,10 @@ interface Props {
 const { variant = 'dark', class: cls } = Astro.props;
 ---
 
-<a
-  class:list={['logo', `logo--${variant}`, cls]}
-  href="/"
-  aria-label={`${site.name} — página inicial`}
->
+<a class:list={['logo', `logo--${variant}`, cls]} href="/">
   <span class="logo-rule" aria-hidden="true"></span>
   <span class="logo-text">
-    <span class="logo-name">Corrêa Lima</span>
-    <span class="logo-kicker">Advocacia</span>
+    <span class="logo-name">Corrêa Lima</span> <span class="logo-kicker">Advocacia</span><span class="sr-only"> — página inicial</span>
   </span>
 </a>
 
@@ -51,7 +46,7 @@ const { variant = 'dark', class: cls } = Astro.props;
     gap: 0.7rem;
     text-decoration: none;
     /* O alvo acompanha a altura da antiga imagem, para não mexer no header. */
-    min-height: 2.25rem;
+    min-height: 2.75rem;
   }
   @media (min-width: 768px) {
     .logo { min-height: 2.75rem; }

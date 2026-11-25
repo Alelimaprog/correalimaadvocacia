@@ -7,11 +7,12 @@
  */
 import { whatsappHrefForPath } from '@/lib/site.config';
 import Icon from '@/components/Icon.astro';
-interface Props { titulo?: string; texto?: string; areaHref?: string; }
+interface Props { titulo?: string; texto?: string; areaHref?: string; areaLabel?: string; }
 const {
   titulo = 'Precisa avaliar a sua situação?',
   texto = 'Apresente o caso e entenda quais podem ser os próximos passos.',
   areaHref,
+  areaLabel = 'Conhecer esta área',
 } = Astro.props;
 const waHref = whatsappHrefForPath(Astro.url.pathname);
 ---
@@ -21,10 +22,10 @@ const waHref = whatsappHrefForPath(Astro.url.pathname);
     <p class="ec-cta-d">{texto}</p>
   </div>
   <div class="ec-cta-actions">
-    <a class="btn btn--primary" href="/contato/" data-cta-position="artigo">Falar sobre o meu caso</a>
+    <a class="btn btn--primary" href="#ccta-title" data-cta-position="artigo">Enviar meu caso</a>
     <a class="btn btn--secondary" href={waHref} target="_blank" rel="noopener noreferrer" data-cta-position="artigo">Falar no WhatsApp</a>
     {areaHref && (
-      <a class="ec-area" href={areaHref}>Conhecer esta área <span class="ec-area-ic"><Icon name="arrow-right" size={15} /></span></a>
+      <a class="ec-area" href={areaHref}>{areaLabel} <span class="ec-area-ic"><Icon name="arrow-right" size={15} /></span></a>
     )}
   </div>
 </aside>

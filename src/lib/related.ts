@@ -9,6 +9,7 @@
 import { getCollection } from 'astro:content';
 import { getNucleo } from './nucleos';
 import { subtopics } from './subtopics';
+import relatedArticles from './_related-articles.json';
 
 export interface RelLink {
   label: string;
@@ -25,6 +26,7 @@ export interface RelatedData {
   articles: RelLink[];
   curated: RelLink[];
   allHref?: string;
+  allLabel?: string;
 }
 
 /** Ferramenta gratuita mais pertinente por cluster (páginas já existentes). */
@@ -46,6 +48,33 @@ const toolByCluster: Record<string, RelLink> = {
 const strip = (h: string) => (h || '').replace(/\/+$/, '');
 
 /**
+ * Página de serviço principal de cada frente (a que deve receber o clique de
+ * quem leu um conteúdo do tema), com o rótulo de busca. Rodada 4 (13/11/2026).
+ * Sem entrada aqui, o link vai para a área do núcleo ("Ver a área de …").
+ */
+export const moneyPage: Record<string, { href: string; label: string }> = {
+  'direito-aduaneiro-tributario': {
+    href: '/areas-de-atuacao/direito-aduaneiro-tributario/',
+    label: 'Advogado aduaneiro: mercadoria retida e perdimento',
+  },
+  'inventario-e-patrimonio': {
+    href: '/areas-de-atuacao/inventario-e-patrimonio/',
+    label: 'Advogado de inventário em São Paulo',
+  },
+  'direito-internacional': {
+    href: '/areas-de-atuacao/homologacao-de-sentenca-estrangeira/',
+    label: 'Advogado para homologação de sentença estrangeira',
+  },
+};
+
+/**
+ * Seleção de artigos do bloco "Artigos sobre …" por página, distribuída para
+ * que todos os artigos de um tema recebam links (Rodada 4, "links
+ * contextuais"). Páginas fora do mapa usam a regra padrão (mais recentes).
+ */
+const ARTICLE_MAP = relatedArticles as Record<string, string[]>;
+
+/**
  * Páginas de serviço "soltas" (coleção areas) que pertencem a um cluster mas
  * não são subtópicos: entram na malha de subáreas para receberem links
  * internos (auditoria 11/2026 — várias tinham 2 a 5 links de entrada).
@@ -61,7 +90,6 @@ const extrasByCluster: Record<string, { label: string; slug: string; desc?: stri
     { label: 'Adoção estrangeira', slug: 'homologacao-de-adocao-internacional' },
     { label: 'Casamento realizado no exterior', slug: 'homologacao-de-casamento-realizado-no-exterior' },
     { label: 'Execução de sentença estrangeira', slug: 'execucao-de-sentenca-estrangeira' },
-    { label: 'Reconhecimento de decisões estrangeiras', slug: 'reconhecimento-de-decisoes-estrangeiras' },
   ],
   'inventario-e-patrimonio': [
     { label: 'Inventário com herdeiro no exterior', slug: 'inventario-com-herdeiro-no-exterior' },
@@ -120,7 +148,14 @@ export async function getRelated(
 
   const tool = toolByCluster[cluster];
 
-  const articles = posts
+  const mapped = ARTICLE_MAP[`${cur}/`];
+  const byHref = new Map(posts.map((p) => [`/blog/${p.id}/`, p]));
+  const articles = mapped
+    ? mapped
+        .map((h) => byHref.get(h))
+        .filter((p): p is NonNullable<typeof p> => !!p)
+        .map((p) => ({ label: p.data.h1 ?? p.data.title, href: `/blog/${p.id}/`, tipo: 'Artigo' }))
+    : posts
     .filter((p) => p.data.cluster === cluster && strip(`/blog/${p.id}/`) !== cur)
     .sort(
       (a, b) =>
@@ -150,6 +185,7 @@ export async function getRelated(
     tool,
     articles,
     curated,
-    allHref: nucleo?.href,
+    allHref: moneyPage[cluster]?.href ?? nucleo?.href,
+    allLabel: moneyPage[cluster]?.label ?? (nucleo ? `Ver a área de ${nucleo.label}` : undefined),
   };
 }

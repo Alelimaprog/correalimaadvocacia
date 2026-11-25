@@ -91,6 +91,8 @@ const contatoHref = areaSlug ? `/contato/?area=${areaSlug}` : '/contato/';
       transform: translateY(110%); transition: transform 0.25s var(--ease);
     }
     .mbar.is-on { transform: none; }
+    /* Com o aviso de cookies aberto, a barra sobe para não ficar por baixo dele. */
+    :global(body:has(#cl-consent:not([hidden]) .cl-card:not([hidden]))) .mbar { bottom: 7.2rem; }
     .mbar a {
       color: #fff; text-align: center; padding: 0.9rem 0.5rem; text-decoration: none;
       font-family: var(--font-ui); font-size: var(--text-sm); font-weight: var(--weight-semibold); line-height: 1;
@@ -106,18 +108,15 @@ const contatoHref = areaSlug ? `/contato/?area=${areaSlug}` : '/contato/';
   import { rememberLanding } from '@/lib/contact-origin';
   // Memoriza a página de entrada da sessão (atribuição sem cookies).
   rememberLanding();
-  // Links de WhatsApp escritos no conteúdo (markdown) ganham a referência da página.
+  // Links de WhatsApp escritos no conteúdo (markdown) passam a usar a mesma
+  // mensagem do botão flutuante, que já traz o assunto e a referência da página.
   (function () {
-    const segs = location.pathname.split('/').filter(Boolean);
-    const ref = segs.length ? segs[segs.length - 1].slice(0, 60) : 'home';
+    const fabHref = document.querySelector('a.fab')?.getAttribute('href');
+    if (!fabHref) return;
     document.querySelectorAll<HTMLAnchorElement>('a[href*="wa.me/"]').forEach((a) => {
       try {
-        const u = new URL(a.href);
-        const t = u.searchParams.get('text') || '';
-        if (t.indexOf('(ref.:') === -1) {
-          u.searchParams.set('text', `${t} (ref.: ${ref})`.trim());
-          a.href = u.toString();
-        }
+        const t = new URL(a.href).searchParams.get('text') || '';
+        if (t.indexOf('(ref.:') === -1) a.setAttribute('href', fabHref);
       } catch { /* noop */ }
     });
   })();

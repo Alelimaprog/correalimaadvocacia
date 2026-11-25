@@ -19,24 +19,42 @@ RewriteRule ^areas-de-atuacao/execucao-cobranca-recuperacao-de-credito/?$ /areas
 RewriteRule ^areas-de-atuacao/inventario-e-partilha/?$ /areas-de-atuacao/inventario-e-patrimonio/ [R=301,L]
 RewriteRule ^areas-de-atuacao/advogado-para-homologacao-de-sentenca-estrangeira/?$ /areas-de-atuacao/homologacao-de-sentenca-estrangeira/ [R=301,L]
 RewriteRule ^blog/heredeiro-exterior-procuracao-documentos-inventario/?$ /blog/herdeiro-exterior-procuracao-documentos-inventario/ [R=301,L]
+RewriteRule ^areas-de-atuacao/advocacia-empresarial/?$ /areas-de-atuacao/direito-empresarial/ [R=301,L]
+RewriteRule ^areas-de-atuacao/reconhecimento-de-decisoes-estrangeiras/?$ /areas-de-atuacao/homologacao-de-sentenca-estrangeira/ [R=301,L]
 
 # 2d) Sitemaps antigos ainda lidos pelo Google e resíduo de spam de 2020.
 RewriteRule ^sitemap-(0|index)\.xml$ /sitemap.xml [R=301,L]
+# Rodada 3: artigos rasos consolidados nas páginas de serviço de mesma intenção
+RewriteRule ^blog/inventario-com-herdeiro-no-exterior-o-que-muda/?$ /areas-de-atuacao/inventario-com-herdeiro-no-exterior/ [R=301,L]
+RewriteRule ^blog/divorcio-exterior-precisa-ser-homologado-no-brasil/?$ /areas-de-atuacao/homologacao-de-divorcio-estrangeiro/ [R=301,L]
 RewriteRule ^sitemapsindex\.xml$ - [G,L]
 RewriteRule ^qcgii\.php$ - [G,L]
 
 # 2c) Auditoria 11/2026 — conteúdos retirados do site: 410 (removido de propósito).
 #     Não redirecionar para páginas de outro público (o Google trata como soft 404).
-RewriteRule ^areas-de-atuacao/direito-do-trabalho(/.*)?$ - [G,L]
-RewriteRule ^advogado-trabalhista/?$ - [G,L]
-RewriteRule ^guias/direito-do-trabalho/?$ - [G,L]
-RewriteRule ^blog/(acidente-de-trabalho-direitos-do-trabalhador|como-calcular-ferias-e-decimo-terceiro|como-funcionam-as-horas-extras|fgts-nao-depositado-o-que-fazer|justa-causa-pode-ser-contestada|o-que-caracteriza-assedio-moral-no-trabalho|quais-documentos-guardar-apos-a-demissao|reconhecimento-de-vinculo-de-emprego|trabalho-sem-carteira-assinada-direitos|verbas-devidas-na-demissao-sem-justa-causa)/?$ - [G,L]
+RewriteRule ^guias/direito-do-trabalho/?$ https://correalimaadv.com.br/ [R=301,L]
+# Artigos trabalhistas antigos: migrados para o site trabalhista (301 preserva o histórico no Google)
+RewriteRule ^blog/acidente-de-trabalho-direitos-do-trabalhador/?$ https://correalimaadv.com.br/acidente-de-trabalho/ [R=301,L]
+RewriteRule ^blog/como-calcular-ferias-e-decimo-terceiro/?$ https://correalimaadv.com.br/blog/ferias-e-decimo-terceiro-na-rescisao/ [R=301,L]
+RewriteRule ^blog/como-funcionam-as-horas-extras/?$ https://correalimaadv.com.br/horas-extras/ [R=301,L]
+RewriteRule ^blog/fgts-nao-depositado-o-que-fazer/?$ https://correalimaadv.com.br/fgts-nao-depositado/ [R=301,L]
+RewriteRule ^blog/justa-causa-pode-ser-contestada/?$ https://correalimaadv.com.br/justa-causa-indevida/ [R=301,L]
+RewriteRule ^blog/o-que-caracteriza-assedio-moral-no-trabalho/?$ https://correalimaadv.com.br/assedio-moral-no-trabalho/ [R=301,L]
+RewriteRule ^blog/quais-documentos-guardar-apos-a-demissao/?$ https://correalimaadv.com.br/blog/documentos-para-guardar-apos-a-demissao/ [R=301,L]
+RewriteRule ^blog/reconhecimento-de-vinculo-de-emprego/?$ https://correalimaadv.com.br/trabalho-sem-carteira-assinada/ [R=301,L]
+RewriteRule ^blog/trabalho-sem-carteira-assinada-direitos/?$ https://correalimaadv.com.br/trabalho-sem-carteira-assinada/ [R=301,L]
+RewriteRule ^blog/verbas-devidas-na-demissao-sem-justa-causa/?$ https://correalimaadv.com.br/verbas-rescisorias-nao-pagas/ [R=301,L]
 RewriteRule ^imigracao-estados-unidos(/.*)?$ - [G,L]
 RewriteRule ^areas-de-atuacao/imigracao-estados-unidos/?$ - [G,L]
 RewriteRule ^areas-de-atuacao/maritimo-e-portuario/?$ - [G,L]
 
 # 3) Cabeçalhos de segurança (ETAPA 20).
 <IfModule mod_headers.c>
+  # Páginas de reclamante (areas-de-atuacao/direito-do-trabalho etc.): fora do menu, do sitemap e do
+  # Google (noindex), mas no ar porque servem de destino de anúncios ativos. Não apagar sem checar os anúncios.
+  <If "%{REQUEST_URI} =~ m#^/(areas-de-atuacao/direito-do-trabalho|advogado-trabalhista|trab/|trabalhista/)#">
+    Header always set X-Robots-Tag "noindex, follow"
+  </If>
   Header always set X-Content-Type-Options "nosniff"
   Header always set X-Frame-Options "SAMEORIGIN"
   Header always set X-XSS-Protection "1; mode=block"
@@ -46,7 +64,7 @@ RewriteRule ^areas-de-atuacao/maritimo-e-portuario/?$ - [G,L]
   Header always set Cross-Origin-Resource-Policy "same-origin"
   Header always set Cross-Origin-Embedder-Policy "unsafe-none"
   Header always set Strict-Transport-Security "max-age=63072000; includeSubDomains; preload"
-  Header always set Content-Security-Policy "default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'self'; form-action 'self' https://formspree.io; img-src 'self' data: https://www.google-analytics.com https://www.googletagmanager.com https://c.clarity.ms https://*.clarity.ms; font-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com https://www.clarity.ms https://*.clarity.ms; connect-src 'self' https://www.google-analytics.com https://*.google-analytics.com https://www.googletagmanager.com https://*.clarity.ms https://formspree.io; upgrade-insecure-requests"
+  Header always set Content-Security-Policy "default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'self'; form-action 'self' https://formspree.io; img-src 'self' data: https://*.google-analytics.com https://*.googletagmanager.com https://*.clarity.ms https://c.bing.com; font-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' https://*.googletagmanager.com https://www.google-analytics.com https://*.clarity.ms; connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com https://stats.g.doubleclick.net https://*.clarity.ms https://c.bing.com https://formspree.io; upgrade-insecure-requests"
 </IfModule>
 
 # 4) Compressão (Core Web Vitals).

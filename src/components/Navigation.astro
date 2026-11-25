@@ -124,8 +124,7 @@ const current = Astro.url.pathname;
   }
   .dd-panel--mega { min-width: 38rem; padding: 0.85rem; }
   .dropdown.is-open .dd-panel,
-  .dropdown:hover .dd-panel,
-  .dropdown:focus-within .dd-panel { display: flex; }
+  .dropdown:hover .dd-panel { display: flex; }
   .dropdown::after { content: ''; position: absolute; top: 100%; left: 0; right: 0; height: 0.85rem; }
 
   .dd-item {
@@ -194,6 +193,10 @@ const current = Astro.url.pathname;
     });
     document.addEventListener('click', (e) => {
       if (!dd.contains(e.target as Node)) close();
+    });
+    // Fecha quando o foco sai do menu (navegação por teclado).
+    dd.addEventListener('focusout', (e) => {
+      if (!dd.contains((e as FocusEvent).relatedTarget as Node)) close();
     });
     dd.addEventListener('keydown', (e) => {
       if ((e as KeyboardEvent).key === 'Escape') {

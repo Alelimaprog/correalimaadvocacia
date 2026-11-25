@@ -20,7 +20,7 @@ import WhatsAppButton from '@/components/WhatsAppButton.astro';
 
   <div class="overlay" data-overlay hidden></div>
 
-  <div class="panel" id="mobile-panel" aria-label="Navegação móvel" hidden>
+  <div class="panel" id="mobile-panel" role="dialog" aria-modal="true" aria-label="Navegação móvel" hidden>
     <button class="panel-close" type="button" aria-label="Fechar menu" data-close>
       <svg aria-hidden="true" width="18" height="18" viewBox="0 0 18 18"><path d="M2 2l14 14M16 2L2 16" stroke="currentColor" stroke-width="2" fill="none"></path></svg>
     </button>
@@ -208,11 +208,32 @@ import WhatsAppButton from '@/components/WhatsAppButton.astro';
 
     burger.addEventListener('click', () => setOpen(panel.hidden));
     overlay.addEventListener('click', () => setOpen(false));
-    panel.querySelector('[data-close]')?.addEventListener('click', () => setOpen(false));
+    panel.querySelector('[data-close]')?.addEventListener('click', () => {
+      setOpen(false);
+      burger.focus();
+    });
     document.addEventListener('keydown', (e) => {
       if ((e as KeyboardEvent).key === 'Escape' && !panel.hidden) {
         setOpen(false);
         burger.focus();
+      }
+      // Painel é um diálogo modal: o Tab circula só dentro dele.
+      if ((e as KeyboardEvent).key === 'Tab' && !panel.hidden) {
+        const focusables = [...panel.querySelectorAll<HTMLElement>('a[href], button, summary, input, select, textarea')].filter((el) => el.offsetParent !== null);
+        if (!focusables.length) return;
+        const first = focusables[0];
+        const last = focusables[focusables.length - 1];
+        const ev = e as KeyboardEvent;
+        if (!panel.contains(document.activeElement)) {
+          ev.preventDefault();
+          first.focus();
+        } else if (ev.shiftKey && document.activeElement === first) {
+          ev.preventDefault();
+          last.focus();
+        } else if (!ev.shiftKey && document.activeElement === last) {
+          ev.preventDefault();
+          first.focus();
+        }
       }
     });
     // Fecha ao seguir qualquer link do menu (inclui submenus <details>).

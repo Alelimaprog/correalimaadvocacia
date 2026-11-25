@@ -28,7 +28,7 @@ const iconFor = (tipo?: string) =>
     </div>
 
     {highlights.length > 0 && (
-      <ul class="rhub-hl-grid">
+      <ul class:list={['rhub-hl-grid', `rhub-hl-grid--n${highlights.length}`]}>
         {highlights.map((h) => (
           <li>
             <a class="rhub-hl" href={h!.href}>
@@ -63,7 +63,6 @@ const iconFor = (tipo?: string) =>
           {data.articles.map((a) => (
             <li>
               <a href={a.href}>
-                <span class="rhub-art-tag">Artigo</span>
                 <span class="rhub-art-t">{a.label}</span>
                 <Icon name="arrow-right" size={15} class="rhub-art-ar" />
               </a>
@@ -87,8 +86,7 @@ const iconFor = (tipo?: string) =>
     <div class="rhub-foot">
       {data.allHref && (
         <a class="rhub-all" href={data.allHref}>
-          Ver a área de {data.clusterLabel}
-          <Icon name="arrow-right" size={15} />
+          {data.allLabel}<Icon name="arrow-right" size={15} />
         </a>
       )}
       <a class="rhub-all rhub-all--ghost" href="/assuntos/">Ver todos os assuntos</a>

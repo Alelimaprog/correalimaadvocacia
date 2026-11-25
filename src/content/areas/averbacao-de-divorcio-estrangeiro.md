@@ -66,7 +66,7 @@ Responsável técnico: [Alexandre Corrêa Lima](/o-escritorio/#alexandre-correa-
 - [Homologação de Divórcio Estrangeiro](/areas-de-atuacao/homologacao-de-divorcio-estrangeiro/)
 - [Homologação de Sentença Estrangeira no STJ](/areas-de-atuacao/homologacao-de-sentenca-estrangeira/)
 - [Homologação de Sentença dos Estados Unidos](/areas-de-atuacao/homologacao-de-sentenca-dos-estados-unidos/)
-- [Divórcio feito no exterior precisa ser homologado no Brasil?](/blog/divorcio-exterior-precisa-ser-homologado-no-brasil/)
+- [Divórcio feito no exterior precisa ser homologado no Brasil?](/areas-de-atuacao/homologacao-de-divorcio-estrangeiro/)
 
 Guia completo do tema
 

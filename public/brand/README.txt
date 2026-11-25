@@ -48,3 +48,8 @@ CASO CHEGUE UMA NOVA REVISÃO NO FUTURO:
      favicon.svg em public/.
   4. Se a proporção largura/altura do novo arquivo for diferente de ~3,71:1,
      atualize width/height em src/components/Logo.tsx de acordo.
+
+ATENÇÃO (08/11/2026): a foto do advogado publicada no servidor (brand/alexandre-correa-lima*.webp/.jpg)
+é a foto de terno azul do site antigo (backup: alexandre-correa-lima-trabalhista.png), escolhida pelo
+Alexandre. Os arquivos desta pasta ainda têm a foto anterior; o deploy exclui brand/alexandre-correa-lima*
+do zip para não sobrescrever a versão do servidor. Ao trocar a foto no código, gere 144/480/760 a partir dela.

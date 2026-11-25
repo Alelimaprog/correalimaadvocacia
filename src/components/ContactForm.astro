@@ -56,7 +56,7 @@ const formspreeEndpoint = site.form.endpoint;
       </label>
     </div>
 
-    <div class="cform-error" data-error hidden role="alert" aria-live="assertive">
+    <div class="cform-error" data-error hidden role="alert" aria-live="assertive" tabindex="-1">
       <span class="cform-error-ic" aria-hidden="true"><Icon name="message" size={16} /></span>
       <span>
         Não foi possível enviar sua mensagem. Tente novamente ou fale conosco pelo{' '}
@@ -186,6 +186,14 @@ const formspreeEndpoint = site.form.endpoint;
     };
     const clearError = () => { if (errorBox) errorBox.hidden = true; };
 
+    // Ao digitar um dos canais, some o alerta de "informe WhatsApp ou e-mail".
+    form.querySelectorAll('#whatsapp, #email').forEach((el) =>
+      el.addEventListener('input', () => {
+        form.querySelector('#cform-canal')?.classList.remove('cform-hint--alert');
+        form.querySelectorAll('#whatsapp, #email').forEach((x) => x.removeAttribute('aria-invalid'));
+      }),
+    );
+
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
       if (sending || done) return; // previne envio duplicado
@@ -194,11 +202,17 @@ const formspreeEndpoint = site.form.endpoint;
       const em = (form.querySelector('#email') as HTMLInputElement | null)?.value.trim();
       if (!wa && !em) {
         const hint = form.querySelector('#cform-canal') as HTMLElement | null;
-        if (hint) hint.classList.add('cform-hint--alert');
+        if (hint) { hint.classList.add('cform-hint--alert'); hint.setAttribute('role', 'alert'); }
+        form.querySelectorAll('#whatsapp, #email').forEach((x) => x.setAttribute('aria-invalid', 'true'));
         (form.querySelector('#whatsapp') as HTMLInputElement | null)?.focus();
         return;
       }
-      if (!form.checkValidity()) { form.reportValidity(); return; }
+      form.querySelectorAll('[aria-invalid]').forEach((x) => x.removeAttribute('aria-invalid'));
+      if (!form.checkValidity()) {
+        form.querySelectorAll<HTMLInputElement>('input, select, textarea').forEach((x) => { if (!x.validity.valid) x.setAttribute('aria-invalid', 'true'); });
+        form.reportValidity();
+        return;
+      }
 
       sending = true;
       submit.disabled = true;
@@ -206,13 +220,18 @@ const formspreeEndpoint = site.form.endpoint;
       if (submitText) submitText.textContent = 'Enviando…';
 
       try {
+        const ctrl = new AbortController();
+        const timer = setTimeout(() => ctrl.abort(), 15000);
         const res = await fetch(form.action, {
           method: 'POST',
           body: new FormData(form),
           headers: { Accept: 'application/json' },
+          signal: ctrl.signal,
         });
+        clearTimeout(timer);
         if (!res.ok) throw new Error('falha');
-        // SUCESSO
+        // SUCESSO — guarda o assunto para a página de confirmação.
+        try { sessionStorage.setItem('cl_last_area', (form.querySelector('select[name="area"]') as HTMLSelectElement | null)?.selectedOptions[0]?.dataset.slug || ''); } catch { /* noop */ }
         done = true;
         form.hidden = true;
         form.reset();
@@ -222,8 +241,15 @@ const formspreeEndpoint = site.form.endpoint;
           success.scrollIntoView({ behavior: 'smooth', block: 'center' });
         }
       } catch {
-        showError();
+        // Falhou: o link de WhatsApp da caixa de erro leva o que a pessoa escreveu.
+        try {
+          const fd = new FormData(form);
+          const assunto = (form.querySelector('select[name="area"]') as HTMLSelectElement | null)?.selectedOptions[0]?.textContent || '';
+          const msg = `Olá! Tentei enviar pelo site e não consegui.\nNome: ${fd.get('name') || ''}\nAssunto: ${assunto}\n${fd.get('message') || ''}`.trim();
+          errorBox?.querySelectorAll<HTMLAnchorElement>('a[href*="wa.me"]').forEach((a) => { a.href = `https://wa.me/5511975025611?text=${encodeURIComponent(msg)}`; });
+        } catch { /* noop */ }
         submit.disabled = false;
+        showError();
         submit.classList.remove('is-loading');
         if (submitText) submitText.textContent = defaultLabel;
       } finally {

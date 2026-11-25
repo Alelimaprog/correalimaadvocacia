@@ -104,7 +104,7 @@
     .cl-title { display: none; }
     .cl-desc { margin-top: 0; font-size: var(--text-xs); }
     .cl-actions { flex-wrap: nowrap; justify-content: stretch; }
-    .cl-actions .cl-btn { flex: 1; min-height: 2.4rem; padding: 0.45rem 0.6rem; white-space: nowrap; }
+    .cl-actions .cl-btn { flex: 1; min-height: 2.75rem; padding: 0.45rem 0.6rem; white-space: nowrap; }
     .cl-link { white-space: nowrap; padding-inline: 0.25rem; }
   }
   @media (min-width: 760px) {
@@ -126,8 +126,9 @@
     function read() { try { return localStorage.getItem(KEY); } catch (e) { return null; } }
     function hideBanner() { root.setAttribute('hidden', ''); }
     function showBanner() { root.removeAttribute('hidden'); }
-    function openPrefs() { if (toggle) toggle.checked = read() === 'granted'; prefs.removeAttribute('hidden'); showBanner(); var f = prefs.querySelector('button, input'); if (f) f.focus(); }
-    function closePrefs() { prefs.setAttribute('hidden', ''); }
+    var lastFocus = null;
+    function openPrefs() { lastFocus = document.activeElement; if (toggle) toggle.checked = read() === 'granted'; prefs.removeAttribute('hidden'); showBanner(); var f = prefs.querySelector('button, input'); if (f) f.focus(); }
+    function closePrefs() { prefs.setAttribute('hidden', ''); if (lastFocus && lastFocus.focus && document.contains(lastFocus)) lastFocus.focus(); lastFocus = null; }
     function decide(a) { store(a ? 'granted' : 'denied'); emit(a); closePrefs(); hideBanner(); }
     root.addEventListener('click', function (e) {
       var b = e.target.closest ? e.target.closest('[data-cl]') : null;
@@ -139,7 +140,9 @@
       else if (act === 'close') { closePrefs(); if (!read()) showBanner(); }
       else if (act === 'save') decide(!!(toggle && toggle.checked));
     });
-    document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && prefs && !prefs.hasAttribute('hidden')) { closePrefs(); if (!read()) showBanner(); } });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Tab' && prefs && !prefs.hasAttribute('hidden')) { var f = Array.prototype.filter.call(prefs.querySelectorAll('a[href], button, input'), function (el) { return el.offsetParent !== null; }); if (f.length) { var a = f[0], z = f[f.length - 1]; if (!prefs.contains(document.activeElement)) { e.preventDefault(); a.focus(); } else if (e.shiftKey && document.activeElement === a) { e.preventDefault(); z.focus(); } else if (!e.shiftKey && document.activeElement === z) { e.preventDefault(); a.focus(); } } }
+      if (e.key === 'Escape' && prefs && !prefs.hasAttribute('hidden')) { closePrefs(); if (!read()) showBanner(); } });
     window.clOpenConsent = openPrefs;
     var saved = read();
     if (saved === 'granted') emit(true);

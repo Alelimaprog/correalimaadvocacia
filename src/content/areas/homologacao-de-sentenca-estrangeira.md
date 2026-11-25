@@ -120,7 +120,7 @@ Responsável técnico: [Alexandre Corrêa Lima](/o-escritorio/#alexandre-correa-
 - [Casamento Realizado no Exterior: registro no Brasil](/areas-de-atuacao/homologacao-de-casamento-realizado-no-exterior/)
 - [Execução de Sentença Estrangeira](/areas-de-atuacao/execucao-de-sentenca-estrangeira/)
 - [Advogado para Homologação de Sentença Estrangeira](/areas-de-atuacao/homologacao-de-sentenca-estrangeira/)
-- [Reconhecimento de Decisões Estrangeiras no Brasil](/areas-de-atuacao/reconhecimento-de-decisoes-estrangeiras/)
+- [Reconhecimento de Decisões Estrangeiras no Brasil](/areas-de-atuacao/homologacao-de-sentenca-estrangeira/)
 - [Inventário com Herdeiro no Exterior](/areas-de-atuacao/inventario-com-herdeiro-no-exterior/)
 
 Guia completo do tema

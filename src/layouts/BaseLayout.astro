@@ -24,7 +24,6 @@ import '@fontsource/source-serif-4/latin-400.css';
 import '@fontsource/source-serif-4/latin-600.css';
 import '@fontsource/source-serif-4/latin-700.css';
 import '@fontsource/inter/latin-400.css';
-import '@fontsource/inter/latin-500.css';
 import '@fontsource/inter/latin-600.css';
 // URLs com hash dos arquivos de fonte, para a pré-carga no <head>.
 import serif600 from '@fontsource/source-serif-4/files/source-serif-4-latin-600-normal.woff2?url';
@@ -117,7 +116,7 @@ const { head, title, description, canonical, noindex, noCanonical, footerCta = t
     <Header />
     <slot />
     <Footer showCta={footerCta} />
-    <FloatingWhatsApp />
+    <aside aria-label="WhatsApp do escritório"><FloatingWhatsApp /></aside>
     <ConsentBanner />
     <script>
       // Revelação sutil ao rolar — aplica-se a [data-reveal] e, de forma

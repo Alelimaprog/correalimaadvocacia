@@ -33,7 +33,7 @@ A cobrança de cotas condominiais em atraso segue, na prática, a mesma lógica 
 
 ## Páginas deste cluster
 
-[Execuções, Cobrança e Recuperação de Crédito →](/areas-de-atuacao/recuperacao-de-credito/)[Advocacia Empresarial →](/areas-de-atuacao/advocacia-empresarial/)[Contratos Empresariais →](/areas-de-atuacao/contratos-empresariais/)[Cobrança Condominial e Recuperação de Inadimplência →](/areas-de-atuacao/cobranca-condominial/)[Habilitação e Impugnação de Crédito →](/areas-de-atuacao/habilitacao-e-impugnacao-de-credito/)
+[Execuções, Cobrança e Recuperação de Crédito →](/areas-de-atuacao/recuperacao-de-credito/)[Advocacia Empresarial →](/areas-de-atuacao/direito-empresarial/)[Contratos Empresariais →](/areas-de-atuacao/contratos-empresariais/)[Cobrança Condominial e Recuperação de Inadimplência →](/areas-de-atuacao/cobranca-condominial/)[Habilitação e Impugnação de Crédito →](/areas-de-atuacao/habilitacao-e-impugnacao-de-credito/)
 
 ## Artigos relacionados
 
@@ -81,7 +81,7 @@ Responsável técnico: [Alexandre Corrêa Lima](/o-escritorio/#alexandre-correa-
 Áreas relacionadas
 
 - [Execuções, Cobrança e Recuperação de Crédito](/areas-de-atuacao/recuperacao-de-credito/)
-- [Advocacia Empresarial](/areas-de-atuacao/advocacia-empresarial/)
+- [Advocacia Empresarial](/areas-de-atuacao/direito-empresarial/)
 - [Contratos Empresariais](/areas-de-atuacao/contratos-empresariais/)
 - [Cobrança Condominial e Recuperação de Inadimplência](/areas-de-atuacao/cobranca-condominial/)
 - [Habilitação e Impugnação de Crédito](/areas-de-atuacao/habilitacao-e-impugnacao-de-credito/)

@@ -39,7 +39,7 @@ Quer ver o panorama completo do tema?
 Mais sobre Homologação de Sentença Estrangeira
 
 - [Quando a sentença estrangeira precisa ser homologada no Brasil](/blog/quando-sentenca-estrangeira-precisa-ser-homologada-no-brasil/)
-- [Divórcio realizado no exterior precisa ser homologado no Brasil?](/blog/divorcio-exterior-precisa-ser-homologado-no-brasil/)
+- [Divórcio realizado no exterior precisa ser homologado no Brasil?](/areas-de-atuacao/homologacao-de-divorcio-estrangeiro/)
 - [Quais documentos costumam ser exigidos na homologação de sentença estrangeira](/blog/documentos-exigidos-homologacao-sentenca-estrangeira/)
 
 Fale com o escritório

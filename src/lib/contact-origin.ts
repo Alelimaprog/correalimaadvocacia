@@ -10,17 +10,20 @@ function safeSet(k: string, v: string) { try { sessionStorage.setItem(k, v); } c
 
 /** Chamado em todas as páginas: memoriza a primeira página da sessão e os UTMs. */
 export function rememberLanding() {
-  if (safeGet(KEY)) return;
   const q = new URLSearchParams(location.search);
-  const utm = ['utm_source', 'utm_medium', 'utm_campaign'].map((k) => q.get(k)).filter(Boolean).join('/');
+  const utm = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content'].map((k) => q.get(k)).filter(Boolean).join('/');
+  // Identificadores de clique de anúncio (Google e Meta).
+  const click = ['gclid', 'gbraid', 'wbraid', 'fbclid'].map((k) => (q.get(k) ? `${k}=${q.get(k)}` : '')).filter(Boolean).join('&');
+  // Uma nova visita vinda de campanha substitui a origem já gravada na sessão.
+  if (safeGet(KEY) && !utm && !click) return;
   let ref = 'direto';
   try { if (document.referrer) ref = new URL(document.referrer).hostname; } catch { /* noop */ }
-  safeSet(KEY, JSON.stringify({ page: location.pathname, utm, ref }));
+  safeSet(KEY, JSON.stringify({ page: location.pathname, utm, ref, click }));
 }
 
 export function fillOriginFields(form: HTMLFormElement) {
   rememberLanding();
-  let landing: { page?: string; utm?: string; ref?: string } = {};
+  let landing: { page?: string; utm?: string; ref?: string; click?: string } = {};
   try { landing = JSON.parse(safeGet(KEY) || '{}'); } catch { landing = {}; }
   let from = location.pathname;
   try {
@@ -29,14 +32,15 @@ export function fillOriginFields(form: HTMLFormElement) {
   const set = (sel: string, v: string) => { const el = form.querySelector(sel) as HTMLInputElement | null; if (el) el.value = v; };
   set('[data-origin="page"]', from);
   set('[data-origin="landing"]', `${landing.page || ''} (de: ${landing.ref || 'direto'})`);
-  set('[data-origin="utm"]', landing.utm || '');
+  set('[data-origin="utm"]', [landing.utm, landing.click].filter(Boolean).join(' | '));
 }
 
 const norm = (t: string) => t.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase();
 
 export function preselectArea(select: HTMLSelectElement | null) {
   if (!select) return;
-  const raw = new URLSearchParams(location.search).get('area');
+  // Sem ?area=, o caminho da página (fora de /contato/) indica o assunto.
+  const raw = new URLSearchParams(location.search).get('area') || (location.pathname.startsWith('/contato') ? '' : location.pathname);
   if (!raw) return;
   const v = norm(raw);
   const opts = Array.from(select.options);

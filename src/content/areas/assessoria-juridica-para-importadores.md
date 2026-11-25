@@ -86,7 +86,7 @@ Responsável técnico: [Alexandre Corrêa Lima](/o-escritorio/#alexandre-correa-
 Áreas relacionadas
 
 - [Contratos de Importação / Comércio Exterior](/areas-de-atuacao/contratos-de-importacao-comercio-exterior/)
-- [Advocacia Empresarial](/areas-de-atuacao/advocacia-empresarial/)
+- [Advocacia Empresarial](/areas-de-atuacao/direito-empresarial/)
 - [Execuções, Cobrança e Recuperação de Crédito](/areas-de-atuacao/recuperacao-de-credito/)
 
 Guia completo do tema

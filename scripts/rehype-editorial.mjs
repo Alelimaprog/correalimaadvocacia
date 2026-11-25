@@ -155,14 +155,60 @@ function buildRelated(ul) {
   return el('nav', { className: ['rel-cards'], 'aria-label': 'Conteúdos relacionados' }, cards);
 }
 
+/**
+ * Rodada 4 (13/11/2026) — CTA logo após o lead dos artigos, com o roteiro de
+ * WhatsApp da frente do artigo (cluster do frontmatter).
+ */
+const WA = 'https://wa.me/5511975025611?text=';
+const EARLY_CTA = {
+  'direito-aduaneiro-tributario': {
+    t: 'Carga retida ou auto de infração na importação?',
+    d: 'Envie o número da DI ou DUIMP e a exigência recebida para uma análise inicial.',
+    wa: 'Olá! Vim pelo site. Tenho uma questão aduaneira na importação.\nDI/DUIMP: \nCanal (vermelho/cinza): \nHá exigência ou auto de infração? ',
+  },
+  'inventario-e-patrimonio': {
+    t: 'Precisa abrir ou destravar um inventário?',
+    d: 'Informe a data do falecimento, onde estão os bens e se há herdeiro menor ou no exterior.',
+    wa: 'Olá! Vim pelo site. Quero entender o inventário.\nData do falecimento: \nCidade/estado dos bens: \nHá herdeiro menor ou no exterior? ',
+  },
+  'direito-internacional': {
+    t: 'Tem uma decisão ou divórcio feito no exterior?',
+    d: 'Informe o país, o que a decisão trata (guarda, pensão, bens) e onde você mora hoje.',
+    wa: 'Olá! Vim pelo site. Tenho uma decisão/divórcio feito no exterior.\nPaís/estado: \nTrata de guarda, pensão ou bens? \nMoro hoje em: ',
+  },
+};
+const EARLY_DEFAULT = {
+  t: 'Quer entender como isso se aplica ao seu caso?',
+  d: 'Descreva a situação em poucas linhas para uma análise inicial.',
+  wa: 'Olá! Vim pelo site e gostaria de orientação sobre um assunto que li no blog.',
+};
+function buildEarlyCta(cluster) {
+  const c = EARLY_CTA[cluster] || EARLY_DEFAULT;
+  return el('aside', { className: ['early-cta'], ariaLabel: 'Contato' }, [
+    el('p', { className: ['early-cta-t'] }, [txt(c.t)]),
+    el('p', { className: ['early-cta-d'] }, [txt(c.d)]),
+    el('p', { className: ['early-cta-a'] }, [
+      el('a', { className: ['btn', 'btn--primary'], href: '#ccta-title', dataCtaPosition: 'artigo-topo' }, [txt('Enviar meu caso')]),
+      txt(' '),
+      el('a', { className: ['btn', 'btn--secondary'], href: WA + encodeURIComponent(c.wa), target: '_blank', rel: ['noopener', 'noreferrer'], dataCtaPosition: 'artigo-topo' }, [txt('Falar no WhatsApp')]),
+    ]),
+  ]);
+}
+const ENTRY_META = /^\s*\d{2}\/\d{2}\/\d{4}\s*•/;
+
 export default function rehypeEditorial() {
-  return (tree) => {
+  return (tree, file) => {
+    const filePath = String((file && (file.path || (file.history && file.history[0]))) || '');
+    const isBlog = /[\\/]content[\\/]blog[\\/]/.test(filePath);
+    const fm = (file && file.data && file.data.astro && file.data.astro.frontmatter) || {};
     if (!tree || !Array.isArray(tree.children)) return;
     const src = tree.children;
     const out = [];
     let i = 0;
     let seenH1 = false;
     let leadDone = false;
+    let h2Seen = 0;
+    let earlyDone = false;
 
     while (i < src.length) {
       const node = src[i];
@@ -174,6 +220,15 @@ export default function rehypeEditorial() {
       }
 
       const t = isEl(node) ? textOf(node) : node.value || '';
+
+      // ---- CTA do artigo: antes do 2º H2 (depois da primeira seção) ----
+      if (isEl(node, 'h2')) {
+        if (isBlog && !earlyDone && h2Seen >= 1) {
+          out.push(buildEarlyCta(fm.cluster));
+          earlyDone = true;
+        }
+        h2Seen++;
+      }
 
       // ---- Cauda de CTA/contato duplicada: consome até o fim do documento ----
       if (isEl(node) && seenH1 && isTailTrigger(t)) {
@@ -300,6 +355,18 @@ export default function rehypeEditorial() {
       // ---- Pares de CTA -> botões ----
       if (isCtaPair(node)) {
         addClass(node, 'cta-inline');
+        out.push(node);
+        i++;
+        continue;
+      }
+
+      // ---- Linha de data/autor do artigo ("07/11/2026•6 min de leitura•Por …") ----
+      if (seenH1 && !leadDone && isEl(node, 'p') && ENTRY_META.test(textOf(node))) {
+        addClass(node, 'entry-meta');
+        (function sep(x) {
+          if (x.type === 'text') x.value = x.value.replace(/\s*•\s*/g, ' · ');
+          if (x.children) x.children.forEach(sep);
+        })(node);
         out.push(node);
         i++;
         continue;

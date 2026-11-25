@@ -6,6 +6,8 @@
  * Alterações de dados do escritório devem ser feitas aqui, num único lugar (DRY).
  */
 
+import waGroups from './_wa-groups.json';
+
 export interface SiteConfig {
   /** Domínio canônico, sem www e sem barra final. */
   url: string;
@@ -165,8 +167,24 @@ export function pageRef(pathname: string): string {
   return segs[segs.length - 1].slice(0, 60);
 }
 
+/**
+ * Rodada 4 (13/11/2026): nas três frentes principais a mensagem já vem com o
+ * roteiro do primeiro contato (o que informar), para o atendimento começar com
+ * os dados certos. Mapa caminho -> roteiro em _wa-groups.json.
+ *   A = aduaneiro · I = inventário · H = homologação / decisão estrangeira
+ */
+export const WA_ROTEIROS: Record<string, string> = {
+  A: 'Olá! Vim pelo site. Tenho uma questão aduaneira na importação.\nDI/DUIMP: \nCanal (vermelho/cinza): \nPorto/aeroporto: \nHá exigência ou auto de infração? ',
+  I: 'Olá! Vim pelo site. Quero entender o inventário.\nData do falecimento: \nCidade/estado dos bens: \nHá herdeiro menor ou no exterior? ',
+  H: 'Olá! Vim pelo site. Tenho um divórcio/decisão feito no exterior.\nPaís/estado: \nTrata de guarda, pensão ou bens? \nMoro hoje em: ',
+};
+const WA_PAGE_GROUPS = waGroups as Record<string, string>;
+
 /** Mensagem de WhatsApp adequada a um caminho (pathname com barra final), com referência da página. */
 export function whatsappMessageForPath(pathname: string): string {
+  const key = pathname.endsWith('/') ? pathname : `${pathname}/`;
+  const grupo = WA_PAGE_GROUPS[key];
+  if (grupo && WA_ROTEIROS[grupo]) return `${WA_ROTEIROS[grupo]} (ref.: ${pageRef(pathname)})`;
   const segments = (pathname || '').split('/').filter(Boolean);
   let msg = site.contact.whatsapp.message;
   let found = false;

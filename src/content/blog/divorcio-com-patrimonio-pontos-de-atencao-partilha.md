@@ -39,7 +39,7 @@ Assunto relacionado a este artigo:
 Mais sobre Família, Sucessões e Patrimônio
 
 - [Inventário e partilha: quando buscar orientação jurídica](/blog/inventario-e-partilha-quando-buscar-orientacao-juridica/)
-- [Inventário com herdeiro no exterior: o que muda no processo](/blog/inventario-com-herdeiro-no-exterior-o-que-muda/)
+- [Inventário com herdeiro no exterior: o que muda no processo](/areas-de-atuacao/inventario-com-herdeiro-no-exterior/)
 - [Herdeiro no exterior: procuração e documentos para participar do inventário](/blog/herdeiro-exterior-procuracao-documentos-inventario/)
 
 Fale com o escritório
