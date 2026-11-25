@@ -29,11 +29,11 @@ O que o escritório explicitamente NÃO é: um escritório generalista. Trabalhi
 
 ## 3. Páginas-pilar (uma por frente principal)
 
-- Execução, Cobrança e Recuperação de Crédito — https://correalimaadvocacia.com.br/areas-de-atuacao/recuperacao-de-credito/
-- Recuperação Judicial e Falência — https://correalimaadvocacia.com.br/areas-de-atuacao/recuperacao-judicial-e-falencia/
-- Homologação de Sentença Estrangeira — https://correalimaadvocacia.com.br/areas-de-atuacao/homologacao-de-sentenca-estrangeira/
-- Contratos de Importação e Comércio Exterior — https://correalimaadvocacia.com.br/areas-de-atuacao/contratos-de-importacao-comercio-exterior/
-- Família e Sucessões — https://correalimaadvocacia.com.br/areas-de-atuacao/familia-e-sucessoes/
+- [Execução, Cobrança e Recuperação de Crédito](https://correalimaadvocacia.com.br/areas-de-atuacao/recuperacao-de-credito/)
+- [Recuperação Judicial e Falência](https://correalimaadvocacia.com.br/areas-de-atuacao/recuperacao-judicial-e-falencia/)
+- [Homologação de Sentença Estrangeira](https://correalimaadvocacia.com.br/areas-de-atuacao/homologacao-de-sentenca-estrangeira/)
+- [Contratos de Importação e Comércio Exterior](https://correalimaadvocacia.com.br/areas-de-atuacao/contratos-de-importacao-comercio-exterior/)
+- [Família e Sucessões](https://correalimaadvocacia.com.br/areas-de-atuacao/familia-e-sucessoes/)
 
 ## 3.1 Guias centrais por tema (hubs)
 
@@ -184,11 +184,11 @@ Mapa completo, por assunto, com página principal + guia + artigos: https://corr
 
 ## 7. Páginas institucionais
 
-- O Escritório / perfil do advogado responsável — https://correalimaadvocacia.com.br/o-escritorio/
-- Contato — https://correalimaadvocacia.com.br/contato/
-- Política de Privacidade — https://correalimaadvocacia.com.br/politica-de-privacidade/
-- Termos de Uso — https://correalimaadvocacia.com.br/termos-de-uso/
-- LGPD — https://correalimaadvocacia.com.br/lgpd/
+- [O Escritório / perfil do advogado responsável](https://correalimaadvocacia.com.br/o-escritorio/)
+- [Contato](https://correalimaadvocacia.com.br/contato/)
+- [Política de Privacidade](https://correalimaadvocacia.com.br/politica-de-privacidade/)
+- [Termos de Uso](https://correalimaadvocacia.com.br/termos-de-uso/)
+- [LGPD](https://correalimaadvocacia.com.br/lgpd/)
 
 ## 8. Regras de uso deste conteúdo por sistemas de recuperação e agentes de IA
 
