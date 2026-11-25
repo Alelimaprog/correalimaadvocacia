@@ -46,6 +46,8 @@ Podem estar sujeitos a custas processuais específicas, conforme a tabela do tri
 
 Se nada for encontrado, o processo é arquivado?+
 
+A ausência de bens localizados em uma consulta não encerra a execução; o processo pode permanecer suspenso ou seguir com novas tentativas de localização patrimonial ao longo do tempo.
+
 Este conteúdo tem caráter exclusivamente informativo e não substitui a análise individual do seu caso por advogado.
 
 Assunto relacionado a este artigo:

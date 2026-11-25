@@ -36,7 +36,7 @@ Os prazos principais previstos no art. 23, II, do DL 1.455/1976 são:
 | Despacho interrompido por ação ou omissão do importador ou do seu representante | 60 dias | Interrupção do despacho |
 | Mercadoria em entreposto aduaneiro ou em recinto alfandegado de zona secundária | 45 dias | Fim do prazo de permanência |
 
-O Regulamento Aduaneiro traz regras complementares. Por exemplo, considera abandonada a mercadoria cujo despacho não seja iniciado ou retomado em 30 dias da ciência do reconhecimento do direito de iniciar ou retomar o despacho (art. 642, § 1º, I). Como os prazos dependem da situação concreta, confira sempre as datas no extrato do recinto e da declaração.
+O Regulamento Aduaneiro traz regras complementares. Por exemplo, considera abandonada a mercadoria cujo despacho não seja iniciado ou retomado em 30 dias da ciência do reconhecimento do direito de iniciar ou retomar o despacho (art. 642, § 1º, I). Como os prazos dependem da situação concreta, confira sempre as datas no extrato do recinto e da declaração. Bens retidos na bagagem do viajante têm prazo próprio; veja [bagagem retida no aeroporto](/blog/bagagem-retida-aeroporto-receita-federal/).
 
 ## Abandono durante o despacho interrompido
 

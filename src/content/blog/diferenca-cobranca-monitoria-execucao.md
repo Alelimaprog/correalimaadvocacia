@@ -52,6 +52,8 @@ Em regra, não como título executivo extrajudicial, já que a lei exige assinat
 
 É possível migrar de ação de cobrança para execução?+
 
+Não diretamente. É preciso primeiro obter sentença de procedência na ação de cobrança; a partir daí, o processo segue para cumprimento de sentença, que segue lógica semelhante à execução.
+
 Este conteúdo tem caráter exclusivamente informativo e não substitui a análise individual do seu caso por advogado.
 
 Assunto relacionado a este artigo:

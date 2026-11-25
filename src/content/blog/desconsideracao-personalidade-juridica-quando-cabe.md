@@ -44,6 +44,8 @@ Em regra, não. O pedido costuma ser feito dentro da própria execução ou do c
 
 Empresa devedora sem nenhum bem já justifica o pedido?+
 
+Não isoladamente. É preciso indício de abuso da personalidade jurídica ou confusão patrimonial — a simples inexistência de bens, por si só, não caracteriza automaticamente essas hipóteses.
+
 Este conteúdo tem caráter exclusivamente informativo e não substitui a análise individual do seu caso por advogado.
 
 Assunto relacionado a este artigo:

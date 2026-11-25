@@ -37,7 +37,7 @@ A seleção considera critérios de gerenciamento de risco, como o histórico do
 
 ## O que acontece no canal vermelho
 
-No canal vermelho, a declaração é distribuída a um auditor-fiscal, que confere os documentos e agenda a verificação física da carga no recinto, em geral com o despachante presente. Se tudo estiver de acordo, a mercadoria é desembaraçada. Se algo não bater, a fiscalização registra uma **exigência**: apresentar documento, retificar a declaração, recolher diferença de tributo ou multa, ou providenciar laudo técnico.
+No canal vermelho, a declaração é distribuída a um auditor-fiscal, que confere os documentos e agenda a verificação física da carga no recinto, em geral com o despachante presente. Se tudo estiver de acordo, a mercadoria é desembaraçada (o que não impede uma [revisão aduaneira posterior](/blog/revisao-aduaneira-apos-desembaraco-prazo/), em até cinco anos). Se algo não bater, a fiscalização registra uma **exigência**: apresentar documento, retificar a declaração, recolher diferença de tributo ou multa, ou providenciar laudo técnico.
 
 Exigências comuns no canal vermelho:
 

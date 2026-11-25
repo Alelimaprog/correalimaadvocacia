@@ -30,6 +30,8 @@ Apresentado o crédito, ele passa por uma fase de verificação, na qual outros 
 
 Créditos trabalhistas, com garantia real, quirografários e outras classes seguem ordens de prioridade distintas dentro do plano de recuperação — por isso, garantir a classificação correta do crédito, e não apenas seu valor, é uma etapa central da habilitação.
 
+Para o **trabalhador** com verbas a receber de empresa em recuperação judicial, o valor do crédito trabalhista, em regra, é apurado na Justiça do Trabalho e depois incluído no quadro-geral de credores (art. 6º, § 2º, da Lei 11.101/2005). Veja [rescisão não paga ou atrasada](https://correalimaadv.com.br/verbas-rescisorias-nao-pagas/) no nosso site de atendimento trabalhista.
+
 Este conteúdo tem caráter exclusivamente informativo e não substitui a análise individual do seu caso por advogado.
 
 Assunto relacionado a este artigo:

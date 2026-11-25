@@ -46,6 +46,8 @@ Em regra sim, já que não se submete aos efeitos do plano de recuperação, mas
 
 Um crédito concursal pode virar extraconcursal?+
 
+Não. A classificação é definida pela data de constituição do crédito em relação à data do pedido de recuperação judicial, e não muda posteriormente.
+
 Este conteúdo tem caráter exclusivamente informativo e não substitui a análise individual do seu caso por advogado.
 
 Assunto relacionado a este artigo:

@@ -55,7 +55,7 @@ A homologação é necessária, em regra, quando a decisão americana:
 
 No STJ, o pedido é feito por advogado, por petição eletrônica, com pagamento de custas. O tribunal não rediscute quem tinha razão; verifica requisitos formais, como a competência da autoridade que decidiu, a citação regular da outra parte, a eficácia da decisão no país de origem e a compatibilidade com a ordem pública brasileira. A [página oficial do STJ sobre sentença estrangeira](https://www.stj.jus.br/sites/portalp/Processos/Sentenca-Estrangeira) descreve o procedimento.
 
-Quando a decisão americana trata de imóvel situado no Brasil, há uma regra de competência exclusiva da Justiça brasileira para a partilha desses bens (CPC, art. 23, III). Isso exige análise cuidadosa antes do pedido. Saiba mais na página de [homologação de divórcio estrangeiro](/areas-de-atuacao/homologacao-de-divorcio-estrangeiro/).
+Quando a decisão americana trata de imóvel situado no Brasil, há uma regra de competência exclusiva da Justiça brasileira para a partilha desses bens (CPC, art. 23, III). Isso exige análise cuidadosa antes do pedido; veja [divórcio no exterior com imóvel no Brasil](/blog/divorcio-no-exterior-imovel-no-brasil-partilha/). Saiba mais na página de [homologação de divórcio estrangeiro](/areas-de-atuacao/homologacao-de-divorcio-estrangeiro/).
 
 ## Documentos americanos: o que pedir à corte
 

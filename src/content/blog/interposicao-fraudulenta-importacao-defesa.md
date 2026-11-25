@@ -67,7 +67,7 @@ O processo de perdimento tem rito próprio. Após a Lei nº 14.651/2023, o DL 1.
 3. julgamento em primeira instância; quem não impugna é considerado revel (art. 27-C);
 4. recurso à segunda instância também em 20 dias, sem efeito suspensivo sobre a destinação da mercadoria (art. 27-D).
 
-Já a multa que substitui o perdimento, quando a mercadoria não é localizada ou foi consumida ou revendida, segue o rito do processo administrativo fiscal do Decreto nº 70.235/1972 (art. 23, § 3º). Por isso, é preciso identificar logo qual rito se aplica a cada exigência do auto.
+Já a multa que substitui o perdimento, quando a mercadoria não é localizada ou foi consumida ou revendida, segue o rito do processo administrativo fiscal do Decreto nº 70.235/1972 (art. 23, § 3º). Por isso, é preciso identificar logo qual rito se aplica a cada exigência do auto. Veja [perdimento convertido em multa: quando a mercadoria já foi vendida](/blog/perdimento-convertido-em-multa-mercadoria-nao-localizada/).
 
 Na defesa, os pontos mais comuns são: a prova da origem lícita dos recursos (capital social, faturamento, empréstimos documentados, adiantamentos de clientes devidamente contratados), a coerência entre contratos e pagamentos e a demonstração de que não houve ocultação do real adquirente. Veja a página de [defesa administrativa aduaneira](/areas-de-atuacao/direito-aduaneiro-tributario/defesa-administrativa-aduaneira/).
 

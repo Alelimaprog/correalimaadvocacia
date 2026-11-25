@@ -20,7 +20,7 @@ Em regra, a sentença estrangeira precisa ser homologada no Brasil sempre que um
 
 Decisões judiciais produzem efeitos, em regra, apenas no território do país onde foram proferidas. Uma sentença de divórcio, guarda ou cobrança emitida por um tribunal estrangeiro não gera, por si só, efeitos jurídicos automáticos no Brasil.
 
-Para que essa decisão possa ser executada, averbada em registros públicos ou produzir efeitos legais no país, é necessário submetê-la ao procedimento de homologação perante o Superior Tribunal de Justiça (STJ), órgão competente para essa análise desde 2004.
+Para que essa decisão possa ser executada, averbada em registros públicos ou produzir efeitos legais no país, é necessário submetê-la ao procedimento de [homologação de sentença estrangeira no STJ](/areas-de-atuacao/homologacao-de-sentenca-estrangeira/), órgão competente para essa análise desde 2004.
 
 ## Situações em que a homologação costuma ser necessária
 
@@ -51,6 +51,7 @@ Mais sobre Homologação de Sentença Estrangeira
 - [Divórcio realizado no exterior precisa ser homologado no Brasil?](/areas-de-atuacao/homologacao-de-divorcio-estrangeiro/)
 - [Quais documentos costumam ser exigidos na homologação de sentença estrangeira](/blog/documentos-exigidos-homologacao-sentenca-estrangeira/)
 - [Quanto tempo pode levar uma homologação de sentença estrangeira](/blog/quanto-tempo-leva-homologacao-sentenca-estrangeira/)
+- [Homologação de sentença estrangeira precisa de advogado?](/blog/homologacao-sentenca-estrangeira-precisa-de-advogado/)
 
 Fale com o escritório
 

@@ -56,7 +56,7 @@ Perder na esfera administrativa não encerra a discussão: o caso pode ir ao Jud
 
 ## Prevenção para operações futuras
 
-Empresas que enfrentam retenções ou multas recorrentes costumam se beneficiar de uma revisão preventiva da classificação fiscal e da documentação. A classificação incorreta na NCM gera, além da diferença de tributo, multa de 1% do valor aduaneiro, com mínimo legal (MP 2.158-35/2001, art. 84).
+Empresas que enfrentam retenções ou multas recorrentes costumam se beneficiar de uma revisão preventiva da classificação fiscal e da documentação. A classificação incorreta na NCM gera a diferença de tributo e, conforme o caso, multa de ofício. A antiga multa de 1% do valor aduaneiro (MP 2.158-35/2001, art. 84) foi revogada pela Lei Complementar 227/2026; veja [o que mudou com a LC 227/2026](/blog/multa-1-por-cento-erro-ncm-revogada-lc-227/).
 
 Para o quadro completo, veja o [guia de direito aduaneiro-tributário](/guias/direito-aduaneiro-tributario-guia-completo/).
 

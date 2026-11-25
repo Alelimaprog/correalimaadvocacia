@@ -55,7 +55,7 @@ Se a decisão estrangeira dividiu bens situados no Brasil, essa partilha também
 
 Não existe prazo legal para pedir a homologação ou a averbação do divórcio estrangeiro. Mas o tempo tem custo: o ex-cônjuge pode mudar de endereço ou deixar de cooperar, documentos ficam mais difíceis de obter na corte estrangeira, e as consequências acima tendem a aparecer em momentos de urgência, como uma venda ou um inventário.
 
-Quando o ex-cônjuge concorda com o pedido no STJ e assina uma declaração de anuência, o procedimento tende a ser mais simples, porque a página oficial do STJ indica que a concordância da outra parte dispensa a citação. Quando não há contato, a citação no exterior pode ser a etapa mais demorada.
+Quando o ex-cônjuge concorda com o pedido no STJ e assina uma declaração de anuência, o procedimento tende a ser mais simples, porque a página oficial do STJ indica que a concordância da outra parte dispensa a citação. Quando não há contato, a citação no exterior pode ser a etapa mais demorada; veja [o que fazer quando o ex-cônjuge não concorda ou não é encontrado](/blog/ex-conjuge-nao-encontrado-homologacao-divorcio-stj/).
 
 ## Como regularizar
 
