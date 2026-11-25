@@ -1,5 +1,5 @@
 ---
-title: "Inventário em Cartório com Menor ou Testamento | Corrêa Lima"
+title: "Inventário Extrajudicial com Testamento ou Herdeiro Menor"
 description: "Desde a Resolução CNJ 571/2024, inventário com herdeiro menor, incapaz ou testamento pode ser feito em cartório sob condições. Veja os requisitos."
 h1: "Inventário extrajudicial com herdeiro menor, incapaz ou testamento"
 author: "Alexandre Corrêa Lima"

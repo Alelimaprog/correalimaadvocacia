@@ -1,5 +1,5 @@
 ---
-title: "ITCMD SP no Inventário: Alíquota de 4%, Prazo e Cálculo"
+title: "ITCMD SP: Valor, Alíquota de 4% e Cálculo no Inventário"
 description: "ITCMD paulista no inventário: base de cálculo, alíquota de 4%, prazo de pagamento, multa por atraso, isenções e o que a Reforma Tributária pode mudar."
 h1: "ITCMD em São Paulo no inventário: como calcular e quando pagar"
 author: "Alexandre Corrêa Lima"

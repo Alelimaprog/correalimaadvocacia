@@ -857,7 +857,7 @@ export const subtopics: SubTopic[] = [
     slug: 'inventario-extrajudicial',
     label: 'Inventário extrajudicial',
     h1: 'Inventário Extrajudicial (em Cartório)',
-    seoTitle: 'Advogado para Inventário em Cartório em São Paulo',
+    seoTitle: 'Inventário Extrajudicial em Cartório em São Paulo',
     seoDescription: 'Inventário em cartório em São Paulo: requisitos, consenso, advogado, ITCMD e as condições da Res. CNJ 571/2024 para herdeiro menor ou testamento.',
     heroDescription: 'Havendo acordo entre os herdeiros, o inventário pode ser feito por escritura pública em tabelionato de notas, inclusive em situações com herdeiro menor ou testamento, sob condições.',
     problem: 'O inventário extrajudicial é feito por escritura pública em tabelionato de notas, com advogado, quando todos os herdeiros estão de acordo com a partilha. Desde a Resolução CNJ nº 571/2024, ele também é admitido com herdeiro menor ou incapaz (quinhão em parte ideal de cada bem e manifestação favorável do Ministério Público) e com testamento (após autorização expressa do juiz na ação de cumprimento do testamento). Em São Paulo, o ITCMD de 4% é declarado e recolhido na Secretaria da Fazenda antes da escritura, e a multa por atraso conta do óbito — por isso a organização dos documentos no início faz diferença.',

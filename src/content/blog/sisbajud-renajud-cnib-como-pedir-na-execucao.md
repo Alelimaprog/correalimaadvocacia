@@ -4,7 +4,7 @@ description: "O que são Sisbajud, Renajud e CNIB e como pedir o bloqueio de con
 h1: "SISBAJUD, RENAJUD e CNIB: como funcionam na execução"
 author: "Alexandre Corrêa Lima"
 pubDate: 2026-07-05
-updatedDate: 2026-07-05
+updatedDate: 2026-11-25
 cluster: "recuperacao-de-credito"
 ---
 
@@ -12,7 +12,7 @@ Cobrança, Execução e Recuperação de Crédito
 
 # SISBAJUD, RENAJUD e CNIB: como funcionam na execução
 
-05/07/2026•5 min de leitura•Por [Alexandre Corrêa Lima](/o-escritorio/#alexandre-correa-lima)
+05/07/2026•Atualizado em 25/11/2026•8 min de leitura•Por [Alexandre Corrêa Lima](/o-escritorio/#alexandre-correa-lima)
 
 ## Sistemas eletrônicos como ferramenta de constrição patrimonial
 
@@ -30,6 +30,28 @@ O RENAJUD permite ao juízo determinar restrições sobre veículos em nome do d
 
 A Central Nacional de Indisponibilidade de Bens (CNIB) permite comunicar, de forma centralizada, a indisponibilidade de imóveis em nome do devedor a cartórios de registro de imóveis em todo o país, evitando que o bem seja vendido ou onerado durante o processo.
 
+## Como pedir o bloqueio na prática
+
+O pedido é feito por petição no próprio processo de execução (ou no cumprimento de sentença), depois que o devedor foi citado e não pagou no prazo. Em geral, a petição traz:
+
+- o nome e o CPF ou CNPJ do devedor, que é o dado usado pelos sistemas;
+- o valor atualizado da dívida, com a planilha de cálculo, para que o bloqueio não ultrapasse o necessário;
+- quais sistemas o credor quer que o juízo use (SISBAJUD, RENAJUD, CNIB ou mais de um).
+
+Quem opera os sistemas é o juízo, não o credor. O resultado aparece no processo.
+
+## Repetição programada no SISBAJUD ("teimosinha")
+
+O SISBAJUD permite que a ordem de bloqueio seja repetida automaticamente por um período, em vez de consultar as contas uma única vez. Na prática forense, a função ficou conhecida como "teimosinha". Ela é útil quando o devedor movimenta valores com frequência e a conta costuma estar zerada no dia de uma consulta isolada. O uso depende de pedido e de deferimento do juízo.
+
+## O que acontece depois do bloqueio
+
+O Código de Processo Civil (art. 854) regula o caminho: o bloqueio é feito sem aviso prévio ao devedor, para evitar a retirada do dinheiro. Valores bloqueados acima do total da dívida devem ser liberados. Em seguida, o devedor é intimado e tem 5 dias para alegar que o valor é impenhorável ou que houve excesso. Se não houver impugnação, ou se ela for rejeitada, a indisponibilidade se converte em penhora e o valor pode ser transferido para conta judicial.
+
+## O que não pode ser penhorado
+
+Nem todo dinheiro encontrado pode ficar com o credor. O art. 833 do CPC protege, por exemplo, salários e verbas de natureza alimentar e a quantia depositada em caderneta de poupança até 40 salários mínimos, com exceções previstas em lei e em decisões dos tribunais. Por isso, o resultado do bloqueio deve ser analisado antes de se contar com o valor.
+
 ## Como esses pedidos se encaixam na estratégia da execução
 
 O uso de cada sistema depende do perfil patrimonial do devedor e das informações já disponíveis sobre ele. Em muitos casos, os pedidos são combinados e reiterados ao longo do processo, à medida que novas informações patrimoniais surgem.
@@ -39,6 +61,14 @@ O uso de cada sistema depende do perfil patrimonial do devedor e das informaçõ
 É preciso indicar o banco do devedor para pedir o SISBAJUD?+
 
 Não. O sistema consulta as instituições financeiras integradas de forma centralizada, sem necessidade de indicar previamente onde o devedor mantém contas.
+
+O que é o SISBAJUD?+
+
+É o Sistema de Busca de Ativos do Poder Judiciário, mantido pelo Conselho Nacional de Justiça. Ele substituiu o antigo BacenJud e liga o juízo às instituições financeiras para bloquear valores e obter informações sobre contas do devedor.
+
+O devedor é avisado antes do bloqueio?+
+
+Não. Pelo art. 854 do CPC, o bloqueio é feito sem ciência prévia do devedor. Ele é intimado depois e pode alegar, em 5 dias, impenhorabilidade ou excesso.
 
 Esses pedidos têm custo para o credor?+
 
