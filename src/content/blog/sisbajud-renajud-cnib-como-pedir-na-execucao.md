@@ -42,7 +42,7 @@ Quem opera os sistemas é o juízo, não o credor. O resultado aparece no proces
 
 ## Repetição programada no SISBAJUD ("teimosinha")
 
-O SISBAJUD permite que a ordem de bloqueio seja repetida automaticamente por um período, em vez de consultar as contas uma única vez. Na prática forense, a função ficou conhecida como "teimosinha". Ela é útil quando o devedor movimenta valores com frequência e a conta costuma estar zerada no dia de uma consulta isolada. O uso depende de pedido e de deferimento do juízo.
+O SISBAJUD permite que a ordem de bloqueio seja repetida automaticamente por até 30 dias, em vez de consultar as contas uma única vez. Na prática forense, a função ficou conhecida como "teimosinha". Ela é útil quando o devedor movimenta valores com frequência e a conta costuma estar zerada no dia de uma consulta isolada. O uso depende de pedido e de deferimento do juízo.
 
 ## O que acontece depois do bloqueio
 
