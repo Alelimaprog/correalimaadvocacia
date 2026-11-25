@@ -1,6 +1,6 @@
 ---
-title: "SISBAJUD, RENAJUD e CNIB: Como Pedir na Execução | Corrêa Lima Advocacia"
-description: "Entenda para que servem SISBAJUD, RENAJUD e CNIB na busca de bens do devedor durante a execução de título extrajudicial."
+title: "Sisbajud, Renajud e CNIB: o Que São e Como Pedir na Execução"
+description: "O que são Sisbajud, Renajud e CNIB e como pedir o bloqueio de contas, veículos e imóveis do devedor na execução de título extrajudicial."
 h1: "SISBAJUD, RENAJUD e CNIB: como funcionam na execução"
 author: "Alexandre Corrêa Lima"
 pubDate: 2026-07-05

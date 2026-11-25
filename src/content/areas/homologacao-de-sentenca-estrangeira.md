@@ -1,5 +1,5 @@
 ---
-title: "Advogado para Homologação de Sentença Estrangeira | Corrêa Lima Advocacia"
+title: "Homologação de Sentença Estrangeira no STJ | Advogado"
 description: "Homologação de sentença estrangeira no STJ: quando é necessária, documentos, apostila, tradução e etapas do pedido. Atendimento a distância."
 h1: "Homologação de Sentença Estrangeira no STJ"
 author: "Alexandre Corrêa Lima"

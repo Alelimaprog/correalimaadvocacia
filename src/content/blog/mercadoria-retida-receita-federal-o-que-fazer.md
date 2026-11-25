@@ -1,5 +1,5 @@
 ---
-title: "Mercadoria Retida pela Receita Federal: O Que Fazer | Corrêa Lima"
+title: "Mercadoria Retida na Receita Federal: o Que Fazer e Prazos"
 description: "Sua importação ficou retida pela Receita Federal? Entenda os motivos, como consultar a situação, quanto tempo pode durar e como responder à exigência."
 h1: "Mercadoria retida pela Receita Federal: o que fazer"
 author: "Alexandre Corrêa Lima"

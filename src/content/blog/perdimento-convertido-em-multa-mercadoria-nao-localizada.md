@@ -1,6 +1,6 @@
 ---
-title: "Perdimento Convertido em Multa: Mercadoria Já Vendida | Corrêa Lima"
-description: "Mercadoria vendida, consumida ou não localizada: quando o perdimento vira multa igual ao valor aduaneiro, o rito e como se defender."
+title: "Multa Substitutiva do Perdimento: Mercadoria Não Localizada"
+description: "Quando a mercadoria já foi vendida ou não é localizada, o perdimento vira multa substitutiva igual ao valor aduaneiro. Quando se aplica e a defesa."
 h1: "Perdimento convertido em multa: quando a mercadoria já foi vendida ou não é localizada"
 author: "Alexandre Corrêa Lima"
 pubDate: 2026-11-08

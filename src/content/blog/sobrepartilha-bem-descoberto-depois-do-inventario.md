@@ -1,5 +1,5 @@
 ---
-title: "Sobrepartilha: Bem Descoberto Depois do Inventário | Corrêa Lima"
+title: "Sobrepartilha: o Que É, Quando Cabe e Como Fazer em Cartório"
 description: "Bem descoberto depois do inventário? Veja quando cabe a sobrepartilha, se pode ser em cartório e como fica o ITCMD em São Paulo."
 h1: "Sobrepartilha: o que fazer quando aparece um bem depois do inventário"
 author: "Alexandre Corrêa Lima"

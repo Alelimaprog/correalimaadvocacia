@@ -1,5 +1,5 @@
 ---
-title: "Canal Vermelho e Cinza na Importação: Prazo | Corrêa Lima"
+title: "Canal Vermelho e Cinza na Importação: Prazos e o Que Fazer"
 description: "O que significa cair no canal vermelho ou cinza, quanto tempo pode levar a conferência, o que a fiscalização pede e como agir para não perder prazos."
 h1: "Canal vermelho e canal cinza na importação: prazos e o que fazer"
 author: "Alexandre Corrêa Lima"

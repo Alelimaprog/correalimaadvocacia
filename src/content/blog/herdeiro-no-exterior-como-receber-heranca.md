@@ -1,5 +1,5 @@
 ---
-title: "Herdeiro no Exterior: Como Receber a Herança | Corrêa Lima"
+title: "Herdeiro no Exterior: Como Receber a Herança do Brasil"
 description: "Mora fora e tem herança no Brasil? CPF, procuração no consulado ou com apostila, assinatura digital, ITCMD, venda do imóvel e remessa do dinheiro."
 h1: "Herdeiro no exterior: como receber a herança deixada no Brasil"
 author: "Alexandre Corrêa Lima"
