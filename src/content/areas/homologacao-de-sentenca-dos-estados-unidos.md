@@ -1,5 +1,5 @@
 ---
-title: "Homologação de Divórcio e Sentença dos EUA no Brasil | Corrêa Lima Advocacia"
+title: "Homologação de Sentença dos EUA no STJ | Corrêa Lima Advocacia"
 description: "Divórcio, guarda ou alimentos decididos nos EUA: homologação no STJ, apostila do estado americano e tradução juramentada, com atendimento a distância."
 h1: "Homologação de Sentença dos Estados Unidos no Brasil"
 author: "Alexandre Corrêa Lima"

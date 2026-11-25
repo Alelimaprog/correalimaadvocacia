@@ -135,10 +135,19 @@ export function buildFaqJsonLd(body: string): Schema | null {
   if (!sec) return null;
   const bloco = sec.split(/\n##\s+/)[0];
   const pares = [...bloco.matchAll(/\*\*(.+?\?)\*\*\s*\n([\s\S]*?)(?=\n\s*\n|\n\*\*|$)/g)];
+  // Fallback: perguntas em parágrafo simples (sem negrito), como na página de
+  // homologação de divórcio; o "+" final é o marcador do acordeão antigo.
+  // Só vale quando o bloco já tem perguntas novas (sem "+"): páginas inteiramente
+  // no formato antigo mantêm o FAQPage preservado, como no site publicado.
+  if (pares.length === 0 && /(?:^|\n\n)[^\n]+\?\s*\n\n/.test(bloco)) {
+    for (const m of bloco.matchAll(/(?:^|\n\n)([^\n]+\?)\+?\s*\n\n([^\n]+)/g)) {
+      pares.push(Object.assign([m[0], m[1].replace(/[“”]/g, '"'), m[2].replace(/[“”]/g, '"')], { index: m.index, input: bloco }) as unknown as RegExpExecArray);
+    }
+  }
   const itens = pares
     .map((m) => ({
       pergunta: m[1].trim(),
-      resposta: m[2].replace(/\s+/g, ' ').replace(/\[([^\]]+)\]\([^)]*\)/g, '$1').trim(),
+      resposta: m[2].replace(/\s+/g, ' ').replace(/\[([^\]]+)\]\([^)]*\)/g, '$1').replace(/\*\*([^*]+)\*\*/g, '$1').replace(/\*([^*]+)\*/g, '$1').trim(),
     }))
     .filter((i) => i.resposta.length > 0);
   if (itens.length === 0) return null;

@@ -95,23 +95,23 @@ Se a seguradora exigir documentos do inventário, se houver aporte recente relev
 
 ## Perguntas frequentes
 
-VGBL entra no inventário?
+**VGBL entra no inventário?**
 
 Em regra, não. Havendo beneficiário indicado, o valor é pago diretamente a ele pela seguradora, fora da partilha. Sem beneficiário indicado, o contrato pode remeter à ordem sucessória.
 
-Paga ITCMD sobre VGBL ou PGBL em São Paulo?
+**Paga ITCMD sobre VGBL ou PGBL em São Paulo?**
 
 Não, na hipótese de morte do titular, conforme a tese do STF no Tema 1.214. A ressalva é o planejamento fiscal abusivo, que o Fisco pode questionar, desde que prove o abuso.
 
-A LC 227/2026 mudou a regra sobre previdência privada?
+**A LC 227/2026 mudou a regra sobre previdência privada?**
 
 Até a data desta publicação, não localizamos regra em vigor em São Paulo que afaste a tese do STF. Como a legislação está em transição, a regra deve ser confirmada na data do óbito.
 
-Herdeiro pode contestar o VGBL deixado a outra pessoa?
+**Herdeiro pode contestar o VGBL deixado a outra pessoa?**
 
 Pode, em situações específicas, quando o plano é usado para prejudicar a legítima dos herdeiros necessários. Cada caso depende de prova e de análise individual.
 
-Quanto tempo leva para a seguradora pagar o beneficiário?
+**Quanto tempo leva para a seguradora pagar o beneficiário?**
 
 Depende da instituição e da documentação. Pendências como falta de beneficiário indicado ou beneficiário menor costumam alongar o procedimento.
 

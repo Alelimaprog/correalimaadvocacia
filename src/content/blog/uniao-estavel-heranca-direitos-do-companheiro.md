@@ -1,5 +1,5 @@
 ---
-title: "União Estável e Herança do Companheiro | Corrêa Lima Advocacia"
+title: "União Estável e Herança do Companheiro | Corrêa Lima"
 description: "Companheiro herda como cônjuge? Veja a decisão do STF (Tema 809), a diferença entre meação e herança, o inventário em cartório e o direito de moradia."
 h1: "União estável e herança: quais são os direitos do companheiro"
 author: "Alexandre Corrêa Lima"
@@ -87,23 +87,23 @@ A separação entre meação e herança e o reconhecimento da união definem qua
 
 ## Perguntas frequentes
 
-Companheiro em união estável é herdeiro?
+**Companheiro em união estável é herdeiro?**
 
 Sim. Desde o julgamento do STF no RE 878.694 (Tema 809), o companheiro segue as mesmas regras de sucessão do cônjuge, previstas no art. 1.829 do Código Civil.
 
-Qual a diferença entre meação e herança na união estável?
+**Qual a diferença entre meação e herança na união estável?**
 
 A meação é a metade dos bens comuns, que já pertence ao sobrevivente. A herança é o patrimônio do falecido, dividido entre os herdeiros. Na comunhão parcial, o companheiro concorre com os descendentes sobre os bens particulares.
 
-Preciso de ação judicial para reconhecer a união estável depois da morte?
+**Preciso de ação judicial para reconhecer a união estável depois da morte?**
 
 Nem sempre. Se os demais herdeiros reconhecerem a união, isso pode ser feito na escritura de inventário em cartório. Sem consenso, ou se o companheiro for o único sucessor sem união já reconhecida, a via é judicial.
 
-O companheiro pode continuar morando no imóvel do casal?
+**O companheiro pode continuar morando no imóvel do casal?**
 
 Em regra, sim. O direito real de habitação permite que ele permaneça no imóvel residencial da família, mesmo que outros herdeiros sejam coproprietários.
 
-Companheiro paga ITCMD sobre a meação?
+**Companheiro paga ITCMD sobre a meação?**
 
 Não. O ITCMD incide sobre a herança. A meação já pertencia ao sobrevivente e não é transmissão por morte.
 

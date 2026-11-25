@@ -12,6 +12,7 @@ import TopicClusterCard from '@/components/content/TopicClusterCard.astro';
 import { getCollection } from 'astro:content';
 import { getPage } from '@/lib/institucional';
 import { nucleos } from '@/lib/nucleos';
+import { moneyPage } from '@/lib/related';
 import { whatsappHrefForPath } from '@/lib/site.config';
 
 const page = getPage('/assuntos/');
@@ -29,13 +30,13 @@ const clusters = nucleos.map((n) => ({
   title: n.label,
   icon: n.icon,
   desc: n.short,
-  mainHref: n.href,
+  mainHref: moneyPage[n.slug]?.href ?? n.href,
   guia: guiaFor(n.slug),
   articles: blog
     .filter((b) => b.data.cluster === n.slug)
     .sort((a, b) => (b.data.pubDate?.getTime() ?? 0) - (a.data.pubDate?.getTime() ?? 0))
     .map((b) => ({ label: b.data.h1 ?? b.data.title, href: `/blog/${b.id}/` })),
-  allHref: n.href,
+  allHref: moneyPage[n.slug]?.href ?? n.href,
 }));
 
 const waHref = whatsappHrefForPath('/assuntos/');
@@ -83,7 +84,7 @@ const jsonld = page.jsonld.map((sch: Record<string, unknown>) =>
         <ul class="cluster-grid">
           {clusters.map((c) => (
             <TopicClusterCard title={c.title} icon={c.icon} desc={c.desc} mainHref={c.mainHref}
-              guia={c.guia} articles={c.articles} allHref={c.allHref} maxArticles={4} />
+              guia={c.guia} articles={c.articles} allHref={c.allHref} maxArticles={6} />
           ))}
         </ul>
       </Container>
@@ -93,7 +94,7 @@ const jsonld = page.jsonld.map((sch: Record<string, unknown>) =>
       <Container>
         <div class="cx-cta-inner">
           <h2>Não encontrou o seu tema?</h2>
-          <p>Descreva a sua situação e o escritório indica o melhor caminho.</p>
+          <p>Descreva a sua situação e o escritório indica os caminhos possíveis.</p>
           <div class="cx-cta-actions">
             <a class="btn btn--primary" href={waHref} target="_blank" rel="noopener noreferrer">Falar no WhatsApp</a>
             <a class="btn btn--secondary" href="/contato/">Enviar meu caso</a>

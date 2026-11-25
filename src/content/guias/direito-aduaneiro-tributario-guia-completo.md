@@ -115,7 +115,7 @@ Veja também [defesa administrativa aduaneira](/areas-de-atuacao/direito-aduanei
 
 A NCM define alíquotas, tratamentos administrativos e exigências de licença. Divergências de classificação ou de valoração levam a autuações e a recolhimentos indevidos.
 
-**Classificação incorreta.** Além da diferença de tributo e da multa de ofício, gera multa de 1% do valor aduaneiro, com valor mínimo previsto em lei (Medida Provisória 2.158-35/2001, art. 84). A boa-fé e a correção espontânea antes da fiscalização mudam o cenário.
+**Classificação incorreta.** Gera a diferença de tributo e, conforme o caso, multa de ofício. A multa de 1% do valor aduaneiro do art. 84 da MP 2.158-35/2001 foi revogada pela Lei Complementar 227/2026, inclusive com reflexo em autuações ainda em discussão ([entenda](/blog/multa-1-por-cento-erro-ncm-revogada-lc-227/)). A boa-fé e a correção espontânea antes da fiscalização mudam o cenário.
 
 **Prevenção.** Para produtos de classificação duvidosa, a empresa pode formular consulta de classificação fiscal à Receita Federal antes de importar. A ficha técnica e o laudo do produto sustentam o enquadramento, tanto na defesa quanto no pedido de restituição.
 
@@ -185,7 +185,7 @@ Em regra, 20 dias úteis da ciência para autos de tributo e multa (Decreto 70.2
 Quando a mercadoria não é localizada ou já foi consumida ou revendida, a lei substitui o perdimento por multa igual ao valor aduaneiro (art. 23, §3º, do DL 1.455/1976). Ela não é necessariamente mais leve: o valor equivale ao da mercadoria.
 
 **Errei a NCM. Qual a multa?**
-Além da diferença de tributo e da multa de ofício, a classificação incorreta gera multa de 1% do valor aduaneiro, com mínimo legal (MP 2.158-35/2001, art. 84). A boa-fé e a correção espontânea antes da fiscalização mudam o cenário.
+A classificação incorreta gera a diferença de tributo e, conforme o caso, multa de ofício. A multa de 1% do valor aduaneiro (MP 2.158-35/2001, art. 84) foi revogada pela Lei Complementar 227/2026. A boa-fé e a correção espontânea antes da fiscalização mudam o cenário.
 
 **O que faz um advogado aduaneiro?**
 Atua quando a operação vira litígio com a Receita: responde a exigências e termos de retenção, impugna autos de infração e de perdimento, pede liberação mediante garantia, impetra mandado de segurança quando a retenção é indevida e revisa tributos pagos a maior. O despachante cuida do desembaraço; o advogado, da defesa jurídica.
@@ -194,6 +194,6 @@ Atua quando a operação vira litígio com a Receita: responde a exigências e t
 
 ## Próximos passos
 
-Diante de uma retenção, autuação ou dúvida sobre a tributação da importação, o primeiro passo é identificar o prazo em curso e o fundamento da exigência. Uma análise inicial da documentação orienta a resposta às exigências e a estratégia de defesa ou de revisão.
+Diante de uma retenção, autuação ou dúvida sobre a tributação da importação, o primeiro passo é identificar o prazo em curso e o fundamento da exigência. Uma análise inicial da documentação por [advogado aduaneiro](/areas-de-atuacao/direito-aduaneiro-tributario/) orienta a resposta às exigências e a estratégia de defesa ou de revisão.
 
 Este guia tem caráter informativo geral e não substitui a análise individual do caso. Normas e prazos citados devem ser conferidos na data do caso concreto.

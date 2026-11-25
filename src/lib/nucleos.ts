@@ -53,10 +53,10 @@ export const nucleos: Nucleo[] = [
       'Defesa em retenção de mercadorias, perdimento e autuações, e revisão da tributação incidente na importação.',
     problems: ['Minha mercadoria foi retida'],
     eyebrow: 'Direito aduaneiro-tributário',
-    h1: 'Direito Aduaneiro-Tributário',
+    h1: 'Advogado aduaneiro em São Paulo: mercadoria retida e perdimento',
     heroDescription:
-      'Defesa diante de retenção de mercadorias, pena de perdimento e autos de infração, e revisão da tributação incidente na importação.',
-    seoTitle: 'Advogado Aduaneiro: Mercadoria Retida e Perdimento',
+      'Quando a Receita retém uma importação (canal vermelho, cinza ou exigência fiscal), é preciso ler o termo no Portal Único e responder no prazo. No auto de perdimento, a impugnação é de 20 dias (DL 1.455/1976, art. 27-A). Conforme o caso, cabe liberação mediante garantia ou mandado de segurança.',
+    seoTitle: 'Advogado Aduaneiro em São Paulo: Importação e Perdimento',
     seoDescription:
       'Mercadoria retida, canal vermelho ou cinza, pena de perdimento e auto de infração aduaneiro: defesa administrativa e judicial do importador.',
     situations: [
@@ -112,9 +112,9 @@ export const nucleos: Nucleo[] = [
       'Inventário, partilha e organização patrimonial, inclusive com bens ou herdeiros no exterior.',
     problems: ['Preciso realizar um inventário'],
     eyebrow: 'Inventário e patrimônio',
-    h1: 'Inventário e Patrimônio',
+    h1: 'Advogado de inventário em São Paulo: cartório ou judicial',
     heroDescription:
-      'Condução de inventário e partilha, regularização de bens e organização patrimonial, inclusive em casos com patrimônio ou herdeiros no exterior.',
+      'Em São Paulo, o inventário pode ser feito em cartório quando os herdeiros estão de acordo e têm advogado; desde a Res. CNJ 571/2024, também com herdeiro menor ou testamento, sob condições. Sem acordo, é judicial. Deve ser aberto em até 60 dias do óbito: depois disso, o ITCMD de 4% tem multa de 10% a 20%.',
     seoTitle: 'Advogado de Inventário em São Paulo: Judicial e Cartório',
     seoDescription:
       'Inventário em São Paulo, judicial ou em cartório: ITCMD, partilha, herdeiro ou bens no exterior e regularização de imóveis do espólio.',
@@ -177,7 +177,7 @@ export const nucleos: Nucleo[] = [
     h1: 'Direito Internacional',
     heroDescription:
       'Homologação e reconhecimento de decisões estrangeiras e condução de demandas jurídicas com conexão entre o Brasil e outros países.',
-    seoTitle: 'Direito Internacional e Homologação de Sentença Estrangeira',
+    seoTitle: 'Direito Internacional de Família e Decisões Estrangeiras',
     seoDescription:
       'Homologação de sentença e de divórcio estrangeiro, reconhecimento de decisões, cartas rogatórias e demandas com patrimônio ou herdeiros no exterior.',
     situations: [

@@ -1,5 +1,5 @@
 ---
-title: "Homologação de Sentença Estrangeira Precisa de Advogado?"
+title: "Homologação de Sentença Estrangeira Precisa de Advogado? | Corrêa Lima"
 description: "O pedido de homologação de sentença estrangeira no STJ é feito por advogado inscrito na OAB. Veja quando ele é obrigatório, quando não é e o que faz em cada etapa."
 h1: "Homologação de sentença estrangeira precisa de advogado?"
 author: "Alexandre Corrêa Lima"
@@ -25,7 +25,7 @@ Quem tem uma sentença de divórcio, guarda, alimentos ou cobrança proferida fo
 - **Homologação no STJ: precisa de advogado.** O pedido é uma ação proposta por petição eletrônica assinada por advogado, dirigida ao Presidente do tribunal, com pagamento de custas, conforme a [página oficial do STJ sobre sentença estrangeira](https://www.stj.jus.br/sites/portalp/Processos/Sentenca-Estrangeira).
 - **Averbação direta de divórcio consensual simples: não precisa.** O art. 961, § 5º, do [Código de Processo Civil](https://www.planalto.gov.br/ccivil_03/_ato2015-2018/2015/lei/l13105.htm) dispensa a homologação para a sentença estrangeira de divórcio consensual. O Provimento CNJ nº 53/2016, que regulamentou a averbação direta no cartório de registro civil, dispensa a assistência de advogado ou defensor público, como divulgou o [Tribunal de Justiça de Minas Gerais](https://www.tjmg.jus.br/portal-tjmg/informes/divorcio-consensual-no-exterior-pode-ser-averbado-direto-no-cartorio.htm).
 
-O ponto delicado é saber em qual dos dois casos você está. Um divórcio “consensual” cuja decisão também trata de guarda, pensão ou partilha de bens não entra na averbação direta e segue para o STJ.
+O ponto delicado é saber em qual dos dois casos você está. Um divórcio "consensual" cuja decisão também trata de guarda, pensão ou partilha de bens não entra na averbação direta e segue para o STJ.
 
 ## Por que o STJ exige advogado
 
@@ -101,23 +101,23 @@ Sempre que o caso for ao STJ, o advogado é indispensável. Antes disso, a orien
 
 ## Perguntas frequentes
 
-Posso pedir a homologação no STJ sem advogado?
+**Posso pedir a homologação no STJ sem advogado?**
 
 Não. O pedido é feito por petição eletrônica assinada por advogado, e a postulação perante o Judiciário é atividade privativa de advocacia (Lei 8.906/1994, art. 1º, I).
 
-O advogado do meu divórcio no exterior pode fazer o pedido no STJ?
+**O advogado do meu divórcio no exterior pode fazer o pedido no STJ?**
 
 Só se for inscrito na OAB. O exercício da advocacia no Brasil é privativo dos inscritos na Ordem (Lei 8.906/1994, art. 3º). O advogado estrangeiro pode colaborar obtendo documentos.
 
-Preciso de advogado para averbar o divórcio consensual no cartório?
+**Preciso de advogado para averbar o divórcio consensual no cartório?**
 
 Não, quando se trata de divórcio consensual simples, que só dissolve o casamento. O Provimento CNJ 53/2016 dispensa advogado ou defensor público nesse caso.
 
-Quem não tem condições de pagar as custas pode pedir gratuidade?
+**Quem não tem condições de pagar as custas pode pedir gratuidade?**
 
 Pode pedir a gratuidade da justiça. Segundo o STJ, para o beneficiário da justiça gratuita a tradução da carta rogatória fica a cargo do tribunal, embora o autor possa optar por pagá-la.
 
-Preciso viajar ao Brasil?
+**Preciso viajar ao Brasil?**
 
 Não. O processo é eletrônico e a representação é feita por procuração.
 

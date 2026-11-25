@@ -1,5 +1,5 @@
 ---
-title: "Multa de 1% por Erro de NCM Foi Revogada? LC 227/2026"
+title: "Multa de 1% por Erro de NCM Foi Revogada? LC 227/2026 | Corrêa Lima"
 description: "A LC 227/2026 revogou a multa de 1% por classificação fiscal incorreta na importação. Veja o que deixou de ser cobrado, o que continua e como fica a autuação em curso."
 h1: "Multa de 1% por erro de NCM: o que mudou com a LC 227/2026"
 author: "Alexandre Corrêa Lima"
@@ -97,23 +97,23 @@ Veja também [multa aduaneira e retenção de mercadoria](/blog/multa-aduaneira-
 
 ## Perguntas frequentes
 
-A multa de 1% por classificação fiscal incorreta ainda existe?
+**A multa de 1% por classificação fiscal incorreta ainda existe?**
 
 Não. A LC 227/2026 revogou o art. 84 da MP 2.158-35/2001 e o art. 69 da Lei 10.833/2003, com efeitos desde 14 de janeiro de 2026. A diferença de tributo, os juros e a multa de ofício continuam podendo ser exigidos.
 
-Fui autuado antes de 2026. A revogação me beneficia?
+**Fui autuado antes de 2026. A revogação me beneficia?**
 
 Pode beneficiar, se a autuação ainda não foi definitivamente julgada. O art. 106, II, do CTN manda aplicar a lei nova que deixa de definir o fato como infração a atos não definitivamente julgados. É preciso pedir a aplicação no processo.
 
-Já paguei a multa de 1%. Posso pedir de volta?
+**Já paguei a multa de 1%. Posso pedir de volta?**
 
 Depende do caso. Pagamento feito antes da revogação e débito já encerrado levantam questões diferentes das autuações ainda em discussão. A análise deve considerar a data do pagamento e a situação do processo.
 
-Erro de NCM ainda gera multa?
+**Erro de NCM ainda gera multa?**
 
 Gera, quando o erro resulta em tributo pago a menor. Nesse caso, incide a multa de ofício sobre a diferença, em regra de 75%, prevista no art. 44 da Lei 9.430/1996, além de juros.
 
-Qual é o prazo para impugnar um auto de infração aduaneiro?
+**Qual é o prazo para impugnar um auto de infração aduaneiro?**
 
 No processo administrativo fiscal, a impugnação deve ser apresentada em 20 dias úteis contados da intimação, conforme a nova redação do Decreto 70.235/1972 dada pela LC 227/2026. Casos de perdimento seguem rito próprio.
 

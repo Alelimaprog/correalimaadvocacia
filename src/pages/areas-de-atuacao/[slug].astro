@@ -47,6 +47,10 @@ if (jsonld.length === 0) {
   const faq = buildFaqJsonLd(entry.body ?? '');
   if (faq) jsonld.push(faq);
   crumbs = buildAreaCrumbs(entry.data.h1);
+} else {
+  // Rodada 4: o FAQPage preservado passa a espelhar as perguntas visíveis do corpo atual.
+  const fresh = buildFaqJsonLd(entry.body ?? '');
+  if (fresh) jsonld = jsonld.map((sch) => ((sch as { '@type'?: string })['@type'] === 'FAQPage' ? fresh : sch));
 }
 ---
 

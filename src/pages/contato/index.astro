@@ -26,7 +26,7 @@ const page = getPage('/contato/');
 
       <p class="eyebrow"><span class="dot"></span>Contato</p>
       <h1>Fale com o escritório</h1>
-      <p class="lead">Descreva a situação em poucas linhas. A resposta vem por WhatsApp ou e-mail, conforme você preferir.</p>
+      <p class="lead">Descreva a situação em poucas linhas. Quem responde é o advogado {site.attorney.name} ({site.attorney.oab}), por WhatsApp ou e-mail, conforme você preferir.</p>
       <p class="wa-line">Prefere conversar agora?
         <a class="btn btn--secondary btn--sm" href={whatsappHrefForPath(Astro.url.pathname)} target="_blank" rel="noopener noreferrer" data-cta-position="contato-topo">WhatsApp {site.contact.whatsapp.display}</a>
       </p>
@@ -49,6 +49,10 @@ const page = getPage('/contato/');
             <div>
               <p class="ch-title">Outros canais</p>
               <ul>
+                <li>
+                  <span class="ch-label">Horário</span>
+                  <span>Segunda a sexta, das 9h às 18h</span>
+                </li>
                 <li>
                   <span class="ch-label">WhatsApp</span>
                   <a href={whatsappHrefForPath(Astro.url.pathname)} target="_blank" rel="noopener noreferrer">
@@ -82,38 +86,36 @@ const page = getPage('/contato/');
 </BaseLayout>
 
 <style>
-  .wa-line { margin-top: var(--space-4); display: flex; flex-wrap: wrap; gap: var(--space-3); align-items: center; color: var(--color-text-muted); font-size: var(--text-sm); }
-  .contato { padding-block: var(--section-y-sm) var(--section-y-lg); }
-  /* A sobrancelha herda .eyebrow de ui.css (régua de bronze + caixa alta);
-     aqui fica só o respiro em relação à trilha de navegação acima. */
-  .contato .eyebrow { margin-top: var(--space-5); margin-bottom: var(--space-3); }
-  .contato h1 { font-size: var(--text-4xl); color: var(--color-ink); max-width: 20ch; }
-  .lead { margin-top: var(--space-2); color: var(--color-text-muted); font-size: var(--text-md); }
-  .contact-card {
-    margin-top: var(--space-5);
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-sm);
-    background: var(--surface);
-    padding: clamp(1.25rem, 1rem + 1.2vw, 2.5rem);
+  /* Rodada 4 (13/11/2026): canais com horário de atendimento e cartão sem moldura no celular. */
+  .wa-line .btn{min-height:48px}
+  .wa-line{margin-top:var(--space-4);gap:var(--space-3);color:var(--color-text-muted);font-size:var(--text-sm);flex-wrap:wrap;align-items:center;display:flex}
+  .contato{padding-block:var(--section-y-sm) var(--section-y-lg)}
+  .contato .eyebrow{margin-top:var(--space-5);margin-bottom:var(--space-3)}
+  .contato h1{font-size:var(--text-4xl);color:var(--color-ink);max-width:20ch}
+  .lead{margin-top:var(--space-2);color:var(--color-text-muted);font-size:var(--text-md)}
+  .contact-card{margin-top:var(--space-6);border:1px solid var(--color-border);border-radius:var(--radius-sm);background:var(--surface);padding:clamp(1.25rem,1rem + 1.2vw,2.5rem)}
+  @media (width<=639.98px){.contact-card{border:0;border-top:1px solid var(--border-strong);padding:var(--space-6) 0 0;border-radius:0}
   }
-  .grid { display: grid; gap: var(--space-6); grid-template-columns: minmax(0, 1fr); align-items: start; }
-  .grid > * { min-width: 0; }
-  @media (min-width: 900px) { .grid { grid-template-columns: minmax(0, 1.35fr) minmax(0, 0.85fr); gap: var(--space-10); } }
-  .form-col h2 { font-size: var(--text-xl); color: var(--color-ink); margin-bottom: var(--space-2); }
-  .form-col > p { color: var(--color-text-muted); margin-bottom: var(--space-4); font-size: var(--text-sm); }
-  .form-col :global(.cform) { max-width: none; }
-  .fineprint { margin-top: var(--space-4); font-size: var(--text-sm); color: var(--color-text-muted); max-width: 34rem; }
-  .channels {
-    display: flex; flex-direction: column; gap: var(--space-5); padding: var(--space-6);
-    border: 1px solid var(--color-border); border-left: 2px solid var(--color-accent); background: var(--surface-cream); border-radius: 0;
+  .grid{gap:var(--space-8);grid-template-columns:minmax(0,1fr);align-items:start;display:grid}
+  .grid>*{min-width:0}
+  @media (width>=900px){.grid{gap:var(--space-10);grid-template-columns:minmax(0,1.35fr) minmax(0,.85fr)}
   }
-  .ch-title { font-size: var(--text-xs); font-weight: var(--weight-semibold); text-transform: uppercase; letter-spacing: 0.06em; color: var(--color-text-muted); margin-bottom: var(--space-3); }
-  .channels ul { list-style: none; padding: 0; display: flex; flex-direction: column; gap: var(--space-3); }
-  .ch-label { display: block; font-size: var(--text-xs); text-transform: uppercase; letter-spacing: var(--tracking-eyebrow); color: var(--color-accent); }
-  .channels a { display: inline-block; min-height: 1.75rem; padding-block: 0.15rem; color: var(--color-ink); text-decoration: none; font-weight: var(--weight-semibold); overflow-wrap: anywhere; }
-  .channels a:hover { color: var(--color-accent); }
-  .ch-address { color: var(--color-ink); font-weight: var(--weight-medium); font-size: var(--text-sm); line-height: var(--leading-normal); }
-  .responsible { color: var(--color-text); }
-  .privacy-note { font-size: var(--text-sm); color: var(--color-text-muted); line-height: var(--leading-normal); }
-  .privacy-note a { color: var(--color-navy); }
+  .form-col h2{font-size:var(--text-xl);color:var(--color-ink);margin-bottom:var(--space-2)}
+  .form-col>p{color:var(--color-text-muted);margin-bottom:var(--space-5);font-size:var(--text-sm)}
+  .form-col :global(.cform){max-width:none}
+  .fineprint{margin-top:var(--space-4);font-size:var(--text-xs);line-height:var(--leading-normal);color:var(--color-text-muted);max-width:34rem}
+  .channels{gap:var(--space-5);padding:var(--space-6);border-left:2px solid var(--color-accent);background:var(--surface-cream);border-radius:0;flex-direction:column;display:flex}
+  .ch-title{font-family:var(--font-display);font-size:var(--text-md);font-weight:var(--weight-semibold);color:var(--color-ink);margin-bottom:var(--space-3)}
+  .channels ul{gap:var(--space-3);flex-direction:column;padding:0;list-style:none;display:flex}
+  .channels li{flex-direction:column;gap:.1rem;display:flex}
+  .ch-label{font-size:var(--text-xs);font-weight:var(--weight-semibold);letter-spacing:.02em;color:var(--color-accent);display:block}
+  .channels li>span:not(.ch-label){color:var(--color-ink);font-size:var(--text-sm)}
+  .channels ul a{min-height:2.75rem;color:var(--color-navy);text-decoration:underline;text-decoration-color:var(--border-accent);text-underline-offset:.2em;font-weight:var(--weight-medium);font-size:var(--text-sm);overflow-wrap:anywhere;align-items:center;margin-block:-.5rem;display:inline-flex}
+  .channels ul a:hover{color:var(--color-accent);text-decoration-color:currentColor}
+  .channels a:focus-visible{outline:2px solid var(--ring-color);outline-offset:2px}
+  .ch-address{color:var(--color-ink);font-weight:var(--weight-regular);font-size:var(--text-sm);line-height:var(--leading-normal)}
+  .responsible{color:var(--color-ink);font-size:var(--text-sm)}
+  .channels>div+div{padding-top:var(--space-4);border-top:1px solid var(--color-border)}
+  .privacy-note{font-size:var(--text-xs);color:var(--color-text-muted);line-height:var(--leading-normal)}
+  .privacy-note a{color:var(--color-navy)}
 </style>

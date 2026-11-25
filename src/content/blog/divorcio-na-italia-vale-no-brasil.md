@@ -1,5 +1,5 @@
 ---
-title: "Divórcio na Itália Vale no Brasil? | Corrêa Lima Advocacia"
+title: "Divórcio na Itália Vale no Brasil? | Corrêa Lima"
 description: "Divórcio ou separação na Itália vale no Brasil? Quando o cartório averba direto, por que a separazione não basta e quando é preciso homologar no STJ."
 h1: "Divórcio feito na Itália vale no Brasil?"
 author: "Alexandre Corrêa Lima"
@@ -98,23 +98,23 @@ Se o documento é de separação, se trata de filhos ou bens, ou se o cartório 
 
 ## Perguntas frequentes
 
-Divórcio feito na Itália precisa ser homologado no STJ?
+**Divórcio feito na Itália precisa ser homologado no STJ?**
 
 Nem sempre. Divórcio consensual simples, sem guarda, alimentos ou partilha, pode ser averbado direto no cartório brasileiro. Nos demais casos, a homologação no STJ é necessária.
 
-A separazione italiana pode ser averbada no Brasil como divórcio?
+**A separazione italiana pode ser averbada no Brasil como divórcio?**
 
 Não. Separação e divórcio são institutos diferentes, e a averbação direta prevista pelo CNJ vale apenas para o divórcio consensual simples. Há decisão da 2ª Vara de Registros Públicos de São Paulo, de 2026, nesse sentido.
 
-Divórcio feito no comune italiano vale no Brasil?
+**Divórcio feito no comune italiano vale no Brasil?**
 
 Pode valer. A regra brasileira admite averbação direta de decisão não judicial de divórcio consensual simples. Se o ato tratar de filhos, alimentos ou bens, o caminho é o STJ.
 
-Documento italiano precisa de tradução juramentada?
+**Documento italiano precisa de tradução juramentada?**
 
 Sim. Além da apostila, os documentos em italiano precisam de tradução juramentada para o português.
 
-Continuo casado no Brasil se não averbar o divórcio italiano?
+**Continuo casado no Brasil se não averbar o divórcio italiano?**
 
 Sim. Até a averbação ou a homologação, o registro brasileiro continua mostrando o casamento, o que afeta novo casamento, compra e venda de imóveis e inventários.
 

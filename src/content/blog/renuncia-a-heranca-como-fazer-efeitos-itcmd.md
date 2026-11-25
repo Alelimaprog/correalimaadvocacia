@@ -1,5 +1,5 @@
 ---
-title: "Renúncia à Herança: Como Fazer, Efeitos e ITCMD em SP"
+title: "Renúncia à Herança: Como Fazer, Efeitos e ITCMD em SP | Corrêa Lima"
 description: "Renunciar à herança exige escritura pública ou termo judicial, é irrevogável e não pode ser parcial. Veja para quem vai a parte renunciada e quando há ITCMD em São Paulo."
 h1: "Renúncia à herança: como fazer, quais os efeitos e quando há ITCMD"
 author: "Alexandre Corrêa Lima"
@@ -18,7 +18,7 @@ Inventário e Patrimônio
 
 08/11/2026•7 min de leitura•Por [Alexandre Corrêa Lima](/o-escritorio/#alexandre-correa-lima)
 
-“Quero abrir mão da minha parte para a minha mãe.” “Meu irmão vai ficar com a casa, eu não quero nada.” Frases como essas aparecem em quase todo inventário. O problema é que, juridicamente, elas podem significar coisas diferentes, com efeitos diferentes para a família e para o imposto. Este texto explica o que é a renúncia à herança, como ela é feita, para quem vai a parte renunciada e por que “renunciar a favor de alguém” costuma não ser renúncia.
+"Quero abrir mão da minha parte para a minha mãe." "Meu irmão vai ficar com a casa, eu não quero nada." Frases como essas aparecem em quase todo inventário. O problema é que, juridicamente, elas podem significar coisas diferentes, com efeitos diferentes para a família e para o imposto. Este texto explica o que é a renúncia à herança, como ela é feita, para quem vai a parte renunciada e por que "renunciar a favor de alguém" costuma não ser renúncia.
 
 ## O que é a renúncia
 
@@ -37,7 +37,7 @@ Na prática:
 ## Regras que pegam muita gente de surpresa
 
 - **É irrevogável.** Os atos de aceitação ou de renúncia da herança são irrevogáveis (art. 1.812). Não dá para voltar atrás se depois aparecer um bem valioso.
-- **Não pode ser parcial.** Não se pode aceitar ou renunciar à herança em parte, sob condição ou a termo (art. 1.808). Não existe “renuncio ao apartamento, mas fico com o dinheiro”. A lei só admite separar heranças recebidas por títulos diferentes, como a herança e um legado (art. 1.808, §§ 1º e 2º).
+- **Não pode ser parcial.** Não se pode aceitar ou renunciar à herança em parte, sob condição ou a termo (art. 1.808). Não existe "renuncio ao apartamento, mas fico com o dinheiro". A lei só admite separar heranças recebidas por títulos diferentes, como a herança e um legado (art. 1.808, §§ 1º e 2º).
 - **Cuidado com a aceitação tácita.** A aceitação pode ser expressa ou tácita, resultante de atos próprios de herdeiro (art. 1.805). Atos oficiosos, como cuidar do funeral, conservar os bens ou administrá-los provisoriamente, não configuram aceitação (art. 1.805, § 1º).
 
 ## Para quem vai a parte renunciada
@@ -49,7 +49,7 @@ Esse é o ponto mais mal compreendido. Na renúncia propriamente dita, **o herde
 
 Exemplo: o pai morre, deixando a viúva e três filhos. Se um filho renuncia, sua parte não vai para os netos nem, automaticamente, para a mãe. Ela vai para quem concorre na mesma classe, conforme as regras de concorrência aplicáveis ao caso. O resultado pode ser bem diferente do que a família imaginava.
 
-## ”Renunciar a favor de alguém”: isso é cessão
+## "Renunciar a favor de alguém": isso é cessão
 
 Quando o herdeiro quer que a sua parte vá para uma pessoa determinada (a mãe, um irmão específico), o ato não é renúncia no sentido técnico. Ele primeiro aceita a herança e depois transfere a sua parte. A cessão de direitos hereditários também exige escritura pública (art. 1.793).
 
@@ -85,23 +85,23 @@ Como a renúncia é irrevogável e muda a divisão de toda a herança, convém s
 
 ## Perguntas frequentes
 
-Como renunciar à herança?
+**Como renunciar à herança?**
 
 Por escritura pública em cartório de notas ou por termo nos autos do inventário judicial (Código Civil, art. 1.806). Declaração particular não vale.
 
-Posso renunciar só a um bem?
+**Posso renunciar só a um bem?**
 
 Não. A herança não pode ser aceita ou renunciada em parte (art. 1.808).
 
-Posso renunciar a favor da minha mãe ou de um irmão?
+**Posso renunciar a favor da minha mãe ou de um irmão?**
 
 Tecnicamente, isso é cessão, não renúncia: o herdeiro aceita e transfere a sua parte. Na renúncia pura e simples, a parte vai para quem a lei indica (art. 1.810).
 
-Renúncia paga ITCMD em São Paulo?
+**Renúncia paga ITCMD em São Paulo?**
 
 Na renúncia pura e simples, não há ITCMD para quem renuncia (Lei 10.705/2000, art. 5º, I). Na cessão a pessoa determinada, pode haver imposto sobre a herança e sobre a doação.
 
-Posso desistir da renúncia depois?
+**Posso desistir da renúncia depois?**
 
 Não. A renúncia é irrevogável (art. 1.812).
 

@@ -1,5 +1,5 @@
 ---
-title: "Divórcio em Portugal Vale no Brasil? | Corrêa Lima Advocacia"
+title: "Divórcio em Portugal Vale no Brasil? | Corrêa Lima"
 description: "Divórcio na conservatória ou no tribunal em Portugal: quando o cartório brasileiro averba direto, quando é preciso o STJ e quais documentos pedir."
 h1: "Divórcio feito em Portugal vale no Brasil?"
 author: "Alexandre Corrêa Lima"
@@ -35,7 +35,7 @@ Para o Brasil, a diferença entre conservatória e tribunal pesa menos do que o 
 
 No divórcio por mútuo consentimento em Portugal, o pedido costuma vir acompanhado de acordos sobre responsabilidades parentais, alimentos, destino da casa de morada de família e relação de bens. Isso tem consequência direta no Brasil.
 
-Se a decisão portuguesa homologa ou dispõe sobre guarda, alimentos ou partilha, ela deixa de ser um divórcio “simples” para fins da regra brasileira. Nesse caso, o cartório brasileiro não pode averbar diretamente, e o caminho é o STJ.
+Se a decisão portuguesa homologa ou dispõe sobre guarda, alimentos ou partilha, ela deixa de ser um divórcio "simples" para fins da regra brasileira. Nesse caso, o cartório brasileiro não pode averbar diretamente, e o caminho é o STJ.
 
 Por isso, a primeira tarefa é ler a decisão completa, e não só a certidão de casamento com o averbamento do divórcio. O que define o caminho é o conteúdo do que foi decidido.
 
@@ -95,23 +95,23 @@ Se o divórcio português veio acompanhado de acordos, se há bens no Brasil ou 
 
 ## Perguntas frequentes
 
-Divórcio feito em Portugal vale automaticamente no Brasil?
+**Divórcio feito em Portugal vale automaticamente no Brasil?**
 
 Não. Ele precisa ser averbado no cartório brasileiro, quando for consensual e simples, ou homologado pelo STJ, nos demais casos.
 
-Divórcio na conservatória do registo civil pode ser averbado direto?
+**Divórcio na conservatória do registo civil pode ser averbado direto?**
 
 Pode, se tratar apenas do fim do casamento. Se a decisão dispuser sobre filhos, alimentos ou bens, o caminho é a homologação no STJ.
 
-Documento português precisa de tradução juramentada?
+**Documento português precisa de tradução juramentada?**
 
 Não, porque já está em língua portuguesa. A apostila, porém, continua necessária.
 
-E se o divórcio português tiver acordo sobre os filhos?
+**E se o divórcio português tiver acordo sobre os filhos?**
 
 Nesse caso, a averbação direta não é possível. É preciso homologar a decisão no STJ para que ela produza efeitos no Brasil.
 
-O que acontece se eu não regularizar o divórcio português no Brasil?
+**O que acontece se eu não regularizar o divórcio português no Brasil?**
 
 O registro brasileiro continua mostrando o casamento. Isso pode impedir novo casamento no Brasil e complicar a venda de imóveis e inventários.
 

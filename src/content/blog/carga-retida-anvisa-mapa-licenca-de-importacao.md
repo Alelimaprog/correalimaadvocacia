@@ -98,19 +98,19 @@ O prazo para impetrar é de 120 dias contados da ciência do ato (Lei nº 12.016
 
 ## Perguntas frequentes
 
-A Receita pode liberar a carga sem a anuência do órgão?
+**A Receita pode liberar a carga sem a anuência do órgão?**
 
 Não. Quando a mercadoria está sujeita a licença, o desembaraço depende da anuência. A discussão deve ser feita com o órgão anuente.
 
-Qual o prazo para recorrer de um indeferimento da Anvisa ou do MAPA?
+**Qual o prazo para recorrer de um indeferimento da Anvisa ou do MAPA?**
 
 Depende da norma de cada órgão. Na falta de regra específica, a Lei 9.784/1999 prevê 10 dias. Confira sempre a decisão e a norma aplicada.
 
-Posso pedir a licença depois que a carga chegou?
+**Posso pedir a licença depois que a carga chegou?**
 
 Em alguns casos, sim. Em outros, a licença precisa ser obtida antes do embarque, e a falta dela pode gerar multa e outras consequências.
 
-O que acontece se eu não devolver a mercadoria indeferida?
+**O que acontece se eu não devolver a mercadoria indeferida?**
 
 A carga pode ficar sujeita a perdimento, e, nos casos sanitários e fitossanitários, a habilitação no Siscomex pode ser suspensa.
 

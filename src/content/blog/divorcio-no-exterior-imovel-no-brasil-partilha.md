@@ -1,5 +1,5 @@
 ---
-title: "Divórcio no Exterior com Imóvel no Brasil: e a Partilha?"
+title: "Divórcio no Exterior com Imóvel no Brasil: e a Partilha? | Corrêa Lima"
 description: "A Justiça estrangeira pode dividir um imóvel situado no Brasil? Veja o que o STJ homologa, o que fica de fora e como regularizar a partilha do imóvel após o divórcio."
 h1: "Divórcio feito no exterior com imóvel no Brasil: como fica a partilha"
 author: "Alexandre Corrêa Lima"
@@ -22,7 +22,7 @@ Muitos casais brasileiros que vivem fora mantêm um apartamento ou terreno no Br
 
 ## A regra: imóvel no Brasil é partilhado pela Justiça brasileira
 
-O art. 23 do [Código de Processo Civil](https://www.planalto.gov.br/ccivil_03/_ato2015-2018/2015/lei/l13105.htm) lista situações em que só a autoridade judiciária brasileira pode atuar, “com exclusão de qualquer outra”. Entre elas:
+O art. 23 do [Código de Processo Civil](https://www.planalto.gov.br/ccivil_03/_ato2015-2018/2015/lei/l13105.htm) lista situações em que só a autoridade judiciária brasileira pode atuar, "com exclusão de qualquer outra". Entre elas:
 
 - conhecer de ações relativas a imóveis situados no Brasil (inciso I);
 - em divórcio, separação judicial ou dissolução de união estável, proceder à partilha de bens situados no Brasil, ainda que o titular seja estrangeiro ou tenha domicílio fora do país (inciso III).
@@ -93,23 +93,23 @@ O pedido no STJ é feito por advogado, e a partilha do imóvel no Brasil também
 
 ## Perguntas frequentes
 
-A sentença estrangeira pode transferir um imóvel situado no Brasil?
+**A sentença estrangeira pode transferir um imóvel situado no Brasil?**
 
 Em regra, não. A partilha de bens situados no Brasil em divórcio é de competência exclusiva da Justiça brasileira (CPC, art. 23, III), e o STJ não homologa decisão em matéria de competência exclusiva (art. 964).
 
-Então o STJ não reconhece o meu divórcio?
+**Então o STJ não reconhece o meu divórcio?**
 
 Reconhece. O CPC permite a homologação parcial (art. 961, § 2º): o divórcio e as demais disposições compatíveis podem ser homologados, e o imóvel é partilhado no Brasil.
 
-Posso averbar o divórcio direto no cartório se ele trata do imóvel?
+**Posso averbar o divórcio direto no cartório se ele trata do imóvel?**
 
 Não. A averbação direta vale só para o divórcio consensual que apenas dissolve o casamento. Se a decisão trata de bens, é preciso homologar no STJ.
 
-Qual regime de bens se aplica?
+**Qual regime de bens se aplica?**
 
 O da lei do país em que o casal tinha domicílio ao casar ou, se diferentes, do primeiro domicílio conjugal (LINDB, art. 7º, § 4º).
 
-Há imposto na partilha do imóvel?
+**Há imposto na partilha do imóvel?**
 
 Pode haver. Em São Paulo, a parte atribuída a um ex-cônjuge acima da meação está sujeita ao ITCMD (Lei 10.705/2000, art. 2º, § 5º).
 

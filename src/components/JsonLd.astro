@@ -13,8 +13,46 @@ interface Props {
 
 const { schema } = Astro.props;
 
+/*
+ * Rodada 4 (13/11/2026) — entidade única no grafo: todo autor aponta para o
+ * mesmo @id do advogado e todo publisher/provider para o @id do escritório
+ * (LegalService da home), em vez de repetir dados soltos em cada página.
+ */
+const ORG_ID = 'https://correalimaadvocacia.com.br/#organization';
+const PERSON_ID = 'https://correalimaadvocacia.com.br/o-escritorio/#alexandre-correa-lima';
+const PERSON_URL = 'https://correalimaadvocacia.com.br/o-escritorio/';
+type Obj = Record<string, unknown>;
+const isObj = (v: unknown): v is Obj => !!v && typeof v === 'object' && !Array.isArray(v);
+function autor(a: Obj): Obj {
+  if (a['@type'] !== 'Person' || a.name !== 'Alexandre Corrêa Lima') return a;
+  return { '@type': 'Person', '@id': PERSON_ID, name: a.name, url: PERSON_URL };
+}
+function editor(p: Obj): Obj {
+  if (p['@type'] !== 'Organization' && p['@type'] !== 'LegalService') return p;
+  const { '@type': _t, '@id': _i, ...resto } = p;
+  return { '@type': 'LegalService', '@id': ORG_ID, ...resto };
+}
+function normaliza(o: Obj): Obj {
+  const out: Obj = { ...o };
+  if (isObj(out.author)) out.author = autor(out.author);
+  if (isObj(out.publisher)) out.publisher = editor(out.publisher);
+  if (isObj(out.about) && out.about['@type'] === 'LegalService' && !out.about['@id']) {
+    out.about = { '@type': 'LegalService', '@id': ORG_ID, name: out.about.name, url: 'https://correalimaadvocacia.com.br/' };
+  }
+  const ehArea = typeof out.url === 'string' && out.url.includes('/areas-de-atuacao/');
+  if (ehArea && isObj(out.provider) && (out['@type'] === 'Service' || out['@type'] === 'LegalService')) {
+    if (out['@type'] === 'LegalService') {
+      out['@type'] = 'Service';
+      if (typeof out.name === 'string') out.name = out.name.replace(/ — Corrêa Lima Advocacia$/, '');
+    }
+    out.provider = { '@id': ORG_ID };
+  }
+  return out;
+}
+const final = Array.isArray(schema) ? schema.map((x) => (isObj(x) ? normaliza(x) : x)) : normaliza(schema);
+
 // Escapa "<" para evitar quebra da tag </script> a partir do conteúdo.
-const json = JSON.stringify(schema).replace(/</g, '\\u003c');
+const json = JSON.stringify(final).replace(/</g, '\\u003c');
 ---
 
 <script type="application/ld+json" set:html={json} is:inline />

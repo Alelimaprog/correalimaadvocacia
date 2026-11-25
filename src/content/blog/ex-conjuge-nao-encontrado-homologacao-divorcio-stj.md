@@ -1,5 +1,5 @@
 ---
-title: "Ex-Cônjuge Não Concorda ou Não É Encontrado: Homologação"
+title: "Ex-Cônjuge Não Concorda ou Não É Encontrado: Homologação | Corrêa Lima"
 description: "Homologação de divórcio estrangeiro sem a concordância do ex-cônjuge: anuência, carta rogatória, citação por edital e curador especial no STJ. Entenda cada caminho."
 h1: "Homologação de divórcio estrangeiro quando o ex-cônjuge não concorda ou não é encontrado"
 author: "Alexandre Corrêa Lima"
@@ -48,7 +48,7 @@ Quando ninguém sabe onde a outra parte está, a citação pessoal é impossíve
 
 Dois detalhes do art. 256 importam para casos internacionais. O § 1º considera inacessível, para esse fim, o país que recusar o cumprimento de carta rogatória. E o § 3º só considera o réu em local ignorado depois de infrutíferas as tentativas de localização, inclusive pela requisição de informações sobre o endereço em cadastros de órgãos públicos ou de concessionárias de serviços públicos.
 
-Por isso, alegar apenas “não sei onde ele está” não basta. Antes do edital, é preciso mostrar o que foi feito para localizar a pessoa: último endereço conhecido, contatos com familiares, pesquisas disponíveis, tentativa de citação no último endereço. O art. 257 do CPC exige ainda a publicação do edital no site do tribunal e na plataforma de editais do Conselho Nacional de Justiça, com prazo fixado entre 20 e 60 dias, e a advertência de que será nomeado curador especial em caso de revelia.
+Por isso, alegar apenas "não sei onde ele está" não basta. Antes do edital, é preciso mostrar o que foi feito para localizar a pessoa: último endereço conhecido, contatos com familiares, pesquisas disponíveis, tentativa de citação no último endereço. O art. 257 do CPC exige ainda a publicação do edital no site do tribunal e na plataforma de editais do Conselho Nacional de Justiça, com prazo fixado entre 20 e 60 dias, e a advertência de que será nomeado curador especial em caso de revelia.
 
 ## O que acontece se o ex-cônjuge não responder
 
@@ -91,24 +91,24 @@ O pedido no STJ é feito necessariamente por advogado. Quando a outra parte não
 
 ## Perguntas frequentes
 
-Dá para homologar o divórcio estrangeiro sem a assinatura do ex-cônjuge?
+**Dá para homologar o divórcio estrangeiro sem a assinatura do ex-cônjuge?**
 
 Sim. A anuência apenas facilita. Sem ela, o ex-cônjuge é citado por carta rogatória (exterior) ou carta de ordem (Brasil) e pode contestar em 15 dias.
 
-E se eu não souber onde o ex-cônjuge mora?
+**E se eu não souber onde o ex-cônjuge mora?**
 
 O CPC prevê citação por edital quando o lugar em que o citando se encontra é ignorado, incerto ou inacessível, depois de frustradas as tentativas de localização (art. 256).
 
-Se ele não responder, o STJ homologa automaticamente?
+**Se ele não responder, o STJ homologa automaticamente?**
 
 Não. Pelo art. 216-I do Regimento Interno do STJ, é nomeado curador especial ao revel, e o tribunal continua verificando os requisitos da homologação.
 
-O ex-cônjuge pode impedir a homologação só por não concordar?
+**O ex-cônjuge pode impedir a homologação só por não concordar?**
 
 Não. A contestação só pode discutir a inteligência da decisão e os requisitos formais (RISTJ, art. 216-H), não o mérito do divórcio.
 
-O divórcio foi decretado à revelia no exterior. Isso é problema?
+**O divórcio foi decretado à revelia no exterior. Isso é problema?**
 
-Não necessariamente. O CPC exige citação regular no processo estrangeiro, “ainda que verificada a revelia” (art. 963, II). O que importa é provar que a citação foi feita.
+Não necessariamente. O CPC exige citação regular no processo estrangeiro, "ainda que verificada a revelia" (art. 963, II). O que importa é provar que a citação foi feita.
 
 Este conteúdo tem caráter exclusivamente informativo e não substitui a análise individual do seu caso por advogado.

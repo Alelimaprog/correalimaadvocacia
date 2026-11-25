@@ -1,5 +1,5 @@
 ---
-title: "Bagagem Retida no Aeroporto pela Receita: o Que Fazer"
+title: "Bagagem Retida no Aeroporto pela Receita: o Que Fazer | Corrêa Lima"
 description: "Cota de US$ 1.000, imposto de 50% sobre o excedente, multa por não declarar, prazo de 45 dias para retirar e perdimento: o que fazer quando a Receita retém bens na bagagem."
 h1: "Bagagem retida no aeroporto pela Receita Federal: o que fazer"
 author: "Alexandre Corrêa Lima"
@@ -41,9 +41,9 @@ Bens de uso pessoal compatíveis com a viagem não entram na cota. A Receita esc
 
 ## Excedeu a cota: declarar sai mais barato
 
-O que passar da cota paga **50% sobre o valor que exceder** o limite. O viajante declara os bens na Declaração Eletrônica de Bens de Viajante (e-DBV) e segue pelo canal “bens a declarar”. Quem se apresenta espontaneamente pode pagar o imposto em até 30 dias.
+O que passar da cota paga **50% sobre o valor que exceder** o limite. O viajante declara os bens na Declaração Eletrônica de Bens de Viajante (e-DBV) e segue pelo canal "bens a declarar". Quem se apresenta espontaneamente pode pagar o imposto em até 30 dias.
 
-Quem passa pelo canal “nada a declarar” levando bens acima da cota comete declaração falsa ou inexata. Nesse caso, além do imposto, há **multa de 50% do valor excedente ao limite de isenção**. A Receita informa que a redução de 50% dessa multa só vale para pagamentos feitos em até 30 dias.
+Quem passa pelo canal "nada a declarar" levando bens acima da cota comete declaração falsa ou inexata. Nesse caso, além do imposto, há **multa de 50% do valor excedente ao limite de isenção**. A Receita informa que a redução de 50% dessa multa só vale para pagamentos feitos em até 30 dias.
 
 ## Quando a Receita retém os bens
 
@@ -99,23 +99,23 @@ Na maior parte dos casos de imposto sobre o excedente, o próprio viajante resol
 
 ## Perguntas frequentes
 
-Qual é a cota de isenção para quem chega de avião?
+**Qual é a cota de isenção para quem chega de avião?**
 
 US$ 1.000 por pessoa, a cada intervalo de 30 dias, sem possibilidade de somar cotas de familiares, segundo a Receita Federal. Há ainda cota adicional de US$ 1.000 no free shop de chegada.
 
-Quanto pago se passar da cota?
+**Quanto pago se passar da cota?**
 
 50% sobre o valor que exceder o limite. Se não declarar e for flagrado, há também multa de 50% do valor excedente.
 
-Quanto tempo tenho para retirar a bagagem retida?
+**Quanto tempo tenho para retirar a bagagem retida?**
 
 Segundo a Receita, até 45 dias da retenção. Depois disso, os bens são considerados abandonados.
 
-Outra pessoa pode retirar os bens retidos?
+**Outra pessoa pode retirar os bens retidos?**
 
 Sim, com autorização expressa do viajante, que pode ser dada no verso do termo de retenção.
 
-A Receita pode aplicar perdimento em bagagem?
+**A Receita pode aplicar perdimento em bagagem?**
 
 Sim, em casos de ocultação, de clara destinação comercial ou de bens proibidos. Cabe impugnação em 20 dias da ciência (Decreto-Lei 1.455/1976, art. 27-A).
 

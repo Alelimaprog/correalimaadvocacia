@@ -7,6 +7,9 @@
 export interface PillarExtra {
   problem: string;
   risks: string[];
+  /** Rodada 4 (13/11/2026): tabela "Visão rápida" e bloco "Atuação local". */
+  table?: { title: string; cols: string[]; rows: string[][] };
+  local?: { title: string; text: string; links?: { label: string; href: string }[] };
 }
 
 export const pillarExtra: Record<string, PillarExtra> = {
@@ -65,10 +68,14 @@ export const pillarExtra: Record<string, PillarExtra> = {
       'Na importação, uma retenção de mercadoria ou uma autuação paralisa a operação e gera custos que crescem a cada dia. Divergências de classificação fiscal, valoração ou documentação podem levar a multas e até à pena de perdimento. A atuação aduaneira-tributária busca responder às exigências no prazo, discutir a autuação e revisar a tributação incidente. No perdimento, o prazo de impugnação é de 20 dias (Lei 14.651/2023).',
     risks: [
       'Custos crescentes de armazenagem e demurrage enquanto a carga fica retida.',
-      'Pena de perdimento, com perda da mercadoria, em casos não enfrentados a tempo.',
+      'Pena de perdimento, se a exigência ou o auto não forem respondidos no prazo.',
       'Pagamento de tributos a maior por classificação ou valoração equivocadas.',
       'Multas e sanções que afetam a habilitação e a continuidade das operações.',
     ],
+    local: {
+      title: 'Onde atuamos em São Paulo',
+      text: 'Retenções e autuações nas alfândegas do Porto de Santos, do Aeroporto de Guarulhos, de Viracopos (Campinas) e de São Paulo, além dos portos secos do estado. O mandado de segurança é impetrado na Justiça Federal competente em relação à autoridade que reteve a carga, com recursos ao TRF da 3ª Região. Escritório na R. Verbo Divino, 2001, Chácara Santo Antônio, São Paulo/SP, com atendimento online para importadores de todo o país.',
+    },
   },
   'direito-internacional': {
     problem:
@@ -89,5 +96,25 @@ export const pillarExtra: Record<string, PillarExtra> = {
       'Conflitos entre herdeiros que dificultam acordos e encarecem o processo.',
       'Complexidade adicional quando há herdeiros ou patrimônio em outro país.',
     ],
+    table: {
+      title: 'Quanto custa um inventário em São Paulo: os itens',
+      cols: ['Custo', 'Regra em SP', 'Quem cobra'],
+      rows: [
+        ['ITCMD', '4% sobre os bens transmitidos (Lei 10.705/2000)', 'Sefaz-SP'],
+        ['Multa por atraso', '10% do imposto se o inventário não for aberto em 60 dias do óbito; 20% após 180 dias', 'Sefaz-SP'],
+        ['Escritura (inventário em cartório)', 'Tabela oficial anual de emolumentos, por faixa de valor', 'Tabelionato de Notas'],
+        ['Registro da partilha', 'Tabela do Registro de Imóveis', 'Cartório de Imóveis'],
+        ['Certidões', 'Valor por documento', 'Cartórios e órgãos emissores'],
+        ['Honorários', 'Definidos em contrato após análise do caso', 'Advogado'],
+      ],
+    },
+    local: {
+      title: 'Inventário em São Paulo',
+      text: 'O inventário judicial corre na Vara da Família e Sucessões do foro do último domicílio do falecido (Foro Central ou foros regionais). O extrajudicial pode ser feito em qualquer tabelionato de notas, e a escritura pode ser assinada por videoconferência pelo e-Notariado, o que ajuda herdeiros no exterior. Veja também quanto custa um inventário e o checklist de documentos.',
+      links: [
+        { label: 'Quanto custa um inventário', href: '/blog/quanto-custa-um-inventario/' },
+        { label: 'Checklist de documentos do inventário', href: '/ferramentas/checklist-documentos-inventario/' },
+      ],
+    },
   },
 };

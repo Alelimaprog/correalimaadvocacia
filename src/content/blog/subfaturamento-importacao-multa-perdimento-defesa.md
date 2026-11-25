@@ -1,5 +1,5 @@
 ---
-title: "Subfaturamento: Multa ou Perdimento? | Corrêa Lima Advocacia"
+title: "Subfaturamento: Multa ou Perdimento? | Corrêa Lima"
 description: "Subvaloração ou falsidade na importação: diferença entre a multa de 100% e a pena de perdimento, regras de valoração aduaneira, provas do preço e defesa."
 h1: "Subfaturamento na importação: multa, perdimento e defesa"
 author: "Alexandre Corrêa Lima"
@@ -19,7 +19,7 @@ Quando a Receita Federal entende que o preço declarado na importação está ab
 
 ## Subvaloração não é o mesmo que fraude
 
-Três situações costumam ser tratadas como “subfaturamento”, mas são diferentes:
+Três situações costumam ser tratadas como "subfaturamento", mas são diferentes:
 
 | Situação | O que é | Consequência típica |
 |---|---|---|
@@ -33,7 +33,7 @@ Classificar corretamente o caso é o primeiro passo da defesa.
 
 O valor aduaneiro segue o [Acordo de Valoração Aduaneira](https://www.planalto.gov.br/ccivil_03/decreto/Antigos/D1355.htm) da OMC, incorporado ao direito brasileiro pelo Decreto nº 1.355/1994. A regra principal é o **valor de transação**: o preço efetivamente pago ou a pagar pela mercadoria, com os ajustes previstos no Acordo.
 
-Só quando o valor de transação não pode ser usado é que se passa aos métodos seguintes, em ordem: mercadorias idênticas, similares, método dedutivo, computado e o método residual. A aduana não pode simplesmente substituir o preço declarado por uma “tabela” ou por preço de referência sem seguir essa sequência.
+Só quando o valor de transação não pode ser usado é que se passa aos métodos seguintes, em ordem: mercadorias idênticas, similares, método dedutivo, computado e o método residual. A aduana não pode simplesmente substituir o preço declarado por uma "tabela" ou por preço de referência sem seguir essa sequência.
 
 O Acordo também prevê que, se a aduana tem dúvida sobre a veracidade do valor declarado, deve dar ao importador a chance de explicar e provar o preço antes de rejeitá-lo.
 
@@ -68,7 +68,7 @@ A defesa se apoia em documentos. Os mais úteis:
 - explicação comercial para preço abaixo do mercado: promoção, lote antigo, ponta de estoque, volume, defeito, mudança de modelo;
 - contabilidade do importador e preço de revenda no Brasil.
 
-Comparar o preço com “pesquisas de internet” ou com outras importações nem sempre é suficiente para afastar o valor declarado. A Receita precisa respeitar a sequência de métodos do Acordo.
+Comparar o preço com "pesquisas de internet" ou com outras importações nem sempre é suficiente para afastar o valor declarado. A Receita precisa respeitar a sequência de métodos do Acordo.
 
 ## Liberação mediante garantia
 
@@ -95,19 +95,19 @@ Mais detalhes em [defesa administrativa aduaneira](/areas-de-atuacao/direito-adu
 
 ## Perguntas frequentes
 
-Subfaturamento sempre leva à perda da mercadoria?
+**Subfaturamento sempre leva à perda da mercadoria?**
 
 Não. Quando o problema é só o preço, com documento verdadeiro, há precedentes do STJ que afastam o perdimento e aplicam a multa de 100% sobre a diferença. O perdimento está ligado, em regra, a documento falsificado ou adulterado.
 
-A Receita pode usar preço de referência para recalcular o valor?
+**A Receita pode usar preço de referência para recalcular o valor?**
 
 Não de forma livre. O Acordo de Valoração Aduaneira exige seguir uma ordem de métodos, começando pelo valor de transação.
 
-Comprar barato é crime?
+**Comprar barato é crime?**
 
 Não. Preço baixo pode ter explicação comercial legítima. O ponto é provar que o preço declarado é o preço efetivamente pago.
 
-Posso retirar a carga enquanto me defendo?
+**Posso retirar a carga enquanto me defendo?**
 
 Em várias situações, mediante garantia. As exceções e os limites do Tema 1.042 do STF devem ser analisados no caso concreto.
 

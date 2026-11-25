@@ -99,23 +99,23 @@ A sobrepartilha, judicial ou em cartório, exige advogado. A orientação é esp
 
 ## Perguntas frequentes
 
-Apareceu um bem depois do inventário. Preciso refazer tudo?
+**Apareceu um bem depois do inventário. Preciso refazer tudo?**
 
 Não. Os bens descobertos após a partilha ficam sujeitos a sobrepartilha (Código Civil, art. 2.022), que trata só do que ficou de fora.
 
-A sobrepartilha pode ser feita em cartório?
+**A sobrepartilha pode ser feita em cartório?**
 
 Pode, se os herdeiros estiverem de acordo e assistidos por advogado, ainda que o inventário original tenha sido judicial (Resolução CNJ 35/2007, art. 25).
 
-Há prazo para pedir a sobrepartilha?
+**Há prazo para pedir a sobrepartilha?**
 
 A lei não fixa um prazo próprio para a sobrepartilha. O que pesa é o imposto, calculado sobre o valor na data do óbito, e a situação do bem.
 
-Paga ITCMD de novo?
+**Paga ITCMD de novo?**
 
 Paga-se o ITCMD sobre o bem novo, que não foi tributado no inventário original. Em São Paulo, a alíquota é de 4% (Lei 10.705/2000, art. 16).
 
-E se um herdeiro escondeu o bem?
+**E se um herdeiro escondeu o bem?**
 
 Pode configurar sonegação, com perda do direito do sonegador sobre o bem (Código Civil, art. 1.992). A pena depende de ação movida pelos herdeiros ou credores (art. 1.994).
 

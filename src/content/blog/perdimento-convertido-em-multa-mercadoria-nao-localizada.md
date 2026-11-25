@@ -1,5 +1,5 @@
 ---
-title: "Perdimento Convertido em Multa: Mercadoria Já Vendida"
+title: "Perdimento Convertido em Multa: Mercadoria Já Vendida | Corrêa Lima"
 description: "Quando a mercadoria importada já foi vendida, consumida ou não é localizada, a pena de perdimento vira multa igual ao valor aduaneiro. Veja quando se aplica, o rito e a defesa."
 h1: "Perdimento convertido em multa: quando a mercadoria já foi vendida ou não é localizada"
 author: "Alexandre Corrêa Lima"
@@ -86,23 +86,23 @@ Procure orientação assim que receber intimação em procedimento de fiscaliza�
 
 ## Perguntas frequentes
 
-O que acontece quando a mercadoria sujeita a perdimento já foi vendida?
+**O que acontece quando a mercadoria sujeita a perdimento já foi vendida?**
 
 A pena de perdimento é substituída por multa equivalente ao valor aduaneiro da mercadoria (Regulamento Aduaneiro, art. 689, § 1º; Decreto-Lei 1.455/1976, art. 23, § 3º).
 
-A multa substitutiva é mais leve que o perdimento?
+**A multa substitutiva é mais leve que o perdimento?**
 
 Não necessariamente. Ela corresponde a 100% do valor aduaneiro da mercadoria, independentemente do tributo envolvido.
 
-Qual o prazo para impugnar?
+**Qual o prazo para impugnar?**
 
 A multa substitutiva segue o Decreto 70.235/1972: 20 dias úteis da ciência, conforme a redação dada pela LC 227/2026. O perdimento de mercadoria apreendida tem prazo de 20 dias (Decreto-Lei 1.455/1976, art. 27-A).
 
-Subfaturamento gera multa substitutiva do perdimento?
+**Subfaturamento gera multa substitutiva do perdimento?**
 
 Quando a única falsidade é o preço declarado a menor, o Regulamento Aduaneiro exclui a hipótese de perdimento por documento falso (art. 689, § 3º-A), sem prejuízo de outra multa.
 
-Quem pode ser autuado?
+**Quem pode ser autuado?**
 
 Depende da operação. Em casos de ocultação do real adquirente, a fiscalização costuma autuar mais de uma empresa, e a responsabilidade de cada uma deve ser examinada na defesa.
 

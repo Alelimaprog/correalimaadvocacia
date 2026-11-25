@@ -38,12 +38,42 @@ const { head, jsonld, crumbs, showContact = true, variant } = Astro.props;
       {showContact && <ContactCTA />}
     </Container>
   </main>
+  <script is:inline>
+  (function () {
+    var wraps = document.querySelectorAll('.prose .table-wrap');
+    for (var w = 0; w < wraps.length; w++) {
+      var table = wraps[w].querySelector('table');
+      if (!table) continue;
+      var heads = table.querySelectorAll('thead th');
+      if (!heads.length) continue;
+      var labels = [];
+      for (var h = 0; h < heads.length; h++) labels.push((heads[h].textContent || '').trim());
+      var rows = table.querySelectorAll('tbody tr');
+      for (var r = 0; r < rows.length; r++) {
+        var cells = rows[r].children;
+        for (var c = 0; c < cells.length; c++) {
+          if (labels[c]) cells[c].setAttribute('data-label', labels[c]);
+        }
+      }
+      table.classList.add('tbl-stack');
+      wraps[w].classList.add('is-stacked');
+    }
+  })();
+</script>
 </BaseLayout>
 
 <style>
   .entry { padding-block: var(--section-y-sm); }
-  .entry-crumb {
-    margin-bottom: var(--space-6);
+  /* A classe vai para o componente Breadcrumb (filho), por isso :global. */
+  .entry :global(.entry-crumb) { margin-bottom: var(--space-6); }
+  /* Celular: o último item da trilha (título longo) é truncado em uma linha. */
+  @media (max-width: 639.98px) {
+    .entry :global(.entry-crumb li:last-child) { flex: 1 1 8rem; min-width: 0; }
+    .entry :global(.entry-crumb [aria-current='page']) { display: block; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; min-width: 0; color: var(--color-text-muted); }
+  }
+  @media (max-width: 519.98px) {
+    .entry--area :global(.prose p.cta-inline) { flex-direction: column; }
+    .entry--area :global(.prose p.cta-inline a) { width: 100%; }
   }
   /* Rodada 3 (A2): hero das páginas de serviço em Markdown alinhado ao SubPage */
   .entry--area :global(.prose > p.eyebrow) { margin-top: var(--space-4); font-size: var(--text-xs); }

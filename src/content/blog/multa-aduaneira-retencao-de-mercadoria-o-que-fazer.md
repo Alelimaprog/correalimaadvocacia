@@ -1,5 +1,5 @@
 ---
-title: "Mercadoria Retida ou Multa Aduaneira: O Que Fazer Já | Corrêa Lima Advocacia"
+title: "Multa Aduaneira na Importação: Prazos e Como Recorrer | Corrêa Lima Advocacia"
 description: "Mercadoria retida na alfândega, canal vermelho ou multa aduaneira? Primeiros passos, prazos de resposta e quando cabe medida judicial."
 h1: "Multa aduaneira e retenção de mercadoria: o que fazer"
 author: "Alexandre Corrêa Lima"

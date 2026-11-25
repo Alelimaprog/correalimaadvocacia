@@ -1,345 +1,116 @@
 ---
 /**
- * HomeContent — Home reformulada para conversão (reconhecimento → compreensão →
- * confiança → redução de incerteza → contato). Seções: faixa de confiança,
- * entrada por problema, áreas de atuação, perfis atendidos, como funciona,
- * forma de atuação, conteúdos, FAQ (2 colunas) e CTA. Sem números inventados.
+ * HomeContent — home. Rodada 4 (13/11/2026): reconstruída a partir do site publicado.
  */
-import { whatsappHrefForPath } from '@/lib/site.config';
-import { nucleos, getNucleo } from '@/lib/nucleos';
-import { site } from '@/lib/site.config';
 import Icon from '@/components/Icon.astro';
-import { homeFaq as faq } from '@/lib/home-faq';
-
-const N = (s: string) => getNucleo(s)!.href;
-
-const problems = [
-  { t: 'Mercadoria retida ou autuada na importação', d: 'Retenção na aduana, exigências da Receita, canal vermelho, multas aduaneiras e pena de perdimento.', href: '/areas-de-atuacao/direito-aduaneiro-tributario/retencao-de-mercadorias/' },
-  { t: 'Há um inventário ou partilha a resolver', d: 'Inventário em cartório ou judicial em São Paulo, inclusive com herdeiros ou bens no exterior.', href: N('inventario-e-patrimonio') },
-  { t: 'Uma sentença ou divórcio estrangeiro precisa valer no Brasil', d: 'Homologação no STJ ou averbação direta em cartório, conforme o que a decisão dispõe.', href: '/areas-de-atuacao/homologacao-de-sentenca-estrangeira/' },
-  { t: 'A empresa precisa de assessoria jurídica recorrente', d: 'Contratos, decisões societárias e análise de risco antes de a operação ser fechada.', href: N('direito-empresarial') },
-  { t: 'Há valores a receber de clientes ou parceiros', d: 'Cobrança, execução de títulos e localização de patrimônio do devedor.', href: N('recuperacao-de-credito') },
-  { t: 'A empresa foi acionada na Justiça do Trabalho', d: 'Defesa do empregador, dimensionamento de passivo e consultoria preventiva.', href: N('trabalhista-empresarial') },
-  { t: 'A operação recebeu multa ou embargo ambiental', d: 'Defesa administrativa ou judicial diante da autuação.', href: N('direito-ambiental') },
-  { t: 'O condomínio possui cotas em atraso', d: 'Cobrança de cotas condominiais e negociação de acordos.', href: N('cobranca-condominial') },
-];
-
-const perfis = [
-  { icon: 'building', t: 'Empresas e seus administradores', d: 'Contratos, relações societárias, contencioso estratégico e assessoria recorrente à operação.' },
-  { icon: 'package', t: 'Importadores, exportadores e tradings', d: 'Retenção de mercadorias, autuações, perdimento, classificação fiscal e tributação na importação.' },
-  // Este lugar da lista era "Operadores logísticos e terminais". Saiu: o acervo
-  // do site documenta comércio exterior e aduaneiro, não a cadeia de transporte
-  // nem operação portuária — afirmar o perfil seria anunciar cliente que o
-  // projeto não comprova atender. Entra um perfil que tem área própria
-  // publicada (cobrança condominial), e a matéria de transporte fica pendente
-  // junto com o rascunho de Direito Marítimo e Portuário.
-  { icon: 'home', t: 'Condomínios e administradoras', d: 'Recuperação de cotas em atraso, formalização de acordos e controle jurídico da inadimplência.' },
-  { icon: 'users', t: 'Departamentos de RH e gestores', d: 'Defesa do empregador, auditoria de passivo, políticas internas e contratos de trabalho.' },
-  { icon: 'coins', t: 'Credores e áreas financeiras', d: 'Cobrança, execução de títulos, habilitação de crédito e recuperação judicial do devedor.' },
-  { icon: 'globe', t: 'Empresas e pessoas com demandas no exterior', d: 'Decisões estrangeiras, documentos, patrimônio e operações entre países.' },
-];
-
-const steps = [
-  { n: '01', t: 'Entendimento inicial', d: 'Conhecemos a situação, o objetivo do cliente e os principais acontecimentos relacionados ao problema.' },
-  { n: '02', t: 'Análise dos documentos e riscos', d: 'Examinamos os documentos disponíveis e identificamos os pontos que precisam de atenção.' },
-  { n: '03', t: 'Definição das medidas possíveis', d: 'Apresentamos as alternativas adequadas — negociação, procedimento administrativo ou processo judicial.' },
-  { n: '04', t: 'Condução e acompanhamento', d: 'Após a contratação, o escritório conduz as medidas definidas e informa os acontecimentos relevantes.' },
-];
-
-const diferenciais = [
-  { icon: 'search', t: 'Análise antes da adoção de medidas', d: 'Os documentos, riscos e objetivos são examinados antes de definir o caminho jurídico.' },
-  { icon: 'route', t: 'Estratégia proporcional ao problema', d: 'A medida considera urgência, custos, riscos, patrimônio envolvido e possibilidade prática de resultado.' },
-  { icon: 'shield', t: 'Leitura jurídica e econômica da operação', d: 'A análise considera o processo e também os efeitos sobre contratos, crédito, estoque e continuidade da atividade.' },
-  { icon: 'file', t: 'Atuação preventiva e contenciosa', d: 'Atuação tanto na prevenção de conflitos quanto em procedimentos administrativos e judiciais.' },
-  { icon: 'message', t: 'Comunicação objetiva', d: 'Etapas, alternativas e acontecimentos relevantes apresentados de maneira compreensível.' },
-  { icon: 'globe', t: 'Casos nacionais e internacionais', d: 'Demandas no Brasil e situações envolvendo bens, pessoas, documentos ou decisões estrangeiras.' },
-];
-
-const conteudos = [
-  { tag: 'Guia', t: 'Direito Aduaneiro-Tributário', d: 'Retenção de mercadorias, exigências fiscais, multas e pena de perdimento: o que fazer e em que prazo.', href: '/guias/direito-aduaneiro-tributario-guia-completo/' },
-  { tag: 'Guia', t: 'Inventário: guia completo', d: 'Inventário em cartório ou judicial, documentos, prazos, ITCMD e herdeiros no exterior.', href: '/guias/inventario-guia-completo/' },
-  { tag: 'Guia', t: 'Homologação de Sentença Estrangeira no Brasil', d: 'Quando a decisão estrangeira precisa ser homologada no STJ e quando basta a averbação em cartório.', href: '/guias/homologacao-de-sentenca-estrangeira-no-brasil/' },
-];
-
+import { whatsappHrefForPath } from '@/lib/site.config';
+const waHref = whatsappHrefForPath('/');
 ---
 
-<!-- Entrada por problema -->
-<section class="hs hs--cream">
-  <div class="hc">
-    <p class="eyebrow"><span class="dot"></span>Por onde começar</p>
-    <h2 class="sec-h2">Qual demanda trouxe você até aqui?</h2>
-    <p class="sec-intro">Cada entrada abaixo leva à área correspondente, com o escopo da atuação e o que costuma ser analisado primeiro.</p>
-    <ul class="problem-grid">
-      {problems.map((p) => (
-        <li>
-          <a href={p.href}>
-            <span class="pg-body">
-              <span class="pg-t">{p.t}</span>
-              <span class="pg-d">{p.d}</span>
-            </span>
-            <span class="pg-arrow"><Icon name="arrow-right" size={18} /></span>
-          </a>
-        </li>
-      ))}
-    </ul>
-    <p class="quick-links">
-      Também procurados:
-      <a href="/areas-de-atuacao/direito-aduaneiro-tributario/pena-de-perdimento/">pena de perdimento</a> ·
-      <a href="/areas-de-atuacao/direito-aduaneiro-tributario/defesa-administrativa-aduaneira/">auto de infração aduaneiro</a> ·
-      <a href="/areas-de-atuacao/inventario-com-herdeiro-no-exterior/">inventário com herdeiro no exterior</a> ·
-      <a href="/areas-de-atuacao/inventario-e-patrimonio/inventario-extrajudicial/">inventário em cartório</a> ·
-      <a href="/areas-de-atuacao/homologacao-de-divorcio-estrangeiro/">divórcio feito no exterior</a> ·
-      <a href="/areas-de-atuacao/homologacao-de-sentenca-dos-estados-unidos/">sentença dos EUA</a>
-    </p>
-  </div>
-</section>
-
-<!-- Áreas de atuação -->
-<section class="hs hs--white">
-  <div class="hc">
-    <p class="eyebrow"><span class="dot"></span>Áreas de atuação</p>
-    <h2 class="sec-h2">Atuação jurídica organizada por áreas complementares</h2>
-    <p class="sec-intro">O escritório concentra sua atuação em questões da atividade empresarial: contratos, relações de trabalho do lado do empregador, crédito, importações, questões ambientais e demandas com elemento internacional.</p>
-    <div class="nucleo-grid">
-      {nucleos.map((n) => (
-        <a class="ncard" href={n.href}>
-          <span class="ncard-ic"><Icon name={n.icon} size={24} /></span>
-          <h3 class="ncard-t">{n.label}</h3>
-          <p class="ncard-d">{n.short}</p>
-          <span class="ncard-more">Conhecer esta área <Icon name="arrow-right" size={15} /></span>
-        </a>
-      ))}
-    </div>
-  </div>
-</section>
-
-<!-- Perfis atendidos -->
-<section class="hs hs--ornament">
-  <div class="hc">
-    <p class="eyebrow"><span class="dot"></span>Perfis atendidos</p>
-    <h2 class="sec-h2">Atuação direcionada ao contexto de cada cliente</h2>
-    <p class="sec-intro">Os riscos, documentos e medidas possíveis variam conforme o perfil do cliente e a natureza da demanda.</p>
-    <div class="perfil-grid">
-      {perfis.map((p) => (
-        <article class="perfil">
-          <span class="perfil-ic"><Icon name={p.icon} size={22} /></span>
-          <div>
-            <h3 class="perfil-t">{p.t}</h3>
-            <p class="perfil-d">{p.d}</p>
-          </div>
-        </article>
-      ))}
-    </div>
-  </div>
-</section>
-
-<!-- Como funciona -->
-<section class="hs hs--warm">
-  <div class="hc">
-    <p class="eyebrow"><span class="dot"></span>Como funciona</p>
-    <h2 class="sec-h2">Do primeiro contato à definição da estratégia</h2>
-    <div class="step-grid">
-      {steps.map((s) => (
-        <article class="step">
-          <span class="step-n">{s.n}</span>
-          <h3 class="step-t">{s.t}</h3>
-          <p class="step-d">{s.d}</p>
-        </article>
-      ))}
-    </div>
-  </div>
-</section>
-
-<!-- Forma de atuação (diferenciais) -->
-<section class="hs hs--white">
-  <div class="hc">
-    <p class="eyebrow"><span class="dot"></span>Forma de atuação</p>
-    <h2 class="sec-h2">Critério técnico, estratégia e clareza na condução do caso</h2>
-    <div class="dif-grid">
-      {diferenciais.map((d) => (
-        <article class="dif">
-          <span class="dif-ic"><Icon name={d.icon} size={22} /></span>
-          <div>
-            <h3 class="dif-t">{d.t}</h3>
-            <p class="dif-d">{d.d}</p>
-          </div>
-        </article>
-      ))}
-    </div>
-  </div>
-</section>
-
-<!-- Conteúdos -->
-<section class="hs hs--warm">
-  <div class="hc">
-    <p class="eyebrow"><span class="dot"></span>Conteúdos</p>
-    <h2 class="sec-h2">Materiais para entender melhor o seu caso</h2>
-    <div class="cont-grid">
-      {conteudos.map((c) => (
-        <a class="cont" href={c.href}>
-          <span class="cont-tag">{c.tag}</span>
-          <h3 class="cont-t">{c.t}</h3>
-          <p class="cont-d">{c.d}</p>
-          <span class="cont-more">Ler o guia <Icon name="arrow-right" size={15} /></span>
-        </a>
-      ))}
-    </div>
-    <a class="viewall" href="/guias/">Ver todos os conteúdos <Icon name="arrow-right" size={15} /></a>
-  </div>
-</section>
-
-<!-- FAQ — duas colunas -->
-<section class="hs hs--faq">
-  <div class="hc faq-split">
-    <div class="faq-aside">
-      <p class="eyebrow"><span class="dot"></span>Perguntas frequentes</p>
-      <h2 class="sec-h2">Antes de entrar em contato</h2>
-      <p class="sec-intro">Respostas objetivas para dúvidas recorrentes sobre mercadoria retida na importação, inventário, decisões estrangeiras, cobrança e execução. As respostas têm caráter informativo e não substituem a análise individual do caso.</p>
-      <div class="faq-cta">
-        <p class="faq-cta-t">Não encontrou a sua dúvida?</p>
-        <p class="faq-cta-d">Apresente brevemente a situação para que o escritório possa identificar a área jurídica relacionada.</p>
-        <a class="btn btn--primary" href="#contato" data-cta-position="faq">Enviar meu caso</a>
-      </div>
-    </div>
-    <div class="faq-list">
-      {faq.map((f) => (
-        <details class="faq-item">
-          <summary>
-            <span>{f.q}</span>
-            <span class="faq-mark" aria-hidden="true"></span>
-          </summary>
-          <div class="faq-a"><p>{f.a}</p></div>
-        </details>
-      ))}
-    </div>
-  </div>
-</section>
-
+<!-- Entrada por problema --><section class="hs hs--cream"><div class="hc"><p class="eyebrow"><span class="dot"></span>Por onde começar</p><h2 class="sec-h2">Qual demanda trouxe você até aqui?</h2><p class="sec-intro">Cada entrada abaixo leva à área correspondente, com o escopo da atuação e o que costuma ser analisado primeiro.</p><ul class="problem-grid"><li><a href="/areas-de-atuacao/direito-aduaneiro-tributario/retencao-de-mercadorias/"><span class="pg-body"><span class="pg-t">Mercadoria retida ou autuada na importação</span><span class="pg-d">Retenção na aduana, exigências da Receita, canal vermelho, multas aduaneiras e pena de perdimento.</span></span><span class="pg-arrow"><Icon name="arrow-right" size={18} /></span></a></li><li><a href="/areas-de-atuacao/inventario-e-patrimonio/"><span class="pg-body"><span class="pg-t">Há um inventário ou partilha a resolver</span><span class="pg-d">Inventário em cartório ou judicial em São Paulo, inclusive com herdeiros ou bens no exterior.</span></span><span class="pg-arrow"><Icon name="arrow-right" size={18} /></span></a></li><li><a href="/areas-de-atuacao/homologacao-de-sentenca-estrangeira/"><span class="pg-body"><span class="pg-t">Uma sentença ou divórcio estrangeiro precisa valer no Brasil</span><span class="pg-d">Homologação no STJ ou averbação direta em cartório, conforme o que a decisão dispõe.</span></span><span class="pg-arrow"><Icon name="arrow-right" size={18} /></span></a></li><li><a href="/areas-de-atuacao/direito-empresarial/"><span class="pg-body"><span class="pg-t">A empresa precisa de assessoria jurídica recorrente</span><span class="pg-d">Contratos, decisões societárias e análise de risco antes de a operação ser fechada.</span></span><span class="pg-arrow"><Icon name="arrow-right" size={18} /></span></a></li><li><a href="/areas-de-atuacao/recuperacao-de-credito/"><span class="pg-body"><span class="pg-t">Há valores a receber de clientes ou parceiros</span><span class="pg-d">Cobrança, execução de títulos e localização de patrimônio do devedor.</span></span><span class="pg-arrow"><Icon name="arrow-right" size={18} /></span></a></li><li><a href="/areas-de-atuacao/trabalhista-empresarial/"><span class="pg-body"><span class="pg-t">A empresa foi acionada na Justiça do Trabalho</span><span class="pg-d">Defesa do empregador, dimensionamento de passivo e consultoria preventiva.</span></span><span class="pg-arrow"><Icon name="arrow-right" size={18} /></span></a></li><li><a href="/areas-de-atuacao/direito-ambiental/"><span class="pg-body"><span class="pg-t">A operação recebeu multa ou embargo ambiental</span><span class="pg-d">Defesa administrativa ou judicial diante da autuação.</span></span><span class="pg-arrow"><Icon name="arrow-right" size={18} /></span></a></li><li><a href="/areas-de-atuacao/cobranca-condominial/"><span class="pg-body"><span class="pg-t">O condomínio possui cotas em atraso</span><span class="pg-d">Cobrança de cotas condominiais e negociação de acordos.</span></span><span class="pg-arrow"><Icon name="arrow-right" size={18} /></span></a></li></ul><p class="quick-links"><span class="ql-t">Também procurados:</span><a href="/areas-de-atuacao/direito-aduaneiro-tributario/pena-de-perdimento/">pena de perdimento</a><a href="/areas-de-atuacao/direito-aduaneiro-tributario/defesa-administrativa-aduaneira/">auto de infração aduaneiro</a><a href="/areas-de-atuacao/inventario-com-herdeiro-no-exterior/">inventário com herdeiro no exterior</a><a href="/areas-de-atuacao/inventario-e-patrimonio/inventario-extrajudicial/">inventário em cartório</a><a href="/areas-de-atuacao/homologacao-de-divorcio-estrangeiro/">divórcio feito no exterior</a><a href="/areas-de-atuacao/homologacao-de-sentenca-dos-estados-unidos/">sentença dos EUA</a></p></div></section><!-- Áreas de atuação --><section class="hs hs--white"><div class="hc"><p class="eyebrow"><span class="dot"></span>Áreas de atuação</p><h2 class="sec-h2">Atuação jurídica organizada por áreas complementares</h2><p class="sec-intro">O escritório concentra sua atuação em questões da atividade empresarial: contratos, relações de trabalho do lado do empregador, crédito, importações, questões ambientais e demandas com elemento internacional.</p><div class="nucleo-grid"><a class="ncard" href="/areas-de-atuacao/direito-aduaneiro-tributario/"><span class="ncard-ic"><Icon name="package" size={24} /></span><h3 class="ncard-t">Direito Aduaneiro-Tributário</h3><p class="ncard-d">Defesa em retenção de mercadorias, perdimento e autuações, e revisão da tributação incidente na importação.</p><span class="ncard-more">Conhecer esta área <Icon name="arrow-right" size={15} /></span></a><a class="ncard" href="/areas-de-atuacao/inventario-e-patrimonio/"><span class="ncard-ic"><Icon name="file" size={24} /></span><h3 class="ncard-t">Inventário e Patrimônio</h3><p class="ncard-d">Inventário, partilha e organização patrimonial, inclusive com bens ou herdeiros no exterior.</p><span class="ncard-more">Conhecer esta área <Icon name="arrow-right" size={15} /></span></a><a class="ncard" href="/areas-de-atuacao/direito-internacional/"><span class="ncard-ic"><Icon name="globe" size={24} /></span><h3 class="ncard-t">Direito Internacional</h3><p class="ncard-d">Homologação de decisões estrangeiras e demandas jurídicas com conexão entre o Brasil e o exterior.</p><span class="ncard-more">Conhecer esta área <Icon name="arrow-right" size={15} /></span></a><a class="ncard" href="/areas-de-atuacao/direito-empresarial/"><span class="ncard-ic"><Icon name="building" size={24} /></span><h3 class="ncard-t">Direito Empresarial</h3><p class="ncard-d">Assessoria contratual, societária e contenciosa para empresas, com acompanhamento recorrente da operação.</p><span class="ncard-more">Conhecer esta área <Icon name="arrow-right" size={15} /></span></a><a class="ncard" href="/areas-de-atuacao/trabalhista-empresarial/"><span class="ncard-ic"><Icon name="shield" size={24} /></span><h3 class="ncard-t">Trabalhista Empresarial</h3><p class="ncard-d">Defesa e consultoria preventiva para o empregador: passivo, auditoria, políticas internas e contencioso.</p><span class="ncard-more">Conhecer esta área <Icon name="arrow-right" size={15} /></span></a><a class="ncard" href="/areas-de-atuacao/recuperacao-de-credito/"><span class="ncard-ic"><Icon name="coins" size={24} /></span><h3 class="ncard-t">Recuperação de Crédito</h3><p class="ncard-d">Cobrança e execução de dívidas, com localização de patrimônio e medidas para tornar o crédito efetivo.</p><span class="ncard-more">Conhecer esta área <Icon name="arrow-right" size={15} /></span></a><a class="ncard" href="/areas-de-atuacao/cobranca-condominial/"><span class="ncard-ic"><Icon name="home" size={24} /></span><h3 class="ncard-t">Cobrança Condominial</h3><p class="ncard-d">Recuperação de cotas e despesas condominiais em atraso, com acordos e assessoria recorrente a condomínios.</p><span class="ncard-more">Conhecer esta área <Icon name="arrow-right" size={15} /></span></a><a class="ncard" href="/areas-de-atuacao/direito-ambiental/"><span class="ncard-ic"><Icon name="leaf" size={24} /></span><h3 class="ncard-t">Direito Ambiental</h3><p class="ncard-d">Defesa e regularização diante de autos de infração, embargos e imóveis em área protegida — para pessoas físicas e empresas.</p><span class="ncard-more">Conhecer esta área <Icon name="arrow-right" size={15} /></span></a></div></div></section><!-- Perfis atendidos --><section class="hs hs--ornament"><div class="hc"><p class="eyebrow"><span class="dot"></span>Perfis atendidos</p><h2 class="sec-h2">Atuação direcionada ao contexto de cada cliente</h2><p class="sec-intro">Os riscos, documentos e medidas possíveis variam conforme o perfil do cliente e a natureza da demanda.</p><div class="perfil-grid"><article class="perfil"><span class="perfil-ic"><Icon name="building" size={22} /></span><div><h3 class="perfil-t">Empresas e seus administradores</h3><p class="perfil-d">Contratos, relações societárias, contencioso estratégico e assessoria recorrente à operação.</p></div></article><article class="perfil"><span class="perfil-ic"><Icon name="package" size={22} /></span><div><h3 class="perfil-t">Importadores, exportadores e tradings</h3><p class="perfil-d">Retenção de mercadorias, autuações, perdimento, classificação fiscal e tributação na importação.</p></div></article><article class="perfil"><span class="perfil-ic"><Icon name="home" size={22} /></span><div><h3 class="perfil-t">Condomínios e administradoras</h3><p class="perfil-d">Recuperação de cotas em atraso, formalização de acordos e controle jurídico da inadimplência.</p></div></article><article class="perfil"><span class="perfil-ic"><Icon name="users" size={22} /></span><div><h3 class="perfil-t">Departamentos de RH e gestores</h3><p class="perfil-d">Defesa do empregador, auditoria de passivo, políticas internas e contratos de trabalho.</p></div></article><article class="perfil"><span class="perfil-ic"><Icon name="coins" size={22} /></span><div><h3 class="perfil-t">Credores e áreas financeiras</h3><p class="perfil-d">Cobrança, execução de títulos, habilitação de crédito e recuperação judicial do devedor.</p></div></article><article class="perfil"><span class="perfil-ic"><Icon name="globe" size={22} /></span><div><h3 class="perfil-t">Empresas e pessoas com demandas no exterior</h3><p class="perfil-d">Decisões estrangeiras, documentos, patrimônio e operações entre países.</p></div></article></div></div></section><!-- Como funciona --><section class="hs hs--warm"><div class="hc"><p class="eyebrow"><span class="dot"></span>Como funciona</p><h2 class="sec-h2">Do primeiro contato à definição da estratégia</h2><div class="step-grid"><article class="step"><span class="step-n">01</span><h3 class="step-t">Entendimento inicial</h3><p class="step-d">Conhecemos a situação, o objetivo do cliente e os principais acontecimentos relacionados ao problema.</p></article><article class="step"><span class="step-n">02</span><h3 class="step-t">Análise dos documentos e riscos</h3><p class="step-d">Examinamos os documentos disponíveis e identificamos os pontos que precisam de atenção.</p></article><article class="step"><span class="step-n">03</span><h3 class="step-t">Definição das medidas possíveis</h3><p class="step-d">Apresentamos as alternativas adequadas — negociação, procedimento administrativo ou processo judicial.</p></article><article class="step"><span class="step-n">04</span><h3 class="step-t">Condução e acompanhamento</h3><p class="step-d">Após a contratação, o escritório conduz as medidas definidas e informa os acontecimentos relevantes.</p></article></div></div></section><!-- Forma de atuação (diferenciais) --><section class="hs hs--white"><div class="hc"><p class="eyebrow"><span class="dot"></span>Forma de atuação</p><h2 class="sec-h2">Critério técnico, estratégia e clareza na condução do caso</h2><div class="dif-grid"><article class="dif"><span class="dif-ic"><Icon name="search" size={22} /></span><div><h3 class="dif-t">Análise antes da adoção de medidas</h3><p class="dif-d">Os documentos, riscos e objetivos são examinados antes de definir o caminho jurídico.</p></div></article><article class="dif"><span class="dif-ic"><Icon name="route" size={22} /></span><div><h3 class="dif-t">Estratégia proporcional ao problema</h3><p class="dif-d">A medida considera urgência, custos, riscos, patrimônio envolvido e possibilidade prática de resultado.</p></div></article><article class="dif"><span class="dif-ic"><Icon name="shield" size={22} /></span><div><h3 class="dif-t">Leitura jurídica e econômica da operação</h3><p class="dif-d">A análise considera o processo e também os efeitos sobre contratos, crédito, estoque e continuidade da atividade.</p></div></article><article class="dif"><span class="dif-ic"><Icon name="file" size={22} /></span><div><h3 class="dif-t">Atuação preventiva e contenciosa</h3><p class="dif-d">Atuação tanto na prevenção de conflitos quanto em procedimentos administrativos e judiciais.</p></div></article><article class="dif"><span class="dif-ic"><Icon name="message" size={22} /></span><div><h3 class="dif-t">Comunicação objetiva</h3><p class="dif-d">Etapas, alternativas e acontecimentos relevantes apresentados de maneira compreensível.</p></div></article><article class="dif"><span class="dif-ic"><Icon name="globe" size={22} /></span><div><h3 class="dif-t">Casos nacionais e internacionais</h3><p class="dif-d">Demandas no Brasil e situações envolvendo bens, pessoas, documentos ou decisões estrangeiras.</p></div></article></div></div></section><!-- Conteúdos --><section class="hs hs--warm"><div class="hc"><p class="eyebrow"><span class="dot"></span>Conteúdos</p><h2 class="sec-h2">Materiais para entender melhor o seu caso</h2><div class="cont-grid"><a class="cont" href="/guias/direito-aduaneiro-tributario-guia-completo/"><span class="cont-tag">Guia</span><h3 class="cont-t">Direito Aduaneiro-Tributário</h3><p class="cont-d">Retenção de mercadorias, exigências fiscais, multas e pena de perdimento: o que fazer e em que prazo.</p><span class="cont-more">Ler o guia <Icon name="arrow-right" size={15} /></span></a><a class="cont" href="/guias/inventario-guia-completo/"><span class="cont-tag">Guia</span><h3 class="cont-t">Inventário: guia completo</h3><p class="cont-d">Inventário em cartório ou judicial, documentos, prazos, ITCMD e herdeiros no exterior.</p><span class="cont-more">Ler o guia <Icon name="arrow-right" size={15} /></span></a><a class="cont" href="/guias/homologacao-de-sentenca-estrangeira-no-brasil/"><span class="cont-tag">Guia</span><h3 class="cont-t">Homologação de Sentença Estrangeira no Brasil</h3><p class="cont-d">Quando a decisão estrangeira precisa ser homologada no STJ e quando basta a averbação em cartório.</p><span class="cont-more">Ler o guia <Icon name="arrow-right" size={15} /></span></a></div><a class="viewall" href="/guias/">Ver todos os conteúdos <Icon name="arrow-right" size={15} /></a></div></section><!-- FAQ — duas colunas --><section class="hs hs--faq"><div class="hc faq-split"><div class="faq-aside"><p class="eyebrow"><span class="dot"></span>Perguntas frequentes</p><h2 class="sec-h2">Antes de entrar em contato</h2><p class="sec-intro">Respostas objetivas para dúvidas recorrentes sobre mercadoria retida na importação, inventário, decisões estrangeiras, cobrança e execução. As respostas têm caráter informativo e não substituem a análise individual do caso.</p><div class="faq-cta"><p class="faq-cta-t">Não encontrou a sua dúvida?</p><p class="faq-cta-d">Apresente brevemente a situação para que o escritório possa identificar a área jurídica relacionada.</p><a class="btn btn--primary" href="#contato" data-cta-position="faq">Enviar meu caso</a></div></div><div class="faq-list"><details class="faq-item"><summary><span>O que fazer quando a mercadoria é retida pela Receita Federal?</span><span class="faq-mark" aria-hidden="true"></span></summary><div class="faq-a"><p>Ler a exigência ou o termo de retenção no Portal Único (DI ou DUIMP), anotar o prazo e o fundamento e responder no prazo. Conforme o caso, é possível pedir a liberação mediante garantia ou discutir a retenção por mandado de segurança. Enquanto isso, a armazenagem corre, por isso vale agir cedo.</p></div></details><details class="faq-item"><summary><span>Qual o prazo para se defender de uma pena de perdimento?</span><span class="faq-mark" aria-hidden="true"></span></summary><div class="faq-a"><p>20 dias contados da ciência do auto de infração (Decreto-Lei 1.455/1976, art. 27-A, incluído pela Lei 14.651/2023). Para autos de tributo e multa, o prazo é de 20 dias úteis (Decreto 70.235/1972, com a redação da Lei Complementar 227/2026).</p></div></details><details class="faq-item"><summary><span>Meu inventário pode ser feito em cartório?</span><span class="faq-mark" aria-hidden="true"></span></summary><div class="faq-a"><p>Pode, quando os herdeiros estão de acordo e assistidos por advogado. Desde a Resolução CNJ 571/2024, o cartório também é possível, sob condições, com herdeiro menor ou com testamento já processado na Justiça. Sem acordo, o inventário é judicial.</p></div></details><details class="faq-item"><summary><span>Quanto é o ITCMD no inventário em São Paulo?</span><span class="faq-mark" aria-hidden="true"></span></summary><div class="faq-a"><p>A alíquota é de 4% sobre o valor dos bens transmitidos (Lei estadual 10.705/2000), com isenções previstas em lei. Se o inventário não for aberto em 60 dias do falecimento, há multa de 10% do imposto, e de 20% após 180 dias.</p></div></details><details class="faq-item"><summary><span>Inventário pode ser feito com herdeiro no exterior?</span><span class="faq-mark" aria-hidden="true"></span></summary><div class="faq-a"><p>Sim. O herdeiro participa por procuração pública feita no consulado brasileiro ou em notário local com apostila e tradução juramentada. O processo pode correr em cartório ou na Justiça, conforme o caso.</p></div></details><details class="faq-item"><summary><span>Divórcio feito no exterior precisa ser homologado no STJ?</span><span class="faq-mark" aria-hidden="true"></span></summary><div class="faq-a"><p>Nem sempre. O divórcio consensual simples (sem guarda, pensão ou partilha de bens) pode ser averbado direto no cartório de registro civil. Se a decisão trata desses pontos, ou se não houve consenso, a homologação no STJ é necessária.</p></div></details><details class="faq-item"><summary><span>Uma sentença estrangeira vale automaticamente no Brasil?</span><span class="faq-mark" aria-hidden="true"></span></summary><div class="faq-a"><p>Não. Em regra, a decisão estrangeira precisa ser homologada pelo Superior Tribunal de Justiça para produzir efeitos no Brasil, especialmente quando envolve cobrança, registro público ou bens.</p></div></details><details class="faq-item"><summary><span>O escritório também atende empresas em outras áreas?</span><span class="faq-mark" aria-hidden="true"></span></summary><div class="faq-a"><p>Sim: contratos, recuperação de crédito e execução, medidas do credor em recuperação judicial e falência, defesa trabalhista do empregador, cobrança condominial e direito ambiental.</p></div></details></div></div></section>
 
 <style>
-  .quick-links { margin-top: 1.25rem; font-size: 0.95rem; line-height: 1.7; color: var(--color-text-muted, #5b6472); }
-  .quick-links a { color: var(--color-ink, #10233b); text-decoration: underline; text-underline-offset: 2px; }
-  .hs { padding-block: var(--section-y); }
-  .hs--warm { background: var(--surface-warm); }
-  .hs--cream { background: var(--surface-cream); }
-  .hs--white { background: var(--surface); }
-  .hc { width: 100%; max-width: var(--container-max); margin-inline: auto; padding-inline: var(--container-pad); }
-
-  .eyebrow { font-family: var(--font-body); font-size: var(--text-xs); text-transform: uppercase; letter-spacing: var(--tracking-eyebrow); color: var(--color-accent); font-weight: var(--weight-semibold); display: inline-flex; align-items: center; gap: 0.5rem; }
-  /* Herda a regua de ui.css; manter uma bolinha aqui recriaria o bullet. */
-  .eyebrow .dot { height: 1px; width: 24px; border-radius: 0; background: currentColor; }
-  .eyebrow--on-dark { color: var(--color-accent-soft); }
-  .eyebrow--on-dark .dot { background: currentColor; }
-  .sec-h2 { font-family: var(--font-display); font-weight: var(--weight-bold); font-size: var(--text-3xl); color: var(--color-ink); line-height: var(--leading-snug); margin-top: var(--space-3); max-width: 26ch; text-wrap: balance; }
-  .sec-intro { margin-top: var(--space-3); max-width: var(--measure); color: var(--color-text-muted); font-size: var(--text-md); line-height: var(--leading-normal); }
-
-
-  /* Entrada por problema */
-  .problem-grid { list-style: none; margin: var(--space-6) 0 0; padding: 0; display: grid; grid-template-columns: 1fr; gap: var(--space-3); }
-  @media (min-width: 760px) { .problem-grid { grid-template-columns: 1fr 1fr; } }
-  .problem-grid a { position: relative; display: flex; align-items: center; gap: var(--space-4); background: var(--surface); border: 1px solid var(--color-border); border-radius: var(--radius-sm); padding: 1.1rem 1.25rem; text-decoration: none; transition: border-color var(--dur) var(--ease); }
-  .problem-grid a::after { content: ''; position: absolute; inset: -1px -1px auto -1px; height: 2px; background: var(--color-accent); opacity: 0; transition: opacity var(--dur) var(--ease); }
-  .problem-grid a:hover { border-color: var(--border-strong); }
-  .problem-grid a:hover::after { opacity: 1; }
-  .pg-body { display: flex; flex-direction: column; gap: 0.15rem; flex: 1; }
-  .pg-t { color: var(--color-ink); font-weight: var(--weight-semibold); font-size: var(--text-md); line-height: var(--leading-snug); }
-  .pg-d { color: var(--color-text-muted); font-size: var(--text-sm); line-height: var(--leading-normal); }
-  .pg-arrow { display: inline-flex; color: var(--color-green-strong); flex: none; transition: transform var(--dur) var(--ease); }
-  .problem-grid a:hover .pg-arrow { transform: translateX(3px); }
-
-  /* Cards de núcleos */
-  .nucleo-grid { margin-top: var(--space-6); display: grid; grid-template-columns: 1fr; gap: var(--space-4); }
-  @media (min-width: 640px) { .nucleo-grid { grid-template-columns: repeat(2, 1fr); } }
-  @media (min-width: 980px) { .nucleo-grid { grid-template-columns: repeat(3, 1fr); } }
-  .ncard { position: relative; display: flex; flex-direction: column; background: var(--surface); border: 1px solid var(--color-border); border-radius: var(--radius-sm); padding: var(--space-6); text-decoration: none; transition: border-color var(--dur) var(--ease); }
-  .ncard::after { content: ''; position: absolute; inset: -1px -1px auto -1px; height: 2px; background: var(--color-accent); opacity: 0; transition: opacity var(--dur) var(--ease); }
-  .ncard:hover { border-color: var(--border-strong); }
-  .ncard:hover::after { opacity: 1; }
-  .ncard-ic { display: inline-flex; height: 3rem; width: 3rem; align-items: center; justify-content: center; border-radius: var(--radius-sm); border: 1px solid var(--color-border); background: transparent; color: var(--color-accent); }
-  .ncard-t { margin-top: var(--space-4); font-family: var(--font-display); font-size: var(--text-lg); color: var(--color-ink); }
-  .ncard-d { margin-top: var(--space-2); color: var(--color-text-muted); font-size: var(--text-sm); line-height: var(--leading-normal); flex: 1; }
-  .ncard-more { margin-top: var(--space-4); display: inline-flex; align-items: center; gap: 0.35rem; color: var(--color-green-strong); font-weight: var(--weight-semibold); font-size: var(--text-sm); }
-  .ncard:hover .ncard-more { color: var(--color-green); }
-
-  /* Perfis atendidos */
-  .perfil-grid { margin-top: var(--space-6); display: grid; grid-template-columns: 1fr; gap: var(--space-4); }
-  @media (min-width: 700px) { .perfil-grid { grid-template-columns: repeat(2, 1fr); } }
-  @media (min-width: 1040px) { .perfil-grid { grid-template-columns: repeat(3, 1fr); } }
-  .perfil { display: flex; gap: var(--space-4); background: var(--surface); border: 1px solid var(--color-border); border-radius: var(--radius-sm); padding: var(--space-5); }
-  .perfil-ic { flex: none; display: inline-flex; height: 2.75rem; width: 2.75rem; align-items: center; justify-content: center; border-radius: var(--radius-sm); border: 1px solid var(--color-border); background: transparent; color: var(--color-accent); }
-  .perfil-t { font-family: var(--font-display); font-size: var(--text-md); color: var(--color-ink); line-height: var(--leading-snug); }
-  .perfil-d { margin-top: 0.35rem; color: var(--color-text-muted); font-size: var(--text-sm); line-height: var(--leading-normal); }
-
-  /* Como funciona */
-  .step-grid { margin-top: var(--space-6); display: grid; grid-template-columns: 1fr; gap: var(--space-4); }
-  @media (min-width: 640px) { .step-grid { grid-template-columns: repeat(2, 1fr); } }
-  @media (min-width: 1040px) { .step-grid { grid-template-columns: repeat(4, 1fr); } }
-  .step { background: var(--surface); border: 1px solid var(--color-border); border-radius: var(--radius-sm); border-top: 2px solid var(--color-accent); padding: var(--space-6); }
-  .step-n { font-family: var(--font-display); font-weight: var(--weight-bold); font-size: 2rem; color: var(--color-green); line-height: 1; }
-  .step-t { margin-top: var(--space-3); font-family: var(--font-display); font-size: var(--text-lg); color: var(--color-ink); line-height: var(--leading-snug); }
-  .step-d { margin-top: var(--space-2); color: var(--color-text-muted); font-size: var(--text-sm); line-height: var(--leading-normal); }
-
-  /* Forma de atuação */
-  .dif-grid { margin-top: var(--space-6); display: grid; grid-template-columns: 1fr; gap: var(--space-4); }
-  @media (min-width: 700px) { .dif-grid { grid-template-columns: repeat(2, 1fr); } }
-  @media (min-width: 1040px) { .dif-grid { grid-template-columns: repeat(3, 1fr); } }
-  .dif { display: flex; gap: var(--space-4); background: var(--surface); border: 1px solid var(--color-border); border-radius: var(--radius-sm); padding: var(--space-5); }
-  .dif-ic { flex: none; display: inline-flex; height: 2.75rem; width: 2.75rem; align-items: center; justify-content: center; border-radius: var(--radius-sm); border: 1px solid var(--color-border); background: transparent; color: var(--color-accent); }
-  .dif-t { font-family: var(--font-display); font-size: var(--text-md); color: var(--color-ink); line-height: var(--leading-snug); }
-  .dif-d { margin-top: 0.35rem; color: var(--color-text-muted); font-size: var(--text-sm); line-height: var(--leading-normal); }
-
-  /* Conteúdos */
-  .cont-grid { margin-top: var(--space-6); display: grid; grid-template-columns: 1fr; gap: var(--space-4); }
-  @media (min-width: 760px) { .cont-grid { grid-template-columns: repeat(3, 1fr); } }
-  .cont { position: relative; display: flex; flex-direction: column; background: var(--surface); border: 1px solid var(--color-border); border-radius: var(--radius-sm); padding: var(--space-6); text-decoration: none; transition: border-color var(--dur) var(--ease); }
-  .cont::after { content: ''; position: absolute; inset: -1px -1px auto -1px; height: 2px; background: var(--color-accent); opacity: 0; transition: opacity var(--dur) var(--ease); }
-  .cont:hover { border-color: var(--border-strong); }
-  .cont:hover::after { opacity: 1; }
-  .cont-tag { align-self: flex-start; font-family: var(--font-ui); font-size: var(--text-xs); font-weight: var(--weight-semibold); text-transform: uppercase; letter-spacing: var(--tracking-eyebrow); color: var(--color-accent); background: transparent; border: 1px solid var(--border-accent); padding: 0.25rem 0.55rem; border-radius: var(--radius-sm); }
-  .cont-t { margin-top: var(--space-3); font-family: var(--font-display); font-size: var(--text-md); color: var(--color-ink); line-height: var(--leading-snug); }
-  .cont-d { margin-top: var(--space-2); color: var(--color-text-muted); font-size: var(--text-sm); line-height: var(--leading-normal); flex: 1; }
-  .cont-more { margin-top: var(--space-4); display: inline-flex; align-items: center; gap: 0.35rem; color: var(--color-green-strong); font-weight: var(--weight-semibold); font-size: var(--text-sm); }
-  .viewall { margin-top: var(--space-5); display: inline-flex; align-items: center; gap: 0.4rem; min-height: 2.75rem; color: var(--color-navy); font-weight: var(--weight-semibold); font-size: var(--text-sm); text-decoration: none; }
-  .viewall:hover { color: var(--color-accent); }
-
-  /* FAQ — duas colunas */
-  .hs--faq { position: relative; background: var(--surface-cream); }
-  .faq-split { position: relative; display: grid; grid-template-columns: 1fr; gap: var(--space-6); }
-  @media (min-width: 900px) { .faq-split { grid-template-columns: 35% 1fr; gap: var(--space-10); align-items: start; } }
-  .faq-cta { margin-top: var(--space-6); background: var(--surface); border: 1px solid var(--color-border); border-left: 2px solid var(--color-accent); border-radius: 0; padding: var(--space-5); }
-  .faq-cta-t { font-family: var(--font-display); font-weight: var(--weight-bold); color: var(--color-ink); font-size: var(--text-md); }
-  .faq-cta-d { margin: 0.35rem 0 var(--space-4); color: var(--color-text-muted); font-size: var(--text-sm); line-height: var(--leading-normal); }
-  .faq-list { display: flex; flex-direction: column; gap: var(--space-3); }
-  .faq-item { background: var(--surface); border: 1px solid var(--color-border); border-radius: var(--radius-sm); transition: border-color var(--dur) var(--ease); }
-  .faq-item[open] { border-color: var(--border-accent); }
-  .faq-item summary { list-style: none; cursor: pointer; display: flex; align-items: center; justify-content: space-between; gap: var(--space-4); padding: 1rem 1.15rem; font-family: var(--font-display); font-weight: var(--weight-semibold); color: var(--color-ink); font-size: var(--text-md); line-height: var(--leading-snug); }
-  .faq-item summary::-webkit-details-marker { display: none; }
-  .faq-item summary:focus-visible { outline: none; box-shadow: var(--ring); border-radius: var(--radius-md); }
-  .faq-mark { position: relative; flex: none; width: 20px; height: 20px; }
-  .faq-mark::before, .faq-mark::after { content: ''; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background: var(--color-accent); }
-  .faq-mark::before { width: 14px; height: 2px; }
-  .faq-mark::after { width: 2px; height: 14px; transition: transform var(--dur) var(--ease), opacity var(--dur) var(--ease); }
-  .faq-item[open] .faq-mark::after { transform: translate(-50%, -50%) rotate(90deg); opacity: 0; }
-  .faq-a { padding: 0 1.15rem 1.1rem; }
-  .faq-a p { color: var(--color-text); font-size: var(--text-sm); line-height: var(--leading-relaxed); max-width: 62ch; }
-  @keyframes faqIn { from { opacity: 0; transform: translateY(-4px); } to { opacity: 1; transform: none; } }
-  .faq-item[open] .faq-a { animation: faqIn 0.2s var(--ease); }
-
-  /* Perfis -- papel liso. A trama de pontinhos que havia aqui era vocabulário
-     de página de produto, e o verde dela não existe mais na paleta. */
-  .hs--ornament { background: var(--surface-cream); }
-
-  /* CTA final -- navy chapado. Sem gradiente e sem halo: o contraste com o
-     papel das seções vizinhas já é o destaque. */
-  .hs--cta { background: var(--color-navy-deep); color: #fff; position: relative; border-top: 2px solid var(--color-accent); }
-  .cta-final { position: relative; z-index: 1; display: grid; gap: var(--space-6); grid-template-columns: 1fr; align-items: center; }
-  @media (min-width: 900px) { .cta-final { grid-template-columns: 1.6fr 1fr; gap: var(--space-10); } }
-  .cta-title { color: #fff; font-family: var(--font-display); font-weight: var(--weight-bold); font-size: var(--text-3xl); line-height: var(--leading-snug); margin-top: var(--space-2); max-width: 24ch; }
-  .cta-text { margin-top: var(--space-3); color: rgba(255,255,255,0.85); font-size: var(--text-md); line-height: var(--leading-normal); max-width: var(--measure-narrow); }
-  .cta-actions { display: flex; flex-wrap: wrap; gap: var(--space-3); }
-
-  @media (prefers-reduced-motion: reduce) {
-    .problem-grid a, .ncard, .cont, .pg-arrow, .faq-mark::after { transition: none; }
-    .faq-item[open] .faq-a { animation: none; }
-  }
+  .quick-links{margin-top:var(--space-5);font-size:var(--text-sm);color:var(--color-text-muted);flex-wrap:wrap;align-items:baseline;gap:.25rem 0;font-size:0;line-height:1.7;display:flex}
+  .quick-links>*{font-size:var(--text-sm)}
+  .quick-links .ql-t{color:var(--color-text-muted);margin-right:.6rem}
+  .quick-links a{color:var(--color-ink);text-decoration:underline;text-decoration-color:var(--border-accent);text-underline-offset:.2em;padding-block:.35rem}
+  .quick-links a:hover{color:var(--color-accent);text-decoration-color:currentColor}
+  .quick-links a:not(:last-child):after{content:"·";color:var(--color-text-subtle);margin-inline:.55rem;text-decoration:none;display:inline-block}
+  .hs{padding-block:var(--section-y)}
+  .hs--warm{background:var(--surface-warm)}
+  .hs--cream{background:var(--surface-cream)}
+  .hs--white{background:var(--surface)}
+  .hc{width:100%;max-width:var(--container-max);padding-inline:var(--container-pad);margin-inline:auto}
+  .eyebrow{font-family:var(--font-body);font-size:var(--text-xs);text-transform:uppercase;letter-spacing:var(--tracking-eyebrow);color:var(--color-accent);font-weight:var(--weight-semibold);align-items:flex-start;gap:.5rem;display:inline-flex}
+  .eyebrow .dot{background:currentColor;border-radius:0;width:24px;height:1px}
+  .eyebrow--on-dark{color:var(--color-accent-soft)}
+  .eyebrow--on-dark .dot{background:currentColor}
+  .sec-h2{font-family:var(--font-display);font-weight:var(--weight-bold);font-size:var(--text-3xl);color:var(--color-ink);line-height:var(--leading-snug);margin-top:var(--space-3);text-wrap:balance;max-width:26ch}
+  .sec-intro{margin-top:var(--space-3);max-width:var(--measure);color:var(--color-text-muted);font-size:var(--text-md);line-height:var(--leading-normal)}
+  .problem-grid{margin:var(--space-6) 0 0;gap:var(--space-3);grid-template-columns:1fr;padding:0;list-style:none;display:grid}
+  @media (width>=760px){.problem-grid{grid-template-columns:1fr 1fr}}
+  .problem-grid a{align-items:center;gap:var(--space-4);background:var(--surface);border:1px solid var(--color-border);border-radius:var(--radius-sm);transition:border-color var(--dur) var(--ease);padding:1.1rem 1.25rem;text-decoration:none;display:flex;position:relative}
+  .problem-grid a:after{content:"";background:var(--color-accent);opacity:0;height:2px;transition:opacity var(--dur) var(--ease);position:absolute;inset:-1px -1px auto}
+  .problem-grid a:hover{border-color:var(--border-strong)}
+  .problem-grid a:hover:after{opacity:1}
+  .pg-body{flex-direction:column;flex:1;gap:.15rem;display:flex}
+  .pg-t{color:var(--color-ink);font-weight:var(--weight-semibold);font-size:var(--text-md);line-height:var(--leading-snug)}
+  .pg-d{color:var(--color-text-muted);font-size:var(--text-sm);line-height:var(--leading-normal)}
+  .pg-arrow{color:var(--color-green-strong);transition:transform var(--dur) var(--ease);flex:none;display:inline-flex}
+  .problem-grid a:hover .pg-arrow{transform:translate(3px)}
+  .nucleo-grid{margin-top:var(--space-6);gap:var(--space-4);grid-template-columns:1fr;display:grid}
+  @media (width>=640px){.nucleo-grid{grid-template-columns:repeat(2,1fr)}}
+  @media (width>=980px){.nucleo-grid{grid-template-columns:repeat(3,1fr)}}
+  .ncard{background:var(--surface);border:1px solid var(--color-border);border-radius:var(--radius-sm);padding:var(--space-6);transition:border-color var(--dur) var(--ease);flex-direction:column;text-decoration:none;display:flex;position:relative}
+  .ncard:after{content:"";background:var(--color-accent);opacity:0;height:2px;transition:opacity var(--dur) var(--ease);position:absolute;inset:-1px -1px auto}
+  .ncard:hover{border-color:var(--border-strong)}
+  .ncard:hover:after{opacity:1}
+  .ncard-ic{border-radius:var(--radius-sm);border:1px solid var(--color-border);width:3rem;height:3rem;color:var(--color-accent);background:0 0;justify-content:center;align-items:center;display:inline-flex}
+  .ncard-t{margin-top:var(--space-4);font-family:var(--font-display);font-size:var(--text-lg);color:var(--color-ink)}
+  .ncard-d{margin-top:var(--space-2);color:var(--color-text-muted);font-size:var(--text-sm);line-height:var(--leading-normal);flex:1}
+  .ncard-more{margin-top:var(--space-4);color:var(--color-green-strong);font-weight:var(--weight-semibold);font-size:var(--text-sm);align-items:center;gap:.35rem;display:inline-flex}
+  .ncard:hover .ncard-more{color:var(--color-green)}
+  .perfil-grid{margin-top:var(--space-6);gap:var(--space-4);grid-template-columns:1fr;display:grid}
+  @media (width>=700px){.perfil-grid{grid-template-columns:repeat(2,1fr)}}
+  @media (width>=1040px){.perfil-grid{grid-template-columns:repeat(3,1fr)}}
+  .perfil{gap:var(--space-4);background:var(--surface);border:1px solid var(--color-border);border-radius:var(--radius-sm);padding:var(--space-5);display:flex}
+  .perfil-ic{border-radius:var(--radius-sm);border:1px solid var(--color-border);width:2.75rem;height:2.75rem;color:var(--color-accent);background:0 0;flex:none;justify-content:center;align-items:center;display:inline-flex}
+  .perfil-t{font-family:var(--font-display);font-size:var(--text-md);color:var(--color-ink);line-height:var(--leading-snug)}
+  .perfil-d{color:var(--color-text-muted);font-size:var(--text-sm);line-height:var(--leading-normal);margin-top:.35rem}
+  .step-grid{margin-top:var(--space-6);gap:var(--space-4);grid-template-columns:1fr;display:grid}
+  @media (width>=640px){.step-grid{grid-template-columns:repeat(2,1fr)}}
+  @media (width>=1040px){.step-grid{grid-template-columns:repeat(4,1fr)}}
+  .step{background:var(--surface);border:1px solid var(--color-border);border-radius:var(--radius-sm);border-top:2px solid var(--color-accent);padding:var(--space-6)}
+  .step-n{font-family:var(--font-display);font-weight:var(--weight-bold);color:var(--color-green);font-size:2rem;line-height:1}
+  .step-t{margin-top:var(--space-3);font-family:var(--font-display);font-size:var(--text-lg);color:var(--color-ink);line-height:var(--leading-snug)}
+  .step-d{margin-top:var(--space-2);color:var(--color-text-muted);font-size:var(--text-sm);line-height:var(--leading-normal)}
+  .dif-grid{margin-top:var(--space-6);gap:var(--space-4);grid-template-columns:1fr;display:grid}
+  @media (width>=700px){.dif-grid{grid-template-columns:repeat(2,1fr)}}
+  @media (width>=1040px){.dif-grid{grid-template-columns:repeat(3,1fr)}}
+  .dif{gap:var(--space-4);background:var(--surface);border:1px solid var(--color-border);border-radius:var(--radius-sm);padding:var(--space-5);display:flex}
+  .dif-ic{border-radius:var(--radius-sm);border:1px solid var(--color-border);width:2.75rem;height:2.75rem;color:var(--color-accent);background:0 0;flex:none;justify-content:center;align-items:center;display:inline-flex}
+  .dif-t{font-family:var(--font-display);font-size:var(--text-md);color:var(--color-ink);line-height:var(--leading-snug)}
+  .dif-d{color:var(--color-text-muted);font-size:var(--text-sm);line-height:var(--leading-normal);margin-top:.35rem}
+  .cont-grid{margin-top:var(--space-6);gap:var(--space-4);grid-template-columns:1fr;display:grid}
+  @media (width>=760px){.cont-grid{grid-template-columns:repeat(3,1fr)}}
+  .cont{background:var(--surface);border:1px solid var(--color-border);border-radius:var(--radius-sm);padding:var(--space-6);transition:border-color var(--dur) var(--ease);flex-direction:column;text-decoration:none;display:flex;position:relative}
+  .cont:after{content:"";background:var(--color-accent);opacity:0;height:2px;transition:opacity var(--dur) var(--ease);position:absolute;inset:-1px -1px auto}
+  .cont:hover{border-color:var(--border-strong)}
+  .cont:hover:after{opacity:1}
+  .cont-tag{font-family:var(--font-ui);font-size:var(--text-xs);font-weight:var(--weight-semibold);text-transform:uppercase;letter-spacing:var(--tracking-eyebrow);color:var(--color-accent);border:1px solid var(--border-accent);border-radius:var(--radius-sm);background:0 0;align-self:flex-start;padding:.25rem .55rem}
+  .cont-t{margin-top:var(--space-3);font-family:var(--font-display);font-size:var(--text-md);color:var(--color-ink);line-height:var(--leading-snug)}
+  .cont-d{margin-top:var(--space-2);color:var(--color-text-muted);font-size:var(--text-sm);line-height:var(--leading-normal);flex:1}
+  .cont-more{margin-top:var(--space-4);color:var(--color-green-strong);font-weight:var(--weight-semibold);font-size:var(--text-sm);align-items:center;gap:.35rem;display:inline-flex}
+  .viewall{margin-top:var(--space-5);min-height:2.75rem;color:var(--color-navy);font-weight:var(--weight-semibold);font-size:var(--text-sm);align-items:center;gap:.4rem;text-decoration:none;display:inline-flex}
+  .viewall:hover{color:var(--color-accent)}
+  .hs--faq{background:var(--surface-cream);position:relative}
+  .faq-split{gap:var(--space-6);grid-template-columns:1fr;display:grid;position:relative}
+  @media (width>=900px){.faq-split{gap:var(--space-10);grid-template-columns:35% 1fr;align-items:start}}
+  .faq-cta{margin-top:var(--space-6);background:var(--surface);border:1px solid var(--color-border);border-left:2px solid var(--color-accent);padding:var(--space-5);border-radius:0}
+  .faq-cta-t{font-family:var(--font-display);font-weight:var(--weight-bold);color:var(--color-ink);font-size:var(--text-md)}
+  .faq-cta-d{margin:.35rem 0 var(--space-4);color:var(--color-text-muted);font-size:var(--text-sm);line-height:var(--leading-normal)}
+  .faq-list{border-top:1px solid var(--border-strong);flex-direction:column;gap:0;display:flex}
+  .faq-item{border:0;border-bottom:1px solid var(--color-border);background:0 0;border-radius:0}
+  .faq-item summary{cursor:pointer;justify-content:space-between;align-items:flex-start;gap:var(--space-5);min-height:3.5rem;font-family:var(--font-ui);font-weight:var(--weight-semibold);color:var(--color-ink);font-size:var(--text-base);transition:color var(--dur) var(--ease);padding:1.05rem 0;line-height:1.4;list-style:none;display:flex}
+  .faq-item summary:hover{color:var(--color-green-hover)}
+  .faq-item[open] summary{color:var(--color-navy)}
+  .faq-item summary::-webkit-details-marker{display:none}
+  .faq-item summary:focus-visible{outline:2px solid var(--ring-color);outline-offset:2px;border-radius:2px}
+  .faq-mark{flex:none;width:1rem;height:1.4em;position:relative}
+  .faq-mark:before,.faq-mark:after{content:"";background:var(--color-accent);border-radius:1px;position:absolute;top:50%;left:50%;transform:translate(-50%,-50%)}
+  .faq-mark:before{width:12px;height:1.5px}
+  .faq-mark:after{width:1.5px;height:12px;transition:transform var(--dur) var(--ease), opacity var(--dur) var(--ease)}
+  .faq-item[open] .faq-mark:after{opacity:0;transform:translate(-50%,-50%)rotate(90deg)}
+  .faq-a{margin-top:-.25rem;padding:0 2.5rem 1.25rem 0}
+  .faq-a p{color:var(--color-text);font-size:var(--text-base);line-height:var(--leading-relaxed);max-width:62ch}
+  .faq-item[open] .faq-a{animation:faqIn .2s var(--ease)}
+  .hs--ornament{background:var(--surface-cream)}
+  .hs--cta{background:var(--color-navy-deep);color:#fff;border-top:2px solid var(--color-accent);position:relative}
+  .cta-final{z-index:1;gap:var(--space-6);grid-template-columns:1fr;align-items:center;display:grid;position:relative}
+  @media (width>=900px){.cta-final{gap:var(--space-10);grid-template-columns:1.6fr 1fr}}
+  .cta-title{color:#fff;font-family:var(--font-display);font-weight:var(--weight-bold);font-size:var(--text-3xl);line-height:var(--leading-snug);margin-top:var(--space-2);max-width:24ch}
+  .cta-text{margin-top:var(--space-3);color:#ffffffd9;font-size:var(--text-md);line-height:var(--leading-normal);max-width:var(--measure-narrow)}
+  .cta-actions{gap:var(--space-3);flex-wrap:wrap;display:flex}
+  @media (prefers-reduced-motion:reduce){.problem-grid a,.ncard,.cont,.pg-arrow,.faq-mark:after{transition:none}.faq-item[open] .faq-a{animation:none}}
+  @keyframes faqIn{0%{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:none}}
 </style>

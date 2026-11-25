@@ -17,7 +17,7 @@ interface Props {
   allHref: string;
   maxArticles?: number;
 }
-const { title, icon, desc, mainHref, guia, articles = [], allHref, maxArticles = 4 } = Astro.props;
+const { title, icon, desc, mainHref, guia, articles = [], allHref, maxArticles = 6 } = Astro.props;
 const shown = articles.slice(0, maxArticles);
 const rest = articles.length - shown.length;
 ---

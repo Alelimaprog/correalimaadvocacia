@@ -80,10 +80,14 @@ const ogTitle = og?.title ?? t;
 const ogDesc = og?.description ?? desc;
 const ogUrl = og?.url && !(og.url === homeUrl && canon && canon !== homeUrl) ? og.url : canon;
 const ogType = og?.type ?? 'website';
-const ogImage = og?.image ?? `${site.url}${site.ogImage}`;
+// Rodada 4 (13/11/2026): imagem de compartilhamento própria das três frentes
+// principais (public/og/*.png). Mapa caminho -> imagem em _og-images.json.
+const ogPorPagina = (ogImages as Record<string, string>)[Astro.url.pathname.endsWith('/') ? Astro.url.pathname : `${Astro.url.pathname}/`];
+const ogImage = ogPorPagina ? `${site.url}${ogPorPagina}` : og?.image ?? `${site.url}${site.ogImage}`;
 const twTitle = tw?.title && tw.title !== site.name ? tw.title : ogTitle;
 const twDesc = tw?.description && tw.description !== site.defaultDescription ? tw.description : ogDesc;
-const twImage = tw?.image ?? ogImage;
+const twImage = ogPorPagina ? ogImage : tw?.image ?? ogImage;
+import ogImages from '@/lib/_og-images.json';
 ---
 
 <title>{t}</title>

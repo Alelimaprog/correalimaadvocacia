@@ -47,6 +47,12 @@ const chips = nucleos
 const featured = posts[0];
 const rest = posts.slice(1);
 const waHref = whatsappHrefForPath('/blog/');
+// Rodada 4 (13/11/2026): atalho para as três frentes principais (página de serviço + guia).
+const frentes = [
+  { href: '/areas-de-atuacao/direito-aduaneiro-tributario/', label: 'Advogado aduaneiro: mercadoria retida e perdimento', guia: '/guias/direito-aduaneiro-tributario-guia-completo/' },
+  { href: '/areas-de-atuacao/inventario-e-patrimonio/', label: 'Advogado de inventário em São Paulo', guia: '/guias/inventario-guia-completo/' },
+  { href: '/areas-de-atuacao/homologacao-de-sentenca-estrangeira/', label: 'Advogado para homologação de sentença estrangeira', guia: '/guias/homologacao-de-sentenca-estrangeira-no-brasil/' },
+];
 ---
 
 <BaseLayout head={page.head}>
@@ -81,26 +87,32 @@ const waHref = whatsappHrefForPath('/blog/');
       <section class="cx-section">
         <Container>
           <article class="cx-featured" data-cluster={featured.cluster}>
-            <div>
-              <div class="cx-card-top"><span class="cx-card-tag">{featured.tag}</span></div>
-              <h2 class="cx-card-title"><a href={featured.href}>{featured.title}</a></h2>
-              <p class="cx-card-desc">{featured.desc}</p>
-              <div class="cx-card-foot" style="justify-content:flex-start;gap:var(--space-4)">
-                <span class="cx-card-meta">
-                  {featured.date && <span>{featured.date}</span>}
-                  {featured.date && featured.minutes && <span class="sep"></span>}
-                  {featured.minutes && <span>{featured.minutes} min de leitura</span>}
-                </span>
-              </div>
-            </div>
-            <aside class="cx-featured-aside">
-              <span class="cx-featured-label">Em destaque</span>
+            <div class="cx-card-top"><span class="cx-featured-label">Em destaque</span><span class="cx-card-tag">{featured.tag}</span></div>
+            <h2 class="cx-card-title"><a href={featured.href}>{featured.title}</a></h2>
+            <p class="cx-card-desc">{featured.desc}</p>
+            <div class="cx-card-foot">
+              <span class="cx-card-meta">
+                {featured.date && <span>{featured.date}</span>}
+                {featured.date && featured.minutes && <span class="sep"></span>}
+                {featured.minutes && <span>{featured.minutes} min de leitura</span>}
+              </span>
               <span class="cx-card-more">Ler artigo<Icon name="arrow-right" size={16} /></span>
-            </aside>
+            </div>
           </article>
         </Container>
       </section>
     )}
+
+    <section class="cx-section blog-fronts">
+      <Container>
+        <h2 class="blog-fronts-t">Áreas principais do escritório</h2>
+        <ul class="blog-fronts-l">
+          {frentes.map((f) => (
+            <li><a href={f.href}>{f.label}</a><a class="blog-fronts-g" href={f.guia}>guia</a></li>
+          ))}
+        </ul>
+      </Container>
+    </section>
 
     <section class="cx-section cx-section--muted">
       <Container>
@@ -161,3 +173,14 @@ const waHref = whatsappHrefForPath('/blog/');
     })();
   </script>
 </BaseLayout>
+
+<style>
+  .blog-fronts { padding-block: 0 var(--section-y-sm); }
+  .blog-fronts-t { font-size: var(--text-lg); color: var(--color-ink); margin-bottom: var(--space-3); }
+  .blog-fronts-l { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--border-strong); max-width: 52rem; }
+  .blog-fronts-l li { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0 var(--space-4); border-bottom: 1px solid var(--color-border); }
+  .blog-fronts-l a { display: inline-flex; align-items: center; min-height: 3rem; color: var(--color-ink); font-weight: var(--weight-semibold); font-size: var(--text-sm); text-decoration: none; }
+  .blog-fronts-l a:hover { color: var(--color-accent); }
+  .blog-fronts-l a:focus-visible { outline: 2px solid var(--ring-color); outline-offset: 2px; }
+  .blog-fronts-l .blog-fronts-g { color: var(--color-navy); font-weight: var(--weight-medium); text-decoration: underline; text-decoration-color: var(--border-accent); text-underline-offset: 0.2em; }
+</style>

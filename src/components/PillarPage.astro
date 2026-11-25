@@ -173,10 +173,47 @@ import AuthorNote from '@/components/AuthorNote.astro';
       </section>
     )}
 
+    <!-- Conteúdo complementar opcional (tabela, passo a passo, atuação local),
+         continuação visual de "Entenda o problema". Só existe com dados. -->
+    {(extra?.table || extra?.local) && (
+      <section class="p-sec p-sec--white p-more">
+        <div class="wrap wrap--narrow">
+          {extra.table && (
+            <div class="x-block">
+              <p class="eyebrow"><span class="dot"></span>Visão rápida</p>
+              <h2 id="x-table-t">{extra.table.title}</h2>
+              <div class="x-table-wrap is-stacked" role="region" aria-labelledby="x-table-t" tabindex="0">
+                <table class="x-table tbl-stack" aria-labelledby="x-table-t">
+                  <thead><tr>{extra.table.cols.map((c) => <th scope="col">{c}</th>)}</tr></thead>
+                  <tbody>
+                    {extra.table.rows.map((r) => (
+                      <tr><th scope="row">{r[0]}</th>{r.slice(1).map((c, i) => <td data-label={extra.table!.cols[i + 1]}>{c}</td>)}</tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          )}
+          {extra.local && (
+            <div class="x-block">
+              <p class="eyebrow"><span class="dot"></span>Atuação local</p>
+              <h2>{extra.local.title}</h2>
+              <p class="p-lead">{extra.local.text}</p>
+              {extra.local.links && (
+                <ul class="x-links">
+                  {extra.local.links.map((l) => <li><a href={l.href}>{l.label}<Icon name="arrow-right" size={15} /></a></li>)}
+                </ul>
+              )}
+            </div>
+          )}
+        </div>
+      </section>
+    )}
+
     <!-- Problemas atendidos -->
     <section class="p-sec p-sec--white">
       <div class="wrap">
-        <p class="eyebrow"><span class="dot"></span>O que resolvemos</p>
+        <p class="eyebrow"><span class="dot"></span>Onde atuamos</p>
         <h2>Situações em que atuamos</h2>
         <ul class="check-grid">
           {n.situations.map((s) => (
@@ -201,7 +238,7 @@ import AuthorNote from '@/components/AuthorNote.astro';
     {extra?.risks?.length ? (
       <section class="p-sec p-sec--white">
         <div class="wrap">
-          <p class="eyebrow"><span class="dot"></span>Riscos de não agir</p>
+          <p class="eyebrow"><span class="dot"></span>Prazos e custos</p>
           <h2>Por que o tempo importa</h2>
           <ul class="risk-grid">
             {extra.risks.map((r) => (<li><Icon name="shield" size={18} class="rk" /><span>{r}</span></li>))}
@@ -348,6 +385,7 @@ import AuthorNote from '@/components/AuthorNote.astro';
     max-width: var(--measure-narrow);
   }
   .p-cta { margin-top: var(--space-5); display: flex; flex-wrap: wrap; gap: var(--space-3); }
+  @media (max-width: 519.98px) { .p-cta { flex-direction: column; } .p-cta .btn { width: 100%; } }
 
   .p-hero-card {
     display: flex; align-items: flex-start; gap: var(--space-3);
@@ -368,7 +406,7 @@ import AuthorNote from '@/components/AuthorNote.astro';
   .p-fm-t { font-weight: var(--weight-semibold); color: var(--color-ink); }
   .p-fm { margin: var(--space-2) 0 0; padding-left: 1.1rem; display: grid; gap: 0.3rem; }
   .p-fm-cta { display: inline-block; margin-top: var(--space-3); font-weight: var(--weight-semibold); color: var(--color-navy); }
-  @media (max-width: 939px) { .p-hero-card { display: none; } }
+  @media (max-width: 939px) { .p-hero-card { margin-top: var(--space-5); padding: var(--space-4); } .p-hero-ic { display: none; } }
 
   /* Seções — ritmo claro/alternado */
   .p-sec { padding-block: var(--section-y); }
@@ -384,20 +422,22 @@ import AuthorNote from '@/components/AuthorNote.astro';
   .check-grid li { display: flex; gap: var(--space-3); align-items: flex-start; color: var(--color-text); line-height: var(--leading-normal); }
   .ck { color: var(--color-accent); flex: none; margin-top: 3px; }
 
-  .chip-grid { list-style: none; padding: 0; margin: var(--space-6) 0 0; display: flex; flex-wrap: wrap; gap: var(--space-2); }
+  .chip-grid { list-style: none; padding: 0; margin: var(--space-6) 0 0; display: grid; gap: 0 var(--space-8); grid-template-columns: 1fr; border-top: 1px solid var(--border-strong); }
+  @media (min-width: 720px) { .chip-grid { grid-template-columns: repeat(2, 1fr); } }
   .chip-grid li {
-    background: var(--surface); border: 1px solid var(--border-strong); border-radius: var(--radius-sm);
-    padding: 0.6rem 1.05rem; font-size: var(--text-sm); color: var(--color-text);
+    position: relative; border-bottom: 1px solid var(--color-border);
+    padding: 0.8rem 0 0.8rem 1.4rem; font-size: var(--text-base); line-height: var(--leading-normal); color: var(--color-text);
   }
+  .chip-grid li::before { content: ''; position: absolute; left: 0; top: calc(0.8rem + 0.78em); width: 0.7rem; height: 1px; background: var(--color-accent); }
 
-  .risk-grid { list-style: none; padding: 0; margin: var(--space-6) 0 0; display: grid; gap: var(--space-4); grid-template-columns: 1fr; }
+  .risk-grid { list-style: none; padding: 0; margin: var(--space-5) 0 0; display: grid; gap: 0 var(--space-8); grid-template-columns: 1fr; border-top: 1px solid var(--border-strong); }
   @media (min-width: 720px) { .risk-grid { grid-template-columns: repeat(2, 1fr); } }
   .risk-grid li {
-    display: flex; gap: var(--space-3); align-items: flex-start; background: var(--surface);
-    border: 1px solid var(--color-border); border-radius: var(--radius-sm); padding: var(--space-4) var(--space-5);
-    color: var(--color-text); font-size: var(--text-sm); line-height: var(--leading-normal);
+    display: flex; gap: var(--space-3); align-items: flex-start;
+    border-bottom: 1px solid var(--color-border); padding: var(--space-4) 0;
+    color: var(--color-text); font-size: var(--text-base); line-height: var(--leading-normal);
   }
-  .rk { color: var(--color-warn); flex: none; margin-top: 2px; }
+  .rk { color: var(--color-warn); flex: none; margin-top: 3px; }
 
   /* CTA intermediário — realce de ação suave */
   .p-cta-mid { background: var(--surface-cream); border-block: 1px solid var(--color-border); }
@@ -406,9 +446,10 @@ import AuthorNote from '@/components/AuthorNote.astro';
 
   .sub-grid { list-style: none; padding: 0; margin: var(--space-6) 0 0; display: grid; gap: var(--space-4); grid-template-columns: 1fr; }
   @media (min-width: 860px) { .sub-grid { grid-template-columns: repeat(2, 1fr); } }
+  .sub-grid li { display: flex; }
   .sub-grid a {
-    position: relative;
-    display: grid; grid-template-columns: 1fr auto; align-items: start; gap: var(--space-2) var(--space-3);
+    position: relative; flex: 1;
+    display: grid; grid-template-columns: 1fr auto; align-items: start; align-content: start; gap: var(--space-2) var(--space-3);
     padding: var(--space-5); background: var(--surface); border: 1px solid var(--color-border);
     border-radius: var(--radius-sm); text-decoration: none;
     transition: border-color var(--dur) var(--ease);
@@ -418,7 +459,9 @@ import AuthorNote from '@/components/AuthorNote.astro';
   .sub-grid a:hover::after { opacity: 1; }
   .sub-grid strong { color: var(--color-ink); font-weight: var(--weight-semibold); }
   .sub-grid span { grid-column: 1 / -1; color: var(--color-text-muted); font-size: var(--text-sm); line-height: var(--leading-normal); }
-  .sg-arrow { color: var(--color-accent); }
+  /* O ícone é outro componente: :global para o estilo chegar ao <svg>. */
+  .sub-grid :global(.sg-arrow) { color: var(--color-accent); grid-area: 1 / 2; align-self: center; }
+  .sub-grid a:focus-visible { outline: 2px solid var(--ring-color); outline-offset: 2px; }
 
   /* Banda "Guia completo" — superfície distinta e clara (não escura) */
   .p-guide-band { background: var(--surface-muted); border-block: 1px solid var(--border-subtle); }
@@ -451,4 +494,17 @@ import AuthorNote from '@/components/AuthorNote.astro';
   .cta-title { color: #fff; font-size: var(--text-2xl); line-height: var(--leading-snug); max-width: 22ch; }
   .cta-text { margin-top: var(--space-4); color: var(--color-text-on-dark-muted); line-height: var(--leading-normal); max-width: var(--measure-narrow); }
   .cta-actions { display: flex; flex-wrap: wrap; gap: var(--space-3); }
+
+  /* Conteúdo complementar (tabela / passo a passo / atuação local) */
+  .p-more { padding-top: 0; }
+  .x-block + .x-block { margin-top: var(--space-12); }
+  .x-steps { list-style: none; padding: 0; margin: var(--space-5) 0 0; display: flex; flex-direction: column; gap: var(--space-5); }
+  .x-steps li { display: flex; gap: var(--space-4); }
+  .x-n { font-family: var(--font-display); font-weight: var(--weight-semibold); color: var(--color-accent); font-size: var(--text-lg); font-variant-numeric: tabular-nums; flex: none; width: 1.75rem; }
+  .x-steps strong { color: var(--color-ink); font-weight: var(--weight-semibold); }
+  .x-steps p { color: var(--color-text-muted); font-size: var(--text-sm); line-height: var(--leading-normal); margin-top: 2px; }
+  .x-note { margin-top: var(--space-5); color: var(--color-text-muted); font-size: var(--text-sm); }
+  .x-links { list-style: none; padding: 0; margin: var(--space-5) 0 0; display: flex; flex-wrap: wrap; gap: var(--space-3) var(--space-6); }
+  .x-links a { display: inline-flex; align-items: center; gap: var(--space-2); font-weight: var(--weight-semibold); color: var(--color-navy); }
+  .x-links a:hover { color: var(--color-accent); }
 </style>

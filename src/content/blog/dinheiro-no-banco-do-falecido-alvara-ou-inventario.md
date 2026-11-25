@@ -1,5 +1,5 @@
 ---
-title: "Dinheiro no Banco de Quem Morreu: Alvará ou Inventário?"
+title: "Dinheiro no Banco de Quem Morreu: Alvará ou Inventário? | Corrêa Lima"
 description: "Como os herdeiros sacam o saldo bancário, FGTS, PIS e restituição de IR de quem faleceu: quando basta alvará judicial e quando é preciso inventário."
 h1: "Dinheiro no banco de quem morreu: alvará judicial ou inventário?"
 author: "Alexandre Corrêa Lima"
@@ -100,23 +100,23 @@ O imposto sobre herança incide, em regra, sobre os bens transmitidos, inclusive
 
 ## Perguntas frequentes
 
-Como sacar o dinheiro da conta de uma pessoa que faleceu?
+**Como sacar o dinheiro da conta de uma pessoa que faleceu?**
 
 O banco libera o saldo mediante alvará judicial, escritura de inventário ou formal de partilha. O alvará sem inventário só cabe para saldos de pequeno valor quando não há outros bens a inventariar. Nos demais casos, o dinheiro entra no inventário.
 
-Precisa de inventário para sacar o FGTS de quem morreu?
+**Precisa de inventário para sacar o FGTS de quem morreu?**
 
 Não. O FGTS e o PIS-PASEP são pagos aos dependentes habilitados no INSS. Na falta de dependentes, os sucessores recebem por alvará judicial, independentemente de inventário, conforme a Lei 6.858/1980.
 
-Qual é o valor máximo para sacar por alvará sem inventário?
+**Qual é o valor máximo para sacar por alvará sem inventário?**
 
 A Lei 6.858/1980 fixa o limite em 500 ORTN, unidade que não existe mais. A conversão para reais varia, e a análise costuma ser feita caso a caso. Além do limite, é preciso que não existam outros bens a inventariar.
 
-Posso usar o cartão do falecido para pagar as despesas do enterro?
+**Posso usar o cartão do falecido para pagar as despesas do enterro?**
 
 Não é recomendável. Os valores precisam ser declarados no inventário, e movimentações sem autorização costumam gerar conflito entre herdeiros. O caminho mais seguro é documentar as despesas e pedir o reembolso no inventário.
 
-O inventário em cartório serve para liberar o dinheiro no banco?
+**O inventário em cartório serve para liberar o dinheiro no banco?**
 
 Sim. Pela Resolução CNJ 35/2007, a escritura de inventário e partilha é título hábil para o levantamento de valores em instituições financeiras, sem homologação judicial.
 

@@ -1,490 +1,68 @@
 ---
 /**
- * HomeContact — seção de contato exibida na Home, imediatamente antes do
- * rodapé. Duas colunas: à esquerda o convite e os canais; à direita o
- * formulário. A moldura deixou de ser um cartão flutuante de cantos muito
- * arredondados e virou um bloco de contorno reto, dividido por um fio — que é
- * a gramática do resto do site.
- *
- * Envio: reutiliza o mesmo endpoint (Formspree) e o honeypot antispam já
- * usados pelo ContactForm da página /contato/. Em caso de sucesso, o painel
- * do formulário é substituído pelo estado "Mensagem recebida." (igual ao
- * modelo). Sem números nem promessas de resultado inventados.
+ * HomeContact — home. Rodada 4 (13/11/2026): reconstruída a partir do site publicado.
  */
 import Icon from '@/components/Icon.astro';
-import { site, whatsappHrefForPath, contactAreas } from '@/lib/site.config';
-
-
-
-const formspreeEndpoint = site.form.endpoint;
+import ContactForm from '@/components/ContactForm.astro';
+import { whatsappHrefForPath } from '@/lib/site.config';
+const waHref = whatsappHrefForPath('/');
 ---
 
-<section id="contato" class="home-contact">
-  <div class="hcx-wrap">
-    <div class="hcx-card" data-reveal>
-      <!-- Painel de informações (mint) -->
-      <div class="hcx-info">
-        <p class="hcx-eyebrow"><span class="hcx-eyebrow-rule"></span>Contato</p>
-        <h2 class="hcx-title">Apresente a situação ao escritório</h2>
-        <p class="hcx-lead">
-          Informe os dados principais da situação. O envio do formulário não representa
-          contratação e as informações são analisadas para o direcionamento inicial do
-          atendimento.
-        </p>
-
-        <ul class="hcx-channels">
-          <li>
-            <span class="hcx-ic"><Icon name="mail" size={20} /></span>
-            <a href={`mailto:${site.contact.email}`}>{site.contact.email}</a>
-          </li>
-          <li>
-            <span class="hcx-ic"><Icon name="whatsapp" size={20} /></span>
-            <a href={whatsappHrefForPath(Astro.url.pathname)} target="_blank" rel="noopener noreferrer">{site.contact.whatsapp.display} · WhatsApp</a>
-          </li>
-          <li>
-            <span class="hcx-ic"><Icon name="file" size={20} /></span>
-            <span>Alexandre Corrêa Lima — {site.attorney.oab}</span>
-          </li>
-          <li>
-            <span class="hcx-ic"><Icon name="map-pin" size={20} /></span>
-            <span>{site.contact.address.street} — {site.contact.address.detail}<br />{site.contact.address.district} · {site.contact.address.city} – {site.contact.address.state} · CEP {site.contact.address.cep}</span>
-          </li>
-        </ul>
-
-        <ul class="hcx-trust">
-          <li>Atendimento nacional e online</li>
-          <li>Dados tratados conforme a Política de Privacidade</li>
-          <li>Não envie documentos confidenciais antes de orientação</li>
-        </ul>
-      </div>
-
-      <!-- Painel do formulário (branco) -->
-      <div class="hcx-form-panel">
-        <form
-          class="hcx-form"
-          data-home-contact
-          action={formspreeEndpoint}
-          method="POST"
-          novalidate
-        >
-          {/* Honeypot antispam — deve permanecer vazio */}
-          <input
-            type="text"
-            name="website"
-            tabindex="-1"
-            autocomplete="off"
-            aria-hidden="true"
-            class="hcx-hp"
-          />
-
-          <div class="hcx-field">
-            <label for="hcx-nome">Nome <span class="hcx-req">*</span></label>
-            <input id="hcx-nome" name="nome" type="text" required autocomplete="name" placeholder="Seu nome" />
-          </div>
-
-          <div class="hcx-field">
-            <label for="hcx-empresa">Empresa <span class="hcx-opt">(opcional)</span></label>
-            <input id="hcx-empresa" name="empresa" type="text" autocomplete="organization" placeholder="Sua empresa" />
-          </div>
-
-          <div class="hcx-field">
-            <label for="hcx-email">E-mail</label>
-            <input id="hcx-email" name="email" type="email" autocomplete="email" placeholder="voce@empresa.com" aria-describedby="hcx-canal" />
-          </div>
-
-          <div class="hcx-field">
-            <label for="hcx-telefone">Telefone / WhatsApp</label>
-            <input id="hcx-telefone" name="telefone" type="tel" autocomplete="tel" placeholder="+55 11 90000-0000" aria-describedby="hcx-canal" />
-          </div>
-
-          <p id="hcx-canal" class="hcx-hint hcx-col-2">Informe ao menos um canal de retorno: e-mail ou telefone.</p>
-
-          <div class="hcx-field hcx-col-2">
-            <label for="hcx-area">Área de interesse <span class="hcx-req">*</span></label>
-            <div class="hcx-select">
-              <select id="hcx-area" name="area" required>
-                <option value="" disabled selected>Selecione o assunto</option>
-                {contactAreas.map((a) => <option value={a.label} data-slug={a.slug}>{a.label}</option>)}
-              </select>
-            </div>
-          </div>
-
-          <div class="hcx-field hcx-col-2">
-            <label for="hcx-mensagem">Mensagem <span class="hcx-req">*</span></label>
-            <textarea
-              id="hcx-mensagem"
-              name="mensagem"
-              rows="4"
-              required
-              placeholder="Descreva, em linhas gerais, o problema, os principais acontecimentos e a existência de documentos ou prazos em andamento."
-            ></textarea>
-          </div>
-
-          <div class="hcx-col-2 hcx-actions">
-            <input type="hidden" name="pagina_origem" data-origin="page" />
-            <input type="hidden" name="pagina_entrada" data-origin="landing" />
-            <input type="hidden" name="utm" data-origin="utm" />
-            <button type="submit" class="hcx-submit">
-              Enviar solicitação de atendimento
-              <span class="hcx-submit-arrow"><Icon name="arrow-right" size={16} /></span>
-            </button>
-            <p class="hcx-note">
-              Ao enviar, você concorda com o tratamento dos dados exclusivamente para
-              contato, conforme a LGPD.
-            </p>
-            <p class="hcx-error" data-home-contact-error role="alert"></p>
-          </div>
-        </form>
-
-        {/* Estado de sucesso — só é exibido após envio real (script remove [hidden]). */}
-        <div class="hcx-success" data-home-contact-success role="status" aria-live="polite" tabindex="-1" hidden>
-          <span class="hcx-success-ic"><Icon name="check" size={32} /></span>
-          <h3>Mensagem enviada.</h3>
-          <p>
-            O escritório recebeu sua solicitação. Faremos uma análise preliminar e
-            retornaremos pelo canal informado, com a discrição que o assunto exige.
-          </p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+<section id="contato" class="home-contact"><div class="hcx-wrap"><div class="hcx-card" data-reveal><!-- Painel de informações (mint) --><div class="hcx-info"><p class="hcx-eyebrow"><span class="hcx-eyebrow-rule"></span>Contato</p><h2 class="hcx-title">Apresente a situação ao escritório</h2><p class="hcx-lead">Informe os dados principais da situação. O envio do formulário não representa contratação e as informações são analisadas para o direcionamento inicial do atendimento.</p><ul class="hcx-channels"><li><span class="hcx-ic"><Icon name="mail" size={20} /></span><a href="mailto:contato@correalimaadvocacia.com.br">contato@correalimaadvocacia.com.br</a></li><li><span class="hcx-ic"><Icon name="whatsapp" size={20} /></span><a href={waHref} target="_blank" rel="noopener noreferrer">+55 11 97502-5611 · WhatsApp</a></li><li><span class="hcx-ic"><Icon name="file" size={20} /></span><span>Alexandre Corrêa Lima — OAB/SP 234511</span></li><li><span class="hcx-ic"><Icon name="map-pin" size={20} /></span><span>R. Verbo Divino, 2001 — Bloco B – Conjunto 902<br>Chácara Santo Antônio · São Paulo – SP · CEP 04719-002</span></li></ul><ul class="hcx-trust"><li>Atendimento nacional e online</li><li>Dados tratados conforme a Política de Privacidade</li><li>Não envie documentos confidenciais antes de orientação</li></ul></div><!-- Painel do formulário (branco) --><div class="hcx-form-panel"><ContactForm /></div></div></div></section>
 
 <style>
-  .home-contact {
-    background: var(--surface);
-    padding-block: var(--section-y-lg);
-  }
-  .hcx-wrap {
-    width: 100%;
-    max-width: var(--container-max);
-    margin-inline: auto;
-    padding-inline: var(--container-pad);
-  }
-
-  /* Cartão em duas colunas */
-  .hcx-card {
-    overflow: hidden;
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-sm);
-    background: var(--surface);
-    display: grid;
-    /* minmax(0, …) e não 1fr: o item da grade tem min-width auto, e o e-mail
-       do escritório (34 caracteres, sem ponto de quebra) empurrava a trilha
-       para 390px dentro de um cartão de 328px. Como o cartão tem
-       overflow: hidden, o excesso não virava barra de rolagem — virava texto
-       cortado no celular. */
-    grid-template-columns: minmax(0, 1fr);
-  }
-  @media (min-width: 900px) {
-    .hcx-card { grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); }
-  }
-
-  /* ─── Painel de informações (mint) ─────────────────────────────── */
-  .hcx-info {
-    min-width: 0;
-    background: var(--surface-cream);
-    border-bottom: 1px solid var(--color-border);
-    /* Em tela estreita o respiro cede espaço ao conteúdo: com 32px de cada
-       lado, o e-mail do escritório não cabia numa linha e quebrava no meio da
-       palavra. */
-    padding: var(--space-6) var(--space-5);
-  }
-  @media (min-width: 560px) { .hcx-info { padding: var(--space-8); } }
-  @media (min-width: 900px) {
-    .hcx-info { border-bottom: 0; border-right: 1px solid var(--color-border); }
-  }
-  @media (min-width: 900px) { .hcx-info { padding: var(--space-12); } }
-
-  .hcx-eyebrow {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    font-family: var(--font-body);
-    font-size: var(--text-xs);
-    text-transform: uppercase;
-    letter-spacing: var(--tracking-eyebrow);
-    color: var(--color-accent);
-    font-weight: var(--weight-semibold);
-  }
-  .hcx-eyebrow-rule { height: 1px; width: 24px; background: currentColor; }
-  .hcx-title {
-    margin-top: var(--space-4);
-    font-family: var(--font-display);
-    font-size: var(--text-3xl);
-    font-weight: var(--weight-semibold);
-    line-height: 1.1;
-    letter-spacing: var(--tracking-tight);
-    color: var(--color-ink);
-    max-width: 14ch;
-    text-wrap: balance;
-  }
-  .hcx-lead {
-    margin-top: var(--space-5);
-    max-width: 30ch;
-    font-size: var(--text-sm);
-    line-height: var(--leading-normal);
-    color: var(--color-text-muted);
-  }
-
-  .hcx-channels {
-    list-style: none;
-    margin: var(--space-10) 0 0;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-5);
-  }
-  .hcx-channels li {
-    display: flex;
-    align-items: flex-start;
-    gap: var(--space-4);
-    font-size: var(--text-sm);
-    line-height: var(--leading-normal);
-    color: var(--color-text-muted);
-  }
-  .hcx-channels li:not(:first-child) { align-items: center; }
-  .hcx-ic {
-    flex: none;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 2.5rem;
-    height: 2.5rem;
-    border-radius: var(--radius-sm);
-    border: 1px solid var(--color-border);
-    background: var(--surface);
-    color: var(--color-accent);
-  }
-  .hcx-channels a {
-    display: inline-block;
-    padding-block: 0.15rem;
-    color: var(--color-text-muted);
-    text-decoration: none;
-    /* O e-mail é uma palavra só; sem isto ele define a largura mínima da
-       coluna inteira. */
-    overflow-wrap: anywhere;
-    transition: color var(--dur) var(--ease);
-  }
-  .hcx-channels a:hover { color: var(--color-navy); }
-
-  /* ─── Painel do formulário (branco) ────────────────────────────── */
-  .hcx-form-panel {
-    padding: var(--space-8);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-  }
-  @media (min-width: 900px) { .hcx-form-panel { padding: var(--space-12); } }
-
-  .hcx-form {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: var(--space-5);
-  }
-  @media (min-width: 560px) {
-    .hcx-form { grid-template-columns: 1fr 1fr; }
-  }
-  .hcx-col-2 { grid-column: 1 / -1; }
-
-  .hcx-hp { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; }
-
-  .hcx-field { display: flex; flex-direction: column; }
-  .hcx-field label {
-    margin-bottom: 0.375rem;
-    font-size: var(--text-sm);
-    font-weight: var(--weight-medium);
-    color: var(--color-ink);
-  }
-  .hcx-field input,
-  .hcx-field select,
-  .hcx-field textarea {
-    width: 100%;
-    font-family: var(--font-body);
-    font-size: var(--text-base);
-    color: var(--color-ink);
-    padding: 0.75rem 1rem;
-    border: 1px solid var(--border-strong);
-    border-radius: var(--radius-sm);
-    background: var(--surface);
-    outline: none;
-    transition: border-color var(--dur) var(--ease), box-shadow var(--dur) var(--ease);
-  }
-  .hcx-field textarea { resize: none; min-height: 8.5rem; }
-  .hcx-field input::placeholder,
-  .hcx-field textarea::placeholder { color: var(--color-text-subtle); opacity: 0.7; }
-  .hcx-field input:focus,
-  .hcx-field select:focus,
-  .hcx-field textarea:focus {
-    border-color: var(--color-accent);
-    box-shadow: var(--ring);
-  }
-
-  /* Select com chevron desenhado em CSS (evita ícone solto/desalinhado) */
-  .hcx-select { position: relative; }
-  .hcx-select select { appearance: none; -webkit-appearance: none; padding-right: 2.75rem; }
-  .hcx-select::after {
-    content: ''; position: absolute; right: 1.15rem; top: 50%;
-    width: 9px; height: 9px; margin-top: -3px;
-    border-right: 2px solid var(--color-text-subtle);
-    border-bottom: 2px solid var(--color-text-subtle);
-    transform: rotate(45deg); pointer-events: none;
-  }
-
-  .hcx-actions { display: flex; flex-direction: column; }
-  .hcx-submit {
-    align-self: stretch;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: var(--space-2);
-    background: var(--color-navy);
-    color: #ffffff;
-    border: 1px solid transparent;
-    border-radius: var(--radius-sm);
-    min-height: 3.5rem;
-    padding: 1rem 2.25rem;
-    font-family: var(--font-ui);
-    font-size: var(--text-base);
-    font-weight: var(--weight-semibold);
-    cursor: pointer;
-    transition: background-color var(--dur) var(--ease);
-  }
-  @media (min-width: 560px) { .hcx-submit { align-self: flex-start; } }
-  .hcx-submit:hover { background: var(--color-green-hover); }
-  .hcx-submit:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 3px; }
-  .hcx-submit:disabled { opacity: 0.5; cursor: default; }
-  .hcx-submit-arrow { display: inline-flex; transition: transform var(--dur) var(--ease); }
-  .hcx-submit:hover .hcx-submit-arrow { transform: translateX(3px); }
-
-  .hcx-note {
-    margin-top: var(--space-4);
-    font-size: var(--text-xs);
-    line-height: var(--leading-relaxed);
-    color: var(--color-text-muted);
-  }
-
-  /* ─── Estado de sucesso ────────────────────────────────────────── */
-  .hcx-success {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    min-height: 12rem;
-  }
-  /* Correção do bug: a classe .hcx-success (display:flex) tinha a mesma
-     especificidade que [hidden] do navegador e vinha depois, anulando-o —
-     por isso o painel aparecia sem envio. Esta regra restaura o hidden. */
-  .hcx-success[hidden] { display: none; }
-  .hcx-error { margin-top: var(--space-3); font-size: var(--text-sm); font-weight: var(--weight-medium); color: var(--color-danger); }
-  .hcx-error:empty { display: none; }
-  .hcx-req { color: var(--color-accent); }
-  .hcx-opt { color: var(--color-text-subtle); font-weight: var(--weight-regular); font-size: var(--text-xs); }
-  .hcx-hint { margin-top: -0.35rem; color: var(--color-text-muted); font-size: var(--text-xs); line-height: var(--leading-normal); }
-  .hcx-trust { list-style: none; margin: var(--space-8) 0 0; padding: 0; display: flex; flex-direction: column; gap: 0.4rem; }
-  .hcx-trust li { position: relative; padding-left: 1.1rem; color: var(--color-text-muted); font-size: var(--text-xs); line-height: var(--leading-normal); }
-  .hcx-trust li::before { content: ''; position: absolute; left: 0; top: 0.62em; width: 8px; height: 1px; background: var(--color-accent); }
-  .hcx-success-ic {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 4rem;
-    height: 4rem;
-    border-radius: var(--radius-sm);
-    border: 1px solid var(--border-accent);
-    background: var(--surface-cream);
-    color: var(--color-accent);
-  }
-  .hcx-success h3 {
-    margin-top: var(--space-6);
-    font-family: var(--font-display);
-    font-size: var(--text-2xl);
-    font-weight: var(--weight-semibold);
-    color: var(--color-ink);
-  }
-  .hcx-success p {
-    margin-top: var(--space-3);
-    max-width: 26rem;
-    font-size: var(--text-sm);
-    line-height: var(--leading-normal);
-    color: var(--color-text-muted);
-  }
+  .home-contact{background:var(--surface);padding-block:var(--section-y-lg)}
+  .hcx-wrap{width:100%;max-width:var(--container-max);padding-inline:var(--container-pad);margin-inline:auto}
+  .hcx-card{border:1px solid var(--color-border);border-radius:var(--radius-sm);background:var(--surface);grid-template-columns:minmax(0,1fr);display:grid;overflow:hidden}
+  @media (width>=900px){.hcx-card{grid-template-columns:minmax(0,5fr) minmax(0,7fr)}}
+  .hcx-info{background:var(--surface-cream);border-bottom:1px solid var(--color-border);min-width:0;padding:var(--space-6) var(--space-5)}
+  @media (width>=560px){.hcx-info{padding:var(--space-8)}}
+  @media (width>=900px){.hcx-info{border-bottom:0;border-right:1px solid var(--color-border);padding:var(--space-12)}}
+  .hcx-eyebrow{font-family:var(--font-body);font-size:var(--text-xs);text-transform:uppercase;letter-spacing:var(--tracking-eyebrow);color:var(--color-accent);font-weight:var(--weight-semibold);align-items:center;gap:.5rem;display:inline-flex}
+  .hcx-eyebrow-rule{background:currentColor;width:24px;height:1px}
+  .hcx-title{margin-top:var(--space-4);font-family:var(--font-display);font-size:var(--text-3xl);font-weight:var(--weight-semibold);letter-spacing:var(--tracking-tight);color:var(--color-ink);text-wrap:balance;max-width:14ch;line-height:1.1}
+  .hcx-lead{margin-top:var(--space-5);max-width:30ch;font-size:var(--text-sm);line-height:var(--leading-normal);color:var(--color-text-muted)}
+  .hcx-channels{margin:var(--space-10) 0 0;gap:var(--space-5);flex-direction:column;padding:0;list-style:none;display:flex}
+  .hcx-channels li{align-items:flex-start;gap:var(--space-4);font-size:var(--text-sm);line-height:var(--leading-normal);color:var(--color-text-muted);display:flex}
+  .hcx-channels li:not(:first-child){align-items:center}
+  .hcx-ic{border-radius:var(--radius-sm);border:1px solid var(--color-border);background:var(--surface);width:2.5rem;height:2.5rem;color:var(--color-accent);flex:none;justify-content:center;align-items:center;display:inline-flex}
+  .hcx-channels a{color:var(--color-text-muted);overflow-wrap:anywhere;transition:color var(--dur) var(--ease);padding-block:.15rem;text-decoration:none;display:inline-block}
+  .hcx-channels a:hover{color:var(--color-navy)}
+  .hcx-form-panel{padding:var(--space-8);flex-direction:column;justify-content:center;display:flex}
+  @media (width>=900px){.hcx-form-panel{padding:var(--space-12)}}
+  .hcx-form{gap:var(--space-5);grid-template-columns:1fr;display:grid}
+  @media (width>=560px){.hcx-form{grid-template-columns:1fr 1fr}}
+  .hcx-col-2{grid-column:1/-1}
+  .hcx-hp{opacity:0;width:1px;height:1px;position:absolute;left:-9999px}
+  .hcx-field{flex-direction:column;display:flex}
+  .hcx-field label{font-size:var(--text-sm);font-weight:var(--weight-medium);color:var(--color-ink);margin-bottom:.375rem}
+  .hcx-field input,.hcx-field select,.hcx-field textarea{width:100%;font-family:var(--font-body);font-size:var(--text-base);color:var(--color-ink);border:1px solid var(--border-strong);border-radius:var(--radius-sm);background:var(--surface);transition:border-color var(--dur) var(--ease), box-shadow var(--dur) var(--ease);outline:none;padding:.75rem 1rem}
+  .hcx-field textarea{resize:none;min-height:8.5rem}
+  .hcx-field input::placeholder,.hcx-field textarea::placeholder{color:var(--color-text-subtle);opacity:.7}
+  .hcx-field input:focus,.hcx-field select:focus,.hcx-field textarea:focus{border-color:var(--color-accent);box-shadow:var(--ring)}
+  .hcx-select{position:relative}
+  .hcx-select select{appearance:none;padding-right:2.75rem}
+  .hcx-select:after{content:"";border-right:2px solid var(--color-text-subtle);border-bottom:2px solid var(--color-text-subtle);pointer-events:none;width:9px;height:9px;margin-top:-3px;position:absolute;top:50%;right:1.15rem;transform:rotate(45deg)}
+  .hcx-actions{flex-direction:column;display:flex}
+  .hcx-submit{justify-content:center;align-self:stretch;align-items:center;gap:var(--space-2);background:var(--color-navy);color:#fff;border-radius:var(--radius-sm);min-height:3.5rem;font-family:var(--font-ui);font-size:var(--text-base);font-weight:var(--weight-semibold);cursor:pointer;transition:background-color var(--dur) var(--ease);border:1px solid #0000;padding:1rem 2.25rem;display:inline-flex}
+  @media (width>=560px){.hcx-submit{align-self:flex-start}}
+  .hcx-submit:hover{background:var(--color-green-hover)}
+  .hcx-submit:focus-visible{outline:2px solid var(--color-accent);outline-offset:3px}
+  .hcx-submit:disabled{opacity:.5;cursor:default}
+  .hcx-submit-arrow{transition:transform var(--dur) var(--ease);display:inline-flex}
+  .hcx-submit:hover .hcx-submit-arrow{transform:translate(3px)}
+  .hcx-note{margin-top:var(--space-4);font-size:var(--text-xs);line-height:var(--leading-relaxed);color:var(--color-text-muted)}
+  .hcx-success{text-align:center;flex-direction:column;justify-content:center;align-items:center;min-height:12rem;display:flex}
+  .hcx-success[hidden]{display:none}
+  .hcx-error{margin-top:var(--space-3);font-size:var(--text-sm);font-weight:var(--weight-medium);color:var(--color-danger)}
+  .hcx-error:empty{display:none}
+  .hcx-req{color:var(--color-accent)}
+  .hcx-opt{color:var(--color-text-subtle);font-weight:var(--weight-regular);font-size:var(--text-xs)}
+  .hcx-hint{color:var(--color-text-muted);font-size:var(--text-xs);line-height:var(--leading-normal);margin-top:-.35rem}
+  .hcx-trust{margin:var(--space-8) 0 0;flex-direction:column;gap:.4rem;padding:0;list-style:none;display:flex}
+  .hcx-trust li{color:var(--color-text-muted);font-size:var(--text-xs);line-height:var(--leading-normal);padding-left:1.1rem;position:relative}
+  .hcx-trust li:before{content:"";background:var(--color-accent);width:8px;height:1px;position:absolute;top:.62em;left:0}
+  .hcx-success-ic{border-radius:var(--radius-sm);border:1px solid var(--border-accent);background:var(--surface-cream);width:4rem;height:4rem;color:var(--color-accent);justify-content:center;align-items:center;display:inline-flex}
+  .hcx-success h3{margin-top:var(--space-6);font-family:var(--font-display);font-size:var(--text-2xl);font-weight:var(--weight-semibold);color:var(--color-ink)}
+  .hcx-success p{margin-top:var(--space-3);max-width:26rem;font-size:var(--text-sm);line-height:var(--leading-normal);color:var(--color-text-muted)}
 </style>
-
-<script>
-  import { fillOriginFields } from '@/lib/contact-origin';
-  document.querySelectorAll('[data-home-contact]').forEach((formEl) => {
-    const form = formEl as HTMLFormElement;
-    fillOriginFields(form);
-    const panel = form.parentElement as HTMLElement | null;
-    const success = panel?.querySelector('[data-home-contact-success]') as HTMLElement | null;
-    const errorEl = form.querySelector('[data-home-contact-error]') as HTMLElement | null;
-    const submit = form.querySelector('.hcx-submit') as HTMLButtonElement | null;
-    const emailEl = form.querySelector('#hcx-email') as HTMLInputElement | null;
-    const phoneEl = form.querySelector('#hcx-telefone') as HTMLInputElement | null;
-    let sending = false;
-    let started = false;
-
-    // form_start (primeira interação)
-    form.addEventListener('focusin', () => {
-      if (started) return; started = true;
-      if (typeof (window as any).gtag === 'function') (window as any).gtag('event', 'form_start', { form_id: 'home' });
-    });
-
-    form.addEventListener('submit', async (e) => {
-      e.preventDefault();
-      if (sending) return; // impede envio duplicado
-      if (errorEl) errorEl.textContent = '';
-
-      // Ao menos um canal de retorno: e-mail OU telefone.
-      const hasEmail = !!(emailEl && emailEl.value.trim());
-      const hasPhone = !!(phoneEl && phoneEl.value.trim());
-      if (!hasEmail && !hasPhone) {
-        if (errorEl) errorEl.textContent = 'Informe ao menos um canal de retorno: e-mail ou telefone.';
-        (emailEl || phoneEl)?.focus();
-        return;
-      }
-      if (!form.checkValidity()) {
-        form.reportValidity();
-        return;
-      }
-      sending = true;
-      if (submit) {
-        submit.disabled = true;
-        submit.setAttribute('aria-busy', 'true');
-        submit.textContent = 'Enviando…';
-      }
-      try {
-        const res = await fetch(form.action, {
-          method: 'POST',
-          body: new FormData(form),
-          headers: { Accept: 'application/json' },
-        });
-        if (!res.ok) throw new Error('falha no envio');
-        // Sucesso real: só agora exibe o painel de confirmação.
-        form.hidden = true;
-        if (success) {
-          success.hidden = false;
-          success.focus();
-        }
-        // Eventos de conversão (emitidos direto, pois o painel da Home é estático).
-        if (typeof (window as any).gtag === 'function') {
-          const g = (window as any).gtag;
-          g('event', 'form_submit', { form_id: 'home' });
-          g('event', 'form_success', { form_id: 'home' });
-          g('event', 'generate_lead', { method: 'form', form_id: 'home', value: 1, currency: 'BRL' });
-        }
-      } catch {
-        // Erro: preserva os dados, mostra mensagem e reabilita o botão.
-        if (errorEl) errorEl.textContent = 'Não foi possível enviar a mensagem. Tente novamente ou fale pelo WhatsApp.';
-        if (submit) {
-          submit.disabled = false;
-          submit.removeAttribute('aria-busy');
-          submit.textContent = 'Tentar novamente';
-        }
-        sending = false;
-      }
-    });
-  });
-</script>

@@ -18,11 +18,11 @@ Direito Aduaneiro-Tributário
 
 07/11/2026•7 min de leitura•Por [Alexandre Corrêa Lima](/o-escritorio/#alexandre-correa-lima)
 
-Sem habilitação no Siscomex, a empresa não registra declarações de importação. Na prática, a operação para. Problemas no “Radar” aparecem de formas diferentes: limite baixo, revisão de ofício, suspensão, desabilitação ou, no caso mais grave, a declaração de inaptidão do CNPJ. Cada situação tem fundamento e defesa próprios.
+Sem habilitação no Siscomex, a empresa não registra declarações de importação. Na prática, a operação para. Problemas no "Radar" aparecem de formas diferentes: limite baixo, revisão de ofício, suspensão, desabilitação ou, no caso mais grave, a declaração de inaptidão do CNPJ. Cada situação tem fundamento e defesa próprios.
 
 ## O que é a habilitação no Siscomex (Radar)
 
-“Radar” é o nome usado no mercado para a habilitação do declarante de mercadorias nos sistemas de comércio exterior. Hoje ela é regulada pela Instrução Normativa RFB nº 1.984/2020, alterada pela IN RFB nº 2.292/2025.
+"Radar" é o nome usado no mercado para a habilitação do declarante de mercadorias nos sistemas de comércio exterior. Hoje ela é regulada pela Instrução Normativa RFB nº 1.984/2020, alterada pela IN RFB nº 2.292/2025.
 
 A habilitação tem modalidades. Em linhas gerais:
 
@@ -97,19 +97,19 @@ O instrumento mais comum é o [mandado de segurança](/blog/mandado-de-seguranca
 
 ## Perguntas frequentes
 
-O Radar pode ser suspenso sem aviso?
+**O Radar pode ser suspenso sem aviso?**
 
 As sanções do art. 76 da Lei 10.833/2003 dependem de procedimento com prazo de defesa. Algumas medidas previstas na IN RFB 1.984/2020 são formalizadas por termo ou edital. Em qualquer caso, a empresa tem direito de conhecer o fundamento e se defender.
 
-CNPJ inapto pode voltar a ser ativo?
+**CNPJ inapto pode voltar a ser ativo?**
 
 Sim, por regularização administrativa, quando a causa é sanada e a norma permite, ou por decisão judicial que anule o ato. O caminho depende do motivo da inaptidão.
 
-Qual a diferença entre limite baixo e suspensão?
+**Qual a diferença entre limite baixo e suspensão?**
 
 O limite baixo decorre da estimativa de capacidade financeira e se resolve com pedido de revisão. A suspensão é uma sanção ou medida restritiva, com fundamento próprio e defesa específica.
 
-Posso usar outra empresa para importar enquanto o Radar está suspenso?
+**Posso usar outra empresa para importar enquanto o Radar está suspenso?**
 
 Esse é um ponto de alto risco. Usar terceiro sem a estrutura legal correta pode caracterizar ocultação do real adquirente, com risco de [pena de perdimento](/areas-de-atuacao/direito-aduaneiro-tributario/pena-de-perdimento/). Qualquer alternativa deve ser analisada antes.
 

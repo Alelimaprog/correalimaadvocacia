@@ -1,5 +1,5 @@
 ---
-title: "Encomenda Internacional Retida ou Apreendida: Como Contestar"
+title: "Encomenda Internacional Retida ou Apreendida: Como Contestar | Corrêa Lima"
 description: "Compra do exterior parada nos Correios ou na transportadora? Veja como pedir revisão do imposto, responder à exigência e se defender da apreensão."
 h1: "Encomenda internacional retida ou apreendida: como contestar"
 author: "Alexandre Corrêa Lima"
@@ -53,7 +53,7 @@ Essas alíquotas podem ser alteradas por ato do Ministério da Fazenda. Antes de
 
 Se você discorda do valor cobrado, a Receita Federal permite um **pedido de revisão de tributos**. Pela [orientação oficial](https://www.gov.br/receitafederal/pt-br/assuntos/aduana-e-comercio-exterior/manuais/remessas-postal-e-expressa/problemas-frequentes/encomenda-em-revisao-de-tributos):
 
-- o prazo é de **20 dias** a partir do evento “Fiscalização aduaneira concluída - aguardando pagamento”;
+- o prazo é de **20 dias** a partir do evento "Fiscalização aduaneira concluída - aguardando pagamento";
 - nos Correios, o pedido é feito no Minhas Importações, **antes de pagar o boleto**;
 - nas remessas expressas, o pedido é feito pela empresa transportadora;
 - é possível enviar informações e documentos **uma única vez**, e só há um pedido por encomenda.
@@ -66,7 +66,7 @@ Se o boleto não for pago em 20 dias, a encomenda dos Correios é devolvida ao e
 
 Às vezes a fiscalização pede algo antes de liberar: nota do vendedor, comprovante de pagamento, descrição detalhada, prova de uso pessoal. A Receita Federal informa que o destinatário tem **30 dias** para atender à exigência ([página oficial](https://www.gov.br/receitafederal/pt-br/assuntos/aduana-e-comercio-exterior/manuais/remessas-postal-e-expressa/problemas-frequentes/devolucao-sem-resposta-a-exigencia-fiscal)). Sem resposta, ou com resposta que não atende ao pedido, a importação não é autorizada e a encomenda volta ao exterior.
 
-Responda com documentos coerentes entre si. Descrição vaga (“roupas”, “peças”, “presente”) é uma das causas mais comuns de problema.
+Responda com documentos coerentes entre si. Descrição vaga ("roupas", "peças", "presente") é uma das causas mais comuns de problema.
 
 ## Encomenda retida por suspeita de falsificação
 
@@ -107,23 +107,23 @@ Bens trazidos na mala pelo viajante seguem o regime de bagagem, e não o de reme
 
 ## Perguntas frequentes
 
-O que fazer quando a encomenda internacional fica retida?
+**O que fazer quando a encomenda internacional fica retida?**
 
 Veja o status no rastreamento e no Minhas Importações (Correios) ou com a transportadora. Se for cobrança de imposto, avalie a revisão antes de pagar. Se for exigência de documentos, responda em até 30 dias. Se houver auto de infração com apreensão, a defesa tem prazo de 20 dias.
 
-Como contestar o imposto cobrado em uma compra internacional?
+**Como contestar o imposto cobrado em uma compra internacional?**
 
-Pelo pedido de revisão de tributos, em até 20 dias do evento “Fiscalização aduaneira concluída - aguardando pagamento”, antes de pagar o boleto. Só cabe um pedido por encomenda, e o resultado pode reduzir ou aumentar o valor.
+Pelo pedido de revisão de tributos, em até 20 dias do evento "Fiscalização aduaneira concluída - aguardando pagamento", antes de pagar o boleto. Só cabe um pedido por encomenda, e o resultado pode reduzir ou aumentar o valor.
 
-Compras de até 50 dólares pagam imposto?
+**Compras de até 50 dólares pagam imposto?**
 
 Desde 12 de maio de 2026, compras de até US$ 50 em sites certificados no Remessa Conforme têm Imposto de Importação zerado, segundo a Receita Federal. O ICMS estadual continua sendo cobrado. Em sites não certificados, a regra é diferente.
 
-Perdi o prazo para pagar a taxa. Consigo recuperar a encomenda?
+**Perdi o prazo para pagar a taxa. Consigo recuperar a encomenda?**
 
 Nos Correios, a Receita informa que não há prorrogação nem emissão de novo boleto, e a encomenda é devolvida ao exterior. Nesse caso, o caminho costuma ser o reembolso com o vendedor.
 
-Minha encomenda foi apreendida. Posso me defender?
+**Minha encomenda foi apreendida. Posso me defender?**
 
 Sim. A apreensão para perdimento é formalizada em auto de infração, e cabe impugnação em 20 dias da ciência, com recurso em 20 dias depois da decisão de primeira instância, conforme o Decreto-Lei 1.455/1976.
 

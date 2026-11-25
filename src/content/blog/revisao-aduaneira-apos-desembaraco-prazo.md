@@ -1,5 +1,5 @@
 ---
-title: "Revisão Aduaneira Após o Desembaraço: Prazo e Defesa"
+title: "Revisão Aduaneira Após o Desembaraço: Prazo e Defesa | Corrêa Lima"
 description: "A Receita pode rever uma importação já desembaraçada por até cinco anos, mesmo após canal vermelho. Veja o que é revisado, as consequências e como se defender."
 h1: "Revisão aduaneira depois do desembaraço: prazo de cinco anos e defesa"
 author: "Alexandre Corrêa Lima"
@@ -23,7 +23,7 @@ Muitos importadores acreditam que, uma vez desembaraçada a mercadoria, a opera�
 
 O [Regulamento Aduaneiro (Decreto nº 6.759/2009)](https://www.planalto.gov.br/ccivil_03/_ato2007-2010/2009/decreto/d6759.htm) define, no art. 638, a revisão aduaneira como o ato pelo qual é apurada, **após o desembaraço aduaneiro**, a regularidade do pagamento dos impostos e demais gravames, da aplicação de benefício fiscal e da exatidão das informações prestadas pelo importador na declaração de importação (ou pelo exportador na declaração de exportação). O dispositivo tem como base legal o art. 54 do Decreto-Lei nº 37/1966.
 
-Em outras palavras, o desembaraço libera a mercadoria, mas não “homologa” definitivamente tudo o que foi declarado.
+Em outras palavras, o desembaraço libera a mercadoria, mas não "homologa" definitivamente tudo o que foi declarado.
 
 ## Qual é o prazo
 
@@ -88,23 +88,23 @@ Procure orientação ao receber um termo de início de fiscalização ou intima�
 
 ## Perguntas frequentes
 
-Por quanto tempo a Receita pode rever uma importação?
+**Por quanto tempo a Receita pode rever uma importação?**
 
 A revisão aduaneira deve estar concluída em cinco anos contados do registro da declaração de importação, e considera-se concluída na ciência da exigência ao importador (Regulamento Aduaneiro, art. 638, §§ 2º e 3º).
 
-Mercadoria que passou pelo canal vermelho pode ser revista?
+**Mercadoria que passou pelo canal vermelho pode ser revista?**
 
 Pode. O STJ, no REsp 1.826.124/SC, entendeu que o direito à revisão não depende do canal de conferência. A defesa pode discutir mudança de critério jurídico (CTN, art. 146), conforme o caso.
 
-O que acontece se a mercadoria já foi vendida?
+**O que acontece se a mercadoria já foi vendida?**
 
 Nas hipóteses de perdimento, a pena é substituída por multa equivalente ao valor aduaneiro da mercadoria (Regulamento Aduaneiro, art. 689, § 1º).
 
-Qual o prazo para impugnar o auto de infração da revisão?
+**Qual o prazo para impugnar o auto de infração da revisão?**
 
 No processo administrativo fiscal federal, 20 dias úteis da ciência, conforme a redação do Decreto 70.235/1972 dada pela LC 227/2026.
 
-A multa de 1% por erro de NCM ainda pode ser aplicada na revisão?
+**A multa de 1% por erro de NCM ainda pode ser aplicada na revisão?**
 
 Não. Ela foi revogada pela LC 227/2026, e autuações ainda não definitivamente julgadas podem ser revistas. A diferença de tributo, os juros e a multa de ofício continuam.
 

@@ -1,5 +1,5 @@
 ---
-title: "Homologação de Divórcio Estrangeiro no STJ e nos EUA | Corrêa Lima Advocacia"
+title: "Advogado para Homologação de Divórcio Estrangeiro no STJ | Corrêa Lima Advocacia"
 description: "Divórcio feito no exterior, inclusive nos EUA: quando basta averbar em cartório e quando é preciso homologar no STJ. Documentos, apostila e tradução."
 h1: "Homologação de Divórcio Estrangeiro"
 author: "Alexandre Corrêa Lima"

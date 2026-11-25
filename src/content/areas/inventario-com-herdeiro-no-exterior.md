@@ -1,5 +1,5 @@
 ---
-title: "Inventário com Herdeiro no Exterior: Procuração e Apostila | Corrêa Lima Advocacia"
+title: "Advogado para Inventário com Herdeiro no Exterior | Corrêa Lima Advocacia"
 description: "Advogado para inventário com herdeiro morando fora do Brasil: procuração, documentos, apostilamento e condução do processo à distância."
 h1: "Inventário com Herdeiro no Exterior"
 author: "Alexandre Corrêa Lima"

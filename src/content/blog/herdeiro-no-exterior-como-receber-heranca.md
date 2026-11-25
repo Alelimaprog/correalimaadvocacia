@@ -95,23 +95,23 @@ Herdeiros em países diferentes exigem coordenação de documentos e prazos. O e
 
 ## Perguntas frequentes
 
-Herdeiro que mora no exterior precisa vir ao Brasil?
+**Herdeiro que mora no exterior precisa vir ao Brasil?**
 
 Em regra, não. Ele pode ser representado por procuração pública, feita no consulado ou em notário estrangeiro com apostila, ou assinar a escritura a distância pelo e-Notariado, conforme as exigências do cartório.
 
-Como o herdeiro no exterior tira CPF?
+**Como o herdeiro no exterior tira CPF?**
 
 Brasileiros podem pedir por e-mail à Receita Federal ou no consulado. Estrangeiros precisam ir a um posto consular brasileiro.
 
-Herdeiro no exterior paga ITCMD?
+**Herdeiro no exterior paga ITCMD?**
 
 Sim, quando o falecido tinha domicílio no Brasil ou quando há imóvel no Brasil. Se o falecido morava fora, a cobrança depende das regras da LC 227/2026 e da lei estadual vigente na data do óbito.
 
-Dá para mandar o dinheiro da herança para o exterior?
+**Dá para mandar o dinheiro da herança para o exterior?**
 
 Sim. A remessa é feita por banco ou instituição autorizada, com base na Lei 14.286/2021, mediante documentos do inventário e do recolhimento do imposto.
 
-Procuração feita em cartório estrangeiro vale no Brasil?
+**Procuração feita em cartório estrangeiro vale no Brasil?**
 
 Pode valer, desde que tenha apostila (ou legalização consular, se o país não for signatário) e tradução juramentada, quando em outro idioma, além dos poderes específicos exigidos.
 

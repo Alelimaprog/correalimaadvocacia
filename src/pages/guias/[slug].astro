@@ -86,11 +86,11 @@ const relacionados = entry.data.relacionados ?? [];
 
 <EntryPage head={head} jsonld={jsonld} crumbs={crumbs}>
   <Content />
+  <RelatedHub cluster={entry.data.cluster} currentPath={path} curated={relacionados} />
   <ContextualCta
     titulo={nucleo ? `Precisa de orientação em ${nucleo.label}?` : 'Precisa avaliar a sua situação?'}
     texto="Apresente o caso e entenda quais podem ser os próximos passos."
     areaHref={money?.href ?? nucleo?.href}
     areaLabel={money?.label}
   />
-  <RelatedHub cluster={entry.data.cluster} currentPath={path} curated={relacionados} />
 </EntryPage>

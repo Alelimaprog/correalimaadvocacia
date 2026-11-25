@@ -90,23 +90,23 @@ O advogado é obrigatório tanto no inventário judicial quanto no extrajudicial
 
 ## Perguntas frequentes
 
-A sentença de herança estrangeira transfere o imóvel no Brasil?
+**A sentença de herança estrangeira transfere o imóvel no Brasil?**
 
 Não. O inventário e a partilha de bens situados no Brasil são de competência exclusiva da Justiça brasileira, mesmo que o falecido fosse estrangeiro ou morasse fora (CPC, art. 23, II).
 
-Onde abrir o inventário se o falecido não morava no Brasil?
+**Onde abrir o inventário se o falecido não morava no Brasil?**
 
 Na Justiça, no foro onde está o imóvel, quando não havia domicílio certo no Brasil (CPC, art. 48, parágrafo único). Também é possível, em princípio, a via extrajudicial, se os requisitos forem cumpridos.
 
-O inventário pode ser feito em cartório?
+**O inventário pode ser feito em cartório?**
 
 Pode, quando os herdeiros estão de acordo e assistidos por advogado. A Resolução CNJ 35/2007 só proíbe escritura de inventário referente a bens localizados no exterior.
 
-Qual lei define quem herda?
+**Qual lei define quem herda?**
 
 Em regra, a do país onde o falecido era domiciliado (LINDB, art. 10), com a ressalva em favor do cônjuge ou filhos brasileiros quando a lei brasileira lhes for mais favorável (art. 10, § 1º).
 
-Qual o ITCMD para imóvel em São Paulo?
+**Qual o ITCMD para imóvel em São Paulo?**
 
 4% sobre o valor venal (Lei 10.705/2000, art. 16), com multa se o inventário não for aberto em 60 dias do óbito (art. 21, I).
 

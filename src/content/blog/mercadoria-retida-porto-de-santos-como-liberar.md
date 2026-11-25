@@ -1,5 +1,5 @@
 ---
-title: "Mercadoria Retida no Porto de Santos | Corrêa Lima Advocacia"
+title: "Mercadoria Retida no Porto de Santos | Corrêa Lima"
 description: "Carga parada na Alfândega de Santos: o que a retenção significa, custos de terminal e demurrage, defesa administrativa e quando cabe mandado de segurança."
 h1: "Mercadoria retida no Porto de Santos: como liberar a carga"
 author: "Alexandre Corrêa Lima"
@@ -21,7 +21,7 @@ O Porto de Santos concentra uma parte grande das importações do país. Quando 
 
 ## Retida ou só em conferência?
 
-Nem toda carga parada está “retida” no sentido técnico. Vale separar três situações:
+Nem toda carga parada está "retida" no sentido técnico. Vale separar três situações:
 
 - **Conferência aduaneira em andamento.** A declaração caiu no canal amarelo, vermelho ou cinza e aguarda exame. Veja [canal vermelho e canal cinza](/blog/canal-vermelho-canal-cinza-importacao-prazo/).
 - **Exigência registrada.** O auditor pediu documento, retificação, laudo ou recolhimento de diferença de tributo e multa.
@@ -94,23 +94,23 @@ O escritório fica em São Paulo e atua em casos de cargas retidas em Santos, Gu
 
 ## Perguntas frequentes
 
-Quanto tempo a Receita pode reter uma mercadoria em Santos?
+**Quanto tempo a Receita pode reter uma mercadoria em Santos?**
 
 Depende da situação. No procedimento especial de combate às fraudes, a IN RFB 1.986/2020 prevê prazo de até 60 dias, prorrogável, com suspensão enquanto intimação não é atendida. Para a conferência comum, não há prazo geral fixado em norma.
 
-Quem paga a armazenagem e a demurrage durante a retenção?
+**Quem paga a armazenagem e a demurrage durante a retenção?**
 
 Em regra, o importador, conforme os contratos com o terminal e o armador. Discutir o ressarcimento depende de demonstrar que a retenção foi ilegal e de provar o prejuízo.
 
-Preciso de advogado em Santos para entrar com mandado de segurança?
+**Preciso de advogado em Santos para entrar com mandado de segurança?**
 
 Não necessariamente. O processo na Justiça Federal é eletrônico, e a ação pode ser conduzida por advogado de outra cidade. O que importa é a escolha correta da autoridade e do foro.
 
-Posso pedir a liberação da carga dando garantia?
+**Posso pedir a liberação da carga dando garantia?**
 
 Em várias situações, sim. A IN RFB 1.986/2020 (art. 12) admite a entrega mediante garantia no procedimento especial, com exceções. Em outras situações, a possibilidade depende do tipo de exigência.
 
-O que acontece se eu não responder a exigência?
+**O que acontece se eu não responder a exigência?**
 
 O despacho fica parado e a carga pode ser considerada abandonada, com risco de perdimento. Veja [abandono de mercadoria importada](/blog/abandono-de-mercadoria-importada-perdimento/).
 

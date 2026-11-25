@@ -14,8 +14,11 @@ import { whatsappHrefForPath } from '@/lib/site.config';
 import { site } from '@/lib/site.config';
 import type { PageHead } from '@/lib/institucional';
 
-const entries = (await getCollection('guias')).sort((a, b) =>
-  (a.data.h1 ?? a.data.title).localeCompare(b.data.h1 ?? b.data.title, 'pt-BR')
+// Rodada 4 (13/11/2026): as três frentes principais primeiro; as demais em ordem alfabética.
+const PRIORIDADE = ['direito-aduaneiro-tributario-guia-completo', 'inventario-guia-completo', 'homologacao-de-sentenca-estrangeira-no-brasil'];
+const rank = (id: string) => (PRIORIDADE.includes(id) ? PRIORIDADE.indexOf(id) : PRIORIDADE.length);
+const entries = (await getCollection('guias')).sort(
+  (a, b) => rank(a.id) - rank(b.id) || (a.data.h1 ?? a.data.title).localeCompare(b.data.h1 ?? b.data.title, 'pt-BR')
 );
 
 const url = `${site.url}/guias/`;
@@ -60,7 +63,7 @@ const clusterLabel = Object.fromEntries(nucleos.map((n) => [n.slug, n.label]));
 const guiaWaHref = whatsappHrefForPath('/guias/');
 ---
 
-<BaseLayout head={head}>
+<BaseLayout head={head} footerCta={false}>
   <Fragment slot="jsonld">{jsonld.map((schema) => <JsonLd schema={schema} />)}</Fragment>
 
   <main id="conteudo-principal" class="cx">
@@ -81,6 +84,7 @@ const guiaWaHref = whatsappHrefForPath('/guias/');
 
     <section class="cx-section cx-section--muted">
       <Container>
+        <h2 class="sr-only">Guias por tema</h2>
         <ul class="cx-grid">
           {entries.map((e) => (
             <ContentCard

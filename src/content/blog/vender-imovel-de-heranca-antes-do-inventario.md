@@ -20,9 +20,9 @@ Inventário e Patrimônio
 
 É comum a família precisar vender um imóvel antes de concluir o inventário. Às vezes, para pagar o ITCMD. Às vezes, porque ninguém quer ficar com o bem. A venda é possível, mas não de qualquer jeito. O imóvel continua registrado em nome do falecido até a partilha, e o comprador precisa de segurança. Este texto explica os três caminhos usuais e os impostos envolvidos.
 
-## Por que o imóvel não pode ser vendido “direto”
+## Por que o imóvel não pode ser vendido "direto"
 
-Com a morte, a herança passa aos herdeiros como um todo indivisível. Até a partilha, nenhum herdeiro é dono de um imóvel específico. Cada um tem uma fração ideal da herança inteira. Por isso, um herdeiro sozinho não pode vender “o apartamento” nem “a sua parte do apartamento”.
+Com a morte, a herança passa aos herdeiros como um todo indivisível. Até a partilha, nenhum herdeiro é dono de um imóvel específico. Cada um tem uma fração ideal da herança inteira. Por isso, um herdeiro sozinho não pode vender "o apartamento" nem "a sua parte do apartamento".
 
 O [Código Civil](https://www.planalto.gov.br/ccivil_03/leis/2002/l10406compilada.htm) diz isso de forma expressa. O art. 1.793, § 2º, considera ineficaz a cessão, por um coerdeiro, de direito sobre bem da herança considerado isoladamente. E o § 3º considera ineficaz a venda de bem do acervo, sem autorização judicial, enquanto durar a indivisão.
 
@@ -96,23 +96,23 @@ A escolha entre cessão, alvará e venda na escritura depende de consenso, urgê
 
 ## Perguntas frequentes
 
-Posso vender um imóvel de herança antes de terminar o inventário?
+**Posso vender um imóvel de herança antes de terminar o inventário?**
 
 Sim, por cessão de direitos hereditários em escritura pública, por alvará no inventário judicial ou, no inventário em cartório, por autorização na própria escritura para custear despesas (art. 11-A da Resolução CNJ 35/2007).
 
-Um herdeiro pode vender sozinho a sua parte do imóvel?
+**Um herdeiro pode vender sozinho a sua parte do imóvel?**
 
-Não como “parte do imóvel”. Ele pode ceder sua fração da herança por escritura pública, respeitado o direito de preferência dos coerdeiros. A venda de bem específico por um só herdeiro é ineficaz.
+Não como "parte do imóvel". Ele pode ceder sua fração da herança por escritura pública, respeitado o direito de preferência dos coerdeiros. A venda de bem específico por um só herdeiro é ineficaz.
 
-Dá para vender o imóvel para pagar o ITCMD?
+**Dá para vender o imóvel para pagar o ITCMD?**
 
 Sim. No cartório, a escritura pode autorizar o inventariante a vender o bem e usar o preço para pagar o imposto e as despesas, com garantia e prazo de até um ano. No judicial, o pedido é feito ao juiz.
 
-Quem paga o ITBI na cessão de direitos hereditários?
+**Quem paga o ITBI na cessão de direitos hereditários?**
 
 Depende da lei municipal e do contrato. Em regra, o imposto de transmissão onerosa é encargo do adquirente, mas a incidência na cessão é tema discutido nos tribunais.
 
-O comprador corre risco se o inventário não for concluído?
+**O comprador corre risco se o inventário não for concluído?**
 
 Sim. Enquanto não houver partilha registrada, o imóvel não está em nome do comprador. Por isso, o contrato deve prever quem conclui o inventário e em que condições.
 

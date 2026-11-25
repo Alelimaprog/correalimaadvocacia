@@ -33,13 +33,13 @@ A adoção de criança que mora no Brasil por pessoa residente no exterior segue
 
 O [Estatuto da Criança e do Adolescente](https://www.planalto.gov.br/ccivil_03/leis/l8069.htm) trata do tema no art. 52-B:
 
-- **Reconhecimento automático:** a adoção por brasileiro residente no exterior, em país que ratificou a Convenção de Haia, feita conforme a lei daquele país, é recepcionada automaticamente com o reingresso no Brasil, desde que atendida a exigência do art. 17, alínea “c”, da Convenção.
+- **Reconhecimento automático:** a adoção por brasileiro residente no exterior, em país que ratificou a Convenção de Haia, feita conforme a lei daquele país, é recepcionada automaticamente com o reingresso no Brasil, desde que atendida a exigência do art. 17, alínea "c", da Convenção.
 - **Homologação pelo STJ:** se essa exigência não foi atendida, a sentença deve ser homologada pelo STJ (§ 1º).
 - **País que não aderiu à Convenção:** a adoção feita lá também depende de homologação pelo STJ (§ 2º).
 
-## O que significa o “art. 17, c” da Convenção
+## O que significa o "art. 17, c" da Convenção
 
-A Convenção de Haia de 1993 sobre adoção internacional foi incorporada ao direito brasileiro pelo [Decreto nº 3.087/1999](https://www2.camara.leg.br/legin/fed/decret/1999/decreto-3087-21-junho-1999-370633-publicacaooriginal-1-pe.html). O art. 17, alínea “c”, exige que **as Autoridades Centrais dos dois países estejam de acordo** com o prosseguimento da adoção. Quando isso acontece, a adoção certificada pela autoridade competente é reconhecida de pleno direito pelos demais países da Convenção (art. 23).
+A Convenção de Haia de 1993 sobre adoção internacional foi incorporada ao direito brasileiro pelo [Decreto nº 3.087/1999](https://www2.camara.leg.br/legin/fed/decret/1999/decreto-3087-21-junho-1999-370633-publicacaooriginal-1-pe.html). O art. 17, alínea "c", exige que **as Autoridades Centrais dos dois países estejam de acordo** com o prosseguimento da adoção. Quando isso acontece, a adoção certificada pela autoridade competente é reconhecida de pleno direito pelos demais países da Convenção (art. 23).
 
 Na prática, esse acordo entre Autoridades Centrais só existe nas adoções internacionais propriamente ditas, em que a criança muda de um país para outro. A Convenção se aplica quando a criança com residência habitual em um país é levada para outro (art. 2º).
 
@@ -60,7 +60,7 @@ Quando o genitor biológico concorda com o pedido e assina declaração de anuê
 
 ## O que o STF decidiu sobre a nacionalidade
 
-Em 12 de março de 2026, o STF julgou o Tema 1.253 de repercussão geral (RE 1.163.774). A tese fixada foi esta: é assegurado o direito à nacionalidade brasileira originária à pessoa nascida no exterior adotada por pessoa brasileira e registrada no órgão consular competente, nos termos do art. 12, I, “c”, combinado com o art. 227, § 6º, da Constituição ([notícia oficial do STF](https://noticias.stf.jus.br/postsnoticias/stf-assegura-nacionalidade-brasileira-a-filhos-adotivos-nascidos-no-exterior/)).
+Em 12 de março de 2026, o STF julgou o Tema 1.253 de repercussão geral (RE 1.163.774). A tese fixada foi esta: é assegurado o direito à nacionalidade brasileira originária à pessoa nascida no exterior adotada por pessoa brasileira e registrada no órgão consular competente, nos termos do art. 12, I, "c", combinado com o art. 227, § 6º, da Constituição ([notícia oficial do STF](https://noticias.stf.jus.br/postsnoticias/stf-assegura-nacionalidade-brasileira-a-filhos-adotivos-nascidos-no-exterior/)).
 
 Segundo a notícia do STF, a maioria rejeitou a proposta de exigir a homologação prévia pelo STJ como condição para o reconhecimento da nacionalidade, por entender que isso criaria distinção inconstitucional entre filhos biológicos e adotivos.
 
@@ -95,23 +95,23 @@ Com a decisão homologada, o próximo passo é atualizar os registros civis no B
 
 ## Perguntas frequentes
 
-Adoção feita no exterior precisa ser homologada no Brasil?
+**Adoção feita no exterior precisa ser homologada no Brasil?**
 
 Depende. Se o adotante brasileiro mora em país da Convenção de Haia e as Autoridades Centrais dos dois países concordaram com a adoção, ela é reconhecida automaticamente. Se não houve esse procedimento, ou se o país não aderiu à Convenção, o ECA exige homologação pelo STJ.
 
-A adoção do enteado feita nos Estados Unidos precisa de homologação?
+**A adoção do enteado feita nos Estados Unidos precisa de homologação?**
 
 Em regra, a adoção do enteado não passa pelo procedimento entre Autoridades Centrais da Convenção de Haia, porque a criança não muda de país. Por isso, o caminho indicado pelo art. 52-B, § 1º, do ECA é a homologação pelo STJ. A análise depende dos documentos de cada caso.
 
-Filho adotado no exterior por brasileiro é brasileiro nato?
+**Filho adotado no exterior por brasileiro é brasileiro nato?**
 
 Segundo a tese do STF no Tema 1.253, julgado em março de 2026, a pessoa nascida no exterior adotada por brasileiro e registrada no órgão consular competente tem direito à nacionalidade brasileira originária.
 
-O STJ reavalia se a adoção foi correta?
+**O STJ reavalia se a adoção foi correta?**
 
 Não. O STJ verifica requisitos formais, como competência da autoridade estrangeira, citação ou consentimento dos interessados, eficácia da decisão e respeito à ordem pública. O mérito da adoção não é rediscutido.
 
-Precisa de advogado para homologar a adoção?
+**Precisa de advogado para homologar a adoção?**
 
 Sim. O pedido de homologação no STJ é apresentado por advogado. Os documentos estrangeiros precisam de apostila (ou legalização consular) e tradução juramentada.
 

@@ -40,7 +40,7 @@ const jsonldEnhanced = page.jsonld.map((s: Record<string, unknown>) => {
   if (s && s['@type'] === 'Person') {
     return {
       ...s,
-      jobTitle: 'Advogado de Negócios Internacionais',
+      jobTitle: 'Advogado — direito aduaneiro, inventário e homologação de sentença estrangeira',
       address: officeAddress,
       // Formação acadêmica confirmada pelo escritório (Sprint 6).
       alumniOf: [
@@ -54,7 +54,7 @@ const jsonldEnhanced = page.jsonld.map((s: Record<string, unknown>) => {
 });
 ---
 
-<BaseLayout head={page.head}>
+<BaseLayout head={page.head} footerCta={false}>
   <Fragment slot="jsonld">
     {jsonldEnhanced.map((schema) => <JsonLd schema={schema} />)}
   </Fragment>
@@ -73,82 +73,35 @@ const jsonldEnhanced = page.jsonld.map((s: Record<string, unknown>) => {
 </style>
 
 <style is:global>
-  /* Realce institucional da página O Escritório (conteúdo via set:html). */
-  .doc--escritorio { --oe-measure: 46rem; }
-  .doc--escritorio > nav > div, .doc--escritorio > nav > div > span { display: flex; flex-wrap: wrap; gap: .4rem; }
-  .doc--escritorio a.btn { text-decoration: none; margin-top: var(--space-2); }
-  .doc--escritorio > section > div > p:first-child,
-  .doc--escritorio p { max-width: var(--oe-measure); }
-
-  /* Hero institucional: título + linha introdutória */
-  .doc--escritorio h1 {
-    font-size: var(--text-4xl);
-    line-height: var(--leading-tight);
-    letter-spacing: var(--tracking-tight);
-    color: var(--color-ink);
+  /* Realce institucional da página O Escritório (conteúdo via set:html).
+     Rodada 4 (13/11/2026): retrato, passos do atendimento e CTA final em duas colunas. */
+  .doc--escritorio{--oe-measure:46rem}
+  .doc--escritorio .oe-retrato{margin:var(--space-4) 0 var(--space-6);max-width:15rem}
+  .doc--escritorio .oe-retrato img{width:100%;height:auto;box-shadow:10px 10px 0 0 var(--color-navy);border-radius:0;display:block}
+  .doc--escritorio .oe-retrato figcaption{margin-top:calc(var(--space-4) + 10px);padding-left:var(--space-3);border-left:2px solid var(--color-accent);font-size:var(--text-xs);line-height:var(--leading-normal);color:var(--color-text-muted)}
+  @media (width>=640px){.doc--escritorio .oe-retrato{float:right;width:12.5rem;margin:var(--space-2) 10px var(--space-5) var(--space-8)}
+  .doc--escritorio #alexandre-correa-lima h3{clear:both}
   }
-
-  /* Ritmo e separação entre seções */
-  .doc--escritorio h2 {
-    font-size: var(--text-2xl);
-    color: var(--color-ink);
-    letter-spacing: var(--tracking-tight);
-    margin-top: var(--space-9);
-    padding-top: var(--space-6);
-    border-top: 1px solid var(--border-subtle);
+  .doc--escritorio #alexandre-correa-lima:after{content:"";clear:both;display:table}
+  .doc--escritorio #como-funciona ol{counter-reset:oe-step;margin:var(--space-5) 0 var(--space-6);max-width:var(--oe-measure);border-top:1px solid var(--border-strong);gap:0;padding:0;list-style:none;display:grid}
+  .doc--escritorio #como-funciona ol>li{counter-increment:oe-step;padding:var(--space-4) 0 var(--space-4) 3rem;border-bottom:1px solid var(--color-border);line-height:var(--leading-normal);position:relative}
+  .doc--escritorio #como-funciona ol>li:before{content:counter(oe-step);left:0;top:var(--space-4);border:1px solid var(--border-accent);width:2rem;height:2rem;color:var(--color-accent);font-family:var(--font-display);font-weight:var(--weight-semibold);font-size:var(--text-sm);justify-content:center;align-items:center;line-height:1;display:inline-flex;position:absolute}
+  .doc--escritorio #como-funciona ol>li::marker{content:none}
+  .doc--escritorio a.btn{margin-top:var(--space-2);text-decoration:none}
+  .doc--escritorio p:has(>a.btn:only-child){margin:var(--space-5) 0 var(--space-6)}
+  .doc--escritorio>section>div>p:first-child,.doc--escritorio p{max-width:var(--oe-measure)}
+  .doc--escritorio h1{font-size:var(--text-4xl);line-height:var(--leading-tight);letter-spacing:var(--tracking-tight);color:var(--color-ink)}
+  .doc--escritorio h2{font-size:var(--text-2xl);color:var(--color-ink);letter-spacing:var(--tracking-tight);margin-top:var(--space-9);padding-top:var(--space-6);border-top:1px solid var(--border-subtle)}
+  .doc--escritorio h3{font-size:var(--text-lg);line-height:var(--leading-snug);color:var(--color-ink);margin-top:var(--space-7);margin-bottom:var(--space-3)}
+  .doc--escritorio h3+p,.doc--escritorio h3+ul{border-left:2px solid var(--color-accent);padding-left:var(--space-4);margin-left:0}
+  .doc--escritorio h3+ul{gap:var(--space-3);list-style:none}
+  .doc--escritorio h3+ul>li{line-height:var(--leading-normal)}
+  .doc--escritorio ul.oe-cards{margin:var(--space-5) 0 0;gap:var(--space-3);grid-template-columns:1fr;padding:0;list-style:none;display:grid}
+  @media (width>=640px){.doc--escritorio ul.oe-cards{grid-template-columns:1fr 1fr}
   }
-  .doc--escritorio h3 {
-    font-size: var(--text-base);
-    color: var(--color-green-strong);
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    margin-top: var(--space-6);
-    margin-bottom: var(--space-2);
-  }
-
-  /* Sub-blocos do advogado (Formação, Inscrição, Atividade, Atuação internacional)
-     ganham uma borda-acento à esquerda para leitura em "ficha". */
-  .doc--escritorio h3 + p,
-  .doc--escritorio h3 + ul {
-    border-left: 2px solid var(--color-accent);
-    padding-left: var(--space-4);
-    margin-left: 0;
-  }
-
-  /* Listas de links de Áreas e Guias → grade de cards */
-  .doc--escritorio ul.oe-cards {
-    list-style: none;
-    padding: 0;
-    margin: var(--space-5) 0 0;
-    display: grid;
-    gap: var(--space-3);
-    grid-template-columns: 1fr;
-  }
-  @media (min-width: 640px) { .doc--escritorio ul.oe-cards { grid-template-columns: 1fr 1fr; } }
-  .doc--escritorio ul.oe-cards li { margin: 0; }
-  .doc--escritorio ul.oe-cards a {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: var(--space-3);
-    padding: var(--space-4) var(--space-5);
-    border: 1px solid var(--border-subtle);
-    border-radius: var(--radius-lg);
-    background: var(--surface);
-    color: var(--color-ink);
-    font-weight: var(--weight-semibold);
-    font-size: var(--text-sm);
-    text-decoration: none;
-    transition: border-color var(--dur) var(--ease), background-color var(--dur) var(--ease), transform var(--dur) var(--ease);
-  }
-  .doc--escritorio ul.oe-cards a::after {
-    content: '→';
-    color: var(--color-green-strong);
-    flex: none;
-  }
-  .doc--escritorio ul.oe-cards a:hover {
-    border-color: var(--color-green);
-    background: var(--surface-warm);
-    transform: translateY(-1px);
-  }
+  .doc--escritorio ul.oe-cards li{margin:0}
+  .doc--escritorio ul.oe-cards a{justify-content:space-between;align-items:center;gap:var(--space-3);padding:var(--space-4) var(--space-5);border:1px solid var(--color-border);border-radius:var(--radius-sm);background:var(--surface);min-height:3.5rem;color:var(--color-ink);font-weight:var(--weight-semibold);font-size:var(--text-sm);transition:border-color var(--dur) var(--ease), background-color var(--dur) var(--ease);text-decoration:none;display:flex}
+  .doc--escritorio ul.oe-cards a:after{content:"→";color:var(--color-accent);flex:none}
+  .doc--escritorio ul.oe-cards a:hover{border-color:var(--border-strong);background:var(--surface-warm)}
+  .doc--escritorio ul.oe-cards a:focus-visible{outline:2px solid var(--ring-color);outline-offset:2px}
 </style>

@@ -17,7 +17,7 @@ Direito Aduaneiro-Tributário
 
 07/11/2026•6 min de leitura•Por [Alexandre Corrêa Lima](/o-escritorio/#alexandre-correa-lima)
 
-Quando os auditores fiscais entram em greve ou em “operação padrão”, o despacho aduaneiro fica mais lento. Declarações selecionadas para conferência aguardam mais tempo, e a carga fica parada no terminal. O importador não controla o movimento, mas pode agir para reduzir o prejuízo e, em certos casos, pedir à Justiça que fixe um prazo para a análise.
+Quando os auditores fiscais entram em greve ou em "operação padrão", o despacho aduaneiro fica mais lento. Declarações selecionadas para conferência aguardam mais tempo, e a carga fica parada no terminal. O importador não controla o movimento, mas pode agir para reduzir o prejuízo e, em certos casos, pedir à Justiça que fixe um prazo para a análise.
 
 ## Greve e operação padrão: qual a diferença
 
@@ -38,7 +38,7 @@ Não há, para a conferência aduaneira comum, um prazo geral fixado em norma. A
 
 Em movimentos anteriores, a Justiça Federal recebeu mandados de segurança pedindo que a autoridade aduaneira desse andamento aos despachos em prazo determinado. Um exemplo público é a sentença da 3ª Vara Federal de Santos em [mandado de segurança coletivo](https://www.jfsp.jus.br/documentos/administrativo/NUCS/decisoes/2017-01-09-auditoressantos.pdf), que determinou a conferência das mercadorias das associadas em prazo fixado a partir da parametrização. A decisão ressalvou que não autorizava o desembaraço sem conferência.
 
-Esse ponto é central. Em regra, o pedido não é para “liberar sem fiscalizar”. É para que a fiscalização aconteça em prazo razoável. Os pedidos mais comuns são:
+Esse ponto é central. Em regra, o pedido não é para "liberar sem fiscalizar". É para que a fiscalização aconteça em prazo razoável. Os pedidos mais comuns são:
 
 - fixação de prazo para iniciar e concluir a conferência;
 - análise de exigências já respondidas;
@@ -72,7 +72,7 @@ A possibilidade de cobrar esses custos da União, se a demora for considerada il
 ## Cuidados para não piorar a situação
 
 - **Responda exigências no prazo.** A greve não suspende os prazos do importador. Se o despacho ficar parado por omissão do importador, há risco de [abandono](/blog/abandono-de-mercadoria-importada-perdimento/).
-- **Não registre informações imprecisas para “fugir da fila”.** Declarações incorretas podem gerar multa e até [pena de perdimento](/areas-de-atuacao/direito-aduaneiro-tributario/pena-de-perdimento/).
+- **Não registre informações imprecisas para "fugir da fila".** Declarações incorretas podem gerar multa e até [pena de perdimento](/areas-de-atuacao/direito-aduaneiro-tributario/pena-de-perdimento/).
 - **Acompanhe autos de infração.** Se houver auto de tributo ou multa, o prazo de impugnação é de 20 dias úteis (Decreto nº 70.235/1972, com a redação da LC 227/2026).
 
 ## Greve e outros problemas ao mesmo tempo
@@ -90,19 +90,19 @@ Muitas vezes a greve só agrava uma situação que já existia: um procedimento 
 
 ## Perguntas frequentes
 
-A greve dos auditores suspende os prazos do importador?
+**A greve dos auditores suspende os prazos do importador?**
 
 Não automaticamente. O importador deve continuar respondendo exigências e acompanhando prazos. Qualquer pedido de suspensão deve ser formalizado e documentado.
 
-Posso pedir que a Justiça libere a carga sem conferência?
+**Posso pedir que a Justiça libere a carga sem conferência?**
 
 Em regra, o pedido viável é para que a conferência ocorra em prazo razoável. A dispensa de conferência é pedido excepcional e de difícil acolhimento.
 
-Existe prazo legal para a Receita concluir a conferência?
+**Existe prazo legal para a Receita concluir a conferência?**
 
 Para a conferência comum, não há prazo geral fixado em norma. No procedimento especial de combate às fraudes, a IN RFB 1.986/2020 prevê prazo de até 60 dias, prorrogável.
 
-Vale a pena entrar com mandado de segurança durante a greve?
+**Vale a pena entrar com mandado de segurança durante a greve?**
 
 Depende do tempo de espera, do valor e da natureza da carga, dos custos diários e da prova disponível. A análise deve ser individual.
 

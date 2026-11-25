@@ -69,6 +69,17 @@ const jsonld = [
       addressCountry: 'BR',
     },
     knowsAbout: nucleos.map((n) => n.label),
+    // Rodada 4 (13/11/2026): horário, perfis oficiais e mapa — dados do Perfil da Empresa.
+    openingHoursSpecification: [
+      {
+        '@type': 'OpeningHoursSpecification',
+        dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+        opens: '09:00',
+        closes: '18:00',
+      },
+    ],
+    sameAs: ['https://www.instagram.com/correalima.adv/', 'https://www.facebook.com/profile.php?id=61588715113459'],
+    hasMap: 'https://www.google.com/maps/search/?api=1&query=R.+Verbo+Divino,+2001,+S%C3%A3o+Paulo+-+SP,+04719-002',
     founder: { '@id': `${site.url}/o-escritorio/#alexandre-correa-lima` },
     employee: { '@id': `${site.url}/o-escritorio/#alexandre-correa-lima` },
   },
@@ -76,12 +87,12 @@ const jsonld = [
     // Entidade do advogado responsável, com @id estável reutilizável em todo o
     // site. Sem credenciais não confirmadas (award/alumniOf/memberOf).
     '@context': 'https://schema.org',
-    '@type': 'Attorney',
+    '@type': 'Person',
     '@id': `${site.url}/o-escritorio/#alexandre-correa-lima`,
     name: site.attorney.name,
     image: `${site.url}/brand/alexandre-correa-lima.jpg`,
     identifier: site.attorney.oab,
-    jobTitle: 'Advogado de Negócios Internacionais',
+    jobTitle: 'Advogado — direito aduaneiro, inventário e homologação de sentença estrangeira',
     url: `${canonical}o-escritorio/`,
     worksFor: { '@id': `${canonical}#organization` },
     knowsAbout: nucleos.map((n) => n.label),
