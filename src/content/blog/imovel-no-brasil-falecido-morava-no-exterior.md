@@ -1,6 +1,6 @@
 ---
 title: "Imóvel no Brasil de Falecido que Morava no Exterior | Corrêa Lima"
-description: "Quem morava fora e deixou imóvel no Brasil: por que o inventário tem de ser feito aqui, qual juízo ou cartório, qual lei rege a herança e como fica o ITCMD em São Paulo."
+description: "Falecido morava fora e deixou imóvel no Brasil: por que o inventário é feito aqui, onde, qual lei rege a herança e o ITCMD em SP."
 h1: "Imóvel no Brasil de quem morava no exterior: como fazer o inventário"
 author: "Alexandre Corrêa Lima"
 pubDate: 2026-11-08

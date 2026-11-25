@@ -1,6 +1,6 @@
 ---
 title: "Ex-Cônjuge Não Concorda ou Não É Encontrado: Homologação | Corrêa Lima"
-description: "Homologação de divórcio estrangeiro sem a concordância do ex-cônjuge: anuência, carta rogatória, citação por edital e curador especial no STJ. Entenda cada caminho."
+description: "Homologação de divórcio estrangeiro sem o ex-cônjuge: anuência, carta rogatória, citação por edital e curador especial no STJ."
 h1: "Homologação de divórcio estrangeiro quando o ex-cônjuge não concorda ou não é encontrado"
 author: "Alexandre Corrêa Lima"
 pubDate: 2026-11-08

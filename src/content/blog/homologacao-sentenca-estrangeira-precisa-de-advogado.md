@@ -1,6 +1,6 @@
 ---
 title: "Homologação de Sentença Estrangeira Precisa de Advogado? | Corrêa Lima"
-description: "O pedido de homologação de sentença estrangeira no STJ é feito por advogado inscrito na OAB. Veja quando ele é obrigatório, quando não é e o que faz em cada etapa."
+description: "A homologação de sentença estrangeira no STJ é pedida por advogado inscrito na OAB. Veja quando é obrigatório e o que ele faz em cada etapa."
 h1: "Homologação de sentença estrangeira precisa de advogado?"
 author: "Alexandre Corrêa Lima"
 pubDate: 2026-11-08

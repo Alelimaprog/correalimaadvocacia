@@ -41,7 +41,12 @@ export const conteudosMenu = {
 export const contatoLink: NavLink = { label: 'Contato', href: '/contato/' };
 
 /** Rodapé — coluna dos núcleos. */
-export const footerNucleos: NavLink[] = nucleos.map((n) => ({ label: n.label, href: n.href }));
+// 25/11/2026: a frente internacional aparece pelo serviço buscado (homologação), como na home.
+export const footerNucleos: NavLink[] = nucleos.map((n) =>
+  n.slug === 'direito-internacional'
+    ? { label: 'Homologação de Sentença Estrangeira', href: '/areas-de-atuacao/homologacao-de-sentenca-estrangeira/' }
+    : { label: n.label, href: n.href }
+);
 
 /** Rodapé — coluna institucional. */
 export const footerInstitucional: NavLink[] = [

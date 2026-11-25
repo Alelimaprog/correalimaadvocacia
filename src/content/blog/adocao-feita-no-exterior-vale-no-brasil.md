@@ -1,6 +1,6 @@
 ---
 title: "Adoção Feita no Exterior Vale no Brasil? | Corrêa Lima"
-description: "Adotou um filho fora do Brasil? Veja quando a adoção é reconhecida automaticamente, quando precisa de homologação no STJ e o que o STF decidiu sobre nacionalidade."
+description: "Adoção feita no exterior: quando é reconhecida automaticamente, quando precisa de homologação no STJ e o que o STF decidiu."
 h1: "Adoção feita no exterior vale no Brasil? Quando é preciso homologar"
 author: "Alexandre Corrêa Lima"
 pubDate: 2026-11-07

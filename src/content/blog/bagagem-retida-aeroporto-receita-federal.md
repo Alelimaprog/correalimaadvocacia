@@ -1,6 +1,6 @@
 ---
 title: "Bagagem Retida no Aeroporto pela Receita: o Que Fazer | Corrêa Lima"
-description: "Cota de US$ 1.000, imposto de 50% sobre o excedente, multa por não declarar, prazo de 45 dias para retirar e perdimento: o que fazer quando a Receita retém bens na bagagem."
+description: "Bens retidos na bagagem: cota de US$ 1.000, imposto de 50% sobre o excedente, multa por não declarar, prazo de 45 dias e perdimento."
 h1: "Bagagem retida no aeroporto pela Receita Federal: o que fazer"
 author: "Alexandre Corrêa Lima"
 pubDate: 2026-11-08

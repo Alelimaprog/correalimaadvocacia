@@ -1,6 +1,6 @@
 ---
 title: "Sobrepartilha: Bem Descoberto Depois do Inventário | Corrêa Lima"
-description: "Apareceu um bem depois de encerrado o inventário? Veja quando cabe a sobrepartilha, se pode ser feita em cartório, como fica o ITCMD em São Paulo e o que muda se houve sonegação."
+description: "Bem descoberto depois do inventário? Veja quando cabe a sobrepartilha, se pode ser em cartório e como fica o ITCMD em São Paulo."
 h1: "Sobrepartilha: o que fazer quando aparece um bem depois do inventário"
 author: "Alexandre Corrêa Lima"
 pubDate: 2026-11-08

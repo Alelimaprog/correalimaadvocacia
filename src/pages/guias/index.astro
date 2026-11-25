@@ -15,7 +15,7 @@ import { site } from '@/lib/site.config';
 import type { PageHead } from '@/lib/institucional';
 
 // Rodada 4 (13/11/2026): as três frentes principais primeiro; as demais em ordem alfabética.
-const PRIORIDADE = ['direito-aduaneiro-tributario-guia-completo', 'inventario-guia-completo', 'homologacao-de-sentenca-estrangeira-no-brasil'];
+const PRIORIDADE = ['direito-aduaneiro-tributario-guia-completo', 'glossario-aduaneiro', 'inventario-guia-completo', 'homologacao-de-sentenca-estrangeira-no-brasil'];
 const rank = (id: string) => (PRIORIDADE.includes(id) ? PRIORIDADE.indexOf(id) : PRIORIDADE.length);
 const entries = (await getCollection('guias')).sort(
   (a, b) => rank(a.id) - rank(b.id) || (a.data.h1 ?? a.data.title).localeCompare(b.data.h1 ?? b.data.title, 'pt-BR')

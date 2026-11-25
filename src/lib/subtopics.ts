@@ -108,7 +108,7 @@ export const subtopics: SubTopic[] = [
     ],
     risks: [
       'Agravamento da inadimplência se a cobrança demora a começar',
-      'Acordos mal formalizados que não garantem o cumprimento',
+      'Acordos mal formalizados, difíceis de executar se descumpridos',
       'Prescrição correndo enquanto se negocia sem formalização',
     ],
     faq: [
@@ -248,8 +248,8 @@ export const subtopics: SubTopic[] = [
     label: 'Acordos de inadimplência',
     h1: 'Acordos de Inadimplência Condominial',
     seoTitle: 'Acordos de Inadimplência Condominial',
-    seoDescription: 'Negociação e formalização de acordos com condôminos inadimplentes, com parcelamento seguro e cláusulas que garantem o cumprimento.',
-    heroDescription: 'Um bom acordo recupera o valor mais rápido e preserva a convivência. A formalização adequada garante que o compromisso seja efetivamente cumprido.',
+    seoDescription: 'Negociação e formalização de acordos com condôminos inadimplentes, com parcelamento documentado e cláusulas para o caso de descumprimento.',
+    heroDescription: 'Um acordo bem documentado pode evitar o processo e preservar a convivência. Se for descumprido, a formalização adequada facilita a execução.',
     problem: 'Nem sempre a execução é o melhor caminho imediato. Acordos bem estruturados — com parcelamento realista e garantias — costumam recuperar valores com menor custo e tempo, desde que formalizados com segurança.',
     situations: [
       'Condômino disposto a negociar o débito',

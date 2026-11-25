@@ -1,6 +1,6 @@
 ---
 title: "Renúncia à Herança: Como Fazer, Efeitos e ITCMD em SP | Corrêa Lima"
-description: "Renunciar à herança exige escritura pública ou termo judicial, é irrevogável e não pode ser parcial. Veja para quem vai a parte renunciada e quando há ITCMD em São Paulo."
+description: "Renúncia à herança: exige escritura ou termo judicial, é irrevogável e não pode ser parcial. Para quem vai a parte e quando há ITCMD em SP."
 h1: "Renúncia à herança: como fazer, quais os efeitos e quando há ITCMD"
 author: "Alexandre Corrêa Lima"
 pubDate: 2026-11-08

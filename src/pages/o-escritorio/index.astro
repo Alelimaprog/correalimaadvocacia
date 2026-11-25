@@ -42,6 +42,15 @@ const jsonldEnhanced = page.jsonld.map((s: Record<string, unknown>) => {
       ...s,
       jobTitle: 'Advogado — direito aduaneiro, inventário e homologação de sentença estrangeira',
       address: officeAddress,
+      image: `${site.url}/brand/alexandre-correa-lima-760.webp`,
+      identifier: { '@type': 'PropertyValue', propertyID: 'OAB/SP', value: '234511' },
+      hasCredential: {
+        '@type': 'EducationalOccupationalCredential',
+        credentialCategory: 'Inscrição na Ordem dos Advogados do Brasil',
+        name: 'OAB/SP 234.511',
+        recognizedBy: { '@type': 'Organization', name: 'Ordem dos Advogados do Brasil, Seção de São Paulo' },
+      },
+      worksFor: { '@id': `${site.url}/#organization` },
       // Formação acadêmica confirmada pelo escritório (Sprint 6).
       alumniOf: [
         { '@type': 'CollegeOrUniversity', name: 'Universidade Católica de Santos' },

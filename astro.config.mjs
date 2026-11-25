@@ -54,6 +54,18 @@ function contentDates() {
     }
   }
   for (const pth of AUDIT_UPDATED) map[pth] = AUDIT_DATE;
+  // Revisão de 25/11/2026 (conteúdo visível alterado nestas páginas).
+  for (const pth of [
+    '/',
+    '/o-escritorio/',
+    '/politica-de-privacidade/',
+    '/areas-de-atuacao/direito-aduaneiro-tributario/',
+    '/areas-de-atuacao/cobranca-condominial/',
+    '/areas-de-atuacao/recuperacao-de-credito/',
+    '/areas-de-atuacao/direito-empresarial/',
+    '/areas-de-atuacao/cobranca-condominial/acordos-de-inadimplencia-condominial/',
+    '/areas-de-atuacao/recuperacao-de-credito/cobranca-extrajudicial/',
+  ]) map[pth] = '2026-11-25';
   return map;
 }
 

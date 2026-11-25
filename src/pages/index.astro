@@ -59,7 +59,10 @@ const jsonld = [
     logo: `${canonical}brand/logo-wordmark.svg`,
     email: site.contact.email,
     telephone: site.contact.whatsapp.display,
-    areaServed: 'BR',
+    areaServed: [
+      { '@type': 'City', name: 'São Paulo' },
+      { '@type': 'Country', name: 'Brasil' },
+    ],
     address: {
       '@type': 'PostalAddress',
       streetAddress: `${site.contact.address.street}, ${site.contact.address.detail}`,
@@ -68,7 +71,16 @@ const jsonld = [
       postalCode: site.contact.address.cep,
       addressCountry: 'BR',
     },
-    knowsAbout: nucleos.map((n) => n.label),
+    knowsAbout: [
+      'Direito aduaneiro',
+      'Pena de perdimento',
+      'Retenção de mercadorias na importação',
+      'Inventário e partilha',
+      'Inventário extrajudicial',
+      'Homologação de sentença estrangeira',
+      'Homologação de divórcio estrangeiro',
+      ...nucleos.map((n) => n.label),
+    ],
     // Rodada 4 (13/11/2026): horário, perfis oficiais e mapa — dados do Perfil da Empresa.
     openingHoursSpecification: [
       {
@@ -90,8 +102,14 @@ const jsonld = [
     '@type': 'Person',
     '@id': `${site.url}/o-escritorio/#alexandre-correa-lima`,
     name: site.attorney.name,
-    image: `${site.url}/brand/alexandre-correa-lima.jpg`,
-    identifier: site.attorney.oab,
+    image: `${site.url}/brand/alexandre-correa-lima-760.webp`,
+    identifier: { '@type': 'PropertyValue', propertyID: 'OAB/SP', value: '234511' },
+    hasCredential: {
+      '@type': 'EducationalOccupationalCredential',
+      credentialCategory: 'Inscrição na Ordem dos Advogados do Brasil',
+      name: 'OAB/SP 234.511',
+      recognizedBy: { '@type': 'Organization', name: 'Ordem dos Advogados do Brasil, Seção de São Paulo' },
+    },
     jobTitle: 'Advogado — direito aduaneiro, inventário e homologação de sentença estrangeira',
     url: `${canonical}o-escritorio/`,
     worksFor: { '@id': `${canonical}#organization` },

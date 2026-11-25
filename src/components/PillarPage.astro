@@ -279,6 +279,9 @@ import AuthorNote from '@/components/AuthorNote.astro';
             <p class="eyebrow"><span class="dot"></span>Aprofunde no tema</p>
             <h2>{guide.label}</h2>
             <p class="p-lead">Um material de referência, organizado do básico ao avançado, para entender o tema com profundidade antes de decidir os próximos passos.</p>
+            {slug === 'direito-aduaneiro-tributario' && (
+              <p class="p-lead p-guide-extra">Termos técnicos da importação explicados em linguagem simples: <a href="/guias/glossario-aduaneiro/">glossário aduaneiro</a>.</p>
+            )}
           </div>
           <a class="btn btn--primary" href={`/guias/${guide.slug}/`}>Ler o guia completo</a>
         </div>
@@ -463,6 +466,8 @@ import AuthorNote from '@/components/AuthorNote.astro';
   .sub-grid :global(.sg-arrow) { color: var(--color-accent); grid-area: 1 / 2; align-self: center; }
   .sub-grid a:focus-visible { outline: 2px solid var(--ring-color); outline-offset: 2px; }
 
+  .p-guide-extra { margin-top: var(--space-3); }
+  .p-guide-extra a { color: inherit; text-decoration: underline; text-underline-offset: 2px; }
   /* Banda "Guia completo" — superfície distinta e clara (não escura) */
   .p-guide-band { background: var(--surface-muted); border-block: 1px solid var(--border-subtle); }
   .p-guide-band :where(h2) { color: var(--color-ink); }

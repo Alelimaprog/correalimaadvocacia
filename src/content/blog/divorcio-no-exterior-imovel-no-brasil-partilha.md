@@ -1,6 +1,6 @@
 ---
 title: "Divórcio no Exterior com Imóvel no Brasil: e a Partilha? | Corrêa Lima"
-description: "A Justiça estrangeira pode dividir um imóvel situado no Brasil? Veja o que o STJ homologa, o que fica de fora e como regularizar a partilha do imóvel após o divórcio."
+description: "A Justiça estrangeira pode partilhar imóvel no Brasil? O que o STJ homologa, o que fica de fora e como regularizar a partilha."
 h1: "Divórcio feito no exterior com imóvel no Brasil: como fica a partilha"
 author: "Alexandre Corrêa Lima"
 pubDate: 2026-11-08

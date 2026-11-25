@@ -22,6 +22,10 @@ RewriteRule ^blog/heredeiro-exterior-procuracao-documentos-inventario/?$ /blog/h
 RewriteRule ^areas-de-atuacao/advocacia-empresarial/?$ /areas-de-atuacao/direito-empresarial/ [R=301,L]
 RewriteRule ^areas-de-atuacao/reconhecimento-de-decisoes-estrangeiras/?$ /areas-de-atuacao/homologacao-de-sentenca-estrangeira/ [R=301,L]
 
+# 2e) /index.html e /pasta/index.html -> URL canônica com barra (só pedidos externos, sem loop com DirectoryIndex).
+RewriteCond %{THE_REQUEST} \s/+(.*/)?index\.html[\s?] [NC]
+RewriteRule ^(.*/)?index\.html$ /$1 [R=301,L,NE]
+
 # 2d) Sitemaps antigos ainda lidos pelo Google e resíduo de spam de 2020.
 RewriteRule ^sitemap-(0|index)\.xml$ /sitemap.xml [R=301,L]
 # Rodada 3: artigos rasos consolidados nas páginas de serviço de mesma intenção

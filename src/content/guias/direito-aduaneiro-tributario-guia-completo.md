@@ -11,7 +11,7 @@ Guia · Direito Aduaneiro-Tributário
 
 # Direito Aduaneiro-Tributário: guia completo
 
-Na importação, um problema costuma chegar de forma abrupta: a mercadoria é retida, surge uma exigência da Receita Federal ou é lavrado um auto de infração. Cada dia parado gera custo de armazenagem e de *demurrage*. Certas sanções podem levar à perda da própria mercadoria. Este guia organiza os principais temas aduaneiros e tributários da importação, com as normas e os prazos que mais importam.
+Na importação, um problema costuma chegar de forma abrupta: a mercadoria é retida, surge uma exigência da Receita Federal ou é lavrado um auto de infração. Cada dia parado gera custo de armazenagem e de *demurrage*. Certas sanções podem levar à perda da própria mercadoria. Este guia organiza os principais temas aduaneiros e tributários da importação, com as normas e os prazos que mais importam. Para o significado de siglas e termos técnicos (DUIMP, Radar, canais, valor aduaneiro), consulte o [glossário aduaneiro](/guias/glossario-aduaneiro/).
 
 ## Sumário
 

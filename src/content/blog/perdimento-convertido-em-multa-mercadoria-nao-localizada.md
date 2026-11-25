@@ -1,6 +1,6 @@
 ---
 title: "Perdimento Convertido em Multa: Mercadoria Já Vendida | Corrêa Lima"
-description: "Quando a mercadoria importada já foi vendida, consumida ou não é localizada, a pena de perdimento vira multa igual ao valor aduaneiro. Veja quando se aplica, o rito e a defesa."
+description: "Mercadoria vendida, consumida ou não localizada: quando o perdimento vira multa igual ao valor aduaneiro, o rito e como se defender."
 h1: "Perdimento convertido em multa: quando a mercadoria já foi vendida ou não é localizada"
 author: "Alexandre Corrêa Lima"
 pubDate: 2026-11-08

@@ -1,6 +1,6 @@
 ---
 title: "Multa de 1% por Erro de NCM Foi Revogada? LC 227/2026 | Corrêa Lima"
-description: "A LC 227/2026 revogou a multa de 1% por classificação fiscal incorreta na importação. Veja o que deixou de ser cobrado, o que continua e como fica a autuação em curso."
+description: "A LC 227/2026 revogou a multa de 1% por erro de NCM na importação. O que deixou de ser cobrado, o que continua e a autuação em curso."
 h1: "Multa de 1% por erro de NCM: o que mudou com a LC 227/2026"
 author: "Alexandre Corrêa Lima"
 pubDate: 2026-11-07

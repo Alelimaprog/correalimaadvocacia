@@ -282,7 +282,7 @@ export const nucleos: Nucleo[] = [
       },
       {
         q: 'O que diferencia a consultoria preventiva do contencioso?',
-        a: 'A consultoria preventiva atua antes do conflito — na redação do contrato, na estruturação da operação e na avaliação do risco. O contencioso atua depois que a disputa existe. Em geral, o custo da primeira é uma fração do custo da segunda.',
+        a: 'A consultoria preventiva atua antes do conflito — na redação do contrato, na estruturação da operação e na avaliação do risco. O contencioso atua depois que a disputa existe. A prevenção costuma exigir menos tempo e despesa do que um litígio, mas isso depende de cada caso.',
       },
       {
         q: 'Como começa o atendimento a uma empresa?',
@@ -362,10 +362,10 @@ export const nucleos: Nucleo[] = [
     eyebrow: 'Recuperação de crédito',
     h1: 'Recuperação de Crédito',
     heroDescription:
-      'Cobrança extrajudicial e judicial, execução de títulos e localização de patrimônio para transformar dívidas em crédito efetivamente recuperado.',
-    seoTitle: 'Recuperação de Crédito e Execução de Dívidas',
+      'Cobrança extrajudicial e judicial, execução de títulos e localização de patrimônio, conforme as medidas cabíveis em cada caso.',
+    seoTitle: 'Advogado de Cobrança e Execução de Dívidas em SP',
     seoDescription:
-      'Cobrança extrajudicial e judicial, execução de título, localização de bens e penhora para recuperar crédito empresarial em São Paulo e no país.',
+      'Cobrança judicial e extrajudicial de créditos empresariais: execução de título, monitória, busca de bens e habilitação em recuperação judicial.',
     situations: [
       'Cliente ou empresa que não paga e acumula inadimplência',
       'Título executivo (duplicata, cheque, nota promissória) que precisa ser executado',
@@ -419,9 +419,9 @@ export const nucleos: Nucleo[] = [
     h1: 'Cobrança Condominial',
     heroDescription:
       'Recuperação de cotas e despesas condominiais em atraso, formalização de acordos e assessoria recorrente a condomínios, síndicos e administradoras.',
-    seoTitle: 'Cobrança Condominial e Recuperação de Inadimplência',
+    seoTitle: 'Advogado de Cobrança Condominial em São Paulo',
     seoDescription:
-      'Cobrança e execução de cotas condominiais, recuperação de inadimplência, acordos e assessoria recorrente a condomínios, síndicos e administradoras.',
+      'Cobrança de cotas condominiais em atraso: notificação, acordo e execução da cota condominial. Orientação para síndicos e administradoras.',
     situations: [
       'Condomínio com elevado índice de inadimplência',
       'Cotas e despesas condominiais em atraso a executar',
@@ -444,7 +444,7 @@ export const nucleos: Nucleo[] = [
       },
       {
         q: 'É possível fazer acordo com o condômino inadimplente?',
-        a: 'Sim. A negociação e a formalização de acordos costumam ser o caminho mais rápido para recuperar valores, preservando a relação e evitando a judicialização quando viável.',
+        a: 'Sim. A negociação e a formalização de acordo podem ser uma alternativa à via judicial, quando o devedor se dispõe a pagar e o acordo é bem documentado.',
       },
     ],
     related: [

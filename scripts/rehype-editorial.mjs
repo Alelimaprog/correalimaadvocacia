@@ -48,6 +48,10 @@ function isHeading(n) {
 function norm(s) {
   return (s || '').replace(/\s+/g, ' ').trim().toLowerCase();
 }
+function hasClass(node, c) {
+  const cur = (node.properties && node.properties.className) || [];
+  return (Array.isArray(cur) ? cur : String(cur).split(/\s+/)).includes(c);
+}
 function addClass(node, ...classes) {
   node.properties = node.properties || {};
   const cur = node.properties.className || [];
@@ -385,6 +389,31 @@ export default function rehypeEditorial() {
       i++;
     }
 
+    // Data visível (25/11/2026): artigos e guias sem linha de data ganham
+    // "Publicado em · Atualizado em · Por" logo abaixo do H1, a partir do frontmatter.
+    const isGuia = /[\\/]content[\\/]guias[\\/]/.test(filePath);
+    if ((isBlog || isGuia) && !out.some((n) => isEl(n) && hasClass(n, 'entry-meta'))) {
+      const h1i = out.findIndex((n) => isEl(n, 'h1'));
+      const fmt = (d) => {
+        if (!d) return '';
+        const x = new Date(d);
+        if (isNaN(x)) return '';
+        const z = (n) => String(n).padStart(2, '0');
+        return `${z(x.getUTCDate())}/${z(x.getUTCMonth() + 1)}/${x.getUTCFullYear()}`;
+      };
+      const pub = isBlog ? fmt(fm.pubDate) : '';
+      const upd = fmt(fm.updatedDate);
+      const parts = [];
+      if (pub) parts.push(`Publicado em ${pub}`);
+      if (upd && upd !== pub) parts.push(`Atualizado em ${upd}`);
+      if (h1i !== -1 && parts.length) {
+        const meta = el('p', { className: ['entry-meta'] }, [
+          { type: 'text', value: parts.join(' · ') + ' · Por ' },
+          el('a', { href: '/o-escritorio/#alexandre-correa-lima' }, [{ type: 'text', value: 'Alexandre Corrêa Lima' }]),
+        ]);
+        out.splice(h1i + 1, 0, { type: 'text', value: '\n' }, meta);
+      }
+    }
     tree.children = out;
   };
 }
