@@ -89,6 +89,9 @@ As informações desta página têm caráter informativo geral. O prazo e o desf
 - [Divórcio na Itália vale no Brasil?](/blog/divorcio-na-italia-vale-no-brasil/)
 - [Divórcio em Portugal vale no Brasil?](/blog/divorcio-em-portugal-vale-no-brasil/)
 - [Divórcio no Japão vale no Brasil?](/blog/divorcio-no-japao-vale-no-brasil/)
+- [Divórcio no Reino Unido vale no Brasil?](/blog/divorcio-no-reino-unido-vale-no-brasil/)
+- [Divórcio no Canadá vale no Brasil?](/blog/divorcio-no-canada-vale-no-brasil/)
+- [Divórcio na Alemanha vale no Brasil?](/blog/divorcio-na-alemanha-vale-no-brasil/)
 - [Verifique em 1 minuto se basta o cartório](/ferramentas/preciso-homologar-sentenca-estrangeira/)
 
 ## Perguntas frequentes

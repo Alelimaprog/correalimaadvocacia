@@ -20,11 +20,12 @@ O atendimento é online, por videochamada e troca eletrônica de documentos. A a
 
 | Situação | Caminho no Brasil | Onde ler mais |
 | --- | --- | --- |
-| Divórcio feito no exterior | Averbação direta no cartório, quando consensual e sem guarda, alimentos ou partilha; nos demais casos, homologação no STJ | [Homologação de divórcio estrangeiro](/areas-de-atuacao/homologacao-de-divorcio-estrangeiro/) |
+| Divórcio feito no exterior | Averbação direta no cartório, quando consensual e sem guarda, alimentos ou partilha; nos demais casos, homologação no STJ | [Homologação de divórcio estrangeiro](/areas-de-atuacao/homologacao-de-divorcio-estrangeiro/); por país: [Japão](/blog/divorcio-no-japao-vale-no-brasil/), [Reino Unido](/blog/divorcio-no-reino-unido-vale-no-brasil/), [Canadá](/blog/divorcio-no-canada-vale-no-brasil/), [Alemanha](/blog/divorcio-na-alemanha-vale-no-brasil/) |
 | Outra decisão estrangeira (alimentos, guarda, cobrança, adoção) | Homologação no Superior Tribunal de Justiça | [Homologação de sentença estrangeira](/areas-de-atuacao/homologacao-de-sentenca-estrangeira/) |
 | Herança de alguém que deixou bens no Brasil | Inventário no Brasil, em cartório ou na Justiça, com o herdeiro participando por procuração | [Inventário com herdeiro no exterior](/areas-de-atuacao/inventario-com-herdeiro-no-exterior/) |
 | Herança recebida lá fora | Câmbio, declaração no imposto de renda e, conforme o valor, ao Banco Central | [Herança no exterior e como trazer ao Brasil](/blog/bens-no-exterior-de-brasileiro-falecido-sucessao-internacional/) |
 | Casamento feito no exterior | Transcrição no registro civil brasileiro | [Casamento realizado no exterior](/areas-de-atuacao/homologacao-de-casamento-realizado-no-exterior/) |
+| Filho levado ou retido em outro país sem autorização | Pedido de retorno pela Convenção da Haia de 1980, via Autoridade Central (ACAF) | [Subtração internacional de criança](/blog/subtracao-internacional-de-criancas-convencao-da-haia/) |
 
 ## Como funciona à distância
 
