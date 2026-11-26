@@ -88,6 +88,7 @@ As informações desta página têm caráter informativo geral. O prazo e o desf
 - [Documentos exigidos para a homologação de sentença estrangeira](/blog/documentos-exigidos-homologacao-sentenca-estrangeira/)
 - [Divórcio na Itália vale no Brasil?](/blog/divorcio-na-italia-vale-no-brasil/)
 - [Divórcio em Portugal vale no Brasil?](/blog/divorcio-em-portugal-vale-no-brasil/)
+- [Divórcio no Japão vale no Brasil?](/blog/divorcio-no-japao-vale-no-brasil/)
 - [Verifique em 1 minuto se basta o cartório](/ferramentas/preciso-homologar-sentenca-estrangeira/)
 
 ## Perguntas frequentes

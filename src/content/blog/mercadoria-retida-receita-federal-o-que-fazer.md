@@ -63,7 +63,7 @@ O tempo também corre contra o importador. Se o despacho ficar interrompido por 
 Os caminhos mais comuns são três:
 
 1. **Atender à exigência.** Quando a exigência é procedente ou envolve só um ajuste documental, responder bem e rápido costuma ser o caminho mais curto. A resposta deve ser revisada antes do envio, porque uma retificação mal feita pode significar confissão de infração.
-2. **Contestar a exigência.** Se a fiscalização exige reclassificação, valoração ou multa com que a empresa não concorda, a discussão segue para a [defesa administrativa aduaneira](/areas-de-atuacao/direito-aduaneiro-tributario/defesa-administrativa-aduaneira/). Em certas situações, é possível pedir a liberação da carga mediante garantia enquanto o mérito é discutido.
+2. **Contestar a exigência.** Se a fiscalização exige reclassificação, valoração ou multa com que a empresa não concorda, a discussão segue para a [defesa administrativa aduaneira](/areas-de-atuacao/direito-aduaneiro-tributario/defesa-administrativa-aduaneira/). Em certas situações, é possível pedir a [liberação da carga mediante garantia](/blog/liberacao-mercadoria-retida-mediante-garantia/) enquanto o mérito é discutido.
 3. **Via judicial.** Quando a retenção se prolonga sem fundamento formal, ou serve apenas para forçar o pagamento, o [mandado de segurança](/blog/mandado-de-seguranca-liberacao-mercadoria-importada/) pode ser avaliado. O resultado depende das provas e do caso concreto.
 
 Mais detalhes sobre a atuação em cada etapa estão na página de [liberação de mercadoria retida](/areas-de-atuacao/direito-aduaneiro-tributario/retencao-de-mercadorias/).

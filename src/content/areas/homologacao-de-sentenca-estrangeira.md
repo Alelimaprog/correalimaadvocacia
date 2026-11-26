@@ -1,13 +1,13 @@
 ---
-title: "Homologação de Sentença Estrangeira no STJ | Advogado"
+title: "Advogado para Homologação de Sentença Estrangeira no STJ"
 description: "Homologação de sentença estrangeira no STJ: quando é necessária, documentos, apostila, tradução e etapas do pedido. Atendimento a distância."
-h1: "Homologação de Sentença Estrangeira no STJ"
+h1: "Advogado para homologação de sentença estrangeira no STJ"
 author: "Alexandre Corrêa Lima"
 ---
 
 Decisões estrangeiras
 
-# Advogado para homologação de sentença e divórcio estrangeiro no STJ
+# Advogado para homologação de sentença estrangeira no STJ
 
 Uma sentença estrangeira só produz efeitos no Brasil depois de homologada pelo Superior Tribunal de Justiça (CPC, arts. 960 a 965). O pedido exige a decisão definitiva, apostilada e com tradução juramentada. A exceção é o divórcio consensual simples, que pode ser averbado direto no cartório (CPC, art. 961, § 5º).
 

@@ -4,7 +4,7 @@ description: "ITCMD paulista no inventário: base de cálculo, alíquota de 4%, 
 h1: "ITCMD em São Paulo no inventário: como calcular e quando pagar"
 author: "Alexandre Corrêa Lima"
 pubDate: 2026-11-07
-updatedDate: 2026-11-07
+updatedDate: 2026-11-25
 cluster: "inventario-e-patrimonio"
 readingMinutes: 7
 relacionados:
@@ -18,7 +18,7 @@ Inventário e Patrimônio
 
 # ITCMD em São Paulo no inventário: como calcular e quando pagar
 
-07/11/2026•7 min de leitura•Por [Alexandre Corrêa Lima](/o-escritorio/#alexandre-correa-lima)
+07/11/2026•Atualizado em 25/11/2026•7 min de leitura•Por [Alexandre Corrêa Lima](/o-escritorio/#alexandre-correa-lima)
 
 O ITCMD (Imposto sobre Transmissão Causa Mortis e Doação) costuma ser o item mais pesado do custo de um inventário. Em São Paulo, ele é regido pela Lei estadual nº 10.705/2000. Este texto resume as regras paulistas vigentes na data de publicação e indica o que ainda depende de mudança legislativa.
 
@@ -53,7 +53,7 @@ No inventário, a lei paulista prevê o pagamento em até 30 dias depois da deci
 
 A mesma lei autoriza o Poder Executivo a conceder desconto, fixado por decreto, quando o imposto é pago em até 90 dias da abertura da sucessão (art. 17, § 2º). Se esse desconto está em vigor e em que percentual é algo a conferir na Sefaz-SP na data do recolhimento.
 
-No inventário em cartório, em regra o imposto é declarado e recolhido antes da lavratura da escritura, e o tabelião confere o recolhimento.
+No inventário em cartório, o imposto era tradicionalmente recolhido antes da lavratura da escritura. A Resolução CNJ 695/2026 tirou essa exigência no plano nacional, mas a Sefaz-SP sustenta que o pagamento continua devendo ser prévio. Veja [inventário em cartório sem ITCMD prévio](/blog/inventario-cartorio-sem-itcmd-previo-resolucao-cnj-695/).
 
 ## Multa por atraso na abertura do inventário
 
