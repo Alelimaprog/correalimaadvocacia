@@ -53,12 +53,12 @@ export const nucleos: Nucleo[] = [
       'Defesa em retenção de mercadorias, perdimento e autuações, e revisão da tributação incidente na importação.',
     problems: ['Minha mercadoria foi retida'],
     eyebrow: 'Direito aduaneiro-tributário',
-    h1: 'Advogado aduaneiro em São Paulo: mercadoria retida e perdimento',
+    h1: 'Advogado aduaneiro e alfandegário em São Paulo: carga retida e perdimento',
     heroDescription:
       'Quando a Receita retém uma importação (canal vermelho, cinza ou exigência fiscal), é preciso ler o termo no Portal Único e responder no prazo. No auto de perdimento, a impugnação é de 20 dias (DL 1.455/1976, art. 27-A). Conforme o caso, cabe liberação mediante garantia ou mandado de segurança.',
-    seoTitle: 'Advogado Aduaneiro em São Paulo: Importação e Perdimento',
+    seoTitle: 'Advogado Aduaneiro e Alfandegário em SP: Carga Retida',
     seoDescription:
-      'Mercadoria retida, canal vermelho ou cinza, pena de perdimento e auto de infração aduaneiro: defesa administrativa e judicial do importador.',
+      'Carga retida no porto, aeroporto ou porto seco, canal vermelho ou cinza, perdimento e auto de infração: defesa administrativa e judicial do importador.',
     situations: [
       'Mercadoria retida pela Receita Federal',
       'Pena de perdimento, multa aduaneira ou auto de infração',
@@ -92,6 +92,14 @@ export const nucleos: Nucleo[] = [
       {
         q: 'Qual o prazo do canal vermelho?',
         a: 'A norma não fixa um prazo geral para a conferência no canal vermelho: depende da unidade, da necessidade de laudo e das exigências feitas. Se o caso for para procedimento especial de controle aduaneiro (canal cinza), a retenção tem prazo de até 60 dias, prorrogáveis por mais 60 (IN RFB 1.986/2020). Enquanto isso a armazenagem corre, por isso convém responder a cada exigência no prazo e avaliar a liberação mediante garantia.',
+      },
+      {
+        q: 'Advogado aduaneiro e advogado alfandegário são a mesma coisa?',
+        a: 'Sim. "Alfandegário" é o nome popular do direito aduaneiro: as regras que a Receita Federal aplica à entrada e à saída de mercadorias no porto, no aeroporto ou no porto seco. É a área que trata de carga retida, exigências fiscais, perdimento e multas na importação.',
+      },
+      {
+        q: 'O escritório atua em direito marítimo?',
+        a: 'A atuação é voltada ao importador e ao exportador: carga retida no porto, armazenagem, perdimento e autuações da Receita Federal. O escritório não atua para armadores nem em contratos de afretamento, avaria grossa ou salvamento de embarcações.',
       },
       {
         q: 'Dá para recuperar tributos pagos a mais na importação?',

@@ -1,5 +1,5 @@
 ---
-title: "Mercadoria Retida no Porto de Santos | Corrêa Lima"
+title: "Carga Retida no Porto de Santos: Como Liberar na Alfândega"
 description: "Carga parada na Alfândega de Santos: o que a retenção significa, custos de terminal e demurrage, defesa administrativa e quando cabe mandado de segurança."
 h1: "Mercadoria retida no Porto de Santos: como liberar a carga"
 author: "Alexandre Corrêa Lima"
