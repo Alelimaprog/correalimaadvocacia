@@ -48,7 +48,7 @@ A tabela resume penalidades frequentes na importação, conforme o Regulamento A
 | Erro ou omissão na fatura comercial | Multa fixa por fatura | RA, art. 715 |
 | Falta de *packing list* | Multa fixa | RA, art. 728, VIII |
 | Extravio de mercadoria | 50% do imposto de importação | RA, art. 702 |
-| Preço declarado diferente do praticado | 100% da diferença | MP 2.158-35/2001, art. 88, parágrafo único |
+| Preço declarado diferente do praticado ou arbitrado | 100% da diferença (se a conduta também levar ao perdimento, aplica-se só o perdimento) | RA, art. 703; MP 2.158-35/2001, art. 88, parágrafo único |
 | Falta de pagamento de tributo apurada em fiscalização | Multa de ofício de 75% da diferença, que pode ser agravada | Lei 9.430/1996, art. 44 |
 | Dano ao Erário (interposição fraudulenta, falsidade documental, abandono) | Perdimento da mercadoria ou multa equivalente ao valor aduaneiro | Decreto-Lei 1.455/1976, art. 23 |
 
