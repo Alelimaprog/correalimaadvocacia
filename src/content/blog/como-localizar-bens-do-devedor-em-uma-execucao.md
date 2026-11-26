@@ -1,10 +1,10 @@
 ---
-title: "Como Localizar Bens do Devedor em uma Execução | Corrêa Lima Advocacia"
-description: "Conheça os principais mecanismos de busca patrimonial usados em uma execução para localizar bens e valores do devedor e viabilizar a penhora."
+title: "Como Localizar Bens do Devedor: Sisbajud, Renajud e Infojud"
+description: "Como localizar bens do devedor na execução: Sisbajud, Renajud, CNIB e Infojud, o que fazer quando nada aparece e quando a execução fica suspensa."
 h1: "Como localizar bens do devedor em uma execução"
 author: "Alexandre Corrêa Lima"
 pubDate: 2026-07-03
-updatedDate: 2026-07-03
+updatedDate: 2026-11-25
 cluster: "recuperacao-de-credito"
 ---
 
@@ -12,7 +12,7 @@ Cobrança, Execução e Recuperação de Crédito
 
 # Como localizar bens do devedor em uma execução
 
-03/07/2026•5 min de leitura•Por [Alexandre Corrêa Lima](/o-escritorio/#alexandre-correa-lima)
+03/07/2026•Atualizado em 25/11/2026•7 min de leitura•Por [Alexandre Corrêa Lima](/o-escritorio/#alexandre-correa-lima)
 
 ## Por que a busca patrimonial é a etapa decisiva
 
@@ -20,15 +20,24 @@ De nada adianta um título executivo perfeitamente formalizado se não houver be
 
 ## Sistemas eletrônicos de busca patrimonial
 
-O Judiciário brasileiro conta com sistemas eletrônicos que permitem ao juízo da execução consultar, de forma centralizada, a existência de contas bancárias e aplicações financeiras (para bloqueio), veículos registrados e imóveis em nome do devedor, entre outras informações patrimoniais — ferramentas que agilizam consideravelmente a busca em relação a diligências manuais.
+O Judiciário brasileiro conta com sistemas eletrônicos que permitem ao juízo da execução consultar, de forma centralizada, bens e valores em nome do devedor. Os mais usados são:
+
+| Sistema | O que alcança | O que permite |
+| --- | --- | --- |
+| SISBAJUD | Contas e aplicações financeiras | Bloqueio de valores, inclusive com repetição automática por até 30 dias |
+| RENAJUD | Veículos registrados no Detran | Restrição de transferência, licenciamento e circulação |
+| CNIB | Imóveis, em todos os cartórios de registro | Indisponibilidade, para impedir venda ou oneração |
+| INFOJUD | Declarações à Receita Federal | Acesso a informações fiscais do devedor para localizar patrimônio |
+
+Os pedidos são feitos ao juízo, que opera os sistemas. Como pedir cada um e o que acontece depois do bloqueio está explicado em [Sisbajud, Renajud e CNIB na execução](/blog/sisbajud-renajud-cnib-como-pedir-na-execucao/).
 
 ## Quando os sistemas eletrônicos não são suficientes
 
-Em muitos casos, a busca eletrônica não revela bens suficientes — seja porque o devedor não possui patrimônio relevante formalizado em seu nome, seja porque o transferiu para terceiros. Nessas situações, outras medidas podem ser avaliadas, como a investigação de participações societárias do devedor, ou, em hipóteses específicas, discussão sobre fraude à execução.
+Em muitos casos, a busca eletrônica não revela bens suficientes — seja porque o devedor não possui patrimônio relevante formalizado em seu nome, seja porque o transferiu para terceiros. Nessas situações, outras medidas podem ser avaliadas, como a investigação de participações societárias do devedor, a desconsideração da personalidade jurídica (CPC, arts. 133 a 137) ou, quando bens foram transferidos depois de iniciada a cobrança, o reconhecimento de fraude à execução (CPC, art. 792). Veja também como o escritório conduz a [pesquisa de patrimônio e penhora](/areas-de-atuacao/recuperacao-de-credito/pesquisa-de-patrimonio-e-penhora/).
 
 ## O que fazer quando não se encontra patrimônio
 
-Se não forem localizados bens penhoráveis, a execução pode ficar suspensa por prazo determinado em lei, retomando-se a busca posteriormente. Isso reforça que uma estratégia de localização patrimonial bem estruturada desde o início — e não apenas reativa — tende a fazer diferença real no resultado da execução.
+Se não forem localizados bens penhoráveis, a execução é suspensa por até um ano (CPC, art. 921, III e § 1º) e, depois, arquivada. A prescrição intercorrente conta-se da ciência da primeira tentativa frustrada de localizar bens, suspensa uma única vez por até um ano (art. 921, § 4º). Por isso, é importante voltar a pesquisar periodicamente e registrar cada tentativa. Isso reforça que uma estratégia de localização patrimonial bem estruturada desde o início — e não apenas reativa — tende a fazer diferença real no resultado da execução.
 
 Este conteúdo tem caráter exclusivamente informativo e não substitui a análise individual do seu caso por advogado.
 

@@ -54,7 +54,7 @@ Nem todo dinheiro encontrado pode ficar com o credor. O art. 833 do CPC protege,
 
 ## Como esses pedidos se encaixam na estratégia da execução
 
-O uso de cada sistema depende do perfil patrimonial do devedor e das informações já disponíveis sobre ele. Em muitos casos, os pedidos são combinados e reiterados ao longo do processo, à medida que novas informações patrimoniais surgem.
+O uso de cada sistema depende do perfil patrimonial do devedor e das informações já disponíveis sobre ele. Em muitos casos, os pedidos são combinados e reiterados ao longo do processo, à medida que novas informações patrimoniais surgem. Quando os sistemas não encontram nada, há outras frentes, explicadas em [como localizar bens do devedor](/blog/como-localizar-bens-do-devedor-em-uma-execucao/) e na página de [pesquisa de patrimônio e penhora](/areas-de-atuacao/recuperacao-de-credito/pesquisa-de-patrimonio-e-penhora/).
 
 ## Perguntas frequentes
 
