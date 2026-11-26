@@ -80,6 +80,8 @@ Na prática, a instituição costuma pedir:
 
 Cada banco tem suas exigências. Vale consultar a instituição antes de concluir o inventário, para que os documentos já saiam no formato aceito.
 
+Divórcio, venda de imóvel e outros assuntos de quem mora fora estão reunidos na página para [brasileiros que moram no exterior](/areas-de-atuacao/brasileiros-no-exterior/).
+
 ## Documentos para a primeira análise
 
 - Certidão de óbito e informação sobre o último domicílio do falecido

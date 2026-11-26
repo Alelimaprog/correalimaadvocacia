@@ -86,6 +86,14 @@ export const pillarExtra: Record<string, PillarExtra> = {
       'Documentos estrangeiros sem tradução ou legalização/apostilamento exigidos.',
       'Conflitos entre jurisdições quando há bens ou herdeiros em mais de um país.',
     ],
+    local: {
+      title: 'Para quem mora fora do Brasil',
+      text: 'Divórcio feito no exterior, herança com bens no Brasil, venda de imóvel por procuração e homologação de decisões estrangeiras podem ser conduzidos à distância, com procuração feita no consulado ou com apostila. A atuação é sempre sob o direito brasileiro.',
+      links: [
+        { label: 'Advogado para brasileiros no exterior', href: '/areas-de-atuacao/brasileiros-no-exterior/' },
+        { label: 'Homologação de divórcio estrangeiro', href: '/areas-de-atuacao/homologacao-de-divorcio-estrangeiro/' },
+      ],
+    },
   },
   'inventario-e-patrimonio': {
     problem:
@@ -114,6 +122,7 @@ export const pillarExtra: Record<string, PillarExtra> = {
       links: [
         { label: 'Quanto custa um inventário', href: '/blog/quanto-custa-um-inventario/' },
         { label: 'Checklist de documentos do inventário', href: '/ferramentas/checklist-documentos-inventario/' },
+        { label: 'Herdeiro que mora no exterior', href: '/areas-de-atuacao/brasileiros-no-exterior/' },
       ],
     },
   },

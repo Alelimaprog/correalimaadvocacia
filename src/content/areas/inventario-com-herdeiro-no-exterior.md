@@ -15,7 +15,7 @@ Condução de inventários em que um ou mais herdeiros residem fora do Brasil, c
 
 É cada vez mais comum que uma família tenha herdeiros residindo em diferentes países. Quando um inventário se abre no Brasil e um dos herdeiros mora no exterior, o processo continua seguindo as regras brasileiras, mas exige atenção adicional a procurações, tradução e legalização de documentos e, muitas vezes, à condução de parte do processo à distância.
 
-O escritório conduz inventários com herdeiros no exterior tanto na via extrajudicial (cartório), quando aplicável, quanto na via judicial, organizando a documentação internacional necessária e estruturando o acompanhamento remoto do herdeiro que não está no Brasil.
+O escritório conduz inventários com herdeiros no exterior tanto na via extrajudicial (cartório), quando aplicável, quanto na via judicial, organizando a documentação internacional necessária e estruturando o acompanhamento remoto do herdeiro que não está no Brasil. Veja também os outros assuntos que atendemos para [brasileiros que moram no exterior](/areas-de-atuacao/brasileiros-no-exterior/).
 
 ## Quando buscar orientação jurídica
 

@@ -65,6 +65,9 @@ function contentDates() {
     '/areas-de-atuacao/direito-empresarial/',
     '/areas-de-atuacao/cobranca-condominial/acordos-de-inadimplencia-condominial/',
     '/areas-de-atuacao/recuperacao-de-credito/cobranca-extrajudicial/',
+    '/areas-de-atuacao/brasileiros-no-exterior/',
+    '/areas-de-atuacao/homologacao-de-sentenca-estrangeira/',
+    '/areas-de-atuacao/inventario-com-herdeiro-no-exterior/',
   ]) map[pth] = '2026-11-25';
   return map;
 }

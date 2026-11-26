@@ -47,6 +47,9 @@ O pedido é eletrônico, assinado por advogado e dirigido ao **Presidente do STJ
 
 Como o procedimento tramita perante o STJ, em Brasília, e frequentemente envolve clientes residentes no exterior, o atendimento é estruturado para ocorrer de forma online, por videochamada e troca eletrônica de documentos, com uso de procuração específica.
 
+
+Para quem mora fora do Brasil, os demais assuntos que o escritório atende (divórcio, herança, imóveis) estão na página para [brasileiros que moram no exterior](/areas-de-atuacao/brasileiros-no-exterior/).
+
 ## Situações comuns
 
 Divórcios realizados no exterior que precisam ser reconhecidos no Brasil.
