@@ -54,6 +54,8 @@ A tabela resume penalidades frequentes na importação, conforme o Regulamento A
 
 **O que mudou em 2026:** a multa de 1% sobre o valor aduaneiro por erro de classificação fiscal (NCM) ou informação inexata na declaração foi revogada pela Lei Complementar 227/2026. A reforma criou uma nova penalidade por descumprimento de obrigação informativa (LC 214/2025, art. 341-G), cujo alcance ainda é discutido. Autuações antigas pela multa de 1% podem ser questionadas com base na retroatividade da lei mais benéfica (CTN, art. 106, II). Veja [o fim da multa de 1% por erro de NCM](/blog/multa-1-por-cento-erro-ncm-revogada-lc-227/).
 
+Mudanças recentes que também afetam o importador: [DUIMP e o fim da DI](/blog/duimp-fim-da-di-o-que-muda-para-o-importador/), [IBS e CBS na importação](/blog/ibs-cbs-na-importacao-o-que-muda/) e [valoração aduaneira](/blog/valoracao-aduaneira-como-a-receita-questiona-o-valor/).
+
 ## Nem toda exigência precisa virar litígio
 
 Em muitos casos, a retenção decorre de uma pendência documental que pode ser regularizada diretamente com a autoridade aduaneira, sem defesa formal. A análise inicial deve distinguir esses casos das autuações que, de fato, exigem contestação.
