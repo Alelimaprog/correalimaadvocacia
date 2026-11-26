@@ -1,6 +1,6 @@
 ---
 title: "Advogado para Homologação de Sentença Estrangeira no STJ"
-description: "Homologação de sentença estrangeira no STJ: quando é necessária, documentos, apostila, tradução e etapas do pedido. Atendimento a distância."
+description: "Homologação de sentença estrangeira no STJ: requisitos do CPC, checklist de documentos, apostila, tradução e etapas. Atendimento a distância."
 h1: "Advogado para homologação de sentença estrangeira no STJ"
 author: "Alexandre Corrêa Lima"
 ---
@@ -42,6 +42,45 @@ O pedido é eletrônico, assinado por advogado e dirigido ao **Presidente do STJ
 5. **Decisão** e expedição da carta de sentença, que serve para averbar no cartório ou executar na Justiça Federal (art. 216-N; CPC, art. 965).
 
 **O que mais atrasa:** citação no exterior por carta rogatória (meses, conforme o país), documentos sem apostila ou sem prova de definitividade e contestação.
+
+## Os seis requisitos do art. 963 do CPC
+
+O STJ não rejulga a causa. Ele faz um juízo de delibação: verifica se a decisão estrangeira cumpre os requisitos formais e se não ofende a ordem pública brasileira. Pelo art. 963 do CPC, a decisão precisa:
+
+1. ter sido proferida por autoridade competente;
+2. ter sido precedida de citação regular, ainda que verificada a revelia;
+3. ser eficaz no país em que foi proferida;
+4. não ofender a coisa julgada brasileira;
+5. estar acompanhada de tradução oficial, salvo dispensa prevista em tratado;
+6. não conter manifesta ofensa à ordem pública.
+
+Na prática, a maioria dos pedidos que demora não esbarra em questão de mérito, e sim em um desses pontos: a citação no processo de origem ou a prova de que a decisão é definitiva.
+
+## Checklist de documentos
+
+| Documento | Observação |
+| --- | --- |
+| Cópia integral da decisão estrangeira | Certificados resumidos (como alguns *certificates of divorce*) muitas vezes não bastam |
+| Prova de que a decisão é definitiva | Certidão de trânsito em julgado ou anotação equivalente do país de origem |
+| Apostila de Haia ou legalização consular | Apostila para países signatários; legalização no consulado para os demais |
+| Tradução juramentada no Brasil | Feita por tradutor público, salvo dispensa em tratado |
+| Procuração para o advogado | Pode ser assinada no exterior, inclusive no consulado brasileiro |
+| Concordância da outra parte (se houver) | Dispensa a citação e costuma encurtar o processo |
+
+## Casos com regras próprias
+
+- **Imóveis no Brasil:** a partilha de bens situados no Brasil é de competência exclusiva da Justiça brasileira (CPC, arts. 23 e 964). A decisão estrangeira pode ser homologada no restante, mas a partilha desses imóveis é feita aqui.
+- **Homologação parcial:** o CPC permite homologar só parte da decisão estrangeira (art. 961, § 2º), por exemplo o divórcio, deixando de fora um ponto que não preenche os requisitos.
+- **Decisões não judiciais:** atos estrangeiros que, pela lei brasileira, teriam natureza jurisdicional, como alguns divórcios administrativos, também podem ser homologados (art. 961, § 1º).
+- **Divórcio consensual simples:** dispensa a homologação e vai direto ao cartório (art. 961, § 5º). Veja [averbação de divórcio estrangeiro](/areas-de-atuacao/averbacao-de-divorcio-estrangeiro/).
+
+## Depois da homologação
+
+Homologada a decisão, o STJ expede a carta de sentença. Com ela, conforme o caso, faz-se a averbação no registro civil (divórcio, guarda, adoção), o registro no cartório de imóveis ou o cumprimento da decisão na Justiça Federal de primeiro grau (CF, art. 109, X), por exemplo para cobrar alimentos ou uma condenação em dinheiro.
+
+## Decisões de alguns países
+
+Há particularidades conforme o país de origem: o tipo de documento emitido, a autoridade que apostila e o que a decisão costuma abranger. Veja os guias sobre [Estados Unidos](/areas-de-atuacao/homologacao-de-sentenca-dos-estados-unidos/), [Portugal](/areas-de-atuacao/homologacao-de-sentenca-de-portugal/), [Itália](/areas-de-atuacao/homologacao-de-sentenca-da-italia/), [Japão](/blog/divorcio-no-japao-vale-no-brasil/), [Reino Unido](/blog/divorcio-no-reino-unido-vale-no-brasil/), [Canadá](/blog/divorcio-no-canada-vale-no-brasil/) e [Alemanha](/blog/divorcio-na-alemanha-vale-no-brasil/).
 
 ## Atendimento online
 

@@ -1,16 +1,16 @@
 ---
-title: "Multa Aduaneira na Importação: Prazos e Como Recorrer"
-description: "Mercadoria retida na alfândega, canal vermelho ou multa aduaneira? Primeiros passos, prazos de resposta e quando cabe medida judicial."
-h1: "Multa aduaneira e retenção de mercadoria: o que fazer"
+title: "Multa na Alfândega (Importação): Tipos, Prazos e Recurso"
+description: "Multa na alfândega ou mercadoria retida? As multas aduaneiras mais comuns na importação, o que mudou em 2026, prazos de defesa e quando ir à Justiça."
+h1: "Multa na alfândega e retenção de mercadoria: o que fazer"
 author: "Alexandre Corrêa Lima"
 pubDate: 2026-07-03
-updatedDate: 2026-11-07
+updatedDate: 2026-11-26
 cluster: "direito-aduaneiro-tributario"
 ---
 
 Direito Aduaneiro-Tributário
 
-# Multa aduaneira e retenção de mercadoria: o que fazer
+# Multa na alfândega e retenção de mercadoria: o que fazer
 
 03/07/2026•8 min de leitura•Por [Alexandre Corrêa Lima](/o-escritorio/#alexandre-correa-lima)
 
@@ -36,6 +36,23 @@ A norma não fixa um prazo geral para a conferência no canal vermelho. Ele depe
 ## A Receita pode reter só para cobrar?
 
 Depende. A Súmula 323 do STF proíbe usar a apreensão como meio coercitivo de cobrança. Mas o próprio STF decidiu (Tema 1042) que é válido condicionar o desembaraço ao pagamento de diferença de tributo apurada por arbitramento no despacho. Quando a exigência fiscal é discutida, a mercadoria pode ser liberada mediante garantia (IN SRF 680/2006, art. 48, §1º). Se a retenção persiste sem essa base, por exemplo para exigir multa já lançada, cabe discutir administrativamente e, se necessário, por mandado de segurança.
+
+## As multas mais comuns na alfândega
+
+A tabela resume penalidades frequentes na importação, conforme o Regulamento Aduaneiro (Decreto 6.759/2009). Os valores e o enquadramento de cada caso precisam ser conferidos no auto de infração e na legislação vigente, porque a reforma tributária mudou parte desse regime em 2026.
+
+| Situação | Penalidade usual | Base |
+| --- | --- | --- |
+| Importar sem licença de importação (LI) exigida | 30% do valor aduaneiro | RA, art. 706, I, "a" |
+| LI deferida depois do embarque | 30% do valor aduaneiro, com mínimo e máximo previstos | RA, art. 706, I, "b" |
+| Erro ou omissão na fatura comercial | Multa fixa por fatura | RA, art. 715 |
+| Falta de *packing list* | Multa fixa | RA, art. 728, VIII |
+| Extravio de mercadoria | 50% do imposto de importação | RA, art. 702 |
+| Preço declarado diferente do praticado | 100% da diferença | MP 2.158-35/2001, art. 88, parágrafo único |
+| Falta de pagamento de tributo apurada em fiscalização | Multa de ofício de 75% da diferença, que pode ser agravada | Lei 9.430/1996, art. 44 |
+| Dano ao Erário (interposição fraudulenta, falsidade documental, abandono) | Perdimento da mercadoria ou multa equivalente ao valor aduaneiro | Decreto-Lei 1.455/1976, art. 23 |
+
+**O que mudou em 2026:** a multa de 1% sobre o valor aduaneiro por erro de classificação fiscal (NCM) ou informação inexata na declaração foi revogada pela Lei Complementar 227/2026. A reforma criou uma nova penalidade por descumprimento de obrigação informativa (LC 214/2025, art. 341-G), cujo alcance ainda é discutido. Autuações antigas pela multa de 1% podem ser questionadas com base na retroatividade da lei mais benéfica (CTN, art. 106, II). Veja [o fim da multa de 1% por erro de NCM](/blog/multa-1-por-cento-erro-ncm-revogada-lc-227/).
 
 ## Nem toda exigência precisa virar litígio
 
