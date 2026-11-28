@@ -1,0 +1,95 @@
+---
+import ToolLayout from '@/components/ToolLayout.astro';
+import indices from '@/data/indices.json';
+const ult = indices.ultimo?.ipca ? indices.ultimo.ipca.split('-').reverse().join('/') : null;
+---
+
+<ToolLayout
+  slug="atualizacao-de-divida"
+  title="Calculadora de atualização de dívida: IPCA, juros, taxa legal e multa"
+  description="Atualize uma dívida pelo IPCA, INPC ou IGP-M, com juros de mora (taxa legal Selic − IPCA ou taxa fixa), multa e honorários. Índices oficiais do Banco Central."
+  h1="Calculadora de atualização de dívida"
+  lead="Corrija o valor de uma dívida vencida e some juros, multa e honorários. Útil para conferir uma cobrança, preparar uma notificação ou avaliar um acordo."
+  crumb="Atualização de dívida"
+  categoria="Calculadora · recuperação de crédito"
+  atualizado="2026-11-28"
+  area="recuperacao-de-credito"
+  premissas={[
+    'Correção monetária mês a mês pelo índice escolhido, de forma composta, do mês do vencimento até o mês anterior à data final.',
+    '<strong>Taxa legal</strong> (Código Civil, art. 406, com a redação da Lei 14.905/2024): Selic menos IPCA de cada mês, sem resultado negativo, somada mês a mês. Vale quando o contrato não fixa juros. Pela mesma lei, sem índice contratado, a correção é pelo IPCA (art. 389, parágrafo único).',
+    '<strong>Juros fixos</strong>: juros simples sobre o valor corrigido, pro rata (dias ÷ 30).',
+    'Multa sobre o valor corrigido; honorários sobre o total (valor corrigido + juros + multa).',
+  ]}
+  fontes={[
+    { label: 'Banco Central do Brasil — Sistema Gerenciador de Séries (IPCA 433, INPC 188, IGP-M 189, Selic 4390)', href: 'https://www3.bcb.gov.br/sgspub/' },
+    { label: 'Lei 14.905/2024 — atualização monetária e juros (Planalto)', href: 'https://www.planalto.gov.br/ccivil_03/_ato2023-2026/2024/lei/l14905.htm' },
+    { label: 'Código Civil, arts. 389 e 406 (Planalto)', href: 'https://www.planalto.gov.br/ccivil_03/leis/2002/l10406compilada.htm' },
+  ]}
+  limitacoes={[
+    'Débitos judiciais podem seguir tabelas próprias do tribunal (em São Paulo, a tabela prática do TJSP) e regras de transição da Lei 14.905/2024 para períodos anteriores a 30/08/2024.',
+    'Não calcula juros compostos, capitalização bancária, encargos de contratos bancários nem índices setoriais.',
+    'Meses ainda sem índice publicado ficam fora da correção; a calculadora avisa quando isso acontece.',
+  ]}
+>
+  <script type="application/json" id="indices" set:html={JSON.stringify(indices)} />
+  <p class="calc-meta">{ult ? `Índices do Banco Central disponíveis até ${ult} (consulta em ${indices.atualizadoEm?.split('-').reverse().join('/')}).` : 'Índices do Banco Central indisponíveis nesta versão: a correção não será aplicada.'}</p>
+  <form class="calc-form" id="f" novalidate>
+    <fieldset>
+      <legend>Dívida</legend>
+      <label>Valor original (R$) <input type="text" inputmode="decimal" name="valor" placeholder="ex.: 15.000,00" required /></label>
+      <label>Data de vencimento <input type="date" name="inicio" required /></label>
+      <label>Atualizar até <input type="date" name="fim" required /></label>
+    </fieldset>
+    <fieldset>
+      <legend>Correção e juros</legend>
+      <label>Índice de correção
+        <select name="indice"><option value="ipca">IPCA</option><option value="inpc">INPC</option><option value="igpm">IGP-M</option><option value="">Sem correção</option></select>
+      </label>
+      <label>Juros de mora
+        <select name="juros"><option value="taxaLegal">Taxa legal (Selic − IPCA)</option><option value="simples">Taxa fixa mensal</option><option value="nenhum">Sem juros</option></select>
+      </label>
+      <label>Taxa fixa (% ao mês) <small>só para “taxa fixa”</small><input type="text" inputmode="decimal" name="taxa" value="1" /></label>
+      <label>Multa (%) <input type="text" inputmode="decimal" name="multa" value="0" /></label>
+      <label>Honorários (%) <input type="text" inputmode="decimal" name="hon" value="0" /></label>
+    </fieldset>
+    <button class="btn btn--primary btn--lg" type="submit">Calcular</button>
+  </form>
+  <div class="calc-erros" id="erros" hidden role="alert"></div>
+  <div class="calc-result" id="res" hidden aria-live="polite">
+    <p class="result-tag">Estimativa</p>
+    <h2>Valor atualizado</h2>
+    <p class="big" id="total"></p>
+    <table class="calc-table"><tbody id="linhas"></tbody></table>
+    <p id="aviso"></p>
+  </div>
+  <section class="calc-explica" slot="explica">
+    <h2>E depois da conta?</h2>
+    <p>Com o valor atualizado em mãos, o caminho depende do documento que comprova a dívida. Veja <a href="/blog/diferenca-cobranca-monitoria-execucao/">cobrança, monitória ou execução</a>, <a href="/blog/quando-vale-a-pena-ajuizar-execucao-titulo-extrajudicial/">quando vale a pena executar</a> e <a href="/blog/como-localizar-bens-do-devedor-em-uma-execucao/">como localizar bens do devedor</a>. Para cotas de condomínio, use a <a href="/ferramentas/calculadora-de-condominio-atrasado/">calculadora de condomínio atrasado</a>.</p>
+  </section>
+</ToolLayout>
+
+<script>
+  import { atualizarDivida } from '@/lib/calc/divida.js';
+  import { num } from '@/lib/calc/comex.js';
+  const idx = JSON.parse(document.getElementById('indices')!.textContent || '{}');
+  const f = document.getElementById('f') as HTMLFormElement;
+  const R = (n: number) => 'R$ ' + n.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+  f.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const v = (n: string) => (f.elements.namedItem(n) as HTMLInputElement).value;
+    const ind = v('indice'); const jt = v('juros');
+    const juros = jt === 'taxaLegal' ? { tipo: 'taxaLegal', selic: idx.series?.selic || {}, ipca: idx.series?.ipca || {} } : jt === 'simples' ? { tipo: 'simples', taxaMes: num(v('taxa')) } : { tipo: 'nenhum' };
+    const r = atualizarDivida({ valor: num(v('valor')), inicio: v('inicio'), fim: v('fim'), indice: ind ? idx.series?.[ind] || {} : null, juros, multaPct: num(v('multa')) || 0, honorariosPct: num(v('hon')) || 0 });
+    const er = document.getElementById('erros')!, res = document.getElementById('res')!;
+    if (!r.ok) { er.innerHTML = '<strong>Confira os dados:</strong><ul>' + r.erros.map((x: string) => `<li>${x}</li>`).join('') + '</ul>'; er.hidden = false; res.hidden = true; return; }
+    er.hidden = true;
+    document.getElementById('total')!.textContent = R(r.total);
+    const L: [string, string][] = [
+      ['Valor original', R(num(v('valor')))], [`Correção (${ind ? ind.toUpperCase() : 'sem índice'}, ${r.meses} meses, fator ${r.fatorCorrecao.toLocaleString('pt-BR')})`, R(r.correcao)],
+      ['Valor corrigido', R(r.corrigido)], [`Juros (${r.jurosPct.toLocaleString('pt-BR')}% no período)`, R(r.juros)], ['Multa', R(r.multa)], ['Honorários', R(r.honorarios)],
+    ];
+    document.getElementById('linhas')!.innerHTML = L.map(([a, b]) => `<tr><td>${a}</td><td class="n">${b}</td></tr>`).join('');
+    document.getElementById('aviso')!.textContent = r.faltando.length ? `Atenção: sem índice publicado para ${r.faltando.length} mês(es) (${r.faltando.slice(0, 4).join(', ')}${r.faltando.length > 4 ? '…' : ''}); esses meses não entraram na conta.` : '';
+    res.hidden = false; res.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+</script>

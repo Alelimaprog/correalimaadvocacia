@@ -50,7 +50,21 @@ for (const [nome, ctxOpt] of [['desktop', { viewport: { width: 1366, height: 900
   await p.$eval('form#f', (f) => f.requestSubmit());
   ok(`${nome} cubagem 2 m³`, (await p.textContent('#m3')).includes('2,000'));
 
-  for (const u of ['calculadora-de-demurrage', 'simulador-de-tributos-na-importacao', 'validador-de-conteiner', 'calculadora-de-cubagem', '']) {
+  await p.goto(B + '/ferramentas/atualizacao-de-divida/');
+  await p.fill('[name=valor]', '1.000,00'); await p.fill('[name=inicio]', '2026-01-01'); await p.fill('[name=fim]', '2026-04-01');
+  await p.selectOption('[name=indice]', ''); await p.selectOption('[name=juros]', 'simples'); await p.fill('[name=taxa]', '1'); await p.fill('[name=multa]', '2');
+  await p.$eval('form#f', (f) => f.requestSubmit());
+  ok(`${nome} dívida: 1.000 + 3% juros + 2% multa = 1.050,00`, (await p.textContent('#total')).includes('1.050,00'), await p.textContent('#total'));
+  await p.goto(B + '/ferramentas/calculadora-de-condominio-atrasado/');
+  await p.fill('[name=venc]', '2026-01-10'); await p.fill('[name=val]', '500'); await p.fill('[name=fim]', '2026-04-10');
+  await p.selectOption('[name=indice]', '');
+  await p.$eval('#serie', (b) => b.click());
+  ok(`${nome} condomínio gera 3 cotas mensais`, (await p.$$('[data-cota]')).length === 3, String((await p.$$('[data-cota]')).length));
+  await p.$eval('form#f', (f) => f.requestSubmit());
+  ok(`${nome} condomínio soma total`, await p.isVisible('#res'), await p.textContent('#tt'));
+  await p.fill('[name=multa]', '5'); await p.$eval('form#f', (f) => f.requestSubmit());
+  ok(`${nome} condomínio recusa multa acima de 2%`, await p.isVisible('#erros'));
+  for (const u of ['calculadora-de-demurrage', 'simulador-de-tributos-na-importacao', 'validador-de-conteiner', 'calculadora-de-cubagem', 'atualizacao-de-divida', 'calculadora-de-condominio-atrasado', '']) {
     await p.goto(B + '/ferramentas/' + (u ? u + '/' : ''));
     const w = await p.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);
     ok(`${nome} sem rolagem horizontal ${u || 'índice'}`, w <= 1, String(w));

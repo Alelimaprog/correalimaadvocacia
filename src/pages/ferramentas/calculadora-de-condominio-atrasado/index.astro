@@ -1,0 +1,111 @@
+---
+import ToolLayout from '@/components/ToolLayout.astro';
+import indices from '@/data/indices.json';
+const ult = indices.ultimo?.ipca ? indices.ultimo.ipca.split('-').reverse().join('/') : null;
+---
+
+<ToolLayout
+  slug="calculadora-de-condominio-atrasado"
+  title="Calculadora de condomínio atrasado: multa de 2%, juros e correção"
+  description="Calcule cotas de condomínio em atraso com multa de até 2%, juros de 1% ao mês (ou os da convenção) e correção monetária, parcela por parcela."
+  h1="Calculadora de condomínio atrasado"
+  lead="Some as cotas condominiais vencidas com multa, juros e correção, parcela por parcela. Serve ao síndico, à administradora e ao condômino que quer conferir um boleto de acordo."
+  crumb="Condomínio atrasado"
+  categoria="Calculadora · cobrança condominial"
+  atualizado="2026-11-28"
+  area="cobranca-condominial"
+  premissas={[
+    'Código Civil, art. 1.336, § 1º: o condômino em atraso paga os juros previstos na convenção ou, se ela não previr, 1% ao mês, e multa de até 2% sobre o débito.',
+    'Cada cota é atualizada do seu vencimento até a data escolhida: correção composta pelo índice escolhido, juros simples pro rata (dias ÷ 30) e multa sobre o valor corrigido.',
+    'Honorários, se informados, incidem sobre o total.',
+  ]}
+  fontes={[
+    { label: 'Código Civil, art. 1.336 (Planalto)', href: 'https://www.planalto.gov.br/ccivil_03/leis/2002/l10406compilada.htm' },
+    { label: 'Banco Central do Brasil — SGS (IPCA, INPC, IGP-M)', href: 'https://www3.bcb.gov.br/sgspub/' },
+  ]}
+  limitacoes={[
+    'A convenção do condomínio pode prever índice de correção e juros diferentes: ajuste os campos.',
+    'Em cobrança judicial, o tribunal pode aplicar a sua tabela de atualização.',
+    'A cobrança de cotas prescreve; veja o <a href="/blog/prazo-prescricional-cobranca-taxa-condominial/">prazo prescricional da taxa condominial</a>.',
+  ]}
+>
+  <script type="application/json" id="indices" set:html={JSON.stringify({ ultimo: indices.ultimo, series: { ipca: indices.series.ipca, inpc: indices.series.inpc, igpm: indices.series.igpm } })} />
+  <p class="calc-meta">{ult ? `Índices do Banco Central disponíveis até ${ult}.` : 'Índices do Banco Central indisponíveis nesta versão: a correção não será aplicada.'}</p>
+  <form class="calc-form" id="f" novalidate>
+    <fieldset id="cotas">
+      <legend>Cotas em atraso</legend>
+      <div class="faixa-row" data-cota><label>Vencimento <input type="date" name="venc" /></label><label>Valor (R$) <input type="text" inputmode="decimal" name="val" /></label><button type="button" class="btn btn--secondary" data-rm aria-label="Remover cota">Remover</button></div>
+      <button type="button" class="btn btn--secondary" id="add" style="justify-self:start">+ Adicionar cota</button>
+      <button type="button" class="btn btn--secondary" id="serie" style="justify-self:start">Gerar cotas mensais iguais</button>
+    </fieldset>
+    <fieldset>
+      <legend>Encargos</legend>
+      <label>Atualizar até <input type="date" name="fim" required /></label>
+      <label>Índice de correção <select name="indice"><option value="ipca">IPCA</option><option value="inpc">INPC</option><option value="igpm">IGP-M</option><option value="">Sem correção</option></select></label>
+      <label>Juros (% ao mês) <input type="text" inputmode="decimal" name="juros" value="1" /></label>
+      <label>Multa (%) <small>limite legal: 2%</small><input type="text" inputmode="decimal" name="multa" value="2" /></label>
+      <label>Honorários (%) <input type="text" inputmode="decimal" name="hon" value="0" /></label>
+    </fieldset>
+    <button class="btn btn--primary btn--lg" type="submit">Calcular</button>
+  </form>
+  <div class="calc-erros" id="erros" hidden role="alert"></div>
+  <div class="calc-result" id="res" hidden aria-live="polite">
+    <p class="result-tag">Estimativa</p>
+    <h2>Total devido</h2>
+    <p class="big" id="total"></p>
+    <table class="calc-table">
+      <thead><tr><th>Vencimento</th><th class="n">Original</th><th class="n">Corrigido</th><th class="n">Juros</th><th class="n">Multa</th><th class="n">Total</th></tr></thead>
+      <tbody id="linhas"></tbody>
+      <tfoot><tr><td>Total</td><td class="n" id="to"></td><td class="n" id="tc"></td><td class="n" id="tj"></td><td class="n" id="tm"></td><td class="n" id="tt"></td></tr></tfoot>
+    </table>
+    <p id="aviso"></p>
+  </div>
+  <section class="calc-explica" slot="explica">
+    <h2>Próximos passos na cobrança</h2>
+    <p>As cotas aprovadas em assembleia e previstas na convenção são título executivo extrajudicial (CPC, art. 784, X), o que permite cobrar diretamente por execução. Veja <a href="/blog/como-cobrar-taxa-condominial-em-atraso-passo-a-passo/">como cobrar taxa condominial em atraso</a>, <a href="/blog/execucao-de-cota-condominial-como-funciona/">como funciona a execução</a> e a página de <a href="/areas-de-atuacao/cobranca-condominial/">cobrança condominial</a>.</p>
+  </section>
+</ToolLayout>
+
+<script>
+  import { atualizarDivida } from '@/lib/calc/divida.js';
+  import { num } from '@/lib/calc/comex.js';
+  const idx = JSON.parse(document.getElementById('indices')!.textContent || '{}');
+  const f = document.getElementById('f') as HTMLFormElement;
+  const box = document.getElementById('cotas')!; const add = document.getElementById('add')!;
+  const R = (n: number) => n.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+  const novaLinha = (venc = '', val = '') => { const rows = box.querySelectorAll('[data-cota]'); if (rows.length >= 120) return; const n = rows[0].cloneNode(true) as HTMLElement; (n.querySelector('[name=venc]') as HTMLInputElement).value = venc; (n.querySelector('[name=val]') as HTMLInputElement).value = val; add.before(n); };
+  add.addEventListener('click', () => novaLinha());
+  box.addEventListener('click', (e) => { const t = e.target as HTMLElement; if (t.matches('[data-rm]') && box.querySelectorAll('[data-cota]').length > 1) t.closest('[data-cota]')!.remove(); });
+  document.getElementById('serie')!.addEventListener('click', () => {
+    const first = box.querySelector('[data-cota]')!; const v0 = (first.querySelector('[name=venc]') as HTMLInputElement).value; const val = (first.querySelector('[name=val]') as HTMLInputElement).value;
+    if (!v0 || !val) { (document.getElementById('erros')!).textContent = 'Preencha o vencimento e o valor da primeira cota; depois gere as seguintes.'; document.getElementById('erros')!.hidden = false; return; }
+    const fim = (f.elements.namedItem('fim') as HTMLInputElement).value || new Date().toISOString().slice(0, 10);
+    box.querySelectorAll('[data-cota]').forEach((r, i) => { if (i > 0) r.remove(); });
+    let [y, m, d] = v0.split('-').map(Number);
+    for (let i = 0; i < 119; i++) { m++; if (m > 12) { m = 1; y++; } const dd = Math.min(d, new Date(Date.UTC(y, m, 0)).getUTCDate()); const iso = `${y}-${String(m).padStart(2, '0')}-${String(dd).padStart(2, '0')}`; if (iso >= fim) break; novaLinha(iso, val); }
+    document.getElementById('erros')!.hidden = true;
+  });
+  f.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const v = (n: string) => (f.elements.namedItem(n) as HTMLInputElement).value;
+    const ind = v('indice'); const er = document.getElementById('erros')!, res = document.getElementById('res')!;
+    const erros: string[] = []; const linhas: any[] = [];
+    const multa = num(v('multa')) || 0;
+    if (multa > 2) erros.push('Multa: o Código Civil limita a multa por atraso a 2%.');
+    box.querySelectorAll('[data-cota]').forEach((row, i) => {
+      const venc = (row.querySelector('[name=venc]') as HTMLInputElement).value; const val = num((row.querySelector('[name=val]') as HTMLInputElement).value);
+      const r = atualizarDivida({ valor: val, inicio: venc, fim: v('fim'), indice: ind ? idx.series?.[ind] || {} : null, juros: { tipo: 'simples', taxaMes: num(v('juros')) }, multaPct: multa, honorariosPct: 0 });
+      if (!r.ok) erros.push(`Cota ${i + 1}: ${r.erros.join(' ')}`); else linhas.push({ venc, val, ...r });
+    });
+    if (erros.length) { er.innerHTML = '<strong>Confira os dados:</strong><ul>' + erros.map((x) => `<li>${x}</li>`).join('') + '</ul>'; er.hidden = false; res.hidden = true; return; }
+    er.hidden = true;
+    const s = (k: string) => linhas.reduce((a, l) => a + l[k], 0);
+    const subtotal = s('total'); const hon = subtotal * (num(v('hon')) || 0) / 100;
+    document.getElementById('linhas')!.innerHTML = linhas.map((l) => `<tr><td>${l.venc.split('-').reverse().join('/')}</td><td class="n">${R(l.val)}</td><td class="n">${R(l.corrigido)}</td><td class="n">${R(l.juros)}</td><td class="n">${R(l.multa)}</td><td class="n">${R(l.total)}</td></tr>`).join('');
+    document.getElementById('to')!.textContent = R(s('val')); document.getElementById('tc')!.textContent = R(s('corrigido')); document.getElementById('tj')!.textContent = R(s('juros')); document.getElementById('tm')!.textContent = R(s('multa')); document.getElementById('tt')!.textContent = R(subtotal);
+    document.getElementById('total')!.textContent = 'R$ ' + R(subtotal + hon) + (hon ? ` (inclui R$ ${R(hon)} de honorários)` : '');
+    const falt = [...new Set(linhas.flatMap((l) => l.faltando))];
+    document.getElementById('aviso')!.textContent = falt.length ? `Atenção: ${falt.length} mês(es) sem índice publicado ficaram fora da correção.` : '';
+    res.hidden = false; res.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+</script>
