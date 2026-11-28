@@ -79,6 +79,8 @@ function contentDates() {
     '/ferramentas/calculadora-de-cubagem/',
     '/ferramentas/atualizacao-de-divida/',
     '/ferramentas/calculadora-de-condominio-atrasado/',
+    '/ferramentas/calculadora-de-prazos-de-prescricao/',
+    '/ferramentas/simulador-de-partilha/',
     '/areas-de-atuacao/direito-maritimo-portuario/',
     '/en/',
   ];
