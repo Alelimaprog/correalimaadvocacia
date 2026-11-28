@@ -1,0 +1,97 @@
+---
+import ToolLayout from '@/components/ToolLayout.astro';
+import { HIPOTESES, UPF_PADRAO } from '@/lib/calc/multas-aduaneiras.js';
+const ops = Object.entries(HIPOTESES);
+---
+
+<ToolLayout
+  slug="simulador-de-multas-aduaneiras"
+  title="Simulador de multas na importação: perdimento, multa de ofício e erro na declaração"
+  description="Estime as principais multas na importação: substitutiva do perdimento, multa de ofício, falta de licença, subfaturamento, informação de carga e erro na declaração antes e depois da LC 227/2026."
+  h1="Simulador de multas na importação"
+  lead="Marque as situações do seu caso e veja uma estimativa de cada multa, com o fundamento legal ao lado. Serve para entender a ordem de grandeza de um auto de infração antes de decidir a defesa."
+  crumb="Multas na importação"
+  categoria="Simulador · direito aduaneiro"
+  atualizado="2026-11-28"
+  area="direito-aduaneiro-tributario"
+  premissas={[
+    'Percentuais, mínimos e valores fixos são os do texto legal indicado em cada linha, conferido em 28/11/2026.',
+    'A multa de ofício incide sobre a diferença de tributo lançada; a de subfaturamento, sobre a diferença entre o preço declarado e o praticado ou arbitrado.',
+    'A multa de 1% por erro de classificação ou informação inexata (MP 2.158-35, art. 84, e Lei 10.833, art. 69) foi revogada pela LC 227/2026, art. 181, II e III, com efeitos desde a publicação, em 14/01/2026 (art. 182, III).',
+    'A nova multa da LC 214/2025, art. 341-G, XIX, é de 100 UPF por informação, limitada a 1% do valor da operação no documento fiscal, com piso de 50 UPF. A UPF é de R$ 200 (art. 341-C), atualizada anualmente pelo IPCA.',
+    'Cada multa é calculada em separado. Se mais de uma se aplica ao mesmo fato depende do caso concreto.',
+  ]}
+  fontes={[
+    { label: 'Lei 9.430/1996, art. 44 (Planalto)', href: 'https://www.planalto.gov.br/ccivil_03/leis/L9430compilada.htm' },
+    { label: 'Decreto-Lei 1.455/1976, art. 23 (Planalto)', href: 'https://www.planalto.gov.br/ccivil_03/decreto-lei/del1455.htm' },
+    { label: 'Decreto-Lei 37/1966, arts. 107 e 169 (Planalto)', href: 'https://www.planalto.gov.br/ccivil_03/decreto-lei/del0037.htm' },
+    { label: 'MP 2.158-35/2001, arts. 84 e 88 (Planalto)', href: 'https://www.planalto.gov.br/ccivil_03/mpv/2158-35.htm' },
+    { label: 'Lei 11.488/2007, art. 33 (Planalto)', href: 'https://www.planalto.gov.br/ccivil_03/_ato2007-2010/2007/lei/l11488.htm' },
+    { label: 'Lei Complementar 227/2026, arts. 181 e 182 (Planalto)', href: 'https://www.planalto.gov.br/ccivil_03/leis/lcp/lcp227.htm' },
+    { label: 'Lei Complementar 214/2025, arts. 341-C e 341-G (Planalto)', href: 'https://www.planalto.gov.br/ccivil_03/leis/lcp/lcp214compilado.htm' },
+  ]}
+  limitacoes={[
+    'Não substitui a leitura do auto de infração: o enquadramento escolhido pela fiscalização pode ser outro.',
+    'Reduções por pagamento no prazo, cumulação de multas e retroatividade de lei mais benéfica não entram no cálculo.',
+    'A nova multa da LC 227/2026 está no capítulo das obrigações acessórias do IBS e da CBS. Se ela alcança a declaração de importação, e se prevalece o piso ou o teto quando 1% da operação fica abaixo de 50 UPF, ainda é discutido. O resultado sai marcado como "em discussão".',
+  ]}
+>
+  <form class="calc-form" id="f" novalidate>
+    <fieldset>
+      <legend>Valores</legend>
+      <label>Valor aduaneiro (R$) <input type="text" inputmode="decimal" name="va" required /></label>
+      <label>Diferença de tributo lançada (R$) <small>para a multa de ofício</small><input type="text" inputmode="decimal" name="dif" /></label>
+      <label>Diferença de preço (R$) <small>para o subfaturamento</small><input type="text" inputmode="decimal" name="difp" /></label>
+      <label>Valor da operação (R$) <small>documento fiscal ou operação acobertada; vazio = valor aduaneiro</small><input type="text" inputmode="decimal" name="op" /></label>
+    </fieldset>
+    <fieldset>
+      <legend>Situações do caso</legend>
+      {ops.map(([k, h]) => <label class="check"><input type="checkbox" name="h" value={k} /> {h.titulo}</label>)}
+    </fieldset>
+    <fieldset>
+      <legend>Detalhes</legend>
+      <label>Multa de ofício <select name="oficio"><option value="normal">75% (padrão)</option><option value="qualificada">100% (qualificada)</option><option value="reincidencia">150% (reincidência)</option></select></label>
+      <label>Erro na declaração: data do fato <select name="regime"><option value="anterior">Até 13/01/2026 (regime revogado de 1%)</option><option value="lc227">A partir de 14/01/2026 (LC 227/2026)</option></select></label>
+      <label>Informações incorretas <input type="number" min="1" name="n" value="1" /></label>
+      <label>Valor da UPF (R$) <input type="text" inputmode="decimal" name="upf" value={String(UPF_PADRAO)} /></label>
+    </fieldset>
+    <button class="btn btn--primary btn--lg" type="submit">Simular</button>
+  </form>
+  <div class="calc-erros" id="erros" hidden role="alert"></div>
+  <div class="calc-result" id="res" hidden aria-live="polite">
+    <p class="result-tag">Estimativa</p>
+    <h2>Soma das multas escolhidas</h2>
+    <p class="big" id="total"></p>
+    <table class="calc-table"><thead><tr><th>Multa</th><th>Cálculo</th><th class="n">Valor (R$)</th><th>Base legal</th></tr></thead><tbody id="linhas"></tbody></table>
+    <ul id="notas"></ul>
+  </div>
+  <section class="calc-explica" slot="explica">
+    <h2>Depois da simulação</h2>
+    <p>Recebeu um auto de infração ou um termo de retenção? Veja <a href="/blog/multa-aduaneira-retencao-de-mercadoria-o-que-fazer/">o que fazer diante de multa aduaneira e retenção</a>, <a href="/blog/perdimento-convertido-em-multa-mercadoria-nao-localizada/">quando o perdimento vira multa</a> e a página de <a href="/areas-de-atuacao/direito-aduaneiro-tributario/">direito aduaneiro</a>.</p>
+  </section>
+</ToolLayout>
+
+<script>
+  import { simularMultas } from '@/lib/calc/multas-aduaneiras.js';
+  import { num } from '@/lib/calc/comex.js';
+  const f = document.getElementById('f') as HTMLFormElement;
+  const R = (n: number) => n.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+  const esc = (s: string) => s.replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]!);
+  f.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const v = (n: string) => (f.elements.namedItem(n) as HTMLInputElement).value;
+    const hs = [...f.querySelectorAll<HTMLInputElement>('input[name=h]:checked')].map((i) => i.value);
+    const r = simularMultas({ valorAduaneiro: num(v('va')), diferencaTributo: num(v('dif')), diferencaPreco: num(v('difp')), valorOperacao: num(v('op')), oficio: v('oficio') as any, regimeInformacao: v('regime') as any, informacoes: Number(v('n')), upf: num(v('upf')), hipoteses: hs });
+    const er = document.getElementById('erros')!, res = document.getElementById('res')!;
+    if (!r.ok) { er.innerHTML = '<strong>Confira os dados:</strong><ul>' + r.erros.map((x: string) => `<li>${esc(x)}</li>`).join('') + '</ul>'; er.hidden = false; res.hidden = true; return; }
+    er.hidden = true;
+    document.getElementById('linhas')!.innerHTML = r.itens.map((i: any) => {
+      const tag = i.situacao === 'vigente' ? '' : ` <strong>(${esc(i.situacao)})</strong>`;
+      const val = i.valorMinimo !== undefined ? `${R(i.valorMinimo)} a ${R(i.valor)}` : R(i.valor);
+      return `<tr><td>${esc(i.titulo)}${tag}</td><td>${esc(i.memoria)}</td><td class="n">${val}</td><td>${esc(i.fonte)}</td></tr>`;
+    }).join('');
+    document.getElementById('total')!.textContent = r.totalMinimo !== r.total ? `R$ ${R(r.totalMinimo)} a R$ ${R(r.total)}` : 'R$ ' + R(r.total);
+    document.getElementById('notas')!.innerHTML = r.itens.filter((i: any) => i.nota).map((i: any) => `<li>${esc(i.nota)}</li>`).join('');
+    res.hidden = false; res.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+</script>

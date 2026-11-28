@@ -72,6 +72,7 @@ function contentDates() {
   // Páginas criadas em 28/11/2026 (ferramentas, área marítima e seção em inglês).
   const novas = [
     '/ferramentas/',
+    '/ferramentas/simulador-de-multas-aduaneiras/',
     '/ferramentas/calculadora-de-demurrage/',
     '/ferramentas/simulador-de-tributos-na-importacao/',
     '/ferramentas/validador-de-conteiner/',

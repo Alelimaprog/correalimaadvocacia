@@ -64,7 +64,17 @@ for (const [nome, ctxOpt] of [['desktop', { viewport: { width: 1366, height: 900
   ok(`${nome} condomínio soma total`, await p.isVisible('#res'), await p.textContent('#tt'));
   await p.fill('[name=multa]', '5'); await p.$eval('form#f', (f) => f.requestSubmit());
   ok(`${nome} condomínio recusa multa acima de 2%`, await p.isVisible('#erros'));
-  for (const u of ['calculadora-de-demurrage', 'simulador-de-tributos-na-importacao', 'validador-de-conteiner', 'calculadora-de-cubagem', 'atualizacao-de-divida', 'calculadora-de-condominio-atrasado', '']) {
+  await p.goto(B + '/ferramentas/simulador-de-multas-aduaneiras/');
+  await p.fill('[name=va]', '100.000,00'); await p.fill('[name=dif]', '10.000,00');
+  await p.$eval('input[value=oficio]', (i) => { i.checked = true; }); await p.$eval('input[value=substitutiva]', (i) => { i.checked = true; });
+  await p.$eval('form#f', (f) => f.requestSubmit());
+  ok(`${nome} multas: 7.500 + 100.000 = 107.500,00`, (await p.textContent('#total')).includes('107.500,00'), await p.textContent('#total'));
+  await p.$eval('input[value=oficio]', (i) => { i.checked = false; }); await p.$eval('input[value=substitutiva]', (i) => { i.checked = false; }); await p.$eval('input[value=informacao]', (i) => { i.checked = true; });
+  await p.selectOption('[name=regime]', 'lc227'); await p.fill('[name=va]', '500.000,00');
+  await p.$eval('form#f', (f) => f.requestSubmit());
+  const t2 = await p.textContent('#total');
+  ok(`${nome} multas LC 227 mostra faixa piso/teto`, t2.includes('5.000,00') && t2.includes('10.000,00') && (await p.textContent('#linhas')).includes('em discussão'), t2);
+  for (const u of ['calculadora-de-demurrage', 'simulador-de-tributos-na-importacao', 'validador-de-conteiner', 'calculadora-de-cubagem', 'atualizacao-de-divida', 'calculadora-de-condominio-atrasado', 'simulador-de-multas-aduaneiras', '']) {
     await p.goto(B + '/ferramentas/' + (u ? u + '/' : ''));
     const w = await p.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);
     ok(`${nome} sem rolagem horizontal ${u || 'índice'}`, w <= 1, String(w));
