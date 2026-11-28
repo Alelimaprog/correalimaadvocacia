@@ -1,0 +1,63 @@
+---
+/** /en/<slug>/ — English informational pages (28/11/2026). Data in src/lib/en-pages.ts; hreflang in src/lib/hreflang.ts. */
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Container from '@/components/Container.astro';
+import JsonLd from '@/components/JsonLd.astro';
+import EnNotice from '@/components/EnNotice.astro';
+import { enPages } from '@/lib/en-pages';
+import { site } from '@/lib/site.config';
+
+export function getStaticPaths() {
+  return enPages.map((p) => ({ params: { slug: p.slug }, props: { page: p } }));
+}
+const { page } = Astro.props;
+const url = `${site.url}/en/${page.slug}/`;
+const schema = [
+  { '@context': 'https://schema.org', '@type': 'Article', headline: page.h1, description: page.description, inLanguage: 'en', url, dateModified: '2026-11-28', author: { '@type': 'Person', name: 'Alexandre Corrêa Lima' }, publisher: { '@type': 'LegalService', name: site.name } },
+  { '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'English', item: `${site.url}/en/` },
+    { '@type': 'ListItem', position: 2, name: page.h1, item: url },
+  ] },
+];
+const wa = `https://wa.me/${site.contact.whatsapp.number}?text=${encodeURIComponent('Hello, I found the Corrêa Lima Advocacia website (' + page.slug + ') and would like to discuss a matter in Brazil.')}`;
+---
+<BaseLayout title={page.title} description={page.description} canonical={url} lang="en">
+  <JsonLd schema={schema} />
+  <main id="conteudo-principal" class="enp">
+    <Container>
+      <nav class="breadcrumb" aria-label="Breadcrumb"><ol><li><a href="/en/">English</a><span class="sep" aria-hidden="true">/</span></li><li><span aria-current="page">{page.h1}</span></li></ol></nav>
+      <p class="eyebrow"><span class="dot"></span>Brazilian law · English</p>
+      <h1>{page.h1}</h1>
+      <p class="lead">{page.lead}</p>
+      <p class="meta">Updated <time datetime="2026-11-28">28 November 2026</time> · By Alexandre Corrêa Lima, lawyer admitted in Brazil (OAB/SP 234,511) · <a href={page.ptHref} hreflang="pt-BR" lang="pt-BR">{page.ptLabel}</a></p>
+      <article class="prose">
+        {page.sections.map((s) => (
+          <section>
+            <h2>{s.h2}</h2>
+            {s.paras.map((p) => <p>{p}</p>)}
+            {s.list && <ul>{s.list.map((i) => <li>{i}</li>)}</ul>}
+          </section>
+        ))}
+        <section>
+          <h2>Frequently asked questions</h2>
+          {page.faq.map((f) => (<><h3>{f.q}</h3><p>{f.a}</p></>))}
+        </section>
+      </article>
+      <EnNotice wa={wa} />
+    </Container>
+  </main>
+</BaseLayout>
+<style>
+  .enp { padding-block: var(--section-y); }
+  .enp h1 { font-size: var(--text-4xl); color: var(--color-ink); margin-top: var(--space-3); max-width: 24ch; line-height: 1.1; }
+  .lead { margin-top: var(--space-4); max-width: 62ch; font-size: var(--text-md); line-height: var(--leading-normal); }
+  .meta { margin-top: var(--space-3); font-size: var(--text-xs); color: var(--color-text-muted); }
+  .meta a, .prose a { color: var(--color-green-strong); text-decoration: underline; }
+  .prose { max-width: 46rem; margin-top: var(--space-8); }
+  .prose h2 { font-family: var(--font-display); font-size: var(--text-2xl); color: var(--color-ink); margin-top: var(--space-8); }
+  .prose h3 { font-size: var(--text-lg); color: var(--color-ink); margin-top: var(--space-5); }
+  .prose p { margin-top: var(--space-3); line-height: var(--leading-relaxed); }
+  .prose ul { margin-top: var(--space-3); padding-left: 1.2rem; list-style: disc; display: grid; gap: var(--space-2); line-height: var(--leading-relaxed); }
+  .breadcrumb ol { display: flex; gap: .4rem; flex-wrap: wrap; font-size: var(--text-sm); list-style: none; padding: 0; }
+  .breadcrumb .sep { margin-left: .4rem; color: var(--color-text-muted); }
+</style>

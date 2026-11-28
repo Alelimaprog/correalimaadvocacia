@@ -45,6 +45,7 @@ import FloatingWhatsApp from '@/components/FloatingWhatsApp.astro';
 import ConsentBanner from '@/components/ConsentBanner.astro';
 import { site } from '@/lib/site.config';
 import type { PageHead } from '@/lib/institucional';
+import { alternatesFor } from '@/lib/hreflang';
 
 interface Props {
   head?: PageHead;
@@ -55,12 +56,15 @@ interface Props {
   noCanonical?: boolean;
   /** Rodada 3 (A5): oculta a faixa de CTA do rodapé onde a página já termina em contato. */
   footerCta?: boolean;
+  /** Idioma da página (padrão pt-BR). */
+  lang?: string;
 }
-const { head, title, description, canonical, noindex, noCanonical, footerCta = true } = Astro.props;
+const { head, title, description, canonical, noindex, noCanonical, footerCta = true, lang = site.locale } = Astro.props;
+const alternates = alternatesFor(Astro.url.pathname);
 ---
 
 <!doctype html>
-<html lang={site.locale}>
+<html lang={lang}>
   <head>
     <!-- Marca que o JavaScript está vivo ANTES da primeira pintura. O estado
          escondido da animação de entrada (.js [data-reveal]) depende desta
@@ -81,7 +85,9 @@ const { head, title, description, canonical, noindex, noCanonical, footerCta = t
       canonical={canonical}
       noindex={noindex}
       noCanonical={noCanonical}
+      lang={lang}
     />
+    {alternates.map((a) => <link rel="alternate" hreflang={a.hreflang} href={site.url + a.path} />)}
 
     {/* Tipografia — Manrope + Inter auto-hospedadas (import no topo, sem
         requisição externa ao Google Fonts). font-display: swap embutido. */}

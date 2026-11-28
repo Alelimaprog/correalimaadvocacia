@@ -1,0 +1,38 @@
+---
+/** /en/ — English hub (28/11/2026). */
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Container from '@/components/Container.astro';
+import JsonLd from '@/components/JsonLd.astro';
+import EnNotice from '@/components/EnNotice.astro';
+import { enPages } from '@/lib/en-pages';
+import { site } from '@/lib/site.config';
+const url = `${site.url}/en/`;
+const schema = { '@context': 'https://schema.org', '@type': 'CollectionPage', name: 'Corrêa Lima Advocacia — Brazilian law in English', inLanguage: 'en', url, mainEntity: { '@type': 'ItemList', itemListElement: enPages.map((p, i) => ({ '@type': 'ListItem', position: i + 1, name: p.h1, url: `${site.url}/en/${p.slug}/` })) } };
+const wa = `https://wa.me/${site.contact.whatsapp.number}?text=${encodeURIComponent('Hello, I found the Corrêa Lima Advocacia website and would like to discuss a matter in Brazil.')}`;
+---
+<BaseLayout title="Brazilian Lawyer in São Paulo: Customs, Maritime, Probate" description="Brazilian law firm in São Paulo: customs seizures, container demurrage, cargo claims, recognition of foreign judgments and probate for heirs abroad." canonical={url} lang="en">
+  <JsonLd schema={schema} />
+  <main id="conteudo-principal" class="enp">
+    <Container>
+      <p class="eyebrow"><span class="dot"></span>English</p>
+      <h1>Brazilian law for foreign companies and Brazilians abroad</h1>
+      <p class="lead">Corrêa Lima Advocacia is a law firm in São Paulo led by Alexandre Corrêa Lima, lawyer since 2006. We assist importers, exporters, logistics companies and families with matters that must be solved in Brazil.</p>
+      <ul class="en-list">
+        {enPages.map((p) => (<li><h2><a href={`/en/${p.slug}/`}>{p.h1}</a></h2><p>{p.description}</p></li>))}
+      </ul>
+      <p class="pt">Versão em português: <a href="/" hreflang="pt-BR" lang="pt-BR">página inicial</a>.</p>
+      <EnNotice wa={wa} />
+    </Container>
+  </main>
+</BaseLayout>
+<style>
+  .enp { padding-block: var(--section-y); }
+  .enp h1 { font-size: var(--text-4xl); color: var(--color-ink); margin-top: var(--space-3); max-width: 24ch; line-height: 1.1; }
+  .lead { margin-top: var(--space-4); max-width: 62ch; font-size: var(--text-md); line-height: var(--leading-normal); }
+  .en-list { margin-top: var(--space-8); display: grid; gap: var(--space-5); max-width: 52rem; list-style: none; padding: 0; }
+  .en-list li { border: 1px solid var(--color-border); padding: var(--space-5); background: var(--surface); }
+  .en-list h2 { font-family: var(--font-display); font-size: var(--text-xl); }
+  .en-list a, .pt a { color: var(--color-green-strong); }
+  .en-list p { margin-top: var(--space-2); color: var(--color-text); }
+  .pt { margin-top: var(--space-6); font-size: var(--text-sm); }
+</style>

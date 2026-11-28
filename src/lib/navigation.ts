@@ -57,6 +57,7 @@ export const footerInstitucional: NavLink[] = [
   { label: 'Guias', href: '/guias/' },
   { label: 'Ferramentas', href: '/ferramentas/' },
   { label: 'Contato', href: '/contato/' },
+  { label: 'English', href: '/en/' },
 ];
 
 /** Links legais do rodapé. */
