@@ -1,0 +1,64 @@
+# Monitor semanal de disponibilidade e links do site (AUT-001).
+#
+# Atenção: o GitHub só executa gatilhos `schedule` a partir do arquivo de workflow
+# que está no ramo PADRÃO do repositório (hoje `main`). Para o agendamento valer,
+# este arquivo precisa existir no `main`. O código testado vem sempre do ramo-fonte
+# `fonte-2026-11` (checkout com ref explícita abaixo), então o `main` não precisa
+# estar atualizado em mais nada.
+#
+# Não usa segredos: só o GITHUB_TOKEN automático, com permissão para abrir issues.
+name: Monitor do site
+
+on:
+  schedule:
+    - cron: '17 9 * * 1' # segundas, 09:17 UTC (06:17 em Brasília)
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+concurrency:
+  group: monitor
+  cancel-in-progress: true
+
+jobs:
+  monitor:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: fonte-2026-11
+          sparse-checkout: scripts
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Verificar sitemap, status, title, canonical e links internos
+        id: monitor
+        continue-on-error: true
+        env:
+          MONITOR_BASE: https://correalimaadvocacia.com.br
+          MONITOR_CONCORRENCIA: '4'
+          MONITOR_RELATORIO: monitor-relatorio.md
+        run: node scripts/monitor.mjs
+      - name: Resumo da execução
+        if: always()
+        run: '[ -f monitor-relatorio.md ] && cat monitor-relatorio.md >> "$GITHUB_STEP_SUMMARY" || true'
+      - name: Abrir (ou atualizar) issue com o relatório
+        if: steps.monitor.outcome == 'failure'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_REPO: ${{ github.repository }}
+        run: |
+          [ -f monitor-relatorio.md ] || echo "# Monitor do site: o script falhou antes de gerar o relatório. Veja o log: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}" > monitor-relatorio.md
+          printf '\n\nExecução: %s/%s/actions/runs/%s\n' "${{ github.server_url }}" "${{ github.repository }}" "${{ github.run_id }}" >> monitor-relatorio.md
+          # Corpo de issue tem limite de 65 536 caracteres.
+          head -c 60000 monitor-relatorio.md | iconv -f utf-8 -t utf-8 -c > corpo.md
+          titulo="Monitor do site: falhas encontradas"
+          existente=$(gh issue list --state open --search "in:title \"$titulo\"" --json number --jq '.[0].number // empty')
+          if [ -n "$existente" ]; then
+            gh issue comment "$existente" --body-file corpo.md
+          else
+            gh issue create --title "$titulo" --body-file corpo.md
+          fi

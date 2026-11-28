@@ -39,3 +39,6 @@ Thumbs.db
 # Pacotes de deploy (nunca versionar)
 *.zip
 *.tgz
+
+# Relatório local do monitor (scripts/monitor.mjs)
+monitor-relatorio.md
