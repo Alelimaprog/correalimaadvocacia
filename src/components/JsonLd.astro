@@ -19,6 +19,7 @@ const { schema } = Astro.props;
  * (LegalService da home), em vez de repetir dados soltos em cada página.
  */
 const ORG_ID = 'https://correalimaadvocacia.com.br/#organization';
+const ORG_URL = 'https://correalimaadvocacia.com.br/';
 const PERSON_ID = 'https://correalimaadvocacia.com.br/o-escritorio/#alexandre-correa-lima';
 const PERSON_URL = 'https://correalimaadvocacia.com.br/o-escritorio/';
 type Obj = Record<string, unknown>;
@@ -30,14 +31,16 @@ function autor(a: Obj): Obj {
 function editor(p: Obj): Obj {
   if (p['@type'] !== 'Organization' && p['@type'] !== 'LegalService') return p;
   const { '@type': _t, '@id': _i, ...resto } = p;
-  return { '@type': 'LegalService', '@id': ORG_ID, ...resto };
+  return { '@type': 'LegalService', '@id': ORG_ID, url: ORG_URL, ...resto };
 }
 function normaliza(o: Obj): Obj {
   const out: Obj = { ...o };
   if (isObj(out.author)) out.author = autor(out.author);
   if (isObj(out.publisher)) out.publisher = editor(out.publisher);
   if (isObj(out.about) && out.about['@type'] === 'LegalService' && !out.about['@id']) {
-    out.about = { '@type': 'LegalService', '@id': ORG_ID, name: out.about.name, url: 'https://correalimaadvocacia.com.br/' };
+    out.about = { '@type': 'LegalService', '@id': ORG_ID, name: out.about.name, url: ORG_URL };
+  } else if (isObj(out.about) && out.about['@id'] === ORG_ID && !out.about.url) {
+    out.about = { ...out.about, url: ORG_URL };
   }
   const ehArea = typeof out.url === 'string' && out.url.includes('/areas-de-atuacao/');
   if (ehArea && isObj(out.provider) && (out['@type'] === 'Service' || out['@type'] === 'LegalService')) {

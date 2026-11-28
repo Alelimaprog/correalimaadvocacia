@@ -13,7 +13,7 @@ export function getStaticPaths() {
 const { page } = Astro.props;
 const url = `${site.url}/en/${page.slug}/`;
 const schema = [
-  { '@context': 'https://schema.org', '@type': 'Article', headline: page.h1, description: page.description, inLanguage: 'en', url, dateModified: '2026-11-28', author: { '@type': 'Person', name: 'Alexandre Corrêa Lima' }, publisher: { '@type': 'LegalService', name: site.name } },
+  { '@context': 'https://schema.org', '@type': 'Article', headline: page.h1, description: page.description, inLanguage: 'en', url, datePublished: '2026-11-28', dateModified: '2026-11-28', author: { '@type': 'Person', name: 'Alexandre Corrêa Lima' }, publisher: { '@type': 'LegalService', name: site.name } },
   { '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [
     { '@type': 'ListItem', position: 1, name: 'English', item: `${site.url}/en/` },
     { '@type': 'ListItem', position: 2, name: page.h1, item: url },

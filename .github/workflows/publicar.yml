@@ -40,6 +40,8 @@ jobs:
       - name: Atualizar índices do Banco Central (IPCA, INPC, IGP-M, Selic)
         run: node scripts/atualizar-indices.mjs
       - run: npm run build
+      - name: Validar dados estruturados (JSON-LD) do build
+        run: node scripts/validar-jsonld.mjs dist
       - name: Enviar para a hospedagem
         env:
           FTP_HOST: ${{ secrets.FTP_HOST }}
