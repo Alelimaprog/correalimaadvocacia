@@ -69,6 +69,19 @@ function contentDates() {
     '/areas-de-atuacao/homologacao-de-sentenca-estrangeira/',
     '/areas-de-atuacao/inventario-com-herdeiro-no-exterior/',
   ]) map[pth] = '2026-11-25';
+  // Páginas criadas em 28/11/2026 (ferramentas, área marítima e seção em inglês).
+  const novas = [
+    '/ferramentas/',
+    '/ferramentas/calculadora-de-demurrage/',
+    '/ferramentas/simulador-de-tributos-na-importacao/',
+    '/ferramentas/validador-de-conteiner/',
+    '/ferramentas/calculadora-de-cubagem/',
+    '/ferramentas/atualizacao-de-divida/',
+    '/ferramentas/calculadora-de-condominio-atrasado/',
+    '/areas-de-atuacao/direito-maritimo-portuario/',
+    '/en/',
+  ];
+  for (const pth of novas) map[pth] = '2026-11-28';
   return map;
 }
 
@@ -95,7 +108,8 @@ function singleSitemap() {
           let priority = '0.7';
           if (path === '/') priority = '1.0';
           else if (path.startsWith('/areas-de-atuacao/')) priority = '0.8';
-          urls.push({ loc, priority, lastmod: dates[path] });
+          const prefixo = ['/areas-de-atuacao/direito-maritimo-portuario/', '/en/'].some((x) => path.startsWith(x)) ? '2026-11-28' : undefined;
+          urls.push({ loc, priority, lastmod: dates[path] ?? prefixo });
         }
         // Home sempre primeiro; depois ordem alfabética estável.
         urls.sort((a, b) => (a.loc === SITE + '/' ? -1 : b.loc === SITE + '/' ? 1 : a.loc.localeCompare(b.loc)));
