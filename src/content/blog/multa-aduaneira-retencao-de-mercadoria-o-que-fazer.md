@@ -27,7 +27,7 @@ Toda retenção ou autuação aduaneira tem um fundamento formal: divergência d
 3. Reúna fatura comercial, *packing list*, conhecimento de transporte, comprovantes de pagamento ao exterior e ficha técnica do produto.
 4. Se a exigência é **diferença de tributo**, avalie pagar e discutir depois, ou oferecer garantia para liberar (IN SRF 680/2006, art. 48, §1º).
 5. Se há **termo de retenção** ou **auto de perdimento**, o prazo é curto (20 dias no perdimento): não espere a próxima exigência para envolver o advogado.
-6. Peça ao terminal o extrato de **armazenagem** e ao armador as condições de **demurrage**, porque esse custo entra na decisão de garantir ou litigar.
+6. Peça ao terminal o extrato de **armazenagem** e ao armador as condições de **demurrage**, porque esse custo entra na decisão de garantir ou litigar. A [calculadora de demurrage](/ferramentas/calculadora-de-demurrage/) ajuda a projetar esse valor.
 
 ## Quanto tempo a mercadoria pode ficar retida?
 

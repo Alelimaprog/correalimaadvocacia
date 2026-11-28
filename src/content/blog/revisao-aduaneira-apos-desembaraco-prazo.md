@@ -17,7 +17,7 @@ Direito Aduaneiro-Tributário
 
 08/11/2026•7 min de leitura•Por [Alexandre Corrêa Lima](/o-escritorio/#alexandre-correa-lima)
 
-Muitos importadores acreditam que, uma vez desembaraçada a mercadoria, a operação está encerrada. Não está. Por até cinco anos, a Receita Federal pode reabrir a declaração de importação, rever a classificação fiscal, o valor declarado ou o benefício aplicado e lançar a diferença de tributos com multa. Isso vale até para mercadorias que passaram por canal vermelho. Este texto explica como funciona a revisão aduaneira, quais são as consequências e como se preparar.
+Muitos importadores acreditam que, uma vez desembaraçada a mercadoria, a operação está encerrada. Não está. Por até cinco anos, a Receita Federal pode reabrir a declaração de importação, rever a classificação fiscal, o valor declarado ou o benefício aplicado e lançar a diferença de tributos com multa. Para ver quanto cada ponto de alíquota pesa no custo final, use o [simulador de tributos na importação](/ferramentas/simulador-de-tributos-na-importacao/). Isso vale até para mercadorias que passaram por canal vermelho. Este texto explica como funciona a revisão aduaneira, quais são as consequências e como se preparar.
 
 ## O que é a revisão aduaneira
 

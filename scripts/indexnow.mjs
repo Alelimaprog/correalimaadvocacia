@@ -110,7 +110,10 @@ function post(payload) {
   const keyLocation = `https://${HOST}/${keyInfo.file}`;
   const all = await collectUrls();
   const cache = await loadCache();
-  const toSend = ALL ? all : all.filter((u) => !cache.has(u));
+  // INDEXNOW_URLS (lista separada por vírgula ou quebra de linha) restringe o envio
+  // às URLs da publicação — usado no GitHub Actions, onde não há cache local.
+  const only = (process.env.INDEXNOW_URLS || '').split(/[\s,]+/).filter(Boolean);
+  const toSend = only.length ? all.filter((u) => only.includes(u)) : ALL ? all : all.filter((u) => !cache.has(u));
 
   console.log(`IndexNow · host=${HOST}`);
   console.log(`Chave: ${keyInfo.key}  (keyLocation: ${keyLocation})`);

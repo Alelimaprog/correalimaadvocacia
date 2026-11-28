@@ -5,12 +5,20 @@
  * §5º (divórcio consensual) e para a competência exclusiva do art. 23.
  */
 import BaseLayout from '@/layouts/BaseLayout.astro';
+import JsonLd from '@/components/JsonLd.astro';
 import Container from '@/components/Container.astro';
 import Breadcrumb from '@/components/Breadcrumb.astro';
 import { site, whatsappHrefForPath } from '@/lib/site.config';
 
 const canonical = `${site.url.replace(/\/$/, '')}/ferramentas/preciso-homologar-sentenca-estrangeira/`;
 const waHref = whatsappHrefForPath('/ferramentas/preciso-homologar-sentenca-estrangeira/');
+const toolSchema = [
+  { '@context': 'https://schema.org', '@type': 'WebApplication', name: 'Preciso homologar minha decisão estrangeira?', description: 'Descubra se a sua decisão estrangeira (divórcio, pensão, guarda, sentença comercial) precisa de homologação no STJ ou se basta averbar no cartório.', url: 'https://correalimaadvocacia.com.br/ferramentas/preciso-homologar-sentenca-estrangeira/', applicationCategory: 'BusinessApplication', operatingSystem: 'Qualquer (navegador)', inLanguage: 'pt-BR', isAccessibleForFree: true, offers: { '@type': 'Offer', price: '0', priceCurrency: 'BRL' }, author: { '@type': 'Person', name: 'Alexandre Corrêa Lima' } },
+  { '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Início', item: 'https://correalimaadvocacia.com.br/' },
+    { '@type': 'ListItem', position: 2, name: 'Ferramentas', item: 'https://correalimaadvocacia.com.br/ferramentas/' },
+    { '@type': 'ListItem', position: 3, name: 'Preciso homologar minha decisão estrangeira?', item: 'https://correalimaadvocacia.com.br/ferramentas/preciso-homologar-sentenca-estrangeira/' } ] },
+];
 ---
 
 <BaseLayout
@@ -18,6 +26,7 @@ const waHref = whatsappHrefForPath('/ferramentas/preciso-homologar-sentenca-estr
   description="Descubra se a sua decisão estrangeira (divórcio, pensão, guarda, sentença comercial) precisa de homologação no STJ ou se basta averbar no cartório."
   canonical={canonical}
 >
+  <JsonLd schema={toolSchema} />
   <main id="conteudo-principal" class="tool" data-tool="preciso-homologar">
     <Container>
       <Breadcrumb items={[{ label: 'Início', href: '/' }, { label: 'Ferramentas', href: '/ferramentas/' }, { label: 'Preciso homologar?' }]} />

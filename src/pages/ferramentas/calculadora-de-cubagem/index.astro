@@ -1,0 +1,75 @@
+---
+import ToolLayout from '@/components/ToolLayout.astro';
+---
+
+<ToolLayout
+  slug="calculadora-de-cubagem"
+  title="Calculadora de cubagem e peso cubado (aéreo, rodoviário, marítimo)"
+  description="Calcule a cubagem em m³, o peso cubado no aéreo e no rodoviário, as unidades de frete marítimo (W/M) e a ocupação de contêiner de 20, 40 e 40 HC."
+  h1="Calculadora de cubagem e peso cubado"
+  lead="Informe as medidas e a quantidade de volumes para saber a cubagem, o peso que a transportadora vai cobrar e quanto de um contêiner a carga ocupa."
+  crumb="Calculadora de cubagem"
+  categoria="Calculadora · logística"
+  atualizado="2026-11-28"
+  area="empresarial"
+  premissas={[
+    'Cubagem (m³) = comprimento × largura × altura (em metros) × número de volumes.',
+    'Peso cubado aéreo: fator usual de 1:6.000 (1 m³ = 166,67 kg). Peso cubado rodoviário: referência usual de 300 kg/m³. O peso taxável é o maior entre o peso real e o cubado.',
+    'Marítimo de carga fracionada (LCL): cobrança por W/M, ou seja, 1 tonelada ou 1 m³, o que for maior.',
+    'Ocupação de contêiner calculada sobre volumes internos de referência: 20’ dry 33,2 m³; 40’ dry 67,7 m³; 40’ HC 76,3 m³.',
+  ]}
+  fontes={[
+    { label: 'IATA — regra de volume para carga aérea (fator 6.000 cm³/kg)', href: 'https://www.iata.org/en/programs/cargo/' },
+    { label: 'Volumes internos: especificações técnicas publicadas pelos armadores (variam por fabricante e série).' },
+  ]}
+  limitacoes={[
+    'Cada transportadora pode usar fator de cubagem próprio. Confira na proposta comercial.',
+    'A ocupação de contêiner é volumétrica; não considera empilhamento, formato dos volumes, paletização nem o limite de peso bruto do contêiner.',
+  ]}
+>
+  <form class="calc-form" id="f" novalidate>
+    <fieldset>
+      <legend>Medidas de cada volume (cm)</legend>
+      <label>Comprimento <input type="text" inputmode="decimal" name="c" placeholder="ex.: 120" required /></label>
+      <label>Largura <input type="text" inputmode="decimal" name="l" placeholder="ex.: 100" required /></label>
+      <label>Altura <input type="text" inputmode="decimal" name="a" placeholder="ex.: 90" required /></label>
+      <label>Quantidade de volumes <input type="text" inputmode="numeric" name="v" value="1" required /></label>
+      <label>Peso bruto total (kg) <input type="text" inputmode="decimal" name="p" value="0" /></label>
+    </fieldset>
+    <button class="btn btn--primary btn--lg" type="submit">Calcular</button>
+  </form>
+  <div class="calc-erros" id="erros" hidden role="alert"></div>
+  <div class="calc-result" id="res" hidden aria-live="polite">
+    <p class="result-tag">Resultado</p>
+    <h2>Cubagem</h2>
+    <p class="big" id="m3"></p>
+    <table class="calc-table"><tbody id="linhas"></tbody></table>
+  </div>
+  <section class="calc-explica" slot="explica">
+    <h2>Cubagem e responsabilidade no transporte</h2>
+    <p>Divergência entre peso e volume declarados e os medidos na origem ou no terminal costuma gerar cobranças adicionais de frete e, na importação, pode chamar atenção na conferência aduaneira. Mantenha o packing list coerente com a fatura comercial e com o conhecimento de embarque. Veja <a href="/blog/clausulas-importantes-contratos-de-importacao/">cláusulas importantes nos contratos de importação</a> e <a href="/blog/incoterms-responsabilidade-contratual-importadores/">Incoterms e responsabilidade</a>.</p>
+  </section>
+</ToolLayout>
+
+<script>
+  import { cubagem, num } from '@/lib/calc/comex.js';
+  const f = document.getElementById('f') as HTMLFormElement;
+  const n2 = (n: number, d = 2) => n.toLocaleString('pt-BR', { minimumFractionDigits: d, maximumFractionDigits: d });
+  f.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const g = (k: string) => num((f.elements.namedItem(k) as HTMLInputElement).value);
+    const r = cubagem({ comprimento: g('c'), largura: g('l'), altura: g('a'), volumes: g('v'), pesoBrutoKg: Number.isNaN(g('p')) ? 0 : g('p') });
+    const erros = document.getElementById('erros')!, res = document.getElementById('res')!;
+    if (!r.ok) { erros.innerHTML = '<strong>Confira os dados:</strong><ul>' + r.erros.map((x: string) => `<li>${x}</li>`).join('') + '</ul>'; erros.hidden = false; res.hidden = true; return; }
+    erros.hidden = true;
+    document.getElementById('m3')!.textContent = n2(r.m3, 3) + ' m³';
+    const L: [string, string][] = [
+      ['Peso cubado aéreo (1:6.000)', n2(r.pesoCubadoAereo) + ' kg'], ['Peso taxável aéreo', n2(r.pesoTaxavelAereo) + ' kg'],
+      ['Peso cubado rodoviário (300 kg/m³)', n2(r.pesoCubadoRodoviario) + ' kg'], ['Peso taxável rodoviário', n2(r.pesoTaxavelRodoviario) + ' kg'],
+      ['Unidades de frete marítimo LCL (W/M)', n2(r.unidadesFreteMaritimo, 3)],
+      ['Ocupação de um contêiner 20’', n2(r.ocupacao.c20) + '%'], ['Ocupação de um contêiner 40’', n2(r.ocupacao.c40) + '%'], ['Ocupação de um contêiner 40’ HC', n2(r.ocupacao.c40hc) + '%'],
+    ];
+    document.getElementById('linhas')!.innerHTML = L.map(([a, b]) => `<tr><td>${a}</td><td class="n">${b}</td></tr>`).join('');
+    res.hidden = false;
+  });
+</script>

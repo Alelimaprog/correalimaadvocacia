@@ -1,0 +1,207 @@
+---
+import ToolLayout from '@/components/ToolLayout.astro';
+---
+
+<ToolLayout
+  slug="calculadora-de-demurrage"
+  title="Calculadora de demurrage e detention de contêiner (free time)"
+  description="Calcule demurrage e detention de contêiner: free time, diárias progressivas por faixa, número de contêineres e conversão pelo câmbio. Grátis, sem cadastro."
+  h1="Calculadora de demurrage e detention"
+  lead="Confira a cobrança de sobre-estadia do contêiner. Informe as datas ou o número de dias, o free time e a tabela de diárias do armador ou do agente de cargas, com uma faixa por patamar de valor."
+  crumb="Calculadora de demurrage"
+  categoria="Calculadora · comércio exterior"
+  atualizado="2026-11-28"
+  premissas={[
+    'O free time é descontado do total de dias. O 1º dia após o free time é o dia 1 da primeira faixa de cobrança.',
+    'Cada faixa vale até o dia indicado (contado a partir do fim do free time). A última faixa pode ficar sem limite; se ela tiver limite e os dias passarem dele, a calculadora aplica o valor da última faixa ao excedente e avisa.',
+    'Contagem em dias corridos. Por padrão, o dia de início (descarga ou retirada) e o dia da devolução contam como dias inteiros, que é a regra mais comum nas tabelas. Desmarque a opção se o seu contrato contar diferente.',
+    'A conversão para reais usa a taxa que você informar. O botão de PTAX consulta a cotação de venda publicada pelo Banco Central para a data escolhida.',
+  ]}
+  fontes={[
+    { label: 'Banco Central do Brasil — PTAX (API Olinda, dados abertos)', href: 'https://dadosabertos.bcb.gov.br/dataset/dolar-americano-usd-todos-os-boletins-diarios' },
+    { label: 'ANTAQ — Resolução ANTAQ nº 62/2021 (direitos e deveres dos usuários e transportadores marítimos)', href: 'https://www.gov.br/antaq/' },
+    { label: 'Tabela de demurrage/detention e termo de responsabilidade do contêiner do seu armador ou NVOCC (fonte primária do valor).' },
+  ]}
+  limitacoes={[
+    'A calculadora não conhece a tabela do seu armador: os valores, o início da contagem e o free time vêm do contrato, do conhecimento de embarque (BL) e do termo de responsabilidade.',
+    'Não considera franquias negociadas por volume, isenções por atraso causado pelo próprio transportador ou terminal, nem descontos comerciais.',
+    'O câmbio aplicável (data do vencimento, da emissão da fatura ou do pagamento) depende do contrato.',
+  ]}
+>
+  <form class="calc-form" id="f" novalidate>
+    <fieldset>
+      <legend>Período de uso do contêiner</legend>
+      <label>Início da contagem <small>descarga no porto (demurrage) ou retirada do terminal (detention)</small>
+        <input type="date" name="inicio" />
+      </label>
+      <label>Devolução do contêiner vazio <small>ou data de hoje, se ainda não devolveu</small>
+        <input type="date" name="fim" />
+      </label>
+      <label>Ou informe direto o total de dias <small>deixe em branco para usar as datas</small>
+        <input type="text" inputmode="numeric" name="dias" placeholder="ex.: 30" />
+      </label>
+      <label class="chk"><input type="checkbox" name="inclusivo" checked /> Contar o dia de início e o dia da devolução como dias inteiros</label>
+    </fieldset>
+
+    <fieldset>
+      <legend>Free time e quantidade</legend>
+      <label>Free time (dias livres)
+        <input type="text" inputmode="numeric" name="free" value="7" required />
+      </label>
+      <label>Quantidade de contêineres com a mesma tabela
+        <input type="text" inputmode="numeric" name="qtd" value="1" required />
+      </label>
+    </fieldset>
+
+    <fieldset id="faixas">
+      <legend>Tabela de diárias (por contêiner)</legend>
+      <p style="grid-column:1/-1;font-size:var(--text-sm);color:var(--color-text-muted);margin:0">Exemplo de tabela progressiva: do 1º ao 7º dia de cobrança, US$ 100; do 8º ao 14º, US$ 150; a partir do 15º, US$ 200. Deixe o “até o dia” da última faixa em branco.</p>
+      <div class="faixa-row" data-faixa>
+        <label>Até o dia de cobrança <input type="text" inputmode="numeric" name="ate" value="7" /></label>
+        <label>Valor por dia <input type="text" inputmode="decimal" name="valor" value="100" /></label>
+        <button type="button" class="btn btn--secondary" data-rm aria-label="Remover faixa">Remover</button>
+      </div>
+      <div class="faixa-row" data-faixa>
+        <label>Até o dia de cobrança <input type="text" inputmode="numeric" name="ate" value="14" /></label>
+        <label>Valor por dia <input type="text" inputmode="decimal" name="valor" value="150" /></label>
+        <button type="button" class="btn btn--secondary" data-rm aria-label="Remover faixa">Remover</button>
+      </div>
+      <div class="faixa-row" data-faixa>
+        <label>Até o dia de cobrança <input type="text" inputmode="numeric" name="ate" value="" placeholder="sem limite" /></label>
+        <label>Valor por dia <input type="text" inputmode="decimal" name="valor" value="200" /></label>
+        <button type="button" class="btn btn--secondary" data-rm aria-label="Remover faixa">Remover</button>
+      </div>
+      <button type="button" class="btn btn--secondary" id="add" style="justify-self:start">+ Adicionar faixa</button>
+    </fieldset>
+
+    <fieldset>
+      <legend>Moeda e conversão (opcional)</legend>
+      <label>Moeda da tabela
+        <select name="moeda"><option value="US$">Dólar (US$)</option><option value="€">Euro (€)</option><option value="R$">Real (R$)</option></select>
+      </label>
+      <label>Taxa de câmbio para reais <small>deixe em branco para não converter</small>
+        <input type="text" inputmode="decimal" name="cambio" placeholder="ex.: 5,4321" />
+      </label>
+      <label>Data para buscar a PTAX (dólar)
+        <input type="date" name="dptax" />
+      </label>
+      <button type="button" class="btn btn--secondary" id="ptax" style="align-self:end">Buscar PTAX de venda</button>
+      <p id="ptaxmsg" role="status" aria-live="polite" style="grid-column:1/-1;font-size:var(--text-xs);color:var(--color-text-muted);margin:0"></p>
+    </fieldset>
+
+    <button class="btn btn--primary btn--lg" type="submit">Calcular</button>
+  </form>
+
+  <div class="calc-erros" id="erros" hidden role="alert"></div>
+
+  <div class="calc-result" id="res" hidden aria-live="polite">
+    <p class="result-tag" id="tag">Resultado</p>
+    <h2>Valor estimado da cobrança</h2>
+    <p class="big" id="total"></p>
+    <p id="resumo"></p>
+    <table class="calc-table">
+      <thead><tr><th>Dias de cobrança</th><th class="n">Dias</th><th class="n">Diária</th><th class="n">Subtotal por contêiner</th></tr></thead>
+      <tbody id="linhas"></tbody>
+      <tfoot><tr><td colspan="3">Total por contêiner</td><td class="n" id="porc"></td></tr></tfoot>
+    </table>
+    <p id="aviso"></p>
+  </div>
+
+  <section class="calc-explica" slot="explica" aria-labelledby="ex-t">
+    <h2 id="ex-t">Demurrage e detention: o que conferir antes de pagar</h2>
+    <h3>Qual a diferença entre demurrage e detention?</h3>
+    <p>As duas palavras tratam do uso do contêiner além do prazo livre (free time). Na prática do mercado, <strong>demurrage</strong> costuma designar o tempo em que o contêiner cheio fica no porto ou terminal, e <strong>detention</strong>, o tempo em que ele fica com o importador fora do terminal até voltar vazio ao depot. Muitos armadores somam as duas num prazo único (“combined free time”). O que vale é o que está no seu contrato e no termo de responsabilidade.</p>
+    <h3>O que costuma gerar cobrança indevida</h3>
+    <p>Início da contagem diferente do previsto, free time menor que o negociado, tabela de outra data, câmbio de data diferente da contratada, dias em que o depot não recebia contêineres e atraso causado pelo próprio terminal ou pelo transportador. Também vale guardar os comprovantes de agendamento e de tentativa de devolução.</p>
+    <h3>E quando a carga fica retida pela Receita Federal?</h3>
+    <p>Quando a mercadoria é retida na conferência aduaneira, o contêiner continua parado e a diária continua correndo. Por isso, em casos de <a href="/areas-de-atuacao/direito-aduaneiro-tributario/retencao-de-mercadorias/">retenção de mercadorias</a>, vale pedir logo a desunitização (a retirada da carga do contêiner) para interromper a cobrança, além de agir sobre a retenção em si. Veja também <a href="/blog/mercadoria-retida-porto-de-santos-como-liberar/">mercadoria retida no Porto de Santos</a> e <a href="/blog/canal-vermelho-canal-cinza-importacao-prazo/">prazos do canal vermelho e do canal cinza</a>.</p>
+    <h3>A cobrança prescreve?</h3>
+    <p>Sim. O prazo depende da natureza do contrato e do tipo de transporte, e o Superior Tribunal de Justiça já decidiu a matéria. Se a fatura é antiga, confirme o prazo antes de negociar.</p>
+    <p>Outras ferramentas: <a href="/ferramentas/simulador-de-tributos-na-importacao/">simulador de tributos na importação</a>, <a href="/ferramentas/validador-de-conteiner/">validador de número de contêiner</a> e <a href="/ferramentas/calculadora-de-cubagem/">calculadora de cubagem</a>.</p>
+  </section>
+</ToolLayout>
+
+<script>
+  import { demurrage, num, diasCorridosInclusivos } from '@/lib/calc/comex.js';
+  const f = document.getElementById('f') as HTMLFormElement;
+  const fx = document.getElementById('faixas')!;
+  const add = document.getElementById('add')!;
+  const brl = (n: number, m: string) => (m === 'R$' ? 'R$ ' : m + ' ') + n.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+
+  fx.addEventListener('click', (e) => {
+    const t = e.target as HTMLElement;
+    if (t.matches('[data-rm]') && fx.querySelectorAll('[data-faixa]').length > 1) t.closest('[data-faixa]')!.remove();
+  });
+  add.addEventListener('click', () => {
+    const rows = fx.querySelectorAll('[data-faixa]');
+    if (rows.length >= 8) return;
+    const novo = rows[rows.length - 1].cloneNode(true) as HTMLElement;
+    novo.querySelectorAll('input').forEach((i) => (i.value = ''));
+    add.before(novo);
+  });
+
+  const hoje = new Date().toISOString().slice(0, 10);
+  (f.elements.namedItem('dptax') as HTMLInputElement).value = hoje;
+
+  document.getElementById('ptax')!.addEventListener('click', async () => {
+    const msg = document.getElementById('ptaxmsg')!;
+    const d = (f.elements.namedItem('dptax') as HTMLInputElement).value;
+    if (!d) { msg.textContent = 'Escolha a data.'; return; }
+    const [y, m, dd] = d.split('-');
+    msg.textContent = 'Consultando o Banco Central…';
+    try {
+      // Busca até 7 dias para trás (fins de semana e feriados não têm boletim).
+      const ini = new Date(Date.UTC(+y, +m - 1, +dd - 7));
+      const fmt = (x: Date) => `${String(x.getUTCMonth() + 1).padStart(2, '0')}-${String(x.getUTCDate()).padStart(2, '0')}-${x.getUTCFullYear()}`;
+      const url = `https://olinda.bcb.gov.br/olinda/servico/PTAX/versao/v1/odata/CotacaoDolarPeriodo(dataInicial=@i,dataFinalCotacao=@f)?@i='${fmt(ini)}'&@f='${m}-${dd}-${y}'&$format=json&$select=cotacaoVenda,dataHoraCotacao`;
+      const r = await fetch(url);
+      const j = await r.json();
+      const v = j.value?.[j.value.length - 1];
+      if (!v) throw new Error('sem cotação');
+      (f.elements.namedItem('cambio') as HTMLInputElement).value = String(v.cotacaoVenda).replace('.', ',');
+      msg.textContent = `PTAX de venda de ${v.dataHoraCotacao.slice(0, 10).split('-').reverse().join('/')}: ${String(v.cotacaoVenda).replace('.', ',')} (fonte: Banco Central).`;
+    } catch {
+      msg.textContent = 'Não foi possível consultar o Banco Central agora. Digite a taxa manualmente.';
+    }
+  });
+
+  f.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const g = (n: string) => (f.elements.namedItem(n) as HTMLInputElement).value;
+    const errosEl = document.getElementById('erros')!;
+    const res = document.getElementById('res')!;
+    const erros: string[] = [];
+    let dias: number;
+    if (g('dias').trim() !== '') {
+      dias = num(g('dias'));
+      if (!Number.isInteger(dias)) erros.push('Total de dias: use um número inteiro.');
+    } else {
+      const inc = (f.elements.namedItem('inclusivo') as HTMLInputElement).checked;
+      dias = diasCorridosInclusivos(g('inicio'), g('fim'));
+      if (Number.isNaN(dias)) erros.push('Informe as duas datas (a devolução não pode ser anterior ao início) ou o total de dias.');
+      else if (!inc) dias = Math.max(0, dias - 1);
+    }
+    const faixas = [...fx.querySelectorAll('[data-faixa]')].map((row) => {
+      const ate = (row.querySelector('[name=ate]') as HTMLInputElement).value.trim();
+      return { ate: ate === '' ? null : num(ate), valor: num((row.querySelector('[name=valor]') as HTMLInputElement).value) };
+    });
+    const cambioTxt = g('cambio').trim();
+    const r = demurrage({ dias, freeTime: num(g('free')), faixas, conteineres: num(g('qtd')), cambio: cambioTxt ? num(cambioTxt) : undefined });
+    const todos = erros.concat(r.ok ? [] : r.erros);
+    if (todos.length) {
+      errosEl.innerHTML = '<strong>Confira os dados:</strong><ul>' + todos.map((x) => `<li>${x}</li>`).join('') + '</ul>';
+      errosEl.hidden = false; res.hidden = true; return;
+    }
+    errosEl.hidden = true;
+    const m = g('moeda');
+    document.getElementById('total')!.textContent = brl(r.total, m) + (r.totalConvertido != null && m !== 'R$' ? ` ≈ ${brl(r.totalConvertido, 'R$')}` : '');
+    document.getElementById('resumo')!.textContent = `${r.dias} dias de uso, ${r.freeTime} dias de free time, ${r.diasCobraveis} dias cobráveis, ${num(g('qtd'))} contêiner(es).`;
+    document.getElementById('linhas')!.innerHTML = r.detalhe.length
+      ? r.detalhe.map((d: any) => `<tr><td>${d.de}º ao ${d.ate}º${d.extrapolado ? ' (além da última faixa)' : ''}</td><td class="n">${d.dias}</td><td class="n">${brl(d.valorDia, m)}</td><td class="n">${brl(d.subtotal, m)}</td></tr>`).join('')
+      : '<tr><td colspan="4">Dentro do free time: não há dias cobráveis.</td></tr>';
+    document.getElementById('porc')!.textContent = brl(r.totalPorConteiner, m);
+    document.getElementById('aviso')!.textContent = r.detalhe.some((d: any) => d.extrapolado) ? 'Atenção: os dias passaram do limite da última faixa informada; o valor dela foi aplicado ao excedente. Confira na tabela do armador.' : '';
+    res.hidden = false;
+    res.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+</script>

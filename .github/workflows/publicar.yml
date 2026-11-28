@@ -1,0 +1,59 @@
+# Publicação do site na HostGator por FTP (segredos FTP_HOST, FTP_USER, FTP_PASSWORD
+# e variável FTP_REMOTE_DIR em Settings > Secrets and variables > Actions).
+#
+# Gatilho: push no branch `publicar`. O fluxo de trabalho é:
+#   1. desenvolver e testar no branch-fonte `fonte-2026-11`;
+#   2. marcar a versão com tag `publicado-AAAA-MM-DD-N`;
+#   3. `git push origin fonte-2026-11:publicar` publica exatamente esse commit.
+# Também pode ser disparado à mão em Actions > Publicar site > Run workflow.
+# O deploy é incremental (manifesto de hashes) e NÃO apaga arquivos do servidor
+# (o --prune não é usado aqui).
+name: Publicar site
+
+on:
+  push:
+    branches: [publicar]
+  workflow_dispatch:
+    inputs:
+      simular:
+        description: 'Só listar o que subiria, sem enviar'
+        type: boolean
+        default: false
+
+concurrency:
+  group: publicar
+  cancel-in-progress: false
+
+jobs:
+  publicar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - name: Testes das calculadoras
+        run: npm test
+      - run: npm run build
+      - name: Enviar para a hospedagem
+        env:
+          FTP_HOST: ${{ secrets.FTP_HOST }}
+          FTP_USER: ${{ secrets.FTP_USER }}
+          FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
+          FTP_REMOTE_DIR: ${{ vars.FTP_REMOTE_DIR }}
+        run: |
+          if [ "${{ inputs.simular }}" = "true" ]; then
+            npm run deploy -- --dry-run
+          else
+            npm run deploy
+          fi
+      - name: Avisar buscadores (IndexNow) sobre as URLs desta publicação
+        if: ${{ inputs.simular != true }}
+        continue-on-error: true
+        run: |
+          if [ -s scripts/indexnow-urls.txt ]; then
+            INDEXNOW_URLS="$(cat scripts/indexnow-urls.txt)" node scripts/indexnow.mjs
+          fi

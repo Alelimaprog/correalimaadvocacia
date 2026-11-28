@@ -1,0 +1,69 @@
+---
+import ToolLayout from '@/components/ToolLayout.astro';
+---
+
+<ToolLayout
+  slug="validador-de-conteiner"
+  title="Validador de número de contêiner (ISO 6346, dígito verificador)"
+  description="Confira se o número do contêiner está correto: valida o formato e calcula o dígito verificador pela norma ISO 6346. Aceita vários números de uma vez."
+  h1="Validador de número de contêiner"
+  lead="Um dígito trocado no número do contêiner pode atrasar a presença de carga, o agendamento e a devolução. Cole um ou vários números (um por linha) e confira o dígito verificador."
+  crumb="Validador de contêiner"
+  categoria="Validador · logística"
+  atualizado="2026-11-28"
+  premissas={[
+    'Formato ISO 6346: 3 letras do código do proprietário, 1 letra de categoria (U = contêiner de carga, J = equipamento destacável, Z = trailer ou chassi), 6 algarismos de série e 1 dígito verificador.',
+    'O dígito verificador é calculado pelo método da norma: cada letra tem um valor numérico (A = 10, pulando os múltiplos de 11), cada posição é multiplicada por 2 elevado à sua ordem (0 a 9), a soma é dividida por 11 e o resto (10 vira 0) é o dígito.',
+    'Espaços, hifens e pontos são ignorados. Se você digitar só os 10 primeiros caracteres, a ferramenta calcula o dígito.',
+  ]}
+  fontes={[
+    { label: 'ISO 6346 — Freight containers: coding, identification and marking', href: 'https://www.iso.org/standard/83558.html' },
+    { label: 'BIC — Bureau International des Containers (registro dos códigos de proprietário)', href: 'https://www.bic-code.org/' },
+  ]}
+  limitacoes={[
+    'Um dígito correto prova apenas que o número é coerente. Não confirma que o contêiner existe, quem é o dono nem onde ele está.',
+    'A consulta do código do proprietário no registro BIC é feita no site do BIC.',
+  ]}
+>
+  <form class="calc-form" id="f" novalidate>
+    <fieldset>
+      <legend>Números de contêiner</legend>
+      <label style="grid-column:1/-1">Um por linha
+        <textarea name="lista" rows="5" style="font:inherit;font-size:var(--text-md);padding:.6rem .75rem;border:1px solid #b9bcbf;border-radius:6px;font-family:ui-monospace,monospace" placeholder="CSQU3054383"></textarea>
+      </label>
+    </fieldset>
+    <button class="btn btn--primary btn--lg" type="submit">Validar</button>
+  </form>
+  <div class="calc-erros" id="erros" hidden role="alert"></div>
+  <div class="calc-result" id="res" hidden aria-live="polite">
+    <p class="result-tag">Resultado</p>
+    <table class="calc-table">
+      <thead><tr><th>Informado</th><th>Situação</th><th>Número correto</th><th>Categoria</th></tr></thead>
+      <tbody id="linhas"></tbody>
+    </table>
+  </div>
+  <section class="calc-explica" slot="explica">
+    <h2>Por que o número do contêiner importa no processo de importação</h2>
+    <p>O número do contêiner amarra o conhecimento de embarque, a presença de carga, a declaração de importação, o agendamento no terminal e o termo de devolução ao armador. Um número errado em qualquer desses documentos pode travar a liberação ou gerar <a href="/ferramentas/calculadora-de-demurrage/">demurrage</a> por dias em que o contêiner já poderia ter sido devolvido. Se a carga ficou parada por divergência documental, veja <a href="/blog/mercadoria-retida-receita-federal-o-que-fazer/">mercadoria retida pela Receita: o que fazer</a>.</p>
+  </section>
+</ToolLayout>
+
+<script>
+  import { validarConteiner } from '@/lib/calc/comex.js';
+  const f = document.getElementById('f') as HTMLFormElement;
+  const esc = (s: string) => s.replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]!);
+  f.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const itens = (f.elements.namedItem('lista') as HTMLTextAreaElement).value.split(/\n/).map((s) => s.trim()).filter(Boolean).slice(0, 200);
+    const erros = document.getElementById('erros')!, res = document.getElementById('res')!;
+    if (!itens.length) { erros.textContent = 'Digite ao menos um número de contêiner.'; erros.hidden = false; res.hidden = true; return; }
+    erros.hidden = true;
+    document.getElementById('linhas')!.innerHTML = itens.map((x) => {
+      const r = validarConteiner(x);
+      if (!r.formato) return `<tr><td>${esc(x)}</td><td>Formato inválido</td><td>—</td><td>${r.motivo}</td></tr>`;
+      const sit = r.ok === null ? `Dígito calculado: ${r.digitoCalculado}` : r.ok ? 'Válido' : `Dígito incorreto (informado ${r.digitoInformado}, correto ${r.digitoCalculado})`;
+      return `<tr><td>${esc(x)}</td><td>${sit}</td><td><code>${r.normalizado}</code></td><td>${r.categoria}</td></tr>`;
+    }).join('');
+    res.hidden = false;
+  });
+</script>

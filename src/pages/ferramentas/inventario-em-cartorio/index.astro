@@ -5,6 +5,7 @@
  * JS mínimo e acessível. Encerra com CTA contextual do cluster de inventário.
  */
 import BaseLayout from '@/layouts/BaseLayout.astro';
+import JsonLd from '@/components/JsonLd.astro';
 import Container from '@/components/Container.astro';
 import Breadcrumb from '@/components/Breadcrumb.astro';
 import { site } from '@/lib/site.config';
@@ -12,6 +13,13 @@ import { whatsappHrefForPath } from '@/lib/site.config';
 
 const canonical = `${site.url.replace(/\/$/, '')}/ferramentas/inventario-em-cartorio/`;
 const waHref = whatsappHrefForPath('/ferramentas/inventario-em-cartorio/');
+const toolSchema = [
+  { '@context': 'https://schema.org', '@type': 'WebApplication', name: 'Meu inventário pode ser feito em cartório?', description: 'Responda 3 perguntas e veja se o inventário pode ser feito em cartório, inclusive com menor ou testamento (Res. CNJ 571/2024), ou se é judicial.', url: 'https://correalimaadvocacia.com.br/ferramentas/inventario-em-cartorio/', applicationCategory: 'BusinessApplication', operatingSystem: 'Qualquer (navegador)', inLanguage: 'pt-BR', isAccessibleForFree: true, offers: { '@type': 'Offer', price: '0', priceCurrency: 'BRL' }, author: { '@type': 'Person', name: 'Alexandre Corrêa Lima' } },
+  { '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Início', item: 'https://correalimaadvocacia.com.br/' },
+    { '@type': 'ListItem', position: 2, name: 'Ferramentas', item: 'https://correalimaadvocacia.com.br/ferramentas/' },
+    { '@type': 'ListItem', position: 3, name: 'Meu inventário pode ser feito em cartório?', item: 'https://correalimaadvocacia.com.br/ferramentas/inventario-em-cartorio/' } ] },
+];
 ---
 
 <BaseLayout
@@ -19,6 +27,7 @@ const waHref = whatsappHrefForPath('/ferramentas/inventario-em-cartorio/');
   description="Responda 3 perguntas e veja se o inventário pode ser feito em cartório, inclusive com menor ou testamento (Res. CNJ 571/2024), ou se é judicial."
   canonical={canonical}
 >
+  <JsonLd schema={toolSchema} />
   <main id="conteudo-principal" class="tool" data-tool="inventario-em-cartorio">
     <Container>
       <Breadcrumb items={[{ label: 'Início', href: '/' }, { label: 'Ferramentas', href: '/ferramentas/' }, { label: 'Inventário em cartório' }]} />

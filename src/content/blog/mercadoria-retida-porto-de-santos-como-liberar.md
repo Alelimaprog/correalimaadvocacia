@@ -46,7 +46,7 @@ Os motivos não são diferentes dos de outras unidades. Os mais comuns são:
 Enquanto a fiscalização analisa, a carga fica em um terminal ou recinto alfandegado. Dois custos merecem atenção:
 
 - **Armazenagem.** O terminal cobra pela permanência da carga, conforme sua tabela e o contrato. Em regra, essa cobrança é feita ao importador, mesmo durante a retenção.
-- **Demurrage (sobre-estadia de contêiner).** O armador concede um período livre para devolução do contêiner. Depois disso, cobra diárias conforme o contrato de transporte. A carga presa na alfândega não suspende, por si só, essa contagem.
+- **Demurrage (sobre-estadia de contêiner).** O armador concede um período livre para devolução do contêiner. Depois disso, cobra diárias conforme o contrato de transporte. A carga presa na alfândega não suspende, por si só, essa contagem. Para conferir a fatura do armador, use a [calculadora de demurrage e detention](/ferramentas/calculadora-de-demurrage/).
 
 Na prática, o importador deve pedir ao terminal e ao armador o demonstrativo dos valores e guardar esses documentos. Eles servem para negociar, para pedir a desova do contêiner quando possível e para provar o prejuízo, se houver discussão judicial. Em alguns casos, pode-se discutir o ressarcimento desses custos quando a retenção for ilegal, mas isso depende de análise individual.
 

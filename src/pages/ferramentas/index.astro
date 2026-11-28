@@ -8,11 +8,40 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
 import Container from '@/components/Container.astro';
 import Breadcrumb from '@/components/Breadcrumb.astro';
 import Icon from '@/components/Icon.astro';
+import JsonLd from '@/components/JsonLd.astro';
 import { site, whatsappHrefForPath } from '@/lib/site.config';
 
 const canonical = `${site.url.replace(/\/$/, '')}/ferramentas/`;
 
 const ferramentas = [
+  {
+    titulo: 'Calculadora de demurrage e detention',
+    desc: 'Free time, diárias progressivas por faixa, vários contêineres e conversão pela PTAX do Banco Central. Confira a fatura do armador.',
+    href: '/ferramentas/calculadora-de-demurrage/',
+    tag: 'Calculadora',
+    icon: 'clock',
+  },
+  {
+    titulo: 'Simulador de tributos na importação',
+    desc: 'II, IPI, PIS e COFINS-Importação, AFRMM, Taxa Siscomex e ICMS por dentro, com custo total e unitário nacionalizado.',
+    href: '/ferramentas/simulador-de-tributos-na-importacao/',
+    tag: 'Simulador',
+    icon: 'coins',
+  },
+  {
+    titulo: 'Validador de número de contêiner',
+    desc: 'Confere o formato e o dígito verificador pela norma ISO 6346. Valide vários números de uma vez.',
+    href: '/ferramentas/validador-de-conteiner/',
+    tag: 'Validador',
+    icon: 'package',
+  },
+  {
+    titulo: 'Calculadora de cubagem e peso cubado',
+    desc: 'Metros cúbicos, peso taxável no aéreo e no rodoviário, unidades de frete marítimo (W/M) e ocupação de contêiner.',
+    href: '/ferramentas/calculadora-de-cubagem/',
+    tag: 'Calculadora',
+    icon: 'route',
+  },
   {
     titulo: 'Meu inventário pode ser feito em cartório?',
     desc: 'Três perguntas para descobrir se o seu caso admite a via extrajudicial, mais rápida e barata, ou exige processo judicial.',
@@ -36,14 +65,16 @@ const ferramentas = [
   },
 ];
 
+const listSchema = { '@context': 'https://schema.org', '@type': 'CollectionPage', name: 'Calculadoras e ferramentas jurídicas gratuitas', url: canonical, mainEntity: { '@type': 'ItemList', itemListElement: ferramentas.map((f, i) => ({ '@type': 'ListItem', position: i + 1, name: f.titulo, url: `https://correalimaadvocacia.com.br${f.href}` })) } };
 const ferrWaHref = whatsappHrefForPath('/ferramentas/');
 ---
 
 <BaseLayout
-  title="Ferramentas de Orientação | Corrêa Lima Advocacia"
-  description="Ferramentas para orientar decisões jurídicas: verificador de via do inventário, checklist de documentos e verificador de homologação de sentença estrangeira."
+  title="Calculadoras e Ferramentas Jurídicas Gratuitas | Corrêa Lima Advocacia"
+  description="Ferramentas gratuitas: calculadora de demurrage, simulador de tributos na importação, validador de contêiner, cubagem, inventário em cartório e homologação."
   canonical={canonical}
 >
+  <JsonLd schema={listSchema} />
   <main id="conteudo-principal" class="cx">
     <section class="cx-hero">
       <Container>

@@ -13,7 +13,10 @@
     "astro": "astro",
     "check:editorial": "node scripts/check-editorial.mjs",
     "indexnow": "node scripts/indexnow.mjs",
-    "indexnow:all": "node scripts/indexnow.mjs --all"
+    "indexnow:all": "node scripts/indexnow.mjs --all",
+    "deploy": "node scripts/deploy.mjs",
+    "test": "node --test tests/calc.test.mjs",
+    "test:e2e": "node tests/e2e-ferramentas.mjs"
   },
   "dependencies": {
     "@astrojs/mdx": "^7.0.3",
@@ -30,6 +33,8 @@
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.9",
-    "typescript": "^5.9.0"
+    "playwright": "^1.63.0",
+    "typescript": "^5.9.0",
+    "basic-ftp": "^5.3.1"
   }
 }

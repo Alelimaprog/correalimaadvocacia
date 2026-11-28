@@ -1,0 +1,119 @@
+---
+import ToolLayout from '@/components/ToolLayout.astro';
+---
+
+<ToolLayout
+  slug="simulador-de-tributos-na-importacao"
+  title="Simulador de impostos na importação: II, IPI, PIS, COFINS, ICMS"
+  description="Simule II, IPI, PIS e COFINS-Importação, AFRMM, Taxa Siscomex e ICMS por dentro, com custo total e unitário nacionalizado. Grátis e sem cadastro."
+  h1="Simulador de tributos e custo da importação"
+  lead="Estime os tributos de uma importação no regime comum e o custo nacionalizado por unidade. Informe os valores da fatura e do frete, o câmbio e as alíquotas da NCM do produto."
+  crumb="Simulador de tributos na importação"
+  categoria="Simulador · comércio exterior"
+  atualizado="2026-11-28"
+  premissas={[
+    '<strong>Valor aduaneiro</strong> = valor da mercadoria + frete internacional + seguro + outros acréscimos (por exemplo, a capatazia até o porto), convertidos pelo câmbio informado.',
+    '<strong>II</strong> = valor aduaneiro × alíquota do II da NCM (TEC).',
+    '<strong>IPI</strong> = (valor aduaneiro + II) × alíquota da TIPI.',
+    '<strong>PIS-Importação e COFINS-Importação</strong> = valor aduaneiro × alíquotas. Padrão: 2,10% e 9,65% (Lei 10.865/2004, art. 8º). Há produtos com alíquotas próprias e adicional de COFINS: ajuste os campos.',
+    '<strong>AFRMM</strong> = 8% do frete aquaviário de longo curso (Lei 10.893/2004, art. 6º, com a redação da Lei 14.301/2022). Desmarque se o transporte não for marítimo.',
+    '<strong>ICMS “por dentro”</strong>: base = (valor aduaneiro + II + IPI + PIS + COFINS + Taxa Siscomex + AFRMM, se marcado) ÷ (1 − alíquota). ICMS = base × alíquota (LC 87/1996, art. 13, V e § 1º).',
+    'O custo nacionalizado soma o valor aduaneiro, os tributos e as despesas locais informadas, sem descontar créditos.',
+  ]}
+  fontes={[
+    { label: 'Lei 10.865/2004 — PIS/COFINS-Importação (Planalto)', href: 'https://www.planalto.gov.br/ccivil_03/_ato2004-2006/2004/lei/l10.865.htm' },
+    { label: 'Lei 10.893/2004 — AFRMM (Planalto)', href: 'https://www.planalto.gov.br/ccivil_03/_ato2004-2006/2004/lei/l10.893.htm' },
+    { label: 'Lei Complementar 87/1996 — ICMS (Planalto)', href: 'https://www.planalto.gov.br/ccivil_03/leis/lcp/lcp87.htm' },
+    { label: 'Tarifa Externa Comum (TEC) e TIPI — alíquotas por NCM (Receita Federal / Siscomex)', href: 'https://www.gov.br/receitafederal/pt-br/assuntos/aduana-e-comercio-exterior' },
+    { label: 'Banco Central do Brasil — PTAX', href: 'https://www.bcb.gov.br/estabilidadefinanceira/historicocotacoes' },
+  ]}
+  limitacoes={[
+    'Não identifica a NCM nem a alíquota do produto. Uma classificação errada muda todo o resultado e pode gerar multa; veja <a href="/areas-de-atuacao/direito-aduaneiro-tributario/classificacao-fiscal-ncm/">classificação fiscal (NCM)</a>.',
+    'Não considera ex-tarifário, drawback, regimes especiais, benefícios estaduais de ICMS, antidumping, IOF sobre câmbio nem créditos de PIS, COFINS, IPI e ICMS a que a empresa possa ter direito.',
+    'A inclusão do AFRMM e da Taxa Siscomex na base do ICMS segue a regra geral de “despesas aduaneiras”; a legislação de cada estado pode tratar diferente.',
+    'Reforma tributária: em 2026, a CBS (0,9%) e o IBS (0,1%) são cobrados em caráter de teste e o recolhimento pode ser dispensado se as obrigações acessórias forem cumpridas. Por isso não entram na conta. Veja <a href="/blog/ibs-cbs-na-importacao-o-que-muda/">IBS e CBS na importação</a>.',
+  ]}
+>
+  <form class="calc-form" id="f" novalidate>
+    <fieldset>
+      <legend>Valores da operação (na moeda da fatura)</legend>
+      <label>Valor da mercadoria (FOB) <input type="text" inputmode="decimal" name="fob" placeholder="ex.: 10.000,00" required /></label>
+      <label>Frete internacional <input type="text" inputmode="decimal" name="frete" value="0" /></label>
+      <label>Seguro internacional <input type="text" inputmode="decimal" name="seguro" value="0" /></label>
+      <label>Outros acréscimos ao valor aduaneiro <small>ex.: capatazia, se cobrada à parte</small><input type="text" inputmode="decimal" name="acrescimos" value="0" /></label>
+      <label>Câmbio (R$ por unidade da moeda) <input type="text" inputmode="decimal" name="cambio" placeholder="ex.: 5,4321" required /></label>
+      <label class="chk"><input type="checkbox" name="aquaviario" checked /> Transporte marítimo de longo curso (incide AFRMM)</label>
+    </fieldset>
+    <fieldset>
+      <legend>Alíquotas da NCM (%)</legend>
+      <label>II <small>Imposto de Importação (TEC)</small><input type="text" inputmode="decimal" name="aII" placeholder="ex.: 14" required /></label>
+      <label>IPI <small>TIPI</small><input type="text" inputmode="decimal" name="aIPI" value="0" /></label>
+      <label>PIS-Importação <input type="text" inputmode="decimal" name="aPIS" value="2,10" /></label>
+      <label>COFINS-Importação <input type="text" inputmode="decimal" name="aCOFINS" value="9,65" /></label>
+      <label>ICMS <small>alíquota interna do estado de destino; SP: 18%</small><input type="text" inputmode="decimal" name="aICMS" value="18" /></label>
+      <label>AFRMM <input type="text" inputmode="decimal" name="aAFRMM" value="8" /></label>
+      <label class="chk"><input type="checkbox" name="afrmmIcms" checked /> Incluir AFRMM na base do ICMS</label>
+    </fieldset>
+    <fieldset>
+      <legend>Despesas em reais e quantidade</legend>
+      <label>Taxa Siscomex (R$) <small>valor da DI/Duimp, se houver</small><input type="text" inputmode="decimal" name="siscomex" value="0" /></label>
+      <label>Despesas locais (R$) <small>armazenagem, despachante, frete interno etc.</small><input type="text" inputmode="decimal" name="locais" value="0" /></label>
+      <label>Quantidade de unidades importadas <input type="text" inputmode="decimal" name="qtd" value="1" /></label>
+    </fieldset>
+    <button class="btn btn--primary btn--lg" type="submit">Simular</button>
+  </form>
+
+  <div class="calc-erros" id="erros" hidden role="alert"></div>
+
+  <div class="calc-result" id="res" hidden aria-live="polite">
+    <p class="result-tag">Estimativa</p>
+    <h2>Custo total nacionalizado</h2>
+    <p class="big" id="total"></p>
+    <p id="unit"></p>
+    <table class="calc-table">
+      <tbody id="linhas"></tbody>
+      <tfoot><tr><td>Total de tributos e taxas</td><td class="n" id="trib"></td></tr></tfoot>
+    </table>
+    <p id="carga"></p>
+  </div>
+
+  <section class="calc-explica" slot="explica" aria-labelledby="ex-t">
+    <h2 id="ex-t">Como ler o resultado</h2>
+    <h3>Por que o ICMS parece maior que a alíquota?</h3>
+    <p>Porque o ICMS de importação é calculado “por dentro”: o próprio imposto entra na sua base. Com alíquota de 18%, a base é dividida por 0,82, e o ICMS efetivo sobre a soma anterior fica perto de 22%.</p>
+    <h3>Quando a Receita pode cobrar mais do que o simulado?</h3>
+    <p>Quando questiona o valor declarado (<a href="/blog/valoracao-aduaneira-como-a-receita-questiona-o-valor/">valoração aduaneira</a>), a classificação na NCM ou a origem da mercadoria. Nesses casos vêm diferenças de tributos, multas e, em situações mais graves, <a href="/areas-de-atuacao/direito-aduaneiro-tributario/pena-de-perdimento/">pena de perdimento</a>. Veja também <a href="/blog/subfaturamento-importacao-multa-perdimento-defesa/">subfaturamento</a> e <a href="/blog/revisao-aduaneira-apos-desembaraco-prazo/">revisão aduaneira após o desembaraço</a>.</p>
+    <h3>Duimp e fim da DI</h3>
+    <p>A Declaração Única de Importação substitui a DI de forma gradual e muda o fluxo de licenças (LPCO) e de pagamento. Os tributos calculados aqui não mudam por causa disso. Veja <a href="/blog/duimp-fim-da-di-o-que-muda-para-o-importador/">o que muda com a Duimp</a>.</p>
+    <p>Outras ferramentas: <a href="/ferramentas/calculadora-de-demurrage/">calculadora de demurrage</a>, <a href="/ferramentas/calculadora-de-cubagem/">cubagem e peso cubado</a> e <a href="/ferramentas/validador-de-conteiner/">validador de contêiner</a>.</p>
+  </section>
+</ToolLayout>
+
+<script>
+  import { tributosImportacao, num } from '@/lib/calc/comex.js';
+  const f = document.getElementById('f') as HTMLFormElement;
+  const R = (n: number) => 'R$ ' + n.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+  f.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const g = (n: string) => num((f.elements.namedItem(n) as HTMLInputElement).value);
+    const ck = (n: string) => (f.elements.namedItem(n) as HTMLInputElement).checked;
+    const r = tributosImportacao({
+      fob: g('fob'), frete: g('frete'), seguro: g('seguro'), acrescimos: g('acrescimos'), cambio: g('cambio'),
+      aII: g('aII'), aIPI: g('aIPI'), aPIS: g('aPIS'), aCOFINS: g('aCOFINS'), aICMS: g('aICMS'), aAFRMM: g('aAFRMM'),
+      freteAquaviario: ck('aquaviario'), afrmmNaBaseIcms: ck('afrmmIcms'), taxaSiscomex: g('siscomex'), despesasLocais: g('locais'), quantidade: g('qtd'),
+    });
+    const errosEl = document.getElementById('erros')!, res = document.getElementById('res')!;
+    if (!r.ok) { errosEl.innerHTML = '<strong>Confira os dados:</strong><ul>' + r.erros.map((x: string) => `<li>${x}</li>`).join('') + '</ul>'; errosEl.hidden = false; res.hidden = true; return; }
+    errosEl.hidden = true;
+    const linhas: [string, number][] = [
+      ['Valor aduaneiro', r.valorAduaneiro], ['Imposto de Importação (II)', r.ii], ['IPI', r.ipi], ['PIS-Importação', r.pis], ['COFINS-Importação', r.cofins],
+      ['AFRMM', r.afrmm], ['Taxa Siscomex', r.taxaSiscomex], ['Base de cálculo do ICMS', r.baseIcms], ['ICMS', r.icms], ['Despesas locais', r.despesasLocais],
+    ];
+    document.getElementById('linhas')!.innerHTML = linhas.map(([a, b]) => `<tr><td>${a}</td><td class="n">${R(b)}</td></tr>`).join('');
+    document.getElementById('trib')!.textContent = R(r.totalTributos);
+    document.getElementById('total')!.textContent = R(r.custoTotal);
+    document.getElementById('unit')!.textContent = `Custo unitário nacionalizado: ${R(r.custoUnitario)} (sem descontar créditos tributários).`;
+    document.getElementById('carga')!.textContent = `Tributos e taxas equivalem a ${r.cargaSobreVA.toLocaleString('pt-BR')}% do valor aduaneiro.`;
+    res.hidden = false; res.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+</script>

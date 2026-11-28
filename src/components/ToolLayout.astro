@@ -1,0 +1,161 @@
+---
+/**
+ * Casca comum das calculadoras (28/11/2026). Garante em todas as ferramentas:
+ * breadcrumb + BreadcrumbList, JSON-LD WebApplication coerente com o conteúdo
+ * visível, premissas, fontes, limitações, data de atualização, imprimir e
+ * compartilhar. O cálculo roda no navegador; nada do que é digitado é enviado.
+ */
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Container from '@/components/Container.astro';
+import Breadcrumb from '@/components/Breadcrumb.astro';
+import JsonLd from '@/components/JsonLd.astro';
+import { site, whatsappHrefForPath } from '@/lib/site.config';
+
+interface Fonte { label: string; href?: string }
+interface Props {
+  slug: string;
+  title: string;
+  description: string;
+  h1: string;
+  lead: string;
+  crumb: string;
+  categoria: string;
+  atualizado: string; // AAAA-MM-DD
+  premissas: string[];
+  fontes: Fonte[];
+  limitacoes: string[];
+  area?: string; // parâmetro ?area= do contato
+}
+const p = Astro.props;
+const path = `/ferramentas/${p.slug}/`;
+const canonical = `${site.url.replace(/\/$/, '')}${path}`;
+const waHref = whatsappHrefForPath(path);
+const dataBR = p.atualizado.split('-').reverse().join('/');
+const schema = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'WebApplication',
+    name: p.h1,
+    description: p.description,
+    url: canonical,
+    applicationCategory: 'BusinessApplication',
+    operatingSystem: 'Qualquer (navegador)',
+    inLanguage: 'pt-BR',
+    isAccessibleForFree: true,
+    offers: { '@type': 'Offer', price: '0', priceCurrency: 'BRL' },
+    dateModified: p.atualizado,
+    author: { '@type': 'Person', name: 'Alexandre Corrêa Lima' },
+    publisher: { '@type': 'LegalService', name: site.name },
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Início', item: `${site.url.replace(/\/$/, '')}/` },
+      { '@type': 'ListItem', position: 2, name: 'Ferramentas', item: `${site.url.replace(/\/$/, '')}/ferramentas/` },
+      { '@type': 'ListItem', position: 3, name: p.crumb, item: canonical },
+    ],
+  },
+];
+---
+
+<BaseLayout title={p.title} description={p.description} canonical={canonical}>
+  <JsonLd schema={schema} />
+  <main id="conteudo-principal" class="tool calc" data-tool={p.slug}>
+    <Container>
+      <Breadcrumb items={[{ label: 'Início', href: '/' }, { label: 'Ferramentas', href: '/ferramentas/' }, { label: p.crumb }]} />
+      <p class="eyebrow"><span class="dot"></span>{p.categoria}</p>
+      <h1>{p.h1}</h1>
+      <p class="lead">{p.lead}</p>
+      <p class="calc-meta">Atualizada em <time datetime={p.atualizado}>{dataBR}</time> · gratuita, sem cadastro · o cálculo é feito no seu navegador e nada do que você digita é enviado.</p>
+
+      <slot />
+
+      <div class="calc-actions no-print">
+        <button type="button" class="btn btn--secondary" data-print>Imprimir resultado</button>
+        <button type="button" class="btn btn--secondary" data-share data-url={canonical} data-title={p.h1}>Compartilhar ferramenta</button>
+        <span class="calc-share-msg" role="status" aria-live="polite"></span>
+      </div>
+
+      <section class="calc-info" aria-labelledby="premissas-t">
+        <h2 id="premissas-t">Premissas do cálculo</h2>
+        <ul>{p.premissas.map((x) => <li set:html={x} />)}</ul>
+        <h2>Fontes</h2>
+        <ul>{p.fontes.map((f) => <li>{f.href ? <a href={f.href} target="_blank" rel="noopener">{f.label}</a> : f.label}</li>)}</ul>
+        <h2>Limitações</h2>
+        <ul>{p.limitacoes.map((x) => <li set:html={x} />)}<li>O resultado é uma estimativa informativa. Não é parecer jurídico nem substitui a análise do contrato, dos documentos e da legislação aplicável ao caso concreto.</li></ul>
+      </section>
+
+      <slot name="explica" />
+
+      <aside class="calc-cta no-print">
+        <p>Se a conta não fecha com a cobrança que você recebeu, ou se há prazo correndo, vale conversar com um advogado antes de pagar ou assinar qualquer acordo.</p>
+        <div class="result-cta">
+          <a class="btn btn--primary" href={`/contato/?area=${p.area ?? 'aduaneiro'}`} data-cta-position="ferramenta">Enviar meu caso</a>
+          <a class="btn btn--secondary" href={waHref} target="_blank" rel="noopener noreferrer" data-cta-position="ferramenta">Falar no WhatsApp</a>
+        </div>
+      </aside>
+    </Container>
+  </main>
+</BaseLayout>
+
+<script>
+  document.querySelector('[data-print]')?.addEventListener('click', () => window.print());
+  document.querySelector('[data-share]')?.addEventListener('click', async (e) => {
+    const b = e.currentTarget as HTMLElement;
+    const url = b.dataset.url || location.href;
+    const msg = document.querySelector('.calc-share-msg');
+    try {
+      if (navigator.share) { await navigator.share({ title: b.dataset.title, url }); return; }
+      await navigator.clipboard.writeText(url);
+      if (msg) msg.textContent = 'Link copiado.';
+    } catch { if (msg) msg.textContent = url; }
+  });
+</script>
+
+<style is:global>
+  .calc { padding-block: var(--section-y); }
+  .calc h1 { font-size: var(--text-4xl); color: var(--color-ink); margin-top: var(--space-3); max-width: 22ch; line-height: 1.1; }
+  .calc .lead { margin-top: var(--space-4); max-width: 62ch; color: var(--color-text); font-size: var(--text-md); line-height: var(--leading-normal); }
+  .calc-meta { margin-top: var(--space-3); font-size: var(--text-xs); color: var(--color-text-muted); max-width: 62ch; }
+  .calc-form { margin-top: var(--space-8); max-width: 52rem; display: grid; gap: var(--space-5); }
+  .calc-form fieldset { border: 1px solid var(--color-border); border-radius: var(--radius-lg); padding: var(--space-5); background: var(--surface); display: grid; gap: var(--space-4); grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr)); }
+  .calc-form legend { font-family: var(--font-display); font-weight: var(--weight-bold); color: var(--color-ink); font-size: var(--text-md); padding-inline: var(--space-2); }
+  .calc-form label { display: grid; gap: 0.35rem; font-size: var(--text-sm); color: var(--color-text); font-weight: var(--weight-medium); }
+  .calc-form label small { font-weight: 400; color: var(--color-text-muted); font-size: var(--text-xs); }
+  .calc-form label.chk { display: flex; align-items: flex-start; gap: var(--space-2); font-weight: 400; grid-column: 1 / -1; }
+  .calc-form input[type='text'], .calc-form input[type='date'], .calc-form input[type='number'], .calc-form select {
+    font: inherit; font-size: var(--text-md); padding: 0.6rem 0.75rem; border: 1px solid var(--color-border-strong, #b9bcbf); border-radius: var(--radius-md, 6px); background: #fff; color: var(--color-ink); min-height: 2.75rem; width: 100%;
+  }
+  .calc-form input:focus-visible, .calc-form select:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 2px; }
+  .calc-form [aria-invalid='true'] { border-color: var(--color-danger); }
+  .calc-form button[type='submit'] { justify-self: start; }
+  .calc-erros { border-left: 3px solid var(--color-danger); background: #fdf3f2; padding: var(--space-4); max-width: 52rem; margin-top: var(--space-5); font-size: var(--text-sm); }
+  .calc-erros[hidden], .calc-result[hidden] { display: none; }
+  .calc-result { margin-top: var(--space-8); max-width: 52rem; border: 1px solid var(--color-border); border-left: 3px solid var(--color-accent); background: var(--surface-cream); padding: var(--space-6); }
+  .calc-result h2 { font-size: var(--text-xl); color: var(--color-ink); }
+  .calc-result .big { font-family: var(--font-display); font-size: var(--text-3xl); color: var(--color-ink); margin-top: var(--space-2); font-weight: var(--weight-bold); }
+  .calc-result p { margin-top: var(--space-3); font-size: var(--text-sm); line-height: var(--leading-relaxed); color: var(--color-text); }
+  .calc-table { width: 100%; border-collapse: collapse; margin-top: var(--space-4); font-size: var(--text-sm); }
+  .calc-table th, .calc-table td { text-align: left; padding: 0.5rem 0.6rem; border-bottom: 1px solid var(--color-border); vertical-align: top; }
+  .calc-table td.n, .calc-table th.n { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+  .calc-table tfoot td { font-weight: var(--weight-bold); color: var(--color-ink); }
+  .calc-actions { display: flex; flex-wrap: wrap; gap: var(--space-3); align-items: center; margin-top: var(--space-6); max-width: 52rem; }
+  .calc-share-msg { font-size: var(--text-sm); color: var(--color-text-muted); }
+  .calc-info { margin-top: var(--space-10); max-width: 52rem; border-top: 1px solid var(--color-border); padding-top: var(--space-6); }
+  .calc-info h2, .calc-explica h2 { font-family: var(--font-display); font-size: var(--text-xl); color: var(--color-ink); margin-top: var(--space-6); }
+  .calc-info h2:first-child { margin-top: 0; }
+  .calc-info ul { margin-top: var(--space-3); padding-left: 1.2rem; display: grid; gap: var(--space-2); font-size: var(--text-sm); color: var(--color-text); line-height: var(--leading-relaxed); list-style: disc; }
+  .calc-info a, .calc-explica a, .calc-result a { color: var(--color-green-strong); text-decoration: underline; }
+  .calc-explica { margin-top: var(--space-8); max-width: 52rem; }
+  .calc-explica h3 { margin-top: var(--space-5); font-size: var(--text-lg); color: var(--color-ink); }
+  .calc-explica p { margin-top: var(--space-2); line-height: var(--leading-relaxed); }
+  .calc-cta { margin-top: var(--space-10); max-width: 52rem; background: var(--surface-muted); padding: var(--space-6); border-radius: var(--radius-lg); }
+  .calc-cta .result-cta { display: flex; flex-wrap: wrap; gap: var(--space-3); margin-top: var(--space-4); }
+  .faixa-row { display: grid; grid-template-columns: 1fr 1fr auto; gap: var(--space-3); align-items: end; grid-column: 1 / -1; }
+  .faixa-row button { min-height: 2.75rem; }
+  @media print {
+    header, footer, .no-print, .breadcrumb, .floating-whatsapp, [data-consent] { display: none !important; }
+    .calc-result { border: 1px solid #999; background: #fff; }
+  }
+</style>

@@ -5,6 +5,7 @@
  * botão de impressão para levar ao cartório. Encerra com CTA.
  */
 import BaseLayout from '@/layouts/BaseLayout.astro';
+import JsonLd from '@/components/JsonLd.astro';
 import Container from '@/components/Container.astro';
 import Breadcrumb from '@/components/Breadcrumb.astro';
 import { site, whatsappHrefForPath } from '@/lib/site.config';
@@ -73,6 +74,13 @@ const grupos = [
   },
 ];
 const total = grupos.reduce((n, g) => n + g.itens.length, 0);
+const toolSchema = [
+  { '@context': 'https://schema.org', '@type': 'WebApplication', name: 'Checklist de documentos para o inventário', description: 'Checklist dos documentos do inventário: do falecido, dos herdeiros, de imóveis, veículos, empresas e dívidas. Marque o que já tem e imprima.', url: 'https://correalimaadvocacia.com.br/ferramentas/checklist-documentos-inventario/', applicationCategory: 'BusinessApplication', operatingSystem: 'Qualquer (navegador)', inLanguage: 'pt-BR', isAccessibleForFree: true, offers: { '@type': 'Offer', price: '0', priceCurrency: 'BRL' }, author: { '@type': 'Person', name: 'Alexandre Corrêa Lima' } },
+  { '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Início', item: 'https://correalimaadvocacia.com.br/' },
+    { '@type': 'ListItem', position: 2, name: 'Ferramentas', item: 'https://correalimaadvocacia.com.br/ferramentas/' },
+    { '@type': 'ListItem', position: 3, name: 'Checklist de documentos para o inventário', item: 'https://correalimaadvocacia.com.br/ferramentas/checklist-documentos-inventario/' } ] },
+];
 ---
 
 <BaseLayout
@@ -80,6 +88,7 @@ const total = grupos.reduce((n, g) => n + g.itens.length, 0);
   description="Checklist dos documentos do inventário: do falecido, dos herdeiros, de imóveis, veículos, empresas e dívidas. Marque o que já tem e imprima."
   canonical={canonical}
 >
+  <JsonLd schema={toolSchema} />
   <main id="conteudo-principal" class="tool" data-tool="checklist-inventario">
     <Container>
       <Breadcrumb items={[{ label: 'Início', href: '/' }, { label: 'Ferramentas', href: '/ferramentas/' }, { label: 'Checklist de documentos' }]} />

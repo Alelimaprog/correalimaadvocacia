@@ -61,7 +61,7 @@ Um pedido administrativo de prioridade, bem fundamentado, ajuda a documentar a o
 
 ## Armazenagem e demurrage durante a greve
 
-A greve não suspende, por si só, a cobrança de armazenagem pelo terminal nem a contagem de demurrage pelo armador. Esses contratos são privados. Algumas medidas práticas:
+A greve não suspende, por si só, a cobrança de armazenagem pelo terminal nem a contagem de demurrage pelo armador. Esses contratos são privados. Para estimar o custo diário, use a [calculadora de demurrage](/ferramentas/calculadora-de-demurrage/). Algumas medidas práticas:
 
 - negociar com o armador a extensão do período livre (free time), com prova do movimento;
 - avaliar a desova do contêiner no terminal, quando possível;
