@@ -74,7 +74,35 @@ for (const [nome, ctxOpt] of [['desktop', { viewport: { width: 1366, height: 900
   await p.$eval('form#f', (f) => f.requestSubmit());
   const t2 = await p.textContent('#total');
   ok(`${nome} multas LC 227 mostra faixa piso/teto`, t2.includes('5.000,00') && t2.includes('10.000,00') && (await p.textContent('#linhas')).includes('em discussão'), t2);
-  for (const u of ['calculadora-de-demurrage', 'simulador-de-tributos-na-importacao', 'validador-de-conteiner', 'calculadora-de-cubagem', 'atualizacao-de-divida', 'calculadora-de-condominio-atrasado', 'simulador-de-multas-aduaneiras', '']) {
+  await p.goto(B + '/ferramentas/calculadora-de-prazos-de-prescricao/');
+  await p.selectOption('[name=situacao]', 'condominio'); await p.fill('[name=data]', '2022-01-10'); await p.fill('[name=hoje]', '2026-11-28');
+  await p.$eval('form#f', (f) => f.requestSubmit());
+  ok(`${nome} prescrição condomínio 10/01/2027`, (await p.textContent('#limite')) === '10/01/2027' && (await p.textContent('#status')).includes('43 dia'), await p.textContent('#limite'));
+  ok(`${nome} prescrição mostra aviso de interrupção`, (await p.textContent('#notas')).includes('Suspensão e interrupção'));
+  await p.selectOption('[name=situacao]', 'cheque');
+  ok(`${nome} prescrição cheque mostra campo de praça`, await p.isVisible('[name=praca]'));
+  await p.selectOption('[name=praca]', 'outra'); await p.fill('[name=data]', '2026-03-01');
+  await p.$eval('form#f', (f) => f.requestSubmit());
+  ok(`${nome} prescrição cheque outra praça 30/10/2026`, (await p.textContent('#limite')) === '30/10/2026', await p.textContent('#limite'));
+  await p.fill('[name=data]', ''); await p.$eval('form#f', (f) => f.requestSubmit());
+  ok(`${nome} prescrição sem data gera erro`, await p.isVisible('#erros'));
+
+  await p.goto(B + '/ferramentas/simulador-de-partilha/');
+  await p.selectOption('[name=conjuge]', 'casamento'); await p.selectOption('[name=regime]', 'parcial');
+  await p.fill('[name=comuns]', '600.000,00'); await p.fill('[name=particulares]', '300.000,00'); await p.fill('[name=filhos]', '2');
+  await p.$eval('form#f', (f) => f.requestSubmit());
+  const rp = await p.textContent('#resumo'); const lp = await p.textContent('#linhas');
+  ok(`${nome} partilha: meação 300 mil, cônjuge 100 mil, filhos 250 mil`, rp.includes('300.000,00') && rp.includes('100.000,00') && lp.includes('250.000,00'), rp + ' | ' + lp);
+  ok(`${nome} partilha mostra controvérsia da comunhão parcial`, (await p.textContent('#avisos')).includes('controvertido'));
+  await p.fill('[name=filhos]', '0'); await p.$eval('[name=pai]', (i) => { i.checked = true; }); await p.$eval('[name=mae]', (i) => { i.checked = true; });
+  await p.$eval('form#f', (f) => f.requestSubmit());
+  ok(`${nome} partilha com pais: 1/3 cada (200.000,00)`, (await p.textContent('#linhas')).includes('200.000,00'), await p.textContent('#linhas'));
+  await p.fill('[name=netos]', '<b>x</b>'); await p.$eval('form#f', (f) => f.requestSubmit());
+  ok(`${nome} partilha recusa lista inválida sem injetar HTML`, (await p.isVisible('#erros')) && (await p.$$('#erros b')).length === 0);
+  await p.fill('[name=netos]', ''); await p.fill('[name=comuns]', ''); await p.fill('[name=particulares]', '');
+  await p.$eval('form#f', (f) => f.requestSubmit());
+  ok(`${nome} partilha sem bens gera erro`, await p.isVisible('#erros'));
+  for (const u of ['calculadora-de-demurrage', 'simulador-de-tributos-na-importacao', 'validador-de-conteiner', 'calculadora-de-cubagem', 'atualizacao-de-divida', 'calculadora-de-condominio-atrasado', 'simulador-de-multas-aduaneiras', 'calculadora-de-prazos-de-prescricao', 'simulador-de-partilha', '']) {
     await p.goto(B + '/ferramentas/' + (u ? u + '/' : ''));
     const w = await p.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);
     ok(`${nome} sem rolagem horizontal ${u || 'índice'}`, w <= 1, String(w));

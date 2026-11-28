@@ -1,0 +1,99 @@
+---
+import ToolLayout from '@/components/ToolLayout.astro';
+import { SITUACOES, FONTES } from '@/lib/calc/prescricao.js';
+const grupos: Record<string, [string, any][]> = {};
+for (const [k, s] of Object.entries(SITUACOES)) (grupos[s.grupo] ||= []).push([k, s]);
+---
+
+<ToolLayout
+  slug="calculadora-de-prazos-de-prescricao"
+  title="Calculadora de prazos de prescrição: cheque, duplicata, condomínio, tributos e avaria de carga"
+  description="Escolha a situação e a data inicial e veja a data-limite estimada de prescrição ou decadência: condomínio, cheque, duplicata, reparação civil, prazo geral, CTN, revisão aduaneira e avaria de carga."
+  h1="Calculadora de prazos de prescrição"
+  lead="Escolha a situação e informe a data em que o prazo começa. A ferramenta mostra a data-limite estimada, o fundamento legal e o que pode mudar a conta."
+  crumb="Prazos de prescrição"
+  categoria="Calculadora · prescrição e decadência"
+  atualizado="2026-11-28"
+  area="recuperacao-de-credito"
+  premissas={[
+    'Contagem do Código Civil, art. 132: exclui-se o dia do começo; prazos em meses e anos vencem no dia de igual número do de início ou, se esse dia não existir no mês, no dia seguinte.',
+    'A ferramenta não prorroga o prazo que vence em sábado, domingo ou feriado. Ela avisa quando a data cai em fim de semana; feriados não são verificados.',
+    'Nenhuma causa de suspensão ou interrupção é considerada: o resultado supõe que o prazo correu sem parar desde a data informada.',
+    'Há divergência de um dia na contagem de alguns prazos (por exemplo, o STJ conta o prazo da cota condominial a partir do dia seguinte ao vencimento). Por cautela, a ferramenta mostra também a véspera da data-limite.',
+  ]}
+  fontes={Object.values(FONTES)}
+  limitacoes={[
+    '<strong>Suspensão e interrupção mudam o prazo.</strong> Protesto, despacho que ordena a citação, reconhecimento da dívida pelo devedor e outros atos interrompem a prescrição, que recomeça do zero, e a interrupção só pode ocorrer uma vez (Código Civil, art. 202). Algumas situações impedem ou suspendem o prazo (arts. 197 a 201). No tributário, as causas estão no CTN, arts. 151 e 174.',
+    'A situação escolhida precisa corresponder ao caso. Contratos com regra própria, relações de consumo, trabalhistas, previdenciárias e com o poder público podem ter prazos diferentes.',
+    'Nota promissória e letra de câmbio ainda não estão na lista.',
+    'Para cobrança de cotas, veja também a <a href="/ferramentas/calculadora-de-condominio-atrasado/">calculadora de condomínio atrasado</a>.',
+  ]}
+>
+  <form class="calc-form" id="f" novalidate>
+    <fieldset>
+      <legend>Situação e data</legend>
+      <label style="grid-column:1/-1">Situação
+        <select name="situacao" required>
+          {Object.entries(grupos).map(([g, itens]) => (
+            <optgroup label={g}>{itens.map(([k, s]) => <option value={k}>{s.titulo} — {s.prazo}</option>)}</optgroup>
+          ))}
+        </select>
+      </label>
+      <label><span id="rotulo-data">{SITUACOES.condominio.inicio}</span> <input type="date" name="data" required /></label>
+      <label id="campo-praca" style="display:none">Onde o cheque foi emitido <select name="praca"><option value="mesma">No mesmo lugar do pagamento (30 dias)</option><option value="outra">Em outro lugar do país ou no exterior (60 dias)</option></select></label>
+      <label>Data de referência <small>para contar quanto falta; em regra, hoje</small><input type="date" name="hoje" required /></label>
+    </fieldset>
+    <button class="btn btn--primary btn--lg" type="submit">Calcular</button>
+  </form>
+  <div class="calc-erros" id="erros" hidden role="alert"></div>
+  <div class="calc-result" id="res" hidden aria-live="polite">
+    <p class="result-tag">Estimativa</p>
+    <h2>Data-limite estimada</h2>
+    <p class="big" id="limite"></p>
+    <p id="status"></p>
+    <table class="calc-table"><tbody id="linhas"></tbody></table>
+    <ul id="notas"></ul>
+  </div>
+  <section class="calc-explica" slot="explica">
+    <h2>Prescrição e decadência, em poucas palavras</h2>
+    <p>Prescrição é a perda do direito de exigir judicialmente uma prestação depois de certo tempo (Código Civil, art. 189). Decadência é a perda do próprio direito, como o do fisco de lançar o tributo (CTN, arts. 150 e 173). Os dois prazos só podem ser confirmados com os documentos do caso: datas de vencimento, protestos, notificações, parcelamentos e processos em andamento.</p>
+    <p>Leia também sobre o <a href="/blog/prazo-prescricional-cobranca-taxa-condominial/">prazo prescricional da taxa condominial</a> e sobre <a href="/blog/cheque-nota-promissoria-duplicata-titulo-executivo/">cheque, nota promissória e duplicata como títulos executivos</a>, e veja a página de <a href="/areas-de-atuacao/recuperacao-de-credito/">recuperação de crédito</a>.</p>
+  </section>
+</ToolLayout>
+
+<script>
+  import { SITUACOES, calcularPrescricao } from '@/lib/calc/prescricao.js';
+  const f = document.getElementById('f') as HTMLFormElement;
+  const el = (n: string) => f.elements.namedItem(n) as HTMLInputElement;
+  const esc = (s: string) => s.replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]!);
+  const br = (s: string) => s.split('-').reverse().join('/');
+  const hoje = new Date(); const pad = (n: number) => String(n).padStart(2, '0');
+  el('hoje').value = `${hoje.getFullYear()}-${pad(hoje.getMonth() + 1)}-${pad(hoje.getDate())}`;
+  const sync = () => {
+    const s = (SITUACOES as any)[el('situacao').value];
+    document.getElementById('rotulo-data')!.textContent = s.inicio;
+    document.getElementById('campo-praca')!.style.display = s.opcao === 'praca' ? '' : 'none';
+  };
+  el('situacao').addEventListener('change', sync); sync();
+  f.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const r: any = calcularPrescricao({ situacao: el('situacao').value, data: el('data').value, hoje: el('hoje').value, praca: el('praca').value });
+    const er = document.getElementById('erros')!, res = document.getElementById('res')!;
+    if (!r.ok) { er.innerHTML = '<strong>Confira os dados:</strong><ul>' + r.erros.map((x: string) => `<li>${esc(x)}</li>`).join('') + '</ul>'; er.hidden = false; res.hidden = true; return; }
+    er.hidden = true;
+    document.getElementById('limite')!.textContent = br(r.limite);
+    document.getElementById('status')!.textContent = r.vencido
+      ? `Pela estimativa, o prazo terminou há ${-r.restantes} dia(s), se nada o suspendeu ou interrompeu. Isso não significa, sozinho, que o direito se perdeu: confira com um advogado.`
+      : `Faltam ${r.restantes} dia(s) a partir da data de referência. Por cautela, trate ${br(r.vespera)} como o último dia.`;
+    const rows: [string, string][] = [
+      ['Situação', r.titulo], ['Prazo', r.prazo], ['Início da contagem', br(r.termoInicial)], ['Conta', r.memoria], ['Fundamento', r.fundamento],
+    ];
+    if (r.extra) rows.push([r.extra.rotulo, br(r.extra.data)]);
+    document.getElementById('linhas')!.innerHTML = rows.map(([k, v]) => `<tr><th scope="row">${esc(k)}</th><td>${esc(v)}</td></tr>`).join('');
+    const notas = [r.nota,
+      r.limiteFimDeSemana ? 'A data-limite cai em fim de semana. Se o prazo se prorroga para o dia útil seguinte (Código Civil, art. 132, § 1º) é questão a conferir; por segurança, aja antes.' : '',
+      'Suspensão e interrupção mudam o prazo: protesto, citação, reconhecimento da dívida pelo devedor, parcelamento e processos em curso podem fazer o prazo parar ou recomeçar. Este cálculo é uma estimativa.'].filter(Boolean);
+    document.getElementById('notas')!.innerHTML = notas.map((x: string) => `<li>${esc(x)}</li>`).join('');
+    res.hidden = false; res.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+</script>

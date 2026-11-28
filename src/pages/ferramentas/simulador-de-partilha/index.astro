@@ -1,0 +1,123 @@
+---
+import ToolLayout from '@/components/ToolLayout.astro';
+import { REGIMES } from '@/lib/calc/partilha.js';
+const CC = 'https://www.planalto.gov.br/ccivil_03/leis/2002/l10406compilada.htm';
+---
+
+<ToolLayout
+  slug="simulador-de-partilha"
+  title="Simulador de partilha: meação do cônjuge e herança dos filhos, pais e irmãos"
+  description="Simule a meação do cônjuge ou companheiro e a parte de cada herdeiro pela ordem do Código Civil (arts. 1.829 a 1.844), nos regimes de comunhão parcial, universal e de separação."
+  h1="Simulador de partilha"
+  lead="Informe o regime de bens, o patrimônio e quem são os parentes do falecido. O simulador separa a meação do cônjuge ou companheiro e mostra a parte estimada de cada herdeiro na sucessão sem testamento, com os pontos em que a lei é discutida."
+  crumb="Simulador de partilha"
+  categoria="Simulador · inventário e sucessões"
+  atualizado="2026-11-28"
+  area="inventario"
+  premissas={[
+    'Sucessão legítima, sem testamento, pela ordem do Código Civil, art. 1.829: descendentes (com o cônjuge, conforme o regime), ascendentes (com o cônjuge), cônjuge sozinho e colaterais até o 4º grau.',
+    'Meação não é herança: é a metade dos bens que se comunicam pelo regime e que já pertence ao sobrevivente (arts. 1.658, 1.660 e 1.667). A herança é a outra metade mais os bens particulares do falecido.',
+    'Com descendentes, o cônjuge concorre na comunhão parcial só se houver bens particulares, e na separação convencional; não concorre na comunhão universal nem na separação obrigatória (art. 1.829, I). A quota é igual à de cada filho, com mínimo de 1/4 se for ascendente de todos (art. 1.832).',
+    'Com ascendentes, o cônjuge recebe 1/3 se concorrer com pai e mãe e metade nos demais casos (art. 1.837). Irmão unilateral recebe metade do bilateral (art. 1.841).',
+    'Companheiro em união estável segue as mesmas regras do cônjuge, conforme a tese do STF no Tema 809; sem contrato escrito, o regime é o da comunhão parcial (art. 1.725).',
+  ]}
+  fontes={[
+    { label: 'Código Civil, arts. 1.640, 1.641, 1.658 a 1.660, 1.667, 1.668, 1.687, 1.725, 1.790 e 1.829 a 1.846 (Planalto)', href: CC },
+    { label: 'STF, RE 878.694, Tema 809 de repercussão geral (inconstitucionalidade do art. 1.790)', href: 'https://portal.stf.jus.br/processos/detalhe.asp?incidente=4744004' },
+    { label: 'STF, ARE 1.309.642, Tema 1.236 de repercussão geral (separação obrigatória dos maiores de 70 anos)', href: 'https://portal.stf.jus.br/processos/detalhe.asp?incidente=6096433' },
+    { label: 'STF, Súmula 377', href: 'https://jurisprudencia.stf.jus.br/pages/search?base=sumulas&sinonimo=true&plural=true&page=1&pageSize=10&queryString=%22separa%C3%A7%C3%A3o%20legal%20de%20bens%22' },
+  ]}
+  limitacoes={[
+    'Não considera testamento, doações em vida (colação), dívidas do espólio, renúncia, indignidade, deserdação, previdência privada nem seguro de vida.',
+    'Não calcula ITCMD, custas, emolumentos ou honorários.',
+    'Os pontos controvertidos aparecem nos avisos do resultado. Neles, o número é só uma das leituras possíveis.',
+    'Bisavós e a ordem detalhada entre colaterais de 4º grau não estão modelados.',
+  ]}
+>
+  <form class="calc-form" id="f" novalidate>
+    <fieldset>
+      <legend>Cônjuge ou companheiro</legend>
+      <label>O falecido deixou <select name="conjuge"><option value="casamento">Cônjuge (casamento)</option><option value="uniao">Companheiro(a) (união estável)</option><option value="nenhum">Nem cônjuge nem companheiro(a)</option></select></label>
+      <label>Regime de bens <select name="regime">{Object.entries(REGIMES).map(([k, t]) => <option value={k}>{t}</option>)}</select></label>
+    </fieldset>
+    <fieldset>
+      <legend>Patrimônio</legend>
+      <label>Bens que se comunicam pelo regime (R$) <small id="ajuda-comuns">na comunhão parcial: adquiridos a título oneroso durante o casamento (art. 1.660). Sem cônjuge, some tudo aqui.</small><input type="text" inputmode="decimal" name="comuns" /></label>
+      <label>Bens particulares do falecido (R$) <small>na comunhão parcial: os que tinha antes de casar e os recebidos por doação ou herança (art. 1.659)</small><input type="text" inputmode="decimal" name="particulares" /></label>
+      <label>Base da concorrência na comunhão parcial <small>tema controvertido; veja os avisos</small><select name="base"><option value="particulares">Só os bens particulares</option><option value="toda">Toda a herança</option></select></label>
+    </fieldset>
+    <fieldset>
+      <legend>Descendentes</legend>
+      <label>Filhos vivos <input type="number" min="0" max="50" name="filhos" value="0" /></label>
+      <label>Netos de filhos já falecidos <small>quantos netos cada filho falecido deixou, separados por vírgula (ex.: 2, 1)</small><input type="text" name="netos" /></label>
+      <label>Os descendentes são também filhos (ou netos) do cônjuge sobrevivente? <select name="filiacao"><option value="comum">Sim, todos</option><option value="exclusiva">Não, nenhum</option><option value="hibrida">Alguns sim, outros não</option></select></label>
+    </fieldset>
+    <fieldset>
+      <legend>Ascendentes <small>(só contam se não houver descendentes)</small></legend>
+      <label class="chk"><input type="checkbox" name="pai" /> Pai vivo</label>
+      <label class="chk"><input type="checkbox" name="mae" /> Mãe viva</label>
+      <label>Avós paternos vivos <input type="number" min="0" max="2" name="avosP" value="0" /></label>
+      <label>Avós maternos vivos <input type="number" min="0" max="2" name="avosM" value="0" /></label>
+    </fieldset>
+    <fieldset>
+      <legend>Colaterais <small>(só contam sem descendentes, ascendentes e cônjuge)</small></legend>
+      <label>Irmãos bilaterais vivos <small>mesmo pai e mesma mãe</small><input type="number" min="0" max="50" name="ib" value="0" /></label>
+      <label>Irmãos unilaterais vivos <small>só pai ou só mãe em comum</small><input type="number" min="0" max="50" name="iu" value="0" /></label>
+      <label>Sobrinhos, filhos de irmãos bilaterais falecidos <small>quantos filhos cada irmão deixou (ex.: 2, 1)</small><input type="text" name="sb" /></label>
+      <label>Sobrinhos, filhos de irmãos unilaterais falecidos <small>idem</small><input type="text" name="su" /></label>
+      <label>Tios vivos <input type="number" min="0" max="50" name="tios" value="0" /></label>
+      <label>Outros parentes de 4º grau <small>primos, tios-avós, sobrinhos-netos</small><input type="number" min="0" max="100" name="outros" value="0" /></label>
+    </fieldset>
+    <button class="btn btn--primary btn--lg" type="submit">Simular partilha</button>
+  </form>
+  <div class="calc-erros" id="erros" hidden role="alert"></div>
+  <div class="calc-result" id="res" hidden aria-live="polite">
+    <p class="result-tag">Estimativa</p>
+    <h2>Resultado</h2>
+    <p class="big" id="total"></p>
+    <p id="resumo"></p>
+    <table class="calc-table"><thead><tr><th>Quem recebe</th><th class="n">Quantos</th><th class="n">Valor de cada (R$)</th><th class="n">% da herança (cada)</th></tr></thead><tbody id="linhas"></tbody></table>
+    <h3>Avisos</h3>
+    <ul id="avisos"></ul>
+  </div>
+  <section class="calc-explica" slot="explica">
+    <h2>Depois da simulação</h2>
+    <p>A partilha real depende do inventário: levantamento dos bens e das dívidas, prova do regime de bens e das relações de parentesco, e acordo ou decisão sobre quem fica com cada bem. Veja <a href="/ferramentas/inventario-em-cartorio/">se o inventário pode ser feito em cartório</a>, o <a href="/ferramentas/checklist-documentos-inventario/">checklist de documentos</a>, o texto sobre <a href="/blog/uniao-estavel-heranca-direitos-do-companheiro/">direitos do companheiro na herança</a> e a página de <a href="/areas-de-atuacao/inventario-e-patrimonio/">inventário e patrimônio</a>.</p>
+  </section>
+</ToolLayout>
+
+<script>
+  import { simularPartilha } from '@/lib/calc/partilha.js';
+  import { num } from '@/lib/calc/comex.js';
+  const f = document.getElementById('f') as HTMLFormElement;
+  const el = (n: string) => f.elements.namedItem(n) as HTMLInputElement;
+  const R = (n: number) => n.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+  const esc = (s: string) => s.replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]!);
+  const lista = (s: string) => s.trim() === '' ? [] : s.split(/[,;\s]+/).filter(Boolean).map((x) => (/^\d+$/.test(x) ? Number(x) : NaN));
+  const valor = (s: string) => (s.trim() === '' ? 0 : num(s));
+  const sync = () => { const sem = el('conjuge').value === 'nenhum'; el('regime').disabled = sem; el('base').disabled = sem || el('regime').value !== 'parcial'; };
+  el('conjuge').addEventListener('change', sync); el('regime').addEventListener('change', sync); sync();
+  f.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const r: any = simularPartilha({
+      conjuge: el('conjuge').value, regime: el('regime').value, base: el('base').value,
+      bensComuns: valor(el('comuns').value), bensParticulares: valor(el('particulares').value),
+      desc: { filhos: Number(el('filhos').value || 0), netosDePremortos: lista(el('netos').value), filiacao: el('filiacao').value },
+      asc: { pai: el('pai').checked, mae: el('mae').checked, avosPaternos: Number(el('avosP').value || 0), avosMaternos: Number(el('avosM').value || 0) },
+      col: { irmaosBil: Number(el('ib').value || 0), irmaosUni: Number(el('iu').value || 0), sobrinhosBil: lista(el('sb').value), sobrinhosUni: lista(el('su').value), tios: Number(el('tios').value || 0), outros: Number(el('outros').value || 0) },
+    });
+    const er = document.getElementById('erros')!, res = document.getElementById('res')!;
+    if (!r.ok) { er.innerHTML = '<strong>Confira os dados:</strong><ul>' + r.erros.map((x: string) => `<li>${esc(x)}</li>`).join('') + '</ul>'; er.hidden = false; res.hidden = true; return; }
+    er.hidden = true;
+    const temConj = el('conjuge').value !== 'nenhum';
+    document.getElementById('total')!.textContent = `Herança: R$ ${R(r.heranca)}`;
+    document.getElementById('resumo')!.textContent = temConj
+      ? `Meação do sobrevivente: R$ ${R(r.meacao)} (não é herança). Parte do sobrevivente na herança: R$ ${R(r.conjugeHeranca)}. Total do sobrevivente: R$ ${R(r.conjugeTotal)}.`
+      : 'Sem cônjuge ou companheiro, todo o patrimônio informado forma a herança.';
+    document.getElementById('linhas')!.innerHTML = r.linhas.length
+      ? r.linhas.map((l: any) => `<tr><td>${esc(l.rotulo)}</td><td class="n">${l.qtd}</td><td class="n">${R(l.valorCada)}</td><td class="n">${l.pct.toLocaleString('pt-BR')}%</td></tr>`).join('')
+      : '<tr><td colspan="4">Nenhum herdeiro informado (veja os avisos).</td></tr>';
+    document.getElementById('avisos')!.innerHTML = r.avisos.map((x: string) => `<li>${esc(x)}</li>`).join('');
+    res.hidden = false; res.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+</script>
