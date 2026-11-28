@@ -51,7 +51,12 @@ export function buildArticleJsonLd(opts: {
     description: opts.description,
     image,
     mainEntityOfPage: { '@type': 'WebPage', '@id': url },
-    author: { '@type': 'Person', name: opts.author, url: `${base}/o-escritorio/` },
+    // Autor pessoa só quando for o advogado; texto da equipe sai como Organization
+    // (não se atribui autoria ao advogado de texto que ele não escreveu).
+    author:
+      opts.author === site.attorney.name
+        ? { '@type': 'Person', name: opts.author, url: `${base}/o-escritorio/` }
+        : { '@type': 'Organization', name: opts.author, url: `${base}/o-escritorio/` },
     publisher: {
       '@type': 'Organization',
       name: site.name,
