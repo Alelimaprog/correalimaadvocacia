@@ -112,6 +112,71 @@ export const nucleos: Nucleo[] = [
     ],
   },
   {
+    slug: 'direito-maritimo-portuario',
+    href: `${BASE}/direito-maritimo-portuario/`,
+    label: 'Direito Marítimo, Portuário e Transportes',
+    icon: 'route',
+    short:
+      'Demurrage de contêiner, avaria e extravio de carga, cobranças de terminal e responsabilidade de armadores, agentes de carga e transportadoras.',
+    problems: ['Estou sendo cobrado por demurrage', 'Minha carga chegou avariada ou extraviada'],
+    eyebrow: 'Direito marítimo, portuário e transportes',
+    h1: 'Advogado de direito marítimo e portuário: demurrage, avaria e carga no porto',
+    heroDescription:
+      'Atuação para importadores, exportadores e empresas de logística em conflitos com armadores, NVOCCs, agentes de carga, terminais e transportadoras: cobrança de demurrage e detention, avaria e extravio de carga, armazenagem e tarifas portuárias, liberação de carga e contratos de transporte.',
+    seoTitle: 'Advogado de Direito Marítimo e Portuário em SP',
+    seoDescription:
+      'Demurrage e detention de contêiner, avaria e extravio de carga, armazenagem e cobranças de terminal, contratos de transporte e ANTAQ. Atuação para importadores.',
+    situations: [
+      'Fatura de demurrage ou detention que não bate com o free time e a tabela contratados',
+      'Contêiner que não pôde ser devolvido por falta de vaga no depot ou recusa do armador',
+      'Carga que chegou avariada, com falta de volumes ou foi extraviada',
+      'Carga ou conhecimento de embarque (BL) retido por frete ou cobrança em discussão',
+      'Cobrança de armazenagem, THC, SSE ou outras tarifas do terminal',
+      'Seguradora que indenizou a carga e quer cobrar o transportador',
+    ],
+    services: [
+      'Análise e contestação de cobranças de demurrage e detention',
+      'Defesa em ações de cobrança de sobre-estadia de contêiner',
+      'Reclamação por avaria, falta ou extravio de carga contra armador, NVOCC, terminal ou transportadora',
+      'Ações regressivas de seguradoras sub-rogadas',
+      'Liberação de carga e de BL retidos',
+      'Cobranças de terminal e reclamações perante a ANTAQ',
+      'Contratos de transporte, agenciamento de carga e logística',
+      'Transporte rodoviário de cargas: ANTT, piso mínimo de frete, vale-pedágio e estadia',
+    ],
+    forWhom: [
+      'Importadores e exportadores',
+      'Trading companies e despachantes aduaneiros',
+      'Agentes de carga e NVOCCs',
+      'Transportadoras e operadores logísticos',
+      'Seguradoras e corretores de seguro de transporte',
+    ],
+    faq: [
+      {
+        q: 'Quem paga a demurrage quando a carga fica retida pela Receita Federal?',
+        a: 'Em regra, o contrato de transporte atribui ao importador a responsabilidade pelo uso do contêiner além do free time, inclusive durante a fiscalização aduaneira. A discussão muda quando a demora foi causada pelo próprio transportador, pelo terminal ou pelo depot. Por isso, cada fatura deve ser conferida contra o contrato, o termo de responsabilidade e o registro das datas.',
+      },
+      {
+        q: 'Qual o prazo para reclamar de uma avaria na carga?',
+        a: 'Quem recebe a carga deve conferi-la e registrar ressalvas na entrega. Para perda parcial ou avaria que não se percebe à primeira vista, o Código Civil exige que o dano seja comunicado ao transportador em até 10 dias da entrega (art. 754, parágrafo único). Vistoria e fotos feitas logo na desova são a principal prova.',
+      },
+      {
+        q: 'A seguradora que indenizou a carga pode cobrar o transportador?',
+        a: 'Sim. Ao pagar a indenização, a seguradora assume os direitos do segurado e pode cobrar do causador do dano o que efetivamente pagou (Súmula 188 do STF).',
+      },
+      {
+        q: 'O que a ANTAQ tem a ver com as cobranças no porto?',
+        a: 'A ANTAQ regula o transporte aquaviário e a exploração dos portos e recebe reclamações de usuários. A Resolução ANTAQ nº 62/2021 trata dos direitos e deveres de usuários, agentes intermediários e transportadores marítimos, inclusive sobre cobranças.',
+      },
+    ],
+    related: [
+      { label: 'Calculadora de demurrage e detention', href: '/ferramentas/calculadora-de-demurrage/' },
+      { label: 'Mercadoria retida no Porto de Santos: como liberar', href: '/blog/mercadoria-retida-porto-de-santos-como-liberar/' },
+      { label: 'Incoterms e responsabilidade nos contratos de importação', href: '/blog/incoterms-responsabilidade-contratual-importadores/' },
+      { label: 'Validador de número de contêiner', href: '/ferramentas/validador-de-conteiner/' },
+    ],
+  },
+  {
     slug: 'inventario-e-patrimonio',
     href: `${BASE}/inventario-e-patrimonio/`,
     label: 'Inventário e Patrimônio',

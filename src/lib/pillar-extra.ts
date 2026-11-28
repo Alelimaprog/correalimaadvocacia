@@ -13,6 +13,26 @@ export interface PillarExtra {
 }
 
 export const pillarExtra: Record<string, PillarExtra> = {
+  'direito-maritimo-portuario': {
+    problem:
+      'Na importação, boa parte do custo que foge do previsto não vem dos tributos, e sim da logística: diárias de contêiner que correm enquanto a carga espera, tarifas de terminal, avarias descobertas só na desova e cargas retidas por cobranças em discussão. Esses conflitos envolvem várias partes (armador, NVOCC, agente de carga, terminal, transportadora e seguradora), contratos em inglês com foro no exterior e prazos curtos para reclamar. A atuação começa pela leitura do contrato e dos registros de datas e segue para a negociação, a reclamação regulatória ou a ação judicial.',
+    risks: [
+      'Diárias de demurrage que continuam correndo enquanto a cobrança é discutida.',
+      'Perda do direito de reclamar a avaria por falta de ressalva na entrega ou de aviso no prazo.',
+      'Cláusulas de foro estrangeiro e limitação de responsabilidade no conhecimento de embarque.',
+      'Carga ou documentos retidos, travando a nacionalização e gerando novos custos.',
+    ],
+    table: {
+      title: 'Visão rápida dos conflitos mais comuns',
+      cols: ['Problema', 'Com quem', 'Primeira providência'],
+      rows: [
+        ['Demurrage e detention', 'Armador ou NVOCC', 'Conferir free time, tabela, datas e câmbio contra o contrato'],
+        ['Avaria, falta ou extravio', 'Transportador, terminal ou seguradora', 'Ressalva na entrega, vistoria e aviso por escrito'],
+        ['Armazenagem e tarifas do terminal', 'Terminal ou recinto alfandegado', 'Tabela pública do terminal e regras da ANTAQ'],
+        ['Transporte rodoviário', 'Transportadora ou embarcador', 'CT-e, contrato, piso mínimo e regras da ANTT'],
+      ],
+    },
+  },
   'direito-empresarial': {
     problem:
       'A maior parte dos problemas jurídicos de uma empresa nasce de decisões tomadas antes de existir conflito: um contrato assinado sem revisão, uma cláusula de rescisão genérica, uma relação societária sem regra de saída, uma operação fechada sem avaliação de risco. Quando a disputa aparece, a discussão passa a ser sobre o que os documentos já dizem. A assessoria empresarial atua nos dois tempos — na redação e na negociação, enquanto há margem, e na condução técnica da disputa, quando ela se torna inevitável.',

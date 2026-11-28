@@ -22,6 +22,133 @@ export interface SubTopic {
 }
 
 export const subtopics: SubTopic[] = [
+  // ───────────────────── Marítimo, Portuário e Transportes (28/11/2026) ─────────────────────
+  {
+    nucleo: 'direito-maritimo-portuario',
+    slug: 'demurrage-e-detention-de-conteiner',
+    label: 'Demurrage e detention de contêiner',
+    h1: 'Demurrage e Detention de Contêiner: Contestação e Defesa',
+    seoTitle: 'Demurrage de Contêiner: Advogado para Contestar',
+    seoDescription: 'Cobrança de demurrage ou detention acima do esperado? Como conferir free time, tabela e datas, quando contestar e como se defender da ação de cobrança.',
+    heroDescription: 'A demurrage costuma ser o custo que mais cresce quando a carga demora a ser liberada. Antes de pagar ou de assinar um acordo, vale conferir cada dia cobrado.',
+    problem: 'O armador ou o NVOCC cobra diárias pelo uso do contêiner além do prazo livre (free time), conforme a tabela do contrato e o termo de responsabilidade assinado pelo importador. Erros no início da contagem, no free time, na tabela aplicada ou no câmbio são frequentes, e há dias que podem não ser imputáveis ao importador, como os de indisponibilidade do depot para devolução.',
+    situations: [
+      'Fatura de demurrage ou detention muito acima do previsto',
+      'Free time negociado que não foi aplicado na cobrança',
+      'Depot sem vaga ou recusa de recebimento do contêiner vazio',
+      'Carga retida na fiscalização aduaneira com diárias correndo',
+      'Ação de cobrança de sobre-estadia já ajuizada',
+    ],
+    atuacao: [
+      'Conferência da cobrança contra o contrato, o BL, o termo de responsabilidade e o registro das datas',
+      'Contestação administrativa da fatura e negociação com o armador ou NVOCC',
+      'Medidas para interromper a contagem, como a desunitização da carga retida',
+      'Defesa em ação de cobrança, inclusive quanto à prescrição e ao valor',
+    ],
+    risks: [
+      'Pagamento sob protesto sem registro da discordância',
+      'Assinatura de confissão de dívida que impede discutir o valor depois',
+      'Diárias que continuam a correr enquanto a discussão não avança',
+    ],
+    faq: [
+      { q: 'Como confiro se a cobrança está certa?', a: 'Compare o início da contagem, o free time, a tabela de diárias e o câmbio com o contrato e o termo de responsabilidade. A calculadora de demurrage do site ajuda a refazer a conta com as faixas progressivas.' },
+      { q: 'A cobrança de demurrage prescreve?', a: 'Sim. O prazo depende da natureza da relação e de haver valores previstos em contrato, e o Superior Tribunal de Justiça já se pronunciou sobre o tema. Em cobrança antiga, verifique o prazo antes de negociar.' },
+    ],
+  },
+  {
+    nucleo: 'direito-maritimo-portuario',
+    slug: 'avaria-e-extravio-de-carga',
+    label: 'Avaria e extravio de carga',
+    h1: 'Avaria, Falta e Extravio de Carga no Transporte',
+    seoTitle: 'Avaria e Extravio de Carga: Reclamação e Indenização',
+    seoDescription: 'Carga chegou avariada, com falta de volumes ou foi extraviada? Prazos para reclamar, provas necessárias e responsabilidade de armador, terminal e transportadora.',
+    heroDescription: 'Em caso de avaria ou extravio, as primeiras horas após a entrega decidem a prova. Ressalva, vistoria e aviso por escrito precisam ser feitos no prazo.',
+    problem: 'O transportador responde pela carga desde o recebimento até a entrega ao destinatário (Código Civil, arts. 749 e 750). Quando a carga passa por armador, terminal, operador portuário e transportadora rodoviária, é preciso identificar em que etapa o dano aconteceu e quem responde por ele, observando os limites e as cláusulas do conhecimento de embarque.',
+    situations: [
+      'Carga avariada constatada na desova do contêiner',
+      'Falta de volumes ou divergência de peso na entrega',
+      'Extravio total da carga',
+      'Seguradora que indenizou e quer cobrar o responsável (ação regressiva)',
+    ],
+    atuacao: [
+      'Orientação imediata sobre ressalvas, vistoria e preservação de provas',
+      'Identificação do responsável na cadeia logística',
+      'Reclamação formal e negociação com transportador e seguradoras',
+      'Ação de indenização ou ação regressiva da seguradora sub-rogada',
+    ],
+    risks: [
+      'Recebimento da carga sem ressalva, que dificulta a prova',
+      'Perda do prazo de 10 dias para avisar o dano não aparente (CC, art. 754, parágrafo único)',
+      'Cláusulas de limitação de responsabilidade e de foro no conhecimento de embarque',
+    ],
+    faq: [
+      { q: 'O que devo fazer quando a carga chega avariada?', a: 'Registre a ressalva no documento de entrega, fotografe a carga e o contêiner, peça vistoria e comunique o transportador e a seguradora por escrito. Guarde o lacre e os documentos.' },
+      { q: 'Quem responde pelo dano: o armador ou o terminal?', a: 'Depende de onde o dano ocorreu. A responsabilidade acompanha cada etapa da guarda da carga, e a vistoria e os registros de entrada e saída do terminal ajudam a localizar o momento do dano.' },
+    ],
+  },
+  {
+    nucleo: 'direito-maritimo-portuario',
+    slug: 'armazenagem-e-cobrancas-de-terminal',
+    label: 'Armazenagem e cobranças de terminal',
+    h1: 'Armazenagem, THC e Cobranças de Terminal Portuário',
+    seoTitle: 'Cobranças de Terminal Portuário: THC, SSE e Armazenagem',
+    seoDescription: 'Armazenagem, THC, SSE e outras tarifas de terminal e recinto alfandegado: como conferir, contestar e reclamar na ANTAQ quando a cobrança é indevida.',
+    heroDescription: 'Armazenagem e tarifas de terminal pesam no custo da importação, sobretudo quando a carga demora a ser liberada. Nem toda cobrança tem base contratual ou regulatória.',
+    problem: 'Terminais portuários e recintos alfandegados cobram armazenagem por períodos e diversas tarifas de movimentação. A cobrança deve seguir a tabela pública do terminal e as regras da ANTAQ, que regula o setor (Lei 10.233/2001) e recebe reclamações de usuários. A Lei dos Portos (Lei 12.815/2013) organiza a exploração dos portos e das instalações portuárias.',
+    situations: [
+      'Armazenagem cobrada por período maior que o de permanência real',
+      'Cobrança de tarifa sem previsão na tabela do terminal',
+      'Carga retida pelo terminal por cobrança em discussão',
+      'Dúvida sobre a cobrança de SSE (segregação e entrega) ou de serviços não solicitados',
+    ],
+    atuacao: [
+      'Conferência da cobrança contra a tabela pública e o período de permanência',
+      'Contestação junto ao terminal e reclamação perante a ANTAQ',
+      'Medidas para liberação da carga retida',
+      'Ação judicial quando a via administrativa não resolve',
+    ],
+    risks: [
+      'Armazenagem que continua a correr durante a discussão',
+      'Carga retida que trava a nacionalização',
+      'Pagamento sem ressalva que dificulta a restituição',
+    ],
+    faq: [
+      { q: 'O terminal pode reter a carga até eu pagar?', a: 'A retenção da carga por cobrança em discussão é tema sensível e depende do tipo de cobrança, do contrato e das regras regulatórias. Em muitos casos é possível obter a liberação mediante garantia enquanto o valor é discutido.' },
+      { q: 'Onde reclamar de uma cobrança indevida de terminal?', a: 'Primeiro, formalmente ao próprio terminal. Sem solução, a ANTAQ recebe reclamações de usuários pela sua Ouvidoria. A via judicial continua disponível.' },
+    ],
+  },
+  {
+    nucleo: 'direito-maritimo-portuario',
+    slug: 'transporte-rodoviario-de-cargas',
+    label: 'Transporte rodoviário de cargas',
+    h1: 'Transporte Rodoviário de Cargas: Contratos, Frete e Responsabilidade',
+    seoTitle: 'Transporte Rodoviário de Cargas: Advogado para Empresas',
+    seoDescription: 'Contratos de transporte rodoviário, piso mínimo de frete, vale-pedágio, estadia de caminhão, avarias e responsabilidade da transportadora e do embarcador.',
+    heroDescription: 'O transporte rodoviário fecha a cadeia da importação e da exportação. Contratos, frete mínimo, vale-pedágio e estadia geram disputas recorrentes entre embarcadores e transportadoras.',
+    problem: 'O transporte rodoviário de cargas por conta de terceiros é regido pela Lei 11.442/2007 e regulado pela ANTT. O piso mínimo de frete tem base na Lei 13.703/2018 e o vale-pedágio obrigatório, na Lei 10.209/2001. A lei também trata do tempo de carga e descarga e da indenização pela espera excedente. Esses pontos aparecem tanto na defesa do embarcador quanto na cobrança pela transportadora.',
+    situations: [
+      'Cobrança de diferença de piso mínimo de frete',
+      'Multa ou cobrança por falta de vale-pedágio',
+      'Cobrança de estadia por espera na carga ou descarga',
+      'Avaria ou roubo de carga em trânsito',
+      'Contratos de transporte e de logística com cláusulas desequilibradas',
+    ],
+    atuacao: [
+      'Revisão e elaboração de contratos de transporte e logística',
+      'Defesa em cobranças de frete mínimo, vale-pedágio e estadia',
+      'Reclamação por avaria, falta ou roubo de carga',
+      'Atuação em autos de infração da ANTT',
+    ],
+    risks: [
+      'Contratação sem observar o piso mínimo de frete e o vale-pedágio',
+      'Falta de registro dos horários de chegada e saída nos pontos de carga e descarga',
+      'Seguro de carga inadequado à operação',
+    ],
+    faq: [
+      { q: 'O embarcador responde pelo vale-pedágio?', a: 'A Lei 10.209/2001 atribui ao embarcador a obrigação de antecipar o vale-pedágio ao transportador, separado do frete. O descumprimento pode gerar penalidades e cobranças.' },
+      { q: 'Quem fiscaliza o piso mínimo de frete?', a: 'A ANTT, que publica as tabelas com base na Lei 13.703/2018. Divergências entre o frete contratado e o piso podem ser cobradas pela transportadora e autuadas pela agência.' },
+    ],
+  },
   // ───────────────────────── Recuperação de Crédito ─────────────────────────
   {
     nucleo: 'recuperacao-de-credito',
