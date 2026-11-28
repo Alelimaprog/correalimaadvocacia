@@ -1,6 +1,6 @@
 ---
 title: "Mercadoria Retida: Liberação com Seguro-Garantia ou Fiança"
-description: "Quando a Receita exige diferença de tributo na importação, a carga pode ser liberada mediante garantia (depósito, fiança ou seguro-garantia). Quando cabe e os limites."
+description: "Se a Receita exige diferença de tributo na importação, a carga pode ser liberada com garantia (depósito, fiança ou seguro-garantia). Quando cabe e os limites."
 h1: "Liberação de mercadoria retida mediante garantia"
 author: "Alexandre Corrêa Lima"
 pubDate: 2026-11-25
